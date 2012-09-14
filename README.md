@@ -12,4 +12,5 @@ This project includes:
 - Documentation of RobotML language (code is to be found in the RobotML-platform project)
 
 Types of issues to be discussed in this project
+- Organisation of development for RobotML (language, platform as well as sdk and ontologies)
 - bugs / features requests for the ontology
