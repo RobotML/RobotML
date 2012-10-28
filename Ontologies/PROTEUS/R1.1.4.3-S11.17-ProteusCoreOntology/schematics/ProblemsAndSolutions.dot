@@ -1,0 +1,56 @@
+digraph Proteus {
+	label="Problem and Solution"
+	fontname="Arial-Bold";
+	labeljust=left;
+	fontsize=20;
+	fontcolor=red;
+	bgcolor=lightgrey;
+	subgraph cluster0 {
+		label="Problem"
+		fontname="Arial-Bold";
+		labeljust=left;
+		fontsize=15;
+		fontcolor=black;
+		bgcolor=white;
+		"Problem" [label="expe:Problem", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.2847", height="0.5"];
+		"State" [label="kern:State", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="0.97917", height="0.5"];
+		"Probe" [label="kern:Probe", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.0625", height="0.5"];
+		"Metric" [label="expe:Metric", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.1389", height="0.5"];
+		"RobotMLSimulator" [label="expe:RobotMLSimulator", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="2.1458", height="0.5"];
+		"Robot" [label="robo:Robot", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.1458", height="0.5"];
+		"Simulation" [label="simu:Simulation", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.4444", height="0.5"];
+	}
+	subgraph cluster1 {
+		label="Solution"
+		fontname="Arial-Bold";
+		labeljust=left;
+		fontsize=15;
+		fontcolor=black;
+		bgcolor=white;
+		"Solution" [label="expe:Solution", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.2778", height="0.5"];
+		"RoboticApplication" [label="robo:RoboticApplication", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.2778", height="0.5"];
+		"AlgorithmicModule" [label="expe:AlgorithmicModule", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.2778", height="0.5"];
+	}
+	subgraph cluster2 {
+		label="Roles"
+		fontname="Arial-Bold";
+		labeljust=left;
+		fontsize=15;
+		fontcolor=black;
+		bgcolor=white;
+		"ProblemProvider" [label="expe:ProblemProvider", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.9514", height="0.5"];
+		"SolutionProvider" [label="expe:SolutionProvider", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.9444", height="0.5"];
+	}
+	"SolutionProvider" -> "Solution" [style=filled, label="expe:Creates*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"Probe" -> "State" [style=filled, label="kern:observes*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"Simulation" -> "RobotMLSimulator" [style=filled, label="simu:isCreatedBy*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"RobotMLSimulator" -> "Probe" [style=filled, label="kern:has*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"RobotMLSimulator" -> "Simulation" [style=filled, label="simu:creates*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"ProblemProvider" -> "Solution" [style=filled, label="expe:evaluates*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"ProblemProvider" -> "Metric" [style=filled, label="expe:evaluatesUsing*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"ProblemProvider" -> "Problem" [style=filled, label="expe:Creates*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"Solution" -> "RoboticApplication" [style=filled, label="kern:aggregates*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"Solution" -> "AlgorithmicModule" [style=filled, label="kern:aggregates*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"Problem" -> "RobotMLSimulator" [style=filled, label="kern:aggregates*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"Problem" -> "Robot" [style=filled, label="kern:aggregates*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+}

@@ -1,0 +1,43 @@
+digraph Proteus {
+	label="Composition of Information"
+	fontname="Arial-Bold";
+	labeljust=left;
+	fontsize=20;
+	fontcolor=red;
+	bgcolor=lightgrey;
+	subgraph cluster0 {
+		label="Composition - Abstract information"
+		fontname="Arial-Bold";
+		labeljust=left;
+		fontsize=15;
+		fontcolor=black;
+		bgcolor=white;
+		"Abstraction" [label="kern:Abstraction", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.5556", height="0.5"];
+		"CrossProduct" [label="info:CrossProduct", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.6736", height="0.5"];
+		"Set" [label="info:Set", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="0.86111", height="0.5"];
+		"Set" -> "CrossProduct" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+		"CrossProduct" -> "Set" [label="info:contains*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	}
+	subgraph cluster1 {
+		label="Composition - implemented information"
+		fontname="Arial-Bold";
+		labeljust=left;
+		fontsize=15;
+		fontcolor=black;
+		bgcolor=white;
+		"Data" [label="kern:Data", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width=1, height="0.5"];
+		"Collection" [label="info:Collection", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.4236", height="0.5"];	
+		"ComposedData" [label="info:ComposedData", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.8333", height="0.5"];
+		"PrimitiveData" [label="info:PrimitiveData", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.6944", height="0.5"];
+		"Data" -> "Collection" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+		"Collection" -> "Data" [label="info:contains*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+		"Data" -> "ComposedData" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	}
+	"ComposedData" -> "CrossProduct" [label="kern:Implements*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"Abstraction" -> "Set" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"Set" -> "Collection" [label="kern:isCodedIn*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"Set" -> "Data" [label="info:contains*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"Data" -> "PrimitiveData" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"Abstraction" -> "Data" [label="kern:isCodedIn*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"Data" -> "Abstraction" [label="kern:Implements*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+}

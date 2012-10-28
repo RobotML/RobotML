@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:syst="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Systems.owl#"
+    xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+    xmlns:robo="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Robot.owl#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:indo="http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#"
+    xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns:envi="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Environment.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:kern="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
+    xmlns:miss="http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#"
+    xmlns:info="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#"
+  xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl">
+  <owl:Ontology rdf:about="">
+    <rdfs:comment xml:lang="en">This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
+    <rdfs:comment xml:lang="en">Formalization of Serge Deltour's R3.1.1-R1.3-IndoorRobotChallengeDescription.odt</rdfs:comment>
+    <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Proteus.owl"/>
+    <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/3.3/swrla.owl"/>
+    <owl:imports rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl"/>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >version delivered 1.0</owl:versionInfo>
+  </owl:Ontology>
+  <kern:DriverToHardwareInteraction rdf:ID="TabletPCTx">
+    <kern:impacts>
+      <syst:CommunicationHardware rdf:ID="TabletPCCommunicationHardware">
+        <kern:triggers>
+          <kern:HardwareToDriverInteraction rdf:ID="TabletPCRx">
+            <kern:impacts>
+              <syst:CommunicationDriver rdf:ID="TabletPCCommunicationDriver">
+                <kern:isAtomic rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >true</kern:isAtomic>
+              </syst:CommunicationDriver>
+            </kern:impacts>
+          </kern:HardwareToDriverInteraction>
+        </kern:triggers>
+        <kern:isAtomic rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</kern:isAtomic>
+      </syst:CommunicationHardware>
+    </kern:impacts>
+  </kern:DriverToHardwareInteraction>
+  <kern:DriverToHardwareInteraction rdf:ID="EmbeddedTx">
+    <kern:impacts>
+      <syst:CommunicationHardware rdf:ID="EmbeddedCommunicationHardware">
+        <kern:triggers>
+          <kern:HardwareToDriverInteraction rdf:ID="EmbeddedRx">
+            <kern:impacts>
+              <syst:CommunicationDriver rdf:ID="EmbeddedCommunicationDriver">
+                <kern:isAtomic rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >true</kern:isAtomic>
+              </syst:CommunicationDriver>
+            </kern:impacts>
+          </kern:HardwareToDriverInteraction>
+        </kern:triggers>
+        <kern:isAtomic rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</kern:isAtomic>
+      </syst:CommunicationHardware>
+    </kern:impacts>
+  </kern:DriverToHardwareInteraction>
+  <syst:CommunicationSystem rdf:ID="EmbeddedCommunicationSystem">
+    <kern:isAtomic rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >false</kern:isAtomic>
+    <kern:aggregates rdf:resource="#EmbeddedCommunicationHardware"/>
+    <kern:aggregates rdf:resource="#EmbeddedCommunicationDriver"/>
+  </syst:CommunicationSystem>
+  <syst:ControlStationSystem rdf:ID="TabletPCRemoteControlStation">
+    <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#CompositeSystem"/>
+    <kern:triggers>
+      <miss:CommunicationOfIntents rdf:ID="ControlStationToEmbeddedController">
+        <rdfs:comment xml:lang="en">From Figure 2 page 5</rdfs:comment>
+        <kern:impacts rdf:resource="#EmbeddedCommunicationHardware"/>
+        <kern:impacts>
+          <syst:RoboticSystem rdf:ID="EmbeddedController">
+            <kern:isAtomic rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+            >false</kern:isAtomic>
+            <rdfs:comment xml:lang="en">From figure 2 page 5</rdfs:comment>
+            <kern:triggers>
+              <miss:CommunicationOfBeliefs rdf:ID="EmbeddedControllerToControlStation">
+                <kern:impacts rdf:resource="#TabletPCCommunicationHardware"/>
+                <kern:impacts rdf:resource="#TabletPCRemoteControlStation"/>
+              </miss:CommunicationOfBeliefs>
+            </kern:triggers>
+          </syst:RoboticSystem>
+        </kern:impacts>
+      </miss:CommunicationOfIntents>
+    </kern:triggers>
+    <kern:aggregates>
+      <syst:ControlSystem rdf:ID="RemoteControlSupervisor">
+        <kern:isAtomic rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</kern:isAtomic>
+      </syst:ControlSystem>
+    </kern:aggregates>
+    <kern:aggregates>
+      <syst:CommunicationSystem rdf:ID="TabletPCCommunicationSystem">
+        <kern:isAtomic rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >false</kern:isAtomic>
+        <kern:aggregates rdf:resource="#TabletPCCommunicationHardware"/>
+        <kern:aggregates rdf:resource="#TabletPCCommunicationDriver"/>
+        <rdfs:comment xml:lang="en">From figure 2 page 5</rdfs:comment>
+      </syst:CommunicationSystem>
+    </kern:aggregates>
+    <rdfs:comment xml:lang="en">From figure2 page 5</rdfs:comment>
+    <kern:isAtomic rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >false</kern:isAtomic>
+  </syst:ControlStationSystem>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.4.8, Build 629)  http://protege.stanford.edu -->

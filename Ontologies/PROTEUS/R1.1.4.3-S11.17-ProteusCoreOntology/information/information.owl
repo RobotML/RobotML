@@ -1,0 +1,4857 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:kern="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
+    xmlns:info="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#"
+  xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl">
+  <owl:Ontology rdf:about="">
+    <rdfs:comment xml:lang="en">The information ontology is based upon the kernel ontology. It explicits many of the concepts in the information kernel container.</rdfs:comment>
+    <rdfs:comment xml:lang="en">This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1  licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >version delivered 1.0</owl:versionInfo>
+    <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl"/>
+    <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/3.3/swrla.owl"/>
+    <owl:imports rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="OrderedSetForSimulation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="OrderedSet"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="OrderedSetForSystemDescription"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="I"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="R"/>
+    </owl:disjointWith>
+    <rdfs:comment xml:lang="en">Any ordered set used for simulation purpose.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Set">
+    <rdfs:comment xml:lang="en">Set means some collection of object having some commonalities between them.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Vector"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="PhysicalQuantity"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Unit"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#State">
+        <owl:disjointWith>
+          <owl:Class rdf:ID="NumberAbstraction"/>
+        </owl:disjointWith>
+        <owl:disjointWith>
+          <owl:Class rdf:ID="Tensor"/>
+        </owl:disjointWith>
+        <owl:disjointWith>
+          <owl:Class rdf:about="#PhysicalQuantity"/>
+        </owl:disjointWith>
+        <owl:disjointWith>
+          <owl:Class rdf:about="#Unit"/>
+        </owl:disjointWith>
+        <owl:disjointWith>
+          <owl:Class rdf:ID="Command"/>
+        </owl:disjointWith>
+        <owl:disjointWith rdf:resource="#Set"/>
+        <owl:disjointWith>
+          <owl:Class rdf:ID="OperationalInformation"/>
+        </owl:disjointWith>
+        <owl:disjointWith>
+          <owl:Class rdf:ID="Function"/>
+        </owl:disjointWith>
+        <owl:disjointWith>
+          <owl:Class rdf:ID="Relation"/>
+        </owl:disjointWith>
+        <owl:disjointWith>
+          <owl:Class rdf:about="#Vector"/>
+        </owl:disjointWith>
+      </rdf:Description>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Abstraction"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Function"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasSet"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NumberAbstraction"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isCodedIn"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="Collection"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#LogicalExpression">
+        <owl:disjointWith>
+          <owl:Class rdf:about="#Function"/>
+        </owl:disjointWith>
+        <owl:disjointWith>
+          <owl:Class rdf:about="#NumberAbstraction"/>
+        </owl:disjointWith>
+        <owl:disjointWith>
+          <owl:Class rdf:about="#Relation"/>
+        </owl:disjointWith>
+        <owl:disjointWith>
+          <owl:Class rdf:about="#Vector"/>
+        </owl:disjointWith>
+        <owl:disjointWith>
+          <owl:Class rdf:about="#Unit"/>
+        </owl:disjointWith>
+        <owl:disjointWith>
+          <owl:Class rdf:about="#OperationalInformation"/>
+        </owl:disjointWith>
+        <owl:disjointWith>
+          <owl:Class rdf:about="#Tensor"/>
+        </owl:disjointWith>
+        <owl:disjointWith>
+          <owl:Class rdf:about="#PhysicalQuantity"/>
+        </owl:disjointWith>
+        <owl:disjointWith>
+          <owl:Class rdf:about="#Command"/>
+        </owl:disjointWith>
+        <owl:disjointWith rdf:resource="#Set"/>
+      </rdf:Description>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Tensor"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >a Set is not associated with any Set. This recursivity is forbidden as it would not allow to</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Command"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#OperationalInformation"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="UUID">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Position3DCylindrical"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="CANFrame"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="PhysicalData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="TrajectoryElement"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Orientation2DAngle"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="LaserScan"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="TimeStampedData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="StructuredData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Message"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Waypoint3D"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Universal Unique ID (128 bits)</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Referential"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Orientation3DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="StreamPacket"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ComposedData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Position2DPolar"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Orientation2DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Waypoint2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Position2DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Position3DSpherical"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Object2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Orientation3DEuler"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Image"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Orientation3DQuaternion"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Position3DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Position6D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Object3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="GPS"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Translation3D"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="Force">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="InstantPower"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Weight"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ElectricField"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Voltage"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Duration"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Distance"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Humidity"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Torque"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Wavelength"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Luminosity"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Orientation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="MagneticField"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Acceleration"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Pressure"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ElectricalCurrent"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="RotationRate"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Date"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Energy"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Mass"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Speed"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Angle"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Temperature"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Position"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Voltage">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Date"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Speed"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mass"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Force"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Luminosity"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Acceleration"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#RotationRate"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Pressure"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Wavelength"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Temperature"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Torque"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Angle"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Humidity"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Energy"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MagneticField"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InstantPower"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ElectricalCurrent"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ElectricField"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Distance"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Weight"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Duration"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Torque">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ElectricField"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Weight"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mass"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ElectricalCurrent"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Voltage"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Wavelength"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Distance"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Temperature"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Speed"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Duration"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Luminosity"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Acceleration"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Date"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Pressure"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MagneticField"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Energy"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InstantPower"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#RotationRate"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Force"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Angle"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Humidity"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#ElectricField">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InstantPower"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Voltage"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Temperature"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#RotationRate"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Date"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Force"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Distance"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Acceleration"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Angle"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Speed"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Wavelength"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Humidity"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Duration"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mass"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Energy"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Pressure"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ElectricalCurrent"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MagneticField"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Weight"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Torque"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Luminosity"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="UInt32">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Int16"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Unsigned integer on 32 bits</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="UInt16"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Int32"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="UInt8"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Int8"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Integer"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Int64"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="UInt64"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Pressure">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Acceleration"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Date"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Wavelength"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Luminosity"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Distance"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MagneticField"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Energy"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Weight"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Voltage"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mass"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Force"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Angle"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Duration"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Speed"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#RotationRate"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InstantPower"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ElectricalCurrent"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Torque"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Temperature"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#ElectricField"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Humidity"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TrajectoryFunction">
+    <rdfs:comment xml:lang="en">Representation of the geometry of the path over time by means of equations.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Function"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Relation"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#ElectricalCurrent">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Date"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Humidity"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Duration"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Weight"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InstantPower"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Pressure"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MagneticField"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Force"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#RotationRate"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mass"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#ElectricField"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Angle"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Wavelength"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Distance"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Luminosity"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Acceleration"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Energy"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Voltage"/>
+    <owl:disjointWith rdf:resource="#Torque"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Speed"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Temperature"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Energy">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Luminosity"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Angle"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Distance"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Humidity"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Date"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Pressure"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Wavelength"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InstantPower"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mass"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Duration"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#ElectricalCurrent"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Acceleration"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Speed"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Force"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Weight"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Temperature"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Voltage"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#RotationRate"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MagneticField"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#ElectricField"/>
+    <owl:disjointWith rdf:resource="#Torque"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Number">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A computer representation of a numeric value</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PrimitiveData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Binary"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Boolean"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Character"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="SortingRelation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Relation"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Constraint"/>
+    </owl:disjointWith>
+    <rdfs:comment xml:lang="en">this relation allows to state if some element is greater than another one. Often its symbol is &lt; or &gt;</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#OperationalInformation">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Tensor"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Unit"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NumberAbstraction"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Vector"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Command"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Abstraction"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Function"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalQuantity"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#State"/>
+    <owl:disjointWith rdf:resource="#Set"/>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#LogicalExpression"/>
+    <rdfs:comment xml:lang="en">Here are grouped the information that are used to describe operations of robots in environment. It is all the elements that can be shared between robots and human (do betweenn agents).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#UInt64">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#UInt16"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Int64"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Integer"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Unsigned integer on 64 bits</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Int32"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Int16"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#UInt8"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Int8"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#UInt32"/>
+  </owl:Class>
+  <owl:Class rdf:about="#I">
+    <rdfs:comment xml:lang="en">Integer set composed of integer values</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#OrderedSet"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="IntegerAbstraction"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="containsAbstraction"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#R"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#OrderedSetForSystemDescription"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#OrderedSetForSimulation"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Luminosity">
+    <owl:disjointWith rdf:resource="#Voltage"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Angle"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Duration"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Torque"/>
+    <owl:disjointWith rdf:resource="#Force"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Acceleration"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InstantPower"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Date"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Pressure"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#ElectricField"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Speed"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mass"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MagneticField"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Distance"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Humidity"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Energy"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Weight"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#RotationRate"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#ElectricalCurrent"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Wavelength"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Temperature"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#TrajectoryElement">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DPolar"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComposedData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CANFrame"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#TimeStampedData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Message"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#StructuredData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation2DAngle"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation2DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position6D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GPS"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Image"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DSpherical"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DQuaternion"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DCylindrical"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#StreamPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DEuler"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint3D"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#StructuredData">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TODO: the structured data as it is defiend should be abstract as it is asociated with abstraction through hasSet and hasFunction. As it is a data, it is mandatory to be able to save it in a Computer file... The Set and the function cannot...
+In order to solve this point, we could keep the "info:hasSet" and add a property specifying that it is implemented.</owl:versionInfo>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position6D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Message"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CANFrame"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#TimeStampedData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DQuaternion"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation2DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComposedData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation2DAngle"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DSpherical"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DPolar"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#StreamPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DCylindrical"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Image"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasSet"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DMatrix"/>
+    </owl:disjointWith>
+    <rdfs:comment xml:lang="en">A structure is a set associated with relations that obeys rules and functions that links the sets (if the input set is a cross product). These rules allow to state properties onto the set on which the relations(s) applies and the functions allows to explain how to create elemnts of some subsets from others.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GPS"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DEuler"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Temperature">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Duration"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Distance"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Weight"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#RotationRate"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#ElectricalCurrent"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Acceleration"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mass"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Pressure"/>
+    <owl:disjointWith rdf:resource="#Energy"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Date"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#ElectricField"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Humidity"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Torque"/>
+    <owl:disjointWith rdf:resource="#Force"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Wavelength"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Speed"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MagneticField"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Luminosity"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Angle"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InstantPower"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Voltage"/>
+  </owl:Class>
+  <owl:Class rdf:about="#TimeStampedData">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DEuler"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Message"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation2DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position6D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DCartesian"/>
+    </owl:disjointWith>
+    <rdfs:comment xml:lang="en">The composition of any information with a timestamp that may represent its creation date</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DCylindrical"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PrimitiveData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DPolar"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComposedData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DQuaternion"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GPS"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation2DAngle"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#StreamPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DSpherical"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Image"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CANFrame"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DMatrix"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="FixedPointNumber">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Real"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="FloatingPointNumber"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Number with a fixed precision.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Orientation2DAngle">
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Image"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CANFrame"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position6D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DCylindrical"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DSpherical"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Message"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GPS"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DCartesian"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComposedData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DPolar"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DQuaternion"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#StreamPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DEuler"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation2DMatrix"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Weight">
+    <owl:disjointWith rdf:resource="#ElectricField"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#RotationRate"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Temperature"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mass"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Force"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Angle"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Distance"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Humidity"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Date"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Luminosity"/>
+    <owl:disjointWith rdf:resource="#Energy"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Pressure"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Wavelength"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Torque"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Acceleration"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Voltage"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Speed"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MagneticField"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InstantPower"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Duration"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#ElectricalCurrent"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Position3DSpherical">
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation2DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CANFrame"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Message"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DQuaternion"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DPolar"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#StreamPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position6D"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComposedData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DEuler"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GPS"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Image"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DCylindrical"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+  </owl:Class>
+  <owl:Class rdf:ID="UTF8Character">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Character"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ASCIICharacter"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="True">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#NumberAbstraction"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="False"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#IntegerAbstraction"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="RealAbstraction"/>
+    </owl:disjointWith>
+    <rdfs:comment xml:lang="en">necessary for the Boolean Set to exist. Embodies the true value</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Vector">
+    <owl:disjointWith rdf:resource="#OperationalInformation"/>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Abstraction"/>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#State"/>
+    <owl:disjointWith rdf:resource="#Set"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Command"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Tensor"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalQuantity"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Function"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NumberAbstraction"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Unit"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#LogicalExpression"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Orientation">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MagneticField"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Acceleration"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Energy"/>
+    <owl:disjointWith rdf:resource="#Temperature"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Duration"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#RotationRate"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Date"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InstantPower"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Speed"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Distance"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Angle"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Humidity"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Weight"/>
+    <owl:disjointWith rdf:resource="#ElectricField"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mass"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Torque"/>
+    <owl:disjointWith rdf:resource="#Luminosity"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Wavelength"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Voltage"/>
+    <owl:disjointWith rdf:resource="#Force"/>
+    <owl:disjointWith rdf:resource="#Pressure"/>
+    <owl:disjointWith rdf:resource="#ElectricalCurrent"/>
+  </owl:Class>
+  <owl:Class rdf:ID="BiProduct">
+    <rdfs:comment xml:lang="en">Necessary to have binary operations and thus functions.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</owl:hasValue>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="homogeneous"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#containsAbstraction"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="Dimension"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="CrossProduct"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Position6D">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DQuaternion"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DEuler"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >3D position + orientation quaternion</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation2DMatrix"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComposedData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Image"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GPS"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#StreamPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DPolar"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CANFrame"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DCylindrical"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Message"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Integer">
+    <rdfs:subClassOf rdf:resource="#Number"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Real"/>
+    </owl:disjointWith>
+    <rdfs:comment xml:lang="en">abstraction of the different encodings of an integer in a computer</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Boolean">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >false</owl:hasValue>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="hasValue"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#hasValue"/>
+        </owl:onProperty>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PrimitiveData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Binary"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Character"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Number"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >True or False</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Position2DPolar">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DCylindrical"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position6D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CANFrame"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComposedData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation2DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DEuler"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Image"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Message"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GPS"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DQuaternion"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#StreamPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DCartesian"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#OrderedSetForSystemDescription">
+    <owl:disjointWith rdf:resource="#OrderedSetForSimulation"/>
+    <owl:disjointWith rdf:resource="#I"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#R"/>
+    </owl:disjointWith>
+    <rdfs:comment xml:lang="en">Any ordered set used for system description purpose.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#OrderedSet"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Speed">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Acceleration"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Energy"/>
+    <owl:disjointWith rdf:resource="#ElectricalCurrent"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MagneticField"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#RotationRate"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Pressure"/>
+    <owl:disjointWith rdf:resource="#Temperature"/>
+    <owl:disjointWith rdf:resource="#Force"/>
+    <owl:disjointWith rdf:resource="#Orientation"/>
+    <owl:disjointWith rdf:resource="#Voltage"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Wavelength"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Duration"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Weight"/>
+    <owl:disjointWith rdf:resource="#ElectricField"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mass"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Distance"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Date"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Humidity"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InstantPower"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Luminosity"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Angle"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Torque"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Position3DCartesian">
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Message"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GPS"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DCylindrical"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith rdf:resource="#Position2DPolar"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#StreamPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CANFrame"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DQuaternion"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComposedData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DEuler"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position6D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Image"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation2DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Sequence">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A collection of ordered elements with possible repetition</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Collection"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="AssociativeArray"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Relation">
+    <owl:disjointWith rdf:resource="#TrajectoryFunction"/>
+    <rdfs:comment xml:lang="en">The relation is an abstract concept to be used in order to express properties between elements of a set (see info:Collection:Set). It allows its user to create structure if the relation(s) have the "good" properties.
+Relation is linking two elements of the same Set and assumes this link is either true or false. The relation is a function with two sets one being the cross product and the second being the Boolean set.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasInput"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#BiProduct"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="BooleanSet"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasOutput"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasSet"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Function"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Waypoint2D">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Image"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GPS"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation2DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Message"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position6D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DQuaternion"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#StreamPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith rdf:resource="#Position2DPolar"/>
+    <owl:disjointWith rdf:resource="#Position3DCartesian"/>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComposedData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CANFrame"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DCylindrical"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DEuler"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Object3D">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position6D"/>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CANFrame"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GPS"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position2DPolar"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Waypoint2D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DQuaternion"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Image"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComposedData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DCylindrical"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#StreamPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DCartesian"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DEuler"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation2DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Primitive representation of 3D object (position, orientation, width, length, height, kind, color...)
+Ex : sphere, box,...</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Message"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#IntegerAbstraction">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#RealAbstraction"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#False"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#True"/>
+    <rdfs:comment xml:lang="en">it is necessary to express the mathematical object that is the Integer set that can be defined implicitly but must be coded explicitly</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#NumberAbstraction"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isCodedIn"/>
+        <owl:allValuesFrom rdf:resource="#Integer"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#BooleanSet">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#OrderedSet"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CrossProduct"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#containsAbstraction"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#True"/>
+              <owl:Class rdf:about="#False"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#containsAbstraction"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Boolean"/>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isCodedIn"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Set"/>
+    <rdfs:comment xml:lang="en">It is the set composed of the true and false values.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Orientation2DMatrix">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Message"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint3D"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComposedData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Image"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DCartesian"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#StreamPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position2DPolar"/>
+    <owl:disjointWith rdf:resource="#Object3D"/>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CANFrame"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DEuler"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GPS"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DQuaternion"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Waypoint2D"/>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <owl:disjointWith rdf:resource="#Position6D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DCylindrical"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#R">
+    <owl:disjointWith rdf:resource="#I"/>
+    <owl:disjointWith rdf:resource="#OrderedSetForSystemDescription"/>
+    <owl:disjointWith rdf:resource="#OrderedSetForSimulation"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#OrderedSet"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#containsAbstraction"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#RealAbstraction"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Real set composed of real</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#StreamPacket">
+    <owl:disjointWith rdf:resource="#Orientation2DMatrix"/>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Message"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Image"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Object3D"/>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith rdf:resource="#Waypoint2D"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Packet of bytes.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DEuler"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DCartesian"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CANFrame"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComposedData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Position6D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DCylindrical"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GPS"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith rdf:resource="#Position2DPolar"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DQuaternion"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#RotationRate">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Date"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Weight"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Force"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Duration"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Orientation"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mass"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Energy"/>
+    <owl:disjointWith rdf:resource="#Temperature"/>
+    <owl:disjointWith rdf:resource="#Torque"/>
+    <owl:disjointWith rdf:resource="#Luminosity"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Distance"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MagneticField"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Wavelength"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Pressure"/>
+    <owl:disjointWith rdf:resource="#ElectricField"/>
+    <owl:disjointWith rdf:resource="#Voltage"/>
+    <owl:disjointWith rdf:resource="#Speed"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Humidity"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InstantPower"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#ElectricalCurrent"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Angle"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Acceleration"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#GPS">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Image"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DEuler"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DQuaternion"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Object3D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith rdf:resource="#Orientation2DMatrix"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position2DPolar"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GPS Position and attributes.
+Can be completed with additional attributes such as : satellites information, ephemerids information, pseudo ranges, dillution of precision, position and velocity var/covar matrices, horizontal and vertical protection levels, ...</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Message"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComposedData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Position6D"/>
+    <owl:disjointWith rdf:resource="#Waypoint2D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CANFrame"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DCylindrical"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#StreamPacket"/>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith rdf:resource="#Position3DCartesian"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ASCIICharacter">
+    <owl:disjointWith rdf:resource="#UTF8Character"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Character"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Constraint">
+    <rdfs:comment xml:lang="en">It corresponds to a textual (IsCodedIn String) or mathematical (Abstraction) description of  what is allowed and what is forbidden during the course of the mission.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Relation"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isCodedIn"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="String"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#SortingRelation"/>
+  </owl:Class>
+  <owl:Class rdf:about="#OrderedSet">
+    <rdfs:subClassOf rdf:resource="#Set"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasFunction"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasFunction"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#SortingRelation"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TODO: create the mirror in the Data:Collection (could be many)</owl:versionInfo>
+    <owl:disjointWith rdf:resource="#BooleanSet"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CrossProduct"/>
+    </owl:disjointWith>
+    <rdfs:comment xml:lang="en">It is a Set which elements respect a law ordering them :
+aRb true and bRa true implies a=b.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#FloatingPointNumber">
+    <owl:disjointWith rdf:resource="#FixedPointNumber"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Real"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Number with a floatting precision.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#CANFrame">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position3DCylindrical"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#GPS"/>
+    <owl:disjointWith rdf:resource="#Waypoint2D"/>
+    <owl:disjointWith rdf:resource="#Position3DCartesian"/>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Image"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith rdf:resource="#Object3D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#StreamPacket"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Message"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Orientation2DMatrix"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DQuaternion"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position2DPolar"/>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+    <owl:disjointWith rdf:resource="#Position6D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DEuler"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComposedData"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Position3DCylindrical">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#GPS"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Message"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Waypoint2D"/>
+    <owl:disjointWith rdf:resource="#CANFrame"/>
+    <owl:disjointWith rdf:resource="#Orientation2DMatrix"/>
+    <owl:disjointWith rdf:resource="#Position2DPolar"/>
+    <owl:disjointWith rdf:resource="#StreamPacket"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position6D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Object3D"/>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComposedData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Image"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DEuler"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DQuaternion"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DCartesian"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint3D"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Orientation3DQuaternion">
+    <owl:disjointWith rdf:resource="#Object3D"/>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith rdf:resource="#Position6D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DEuler"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DCylindrical"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DCartesian"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComposedData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Image"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#CANFrame"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+    <owl:disjointWith rdf:resource="#GPS"/>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <owl:disjointWith rdf:resource="#StreamPacket"/>
+    <owl:disjointWith rdf:resource="#Waypoint2D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+    <owl:disjointWith rdf:resource="#Orientation2DMatrix"/>
+    <owl:disjointWith rdf:resource="#Position2DPolar"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Message"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Object2D">
+    <owl:disjointWith rdf:resource="#Position3DCylindrical"/>
+    <owl:disjointWith rdf:resource="#Orientation2DMatrix"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DMatrix"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Waypoint2D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DEuler"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Image"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position6D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith rdf:resource="#CANFrame"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComposedData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DCartesian"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <owl:disjointWith rdf:resource="#Object3D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position2DPolar"/>
+    <owl:disjointWith rdf:resource="#Orientation3DQuaternion"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Message"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Primitive representation of a 2D object (position, width, length, color, kind...)
+Ex : rectangle, circle, disc, line, ellipse, spot, ...</rdfs:comment>
+    <owl:disjointWith rdf:resource="#GPS"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#StreamPacket"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Character">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A character</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Binary"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Boolean"/>
+    <owl:disjointWith rdf:resource="#Number"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PrimitiveData"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Real">
+    <owl:disjointWith rdf:resource="#Integer"/>
+    <rdfs:subClassOf rdf:resource="#Number"/>
+    <rdfs:comment xml:lang="en">abstraction of the different encodings of a real in a computer</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#PhysicalQuantity">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Abstraction"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Unit"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NumberAbstraction"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Command"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#State"/>
+    <owl:disjointWith rdf:resource="#Vector"/>
+    <owl:disjointWith rdf:resource="#Set"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Function"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Tensor"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#LogicalExpression"/>
+    <owl:disjointWith rdf:resource="#OperationalInformation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Corresponds to the physical quantities that can all be created from the seven standard quantities :
+- Length
+- Time
+- Mass
+- Electric current
+- Thermodynamic temperature
+- Amount of substance 
+- Luminous intensity
+Although angle are generally considered as dimensionless, we can add them for convenience</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Command">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TODO: is it a necessary concept? when considering proteus.owl, it is not used. More than that it is deemed necessary in control theory but doesn't seem to have any links with it.</owl:versionInfo>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#LogicalExpression"/>
+    <owl:disjointWith rdf:resource="#Set"/>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Abstraction"/>
+    <owl:disjointWith rdf:resource="#PhysicalQuantity"/>
+    <owl:disjointWith rdf:resource="#Vector"/>
+    <rdfs:comment xml:lang="en">In computer science it is a keyword or a keystatement used to execute an action in a computer by means of a Command-line interface or commonly a Shell.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Unit"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#State"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Function"/>
+    </owl:disjointWith>
+    <rdfs:comment xml:lang="en">In control theory it is a message send to a system in order to take place in the control.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NumberAbstraction"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#OperationalInformation"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Tensor"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Orientation3DMatrix">
+    <owl:disjointWith rdf:resource="#Orientation3DQuaternion"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#StreamPacket"/>
+    <owl:disjointWith rdf:resource="#Waypoint2D"/>
+    <owl:disjointWith rdf:resource="#Orientation2DMatrix"/>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <owl:disjointWith rdf:resource="#CANFrame"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DCylindrical"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComposedData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#GPS"/>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+    <owl:disjointWith rdf:resource="#Position3DCartesian"/>
+    <owl:disjointWith rdf:resource="#Object3D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DEuler"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position2DPolar"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Message"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Object2D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position6D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Image"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Humidity">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Wavelength"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Date"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Voltage"/>
+    <owl:disjointWith rdf:resource="#Force"/>
+    <owl:disjointWith rdf:resource="#Torque"/>
+    <owl:disjointWith rdf:resource="#ElectricField"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Luminosity"/>
+    <owl:disjointWith rdf:resource="#RotationRate"/>
+    <owl:disjointWith rdf:resource="#Weight"/>
+    <owl:disjointWith rdf:resource="#Energy"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mass"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Temperature"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Angle"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Pressure"/>
+    <owl:disjointWith rdf:resource="#Orientation"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Duration"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Speed"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Acceleration"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Distance"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MagneticField"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#ElectricalCurrent"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InstantPower"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#LaserScan">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith rdf:resource="#Position2DPolar"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position6D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Image"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Orientation3DMatrix"/>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+    <owl:disjointWith rdf:resource="#Position3DCartesian"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Message"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Waypoint2D"/>
+    <owl:disjointWith rdf:resource="#GPS"/>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComposedData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#CANFrame"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#StreamPacket"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DCylindrical"/>
+    <owl:disjointWith rdf:resource="#Orientation2DMatrix"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Data from a laser scanner sensor (ex : SICK, IBEO, HOKUYO...)</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Object2D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Orientation3DQuaternion"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DEuler"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Object3D"/>
+  </owl:Class>
+  <owl:Class rdf:about="#False">
+    <owl:disjointWith rdf:resource="#IntegerAbstraction"/>
+    <owl:disjointWith rdf:resource="#True"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#RealAbstraction"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#NumberAbstraction"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">necessary for the Boolean Set to exist. Embodies the false value</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#AssociativeArray">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A set of pairs key/value where keys are unique.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="containsAsKeys"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Data"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Collection"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Sequence"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Function">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NumberAbstraction"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Tensor"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Command"/>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#LogicalExpression"/>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#State"/>
+    <owl:disjointWith rdf:resource="#OperationalInformation"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Unit"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Set"/>
+    <owl:disjointWith rdf:resource="#PhysicalQuantity"/>
+    <owl:disjointWith rdf:resource="#Vector"/>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Abstraction"/>
+    <rdfs:comment xml:lang="en">It represents mathematical functions as interaction between two sets.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#UInt8">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Int16"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#UInt16"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#UInt32"/>
+    <owl:disjointWith rdf:resource="#UInt64"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Int64"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Int8"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Int32"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Integer"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Unsigned integer on 8 bits</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Angle">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InstantPower"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Torque"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Date"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Luminosity"/>
+    <owl:disjointWith rdf:resource="#Orientation"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Duration"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Temperature"/>
+    <owl:disjointWith rdf:resource="#Speed"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Wavelength"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Weight"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Humidity"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Distance"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#RotationRate"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Acceleration"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mass"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MagneticField"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Force"/>
+    <owl:disjointWith rdf:resource="#ElectricalCurrent"/>
+    <owl:disjointWith rdf:resource="#ElectricField"/>
+    <owl:disjointWith rdf:resource="#Energy"/>
+    <owl:disjointWith rdf:resource="#Pressure"/>
+    <owl:disjointWith rdf:resource="#Voltage"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Wavelength">
+    <owl:disjointWith rdf:resource="#Angle"/>
+    <owl:disjointWith rdf:resource="#ElectricalCurrent"/>
+    <owl:disjointWith rdf:resource="#Temperature"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Date"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Orientation"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Acceleration"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#ElectricField"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MagneticField"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Weight"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InstantPower"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mass"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#RotationRate"/>
+    <owl:disjointWith rdf:resource="#Force"/>
+    <owl:disjointWith rdf:resource="#Luminosity"/>
+    <owl:disjointWith rdf:resource="#Pressure"/>
+    <owl:disjointWith rdf:resource="#Humidity"/>
+    <owl:disjointWith rdf:resource="#Torque"/>
+    <owl:disjointWith rdf:resource="#Voltage"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Distance"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Energy"/>
+    <owl:disjointWith rdf:resource="#Speed"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Duration"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Data">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TODO: Data is defiend in kernel but is completed in information by the canBeSavedIn. Could be that it is not necessary to add this property in information meaning we should move info:ComputerFile also. To be discussed.</owl:versionInfo>
+  </owl:Class>
+  <owl:Class rdf:about="#Acceleration">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mass"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Humidity"/>
+    <owl:disjointWith rdf:resource="#Speed"/>
+    <owl:disjointWith rdf:resource="#Weight"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Distance"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Force"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InstantPower"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#RotationRate"/>
+    <owl:disjointWith rdf:resource="#ElectricField"/>
+    <owl:disjointWith rdf:resource="#Pressure"/>
+    <owl:disjointWith rdf:resource="#Wavelength"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Duration"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Angle"/>
+    <owl:disjointWith rdf:resource="#Orientation"/>
+    <owl:disjointWith rdf:resource="#Luminosity"/>
+    <owl:disjointWith rdf:resource="#Voltage"/>
+    <owl:disjointWith rdf:resource="#Energy"/>
+    <owl:disjointWith rdf:resource="#ElectricalCurrent"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Date"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MagneticField"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Torque"/>
+    <owl:disjointWith rdf:resource="#Temperature"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Image">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComposedData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith rdf:resource="#Orientation2DMatrix"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#CANFrame"/>
+    <owl:disjointWith rdf:resource="#Position3DCartesian"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DEuler"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DCylindrical"/>
+    <owl:disjointWith rdf:resource="#StreamPacket"/>
+    <owl:disjointWith rdf:resource="#Position2DPolar"/>
+    <owl:disjointWith rdf:resource="#Orientation3DQuaternion"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Object3D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position6D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Orientation3DMatrix"/>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Representation of an image from a camera for instance</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Object2D"/>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Message"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith rdf:resource="#Waypoint2D"/>
+    <owl:disjointWith rdf:resource="#GPS"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#LaserScan"/>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint3D"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#MagneticField">
+    <owl:disjointWith rdf:resource="#ElectricalCurrent"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mass"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Duration"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Weight"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InstantPower"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Torque"/>
+    <owl:disjointWith rdf:resource="#Voltage"/>
+    <owl:disjointWith rdf:resource="#Force"/>
+    <owl:disjointWith rdf:resource="#Energy"/>
+    <owl:disjointWith rdf:resource="#Acceleration"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Date"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Luminosity"/>
+    <owl:disjointWith rdf:resource="#Temperature"/>
+    <owl:disjointWith rdf:resource="#Speed"/>
+    <owl:disjointWith rdf:resource="#Wavelength"/>
+    <owl:disjointWith rdf:resource="#RotationRate"/>
+    <owl:disjointWith rdf:resource="#Humidity"/>
+    <owl:disjointWith rdf:resource="#Angle"/>
+    <owl:disjointWith rdf:resource="#Orientation"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Distance"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#ElectricField"/>
+    <owl:disjointWith rdf:resource="#Pressure"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Binary">
+    <rdfs:comment xml:lang="en">Binary type of data is a way of representing computer processor instructions or computing information (any kind of computer data) by the use of the binary number system's two-binary digits 0 and 1. This is accomplished by assigning a bit string to each particular symbol or instruction.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Boolean"/>
+    <owl:disjointWith rdf:resource="#Character"/>
+    <owl:disjointWith rdf:resource="#Number"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PrimitiveData"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Message">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DEuler"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position2DPolar"/>
+    <owl:disjointWith rdf:resource="#Position6D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Position2DCartesian"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComposedData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Orientation3DQuaternion"/>
+    <owl:disjointWith rdf:resource="#LaserScan"/>
+    <owl:disjointWith rdf:resource="#Position3DCartesian"/>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith rdf:resource="#GPS"/>
+    <owl:disjointWith rdf:resource="#Object2D"/>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Waypoint2D"/>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#CANFrame"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Image"/>
+    <owl:disjointWith rdf:resource="#Position3DCylindrical"/>
+    <owl:disjointWith rdf:resource="#Orientation3DMatrix"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Any message with
+Type : info, warning, error...
+Importance / Priority : a level of importance
+Message code and/or text info.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#StreamPacket"/>
+    <owl:disjointWith rdf:resource="#Object3D"/>
+    <owl:disjointWith rdf:resource="#Orientation2DMatrix"/>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Position">
+    <owl:disjointWith rdf:resource="#Torque"/>
+    <owl:disjointWith rdf:resource="#ElectricField"/>
+    <owl:disjointWith rdf:resource="#Voltage"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Duration"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#RotationRate"/>
+    <owl:disjointWith rdf:resource="#Temperature"/>
+    <owl:disjointWith rdf:resource="#Speed"/>
+    <owl:disjointWith rdf:resource="#Luminosity"/>
+    <owl:disjointWith rdf:resource="#Weight"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Distance"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Date"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Wavelength"/>
+    <owl:disjointWith rdf:resource="#Humidity"/>
+    <owl:disjointWith rdf:resource="#Force"/>
+    <owl:disjointWith rdf:resource="#Pressure"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InstantPower"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Energy"/>
+    <owl:disjointWith rdf:resource="#Angle"/>
+    <owl:disjointWith rdf:resource="#ElectricalCurrent"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mass"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#MagneticField"/>
+    <owl:disjointWith rdf:resource="#Orientation"/>
+    <owl:disjointWith rdf:resource="#Acceleration"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#PrimitiveData">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Data"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#anySimpleType"/>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#hasValue"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ComposedData"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This is a type of Data which corresponds to the primitives of the standard computing interpretation:
+boolean, classical number representation (int, double, ...), character</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Duration">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mass"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Angle"/>
+    <owl:disjointWith rdf:resource="#Position"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Distance"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#MagneticField"/>
+    <owl:disjointWith rdf:resource="#Pressure"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InstantPower"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Weight"/>
+    <owl:disjointWith rdf:resource="#RotationRate"/>
+    <owl:disjointWith rdf:resource="#Torque"/>
+    <owl:disjointWith rdf:resource="#ElectricField"/>
+    <owl:disjointWith rdf:resource="#Voltage"/>
+    <owl:disjointWith rdf:resource="#Humidity"/>
+    <owl:disjointWith rdf:resource="#Force"/>
+    <owl:disjointWith rdf:resource="#Acceleration"/>
+    <owl:disjointWith rdf:resource="#Speed"/>
+    <owl:disjointWith rdf:resource="#Energy"/>
+    <owl:disjointWith rdf:resource="#Wavelength"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Date"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Temperature"/>
+    <owl:disjointWith rdf:resource="#Luminosity"/>
+    <owl:disjointWith rdf:resource="#Orientation"/>
+    <owl:disjointWith rdf:resource="#ElectricalCurrent"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Date">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Acceleration"/>
+    <owl:disjointWith rdf:resource="#Speed"/>
+    <owl:disjointWith rdf:resource="#MagneticField"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mass"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#ElectricField"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InstantPower"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Wavelength"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Distance"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Pressure"/>
+    <owl:disjointWith rdf:resource="#Force"/>
+    <owl:disjointWith rdf:resource="#Temperature"/>
+    <owl:disjointWith rdf:resource="#RotationRate"/>
+    <owl:disjointWith rdf:resource="#Orientation"/>
+    <owl:disjointWith rdf:resource="#ElectricalCurrent"/>
+    <owl:disjointWith rdf:resource="#Voltage"/>
+    <owl:disjointWith rdf:resource="#Luminosity"/>
+    <owl:disjointWith rdf:resource="#Torque"/>
+    <owl:disjointWith rdf:resource="#Humidity"/>
+    <owl:disjointWith rdf:resource="#Weight"/>
+    <owl:disjointWith rdf:resource="#Energy"/>
+    <owl:disjointWith rdf:resource="#Duration"/>
+    <owl:disjointWith rdf:resource="#Angle"/>
+    <owl:disjointWith rdf:resource="#Position"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Float64">
+    <rdfs:subClassOf rdf:resource="#FloatingPointNumber"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#hasValue"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IEEE 754-2008 double</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Float32"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#RealAbstraction">
+    <owl:disjointWith rdf:resource="#IntegerAbstraction"/>
+    <owl:disjointWith rdf:resource="#False"/>
+    <owl:disjointWith rdf:resource="#True"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#NumberAbstraction"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isCodedIn"/>
+        <owl:allValuesFrom rdf:resource="#Real"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">it is necessary to express the mathematical object that is the Real set that can be defined implicitly but must be coded explicitly</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Unit">
+    <owl:disjointWith rdf:resource="#PhysicalQuantity"/>
+    <owl:disjointWith rdf:resource="#OperationalInformation"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:valuesFrom rdf:resource="#PhysicalQuantity"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasAPhysicalQuantity"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#LogicalExpression"/>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Abstraction"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Contains the possible phisical units, SI or not. Every unit has a physical dimension</rdfs:comment>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#State"/>
+    <owl:disjointWith rdf:resource="#Function"/>
+    <owl:disjointWith rdf:resource="#Vector"/>
+    <owl:disjointWith rdf:resource="#Command"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NumberAbstraction"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Set"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Tensor"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="In">
+    <rdfs:comment xml:lang="en">the In cross product is a very important one to be used throughout the simulation ontology</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#I"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#containsAbstraction"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#homogeneous"/>
+        </owl:onProperty>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CrossProduct"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Rn"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Collection">
+    <rdfs:comment xml:lang="en">Represents a possibly modifiable set of data with coherent types and fitted with a data structure (indexation, ad hoc or natural order, father/child relation, etc). This is not the collection that could exist to group the set as indicated in the Abstracted information (Set).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#StructuredData"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Position2DCartesian">
+    <owl:disjointWith rdf:resource="#Orientation3DMatrix"/>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComposedData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Message"/>
+    <owl:disjointWith rdf:resource="#Object2D"/>
+    <owl:disjointWith rdf:resource="#Position3DCartesian"/>
+    <owl:disjointWith rdf:resource="#Position6D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Orientation3DEuler"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#StreamPacket"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith rdf:resource="#Image"/>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+    <owl:disjointWith rdf:resource="#Waypoint2D"/>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#GPS"/>
+    <owl:disjointWith rdf:resource="#Position2DPolar"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#CANFrame"/>
+    <owl:disjointWith rdf:resource="#Object3D"/>
+    <owl:disjointWith rdf:resource="#Position3DCylindrical"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#LaserScan"/>
+    <owl:disjointWith rdf:resource="#Orientation2DMatrix"/>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+    <owl:disjointWith rdf:resource="#Orientation3DQuaternion"/>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Orientation3DEuler">
+    <owl:disjointWith rdf:resource="#Position3DCartesian"/>
+    <owl:disjointWith rdf:resource="#StreamPacket"/>
+    <owl:disjointWith rdf:resource="#Image"/>
+    <owl:disjointWith rdf:resource="#Orientation2DMatrix"/>
+    <owl:disjointWith rdf:resource="#Orientation3DQuaternion"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComposedData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Position3DCylindrical"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Waypoint3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Orientation3DMatrix"/>
+    <owl:disjointWith rdf:resource="#LaserScan"/>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+    <owl:disjointWith rdf:resource="#Message"/>
+    <owl:disjointWith rdf:resource="#Position2DPolar"/>
+    <owl:disjointWith rdf:resource="#Object2D"/>
+    <owl:disjointWith rdf:resource="#Position6D"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Object3D"/>
+    <owl:disjointWith rdf:resource="#GPS"/>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <owl:disjointWith rdf:resource="#CANFrame"/>
+    <owl:disjointWith rdf:resource="#Waypoint2D"/>
+    <owl:disjointWith rdf:resource="#Position2DCartesian"/>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#NumberAbstraction">
+    <owl:disjointWith rdf:resource="#Unit"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Tensor"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Command"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasSet"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#PrimitiveData"/>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isCodedIn"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Vector"/>
+    <rdfs:comment xml:lang="en">In order to be able to manipulate abstract values, we need to define them and it is what is done here.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#PhysicalQuantity"/>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#State"/>
+    <owl:disjointWith rdf:resource="#Set"/>
+    <owl:disjointWith rdf:resource="#OperationalInformation"/>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Abstraction"/>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#LogicalExpression"/>
+    <owl:disjointWith rdf:resource="#Function"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Int64">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Int16"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#UInt32"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#hasValue"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#long"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Int8"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Integer"/>
+    <owl:disjointWith rdf:resource="#UInt64"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Signed integer on 64 bits</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#UInt16"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Int32"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#UInt8"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Int32">
+    <owl:disjointWith rdf:resource="#UInt8"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#UInt16"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Signed integer on 32 bits</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Int64"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Int16"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#hasValue"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#UInt32"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Int8"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#UInt64"/>
+    <rdfs:subClassOf rdf:resource="#Integer"/>
+  </owl:Class>
+  <owl:Class rdf:about="#UInt16">
+    <owl:disjointWith rdf:resource="#Int64"/>
+    <owl:disjointWith rdf:resource="#Int32"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Int16"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Unsigned integer on 16 bits</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Int8"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Integer"/>
+    <owl:disjointWith rdf:resource="#UInt64"/>
+    <owl:disjointWith rdf:resource="#UInt32"/>
+    <owl:disjointWith rdf:resource="#UInt8"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Distance">
+    <owl:disjointWith rdf:resource="#Force"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Humidity"/>
+    <owl:disjointWith rdf:resource="#Weight"/>
+    <owl:disjointWith rdf:resource="#Wavelength"/>
+    <owl:disjointWith rdf:resource="#Luminosity"/>
+    <owl:disjointWith rdf:resource="#ElectricField"/>
+    <owl:disjointWith rdf:resource="#MagneticField"/>
+    <owl:disjointWith rdf:resource="#Speed"/>
+    <owl:disjointWith rdf:resource="#Duration"/>
+    <owl:disjointWith rdf:resource="#Temperature"/>
+    <owl:disjointWith rdf:resource="#Acceleration"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mass"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Pressure"/>
+    <owl:disjointWith rdf:resource="#Energy"/>
+    <owl:disjointWith rdf:resource="#RotationRate"/>
+    <owl:disjointWith rdf:resource="#Voltage"/>
+    <owl:disjointWith rdf:resource="#ElectricalCurrent"/>
+    <owl:disjointWith rdf:resource="#Angle"/>
+    <owl:disjointWith rdf:resource="#Torque"/>
+    <owl:disjointWith rdf:resource="#Date"/>
+    <owl:disjointWith rdf:resource="#Orientation"/>
+    <owl:disjointWith rdf:resource="#Position"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InstantPower"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#ComposedData">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Implements"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#CrossProduct"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Data"/>
+    <rdfs:comment xml:lang="en">This represent any aggregation of heterogenous data with no specific structure (in the computer science meaning) which can be consistantly interpreted in robotics.
+Of course, this is not exhaustive. This class can be widely extended depending on application.
+See messages like defined in JAUS, FIPA, ADL...</rdfs:comment>
+    <owl:disjointWith rdf:resource="#PrimitiveData"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ComputerFile">
+    <rdfs:subClassOf rdf:resource="#TimeStampedData"/>
+    <rdfs:comment xml:lang="en">A computer file is a block of arbitrary information, or resource for storing information, which is available to a computer program and is usually based on some kind of durable storage. A file is durable in the sense that it remains available for programs to use after the current program has finished. It is indexed in a computer file system and has a file path within.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Waypoint3D">
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Orientation2DMatrix"/>
+    <owl:disjointWith rdf:resource="#Message"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DCartesian"/>
+    <owl:disjointWith rdf:resource="#Position2DPolar"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#CANFrame"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith rdf:resource="#Object2D"/>
+    <owl:disjointWith rdf:resource="#Orientation3DQuaternion"/>
+    <owl:disjointWith rdf:resource="#Image"/>
+    <owl:disjointWith rdf:resource="#Object3D"/>
+    <owl:disjointWith rdf:resource="#Position2DCartesian"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <rdfs:subClassOf rdf:resource="#ComposedData"/>
+    <owl:disjointWith rdf:resource="#Orientation3DEuler"/>
+    <owl:disjointWith rdf:resource="#Orientation3DMatrix"/>
+    <owl:disjointWith rdf:resource="#GPS"/>
+    <owl:disjointWith rdf:resource="#Waypoint2D"/>
+    <owl:disjointWith rdf:resource="#LaserScan"/>
+    <owl:disjointWith rdf:resource="#Position3DCylindrical"/>
+    <owl:disjointWith rdf:resource="#StreamPacket"/>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+    <owl:disjointWith rdf:resource="#Position6D"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Mass">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InstantPower"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Temperature"/>
+    <owl:disjointWith rdf:resource="#Wavelength"/>
+    <owl:disjointWith rdf:resource="#Position"/>
+    <owl:disjointWith rdf:resource="#RotationRate"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Energy"/>
+    <owl:disjointWith rdf:resource="#Force"/>
+    <owl:disjointWith rdf:resource="#Voltage"/>
+    <owl:disjointWith rdf:resource="#Humidity"/>
+    <owl:disjointWith rdf:resource="#Pressure"/>
+    <owl:disjointWith rdf:resource="#Acceleration"/>
+    <owl:disjointWith rdf:resource="#Weight"/>
+    <owl:disjointWith rdf:resource="#Date"/>
+    <owl:disjointWith rdf:resource="#Duration"/>
+    <owl:disjointWith rdf:resource="#ElectricField"/>
+    <owl:disjointWith rdf:resource="#Luminosity"/>
+    <owl:disjointWith rdf:resource="#ElectricalCurrent"/>
+    <owl:disjointWith rdf:resource="#Angle"/>
+    <owl:disjointWith rdf:resource="#MagneticField"/>
+    <owl:disjointWith rdf:resource="#Orientation"/>
+    <owl:disjointWith rdf:resource="#Torque"/>
+    <owl:disjointWith rdf:resource="#Speed"/>
+    <owl:disjointWith rdf:resource="#Distance"/>
+  </owl:Class>
+  <owl:Class rdf:about="#InstantPower">
+    <owl:disjointWith rdf:resource="#Temperature"/>
+    <owl:disjointWith rdf:resource="#Energy"/>
+    <owl:disjointWith rdf:resource="#Orientation"/>
+    <owl:disjointWith rdf:resource="#Speed"/>
+    <owl:disjointWith rdf:resource="#MagneticField"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Position"/>
+    <owl:disjointWith rdf:resource="#Wavelength"/>
+    <owl:disjointWith rdf:resource="#Voltage"/>
+    <owl:disjointWith rdf:resource="#ElectricalCurrent"/>
+    <owl:disjointWith rdf:resource="#Humidity"/>
+    <owl:disjointWith rdf:resource="#Duration"/>
+    <owl:disjointWith rdf:resource="#Acceleration"/>
+    <owl:disjointWith rdf:resource="#Mass"/>
+    <owl:disjointWith rdf:resource="#RotationRate"/>
+    <owl:disjointWith rdf:resource="#Torque"/>
+    <owl:disjointWith rdf:resource="#Weight"/>
+    <owl:disjointWith rdf:resource="#Pressure"/>
+    <owl:disjointWith rdf:resource="#ElectricField"/>
+    <owl:disjointWith rdf:resource="#Luminosity"/>
+    <owl:disjointWith rdf:resource="#Distance"/>
+    <owl:disjointWith rdf:resource="#Date"/>
+    <owl:disjointWith rdf:resource="#Force"/>
+    <owl:disjointWith rdf:resource="#Angle"/>
+  </owl:Class>
+  <owl:Class rdf:about="#PhysicalData">
+    <rdfs:comment xml:lang="en">This represents the composition of a mathematical algebric object with an associated physical unit.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Orientation3DEuler"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Real"/>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith rdf:resource="#Position2DPolar"/>
+    <owl:disjointWith rdf:resource="#Object3D"/>
+    <owl:disjointWith rdf:resource="#StreamPacket"/>
+    <owl:disjointWith rdf:resource="#CANFrame"/>
+    <owl:disjointWith rdf:resource="#Waypoint3D"/>
+    <owl:disjointWith rdf:resource="#Message"/>
+    <owl:disjointWith rdf:resource="#Orientation3DMatrix"/>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <owl:disjointWith rdf:resource="#Position3DCartesian"/>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+    <owl:disjointWith rdf:resource="#Object2D"/>
+    <owl:disjointWith rdf:resource="#Position2DCartesian"/>
+    <owl:disjointWith rdf:resource="#Image"/>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith rdf:resource="#Orientation2DMatrix"/>
+    <owl:disjointWith rdf:resource="#Position6D"/>
+    <owl:disjointWith rdf:resource="#GPS"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:valuesFrom rdf:resource="#Unit"/>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasAUnit"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Waypoint2D"/>
+    <owl:disjointWith rdf:resource="#LaserScan"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation3D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DCylindrical"/>
+    <owl:disjointWith rdf:resource="#Orientation3DQuaternion"/>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Translation3D">
+    <owl:disjointWith rdf:resource="#Object2D"/>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+    <owl:disjointWith rdf:resource="#Position6D"/>
+    <owl:disjointWith rdf:resource="#Orientation3DEuler"/>
+    <owl:disjointWith rdf:resource="#Position2DPolar"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Referential"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#CANFrame"/>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith rdf:resource="#Waypoint2D"/>
+    <owl:disjointWith rdf:resource="#Position2DCartesian"/>
+    <owl:disjointWith rdf:resource="#LaserScan"/>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith rdf:resource="#Waypoint3D"/>
+    <owl:disjointWith rdf:resource="#Orientation2DMatrix"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <rdfs:subClassOf rdf:resource="#ComposedData"/>
+    <owl:disjointWith rdf:resource="#GPS"/>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <owl:disjointWith rdf:resource="#Orientation3DMatrix"/>
+    <owl:disjointWith rdf:resource="#StreamPacket"/>
+    <owl:disjointWith rdf:resource="#PhysicalData"/>
+    <owl:disjointWith rdf:resource="#Position3DCylindrical"/>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+    <owl:disjointWith rdf:resource="#Message"/>
+    <owl:disjointWith rdf:resource="#Image"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DCartesian"/>
+    <owl:disjointWith rdf:resource="#Object3D"/>
+    <owl:disjointWith rdf:resource="#Orientation3DQuaternion"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Tensor">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Abstraction"/>
+    <owl:disjointWith rdf:resource="#Function"/>
+    <owl:disjointWith rdf:resource="#Command"/>
+    <owl:disjointWith rdf:resource="#Vector"/>
+    <owl:disjointWith rdf:resource="#Unit"/>
+    <owl:disjointWith rdf:resource="#NumberAbstraction"/>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#LogicalExpression"/>
+    <owl:disjointWith rdf:resource="#OperationalInformation"/>
+    <owl:disjointWith rdf:resource="#Set"/>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#State"/>
+    <owl:disjointWith rdf:resource="#PhysicalQuantity"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Int8">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Int16"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Integer"/>
+    <owl:disjointWith rdf:resource="#UInt64"/>
+    <owl:disjointWith rdf:resource="#UInt16"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#hasValue"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Signed integer on 8 bits</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Int64"/>
+    <owl:disjointWith rdf:resource="#UInt8"/>
+    <owl:disjointWith rdf:resource="#Int32"/>
+    <owl:disjointWith rdf:resource="#UInt32"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Referential">
+    <owl:disjointWith rdf:resource="#Orientation3DEuler"/>
+    <owl:disjointWith rdf:resource="#Orientation3DQuaternion"/>
+    <owl:disjointWith rdf:resource="#Position3DCartesian"/>
+    <owl:disjointWith rdf:resource="#Object2D"/>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith rdf:resource="#GPS"/>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith rdf:resource="#PhysicalData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Translation2D"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Image"/>
+    <owl:disjointWith rdf:resource="#Waypoint3D"/>
+    <owl:disjointWith rdf:resource="#LaserScan"/>
+    <owl:disjointWith rdf:resource="#Object3D"/>
+    <owl:disjointWith rdf:resource="#Orientation3DMatrix"/>
+    <owl:disjointWith rdf:resource="#Orientation2DMatrix"/>
+    <owl:disjointWith rdf:resource="#Position3DCylindrical"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#CANFrame"/>
+    <rdfs:subClassOf rdf:resource="#ComposedData"/>
+    <owl:disjointWith rdf:resource="#Position2DCartesian"/>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+    <owl:disjointWith rdf:resource="#Message"/>
+    <owl:disjointWith rdf:resource="#Position2DPolar"/>
+    <owl:disjointWith rdf:resource="#Waypoint2D"/>
+    <owl:disjointWith rdf:resource="#StreamPacket"/>
+    <owl:disjointWith rdf:resource="#Position6D"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ID and info about a given referential.
+(parent referential if any, projection information...)</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Translation3D"/>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Translation2D">
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith rdf:resource="#Message"/>
+    <owl:disjointWith rdf:resource="#GPS"/>
+    <owl:disjointWith rdf:resource="#PhysicalData"/>
+    <owl:disjointWith rdf:resource="#Orientation2DMatrix"/>
+    <owl:disjointWith rdf:resource="#Image"/>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <owl:disjointWith rdf:resource="#Position3DCylindrical"/>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith rdf:resource="#Waypoint3D"/>
+    <owl:disjointWith rdf:resource="#StreamPacket"/>
+    <rdfs:subClassOf rdf:resource="#ComposedData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DCartesian"/>
+    <owl:disjointWith rdf:resource="#Orientation3DMatrix"/>
+    <owl:disjointWith rdf:resource="#Orientation3DQuaternion"/>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+    <owl:disjointWith rdf:resource="#Referential"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MissionEvaluation"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+    <owl:disjointWith rdf:resource="#Position6D"/>
+    <owl:disjointWith rdf:resource="#Orientation3DEuler"/>
+    <owl:disjointWith rdf:resource="#Object3D"/>
+    <owl:disjointWith rdf:resource="#Object2D"/>
+    <owl:disjointWith rdf:resource="#Position2DCartesian"/>
+    <owl:disjointWith rdf:resource="#CANFrame"/>
+    <owl:disjointWith rdf:resource="#LaserScan"/>
+    <owl:disjointWith rdf:resource="#Waypoint2D"/>
+    <owl:disjointWith rdf:resource="#Translation3D"/>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith rdf:resource="#Position2DPolar"/>
+  </owl:Class>
+  <owl:Class rdf:about="#MissionEvaluation">
+    <rdfs:comment xml:lang="en">Information at the end of the mission putting in contrast the achievement of the objectives with the real final results gotten. It could be presented in a statistic format.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+    <owl:disjointWith rdf:resource="#Position2DCartesian"/>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+    <owl:disjointWith rdf:resource="#Position6D"/>
+    <owl:disjointWith rdf:resource="#Translation3D"/>
+    <owl:disjointWith rdf:resource="#LaserScan"/>
+    <owl:disjointWith rdf:resource="#Position2DPolar"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AudioPacket"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#PhysicalData"/>
+    <owl:disjointWith rdf:resource="#GPS"/>
+    <owl:disjointWith rdf:resource="#Orientation2DMatrix"/>
+    <owl:disjointWith rdf:resource="#Waypoint2D"/>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith rdf:resource="#Image"/>
+    <owl:disjointWith rdf:resource="#Orientation3DQuaternion"/>
+    <owl:disjointWith rdf:resource="#Referential"/>
+    <owl:disjointWith rdf:resource="#Object3D"/>
+    <owl:disjointWith rdf:resource="#Waypoint3D"/>
+    <owl:disjointWith rdf:resource="#Position3DCartesian"/>
+    <owl:disjointWith rdf:resource="#Orientation3DEuler"/>
+    <owl:disjointWith rdf:resource="#StreamPacket"/>
+    <owl:disjointWith rdf:resource="#Translation2D"/>
+    <rdfs:subClassOf rdf:resource="#ComposedData"/>
+    <owl:disjointWith rdf:resource="#Object2D"/>
+    <owl:disjointWith rdf:resource="#CANFrame"/>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <owl:disjointWith rdf:resource="#Message"/>
+    <owl:disjointWith rdf:resource="#Orientation3DMatrix"/>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith rdf:resource="#Position3DCylindrical"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Rn">
+    <owl:disjointWith rdf:resource="#In"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#R"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#containsAbstraction"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</owl:hasValue>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#homogeneous"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CrossProduct"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">the Rn cross product is a very important one to be used throughout the simulation ontology</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Float32">
+    <owl:disjointWith rdf:resource="#Float64"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IEEE 754-2008 float.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#FloatingPointNumber"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#hasValue"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#CrossProduct">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#containsAbstraction"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#Set"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#containsAbstraction"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#Dimension"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Set"/>
+    <rdfs:comment xml:lang="en">Cross Product means that the set is a composition of a list of ordered sets</rdfs:comment>
+    <owl:disjointWith rdf:resource="#BooleanSet"/>
+    <owl:disjointWith rdf:resource="#OrderedSet"/>
+  </owl:Class>
+  <owl:Class rdf:about="#AudioPacket">
+    <owl:disjointWith rdf:resource="#Waypoint2D"/>
+    <owl:disjointWith rdf:resource="#Orientation2DMatrix"/>
+    <owl:disjointWith rdf:resource="#Position3DCylindrical"/>
+    <owl:disjointWith rdf:resource="#Position3DCartesian"/>
+    <owl:disjointWith rdf:resource="#GPS"/>
+    <owl:disjointWith rdf:resource="#Position3DSpherical"/>
+    <owl:disjointWith rdf:resource="#StreamPacket"/>
+    <owl:disjointWith rdf:resource="#Waypoint3D"/>
+    <owl:disjointWith rdf:resource="#PhysicalData"/>
+    <owl:disjointWith rdf:resource="#Translation2D"/>
+    <owl:disjointWith rdf:resource="#Object2D"/>
+    <owl:disjointWith rdf:resource="#TrajectoryElement"/>
+    <owl:disjointWith rdf:resource="#Object3D"/>
+    <owl:disjointWith rdf:resource="#Referential"/>
+    <rdfs:subClassOf rdf:resource="#ComposedData"/>
+    <owl:disjointWith rdf:resource="#CANFrame"/>
+    <owl:disjointWith rdf:resource="#Position2DCartesian"/>
+    <owl:disjointWith rdf:resource="#Position2DPolar"/>
+    <owl:disjointWith rdf:resource="#LaserScan"/>
+    <owl:disjointWith rdf:resource="#MissionEvaluation"/>
+    <owl:disjointWith rdf:resource="#Orientation3DEuler"/>
+    <owl:disjointWith rdf:resource="#Orientation3DQuaternion"/>
+    <owl:disjointWith rdf:resource="#Message"/>
+    <owl:disjointWith rdf:resource="#Image"/>
+    <owl:disjointWith rdf:resource="#StructuredData"/>
+    <owl:disjointWith rdf:resource="#Orientation2DAngle"/>
+    <owl:disjointWith rdf:resource="#Orientation3DMatrix"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <owl:disjointWith rdf:resource="#UUID"/>
+    <owl:disjointWith rdf:resource="#Position6D"/>
+    <owl:disjointWith rdf:resource="#TimeStampedData"/>
+    <owl:disjointWith rdf:resource="#Translation3D"/>
+  </owl:Class>
+  <owl:Class rdf:about="#String">
+    <rdfs:subClassOf rdf:resource="#PrimitiveData"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#hasValue"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:comment xml:lang="en">I'm a sequence of characters, but I am a primitive data and not a Collection/Sequence of Characters...</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Int16">
+    <owl:disjointWith rdf:resource="#Int32"/>
+    <owl:disjointWith rdf:resource="#UInt64"/>
+    <owl:disjointWith rdf:resource="#Int8"/>
+    <rdfs:subClassOf rdf:resource="#Integer"/>
+    <owl:disjointWith rdf:resource="#UInt16"/>
+    <owl:disjointWith rdf:resource="#UInt32"/>
+    <owl:disjointWith rdf:resource="#Int64"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#short"/>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#hasValue"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#UInt8"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Signed integer on 16 bits</rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="hasAMathematicalDatum">
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#has"/>
+    <rdfs:domain rdf:resource="#PhysicalData"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasPhysicalCharacteristics">
+    <rdfs:domain rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#PhysicalObject"/>
+    <rdfs:range rdf:resource="#PhysicalData"/>
+    <rdfs:comment xml:lang="en">A physical object can have phycal information like, length, position, velocity, acceleration, etc..</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#has"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#containsAbstraction">
+    <rdfs:range rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Abstraction"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:ID="contains"/>
+    </rdfs:subPropertyOf>
+    <rdfs:comment xml:lang="en">This property is the mirror of the info:containsData property linking Collection to its values. It links Set to its values in Abstraction.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Set"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasAUnit">
+    <rdfs:domain rdf:resource="#PhysicalData"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#has"/>
+    <rdfs:range rdf:resource="#Unit"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasOutput">
+    <rdfs:comment xml:lang="en">property associated to Function that links Set to Set</rdfs:comment>
+    <rdfs:domain rdf:resource="#Function"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasSet"/>
+    </rdfs:subPropertyOf>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="#Set"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="canBeSavedin">
+    <rdfs:range rdf:resource="#ComputerFile"/>
+    <rdfs:domain rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Data"/>
+    <rdfs:comment xml:lang="en">Any kind of Data can be saved or stored in a file of the system.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasFunction">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#StructuredData"/>
+          <owl:Class rdf:about="#OrderedSet"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#Function"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#has"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="containsData">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#contains"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#Collection"/>
+    <rdfs:comment xml:lang="en">This property is the mirror of the info:containsAbstraction property linking Set to its values. It links Collection to its values in Data.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Data"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasSet">
+    <rdfs:range rdf:resource="#Set"/>
+    <rdfs:domain rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Information"/>
+    <rdfs:comment xml:lang="en">Whatever the information it can asks to be associated to Set.</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#has"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasInput">
+    <rdfs:subPropertyOf rdf:resource="#hasSet"/>
+    <rdfs:comment xml:lang="en">specific properties of Functions that associate Set to Set</rdfs:comment>
+    <rdfs:domain rdf:resource="#Function"/>
+    <rdfs:range rdf:resource="#Set"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#contains">
+    <rdfs:comment xml:lang="en">Relation between a group and its elements</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasAPhysicalQuantity">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#PhysicalData"/>
+          <owl:Class rdf:about="#Unit"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The physical quantity of a given unit</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#has"/>
+    <rdfs:range rdf:resource="#PhysicalQuantity"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isRepresented">
+    <rdfs:range rdf:resource="#Binary"/>
+    <rdfs:comment xml:lang="en">A file is represented by a binary stream stored in the file system of the operating system.</rdfs:comment>
+    <rdfs:domain rdf:resource="#ComputerFile"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="managesFile">
+    <rdfs:domain rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#FileSystem"/>
+    <rdfs:comment xml:lang="en">A computer file is indexed and stored in an File System. It represents the standard storage unit of the system.</rdfs:comment>
+    <rdfs:range rdf:resource="#ComputerFile"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#containsAsKeys">
+    <rdfs:domain rdf:resource="#AssociativeArray"/>
+    <rdfs:subPropertyOf rdf:resource="#containsData"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >To specify the keys used for each data in this AssociativeArray.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Data"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasPositionRepresentation">
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#has"/>
+    <rdfs:comment xml:lang="en">A position can have different types of representation depending on the world reference.</rdfs:comment>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Position2DCartesian"/>
+          <owl:Class rdf:about="#Position2DPolar"/>
+          <owl:Class rdf:about="#Position3DCartesian"/>
+          <owl:Class rdf:about="#Position3DCylindrical"/>
+          <owl:Class rdf:about="#Position3DSpherical"/>
+          <owl:Class rdf:about="#Position6D"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="#Position"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasPath">
+    <rdfs:range rdf:resource="#String"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#has"/>
+    <rdfs:comment xml:lang="en">A file has a string descriptor for its path which indicates its localization in the file system of the Operating System.</rdfs:comment>
+    <rdfs:domain rdf:resource="#ComputerFile"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has3DRepresentation">
+    <rdfs:comment xml:lang="en">A physical object can be represented by a 3D object in a virtual world.</rdfs:comment>
+    <rdfs:range rdf:resource="#Object3D"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#has"/>
+    <rdfs:domain rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#PhysicalObject"/>
+  </owl:ObjectProperty>
+  <rdf:Property rdf:ID="hasValues"/>
+  <rdf:Property rdf:ID="isComposedOf"/>
+  <owl:DatatypeProperty rdf:ID="gps_quality_indicator">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Normalized quality indicator.
+0 = invalid
+1 = GPS fix (SPS)
+2 = DGPS fix
+3 = PPS fix
+4 = Real Time Kinematic
+5 = Float RTK
+6 = estimated (dead reckoning) (2.3 feature)
+7 = Manual input mode
+8 = Simulation mode</rdfs:comment>
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:rest rdf:parseType="Resource">
+              <rdf:rest rdf:parseType="Resource">
+                <rdf:rest rdf:parseType="Resource">
+                  <rdf:rest rdf:parseType="Resource">
+                    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                    >5</rdf:first>
+                    <rdf:rest rdf:parseType="Resource">
+                      <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                      >6</rdf:first>
+                      <rdf:rest rdf:parseType="Resource">
+                        <rdf:rest rdf:parseType="Resource">
+                          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                          >8</rdf:first>
+                          <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                        </rdf:rest>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                        >7</rdf:first>
+                      </rdf:rest>
+                    </rdf:rest>
+                  </rdf:rest>
+                  <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                  >4</rdf:first>
+                </rdf:rest>
+                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                >3</rdf:first>
+              </rdf:rest>
+              <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+              >2</rdf:first>
+            </rdf:rest>
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >1</rdf:first>
+          </rdf:rest>
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+          >0</rdf:first>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="#GPS"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="gps_latitude">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >WGS84 latitude (in degrees)</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="#GPS"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="image_coding">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Usually a four characters code</rdfs:comment>
+    <rdfs:domain rdf:resource="#Image"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.w3.org/2002/07/owl#topDataProperty"/>
+  <owl:DatatypeProperty rdf:about="#hasValue">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Protégé primitive value for Primitive data</rdfs:comment>
+    <rdfs:domain rdf:resource="#PrimitiveData"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#Dimension">
+    <rdfs:domain rdf:resource="#CrossProduct"/>
+    <rdfs:comment xml:lang="en">Number of set of the cross product</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="image_data">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Pixel data bytes</rdfs:comment>
+    <rdfs:domain rdf:resource="#Image"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="gps_nb_sats">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Number of satellites in view</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="#GPS"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="image_height">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Image"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Number of lines.</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="gps_UTC_time">
+    <rdfs:domain rdf:resource="#GPS"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >UTC time for the current position</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="gps_altitude_2">
+    <rdfs:domain rdf:resource="#GPS"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Altitude above ellipsoid (in meters)</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="image_width">
+    <rdfs:domain rdf:resource="#Image"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Number of pixels per line.</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="image_depth">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Depth of current pixels (usually 8 bits but can also be 10, 12, 16...)</rdfs:comment>
+    <rdfs:domain rdf:resource="#Image"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="gps_heading">
+    <rdfs:domain rdf:resource="#GPS"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Current heading in degrees</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="gps_speed_north">
+    <rdfs:domain rdf:resource="#GPS"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Current speed - North component (in m/s)</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="gps_speed_east">
+    <rdfs:domain rdf:resource="#GPS"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Current speed - East component (in m/s)</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="gps_altitude_1">
+    <rdfs:domain rdf:resource="#GPS"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Altitude above mean sea level (in meters)</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="producedTimestamp">
+    <rdfs:domain rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Clock"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="gps_longitude">
+    <rdfs:domain rdf:resource="#GPS"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >WGS84 longitude (in degrees)</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="image_nb_channels">
+    <rdfs:domain rdf:resource="#Image"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Number of channels in image (ex : GRAY = 1 chan, RGB  = 3 chans, RGBA = 4 chans)</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="gps_speed_up">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#GPS"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Current speed - Up component (in m/s)</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <owl:FunctionalProperty rdf:ID="isTimestampedBy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:comment xml:lang="en">this property memorises a date and hour associated to the Data itself. There is here neither description of the source of this tag (creation of the Data, emission of the data, else) nor of the entity responsible for the tag (physical or else).</rdfs:comment>
+    <rdfs:domain rdf:resource="#TimeStampedData"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="y">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#Position2DCartesian"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="x">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="#Position2DCartesian"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="image_size">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Size of pixel data in bytes.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Image"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#homogeneous">
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+            >false</rdf:first>
+            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+          </rdf:rest>
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+          >true</rdf:first>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="#CrossProduct"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment xml:lang="en">this property indicates the fact that the sets of the cross product are identical or not</rdfs:comment>
+  </owl:FunctionalProperty>
+  <info:PhysicalQuantity rdf:ID="electric_current"/>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#comment"/>
+  <owl:AllDifferent>
+    <owl:distinctMembers rdf:parseType="Collection">
+      <info:PhysicalQuantity rdf:ID="length"/>
+      <info:PhysicalQuantity rdf:ID="time"/>
+      <info:PhysicalQuantity rdf:ID="mass"/>
+    </owl:distinctMembers>
+  </owl:AllDifferent>
+  <info:PhysicalQuantity rdf:ID="temperature"/>
+  <info:Set rdf:ID="emptySet"/>
+  <info:PhysicalQuantity rdf:ID="luminous_intensity"/>
+  <info:PhysicalQuantity rdf:ID="amount_of_substance"/>
+  <info:Unit rdf:ID="meter">
+    <info:hasAPhysicalQuantity rdf:resource="#length"/>
+  </info:Unit>
+  <owl:AllDifferent>
+    <owl:distinctMembers rdf:parseType="Collection">
+      <info:Boolean rdf:ID="true">
+        <info:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</info:hasValue>
+      </info:Boolean>
+    </owl:distinctMembers>
+  </owl:AllDifferent>
+  <info:Set rdf:ID="setOfAngles">
+    <info:contains>
+      <info:PhysicalData rdf:ID="qu3.45rad_asFloat64">
+        <info:hasAUnit>
+          <info:Unit rdf:ID="radian">
+            <info:hasAPhysicalQuantity>
+              <info:PhysicalQuantity rdf:ID="angle"/>
+            </info:hasAPhysicalQuantity>
+          </info:Unit>
+        </info:hasAUnit>
+        <info:hasAMathematicalDatum>
+          <info:Float64 rdf:ID="number3.45_asFloat64">
+            <info:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >3.45</info:hasValue>
+          </info:Float64>
+        </info:hasAMathematicalDatum>
+      </info:PhysicalData>
+    </info:contains>
+    <info:contains>
+      <info:PhysicalData rdf:ID="qu12999.9deg_asFloat64">
+        <info:hasAMathematicalDatum>
+          <info:Float64 rdf:ID="number12999.9_asFloat64">
+            <info:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >12999.9</info:hasValue>
+          </info:Float64>
+        </info:hasAMathematicalDatum>
+        <info:hasAUnit>
+          <info:Unit rdf:ID="degree">
+            <info:hasAPhysicalQuantity rdf:resource="#angle"/>
+          </info:Unit>
+        </info:hasAUnit>
+      </info:PhysicalData>
+    </info:contains>
+    <info:contains>
+      <info:PhysicalData rdf:ID="qu-0.72rad_asFloat64">
+        <info:hasAMathematicalDatum>
+          <info:Float64 rdf:ID="number-0.72_asFloat64">
+            <info:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >-0.72</info:hasValue>
+          </info:Float64>
+        </info:hasAMathematicalDatum>
+        <info:hasAUnit rdf:resource="#radian"/>
+      </info:PhysicalData>
+    </info:contains>
+  </info:Set>
+  <owl:AllDifferent>
+    <owl:distinctMembers rdf:parseType="Collection">
+      <info:PhysicalQuantity rdf:about="#length"/>
+    </owl:distinctMembers>
+  </owl:AllDifferent>
+  <info:Unit rdf:ID="inch">
+    <info:hasAPhysicalQuantity rdf:resource="#length"/>
+  </info:Unit>
+  <info:Boolean rdf:ID="false">
+    <info:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >false</info:hasValue>
+  </info:Boolean>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.4.8, Build 629)  http://protege.stanford.edu -->

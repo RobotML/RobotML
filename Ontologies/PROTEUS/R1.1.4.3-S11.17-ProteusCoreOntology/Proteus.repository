@@ -1,0 +1,9 @@
+system?forceReadOnly=true
+experiment?forceReadOnly=true
+simulation?forceReadOnly=true
+environment?forceReadOnly=true
+robot?forceReadOnly=true
+information?forceReadOnly=true
+component?forceReadOnly=true
+kernel?forceReadOnly=true
+mission?forceReadOnly=true

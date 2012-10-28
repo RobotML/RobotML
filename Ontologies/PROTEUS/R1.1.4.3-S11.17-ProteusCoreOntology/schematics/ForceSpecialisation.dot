@@ -1,0 +1,31 @@
+digraph Proteus {
+	label="Force specialisation"
+	fontname="Arial-Bold";
+	labeljust=left;
+	fontsize=20;
+	fontcolor=red;
+	bgcolor=lightgrey;	
+	"Interaction" [label="kern:Interaction", shape=box,style=filled, color=red, fontcolor="0.0,0.0,0.0", width="1.4792", height="0.5"];
+	subgraph cluster1 {
+		label="Forces"
+		fontname="Arial-Bold";
+		labeljust=left;
+		fontsize=15;
+		fontcolor=black;
+		bgcolor=white;
+		"Force" [label="envi:Force", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.0625", height="0.5"];
+		"NormalForce" [label="envi:NormalForce", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.6736", height="0.5"];
+		"GravityForce" [label="envi:GravityForce", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.6736", height="0.5"];
+		"Buoyancy" [label="envi:Buoyancy", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.4444", height="0.5"];
+		"AerodynamicForce" [label="envi:AerodynamicForce", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="2.1458", height="0.5"];
+	}
+	"PhysicalObject" [label="kern:PhysicalObject", shape=box, style=filled, color=white, fontcolor="0.0,0.0,0.0", width="1.8125", height="0.5"];
+	"Force" -> "NormalForce" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"Force" -> "GravityForce" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"Force" -> "Buoyancy" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"Interaction" -> "Force" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"Force" -> "PhysicalObject" [label="kern:systemSource*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"Force" -> "PhysicalObject" [label="kern:impacts*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"Force" -> "PhysicalObject" [label="envi:accelerates*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"Force" -> "AerodynamicForce" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+}

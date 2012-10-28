@@ -1,0 +1,378 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns:devs="http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:info="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#"
+  xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl">
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >version delivered 1.0</owl:versionInfo>
+    <rdfs:comment xml:lang="en">This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1  licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
+    <rdfs:comment xml:lang="en">This ontology extends the simulation one by providing the DEVS instanciation of a software simulator.
+
+The part of the ontology of simulation dedicated to the DEVS approach is based uppon its foundation reference book: "Bernard P. Zeigler, Herbert Praehofer, Tag Gon Kim - Theory of Modeling and simulation - Academic Press - 2000". In order to understand this approach, it is mandatory to get it or at least to read some tutorials such as those that can be found following: http://www.vle-project.org/</rdfs:comment>
+    <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl"/>
+    <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl"/>
+    <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="CoupledSystemSpecification">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DEVSCompositeSpecification"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">This way to couple components is an invasive one. You have to share states between the different system and in order for one component to change its state, some other system's state must be read.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="OMEGAS">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#CrossProduct"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#homogeneous"/>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >false</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isComposedOf"/>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:hasValue>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#dimension"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This cross product is useful to define the PropertyTimeDomain relation. In fact, the set on which applies the relation is the cross product of two Time segment sets, one on the input set and the second on the output set.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="SystemSet">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Set"/>
+  </owl:Class>
+  <owl:Class rdf:about="#DEVSCompositeSpecification">
+    <rdfs:comment xml:lang="en">A composite specification tackles with the modelling of systems' interactions. It means it considers that the sytems to couple exist at the level of description specified by the IO system specification (see atomic specification). The composite specification then provides a modelling of the links and their nature.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SystemSpecification"/>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#CompositeSystem"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >5</owl:cardinality>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#hasSet"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:cardinality>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#hasFunction"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:cardinality>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasRelation"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="IOFunctionSpecification">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DEVSAtomicSpecification"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasTimeDomainFunctionSet"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:cardinality>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#hasFunction"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:valuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Set"/>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >3</owl:cardinality>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#hasSet"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasRelation"/>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">This specification covers the property that each output segment is related to one and only one input segment. This specification exists over an IORelationSpecification as it can exist when the relation defined in the previous one can be splitted in order to create from it a set of functions.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="StateSet">
+    <rdfs:comment xml:lang="en">This type of set introduces a list of set as used into the system specification for example. The values here are to be related to the kernel:state concept.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Set"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasValues"/>
+        <owl:allValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#State"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PiecewiseConstantSegment">
+    <rdfs:comment xml:lang="en">between two discontinuity the value of the output set is constant</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PiecewiseContinuousSegment"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DEVSSimulator">
+    <rdfs:comment xml:lang="en">This specific simulator is able to provide life to DEVS modelled system</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SoftwareSimulator"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TimeSequence">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="TimeSegment"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#DiscreteTimeBase"/>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasInput"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">the input is homogeneous to I</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#TimeSegment">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="TimeTrajectory"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">A segment is a trajectory where there is a min and a max value to the time base. As the set is ordered, it means an interval.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="EventSegment">
+    <rdfs:subClassOf rdf:resource="#TimeSegment"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The output set is arbitrary but is unioned to the empty element. It means that there is event each time the output is not the empty element</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ComponentSpecification">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DEVSAtomicSpecification"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="OMEGA">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Set"/>
+    <rdfs:comment xml:lang="en">This is the set of all the possible time segments (meaning for all possible sets and all possible time bases)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="IOSpecification">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DEVSAtomicSpecification"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasRelation"/>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#hasFunction"/>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#hasSet"/>
+        <owl:valuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Set"/>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">This specification only provide measurements on the input associated to its linked outputs knowing the time base necessary to interpret them. It is called the "I/O Observation frame" (see section 5.4 of reference 1). Usually this specification is named "IO".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="IORelationSpecification">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DEVSAtomicSpecification"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#PropertyTimeDomain"/>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasRelation"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasRelation"/>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#hasFunction"/>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#hasSet"/>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >3</owl:cardinality>
+        <owl:valuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Set"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">This specification provides the association between the input sets and the output sets. It is the last system specification that considers the system as a blackbox. The relation establishes the fact that some input segments can be associated to some output respecting the property that the time interval of the input segment is identical to the interval of the output segment.
+
+The associated definition is to be found in section 5</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#DEVSAtomicSpecification">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SystemSpecification"/>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AtomicSystem"/>
+    <rdfs:comment xml:lang="en">Atomic specification means that there is no reference to another system whatsoever. The characteristics modelled are those of the system in itself considering what is occurring on its inputs / outputs and eventually measuring its activity</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="DELTA">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Function"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="QxOMEGA"/>
+        </owl:allValuesFrom>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasInput"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">it is the function that defines how the system reacts when submitted to events. The capital letters are used due to the fact this function is not instantiated at the DEVS modelling level. We do not know if behind the curtains it is DTSS for example. This function must verify the composition property with respect to the left concatenation operator.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#PiecewiseContinuousSegment">
+    <rdfs:subClassOf rdf:resource="#TimeSegment"/>
+    <rdfs:comment xml:lang="en">this segment is continuous over Rn except for a finite number of point</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="LAMBDA">
+    <rdfs:comment xml:lang="en">it is the function that defines output will be computed from the state and the input vlues. The capital letters are used due to the fact this function is not instantiated at the DEVS modelling level. We do not know if behind the curtains it is DTSS for example.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Function"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasInput"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="QxA"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#TimeTrajectory">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Function"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasInput"/>
+        <owl:allValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#TimeBase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">This function allows to index unique values of output Set to the value of the time base. It means that to each value of time there is only one value of the set. The function is surjective.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="IOSystemSpecification">
+    <rdfs:comment xml:lang="en">The IO system specification introduces knolwledges upon the behaviour of the model. It provides states, transition functions and output function. It is built upon the IO function specification which links univocally input segments to output</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#DEVSAtomicSpecification"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:cardinality>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasRelation"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#hasSet"/>
+        <owl:valuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Set"/>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >4</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasStateSet"/>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#QxOMEGA">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#CrossProduct"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#homogeneous"/>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >false</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isComposedOf"/>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:hasValue>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#dimension"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MulticomponentSystemSpecification">
+    <rdfs:subClassOf rdf:resource="#DEVSCompositeSpecification"/>
+    <rdfs:comment xml:lang="en">This is the decoupled way to model interactions. Only outputs coupled to inputs can trigger change of states inside the atomic system.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="StringSet">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Set"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#String"/>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#hasSet"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TimeDomainFunction">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Function"/>
+    <rdfs:comment xml:lang="en">The set of pairs created thanks to the relation on the time domain can eventually be splitted in order to create univocally associated input and output. This time function is the baseline of the set of functions (see simulation:TimeDomainFunctionsSet) that partitions the the Time domain relation (see section5.5 of reference 1).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ContinuousSegment">
+    <rdfs:subClassOf rdf:resource="#TimeSegment"/>
+    <rdfs:comment xml:lang="en">the output set is Rn and the function is a continuous one from the time base to the output set.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#QxA">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#CrossProduct"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >false</owl:hasValue>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#homogeneous"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isComposedOf"/>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#dimension"/>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">cross product allowing the asssociation of a segment set to any set</rdfs:comment>
+  </owl:Class>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.4.8, Build 629)  http://protege.stanford.edu -->

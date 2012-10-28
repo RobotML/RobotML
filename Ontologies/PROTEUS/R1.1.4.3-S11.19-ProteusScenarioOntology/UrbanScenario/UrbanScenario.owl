@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:syst="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Systems.owl#"
+    xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+    xmlns:urba="http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#"
+    xmlns:robo="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Robot.owl#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns:envi="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Environment.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:expe="http://www.anr-proteus.fr/sites/default/files/download/Ontology/experiment.owl#"
+    xmlns:kern="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
+    xmlns:miss="http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#"
+    xmlns:info="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#"
+  xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl">
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >version delivered 1.0</owl:versionInfo>
+    <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Proteus.owl"/>
+    <rdfs:comment xml:lang="en">this scenario is closely linked to the urban challenge where a unmanned car is taxiing a person avoiding obstacles in the streets and obeying regulations.</rdfs:comment>
+    <rdfs:comment xml:lang="en">This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
+  </owl:Ontology>
+  <robo:Car-likeVehicle rdf:ID="Taxi">
+    <kern:isAtomic rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >false</kern:isAtomic>
+    <robo:movesOver>
+      <envi:LandSurface rdf:ID="PavinTerrain">
+        <kern:isAtomic rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</kern:isAtomic>
+      </envi:LandSurface>
+    </robo:movesOver>
+    <kern:aggregates>
+      <syst:EnvironmentParametersSensorSystem rdf:ID="LIDARSystem">
+        <kern:aggregates>
+          <syst:EnvironmentParametersSensorDriver rdf:ID="LIDARDriver">
+            <kern:triggers>
+              <syst:ApplicationInteraction rdf:ID="ExLIDARMeasurement">
+                <kern:impacts>
+                  <kern:AtomicSystem rdf:ID="ObstacleDetection">
+                    <kern:isAtomic rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                    >true</kern:isAtomic>
+                    <kern:triggers>
+                      <syst:ApplicationInteraction rdf:ID="ExDetectedObstacle">
+                        <kern:impacts>
+                          <kern:AlgorithmicModule rdf:ID="MonitoringAndIntegrity">
+                            <kern:triggers>
+                              <syst:ApplicationInteraction rdf:ID="ExCommands">
+                                <kern:impacts>
+                                  <syst:ControlSystem rdf:ID="Control">
+                                    <kern:triggers>
+                                      <syst:ControlAndCommand rdf:ID="ExSteeringWheelCommand">
+                                        <kern:impacts>
+                                          <syst:MotorizationDriver rdf:ID="SteeringWheelDriver">
+                                            <kern:isAtomic rdf:datatype=
+                                            "http://www.w3.org/2001/XMLSchema#boolean"
+                                            >true</kern:isAtomic>
+                                            <kern:triggers>
+                                              <kern:DriverToHardwareInteraction rdf:ID="SteeringWheelCommandOutput">
+                                                <kern:impacts>
+                                                  <syst:MotorizationHardware rdf:ID="SteeringWheel">
+                                                    <kern:isAtomic
+                                                     rdf:datatype=
+                                                    "http://www.w3.org/2001/XMLSchema#boolean"
+                                                    >true</kern:isAtomic>
+                                                    <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AtomicSystem"/>
+                                                  </syst:MotorizationHardware>
+                                                </kern:impacts>
+                                              </kern:DriverToHardwareInteraction>
+                                            </kern:triggers>
+                                            <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AtomicSystem"/>
+                                          </syst:MotorizationDriver>
+                                        </kern:impacts>
+                                      </syst:ControlAndCommand>
+                                    </kern:triggers>
+                                    <kern:triggers>
+                                      <syst:ControlAndCommand rdf:ID="ExMotorCommand">
+                                        <kern:impacts>
+                                          <syst:MotorizationDriver rdf:ID="MotorDriver">
+                                            <kern:triggers>
+                                              <kern:DriverToHardwareInteraction rdf:ID="MotorCommandOutput">
+                                                <kern:impacts>
+                                                  <syst:MotorizationHardware rdf:ID="Motor"/>
+                                                </kern:impacts>
+                                              </kern:DriverToHardwareInteraction>
+                                            </kern:triggers>
+                                          </syst:MotorizationDriver>
+                                        </kern:impacts>
+                                      </syst:ControlAndCommand>
+                                    </kern:triggers>
+                                    <kern:triggers>
+                                      <syst:ControlAndCommand rdf:ID="ExBrakesCommand">
+                                        <kern:impacts>
+                                          <syst:MotorizationDriver rdf:ID="BrakesDriver">
+                                            <kern:triggers>
+                                              <kern:DriverToHardwareInteraction rdf:ID="BrakesCommandOutput">
+                                                <kern:impacts>
+                                                  <syst:MotorizationHardware rdf:ID="Brakes">
+                                                    <kern:isAtomic
+                                                     rdf:datatype=
+                                                    "http://www.w3.org/2001/XMLSchema#boolean"
+                                                    >true</kern:isAtomic>
+                                                    <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AtomicSystem"/>
+                                                  </syst:MotorizationHardware>
+                                                </kern:impacts>
+                                              </kern:DriverToHardwareInteraction>
+                                            </kern:triggers>
+                                            <kern:isAtomic rdf:datatype=
+                                            "http://www.w3.org/2001/XMLSchema#boolean"
+                                            >true</kern:isAtomic>
+                                            <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AtomicSystem"/>
+                                          </syst:MotorizationDriver>
+                                        </kern:impacts>
+                                      </syst:ControlAndCommand>
+                                    </kern:triggers>
+                                    <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AtomicSystem"/>
+                                    <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AlgorithmicModule"/>
+                                  </syst:ControlSystem>
+                                </kern:impacts>
+                              </syst:ApplicationInteraction>
+                            </kern:triggers>
+                          </kern:AlgorithmicModule>
+                        </kern:impacts>
+                        <kern:impacts>
+                          <syst:MotionPlanningSystem rdf:ID="Maping">
+                            <kern:triggers>
+                              <syst:ApplicationInteraction rdf:ID="ExBeliefAboutEnvironement">
+                                <kern:impacts>
+                                  <syst:MotionPlanningSystem rdf:ID="TrajectoryPlanning">
+                                    <kern:triggers>
+                                      <syst:ApplicationInteraction rdf:ID="ExTrajectory">
+                                        <kern:impacts>
+                                          <kern:AtomicSystem rdf:ID="Servoing">
+                                            <kern:triggers>
+                                              <syst:ApplicationInteraction rdf:ID="ExDestinationReachedSignal">
+                                                <kern:impacts>
+                                                  <syst:MissionManagementSystem rdf:ID="TaxiMissionManager">
+                                                    <kern:triggers>
+                                                      <syst:ApplicationInteraction rdf:ID="ExDesiredDestination">
+                                                        <kern:impacts rdf:resource="#TrajectoryPlanning"/>
+                                                      </syst:ApplicationInteraction>
+                                                    </kern:triggers>
+                                                    <kern:isAtomic
+                                                     rdf:datatype=
+                                                    "http://www.w3.org/2001/XMLSchema#boolean"
+                                                    >true</kern:isAtomic>
+                                                    <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AtomicSystem"/>
+                                                    <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AlgorithmicModule"/>
+                                                  </syst:MissionManagementSystem>
+                                                </kern:impacts>
+                                                <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Event"/>
+                                              </syst:ApplicationInteraction>
+                                            </kern:triggers>
+                                            <kern:triggers rdf:resource="#ExCommands"/>
+                                            <kern:isAtomic rdf:datatype=
+                                            "http://www.w3.org/2001/XMLSchema#boolean"
+                                            >true</kern:isAtomic>
+                                          </kern:AtomicSystem>
+                                        </kern:impacts>
+                                      </syst:ApplicationInteraction>
+                                    </kern:triggers>
+                                    <kern:isAtomic rdf:datatype=
+                                    "http://www.w3.org/2001/XMLSchema#boolean"
+                                    >true</kern:isAtomic>
+                                    <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AtomicSystem"/>
+                                    <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AlgorithmicModule"/>
+                                  </syst:MotionPlanningSystem>
+                                </kern:impacts>
+                              </syst:ApplicationInteraction>
+                            </kern:triggers>
+                            <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AtomicSystem"/>
+                            <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AlgorithmicModule"/>
+                          </syst:MotionPlanningSystem>
+                        </kern:impacts>
+                      </syst:ApplicationInteraction>
+                    </kern:triggers>
+                  </kern:AtomicSystem>
+                </kern:impacts>
+              </syst:ApplicationInteraction>
+            </kern:triggers>
+          </syst:EnvironmentParametersSensorDriver>
+        </kern:aggregates>
+      </syst:EnvironmentParametersSensorSystem>
+    </kern:aggregates>
+  </robo:Car-likeVehicle>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.4.8, Build 629)  http://protege.stanford.edu -->

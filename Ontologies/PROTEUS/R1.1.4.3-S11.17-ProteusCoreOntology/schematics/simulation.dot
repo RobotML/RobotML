@@ -1,0 +1,24 @@
+digraph simulation {
+	bgcolor=lightgrey;
+	label="Simulation rationale";
+	labeljust=left;
+	fontname="Arial-Bold";
+	fontsize=20;
+	fontcolor=red;
+	"System" [label="kern:System", shape=box, color=red, style=filled, fontcolor="0.0,0.0,0.0", width="1.2222", height="0.5"];
+	subgraph cluster0 {
+		bgcolor=white;
+		label="Physical objects";
+		labeljust=left;
+		fontname="Arial-Bold";
+		fontsize=15;
+		fontcolor=black;
+		"EvolutionModel" [label="kern:EvolutionModel", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.9514", height="0.5"];
+		"SimulatorEvolutionModel" [label="simu:SimulatorEvolutionModel", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0",width="2.7778", height="0.5"];
+	}	
+	"EvolutionModel" -> "System" [style=filled, label="kern:animates*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"System" -> "System" [style=filled, label="kern:Models*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"System" -> "EvolutionModel" [style=filled, label="kern:isAnimatedByEvolutionModel*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"EvolutionModel" -> "SimulatorEvolutionModel" [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back];
+	"SimulatorEvolutionModel" -> "System" [style=filled, label="Models cardinality > 0*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+}

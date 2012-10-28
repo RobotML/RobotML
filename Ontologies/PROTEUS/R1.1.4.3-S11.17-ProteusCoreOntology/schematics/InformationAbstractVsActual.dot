@@ -1,0 +1,14 @@
+digraph Proteus {
+	label="Abstract versus actual";
+	labeljust=left;
+	fontname="Arial-Bold";
+	fontsize=20;
+	fontcolor=red;
+	"Information" [label="kern:Information", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.5833", height="0.5"];
+	"Data" [label="kern:Data", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width=1, height="0.5"];
+	"Abstraction" [label="kern:Abstraction", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.5556", height="0.5"];
+	"Information" -> "Data" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"Data" -> "Abstraction" [label="kern:Implements*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"Information" -> "Abstraction" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"Abstraction" -> "Data" [label="kern:isCodedIn*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+}

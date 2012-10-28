@@ -1,0 +1,2226 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns:syst="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Systems.owl#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:kern="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
+    xmlns:info="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#"
+  xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Systems.owl">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl"/>
+    <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl"/>
+    <owl:imports rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl"/>
+    <rdfs:comment xml:lang="en">from version 1.0, contributions are no more PROTEUS contributions.
+authors are Jean-Loup Farges and Bruno Patin</rdfs:comment>
+    <rdfs:comment xml:lang="en">This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1  licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
+    <rdfs:comment xml:lang="en">this ontology explicits the different systems that will be found in robots either hardware or software. Its new classes will be included for their most parts into the kernel:system concept. 
+Each time we introduced relationships between concepts defined in the system ontology, question is asked whether it should be put in the Robot ontology. This means that the user of this ontology is to do the same thing and if want to expand the list of concepts then he / she have to think iif it is not better placed elsewhere.</rdfs:comment>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >version draft 2.0</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:ID="EngineDriver">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="WheelDriver"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MotorizationDriver"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ModelPredictiveController">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Closed-LoopControlSystem"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="InputSystemInterface">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="OutputSystemInterface"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SystemInterface"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Software component which controls the input dataflow between a system and its corresponding middleware.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="WeaponSystem">
+    <rdfs:comment xml:lang="en">System of a robotic platform which correspond with the software and hardware of the weapon components (attack-defense) of  a robot.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ActuatorSystem"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="NavigationCommandSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="MotorizationSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="PrehensionSystem"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="SensorSystem">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Probe"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="RoboticSystem"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="isActive"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="StructuralSystem"/>
+    </owl:disjointWith>
+    <rdfs:comment xml:lang="en">The SensorSystem wording could be simplfied to Sensor directly</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:ID="SensorHardware"/>
+              <owl:Class rdf:ID="SensorDriver"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:allValuesFrom>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ActuatorSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="CommunicationSystem"/>
+    </owl:disjointWith>
+    <rdfs:comment xml:lang="en">Equipment that detects, measures, and/or records physical phenomena, and indicates objects and activities by means of energy or particles emitted, reflected, or modified by the objects and activities.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="PowerSystem"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#SensorHardware"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#SensorDriver"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="EnvironmentParametersSensorDriver">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SensorDriver"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Software part of the Sensor System responsible to measure the environment parameters like temperature, pressure, humidity, etc ...</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ImageSensorDriver"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="LocalizationSensorDriver"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ObjectDetectionSensorDriver"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ObjectTrackingSensorDriver"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="ActuatorHardware">
+    <rdfs:subClassOf>
+      <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Hardware">
+        <rdfs:comment xml:lang="en">The robotic System concept provides the tool to aggregate the driber onto its hardware counterpart.</rdfs:comment>
+      </rdf:Description>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Clock">
+        <owl:disjointWith>
+          <owl:Class rdf:ID="PowerHardware"/>
+        </owl:disjointWith>
+        <owl:disjointWith rdf:resource="#ActuatorHardware"/>
+        <owl:disjointWith>
+          <owl:Class rdf:ID="CommunicationHardware"/>
+        </owl:disjointWith>
+        <owl:disjointWith>
+          <owl:Class rdf:about="#SensorHardware"/>
+        </owl:disjointWith>
+      </rdf:Description>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Computer"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#SensorHardware"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PowerHardware"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CommunicationHardware"/>
+    </owl:disjointWith>
+    <rdfs:comment xml:lang="en">the Actuator System is a hardware to be included in a mechanical platform (in PROTEUS the robot) which will be composed of many different parts actuators like a mechanical arm as well as sensors like ImageSensor.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ProprioceptiveSensorSystem">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ExteroceptiveSensorSystem"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#SensorSystem"/>
+    <rdfs:comment xml:lang="en">The robot measures a signal originating from within using proprioseptive sensors. These sensors are responsible for monitoring self maintenance and controlling internal status. Common uses of proprioceptive measurements are for battery monitoring, current sensing, and heat monitoring. Examples: Global Positioning System (GPS), Inertial Navigation System (INS), Shaft Encoders, Compass, Inclinometer, etc.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="EngineConfigurationData">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MotorizationConfigurationData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="WheelsConfigurationData"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="MissionManagementSystem">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="RoboticFunctionalSystem"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasImplementingHardware"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="MotionPlanningSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="SecuritySystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ControlSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="PlatformManagementSystem"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="DeadbeatController">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Closed-LoopControlSystem"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="LocalizationSensorHardware">
+    <rdfs:comment xml:lang="en">Localization Hardware of the platform. GPS, gyrometer, accelerometer, magnetometer, altimeter, odometer. Proprioceptive Hardware for localization evaluation.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SensorHardware"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="EnvironmentParametersSensorHardware"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ImageSensorHardware"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ObjectDetectionOrTrackingSensorHardware"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#MotorizationDriver">
+    <rdfs:comment xml:lang="en">Software/Driver of an actuator of the DeviceSystem of a platform, which correspond with the Driving system of an autonomous mechanical platform (wheels, axes, wings, propulsion, engine, brakes, ...).</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="NavigationCommandDriver"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="PrehensionDriver"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="WeaponDriver"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ActuatorDriver"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#WheelDriver">
+    <rdfs:subClassOf rdf:resource="#MotorizationDriver"/>
+    <owl:disjointWith rdf:resource="#EngineDriver"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GPSSystem">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#isActive"/>
+        </owl:onProperty>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >false</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="LocalizationSensorSystem"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SensorConfigurationData">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="RoboticSystemConfigurationData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="StructuralConfigurationData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ActuatorConfigurationData"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#MotorizationConfigurationData">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ActuatorConfigurationData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="NavigationCommandConfigurationData"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="JoysticNavigationConfigurationData">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#NavigationCommandConfigurationData"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="WifibotOdometry_msg">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="TwistStamped_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Twist_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="CameraInfo_msg"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MiddlewareMessage"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Image_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="VipalabOdometry_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="WifibotCommand_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="CameleonCommand_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="NavSatFix_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="IMU_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="MultiLaserScan_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Odometry_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="LaserScan_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="CameleonOdometry_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="VipalabCommand_msg"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="PI_Controller">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Closed-LoopControlSystem"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Driver">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="RoboticApplication"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="RoboticMiddleware"/>
+    </owl:disjointWith>
+    <rdfs:comment xml:lang="en">It is an application which controls the corresponding hardware. The DeviceSystem of a platform like a RoboticSystem, will be composed of theHardware components and the corresponding software driver components. The hardware considered must have some computing abilities in order to allow the driver to execute.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#MiddlewareMessage">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#OrderedSetForSystemDescription"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#RoboticSystemConfigurationData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="RoboticSystemInfoData"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#WheelsConfigurationData">
+    <rdfs:subClassOf rdf:resource="#MotorizationConfigurationData"/>
+    <owl:disjointWith rdf:resource="#EngineConfigurationData"/>
+  </owl:Class>
+  <owl:Class rdf:ID="EngineSystem">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MotorizationSystem"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="WheelSystem"/>
+    </owl:disjointWith>
+    <rdfs:comment xml:lang="en">This is the motorization system focused in the engine of a robotic vehicle.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Closed-LoopControlSystem">
+    <rdfs:comment xml:lang="en">This system use a measurtement feedback, a command input to compute control for controlled systems</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ControlSystem"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
+        <owl:someValuesFrom>
+          <owl:Class>
+            <owl:intersectionOf rdf:parseType="Collection">
+              <owl:Class rdf:ID="HardwareImplementationOfController"/>
+              <owl:Class rdf:about="#ProprioceptiveSensorSystem"/>
+            </owl:intersectionOf>
+          </owl:Class>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasPort"/>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="ControlCommandInputPort"/>
+        </owl:someValuesFrom>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasPort"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="IMUOutputInterface">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="LidarOutputInterface"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="OdometryOutputInterface"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="TimeOutputInterface"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="GPSOutputInterface"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="CameraOutputInterface"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#OutputSystemInterface"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GPSInfoData">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="CommandInfoData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="CameraInfoData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="IMUInfoData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="LidarInfoData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="OdometryInfoData"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SensorInfoData"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#PrehensionSystem">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ActuatorSystem"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">System of a robotic platform which correspond with the software and hardware of the manipulating effectors of the robot: mechanical fingers, mechanical arms, grabs ...</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NavigationCommandSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MotorizationSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#WeaponSystem"/>
+  </owl:Class>
+  <owl:Class rdf:ID="IMUConfigurationData">
+    <rdfs:subClassOf rdf:resource="#SensorConfigurationData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="LidarConfigurationData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="GPSConfigurationData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="OdometryConfigurationData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="CameraConfigurationData"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="EnvironmentParametersSensorSystem">
+    <rdfs:comment xml:lang="en">System which provides information about the environment characteristics: atmospheric pressure, external temperature, humidity, wind force, oxygen concentration, etc...</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ExteroceptiveSensorSystem"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LocalizationSensorSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ObjectDetectionOrTrackingSensorSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ImageSensorSystem"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#ActuatorSystem">
+    <rdfs:comment xml:lang="en">Electromechanical System INCLUDING software which  to control the effectors, like a mechanical arm driver.
+IMPORTANT WARNINGS, In the scope of PROTEUS project different comments are added here:
+- When the "Actuator" word is used alone, it means the Actuator system includes on ly one non decomposable software and one non decomposable hardware. This is of great ambiguity but reflects usage in the community.
+- There is often a difference between the Motorisation system, able to move the robot or part of it, and the different other systems able to interact with the environment. They can be called Payload systems, Operationan systems, Mission mmodules, etc (as an example, NRBC, Weapons, Communications, ...)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
+        <owl:allValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#ActuatorDriver"/>
+              <owl:Class rdf:about="#ActuatorHardware"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#SensorSystem"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PowerSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CommunicationSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#StructuralSystem"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#ActuatorDriver"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
+        <owl:someValuesFrom rdf:resource="#ActuatorHardware"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#RoboticSystem"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#LidarConfigurationData">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GPSConfigurationData"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#IMUConfigurationData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#OdometryConfigurationData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameraConfigurationData"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#SensorConfigurationData"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Image_msg">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MultiLaserScan_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NavSatFix_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#VipalabCommand_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameleonOdometry_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#TwistStamped_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameleonCommand_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#VipalabOdometry_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#WifibotOdometry_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameraInfo_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#WifibotCommand_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#IMU_msg"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#MiddlewareMessage"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Odometry_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Twist_msg"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#CommandInfoData">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameraInfoData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#IMUInfoData"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#GPSInfoData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LidarInfoData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#OdometryInfoData"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ActuatorInfoData"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CommunicationDriver">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Driver"/>
+    <rdfs:comment xml:lang="en">Software part of the Communication System of a platform. Drivers for technologies like Blue-tooth, infra-red, radio-frequency, WAP, Ethernet, ...</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#SensorDriver"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="PowerDriver"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ActuatorDriver"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#ObjectTrackingSensorDriver">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SensorDriver"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ImageSensorDriver"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#EnvironmentParametersSensorDriver"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LocalizationSensorDriver"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ObjectDetectionSensorDriver"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#ActuatorConfigurationData">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#StructuralConfigurationData"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#SensorConfigurationData"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#RoboticSystemConfigurationData"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PID_Controller">
+    <rdfs:comment xml:lang="en">A proportional–integral–derivative controller (PID controller) is a generic control loop feedback mechanism (controller) widely used in industrial control systems – a PID is the most commonly used feedback controller. A PID controller calculates an "error" value as the difference between a measured process variable and a desired setpoint. The controller attempts to minimize the error by adjusting the process control inputs.
+
+The PID controller calculation (algorithm) involves three separate constant parameters, and is accordingly sometimes called three-term control: the proportional, the integral and derivative values, denoted P, I, and D. Heuristically, these values can be interpreted in terms of time: P depends on the present error, I on the accumulation of past errors, and D is a prediction of future errors, based on current rate of change. The weighted sum of these three actions is used to adjust the process via a control element such as the position of a control valve or the power supply of a heating element.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Closed-LoopControlSystem"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Odometry_msg">
+    <owl:disjointWith rdf:resource="#Image_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#TwistStamped_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#WifibotCommand_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#VipalabCommand_msg"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#MiddlewareMessage"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NavSatFix_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#VipalabOdometry_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameraInfo_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameleonCommand_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameleonOdometry_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Twist_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#IMU_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MultiLaserScan_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#WifibotOdometry_msg"/>
+  </owl:Class>
+  <owl:Class rdf:about="#CameleonCommand_msg">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#VipalabCommand_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#VipalabOdometry_msg"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#MiddlewareMessage"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#IMU_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Twist_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#WifibotCommand_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameraInfo_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#TwistStamped_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NavSatFix_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MultiLaserScan_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameleonOdometry_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Image_msg"/>
+    <owl:disjointWith rdf:resource="#Odometry_msg"/>
+    <owl:disjointWith rdf:resource="#WifibotOdometry_msg"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CameraSystem">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#isActive"/>
+        </owl:onProperty>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >false</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#isActive"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ImageSensorSystem"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#LocalizationSensorSystem">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ObjectDetectionOrTrackingSensorSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ImageSensorSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#EnvironmentParametersSensorSystem"/>
+    <rdfs:subClassOf rdf:resource="#ProprioceptiveSensorSystem"/>
+    <rdfs:comment xml:lang="en">System which achieves a localization process within the environment based in a reference coordinate system. For example the GPS Sensors.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ControlAndCommand">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#impacts"/>
+        <owl:allValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Driver"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ApplicationInteraction"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">This is an interaction produced by a ControlStationSystem that will impact on a RoboticSubsystem with the objective of control and command the target device.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#ObjectDetectionOrTrackingSensorSystem">
+    <owl:disjointWith rdf:resource="#LocalizationSensorSystem"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ImageSensorSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#EnvironmentParametersSensorSystem"/>
+    <rdfs:comment xml:lang="en">System which uses sensors to detect, localize or track specific target objects in the surrounding environment. For instance, Telemeter Laser, Radar, ultrasounds, etc...</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ExteroceptiveSensorSystem"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ImageSensorSystem">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ExteroceptiveSensorSystem"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">System which captures images from the environment. This is a system which achieves a data adquisition and a image processing. For instance a camera.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#LocalizationSensorSystem"/>
+    <owl:disjointWith rdf:resource="#ObjectDetectionOrTrackingSensorSystem"/>
+    <owl:disjointWith rdf:resource="#EnvironmentParametersSensorSystem"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ImageSensorDriver">
+    <owl:disjointWith rdf:resource="#EnvironmentParametersSensorDriver"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LocalizationSensorDriver"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ObjectDetectionSensorDriver"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#ObjectTrackingSensorDriver"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SensorDriver"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#WeaponDriver">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ActuatorDriver"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Software/Driver of an actuator of the DeviceSystem of a platform, which correspond with the weapon system (attack-defense) of  a mechanical platform (guns, shields, missiles ...).</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NavigationCommandDriver"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#MotorizationDriver"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PrehensionDriver"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="WheelHardware">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MotorizationHardware"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="EngineHardware"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#HardwareImplementationOfController">
+    <rdfs:comment xml:lang="en">In automatic control, a controller is a device which has the function of maintaining a designated characteristics. For instance in a closed-loop control system, it performs the activity of managing or maintaining a range of values in a machine. The measurable property of a device is managed closely by specified conditions or an advance set value; or it can be a variable according to a predetermined arrangement scheme. It can be used generally to connote any set of various controls or devices for regulating or controlling items or objects.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#ActuatorHardware"/>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Clock"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PowerHardware"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CommunicationHardware"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ControlStationSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#SensorHardware"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Computer"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="H_InfinityLoopSharingController">
+    <rdfs:subClassOf rdf:resource="#Closed-LoopControlSystem"/>
+  </owl:Class>
+  <owl:Class rdf:about="#OdometryOutputInterface">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#OutputSystemInterface"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LidarOutputInterface"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#IMUOutputInterface"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#TimeOutputInterface"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GPSOutputInterface"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameraOutputInterface"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#EnvironmentParametersSensorHardware">
+    <rdfs:comment xml:lang="en">Hardware responsible of detection of temperature, pressure, humidity, airspeed, light intensity,...</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ImageSensorHardware"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#LocalizationSensorHardware"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ObjectDetectionOrTrackingSensorHardware"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SensorHardware"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AdaptiveController">
+    <rdfs:subClassOf rdf:resource="#Closed-LoopControlSystem"/>
+  </owl:Class>
+  <owl:Class rdf:about="#PowerDriver">
+    <rdfs:comment xml:lang="en">Software/Driver part of the electric source system of the platform.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#SensorDriver"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#CommunicationDriver"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ActuatorDriver"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Driver"/>
+  </owl:Class>
+  <owl:Class rdf:about="#WheelSystem">
+    <rdfs:comment xml:lang="en">This is the motorization system focused in the wheels of a robotic vehicle.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#EngineSystem"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MotorizationSystem"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ProgrammableLogicController">
+    <rdfs:subClassOf rdf:resource="#Closed-LoopControlSystem"/>
+  </owl:Class>
+  <owl:Class>
+    <owl:unionOf rdf:parseType="Collection">
+      <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Software">
+        <rdfs:subClassOf>
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#ApplicationInteraction"/>
+            </owl:someValuesFrom>
+            <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#triggers"/>
+          </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">In this scope Models means Implements</rdfs:comment>
+      </rdf:Description>
+      <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Hardware"/>
+    </owl:unionOf>
+  </owl:Class>
+  <owl:Class rdf:about="#IMU_msg">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NavSatFix_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#VipalabCommand_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#CameleonCommand_msg"/>
+    <owl:disjointWith rdf:resource="#WifibotOdometry_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameraInfo_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Odometry_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#VipalabOdometry_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameleonOdometry_msg"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#MiddlewareMessage"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#TwistStamped_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Twist_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Image_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MultiLaserScan_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#WifibotCommand_msg"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="ControlCommandOrder">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Command"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isCodedIn"/>
+        <owl:allValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#PhysicalData"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Command input order coming from a Human interaction or from the own platform (and finally translated into a software to software command), in order to achieve a control process to execute and keep the input values in, for instance, a closed-loop control system.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ControlCommandOutput"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Driver"/>
+      <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Hardware"/>
+    </owl:intersectionOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Twist_msg">
+    <owl:disjointWith rdf:resource="#WifibotOdometry_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#VipalabOdometry_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Odometry_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameraInfo_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#WifibotCommand_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#IMU_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#VipalabCommand_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#TwistStamped_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#CameleonCommand_msg"/>
+    <owl:disjointWith rdf:resource="#Image_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameleonOdometry_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NavSatFix_msg"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#MiddlewareMessage"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MultiLaserScan_msg"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#VipalabOdometry_msg">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#WifibotCommand_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#TwistStamped_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameleonOdometry_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#WifibotOdometry_msg"/>
+    <owl:disjointWith rdf:resource="#CameleonCommand_msg"/>
+    <rdfs:subClassOf rdf:resource="#MiddlewareMessage"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NavSatFix_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Odometry_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameraInfo_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Image_msg"/>
+    <owl:disjointWith rdf:resource="#IMU_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MultiLaserScan_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#VipalabCommand_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Twist_msg"/>
+  </owl:Class>
+  <owl:Class rdf:about="#WifibotCommand_msg">
+    <owl:disjointWith rdf:resource="#Odometry_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MultiLaserScan_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#VipalabCommand_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NavSatFix_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#IMU_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#CameleonCommand_msg"/>
+    <owl:disjointWith rdf:resource="#WifibotOdometry_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#TwistStamped_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#VipalabOdometry_msg"/>
+    <rdfs:subClassOf rdf:resource="#MiddlewareMessage"/>
+    <owl:disjointWith rdf:resource="#Twist_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameraInfo_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Image_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameleonOdometry_msg"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Computer">
+    <owl:disjointWith rdf:resource="#ActuatorHardware"/>
+    <rdfs:comment xml:lang="en">A computer is a piece of hardware dedicated to computation needs. It groups many resources such as an operating system, a file system etc.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Hardware"/>
+    <owl:disjointWith>
+      <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Environment">
+        <owl:disjointWith>
+          <owl:Class rdf:about="#RoboticSystem"/>
+        </owl:disjointWith>
+      </rdf:Description>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#CompositeSystem"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CommunicationHardware"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#OperatingSystem">
+            <owl:disjointWith>
+              <owl:Class rdf:about="#SystemInterface"/>
+            </owl:disjointWith>
+          </rdf:Description>
+        </owl:someValuesFrom>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#FileSystem">
+            <owl:disjointWith>
+              <owl:Class rdf:about="#SystemInterface"/>
+            </owl:disjointWith>
+          </rdf:Description>
+        </owl:someValuesFrom>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TODO: this concept needs to be enriched</owl:versionInfo>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#RoboticSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Clock"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#SensorHardware"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ControlStationSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PowerHardware"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#HardwareImplementationOfController"/>
+  </owl:Class>
+  <owl:Class rdf:about="#VipalabCommand_msg">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameraInfo_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#IMU_msg"/>
+    <owl:disjointWith rdf:resource="#WifibotOdometry_msg"/>
+    <owl:disjointWith rdf:resource="#Odometry_msg"/>
+    <owl:disjointWith rdf:resource="#Image_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#TwistStamped_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#WifibotCommand_msg"/>
+    <rdfs:subClassOf rdf:resource="#MiddlewareMessage"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NavSatFix_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MultiLaserScan_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameleonOdometry_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Twist_msg"/>
+    <owl:disjointWith rdf:resource="#CameleonCommand_msg"/>
+    <owl:disjointWith rdf:resource="#VipalabOdometry_msg"/>
+  </owl:Class>
+  <owl:Class rdf:about="#CameraConfigurationData">
+    <owl:disjointWith rdf:resource="#LidarConfigurationData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GPSConfigurationData"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#IMUConfigurationData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#OdometryConfigurationData"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#SensorConfigurationData"/>
+  </owl:Class>
+  <owl:Class rdf:about="#MultiLaserScan_msg">
+    <owl:disjointWith rdf:resource="#CameleonCommand_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NavSatFix_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#WifibotOdometry_msg"/>
+    <owl:disjointWith rdf:resource="#VipalabCommand_msg"/>
+    <owl:disjointWith rdf:resource="#Odometry_msg"/>
+    <owl:disjointWith rdf:resource="#Image_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#TwistStamped_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#WifibotCommand_msg"/>
+    <owl:disjointWith rdf:resource="#Twist_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameraInfo_msg"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#MiddlewareMessage"/>
+    <owl:disjointWith rdf:resource="#IMU_msg"/>
+    <owl:disjointWith rdf:resource="#VipalabOdometry_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameleonOdometry_msg"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#StructuralSystem">
+    <rdfs:comment xml:lang="en">here is expressed the fact that many hardware have structural parts.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CommunicationSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#SensorSystem"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PowerSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#ActuatorSystem"/>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Hardware"/>
+  </owl:Class>
+  <owl:Class rdf:about="#SystemInterface">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Software"/>
+    <rdfs:comment xml:lang="en">Software component which controls the input or/and output dataflow between a system and its corresponding middleware. A software component like that can be either an Algorithmic module ot an application. It explains that it is not disjoint of these two kind of concepts.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#RoboticMiddleware">
+    <rdfs:subClassOf>
+      <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Application">
+        <owl:disjointWith rdf:resource="#SystemInterface"/>
+      </rdf:Description>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#SoftwareProbe">
+        <owl:disjointWith>
+          <owl:Class rdf:about="#RoboticApplication"/>
+        </owl:disjointWith>
+        <owl:disjointWith rdf:resource="#RoboticMiddleware"/>
+      </rdf:Description>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Wrapper">
+        <owl:disjointWith>
+          <owl:Class rdf:about="#RoboticApplication"/>
+        </owl:disjointWith>
+        <owl:disjointWith rdf:resource="#RoboticMiddleware"/>
+      </rdf:Description>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AlgorithmicModule">
+        <owl:disjointWith>
+          <owl:Class rdf:about="#RoboticApplication"/>
+        </owl:disjointWith>
+        <owl:disjointWith rdf:resource="#RoboticMiddleware"/>
+      </rdf:Description>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#RoboticApplication"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Driver"/>
+    <rdfs:comment xml:lang="en">A Middleware is an application that connects software with hardware. This application consists of a set of services that allows multiple processes running on one or more machines to interact. This technology evolved to provide for interoperability in support of the move to coherent distributed architectures.
+Middleware sits "in the middle" between software that may be working on different hardware.
+Considering a robotic middleware, its role is to allow the different robotic systems (their different application parts) composing the robot to:
+- work together because running above the robotic middleware
+- ignore for these applications to know the underlying actual hardware
+
+Thus It represents an abstraction layer in the interoperability of the whole system with its own API.
+
+-------------- To Be Verified
+In a robotic platform this is an interoperative software which should be transparent between components and introduce no overhead or extra constraints on the robotic subsystems. It can achieve several functionalities, as it can be the communication or data transmission, the standardization of structures and message passing, the interconnection of homogeneous or/and heterogeneous components/systems, the authority to execute and transmit the output of distributed or centralized applications.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#IMUInfoData">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SensorInfoData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#CommandInfoData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameraInfoData"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#GPSInfoData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LidarInfoData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#OdometryInfoData"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#ExteroceptiveSensorSystem">
+    <rdfs:subClassOf rdf:resource="#SensorSystem"/>
+    <owl:disjointWith rdf:resource="#ProprioceptiveSensorSystem"/>
+    <rdfs:comment xml:lang="en">Exteroceptive sensors give the robot information about the surrounding environment allowing the robot to interact with the world. The exteroceptive sensors are classified according to their functionality. Examples: Cameras (image sensors), laser ranging, sonars, infrared sensors, tactile sensors, etc.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#ControlCommandOutput">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Command"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#PhysicalData"/>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isCodedIn"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#ControlCommandOrder"/>
+    <rdfs:comment xml:lang="en">Final Control output order coming from a control process (PID control, etc...). This command is sent from the drivers (software part) to their corresponding hardware element.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#CameraInfo_msg">
+    <owl:disjointWith rdf:resource="#Odometry_msg"/>
+    <owl:disjointWith rdf:resource="#MultiLaserScan_msg"/>
+    <rdfs:subClassOf rdf:resource="#MiddlewareMessage"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#TwistStamped_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Image_msg"/>
+    <owl:disjointWith rdf:resource="#VipalabOdometry_msg"/>
+    <owl:disjointWith rdf:resource="#CameleonCommand_msg"/>
+    <owl:disjointWith rdf:resource="#IMU_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameleonOdometry_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#WifibotOdometry_msg"/>
+    <owl:disjointWith rdf:resource="#WifibotCommand_msg"/>
+    <owl:disjointWith rdf:resource="#VipalabCommand_msg"/>
+    <owl:disjointWith rdf:resource="#Twist_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NavSatFix_msg"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#NavigationCommandConfigurationData">
+    <rdfs:subClassOf rdf:resource="#ActuatorConfigurationData"/>
+    <owl:disjointWith rdf:resource="#MotorizationConfigurationData"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ApplicationInteraction">
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Action"/>
+    <owl:disjointWith>
+      <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#HardwareToDriverInteraction">
+        <owl:disjointWith rdf:resource="#ApplicationInteraction"/>
+      </rdf:Description>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#DriverToHardwareInteraction">
+        <owl:disjointWith rdf:resource="#ApplicationInteraction"/>
+      </rdf:Description>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Interaction"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#impacts"/>
+        <owl:allValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Software"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Interaction between two Applications that are parts of a RoboticSystem. They could be interactions between frameworks, applications, libraries, drivers, processes, or other logical units of Application. In order to avoid redendancy the name does not quote two times the Aplication word</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#RoboticApplication">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Application"/>
+    <rdfs:comment xml:lang="en">applcation that is only processing of information.</rdfs:comment>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#SoftwareProbe"/>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Wrapper"/>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AlgorithmicModule"/>
+    <owl:disjointWith rdf:resource="#RoboticMiddleware"/>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Driver"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NavigationCommandHardware">
+    <rdfs:subClassOf rdf:resource="#ActuatorHardware"/>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="PrehensionHardware"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MotorizationHardware"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="WeaponHardware"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#NavigationCommandSystem">
+    <owl:disjointWith rdf:resource="#WeaponSystem"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MotorizationSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#PrehensionSystem"/>
+    <rdfs:subClassOf rdf:resource="#ActuatorSystem"/>
+  </owl:Class>
+  <owl:Class rdf:about="#TwistStamped_msg">
+    <owl:disjointWith rdf:resource="#IMU_msg"/>
+    <owl:disjointWith rdf:resource="#Twist_msg"/>
+    <owl:disjointWith rdf:resource="#VipalabCommand_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NavSatFix_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#CameraInfo_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Image_msg"/>
+    <owl:disjointWith rdf:resource="#CameleonCommand_msg"/>
+    <rdfs:subClassOf rdf:resource="#MiddlewareMessage"/>
+    <owl:disjointWith rdf:resource="#Odometry_msg"/>
+    <owl:disjointWith rdf:resource="#MultiLaserScan_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameleonOdometry_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#VipalabOdometry_msg"/>
+    <owl:disjointWith rdf:resource="#WifibotCommand_msg"/>
+    <owl:disjointWith rdf:resource="#WifibotOdometry_msg"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ActuatorInfoData">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#SensorInfoData"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#RoboticSystemInfoData"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#CameleonOdometry_msg">
+    <owl:disjointWith rdf:resource="#VipalabCommand_msg"/>
+    <owl:disjointWith rdf:resource="#Twist_msg"/>
+    <owl:disjointWith rdf:resource="#TwistStamped_msg"/>
+    <owl:disjointWith rdf:resource="#Odometry_msg"/>
+    <owl:disjointWith rdf:resource="#VipalabOdometry_msg"/>
+    <owl:disjointWith rdf:resource="#CameleonCommand_msg"/>
+    <owl:disjointWith rdf:resource="#IMU_msg"/>
+    <owl:disjointWith rdf:resource="#MultiLaserScan_msg"/>
+    <owl:disjointWith rdf:resource="#WifibotOdometry_msg"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NavSatFix_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#WifibotCommand_msg"/>
+    <rdfs:subClassOf rdf:resource="#MiddlewareMessage"/>
+    <owl:disjointWith rdf:resource="#Image_msg"/>
+    <owl:disjointWith rdf:resource="#CameraInfo_msg"/>
+  </owl:Class>
+  <owl:Class rdf:about="#GPSConfigurationData">
+    <rdfs:subClassOf rdf:resource="#SensorConfigurationData"/>
+    <owl:disjointWith rdf:resource="#LidarConfigurationData"/>
+    <owl:disjointWith rdf:resource="#IMUConfigurationData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#OdometryConfigurationData"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#CameraConfigurationData"/>
+  </owl:Class>
+  <owl:Class rdf:about="#TimeOutputInterface">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#OutputSystemInterface"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LidarOutputInterface"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#OdometryOutputInterface"/>
+    <owl:disjointWith rdf:resource="#IMUOutputInterface"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GPSOutputInterface"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameraOutputInterface"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#SecuritySystem">
+    <owl:disjointWith rdf:resource="#MissionManagementSystem"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MotionPlanningSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ControlSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PlatformManagementSystem"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#RoboticFunctionalSystem"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ImageSensorHardware">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SensorHardware"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#EnvironmentParametersSensorHardware"/>
+    <owl:disjointWith rdf:resource="#LocalizationSensorHardware"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ObjectDetectionOrTrackingSensorHardware"/>
+    </owl:disjointWith>
+    <rdfs:comment xml:lang="en">Hardware in charge of capture a graphical image of the environment. For example many types of cameras.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#MotorizationHardware">
+    <rdfs:subClassOf rdf:resource="#ActuatorHardware"/>
+    <rdfs:comment xml:lang="en">Hardware Actuator of the DeviceSystem of a platform, which correspond with the Driving system of  an autonomous mechanical platform (wheels, axes, wings, propulsion, engine, brakes, ...).</rdfs:comment>
+    <owl:disjointWith rdf:resource="#NavigationCommandHardware"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PrehensionHardware"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#WeaponHardware"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="ControCommandOutputPort">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Port"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >out</owl:hasValue>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isIn_Out"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Output port for control command as needed on commanding systems</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#CameraInfoData">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SensorInfoData"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#CommandInfoData"/>
+    <owl:disjointWith rdf:resource="#IMUInfoData"/>
+    <owl:disjointWith rdf:resource="#GPSInfoData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LidarInfoData"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#OdometryInfoData"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#PlatformManagementSystem">
+    <owl:disjointWith rdf:resource="#MissionManagementSystem"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MotionPlanningSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#SecuritySystem"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ControlSystem"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#RoboticFunctionalSystem"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en"></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="NoiseSignal">
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Action"/>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Interaction"/>
+    <rdfs:comment xml:lang="en">Interaction coming from the environment or from the own platform which could represent a disturbance of the information acquisition of a Hardware Device, or a disturbance of the data transmission between Software Components of the System. This disruption should be detected, interpreted and treated (or simply taken into consideration) by the platform.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#PowerHardware">
+    <rdfs:comment xml:lang="en">Hardware part of the electric source system of the platform.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#HardwareImplementationOfController"/>
+    <owl:disjointWith rdf:resource="#Computer"/>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Hardware"/>
+    <owl:disjointWith rdf:resource="#ActuatorHardware"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#SensorHardware"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ControlStationSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Clock"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CommunicationHardware"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="JoysticNavigationHardware">
+    <rdfs:subClassOf rdf:resource="#NavigationCommandHardware"/>
+  </owl:Class>
+  <owl:Class rdf:about="#LidarOutputInterface">
+    <owl:disjointWith rdf:resource="#OdometryOutputInterface"/>
+    <owl:disjointWith rdf:resource="#IMUOutputInterface"/>
+    <owl:disjointWith rdf:resource="#TimeOutputInterface"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GPSOutputInterface"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CameraOutputInterface"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#OutputSystemInterface"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#OdometryConfigurationData">
+    <rdfs:subClassOf rdf:resource="#SensorConfigurationData"/>
+    <owl:disjointWith rdf:resource="#LidarConfigurationData"/>
+    <owl:disjointWith rdf:resource="#GPSConfigurationData"/>
+    <owl:disjointWith rdf:resource="#IMUConfigurationData"/>
+    <owl:disjointWith rdf:resource="#CameraConfigurationData"/>
+  </owl:Class>
+  <owl:Class rdf:about="#SensorDriver">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Driver"/>
+    <owl:disjointWith rdf:resource="#CommunicationDriver"/>
+    <owl:disjointWith rdf:resource="#PowerDriver"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ActuatorDriver"/>
+    </owl:disjointWith>
+    <rdfs:comment xml:lang="en">Software part of the Sensor System of a platform which will be composed of drivers for devices like motion tracker, camera, odometer, thermometer, telemeter laser, ...</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#RoboticSystem">
+    <rdfs:comment xml:lang="en">The RoboticSystem concept or entity is the combination of a hardware providing some computing abilities in order to host a software managing it (managing is control as well as measures).
+Each one of the components of the robotic system will be managed by the corresponding system. This System aggregates a Software (application or driver when interactions with the physical world is concerned) and a Hardware part in order to build a physical-logical component at the service of a more complex System as a Robot.
+
+Considering the PROTEUS project it uses for the same concept the wording Robot system.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#CompositeSystem"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
+        <owl:allValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Driver"/>
+              <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Hardware"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Hardware"/>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Driver"/>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Environment"/>
+    <owl:disjointWith rdf:resource="#Computer"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ControlSystem">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#RoboticFunctionalSystem"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#MissionManagementSystem"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#MotionPlanningSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#SecuritySystem"/>
+    <owl:disjointWith rdf:resource="#PlatformManagementSystem"/>
+  </owl:Class>
+  <owl:Class rdf:about="#MotorizationSystem">
+    <owl:disjointWith rdf:resource="#NavigationCommandSystem"/>
+    <owl:disjointWith rdf:resource="#WeaponSystem"/>
+    <owl:disjointWith rdf:resource="#PrehensionSystem"/>
+    <rdfs:comment xml:lang="en">Mechanical device associated to its Driver for moving or controlling a mechanism or a system.
+It is operated by a source of energy, usually in the form of an electric current, hydraulic fluid pressure or pneumatic pressure, and converts that energy into some kind of motion.
+The "Effector" Wording refers EXACTLY to the Motorisation system.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#ActuatorSystem"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ObjectDetectionOrTrackingSensorHardware">
+    <rdfs:comment xml:lang="en">Hardware involved in the detection of physical entities in the surrounding environment or the tracking processes to localize and follow some target objects. Telemeter laser, Radar, specific cameras etc...</rdfs:comment>
+    <owl:disjointWith rdf:resource="#EnvironmentParametersSensorHardware"/>
+    <owl:disjointWith rdf:resource="#ImageSensorHardware"/>
+    <owl:disjointWith rdf:resource="#LocalizationSensorHardware"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SensorHardware"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ObjectDetectionSensorDriver">
+    <rdfs:subClassOf rdf:resource="#SensorDriver"/>
+    <owl:disjointWith rdf:resource="#ImageSensorDriver"/>
+    <owl:disjointWith rdf:resource="#EnvironmentParametersSensorDriver"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LocalizationSensorDriver"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#ObjectTrackingSensorDriver"/>
+  </owl:Class>
+  <owl:Class rdf:about="#CameraOutputInterface">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#OutputSystemInterface"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#LidarOutputInterface"/>
+    <owl:disjointWith rdf:resource="#OdometryOutputInterface"/>
+    <owl:disjointWith rdf:resource="#IMUOutputInterface"/>
+    <owl:disjointWith rdf:resource="#TimeOutputInterface"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GPSOutputInterface"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#RoboticSystemInfoData">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#RoboticSystemConfigurationData"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#MiddlewareMessage"/>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#OrderedSetForSystemDescription"/>
+  </owl:Class>
+  <owl:Class rdf:about="#CommunicationSystem">
+    <rdfs:comment xml:lang="en">Robotic susbstystems which achieves a communication process in the robotic platform. We can find different communication technologies to execute these functions: wifi, bluetooth, infrared, ethernet conections, etc...</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#CommunicationHardware"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#RoboticSystem"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PowerSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#ActuatorSystem"/>
+    <owl:disjointWith rdf:resource="#SensorSystem"/>
+    <owl:disjointWith rdf:resource="#StructuralSystem"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
+        <owl:allValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#CommunicationHardware"/>
+              <owl:Class rdf:about="#CommunicationDriver"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#CommunicationDriver"/>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#MotionPlanningSystem">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#RoboticFunctionalSystem"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasImplementingHardware"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#MissionManagementSystem"/>
+    <owl:disjointWith rdf:resource="#SecuritySystem"/>
+    <owl:disjointWith rdf:resource="#ControlSystem"/>
+    <owl:disjointWith rdf:resource="#PlatformManagementSystem"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Open-LoopControlSystem">
+    <rdfs:subClassOf rdf:resource="#ControlSystem"/>
+  </owl:Class>
+  <owl:Class rdf:about="#NavSatFix_msg">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LaserScan_msg"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#MultiLaserScan_msg"/>
+    <owl:disjointWith rdf:resource="#Twist_msg"/>
+    <owl:disjointWith rdf:resource="#CameleonOdometry_msg"/>
+    <owl:disjointWith rdf:resource="#IMU_msg"/>
+    <owl:disjointWith rdf:resource="#CameraInfo_msg"/>
+    <owl:disjointWith rdf:resource="#VipalabCommand_msg"/>
+    <owl:disjointWith rdf:resource="#VipalabOdometry_msg"/>
+    <owl:disjointWith rdf:resource="#TwistStamped_msg"/>
+    <owl:disjointWith rdf:resource="#Image_msg"/>
+    <owl:disjointWith rdf:resource="#CameleonCommand_msg"/>
+    <owl:disjointWith rdf:resource="#WifibotCommand_msg"/>
+    <owl:disjointWith rdf:resource="#WifibotOdometry_msg"/>
+    <rdfs:subClassOf rdf:resource="#MiddlewareMessage"/>
+    <owl:disjointWith rdf:resource="#Odometry_msg"/>
+  </owl:Class>
+  <owl:Class rdf:about="#OdometryInfoData">
+    <owl:disjointWith rdf:resource="#CommandInfoData"/>
+    <owl:disjointWith rdf:resource="#CameraInfoData"/>
+    <owl:disjointWith rdf:resource="#IMUInfoData"/>
+    <owl:disjointWith rdf:resource="#GPSInfoData"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LidarInfoData"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SensorInfoData"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="JoysticNavigationDriver">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#NavigationCommandDriver"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#RoboticFunctionalSystem">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Model"/>
+    <rdfs:comment xml:lang="en">This entity defines the functional Architecture that can be found in a Robotic System. The Functional System is the logical view of the Robotic Platform. Thus, we can find function as control, mission management, motion planning, platform management, or security. It can be also seen as acomplete. It is often associated to the software implementing this functional view.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#ControlCommandInputPort">
+    <rdfs:comment xml:lang="en">Input port for control command as needed on commanded systems</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Port"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >in</owl:hasValue>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isIn_Out"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#RoboticSystemConfigurationData">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#OrderedSetForSystemDescription"/>
+    <owl:disjointWith rdf:resource="#MiddlewareMessage"/>
+    <owl:disjointWith rdf:resource="#RoboticSystemInfoData"/>
+  </owl:Class>
+  <owl:Class rdf:about="#PrehensionHardware">
+    <rdfs:comment xml:lang="en">Hardware Actuator of the DeviceSystem of a platform, which correspond with the prehension system of  a mechanical platform (mechanical fingers, mechanical arms, grabs ...).</rdfs:comment>
+    <owl:disjointWith rdf:resource="#NavigationCommandHardware"/>
+    <owl:disjointWith rdf:resource="#MotorizationHardware"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#WeaponHardware"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#ActuatorHardware"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ChassisSystem">
+    <rdfs:subClassOf rdf:resource="#StructuralSystem"/>
+    <rdfs:comment xml:lang="en">The chassis is the part of the structure that supports everything. It often used in tha automotive field.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="LidarSystem">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#isActive"/>
+        </owl:onProperty>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#ObjectDetectionOrTrackingSensorSystem"/>
+  </owl:Class>
+  <owl:Class rdf:about="#LidarInfoData">
+    <owl:disjointWith rdf:resource="#CommandInfoData"/>
+    <owl:disjointWith rdf:resource="#CameraInfoData"/>
+    <owl:disjointWith rdf:resource="#IMUInfoData"/>
+    <owl:disjointWith rdf:resource="#GPSInfoData"/>
+    <owl:disjointWith rdf:resource="#OdometryInfoData"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SensorInfoData"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#LocalizationSensorDriver">
+    <owl:disjointWith rdf:resource="#ImageSensorDriver"/>
+    <owl:disjointWith rdf:resource="#EnvironmentParametersSensorDriver"/>
+    <owl:disjointWith rdf:resource="#ObjectDetectionSensorDriver"/>
+    <owl:disjointWith rdf:resource="#ObjectTrackingSensorDriver"/>
+    <rdfs:subClassOf rdf:resource="#SensorDriver"/>
+  </owl:Class>
+  <owl:Class rdf:about="#WeaponHardware">
+    <rdfs:comment xml:lang="en">Hardware Actuator of the DeviceSystem of a platform, which correspond with the weapon system (attack-defense) of  a mechanical platform (guns, shields, missiles ...).</rdfs:comment>
+    <owl:disjointWith rdf:resource="#NavigationCommandHardware"/>
+    <owl:disjointWith rdf:resource="#MotorizationHardware"/>
+    <owl:disjointWith rdf:resource="#PrehensionHardware"/>
+    <rdfs:subClassOf rdf:resource="#ActuatorHardware"/>
+  </owl:Class>
+  <owl:Class rdf:about="#StructuralConfigurationData">
+    <owl:disjointWith rdf:resource="#ActuatorConfigurationData"/>
+    <owl:disjointWith rdf:resource="#SensorConfigurationData"/>
+    <rdfs:subClassOf rdf:resource="#RoboticSystemConfigurationData"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ProportionalController">
+    <rdfs:subClassOf rdf:resource="#Closed-LoopControlSystem"/>
+  </owl:Class>
+  <owl:Class rdf:about="#EngineHardware">
+    <owl:disjointWith rdf:resource="#WheelHardware"/>
+    <rdfs:subClassOf rdf:resource="#MotorizationHardware"/>
+  </owl:Class>
+  <owl:Class rdf:about="#PrehensionDriver">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NavigationCommandDriver"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#MotorizationDriver"/>
+    <owl:disjointWith rdf:resource="#WeaponDriver"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ActuatorDriver"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Software/Driver of an actuator of the DeviceSystem of a platform, which correspond with the prehension system of  a mechanical platform (mechanical fingers, mechanical arms, grabs ...).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="JoysticNavigationSystem">
+    <rdfs:subClassOf rdf:resource="#NavigationCommandSystem"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ChassisConfigurationData">
+    <rdfs:subClassOf rdf:resource="#StructuralConfigurationData"/>
+  </owl:Class>
+  <owl:Class rdf:about="#GPSOutputInterface">
+    <owl:disjointWith rdf:resource="#LidarOutputInterface"/>
+    <owl:disjointWith rdf:resource="#OdometryOutputInterface"/>
+    <owl:disjointWith rdf:resource="#IMUOutputInterface"/>
+    <owl:disjointWith rdf:resource="#TimeOutputInterface"/>
+    <owl:disjointWith rdf:resource="#CameraOutputInterface"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#OutputSystemInterface"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#CommunicationHardware">
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Clock"/>
+    <owl:disjointWith rdf:resource="#HardwareImplementationOfController"/>
+    <owl:disjointWith rdf:resource="#Computer"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#SensorHardware"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#PowerHardware"/>
+    <owl:disjointWith rdf:resource="#ActuatorHardware"/>
+    <rdfs:comment xml:lang="en">Hardware part of the Communication System of a platform. Antenna, cables, and hardware support for Blue-tooth, infra-red, radio-frequency, WAP, Ethernet, ...</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Hardware"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CommandInputInterface">
+    <rdfs:subClassOf rdf:resource="#InputSystemInterface"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CommunicationMiddleware">
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Application"/>
+    <rdfs:comment xml:lang="en">A communication middleware is an application that takes in charge the communications between Applications</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#OutputSystemInterface">
+    <rdfs:subClassOf rdf:resource="#SystemInterface"/>
+    <rdfs:comment xml:lang="en">Software component which controls the output dataflow between a system and its corresponding middleware.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#InputSystemInterface"/>
+  </owl:Class>
+  <owl:Class rdf:ID="IntelligentController">
+    <rdfs:subClassOf rdf:resource="#Closed-LoopControlSystem"/>
+  </owl:Class>
+  <owl:Class rdf:about="#PowerSystem">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#PowerHardware"/>
+              <owl:Class rdf:about="#PowerDriver"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:allValuesFrom>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
+        <owl:someValuesFrom rdf:resource="#PowerHardware"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#ActuatorSystem"/>
+    <owl:disjointWith rdf:resource="#CommunicationSystem"/>
+    <rdfs:comment xml:lang="en">System in charge of providing and managing electrical energy to the robotic platform.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#StructuralSystem"/>
+    <rdfs:subClassOf rdf:resource="#RoboticSystem"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
+        <owl:someValuesFrom rdf:resource="#PowerDriver"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#SensorSystem"/>
+  </owl:Class>
+  <owl:Class rdf:about="#SensorHardware">
+    <owl:disjointWith rdf:resource="#CommunicationHardware"/>
+    <owl:disjointWith rdf:resource="#ActuatorHardware"/>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Clock"/>
+    <rdfs:comment xml:lang="en">Hardware part of the Sensor System of a platform which will be composed of devices like motion tracker, camera, odometer, thermometer, telemeter laser, ...</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Computer"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ControlStationSystem"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#HardwareImplementationOfController"/>
+    <owl:disjointWith rdf:resource="#PowerHardware"/>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Hardware"/>
+  </owl:Class>
+  <owl:Class rdf:about="#SensorInfoData">
+    <rdfs:subClassOf rdf:resource="#RoboticSystemInfoData"/>
+    <owl:disjointWith rdf:resource="#ActuatorInfoData"/>
+  </owl:Class>
+  <owl:Class rdf:about="#LaserScan_msg">
+    <owl:disjointWith rdf:resource="#VipalabCommand_msg"/>
+    <owl:disjointWith rdf:resource="#WifibotCommand_msg"/>
+    <owl:disjointWith rdf:resource="#CameleonCommand_msg"/>
+    <owl:disjointWith rdf:resource="#TwistStamped_msg"/>
+    <owl:disjointWith rdf:resource="#WifibotOdometry_msg"/>
+    <owl:disjointWith rdf:resource="#Image_msg"/>
+    <owl:disjointWith rdf:resource="#VipalabOdometry_msg"/>
+    <owl:disjointWith rdf:resource="#NavSatFix_msg"/>
+    <owl:disjointWith rdf:resource="#CameraInfo_msg"/>
+    <rdfs:subClassOf rdf:resource="#MiddlewareMessage"/>
+    <owl:disjointWith rdf:resource="#IMU_msg"/>
+    <owl:disjointWith rdf:resource="#Twist_msg"/>
+    <owl:disjointWith rdf:resource="#Odometry_msg"/>
+    <owl:disjointWith rdf:resource="#CameleonOdometry_msg"/>
+    <owl:disjointWith rdf:resource="#MultiLaserScan_msg"/>
+  </owl:Class>
+  <owl:Class rdf:about="#NavigationCommandDriver">
+    <owl:disjointWith rdf:resource="#PrehensionDriver"/>
+    <owl:disjointWith rdf:resource="#WeaponDriver"/>
+    <owl:disjointWith rdf:resource="#MotorizationDriver"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ActuatorDriver"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ControlStationSystem">
+    <rdfs:comment xml:lang="en">A control station system is a control centre that provides the facilities for human control ofrobots.</rdfs:comment>
+    <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Clock"/>
+    <owl:disjointWith rdf:resource="#PowerHardware"/>
+    <owl:disjointWith rdf:resource="#SensorHardware"/>
+    <owl:disjointWith rdf:resource="#HardwareImplementationOfController"/>
+    <owl:disjointWith rdf:resource="#Computer"/>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Hardware"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#triggers"/>
+        <owl:someValuesFrom rdf:resource="#ControlAndCommand"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ActuatorDriver">
+    <rdfs:comment xml:lang="en">Software part of the Actuator System of a mechanical platform which will be composed of drivers to control the effectors like a mechanical arm driver.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#SensorDriver"/>
+    <owl:disjointWith rdf:resource="#CommunicationDriver"/>
+    <owl:disjointWith rdf:resource="#PowerDriver"/>
+    <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Driver"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="hasImplementingSoftware">
+    <rdfs:comment xml:lang="en">Robotic functional system has implementing software.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Software"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="isSoftwareImplementationOf"/>
+    </owl:inverseOf>
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#has"/>
+    <rdfs:domain rdf:resource="#RoboticFunctionalSystem"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasApplicationPool">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="canCommunicateThrough"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="#CommunicationMiddleware"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#has"/>
+    <rdfs:range rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Application"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="canBeCodedInMessage">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#RoboticSystemInfoData"/>
+          <owl:Class rdf:about="#RoboticSystemConfigurationData"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#MiddlewareMessage"/>
+    <rdfs:comment xml:lang="en"></rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#canCommunicateThrough">
+    <rdfs:comment xml:lang="en">An Application can use specific and dedicated applications called Communicatio middleware to communicate</rdfs:comment>
+    <rdfs:range rdf:resource="#CommunicationMiddleware"/>
+    <rdfs:domain rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Application"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isPropertyOf"/>
+    <owl:inverseOf rdf:resource="#hasApplicationPool"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="controlsSystem">
+    <rdfs:comment xml:lang="en">Interaction between a Control System and a Robotic System in order to achieve the corresponding control process:  regulators will take part to get the final output command to send to the Hardware or software of the robotic system. This property is not mapped anymore on the generic system definition that tackles only</rdfs:comment>
+    <rdfs:domain rdf:resource="#ControlSystem"/>
+    <rdfs:range rdf:resource="#RoboticSystem"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="isControlledBy"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isRepresentedBy">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="isRepresentingA"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#State"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isRepresentingA">
+    <rdfs:range rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#State"/>
+    <owl:inverseOf rdf:resource="#isRepresentedBy"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="subscribe">
+    <rdfs:range rdf:resource="#RoboticMiddleware"/>
+    <rdfs:domain rdf:resource="#InputSystemInterface"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasInput">
+    <rdfs:domain rdf:resource="#Closed-LoopControlSystem"/>
+    <rdfs:comment xml:lang="en">A control system or a commandable system can have some command orders as input of a desired action.</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#has"/>
+    <rdfs:range rdf:resource="#ControlCommandOrder"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isControlledBy">
+    <rdfs:range rdf:resource="#ControlSystem"/>
+    <rdfs:comment xml:lang="en">A robotic system is a controllable system as such there could exists a function (without any concern on how it is implemented) that takes into account the control of this particular robotic system.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#controlsSystem"/>
+    <rdfs:domain rdf:resource="#RoboticSystem"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="publish">
+    <rdfs:comment xml:lang="en">The output interface controller manages the publishment of dataflow from a robotic system to the corresponding robotic middleware.</rdfs:comment>
+    <rdfs:range rdf:resource="#RoboticMiddleware"/>
+    <rdfs:domain rdf:resource="#OutputSystemInterface"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasConfigurationData">
+    <rdfs:domain rdf:resource="#RoboticSystem"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#has"/>
+    <rdfs:range rdf:resource="#RoboticSystemConfigurationData"/>
+    <rdfs:comment xml:lang="en">Each one of the robotic components (actuators, sensors, etc) has some configuration parameter data.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hostInteractions">
+    <rdfs:domain rdf:resource="#RoboticMiddleware"/>
+    <rdfs:comment xml:lang="en">A RoboticMiddleware is a interoperability software that not only executes applications, send and triggers interactions between systems/components, but it also hosts the interactions of the robotic platform.</rdfs:comment>
+    <rdfs:range rdf:resource="#ApplicationInteraction"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasInfoData">
+    <rdfs:range rdf:resource="#RoboticSystemInfoData"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#has"/>
+    <rdfs:domain rdf:resource="#RoboticSystem"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasClock">
+    <rdfs:domain rdf:resource="#Computer"/>
+    <rdfs:comment xml:lang="en">Some hardware are using a specific piece of hardware modeling a timeframe and called a clock</rdfs:comment>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="Timeframes"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Clock"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#has"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="managesMiddlewareMessage">
+    <rdfs:range rdf:resource="#MiddlewareMessage"/>
+    <rdfs:domain rdf:resource="#SystemInterface"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="protectsSystem">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="isProtectedBy"/>
+    </owl:inverseOf>
+    <rdfs:comment xml:lang="en">Interaction between a Security System and a Robotic System (in general). This interaction guarantees the protection in different levels (network, criptography, control, etc...) of a robotic system. This property does not concern the generic system concept that tackles only with composition and interefacing properties.</rdfs:comment>
+    <rdfs:range rdf:resource="#RoboticSystem"/>
+    <rdfs:domain rdf:resource="#SecuritySystem"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isSoftwareImplementationOf">
+    <rdfs:range rdf:resource="#RoboticFunctionalSystem"/>
+    <rdfs:comment xml:lang="en">Software is implementation of robotic functionnal system.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#hasImplementingSoftware"/>
+    <rdfs:domain rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Software"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isPropertyOf"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasNoiseModel">
+    <rdfs:range rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#NoiseModel"/>
+    <rdfs:comment xml:lang="en">A distorted interaction due to a noise signal can be modelled by an Evolution model of the corresponding noise.</rdfs:comment>
+    <rdfs:domain rdf:resource="#NoiseSignal"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#has"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasNoise">
+    <rdfs:comment xml:lang="en">A System has to deal with disruptions or perturbations known as Noise to process a signal. These perturbations are inherent in the data adquisition process or in the commandable processes, and they can be present, for instance, in a control system, actuator system, sensor system, etc...</rdfs:comment>
+    <rdfs:range rdf:resource="#NoiseSignal"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#has"/>
+    <rdfs:domain rdf:resource="#Closed-LoopControlSystem"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasinterface">
+    <rdfs:range rdf:resource="#SystemInterface"/>
+    <rdfs:comment xml:lang="en">A robotic system has an interface to publish or subscribe to its corresponding robotic middleware.</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#has"/>
+    <rdfs:domain rdf:resource="#RoboticSystem"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="mapsOnto">
+    <rdfs:range rdf:resource="#RoboticSystem"/>
+    <rdfs:comment xml:lang="en">A robotic functional system in order to exist must be mapped onto an existing robotic system. Either it is mapped through software or hardware implementation or a mix is not described into this property. Two robotic systems can be different but implement the saame functional system.</rdfs:comment>
+    <rdfs:domain rdf:resource="#RoboticFunctionalSystem"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasImplementingHardware">
+    <rdfs:domain rdf:resource="#RoboticFunctionalSystem"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="isHarwareImplementationOf"/>
+    </owl:inverseOf>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#ActuatorHardware"/>
+          <owl:Class rdf:about="#SensorHardware"/>
+          <owl:Class rdf:about="#CommunicationHardware"/>
+          <owl:Class rdf:about="#PowerHardware"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#has"/>
+    <rdfs:comment xml:lang="en">Robotic functional system has implementing hardware.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="measuresOutput">
+    <rdfs:range rdf:resource="#ControlCommandOutput"/>
+    <rdfs:domain rdf:resource="#ProprioceptiveSensorSystem"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isHarwareImplementationOf">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#ActuatorHardware"/>
+          <owl:Class rdf:about="#SensorHardware"/>
+          <owl:Class rdf:about="#CommunicationHardware"/>
+          <owl:Class rdf:about="#PowerHardware"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isPropertyOf"/>
+    <rdfs:comment xml:lang="en">Hardware is implementation of robotic functional system.</rdfs:comment>
+    <rdfs:range rdf:resource="#RoboticFunctionalSystem"/>
+    <owl:inverseOf rdf:resource="#hasImplementingHardware"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasOutput">
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#has"/>
+    <rdfs:domain rdf:resource="#Closed-LoopControlSystem"/>
+    <rdfs:range rdf:resource="#ControlCommandOutput"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasMethods">
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#has"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#Timeframes">
+    <owl:inverseOf rdf:resource="#hasClock"/>
+    <rdfs:comment xml:lang="en">Clocks are providing timeframe to hardware</rdfs:comment>
+    <rdfs:range rdf:resource="#Computer"/>
+    <rdfs:domain rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Clock"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isPropertyOf"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isProtectedBy">
+    <rdfs:domain rdf:resource="#RoboticSystem"/>
+    <rdfs:comment xml:lang="en">A robotic system is a controllable system as such there could exists a function (without any concern on how it is implemented) that takes into account the protection of this particular robotic system. Protection means that in case of abnormal behaviour of the robotic system considered, there will be interactions occurring that will allow it to go on working on degraded modes or to stop it completely in order not to be destryed.</rdfs:comment>
+    <rdfs:range rdf:resource="#SecuritySystem"/>
+    <owl:inverseOf rdf:resource="#protectsSystem"/>
+  </owl:ObjectProperty>
+  <rdf:Property rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#providesLifeTo"/>
+  <owl:DatatypeProperty rdf:about="#isActive">
+    <rdfs:comment xml:lang="en">null</rdfs:comment>
+    <rdfs:domain rdf:resource="#SensorSystem"/>
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+          >true</rdf:first>
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+            >false</rdf:first>
+            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+          </rdf:rest>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+  </owl:DatatypeProperty>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.4.8, Build 629)  http://protege.stanford.edu -->

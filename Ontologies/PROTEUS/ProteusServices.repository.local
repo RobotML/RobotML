@@ -1,0 +1,14 @@
+[Dublin Core DL Redirect]
+./R1.1.4.3-S11.17-ProteusCoreOntology/Proteus.owl?forceReadOnly=true
+./R1.1.4.3-S11.17-ProteusCoreOntology/mission/mission.owl?forceReadOnly=true
+./R1.1.4.3-S11.17-ProteusCoreOntology/system/Systems.owl?forceReadOnly=true
+./R1.1.4.3-S11.17-ProteusCoreOntology/kernel/kernel.owl?forceReadOnly=true
+./R1.1.4.3-S11.17-ProteusCoreOntology/information/information.owl?forceReadOnly=true
+./R1.1.4.3-S11.17-ProteusCoreOntology/robot/Robot.owl?forceReadOnly=true
+./R1.1.4.3-S11.17-ProteusCoreOntology/environment/Environment.owl?forceReadOnly=true
+./R1.1.4.3-S11.17-ProteusCoreOntology/simulation/simulation.owl?forceReadOnly=true
+./R1.1.4.3-S11.17-ProteusCoreOntology/experiment/experiment.owl?forceReadOnly=true
+./R1.1.4.3-S11.19-ProteusScenarioOntology/UrbanScenario/UrbanScenario.owl?forceReadOnly=true
+./R1.1.4.3-S11.19-ProteusScenarioOntology/AirGroundScenario/AirGroundScenario.owl?forceReadOnly=true
+./R1.1.4.3-S11.19-ProteusScenarioOntology/IndoorScenario/IndoorScenario.owl?forceReadOnly=true
+./R1.1.4.3-S11.19-ProteusScenarioOntology/LandmarkSearchScenario/LandmarkSearchScenario.owl?forceReadOnly=true

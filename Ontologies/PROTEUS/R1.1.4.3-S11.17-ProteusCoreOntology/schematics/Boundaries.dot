@@ -1,0 +1,41 @@
+digraph Proteus {
+	node [label="\N"];
+	graph [bb="0,0,815.34,300"];
+	label="Boundaries";
+	labeljust=left;
+	fontname="Times-Roman";
+	fontsize=24;
+	"Port" -> "Interaction" [style=filled, label="kern:emits*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	/*"Port" -> "Interaction" [style=filled, label="kern:isTheSupport*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];*/
+	/*"Port" -> "Interaction" [style=filled, label="kern:receives*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];*/
+	/*"Interaction" -> "System" [style=filled, label="kern:systemSource*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];*/
+	"Interaction" -> "System" [style=filled, label="kern:impacts*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	/*"System" -> "Interaction" [style=filled, label="kern:triggers*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];*/
+	/*"Interaction" -> "Port" [style=filled, label="kern:isReceivedOn*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];*/
+	"Port" -> "Protocol" [style=filled, label="kern:hasProtocol*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	/*"Interaction" -> "Port" [style=filled, label="kern:isEmittedOn*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];*/
+	subgraph cluster0 {
+		label="Objects concerned";
+		fontname="Arial";
+		fontsize=18;
+		labeljust=left;
+		style=filled;
+		color=lightgrey;
+		"Port" -> "System" [style=filled, label="kern:isPortOf", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+		"System" -> "Port" [style=filled, label="kern:hasPort*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+		"Port" [label="kern:Port", shape=box, color="0.0,0.0,0.0",fontcolor="0.0,0.0,0.0", width="0.97222", height="0.5"];
+		"System" [label="kern:System", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.2222", height="0.5"];
+	}
+	subgraph cluster1 {
+		label="Associated flow";
+		labeljust=left;
+		fontname="Arial";
+		fontsize=18;
+		"Interaction" -> "Information" [style=filled, label="kern:transmitInformation*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+		"Interaction" -> "Protocol" [style=filled, label="kern:hasProtocol*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+		"Protocol" -> "Information" [style=filled, label="kern:constrains*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+		"Interaction" [label="kern:Interaction", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0",  width="1.4792", height="0.5"];
+		"Protocol" [label="kern:Protocol", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.3125", height="0.5"];
+		"Information" [label="kern:Information", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.5833", height="0.5"];
+	}
+}

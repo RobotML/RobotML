@@ -1,0 +1,1720 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY protege "http://protege.stanford.edu/plugins/owl/protege#" >
+    <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
+    <!ENTITY kern "http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
+     xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+     xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:kern="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl">
+        <owl:versionInfo rdf:datatype="&xsd;string">version draft 2.0
+- 30/023/2011: bpatin: addition of disjonctions at the highest  level</owl:versionInfo>
+        <rdfs:comment xml:lang="en">The goal of the ontology is to help and support:
+- the creation of specialised languages for robotics
+- the creation of a standardised protocol dedicated to robots cooperation
+- the creation of a standardised way to understand what is a simulation
+
+It is organised in three logical parts. First part provides concepts to manipulate &quot;systems&quot;, static as well as dynamic through:
+- Static representation
+-&gt; System
+-&gt; Architecture
+-&gt; Component
+-&gt; Interaction
+- Dynamic one
+-&gt; Evolution model
+-&gt; State
+-&gt; derived in InteractionState and ComponentState
+
+Second part is the representation of the physical world, of the universe of the problem. It includes:
+- Environment
+- PhysicalObject
+- Hardware and Hardware{Aggregate|Component}
+- PhysicalInteraction
+- Referential
+
+Third part is the representation of the software &quot;world&quot;. All that concerns information and how it is mapped onto the hardware:
+- Software and Software{Aggregate|Component}
+- SoftwareConnector
+- Computer
+- SoftwareToHardwareInteraction and HardwareToSoftwareInteraction (These two are very important as they allow the software to live in the hardware)</rdfs:comment>
+        <rdfs:comment xml:lang="en">This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1  licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
+        <rdfs:comment xml:lang="en">Version for Protégé 4.2 beta</rdfs:comment>
+        <rdfs:comment xml:lang="en">from version 1.0, contributions are no more PROTEUS contributions.
+authors are Jean-Loup Farges and Bruno Patin</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Implements -->
+
+    <owl:ObjectProperty rdf:about="&kern;Implements">
+        <rdfs:comment xml:lang="en">Every data corresponds to an abstraction</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Abstraction"/>
+        <rdfs:domain rdf:resource="&kern;Data"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#OccursAfterEvent -->
+
+    <owl:ObjectProperty rdf:about="&kern;OccursAfterEvent">
+        <rdfs:comment xml:lang="en">A time event occurs after another event.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Event"/>
+        <rdfs:domain rdf:resource="&kern;TimeEvent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates -->
+
+    <owl:ObjectProperty rdf:about="&kern;aggregates">
+        <rdfs:comment xml:lang="en">aggregation is used in order to explains the system composition property</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;CompositeSystem"/>
+        <rdfs:range rdf:resource="&kern;System"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#animates -->
+
+    <owl:ObjectProperty rdf:about="&kern;animates">
+        <rdfs:comment xml:lang="en">The evolution Model provides animation to dynamic entities like System and Interaction.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;EvolutionModel"/>
+        <owl:inverseOf rdf:resource="&kern;isAnimatedByEvolutionModel"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&kern;Interaction"/>
+                    <rdf:Description rdf:about="&kern;System"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#belongsTo -->
+
+    <owl:ObjectProperty rdf:about="&kern;belongsTo">
+        <rdfs:comment xml:lang="en">This links is specific to the time class. It expresses the fact that the time concept means nothing outside the physical world and must be associated to at least one referential system.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Frame"/>
+        <rdfs:domain rdf:resource="&kern;Time"/>
+        <owl:inverseOf rdf:resource="&kern;definesSpaceTime"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#carries -->
+
+    <owl:ObjectProperty rdf:about="&kern;carries">
+        <rdfs:comment xml:lang="en">A connector carries interactions.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Connector"/>
+        <rdfs:range rdf:resource="&kern;Interaction"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#constrains -->
+
+    <owl:ObjectProperty rdf:about="&kern;constrains">
+        <rdfs:comment xml:lang="en">A protocol constrains the way information is exchanged between systems</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Information"/>
+        <rdfs:domain rdf:resource="&kern;Protocol"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#currentlyPerforms -->
+
+    <owl:ObjectProperty rdf:about="&kern;currentlyPerforms">
+        <rdfs:seeAlso rdf:datatype="&xsd;string">ORO: currentlyPerforms</rdfs:seeAlso>
+        <rdfs:isDefinedBy rdf:datatype="&xsd;anyURI">http://kb.openrobots.org#currentlyPerforms</rdfs:isDefinedBy>
+        <rdfs:comment xml:lang="en">an Agent performs actions and thus is always currently performing some action even if it is nothing</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Action"/>
+        <rdfs:domain rdf:resource="&kern;Agent"/>
+        <owl:inverseOf rdf:resource="&kern;isPerformedBy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#definesAFrame -->
+
+    <owl:ObjectProperty rdf:about="&kern;definesAFrame">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">this property expresses the fact that every physical object is associated to a frame providing it its existence in space and time.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Frame"/>
+        <rdfs:domain rdf:resource="&kern;PhysicalObject"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#definesSpaceTime -->
+
+    <owl:ObjectProperty rdf:about="&kern;definesSpaceTime">
+        <rdfs:comment xml:lang="en">A referential defines a local time</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Frame"/>
+        <rdfs:range rdf:resource="&kern;Time"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#emits -->
+
+    <owl:ObjectProperty rdf:about="&kern;emits">
+        <rdfs:comment xml:lang="en">Ports emit interactions</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Interaction"/>
+        <rdfs:domain rdf:resource="&kern;Port"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#endsOn -->
+
+    <owl:ObjectProperty rdf:about="&kern;endsOn">
+        <rdfs:comment xml:lang="en">A finite state machine has an end state</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;AutomataEndState"/>
+        <rdfs:domain rdf:resource="&kern;StateMachine"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#entail -->
+
+    <owl:ObjectProperty rdf:about="&kern;entail">
+        <rdfs:comment xml:lang="en">A transition is triggered by an event after evaluation to truth-value of the established condition.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Event"/>
+        <rdfs:range rdf:resource="&kern;Transition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#evaluatesToTruth -->
+
+    <owl:ObjectProperty rdf:about="&kern;evaluatesToTruth">
+        <rdfs:comment xml:lang="en">When a condition placed in a state of a StateMachine evaluates to truth value, and event takes place and carries out the transition to another state.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;ChangeEvent"/>
+        <rdfs:domain rdf:resource="&kern;Condition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#evolvesIn -->
+
+    <owl:ObjectProperty rdf:about="&kern;evolvesIn">
+        <owl:versionInfo rdf:datatype="&xsd;string">TODO: clarify thsi property when evolution concern the surface of the object</owl:versionInfo>
+        <rdfs:comment xml:lang="en">links the PhysicalObject to the physical object where it evolves. To be sure, there is a relationship between these two that is an inclusion one. Environment being the largest one at some step this inclusion story stops.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;PhysicalObject"/>
+        <rdfs:domain rdf:resource="&kern;PhysicalObject"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#executesOn -->
+
+    <owl:ObjectProperty rdf:about="&kern;executesOn">
+        <rdfs:comment xml:lang="en">This expresses the fact that there is no software running without a hardware supporting it.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Hardware"/>
+        <rdfs:domain rdf:resource="&kern;Software"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#from -->
+
+    <owl:ObjectProperty rdf:about="&kern;from">
+        <rdfs:comment xml:lang="en">A transition is defined by a start state and an end state</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;AutomataState"/>
+        <rdfs:domain rdf:resource="&kern;Transition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#givesNextState -->
+
+    <owl:ObjectProperty rdf:about="&kern;givesNextState">
+        <rdfs:comment xml:lang="en">The evolution model is able to provide the next state of a component using its previous known states and a time on which to evaluate the new state.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;EvolutionModel"/>
+        <rdfs:range rdf:resource="&kern;State"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#has -->
+
+    <owl:ObjectProperty rdf:about="&kern;has">
+        <rdfs:comment xml:lang="en">Things have things.</rdfs:comment>
+        <owl:inverseOf rdf:resource="&kern;isPropertyOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasAction -->
+
+    <owl:ObjectProperty rdf:about="&kern;hasAction">
+        <rdfs:comment xml:lang="en">An Activity is made by a set of Actions.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Action"/>
+        <rdfs:domain rdf:resource="&kern;Activity"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasActivity -->
+
+    <owl:ObjectProperty rdf:about="&kern;hasActivity">
+        <rdfs:comment xml:lang="en">An agent is linked to the Activity made by the actions performed by this agent.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Activity"/>
+        <rdfs:domain rdf:resource="&kern;Agent"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasAsOrigin -->
+
+    <owl:ObjectProperty rdf:about="&kern;hasAsOrigin">
+        <rdfs:comment xml:lang="en">this link means that a referential has an origin.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Frame"/>
+        <rdfs:range rdf:resource="&kern;Information"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasDownstreamPort -->
+
+    <owl:ObjectProperty rdf:about="&kern;hasDownstreamPort">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">A connector has a unique downstream port.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Connector"/>
+        <rdfs:range rdf:resource="&kern;Port"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasFSMActivity -->
+
+    <owl:ObjectProperty rdf:about="&kern;hasFSMActivity">
+        <rdfs:comment xml:lang="en">A state can be associated to Finite State Machine Activities.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;AutomataState"/>
+        <rdfs:range rdf:resource="&kern;FSMActivity"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasFrame -->
+
+    <owl:ObjectProperty rdf:about="&kern;hasFrame">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">The world / environment IS the frame in which everything will live.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Environment"/>
+        <rdfs:range rdf:resource="&kern;Frame"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasPort -->
+
+    <owl:ObjectProperty rdf:about="&kern;hasPort">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:comment xml:lang="en">Property to qualify the fact that a systems have ports.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Port"/>
+        <rdfs:domain rdf:resource="&kern;System"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasPortValue -->
+
+    <owl:ObjectProperty rdf:about="&kern;hasPortValue">
+        <rdfs:comment xml:lang="en">Each port of a system has some data to receive or to send through interactions from or to other systems.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Data"/>
+        <rdfs:domain rdf:resource="&kern;Port"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasProbe -->
+
+    <owl:ObjectProperty rdf:about="&kern;hasProbe">
+        <rdfs:comment xml:lang="en">Systems can have probes to allow evolution model to survey the systems&apos; states.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Probe"/>
+        <rdfs:domain rdf:resource="&kern;System"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+        <owl:inverseOf rdf:resource="&kern;isProbeOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasProtocol -->
+
+    <owl:ObjectProperty rdf:about="&kern;hasProtocol">
+        <rdfs:comment xml:lang="en">An interaction can implement a protocol</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Protocol"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&kern;Interaction"/>
+                    <rdf:Description rdf:about="&kern;Port"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasState -->
+
+    <owl:ObjectProperty rdf:about="&kern;hasState">
+        <rdfs:comment xml:lang="en">each class associated through this link to state is able to have a set of state. It does not mean evolution because this is implemented through the evolution model that will allow an ordering of the set.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;State"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&kern;Interaction"/>
+                    <rdf:Description rdf:about="&kern;System"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasStateVariables -->
+
+    <owl:ObjectProperty rdf:about="&kern;hasStateVariables">
+        <rdfs:comment xml:lang="en">The state vector has several components/state variables.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Data"/>
+        <rdfs:domain rdf:resource="&kern;State"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasUpstreamPort -->
+
+    <owl:ObjectProperty rdf:about="&kern;hasUpstreamPort">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">A connector has a unique upstraem port.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Connector"/>
+        <rdfs:range rdf:resource="&kern;Port"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#impacts -->
+
+    <owl:ObjectProperty rdf:about="&kern;impacts">
+        <rdfs:comment xml:lang="en">it is the interaction through its evolution model that will impact the component by changing / modifying its state. Three different interaction are linked to this one.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Interaction"/>
+        <rdfs:range rdf:resource="&kern;System"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#impactsEvolution -->
+
+    <owl:ObjectProperty rdf:about="&kern;impactsEvolution">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">For instance, the evolution of a stone is not the same in the air and in the water</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Environment"/>
+        <rdfs:range rdf:resource="&kern;PhysicalObject"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isAFunctionOfTime -->
+
+    <owl:ObjectProperty rdf:about="&kern;isAFunctionOfTime">
+        <rdfs:comment xml:lang="en">ad&apos;hoc link that needs to be reworked as the evolution model is an abstract view on the way architectures can evolve and time is a property of a physical object that is no more an abstraction.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;EvolutionModel"/>
+        <rdfs:range rdf:resource="&kern;Time"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isAnimatedByEvolutionModel -->
+
+    <owl:ObjectProperty rdf:about="&kern;isAnimatedByEvolutionModel">
+        <rdfs:comment xml:lang="en">abstract property of interactions and components to live.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;EvolutionModel"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&kern;Interaction"/>
+                    <rdf:Description rdf:about="&kern;System"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isCarriedBy -->
+
+    <owl:ObjectProperty rdf:about="&kern;isCarriedBy">
+        <rdfs:comment xml:lang="en">An interaction is carried by connectors.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Connector"/>
+        <rdfs:domain rdf:resource="&kern;Interaction"/>
+        <owl:inverseOf rdf:resource="&kern;carries"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isCodedIn -->
+
+    <owl:ObjectProperty rdf:about="&kern;isCodedIn">
+        <rdfs:comment xml:lang="en">An abstraction is translated to be interpretable by a machine trough the Data concept.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Abstraction"/>
+        <rdfs:range rdf:resource="&kern;Data"/>
+        <owl:inverseOf rdf:resource="&kern;Implements"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isComposedOf -->
+
+    <owl:ObjectProperty rdf:about="&kern;isComposedOf">
+        <owl:versionInfo rdf:datatype="&xsd;string">TODO: verify that this property is not exactly the same as the has property</owl:versionInfo>
+        <rdfs:comment xml:lang="en">Generic property grouping other ones specifying there is a composition</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isDefinedBy -->
+
+    <owl:ObjectProperty rdf:about="&kern;isDefinedBy">
+        <rdfs:comment xml:lang="en">A finite state machine is defined by a set of states, a set of transitions and events.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;StateMachine"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&kern;AutomataState"/>
+                    <rdf:Description rdf:about="&kern;Event"/>
+                    <rdf:Description rdf:about="&kern;Transition"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isDefinedIn -->
+
+    <owl:ObjectProperty rdf:about="&kern;isDefinedIn">
+        <owl:versionInfo rdf:datatype="&xsd;string">It is not functional.</owl:versionInfo>
+        <rdfs:comment xml:lang="en">This link means that you can relate any referential to any oher one. It is not functional because a referential may be defined in several referentials.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Frame"/>
+        <rdfs:domain rdf:resource="&kern;Frame"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isDownstreamPortOf -->
+
+    <owl:ObjectProperty rdf:about="&kern;isDownstreamPortOf">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:comment xml:lang="en">A port has incoming connectors.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Connector"/>
+        <rdfs:domain rdf:resource="&kern;Port"/>
+        <owl:inverseOf rdf:resource="&kern;hasDownstreamPort"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;isPropertyOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isEmittedOn -->
+
+    <owl:ObjectProperty rdf:about="&kern;isEmittedOn">
+        <rdfs:comment xml:lang="en">An interaction is emitted by a system through a port</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Interaction"/>
+        <rdfs:range rdf:resource="&kern;Port"/>
+        <owl:inverseOf rdf:resource="&kern;emits"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isImplementedWith -->
+
+    <owl:ObjectProperty rdf:about="&kern;isImplementedWith">
+        <rdfs:comment xml:lang="en">An FSMActivity is implemented by an algorithm</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Algorithm"/>
+        <rdfs:domain rdf:resource="&kern;FSMActivity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isModelledBy -->
+
+    <owl:ObjectProperty rdf:about="&kern;isModelledBy">
+        <rdfs:comment xml:lang="en">This property expresses the fact that there exists at least one system to model the system considered</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;System"/>
+        <rdfs:range rdf:resource="&kern;System"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isPerformedBy -->
+
+    <owl:ObjectProperty rdf:about="&kern;isPerformedBy">
+        <rdfs:comment xml:lang="en">An action is necessarily carried out by an agent.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Action"/>
+        <rdfs:range rdf:resource="&kern;Agent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isPortOf -->
+
+    <owl:ObjectProperty rdf:about="&kern;isPortOf">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">Property to qualify the fact that a port belongs to one and only one system.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Port"/>
+        <rdfs:range rdf:resource="&kern;System"/>
+        <owl:inverseOf rdf:resource="&kern;hasPort"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;isPropertyOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isPositionedIn -->
+
+    <owl:ObjectProperty rdf:about="&kern;isPositionedIn">
+        <owl:versionInfo xml:lang="en">The fact that the referential defined by the object can not be the referential it is positioned in is expressed by a SWRL rule in proteus.owl.</owl:versionInfo>
+        <rdfs:comment xml:lang="en">any physical object can be positioned at the very least in the environment referential. There is no meaning to position the object in its proper referential.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Frame"/>
+        <rdfs:domain rdf:resource="&kern;PhysicalObject"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isProbeOf -->
+
+    <owl:ObjectProperty rdf:about="&kern;isProbeOf">
+        <rdfs:comment xml:lang="en">This allow to know to which system is associated a probe</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Probe"/>
+        <rdfs:range rdf:resource="&kern;System"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;isPropertyOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isPropertyOf -->
+
+    <owl:ObjectProperty rdf:about="&kern;isPropertyOf">
+        <rdfs:comment xml:lang="en">Things are properties of things.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isReceivedOn -->
+
+    <owl:ObjectProperty rdf:about="&kern;isReceivedOn">
+        <rdfs:comment xml:lang="en">An interaction is received by a system through a port</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Interaction"/>
+        <rdfs:range rdf:resource="&kern;Port"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isTheSupport -->
+
+    <owl:ObjectProperty rdf:about="&kern;isTheSupport">
+        <rdfs:comment xml:lang="en">Ports support the emission/reception of interactions</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Interaction"/>
+        <rdfs:domain rdf:resource="&kern;Port"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isTriggeredBy -->
+
+    <owl:ObjectProperty rdf:about="&kern;isTriggeredBy">
+        <rdfs:comment xml:lang="en">an event is triggered by a particular state. 
+A warning here, in this ontology, this property is not linked to the &quot;triggers&quot; property.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Event"/>
+        <rdfs:range rdf:resource="&kern;State"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isUpstreamPortOf -->
+
+    <owl:ObjectProperty rdf:about="&kern;isUpstreamPortOf">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:comment xml:lang="en">A port has exiting connectors.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Connector"/>
+        <rdfs:domain rdf:resource="&kern;Port"/>
+        <owl:inverseOf rdf:resource="&kern;hasUpstreamPort"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;isPropertyOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isUsedBy -->
+
+    <owl:ObjectProperty rdf:about="&kern;isUsedBy">
+        <rdfs:comment xml:lang="en">Information can be used by System</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Information"/>
+        <rdfs:range rdf:resource="&kern;System"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;isPropertyOf"/>
+        <owl:inverseOf rdf:resource="&kern;uses"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#keepsTrackOfTime -->
+
+    <owl:ObjectProperty rdf:about="&kern;keepsTrackOfTime">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <owl:versionInfo rdf:datatype="&xsd;string">We do not organize the property under things like roboticians properties. Only one kind of viewpoint is modelled.</owl:versionInfo>
+        <rdfs:comment xml:lang="en">This property expresses the fact that every hardware do need some way to provide a clock to its included software in order for it to live. This clock relies on the time of the physical object it lives in.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Clock"/>
+        <rdfs:range rdf:resource="&kern;Time"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#managesFileSystem -->
+
+    <owl:ObjectProperty rdf:about="&kern;managesFileSystem">
+        <rdfs:comment xml:lang="en">An operating system manages (update, write, read, ...) the file system and the information stored within.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;FileSystem"/>
+        <rdfs:domain rdf:resource="&kern;OperatingSystem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#models -->
+
+    <owl:ObjectProperty rdf:about="&kern;models">
+        <rdfs:comment xml:lang="en">This propertty expresses the fact that a system can model another one. It is what we do when, considering reality or a first layer of reality, we model it. What is said here is that reality IS a system and that each time we want to represent it we use a system description to do just that.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;System"/>
+        <rdfs:domain rdf:resource="&kern;System"/>
+        <owl:inverseOf rdf:resource="&kern;isModelledBy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#observes -->
+
+    <owl:ObjectProperty rdf:about="&kern;observes">
+        <rdfs:comment xml:lang="en">this property expresses the capability to extract information from a state.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Probe"/>
+        <rdfs:range rdf:resource="&kern;State"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#produces -->
+
+    <owl:ObjectProperty rdf:about="&kern;produces">
+        <rdfs:comment xml:lang="en">probes produce information thanks to observation of States</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Information"/>
+        <rdfs:domain rdf:resource="&kern;Probe"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#receives -->
+
+    <owl:ObjectProperty rdf:about="&kern;receives">
+        <rdfs:comment xml:lang="en">Ports receive interactions</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Interaction"/>
+        <rdfs:domain rdf:resource="&kern;Port"/>
+        <owl:inverseOf rdf:resource="&kern;isReceivedOn"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#startsFrom -->
+
+    <owl:ObjectProperty rdf:about="&kern;startsFrom">
+        <rdfs:comment xml:lang="en">A finite state machine has an initial state</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;AutomataInitialState"/>
+        <rdfs:domain rdf:resource="&kern;StateMachine"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#systemSource -->
+
+    <owl:ObjectProperty rdf:about="&kern;systemSource">
+        <rdfs:comment xml:lang="en">This property allows the interaction to know which system triggered the interaction.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Interaction"/>
+        <rdfs:range rdf:resource="&kern;System"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#takesAsInput -->
+
+    <owl:ObjectProperty rdf:about="&kern;takesAsInput">
+        <rdfs:comment xml:lang="en">An evolution model has several inputs to process and evaluate which would be the corresponding evolution and destination state in a potential transition.
+
+We can list the general inputs:
+* InputState
+* InputPort Value
+
+Note that time dependency (InputTime) is taken into account through a specific relation: isAFunctionOfTime</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;EvolutionModel"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&kern;Port"/>
+                    <rdf:Description rdf:about="&kern;State"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#takesAsStochasticInput -->
+
+    <owl:ObjectProperty rdf:about="&kern;takesAsStochasticInput">
+        <rdfs:comment xml:lang="en">An evolution model which introduces distortion in the inputs (either in the information itself, either in the acquisition process of this information), obtains these inputs from a noise model or a biais model.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;StochasticEvolutionModel"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&kern;BiaisModel"/>
+                    <rdf:Description rdf:about="&kern;NoiseModel"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#to -->
+
+    <owl:ObjectProperty rdf:about="&kern;to">
+        <rdfs:comment xml:lang="en">A transition is defined by a start state and an end state</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;AutomataState"/>
+        <rdfs:domain rdf:resource="&kern;Transition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#transmitInformation -->
+
+    <owl:ObjectProperty rdf:about="&kern;transmitInformation">
+        <rdfs:comment xml:lang="en">An interaction allows transitting information.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Information"/>
+        <rdfs:domain rdf:resource="&kern;Interaction"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#triggers -->
+
+    <owl:ObjectProperty rdf:about="&kern;triggers">
+        <rdfs:comment xml:lang="en">it is the property that will allow the interaction  through its evolution model to change the interaction state. Its inverse propert is the &quot;impacts&quot; one. A warning here is necessary as the &quot;isTriggeredBy&quot; IS NOT the inverse of the this property.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Interaction"/>
+        <rdfs:domain rdf:resource="&kern;System"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#uses -->
+
+    <owl:ObjectProperty rdf:about="&kern;uses">
+        <rdfs:comment xml:lang="en">Systems needs information internally in order to work properly. At the most generic level, we do not need to know anything with respect to these internal information but in some cases this becomes an important point.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Information"/>
+        <rdfs:domain rdf:resource="&kern;System"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#wraps -->
+
+    <owl:ObjectProperty rdf:about="&kern;wraps">
+        <rdfs:comment xml:lang="en">This means that the wrapper translates the dataflow from / to the two linked objects</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Application"/>
+        <rdfs:domain rdf:resource="&kern;Wrapper"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isAtomic -->
+
+    <owl:DatatypeProperty rdf:about="&kern;isAtomic">
+        <rdfs:comment xml:lang="en">A system is either atomic or composed. An atomic system do not aggregates other systems.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;System"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;boolean">false</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;boolean">true</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isIn_Out -->
+
+    <owl:DatatypeProperty rdf:about="&kern;isIn_Out">
+        <rdfs:comment xml:lang="en">indicates the port type in terms of &quot;in&quot; or &quot;out&quot; or  &quot;in and out&quot; (in-out value) port.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Port"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">in</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">out</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#occursAfterDuration -->
+
+    <owl:DatatypeProperty rdf:about="&kern;occursAfterDuration">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">A time event occurs after a duration.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;TimeEvent"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Abstraction -->
+
+    <owl:Class rdf:about="&kern;Abstraction">
+        <rdfs:subClassOf rdf:resource="&kern;Information"/>
+        <owl:disjointWith rdf:resource="&kern;Data"/>
+        <rdfs:comment xml:lang="en">Abstraction means that there is no representation associated to what is discussed.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Action -->
+
+    <owl:Class rdf:about="&kern;Action">
+        <rdfs:subClassOf rdf:resource="&kern;Interaction"/>
+        <owl:disjointWith rdf:resource="&kern;DriverToHardwareInteraction"/>
+        <owl:disjointWith rdf:resource="&kern;HardwareToDriverInteraction"/>
+        <rdfs:comment xml:lang="en">An action is a specific kind of interaction. Actions are performed by agents that are either robots or humans. For robots, actions are performed on external world (Software to hardware interaction) or on internal components (Software to software interaction). For humans, actions are only physical interaction because the ontology does not describe psychology. Notice that it exists software to hardware interactions and software to software interactions that are not actions but only dataflow.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Activity -->
+
+    <owl:Class rdf:about="&kern;Activity">
+        <owl:disjointWith rdf:resource="&kern;Connector"/>
+        <owl:disjointWith rdf:resource="&kern;Event"/>
+        <owl:disjointWith rdf:resource="&kern;EvolutionModel"/>
+        <owl:disjointWith rdf:resource="&kern;Frame"/>
+        <owl:disjointWith rdf:resource="&kern;Information"/>
+        <owl:disjointWith rdf:resource="&kern;Interaction"/>
+        <owl:disjointWith rdf:resource="&kern;Port"/>
+        <owl:disjointWith rdf:resource="&kern;Probe"/>
+        <owl:disjointWith rdf:resource="&kern;Protocol"/>
+        <owl:disjointWith rdf:resource="&kern;System"/>
+        <owl:disjointWith rdf:resource="&kern;Time"/>
+        <owl:disjointWith rdf:resource="&kern;Transition"/>
+        <rdfs:comment xml:lang="en">An Activity is a set of Actions performed by an Agent.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Agent -->
+
+    <owl:Class rdf:about="&kern;Agent">
+        <rdfs:subClassOf rdf:resource="&kern;PhysicalObject"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;currentlyPerforms"/>
+                <owl:onClass rdf:resource="&kern;Action"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&kern;Environment"/>
+        <owl:disjointWith rdf:resource="&kern;Hardware"/>
+        <rdfs:comment xml:lang="en">A physical entity which is capable of action, such as robots, animals, human.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Algorithm -->
+
+    <owl:Class rdf:about="&kern;Algorithm">
+        <rdfs:subClassOf rdf:resource="&kern;EvolutionModel"/>
+        <rdfs:comment xml:lang="en">Effective method/function (mathematical-logical) for solving a problem expressed as a sequence of instructions.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AlgorithmicModule -->
+
+    <owl:Class rdf:about="&kern;AlgorithmicModule">
+        <rdfs:subClassOf rdf:resource="&kern;Software"/>
+        <owl:disjointWith rdf:resource="&kern;Application"/>
+        <owl:disjointWith rdf:resource="&kern;FileSystem"/>
+        <rdfs:comment xml:lang="en">It is an application that is not executable by itself but can be composed through tooling such as the PROTEUS main tool.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Application -->
+
+    <owl:Class rdf:about="&kern;Application">
+        <rdfs:subClassOf rdf:resource="&kern;Software"/>
+        <owl:disjointWith rdf:resource="&kern;FileSystem"/>
+        <rdfs:comment xml:lang="en">It is a computing entity able to work upon a hardware that provides computing capcabilities.
+It is a computing entity capable of providing life to another software. At the bottom level, it is the OS of the computer.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AtomicModel -->
+
+    <owl:Class rdf:about="&kern;AtomicModel">
+        <rdfs:subClassOf rdf:resource="&kern;AtomicSystem"/>
+        <rdfs:subClassOf rdf:resource="&kern;Model"/>
+        <owl:disjointWith rdf:resource="&kern;CompositeModel"/>
+        <rdfs:comment xml:lang="en">This concept groups the different theory that can be used to model one or more system. It is often linnked to a mathematical theory. It also defines the &quot;external&quot; model concept meaning that the model exist, is provided but is only known through its interface.
+An atomic system can models more than one system. It explains whay the properties models has cardinality more than one.
+An atomic model beiing an atomic system is thus disjoint from a composite model as it is a composite system.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AtomicSystem -->
+
+    <owl:Class rdf:about="&kern;AtomicSystem">
+        <rdfs:subClassOf rdf:resource="&kern;System"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;isAtomic"/>
+                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&kern;CompositeSystem"/>
+        <rdfs:comment xml:lang="en">An atomic system can&apos;t be split into parts.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AutomataEndState -->
+
+    <owl:Class rdf:about="&kern;AutomataEndState">
+        <rdfs:subClassOf rdf:resource="&kern;AutomataState"/>
+        <owl:disjointWith rdf:resource="&kern;AutomataInitialState"/>
+        <rdfs:comment xml:lang="en">End state of a Finite State Machine</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AutomataInitialState -->
+
+    <owl:Class rdf:about="&kern;AutomataInitialState">
+        <rdfs:subClassOf rdf:resource="&kern;AutomataState"/>
+        <rdfs:comment xml:lang="en">Initial state of a Finite State Machine</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AutomataState -->
+
+    <owl:Class rdf:about="&kern;AutomataState">
+        <rdfs:subClassOf rdf:resource="&kern;State"/>
+        <rdfs:comment xml:lang="en">The states of a Finite State Machine are a particular case of state</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#BiaisModel -->
+
+    <owl:Class rdf:about="&kern;BiaisModel">
+        <rdfs:subClassOf rdf:resource="&kern;Algorithm"/>
+        <owl:disjointWith rdf:resource="&kern;NoiseModel"/>
+        <owl:disjointWith rdf:resource="&kern;StateMachine"/>
+        <rdfs:comment xml:lang="en">Evolution Model that could be simulated by an algorithm that introduces a statistical distortion of the acquisition of the input data of the evolution process. This is a distortion because it is systematically different from the population parameter of interest. It can be caused by the selection process of the inputs or how these inputs were obtained.
+Thus, the inputs of the different states would be different from a non-distortion scenario, so the evolution would correspond to a stochastic model.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#ChangeEvent -->
+
+    <owl:Class rdf:about="&kern;ChangeEvent">
+        <rdfs:subClassOf rdf:resource="&kern;Event"/>
+        <owl:disjointWith rdf:resource="&kern;Interaction"/>
+        <rdfs:comment xml:lang="en">A condition becomes true.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Clock -->
+
+    <owl:Class rdf:about="&kern;Clock">
+        <rdfs:subClassOf rdf:resource="&kern;Hardware"/>
+        <rdfs:comment xml:lang="en">The timeframe of the world needs to be translated in something usable by other hardware. This the role of the clock concept.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#CompositeModel -->
+
+    <owl:Class rdf:about="&kern;CompositeModel">
+        <rdfs:subClassOf rdf:resource="&kern;CompositeSystem"/>
+        <rdfs:subClassOf rdf:resource="&kern;Model"/>
+        <rdfs:comment xml:lang="en">This concept groups the different theory that can be used to model one or more system. It is often linked to a mathematical theory. In the composite model case it is also often linked to architecture representation of this same system. E.g. the environment, reality of it, can be represented as the aggregation of terrain and buildings or it can be represented by the surface where only one system represent terrain AND buildings. As for any model (as is this ontology), the way to represent depends of its usage.
+An atomic model being an atomic system is thus disjoint from a composite model as it is a composite system.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#CompositeSystem -->
+
+    <owl:Class rdf:about="&kern;CompositeSystem">
+        <rdfs:subClassOf rdf:resource="&kern;System"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;isAtomic"/>
+                <owl:hasValue rdf:datatype="&xsd;boolean">false</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A composite system is an aggregate of systems</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Condition -->
+
+    <owl:Class rdf:about="&kern;Condition">
+        <rdfs:subClassOf rdf:resource="&kern;LogicalExpression"/>
+        <rdfs:comment xml:lang="en">It is a logical expression composed by two statemens A, B called  antecedent (A) and consequent (B)  typically symbolized as A --&gt; B  (typically read &quot;if A then B&quot;, &quot;when A then B&quot; or &quot;A implies B&quot;).
+
+A conditional expression is associated with an operation on two logical values, typically the values of two propositions, that produces a value of false just in case the first operand is true and the second operand is false.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Connector -->
+
+    <owl:Class rdf:about="&kern;Connector">
+        <owl:disjointWith rdf:resource="&kern;Event"/>
+        <owl:disjointWith rdf:resource="&kern;EvolutionModel"/>
+        <owl:disjointWith rdf:resource="&kern;Frame"/>
+        <owl:disjointWith rdf:resource="&kern;Information"/>
+        <owl:disjointWith rdf:resource="&kern;Interaction"/>
+        <owl:disjointWith rdf:resource="&kern;Port"/>
+        <owl:disjointWith rdf:resource="&kern;Probe"/>
+        <owl:disjointWith rdf:resource="&kern;Protocol"/>
+        <owl:disjointWith rdf:resource="&kern;System"/>
+        <owl:disjointWith rdf:resource="&kern;Time"/>
+        <owl:disjointWith rdf:resource="&kern;Transition"/>
+        <rdfs:comment xml:lang="en">A connector has a unique upstream port and a unique downstream port. It carries interactions.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Data -->
+
+    <owl:Class rdf:about="&kern;Data">
+        <rdfs:subClassOf rdf:resource="&kern;Information"/>
+        <rdfs:comment xml:lang="en">This type of information is directly interpretable by a machine, for example boolean, bits, etc.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#DeterministicEvolutionModel -->
+
+    <owl:Class rdf:about="&kern;DeterministicEvolutionModel">
+        <rdfs:subClassOf rdf:resource="&kern;EvolutionModel"/>
+        <owl:disjointWith rdf:resource="&kern;StochasticEvolutionModel"/>
+        <rdfs:comment xml:lang="en">intrinsic property of any object to evolve through time without random phenomenon intervention which would affect the course of the evolution.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Driver -->
+
+    <owl:Class rdf:about="&kern;Driver">
+        <rdfs:subClassOf rdf:resource="&kern;Application"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;triggers"/>
+                <owl:someValuesFrom rdf:resource="&kern;DriverToHardwareInteraction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&kern;OperatingSystem"/>
+        <owl:disjointWith rdf:resource="&kern;SoftwareProbe"/>
+        <owl:disjointWith rdf:resource="&kern;Wrapper"/>
+        <rdfs:comment xml:lang="en">It is an application which controls the corresponding hardware. The DeviceSystem of a platform like a RoboticSystem, will be composed of theHardware components and the corresponding software driver components. The hardware considered must have some computing abilities in order to allow the driver to execute.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#DriverToHardwareInteraction -->
+
+    <owl:Class rdf:about="&kern;DriverToHardwareInteraction">
+        <rdfs:subClassOf rdf:resource="&kern;Interaction"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;impacts"/>
+                <owl:allValuesFrom rdf:resource="&kern;Hardware"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&kern;HardwareToDriverInteraction"/>
+        <rdfs:comment xml:lang="en">Interaction from Drivers (ActuatorDriver, CommunicationDriver, PowerDriver, SensorDriver) to their corresponding hardware(ActuatorHardware, CommunicationHardware, PowerHardware, SensorHardware).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Environment -->
+
+    <owl:Class rdf:about="&kern;Environment">
+        <rdfs:subClassOf rdf:resource="&kern;CompositeSystem"/>
+        <rdfs:subClassOf rdf:resource="&kern;PhysicalObject"/>
+        <owl:disjointWith rdf:resource="&kern;Hardware"/>
+        <rdfs:comment xml:lang="en">This environment groups everything that exist. Nothing is outside and everything lives in it. An alias for environment could be Universe or World in an ontologic meaning. This is the highest possible &quot;container&quot; for the physical objects to exist.
+Considering the scenario to be represented using this concept it expresses also the boundary we imagine for the problem. As an example, for a mobile on ground robot there is no need to represent anything concerning water.
+
+The difference between physical objects and THE environment is that the PhysicalInteraction are part only of the latter and propagated into it.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Event -->
+
+    <owl:Class rdf:about="&kern;Event">
+        <owl:disjointWith rdf:resource="&kern;EvolutionModel"/>
+        <owl:disjointWith rdf:resource="&kern;Frame"/>
+        <owl:disjointWith rdf:resource="&kern;Information"/>
+        <owl:disjointWith rdf:resource="&kern;Port"/>
+        <owl:disjointWith rdf:resource="&kern;Probe"/>
+        <owl:disjointWith rdf:resource="&kern;Protocol"/>
+        <owl:disjointWith rdf:resource="&kern;System"/>
+        <owl:disjointWith rdf:resource="&kern;Time"/>
+        <owl:disjointWith rdf:resource="&kern;Transition"/>
+        <rdfs:comment xml:lang="en">Entails the transition from origin State to a destination State in a StateMachine. Sub classes are consistent with UML definition.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#EvolutionModel -->
+
+    <owl:Class rdf:about="&kern;EvolutionModel">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;isAFunctionOfTime"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&kern;Frame"/>
+        <owl:disjointWith rdf:resource="&kern;Information"/>
+        <owl:disjointWith rdf:resource="&kern;Interaction"/>
+        <owl:disjointWith rdf:resource="&kern;Port"/>
+        <owl:disjointWith rdf:resource="&kern;Probe"/>
+        <owl:disjointWith rdf:resource="&kern;Protocol"/>
+        <owl:disjointWith rdf:resource="&kern;Time"/>
+        <owl:disjointWith rdf:resource="&kern;Transition"/>
+        <owl:versionInfo rdf:datatype="&xsd;string">TODO: EvolutionModel not disjoint with System</owl:versionInfo>
+        <rdfs:comment xml:lang="en">The evolution model is what allows interactions, components and missions to live through a state trajectory either in a discrete or in a continuous form depending on the type of law used. Here evolution model means the intrinsic property of any object to evolve through time.
+
+An evolution model has some several inputs to process to achieve a state transition:
+* InputState
+* InputTime
+* InputPort Value
+
+Depending on the presence of noise or biais in the model, we can classify the EvolutionModel in:
+* DeterministicEvolutionModel (without noise nor biais)
+* StochasticEvolutionModel (with noiser or/and biais)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Expression -->
+
+    <owl:Class rdf:about="&kern;Expression">
+        <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
+        <rdfs:comment xml:lang="en">All different types of mathematical and computer science expressions. Composition of symbols.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#FSMActivity -->
+
+    <owl:Class rdf:about="&kern;FSMActivity">
+        <rdfs:subClassOf rdf:resource="&kern;Activity"/>
+        <rdfs:comment xml:lang="en">A Finite State Machine Activity is an Activity linked to an AutomateState which is implemented by means of Algorithms.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#FileSystem -->
+
+    <owl:Class rdf:about="&kern;FileSystem">
+        <rdfs:subClassOf rdf:resource="&kern;Software"/>
+        <rdfs:comment xml:lang="en">A file system is a mean to organize data expected to be retained after a program terminates by providing procedures to store, retrieve and update data, as well as manage the available space on the device(s) which contain it. A file system organizes data in an efficient manner and is tuned to the specific characteristics of the device. There is usually a tight coupling between the operating system and the file system.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Frame -->
+
+    <owl:Class rdf:about="&kern;Frame">
+        <owl:disjointWith rdf:resource="&kern;Information"/>
+        <owl:disjointWith rdf:resource="&kern;Interaction"/>
+        <owl:disjointWith rdf:resource="&kern;Port"/>
+        <owl:disjointWith rdf:resource="&kern;Probe"/>
+        <owl:disjointWith rdf:resource="&kern;Protocol"/>
+        <owl:disjointWith rdf:resource="&kern;System"/>
+        <owl:disjointWith rdf:resource="&kern;Time"/>
+        <owl:disjointWith rdf:resource="&kern;Transition"/>
+        <rdfs:comment xml:lang="en">This class instantiates the abstract capability to link points in space. Space can be any dimension needed. This property can be constrained when the class is linked to others. As an example, physical object will use 3D coordinate systems using euclidean representation or 4D if using an einsteinen representation.
+It is through this class that space will have an associated metric.
+Attention must be focused on the fact there is an essential difference between the referential that expresses the fundamental property of object to be referenced and reference system that are the capability to manipulate referential (cartesian, circular, spherical, whatever). It means that there is only one referential associated to the environment and each of the physical objects it includes and there are many ways to manipulate them through reference systems.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Hardware -->
+
+    <owl:Class rdf:about="&kern;Hardware">
+        <rdfs:subClassOf rdf:resource="&kern;PhysicalObject"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;triggers"/>
+                <owl:someValuesFrom rdf:resource="&kern;HardwareToDriverInteraction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">The hardware characteritics is to be man made. It means that when built, from human perspective, it had a goal. Can be changed because of its use. Such a hardware is supposed to have computing abilities if it is associated to some software.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#HardwareToDriverInteraction -->
+
+    <owl:Class rdf:about="&kern;HardwareToDriverInteraction">
+        <rdfs:subClassOf rdf:resource="&kern;Interaction"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;impacts"/>
+                <owl:allValuesFrom rdf:resource="&kern;Driver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Interaction from Hardware (ActuatorHardware, CommunicationHardware, PowerHardware, SensorHardware) to their corresponding Drivers (ActuatorDriver, CommunicationDriver, PowerDriver, SensorDriver)). For instance, return of information coming from the sensor hardware to be managed by the software part of the platform.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Human -->
+
+    <owl:Class rdf:about="&kern;Human">
+        <rdfs:subClassOf rdf:resource="&kern;Agent"/>
+        <rdfs:subClassOf rdf:resource="&kern;AtomicSystem"/>
+        <rdfs:isDefinedBy rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rIcwFloGUQdeMlsOWYLFB2w</rdfs:isDefinedBy>
+        <rdfs:seeAlso rdf:datatype="&xsd;string">openCyc: HomoSapiens</rdfs:seeAlso>
+        <rdfs:comment xml:lang="en">A human moves in waterbodies, over ground and over water surface (swiming). He or she pilots robots.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Information -->
+
+    <owl:Class rdf:about="&kern;Information">
+        <owl:disjointWith rdf:resource="&kern;Interaction"/>
+        <owl:disjointWith rdf:resource="&kern;Port"/>
+        <owl:disjointWith rdf:resource="&kern;Protocol"/>
+        <owl:disjointWith rdf:resource="&kern;Time"/>
+        <owl:disjointWith rdf:resource="&kern;Transition"/>
+        <owl:versionInfo rdf:datatype="&xsd;string">TODO: probe and system are not disjoints from information (error in proteus.owl)</owl:versionInfo>
+        <rdfs:comment xml:lang="en">Sequence or set of symbols that record or transmit a message or the abstract meaning of an entity. Information can be classified in Data or Abstraction entities.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#InterAgentCommunication -->
+
+    <owl:Class rdf:about="&kern;InterAgentCommunication">
+        <rdfs:subClassOf rdf:resource="&kern;Interaction"/>
+        <rdfs:comment xml:lang="en">For multi-robot and human-robot systems agents have to communicate in order to fulfill the mission.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Interaction -->
+
+    <owl:Class rdf:about="&kern;Interaction">
+        <owl:disjointWith rdf:resource="&kern;Port"/>
+        <owl:disjointWith rdf:resource="&kern;Probe"/>
+        <owl:disjointWith rdf:resource="&kern;Protocol"/>
+        <owl:disjointWith rdf:resource="&kern;System"/>
+        <owl:disjointWith rdf:resource="&kern;Time"/>
+        <owl:disjointWith rdf:resource="&kern;TimeEvent"/>
+        <owl:disjointWith rdf:resource="&kern;Transition"/>
+        <rdfs:comment xml:lang="en">abstract concept used to describe interactions between parts of an architecture. It is represented as a class because of the meta modeling approach and the fact that it will also support an evolution model.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#LogicalExpression -->
+
+    <owl:Class rdf:about="&kern;LogicalExpression">
+        <rdfs:subClassOf rdf:resource="&kern;Expression"/>
+        <owl:disjointWith rdf:resource="&kern;State"/>
+        <rdfs:comment xml:lang="en">Two or more arithmetic expressions connected by a relational operator indicating whether an expression is greater than, equal to, or less than the other, or connected by a logical variable, logical constant (true or false), or logical operator.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Model -->
+
+    <owl:Class rdf:about="&kern;Model">
+        <rdfs:subClassOf rdf:resource="&kern;System"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;models"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Concept introduced in order to recognise when system is reality and when it is a model of this reality. It groups the Atomic and Composite Models.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#NoiseModel -->
+
+    <owl:Class rdf:about="&kern;NoiseModel">
+        <rdfs:subClassOf rdf:resource="&kern;Algorithm"/>
+        <owl:disjointWith rdf:resource="&kern;StateMachine"/>
+        <rdfs:comment xml:lang="en">Evolution Model that could be simulated by an algorithm that introduces entropy or some random distortion in the extrinsec or intrinsec data flow of a system or interaction. Thus, the inputs of the different states would be different from a non-distortion scenario, so the evolution would correspond to a stochastic model.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#OperatingSystem -->
+
+    <owl:Class rdf:about="&kern;OperatingSystem">
+        <rdfs:subClassOf rdf:resource="&kern;Application"/>
+        <owl:disjointWith rdf:resource="&kern;SoftwareProbe"/>
+        <owl:disjointWith rdf:resource="&kern;Wrapper"/>
+        <rdfs:comment xml:lang="en">An operating system (OS) is a set of programs that manages computer hardware resources, and provides common services for application software and file management. The operating system is the most important type of system software in a computer system. Without an operating system, a user cannot run an application program on their computer, unless the application program is self booting.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#PhysicalObject -->
+
+    <owl:Class rdf:about="&kern;PhysicalObject">
+        <rdfs:subClassOf rdf:resource="&kern;System"/>
+        <owl:disjointWith rdf:resource="&kern;Software"/>
+        <rdfs:isDefinedBy rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rvVj27ZwpEbGdrcN5Y29ycA</rdfs:isDefinedBy>
+        <rdfs:seeAlso rdf:datatype="&xsd;string">openCyc: PartiallyTangible</rdfs:seeAlso>
+        <rdfs:comment xml:lang="en">The Physical object is something that can be characterised through a border and considered as a whole with respect to the problem considered. As an example, a robot is an object when considering the mobile robotic problem. 
+It exist in itself in the environment and is submitted to laws (called here Physical interactions) that govern every aspects of its life in the environment. As an exemple the dynamic law of movement.
+A physical object, defining a border, can contain many other physical objects or no object. The decomposition is useful when the user needs to represent a frame supporting inside or at its surface other objects or when a robot is a multi part thing (articulated robot).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Port -->
+
+    <owl:Class rdf:about="&kern;Port">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;isIn_Out"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&kern;Probe"/>
+        <owl:disjointWith rdf:resource="&kern;Protocol"/>
+        <owl:disjointWith rdf:resource="&kern;System"/>
+        <owl:disjointWith rdf:resource="&kern;Time"/>
+        <owl:disjointWith rdf:resource="&kern;Transition"/>
+        <rdfs:comment xml:lang="en">&quot;in&quot; and/or &quot;out&quot; point of a componant, where data, events and so on pass through</rdfs:comment>
+        <rdfs:comment xml:lang="fr">point d&apos;entrée et/ou de sortie d&apos;un composant, par où peuvent transiter des données, des événements, etc.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Probe -->
+
+    <owl:Class rdf:about="&kern;Probe">
+        <owl:disjointWith rdf:resource="&kern;Protocol"/>
+        <owl:disjointWith rdf:resource="&kern;Time"/>
+        <owl:disjointWith rdf:resource="&kern;Transition"/>
+        <owl:versionInfo rdf:datatype="&xsd;string">TODO: information and system are not disjoints from probe (error in proteus.owl)</owl:versionInfo>
+        <rdfs:comment xml:lang="en">Probe is the concept that provides the capability to create information from the observation of states and thus of a system due to the fact systems have states.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Protocol -->
+
+    <owl:Class rdf:about="&kern;Protocol">
+        <owl:disjointWith rdf:resource="&kern;System"/>
+        <owl:disjointWith rdf:resource="&kern;Time"/>
+        <owl:disjointWith rdf:resource="&kern;Transition"/>
+        <rdfs:comment xml:lang="en">A protocol is a convention on the way systems interact. It then constrains the information exchanges which implements an interaction.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#RequestEvent -->
+
+    <owl:Class rdf:about="&kern;RequestEvent">
+        <rdfs:subClassOf rdf:resource="&kern;Event"/>
+        <rdfs:subClassOf rdf:resource="&kern;Interaction"/>
+        <rdfs:comment xml:lang="en">Receipt of a call for an operation.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#SignalEvent -->
+
+    <owl:Class rdf:about="&kern;SignalEvent">
+        <rdfs:subClassOf rdf:resource="&kern;Event"/>
+        <rdfs:subClassOf rdf:resource="&kern;Interaction"/>
+        <rdfs:comment xml:lang="en">Receipt of an explicit realtime signal.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Software -->
+
+    <owl:Class rdf:about="&kern;Software">
+        <rdfs:subClassOf rdf:resource="&kern;System"/>
+        <rdfs:comment xml:lang="en">This type of system represents Software, it can be an application, a framework, a library or an object  file....To actually execute it must be associated to some hardware.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#SoftwareProbe -->
+
+    <owl:Class rdf:about="&kern;SoftwareProbe">
+        <rdfs:subClassOf rdf:resource="&kern;Application"/>
+        <rdfs:subClassOf rdf:resource="&kern;Probe"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;observes"/>
+                <owl:allValuesFrom rdf:resource="&kern;AutomataState"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;produces"/>
+                <owl:allValuesFrom rdf:resource="&kern;Data"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&kern;Wrapper"/>
+        <rdfs:comment xml:lang="en">The software probe is able to provide data and not only information on the specific automata states</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#State -->
+
+    <owl:Class rdf:about="&kern;State">
+        <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;hasStateVariables"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">The state expresses the fact that at some point in time (discrete or continuous expression of it), we will tag an object (interaction as well as component) and identify that it was as observed at this point. The fact that we need to &quot;measure&quot; values to identify the state of the object is of no concern here.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#StateMachine -->
+
+    <owl:Class rdf:about="&kern;StateMachine">
+        <rdfs:subClassOf rdf:resource="&kern;Algorithm"/>
+        <rdfs:comment xml:lang="en">A discrete type of a evolution model is a finite state machine (FSM). A FSM has a sfinet set of states, a finite set of transitions between these states, an initial state and an end state. Activities can be associated to states.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#StochasticEvolutionModel -->
+
+    <owl:Class rdf:about="&kern;StochasticEvolutionModel">
+        <rdfs:subClassOf rdf:resource="&kern;EvolutionModel"/>
+        <rdfs:comment xml:lang="en">intrinsic property of any object to evolve through time with some random phenomenon intervention which would affect the course of the evolution. The Noise Model and Biais Model would be considered as these random phenomenon that will be taken as inputs to determine the new transition in the stochastic evolution.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#System -->
+
+    <owl:Class rdf:about="&kern;System">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;isAtomic"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&kern;Time"/>
+        <owl:disjointWith rdf:resource="&kern;Transition"/>
+        <owl:versionInfo rdf:datatype="&xsd;string">TODO:  information, EvolutionModel and probe are not disjoints from system (error in proteus.owl)</owl:versionInfo>
+        <rdfs:comment xml:lang="en">The system class is an abstract representation of system. It allows the user to create drawings, schematic, etc, with boxes and links to maps after either on the hardware as well as on the software. Every system can be animated through an evolution model allowing it to have a trajectory.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Time -->
+
+    <owl:Class rdf:about="&kern;Time">
+        <owl:disjointWith rdf:resource="&kern;Transition"/>
+        <rdfs:comment xml:lang="en">Time here is the concept that allows to represent evolution. It is not said how it is represented but that it exists. It allows evolution model to have a meaning.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#TimeEvent -->
+
+    <owl:Class rdf:about="&kern;TimeEvent">
+        <rdfs:subClassOf rdf:resource="&kern;Event"/>
+        <rdfs:comment xml:lang="en">Passage of a designated period of time from some time point. This kind of event occurs a duration after another event.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Transition -->
+
+    <owl:Class rdf:about="&kern;Transition">
+        <rdfs:comment xml:lang="en">A transition is a part of the description of a finite state machine. It describes the possible transition between 2 states of a FSM. a transition is triggered by an event.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Wrapper -->
+
+    <owl:Class rdf:about="&kern;Wrapper">
+        <rdfs:subClassOf rdf:resource="&kern;Application"/>
+        <rdfs:comment xml:lang="en">It is an “application” that allows another “application” to use  “External algorithmic modules”. Part of its ports are linked to the application using the module and part of them are link to the module used. The goal of this application is thus to translate the dataflow from one application to the other</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <rdf:Description rdf:about="&owl;Thing">
+        <rdfs:comment xml:lang="en">root of the whole PROTEUS ontology</rdfs:comment>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.5.1928) http://owlapi.sourceforge.net -->
+

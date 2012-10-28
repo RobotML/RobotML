@@ -1,0 +1,39 @@
+digraph Proteus {
+	label="Some physical objects and surfaces"
+	fontname="Arial-Bold";
+	labeljust=left;
+	fontsize=20;
+	fontcolor=red;
+	bgcolor=lightgrey;
+	subgraph cluster0 {
+		label="Physical objects"
+		fontname="Arial-Bold";
+		labeljust=left;
+		fontsize=15;
+		fontcolor=black;
+		bgcolor=white;
+		"Building" [label="envi:Building", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.3333", height="0.5"];
+		"Atmosphere" [label="envi:Atmosphere", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.5903", height="0.5"];
+		"Planet" [label="envi:Planet", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.1111", height="0.5"];
+		"Waterbody" [label="envi:Waterbody", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.5069", height="0.5"];
+		{rank=same;"Building";"Atmosphere";"Waterbody"}
+	}
+	subgraph cluster1 {
+		label="Surfaces"
+		fontname="Arial-Bold";
+		labeljust=left;
+		fontsize=15;
+		fontcolor=black;
+		bgcolor=white;
+		"LandSurface" [label="envi:LandSurface", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.6389", height="0.5"];
+		"Floor" [label="envi:Floor", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.0625", height="0.5"];
+		"Stairs" [label="envi:Stairs", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.0625", height="0.5"];
+	}
+	"Building" -> "LandSurface" [style=filled, label="envi:isLocatedOver*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"Building" -> "Floor" [style=filled, label="envi:hasFloor*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"Building" -> "Stairs" [style=filled, label="envi:hasStairs*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"Planet" -> "LandSurface" [style=filled, label="envi:hasLandSurface*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"Planet" -> "Atmosphere" [style=filled, label="envi:hasAtmosphere*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"Planet" -> "Waterbody" [style=filled, label="envi:hasWaterbody*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"Planet" -> "Building" [style=filled, label="envi:hasBuilding*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+}

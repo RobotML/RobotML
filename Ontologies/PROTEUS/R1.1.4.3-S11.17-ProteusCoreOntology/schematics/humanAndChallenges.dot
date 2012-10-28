@@ -1,0 +1,31 @@
+digraph experiment {
+	bgcolor=lightgrey;
+	label="Problems, Challenges and humans"
+	labeljust=left;
+	fontname="Arial-Bold";
+	fontsize=24;
+	fontcolor=red;
+	"AtomicSystem" [label="kern:AtomicSystem", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.75", height="0.5"];
+	"System" [label="kern:System", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.1736", height="0.5"];
+	subgraph cluster0 {
+		label="Humans";
+		fontsize=15;
+		fontcolor=black;
+		bgcolor=white;
+		labeljust=left;
+		"Human" [label="kern:Human", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.1458", height="0.5"];
+		"Challenger" [label="expe:Challenger", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.4444", height="0.5"];
+		"SolutionProvider" [label="expe:SolutionProvider", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.9444", height="0.5"];
+		"ChallengeProvider" [label="expe:ChallengeProvider", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="2.0556", height="0.5"];
+		"ProblemProvider" [label="expe:ProblemProvider", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.9514", height="0.5"];
+		{rank=same;"Challenger";"ChallengeProvider";}
+	}
+	"AtomicSystem" -> "Human" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"SolutionProvider" -> "Challenger" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"Challenger" -> "ChallengeProvider" [label="expe:usesChallengeEnvironment", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"ProblemProvider" -> "ChallengeProvider" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"ChallengeProvider" -> "Challenger" [label="expe:providesChallengeEnvironmentTo*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"System" -> "AtomicSystem" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"Human" -> "SolutionProvider" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"Human" -> "ProblemProvider" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+}

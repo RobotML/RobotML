@@ -1,0 +1,70 @@
+digraph Proteus {
+	node [label="\N"];
+	bgcolor=lightgrey;
+	label="Objects Of the World";
+	labeljust=right;
+	fontname="Arial-Bold";
+	fontsize=20;
+	fontcolor=red;
+	"System" [label="kern:System", shape=box, color=red, style=filled, fontcolor="0.0,0.0,0.0", width="1.2222", height="0.5"];
+	subgraph cluster0 {
+		bgcolor=white;
+		label="Physical objects";
+		labeljust=left;
+		fontname="Arial-Bold";
+		fontsize=15;
+		fontcolor=black;
+		"Clock" [label="kern:Clock", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.1111", height="0.5"];
+		"Hardware" [label="kern:Hardware", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.3958", height="0.5"];
+		"PhysicalObject" [label="kern:PhysicalObject", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.8125", height="0.5"];
+		"Environment" [label="kern:Environment", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.6944", height="0.5"];
+		"Human" [label="kern:Human", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.2292", height="0.5"];
+		"Agent" [label="kern:Agent", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.1181", height="0.5"];
+		{rank=same;"PhysicalObject";"Environment";}
+	}
+	subgraph cluster1 {
+		bgcolor=white;
+		label="Position in the world";
+		labeljust=left;
+		fontname="Arial-Bold";
+		fontsize=15;
+		fontcolor=black;
+		"Time" [label="kern:Time", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.0556", height="0.5"];
+		"Frame" [label="kern:Frame", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.4792", height="0.5"];
+	}
+	subgraph cluster2 {
+		bgcolor=white;
+		label="Computing objects";
+		labeljust=left;
+		fontname="Arial-Bold";
+		fontsize=15;
+		fontcolor=black;
+		"Software" [label="kern:Software", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.3403", height="0.5"];
+		"Application" [label="kern:Application", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+		"FileSystem" [label="kern:FileSystem", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+		"OperatingSystem" [label="kern:OperatingSystem", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="2.0069", height="0.5"];
+	}
+	"Hardware" -> "Clock" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"Clock" -> "Time" [label="kern:keepsTrackOfTime", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"System" -> "Software" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"Software" -> "Hardware" [label="kern:executesOn*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"Frame" -> "Time" [label="kern:definesSpaceTime*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"Frame" -> "Frame" [label="kern:isDefinedIn*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"System" -> "PhysicalObject" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"PhysicalObject" -> "Frame" [label="kern:isPositionedIn*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"PhysicalObject" -> "Environment" [label="kern:evolvesIn*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"PhysicalObject" -> "Frame" [label="kern:definesAFrame", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"Agent" -> "Human" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"PhysicalObject" -> "Agent" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"Agent" -> "PhysicalObject" [label="robo:movesIn*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"Time" -> "Frame" [label="kern:belongsTo*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"PhysicalObject" -> "Environment" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"Environment" -> "PhysicalObject" [label="kern:impactsEvolution", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"Environment" -> "Frame" [label="kern:hasFrame", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"PhysicalObject" -> "Hardware" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"Hardware" -> "Clock" [label="kern:hasAClock*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"Software" -> "Application" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"Software" -> "FileSystem" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"Software" -> "OperatingSystem" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"OperatingSystem" -> "FileSystem" [label="kern:managesFileSystem", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+}

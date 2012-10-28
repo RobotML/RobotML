@@ -1,0 +1,289 @@
+﻿<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY protege "http://protege.stanford.edu/plugins/owl/protege#" >
+    <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
+    <!ENTITY swrla "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#" >
+    <!ENTITY sqwrl "http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#" >
+    <!ENTITY robo "http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#" >
+    <!ENTITY kern "http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#" >
+    <!ENTITY syst "http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#" >
+    <!ENTITY miss "http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#" >
+    <!ENTITY envi "http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#" >
+    <!ENTITY info "http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#" >
+    <!ENTITY indo "http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#" >
+]>
+
+
+<rdf:RDF xmlns:indo="http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#"
+     xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl"
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+     xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+     xmlns:robo="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#"
+     xmlns:kern="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
+     xmlns:info="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#"
+     xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:envi="http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#"
+     xmlns:syst="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:miss="http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
+    <owl:Ontology rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl">
+        <owl:versionInfo rdf:datatype="&xsd;string">version delivered 1.0</owl:versionInfo>
+        <rdfs:comment xml:lang="en">Formalization of Serge Deltour&apos;s R3.1.1-R1.3-IndoorRobotChallengeDescription.odt</rdfs:comment>
+        <rdfs:comment xml:lang="en">This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
+        <rdfs:comment xml:lang="en">Version for Protégé 4.2 beta.</rdfs:comment>
+        <owl:imports rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl"/>
+        <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/3.3/swrla.owl"/>
+        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Proteus.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#CommunicationDriver -->
+
+    <owl:Class rdf:about="&syst;CommunicationDriver"/>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#CommunicationHardware -->
+
+    <owl:Class rdf:about="&syst;CommunicationHardware"/>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#CommunicationSystem -->
+
+    <owl:Class rdf:about="&syst;CommunicationSystem"/>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ControlStationSystem -->
+
+    <owl:Class rdf:about="&syst;ControlStationSystem"/>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ControlSystem -->
+
+    <owl:Class rdf:about="&syst;ControlSystem"/>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticSystem -->
+
+    <owl:Class rdf:about="&syst;RoboticSystem"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#ControlStationToEmbeddedController -->
+
+    <owl:NamedIndividual rdf:about="&indo;ControlStationToEmbeddedController">
+        <rdf:type rdf:resource="&miss;CommunicationOfIntents"/>
+        <rdfs:comment xml:lang="en">From Figure 2 page 5</rdfs:comment>
+        <kern:impacts rdf:resource="&indo;EmbeddedCommunicationHardware"/>
+        <kern:impacts rdf:resource="&indo;EmbeddedController"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#EmbeddedCommunicationDriver -->
+
+    <owl:NamedIndividual rdf:about="&indo;EmbeddedCommunicationDriver">
+        <rdf:type rdf:resource="&syst;CommunicationDriver"/>
+        <kern:isAtomic rdf:datatype="&xsd;boolean">true</kern:isAtomic>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#EmbeddedCommunicationHardware -->
+
+    <owl:NamedIndividual rdf:about="&indo;EmbeddedCommunicationHardware">
+        <rdf:type rdf:resource="&syst;CommunicationHardware"/>
+        <kern:isAtomic rdf:datatype="&xsd;boolean">true</kern:isAtomic>
+        <kern:triggers rdf:resource="&indo;EmbeddedRx"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#EmbeddedCommunicationSystem -->
+
+    <owl:NamedIndividual rdf:about="&indo;EmbeddedCommunicationSystem">
+        <rdf:type rdf:resource="&syst;CommunicationSystem"/>
+        <kern:isAtomic rdf:datatype="&xsd;boolean">false</kern:isAtomic>
+        <kern:aggregates rdf:resource="&indo;EmbeddedCommunicationDriver"/>
+        <kern:aggregates rdf:resource="&indo;EmbeddedCommunicationHardware"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#EmbeddedController -->
+
+    <owl:NamedIndividual rdf:about="&indo;EmbeddedController">
+        <rdf:type rdf:resource="&syst;RoboticSystem"/>
+        <kern:isAtomic rdf:datatype="&xsd;boolean">false</kern:isAtomic>
+        <rdfs:comment xml:lang="en">From figure 2 page 5</rdfs:comment>
+        <kern:triggers rdf:resource="&indo;EmbeddedControllerToControlStation"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#EmbeddedControllerToControlStation -->
+
+    <owl:NamedIndividual rdf:about="&indo;EmbeddedControllerToControlStation">
+        <rdf:type rdf:resource="&miss;CommunicationOfBeliefs"/>
+        <kern:impacts rdf:resource="&indo;TabletPCCommunicationHardware"/>
+        <kern:impacts rdf:resource="&indo;TabletPCRemoteControlStation"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#EmbeddedRx -->
+
+    <owl:NamedIndividual rdf:about="&indo;EmbeddedRx">
+        <rdf:type rdf:resource="&kern;HardwareToDriverInteraction"/>
+        <kern:impacts rdf:resource="&indo;EmbeddedCommunicationDriver"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#EmbeddedTx -->
+
+    <owl:NamedIndividual rdf:about="&indo;EmbeddedTx">
+        <rdf:type rdf:resource="&kern;DriverToHardwareInteraction"/>
+        <kern:impacts rdf:resource="&indo;EmbeddedCommunicationHardware"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#RemoteControlSupervisor -->
+
+    <owl:NamedIndividual rdf:about="&indo;RemoteControlSupervisor">
+        <rdf:type rdf:resource="&syst;ControlSystem"/>
+        <kern:isAtomic rdf:datatype="&xsd;boolean">true</kern:isAtomic>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#TabletPCCommunicationDriver -->
+
+    <owl:NamedIndividual rdf:about="&indo;TabletPCCommunicationDriver">
+        <rdf:type rdf:resource="&syst;CommunicationDriver"/>
+        <kern:isAtomic rdf:datatype="&xsd;boolean">true</kern:isAtomic>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#TabletPCCommunicationHardware -->
+
+    <owl:NamedIndividual rdf:about="&indo;TabletPCCommunicationHardware">
+        <rdf:type rdf:resource="&syst;CommunicationHardware"/>
+        <kern:isAtomic rdf:datatype="&xsd;boolean">true</kern:isAtomic>
+        <kern:triggers rdf:resource="&indo;TabletPCRx"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#TabletPCCommunicationSystem -->
+
+    <owl:NamedIndividual rdf:about="&indo;TabletPCCommunicationSystem">
+        <rdf:type rdf:resource="&syst;CommunicationSystem"/>
+        <kern:isAtomic rdf:datatype="&xsd;boolean">false</kern:isAtomic>
+        <rdfs:comment xml:lang="en">From figure 2 page 5</rdfs:comment>
+        <kern:aggregates rdf:resource="&indo;TabletPCCommunicationDriver"/>
+        <kern:aggregates rdf:resource="&indo;TabletPCCommunicationHardware"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#TabletPCRemoteControlStation -->
+
+    <owl:NamedIndividual rdf:about="&indo;TabletPCRemoteControlStation">
+        <rdf:type rdf:resource="&kern;CompositeSystem"/>
+        <rdf:type rdf:resource="&syst;ControlStationSystem"/>
+        <kern:isAtomic rdf:datatype="&xsd;boolean">false</kern:isAtomic>
+        <rdfs:comment xml:lang="en">From figure2 page 5</rdfs:comment>
+        <kern:triggers rdf:resource="&indo;ControlStationToEmbeddedController"/>
+        <kern:aggregates rdf:resource="&indo;RemoteControlSupervisor"/>
+        <kern:aggregates rdf:resource="&indo;TabletPCCommunicationSystem"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#TabletPCRx -->
+
+    <owl:NamedIndividual rdf:about="&indo;TabletPCRx">
+        <rdf:type rdf:resource="&kern;HardwareToDriverInteraction"/>
+        <kern:impacts rdf:resource="&indo;TabletPCCommunicationDriver"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#TabletPCTx -->
+
+    <owl:NamedIndividual rdf:about="&indo;TabletPCTx">
+        <rdf:type rdf:resource="&kern;DriverToHardwareInteraction"/>
+        <kern:impacts rdf:resource="&indo;TabletPCCommunicationHardware"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.5.1928) http://owlapi.sourceforge.net -->
+

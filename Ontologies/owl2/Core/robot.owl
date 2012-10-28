@@ -1,0 +1,451 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY protege "http://protege.stanford.edu/plugins/owl/protege#" >
+    <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
+    <!ENTITY swrla "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#" >
+    <!ENTITY sqwrl "http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#" >
+    <!ENTITY robo "http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#" >
+    <!ENTITY kern "http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#" >
+    <!ENTITY syst "http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#" >
+    <!ENTITY envi "http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#" >
+    <!ENTITY info "http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#"
+     xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl"
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+     xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+     xmlns:robo="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#"
+     xmlns:kern="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
+     xmlns:info="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#"
+     xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:envi="http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#"
+     xmlns:syst="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
+    <owl:Ontology rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl">
+        <owl:versionInfo rdf:datatype="&xsd;string">version delivered 1.0</owl:versionInfo>
+        <rdfs:comment xml:lang="en">FaCT++ does not work with this ontology. HermiT shall be used for reasoning.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This ontology describes the robot field providing their classification</rdfs:comment>
+        <rdfs:comment xml:lang="en">This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1  licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
+        <owl:imports rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl"/>
+        <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/3.3/swrla.owl"/>
+        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl"/>
+        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl"/>
+        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#movesIn -->
+
+    <owl:ObjectProperty rdf:about="&robo;movesIn">
+        <rdfs:comment xml:lang="en">Some robots are merged in the air or in the water</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Agent"/>
+        <rdfs:range rdf:resource="&kern;PhysicalObject"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;evolvesIn"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#movesInAtmosphere -->
+
+    <owl:ObjectProperty rdf:about="&robo;movesInAtmosphere">
+        <rdfs:comment xml:lang="en">UAV move in atmosphere.</rdfs:comment>
+        <rdfs:range rdf:resource="&envi;Atmosphere"/>
+        <rdfs:subPropertyOf rdf:resource="&robo;movesIn"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&robo;AirVehicle"/>
+                    <rdf:Description rdf:about="&robo;HybridVehicle"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#movesInWaterbody -->
+
+    <owl:ObjectProperty rdf:about="&robo;movesInWaterbody">
+        <rdfs:comment xml:lang="en">UUV and diving humans move in waterbodies.</rdfs:comment>
+        <rdfs:range rdf:resource="&envi;Waterbody"/>
+        <rdfs:subPropertyOf rdf:resource="&robo;movesIn"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&kern;Human"/>
+                    <rdf:Description rdf:about="&robo;HybridVehicle"/>
+                    <rdf:Description rdf:about="&robo;UnderwaterVehicle"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#movesOver -->
+
+    <owl:ObjectProperty rdf:about="&robo;movesOver">
+        <rdfs:comment xml:lang="en">Some robots moves over a ground surface or a surface of a waterbody</rdfs:comment>
+        <rdfs:range rdf:resource="&envi;Surface"/>
+        <rdfs:domain rdf:resource="&kern;Agent"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;evolvesIn"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#movesOverGround -->
+
+    <owl:ObjectProperty rdf:about="&robo;movesOverGround">
+        <rdfs:comment xml:lang="en">UGV and humans move over stairs, floor and land surface.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&robo;movesOver"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&kern;Human"/>
+                    <rdf:Description rdf:about="&robo;GroundVehicle"/>
+                    <rdf:Description rdf:about="&robo;HybridVehicle"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&envi;Floor"/>
+                    <rdf:Description rdf:about="&envi;LandSurface"/>
+                    <rdf:Description rdf:about="&envi;Stairs"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#movesOverWatersurface -->
+
+    <owl:ObjectProperty rdf:about="&robo;movesOverWatersurface">
+        <rdfs:comment xml:lang="en">USV and swiming humans move over watersurface</rdfs:comment>
+        <rdfs:range rdf:resource="&envi;WaterSurface"/>
+        <rdfs:subPropertyOf rdf:resource="&robo;movesOver"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&kern;Human"/>
+                    <rdf:Description rdf:about="&robo;HybridVehicle"/>
+                    <rdf:Description rdf:about="&robo;SurfaceVehicle"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#pilots -->
+
+    <owl:ObjectProperty rdf:about="&robo;pilots">
+        <rdfs:comment xml:lang="en">A human agent can drive a robotic Vehicle (AV, GV, SV, UV), this action will be achieved on these piloted systems.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Human"/>
+        <rdfs:range rdf:resource="&robo;PilotedSystem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#uses -->
+
+    <owl:ObjectProperty rdf:about="&robo;uses">
+        <rdfs:comment xml:lang="en">A robot needs on or multiple robotic middleware to makes all the application of its robotic systems works.</rdfs:comment>
+        <rdfs:domain rdf:resource="&robo;Robot"/>
+        <rdfs:range rdf:resource="&syst;RoboticMiddleware"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Environment -->
+
+    <rdf:Description rdf:about="&kern;Environment">
+        <owl:disjointWith rdf:resource="&robo;GlobalPlatform"/>
+        <owl:disjointWith rdf:resource="&robo;Robot"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Human -->
+
+    <rdf:Description rdf:about="&kern;Human">
+        <owl:disjointWith rdf:resource="&robo;Robot"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#AirVehicle -->
+
+    <owl:Class rdf:about="&robo;AirVehicle">
+        <rdfs:subClassOf rdf:resource="&robo;Robot"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&robo;movesIn"/>
+                <owl:someValuesFrom rdf:resource="&envi;Atmosphere"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&robo;GroundVehicle"/>
+        <owl:disjointWith rdf:resource="&robo;HybridVehicle"/>
+        <owl:disjointWith rdf:resource="&robo;SurfaceVehicle"/>
+        <owl:disjointWith rdf:resource="&robo;UnderwaterVehicle"/>
+        <rdfs:comment xml:lang="en">Air Vehicle. Only the vehicles with either fixed (like planes) either turning (like helicopters) sails will be considered in this definition.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#Car-likeVehicle -->
+
+    <owl:Class rdf:about="&robo;Car-likeVehicle">
+        <rdfs:subClassOf rdf:resource="&robo;GroundVehicle"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:onClass rdf:resource="&syst;WheelSystem"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:onClass rdf:resource="&syst;EngineSystem"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&robo;DifferentialVehicle"/>
+        <rdfs:comment xml:lang="en">Wheeled robot with a driven mechanism based in axes of wheels (Front-wheel Driven, Rear-wheel Driven or Four-wheel Driven). Normally composed of 4 wheels. It requires an additional steering motion mechanism to turn the vehicle.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#DifferentialVehicle -->
+
+    <owl:Class rdf:about="&robo;DifferentialVehicle">
+        <rdfs:subClassOf rdf:resource="&robo;GroundVehicle"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:onClass rdf:resource="&syst;EngineSystem"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A differential vehicle is a mobile robot whose movement is based on two separately driven velocities of the rotational mechanism of both sides of the robot body. It can thus change its direction by varying the relative rate of rotation and hence does not require an additional steering motion. We can find wheeled differential vehicles or caterpillar vehicles.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#GlobalPlatform -->
+
+    <owl:Class rdf:about="&robo;GlobalPlatform">
+        <rdfs:subClassOf rdf:resource="&kern;CompositeSystem"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&kern;aggregates"/>
+                        <owl:someValuesFrom rdf:resource="&kern;Human"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&kern;aggregates"/>
+                        <owl:someValuesFrom rdf:resource="&robo;Robot"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&kern;aggregates"/>
+                        <owl:someValuesFrom rdf:resource="&syst;ControlStationSystem"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&robo;Robot"/>
+        <owl:disjointWith rdf:resource="&syst;RoboticSystem"/>
+        <rdfs:comment xml:lang="en">This composite system groups at least three other ones:
+- one robot
+- one control station
+- one human agent
+
+Its definition is:
+System of systems is a collection of task-oriented or dedicated systems that pool their resources and capabilities together to obtain a new, more complex, &apos;meta-system&apos; which offers more functionality and performance than simply the sum of the constituent systems. Currently, systems of systems is a critical research discipline for which frames of reference, thought processes, quantitative analysis, tools, and design methods are incomplete. The methodology for defining, abstracting, modelling, and analysing system of systems problems is typically referred to as system of systems engineering. 
+A “robotic system of systems” is a specialised system of systems where there is at least one “robot”, one “control station” and one “human agent”.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#GroundVehicle -->
+
+    <owl:Class rdf:about="&robo;GroundVehicle">
+        <rdfs:subClassOf rdf:resource="&robo;Robot"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&robo;movesOver"/>
+                <owl:someValuesFrom rdf:resource="&envi;Surface"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&robo;HybridVehicle"/>
+        <owl:disjointWith rdf:resource="&robo;SurfaceVehicle"/>
+        <owl:disjointWith rdf:resource="&robo;UnderwaterVehicle"/>
+        <rdfs:comment xml:lang="en">Ground Vehicle. Only the wheeled and caterpillar robotic vehicles will be considered.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#HybridVehicle -->
+
+    <owl:Class rdf:about="&robo;HybridVehicle">
+        <rdfs:subClassOf rdf:resource="&robo;Robot"/>
+        <owl:disjointWith rdf:resource="&robo;SurfaceVehicle"/>
+        <owl:disjointWith rdf:resource="&robo;UnderwaterVehicle"/>
+        <rdfs:comment xml:lang="en">Type of vehicle which can move in different environments. Like the Amphibious vehicles.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#PilotedSystem -->
+
+    <owl:Class rdf:about="&robo;PilotedSystem">
+        <rdfs:subClassOf rdf:resource="&robo;Robot"/>
+        <owl:disjointWith rdf:resource="&robo;UnmannedSystem"/>
+        <rdfs:comment xml:lang="en">To represent the piloted robots category and specificities. A car, A piloted aircraft are robots.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#Robot -->
+
+    <owl:Class rdf:about="&robo;Robot">
+        <rdfs:subClassOf rdf:resource="&kern;Agent"/>
+        <rdfs:subClassOf rdf:resource="&kern;CompositeSystem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;hasProbe"/>
+                <owl:allValuesFrom rdf:resource="&syst;SensorSystem"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:allValuesFrom rdf:resource="&syst;RoboticSystem"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;hasProbe"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&syst;RoboticSystem"/>
+        <rdfs:comment xml:lang="en">A robot is not only an agent but also a composite system. It aggregates only robotic systems. These systems, for their software application parts uses one or multiple robotic middlewares.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#SurfaceVehicle -->
+
+    <owl:Class rdf:about="&robo;SurfaceVehicle">
+        <rdfs:subClassOf rdf:resource="&robo;Robot"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&robo;movesOver"/>
+                <owl:someValuesFrom rdf:resource="&envi;WaterSurface"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&robo;UnderwaterVehicle"/>
+        <rdfs:comment xml:lang="en">Water Vehicle that remains in the surface of the water (boats or ships-like vehicles).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#UnderwaterVehicle -->
+
+    <owl:Class rdf:about="&robo;UnderwaterVehicle">
+        <rdfs:subClassOf rdf:resource="&robo;Robot"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&robo;movesIn"/>
+                <owl:someValuesFrom rdf:resource="&envi;Waterbody"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Vehicles that can move under the water, fish-like or submarine-like vehicles.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#UnmannedSystem -->
+
+    <owl:Class rdf:about="&robo;UnmannedSystem">
+        <rdfs:subClassOf rdf:resource="&robo;Robot"/>
+        <rdfs:comment xml:lang="en">To represent the unmanned robots category and specificities. Unmanned only means nobody control the robot from inside (no p&quot;pilot&quot; onboard).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticSystem -->
+
+    <rdf:Description rdf:about="&syst;RoboticSystem"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.5.1928) http://owlapi.sourceforge.net -->
+

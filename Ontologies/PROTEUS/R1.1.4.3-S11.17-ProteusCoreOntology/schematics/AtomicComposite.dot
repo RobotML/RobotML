@@ -1,0 +1,20 @@
+digraph Proteus {
+	compound=true
+	subgraph cluster0 {
+	label="Composite/Atomic";
+	labeljust="left";
+	style=filled;
+	color=lightgrey;
+	fontsize=30;
+	fontcolor=red;
+	fontname="Times-Roman-Bold";
+	node [label="\N"];
+	graph [bb="0,0,306,124"];
+	"System" [label="kern:System", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0",width="1.2222", height="0.5"];
+	"AtomicSystem" [label="kern:AtomicSystem", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0",width="1.8125", height="0.5"];
+	"CompositeSystem" [label="kern:CompositeSystem", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0",width="2.0833", height="0.5"];
+	"System" -> "AtomicSystem" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"System" -> "CompositeSystem" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"CompositeSystem" -> "System" [label="kern:aggregates*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+}
+}

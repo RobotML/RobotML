@@ -1,0 +1,52 @@
+digraph Proteus {
+	bgcolor=lightgrey;
+	label="System evolution"
+	labeljust=left;
+	fontname="Arial-Bold";
+	fontsize=24;
+	fontcolor=red;
+	subgraph cluster0 {
+		label="Time machine";
+		fontsize=15;
+		fontcolor=black;
+		bgcolor=white;
+		labeljust=left;
+		"EvolutionModel" [label="kern:EvolutionModel", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.9514", height="0.5"];
+		"Time" [label="kern:Time", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.0556", height="0.5"];
+	}
+	subgraph cluster1 {
+		label="State set"
+		fontsize=15;
+		fontcolor=black;
+		bgcolor=white;
+		labeljust=left;
+		"State" [label="kern:State", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.0278", height="0.5"];
+		"Data" [label="kern:Data", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width=1, height="0.5"];
+		"Information" [label="kern:Information", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.5833", height="0.5"];
+		rankdir=TB;
+	}
+	subgraph cluster2 {
+		label="System description";
+		fontsize=15;
+		bgcolor=white;
+		fontcolor=black;
+		labeljust=left;
+		"System" [label="kern:System", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.2222", height="0.5"];
+		"Interaction" [label="kern:Interaction", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.4792", height="0.5"];
+	}
+	"EvolutionModel" -> "State" [style=filled, label="kern:takesAsInput*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0",  lp="65.763,238"];
+	"EvolutionModel" -> "State" [style=filled, label="kern:givesNextState*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", lp="244.26,238"];
+	"EvolutionModel" -> "Time" [style=filled, label="kern:isAFunctionOfTime", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0",  lp="370.76,326"];
+	"EvolutionModel" -> "System" [style=filled, label="kern:animates*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", lp="495.26,326"];
+	"EvolutionModel" -> "Interaction" [style=filled, label="kern:animates*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", lp="836.26,282"];
+	"State" -> "Data" [style=filled, label="kern:hasStateVariables*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0",lp="449.26,62"];
+	"Interaction" -> "System" [style=filled, label="kern:systemSource*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0",  lp="582.76,238"];
+	"Interaction" -> "Information" [style=filled, label="kern:transmitInformation*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", lp="615.26,150"];
+	"Interaction" -> "System" [style=filled, label="kern:impacts*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0",  lp="689.26,238"];
+	/*"Interaction" -> "EvolutionModel" [style=filled, label="kern:isAnimatedByEvolutionModel*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", lp="998.26,282"];*/
+	"Interaction" -> "State" [style=filled, label="kern:hasState*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0",  lp="493.76,150"];
+	"System" -> "Interaction" [style=filled, label="kern:triggers*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", lp="474.76,238"];
+	/*"System" -> "EvolutionModel" [style=filled, label="kern:isAnimatedByEvolutionModel*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0",  lp="650.26,326"];*/
+	"System" -> "State" [style=filled, label="kern:hasState*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", lp="434.76,194"];
+	"Information" -> "Data" [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back,  lp="535.76,62"];
+}

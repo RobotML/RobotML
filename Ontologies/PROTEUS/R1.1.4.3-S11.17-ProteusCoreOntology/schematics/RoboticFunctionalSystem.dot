@@ -1,0 +1,16 @@
+digraph Proteus {
+	node [label="\N"];
+	graph [bb="0,0,1155,396"];
+	"http://www.owl-ontologies.com/kernel.owl#Hardware" [label="kern:Hardware", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="525,288", width="1.67", height="0.50"];
+	"http://www.owl-ontologies.com/Systems#RoboticFunctionalSystem" [label="syst:RoboticFunctionalSystem", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="278,198", width="3.06", height="0.50"];
+	"http://www.owl-ontologies.com/kernel.owl#System" [label="kern:System", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="927,378", width="1.42", height="0.50"];
+	"http://www.owl-ontologies.com/kernel.owl#Software" [label="kern:Software", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="539,108", width="1.58", height="0.50"];
+	"http://www.owl-ontologies.com/kernel.owl#Model" [label="kern:Model", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="233,288", width="2.72", height="0.50"];
+	"http://www.owl-ontologies.com/kernel.owl#Hardware" -> "http://www.owl-ontologies.com/Systems#RoboticFunctionalSystem" [style=filled, label="syst:isHarwareImplementationOf*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,388,205 522,270 519,258 514,243 503,234 486,220 443,212 398,206", lp="632,243"];
+	"http://www.owl-ontologies.com/kernel.owl#System" -> "http://www.owl-ontologies.com/kernel.owl#Model" [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,876,371 866,370 745,355 477,319 331,301", lp="650,333"];
+	"http://www.owl-ontologies.com/kernel.owl#Model" -> "http://www.owl-ontologies.com/Systems#RoboticFunctionalSystem" [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,229,270 229,260 229,251 230,242 234,234 237,227 242,221 248,216", lp="243,243"];
+	"http://www.owl-ontologies.com/Systems#RoboticFunctionalSystem" -> "http://www.owl-ontologies.com/kernel.owl#Hardware" [style=filled, label="syst:hasImplementingHardware*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,465,281 270,216 266,228 264,242 272,252 278,259 382,272 455,280", lp="388,243"];
+	"http://www.owl-ontologies.com/Systems#RoboticFunctionalSystem" -> "http://www.owl-ontologies.com/kernel.owl#Software" [style=filled, label="syst:hasImplementingSoftware*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,536,126 388,192 441,187 496,178 517,162 525,155 530,145 533,136", lp="638,153"];
+	"http://www.owl-ontologies.com/kernel.owl#System" -> "http://www.owl-ontologies.com/kernel.owl#Software" [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,930,360 932,350 938,307 941,228 900,180 861,135 688,117 596,111", lp="939,243"];
+	"http://www.owl-ontologies.com/kernel.owl#Software" -> "http://www.owl-ontologies.com/Systems#RoboticFunctionalSystem" [style=filled, label="syst:isSoftwareImplementationOf*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,270,180 482,114 405,121 278,136 272,144 266,151 266,161 267,170", lp="391,153"];
+}

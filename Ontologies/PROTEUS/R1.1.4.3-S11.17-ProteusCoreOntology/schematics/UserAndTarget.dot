@@ -1,0 +1,17 @@
+digraph Proteus {
+	label="Target generation"
+	fontname="Arial-Bold";
+	labeljust=left;
+	fontsize=20;
+	fontcolor=red;
+	bgcolor=white;
+	"RobotMLPlatformUser" [label="expe:RobotMLPlatformUser", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="2.4444", height="0.5"];
+	"Activity" [label="kern:Activity", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.2014", height="0.5"];
+	"GenerateSimulator" [label="expe:GenerateSimulator", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="2.0625", height="0.5"];
+	"ModellingActivity" [label="expe:ModellingActivity", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="2.0069", height="0.5"];
+	"EditModel" [label="expe:EditModel", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.4444", height="0.5"];
+	"RobotMLPlatformUser" -> "ModellingActivity" [label="kern:hasActivity*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"ModellingActivity" -> "GenerateSimulator" [label="kern:hasAction*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"ModellingActivity" -> "EditModel" [label="kern:hasAction*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"Activity" -> "ModellingActivity" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+}

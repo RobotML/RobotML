@@ -1,0 +1,1543 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY protege "http://protege.stanford.edu/plugins/owl/protege#" >
+    <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
+    <!ENTITY swrla "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#" >
+    <!ENTITY sqwrl "http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#" >
+    <!ENTITY kern "http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#" >
+    <!ENTITY simu "http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#" >
+    <!ENTITY info "http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#"
+     xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl"
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+     xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+     xmlns:simu="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#"
+     xmlns:kern="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
+     xmlns:info="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#"
+     xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
+    <owl:Ontology rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl">
+        <owl:versionInfo rdf:datatype="&xsd;string">version delivered 1.0</owl:versionInfo>
+        <rdfs:comment xml:lang="en">FaCT++ does not work on this ontology. HermiT shall be used for reasoning.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The simulation ontology evolved from the specifications developped by experts in the field of robotics, simulation and modelling tooling. It uses the kernel and informations ontologies as its sole resources.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1  licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
+        <rdfs:comment xml:lang="en">Version for Protégé 4.2 beta.</rdfs:comment>
+        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl"/>
+        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates -->
+
+    <rdf:Description rdf:about="&kern;aggregates">
+        <rdfs:comment xml:lang="en">indicates that systems will be aggregated in order to create a composite system</rdfs:comment>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#produces -->
+
+    <rdf:Description rdf:about="&kern;produces">
+        <rdfs:range rdf:resource="&kern;Information"/>
+        <rdfs:domain rdf:resource="&kern;Probe"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#Partitions -->
+
+    <owl:ObjectProperty rdf:about="&simu;Partitions">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">This property states that the Time domain function partitions the set obtained thanks to the Time domain property when it is feasable.</rdfs:comment>
+        <rdfs:range rdf:resource="&simu;PropertyTimeDomain"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#canBeAssociatedTo -->
+
+    <owl:ObjectProperty rdf:about="&simu;canBeAssociatedTo">
+        <rdfs:comment xml:lang="en">Some of the simulated objects with a correspondance to a physical object in the real world can be associated to a 3D representation in the simulation.</rdfs:comment>
+        <rdfs:range rdf:resource="&info;Object3D"/>
+        <rdfs:domain rdf:resource="&simu;SimulatedSystem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#canBeDeployedIn -->
+
+    <owl:ObjectProperty rdf:about="&simu;canBeDeployedIn">
+        <rdfs:comment xml:lang="en">This property, sub property of Models, specifies that any system can be deployed in a simulator.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;System"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;isModelledBy"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&simu;HardwareSimulator"/>
+                    <rdf:Description rdf:about="&simu;HybridSimulator"/>
+                    <rdf:Description rdf:about="&simu;SoftwareSimulator"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#creates -->
+
+    <owl:ObjectProperty rdf:about="&simu;creates">
+        <rdfs:comment xml:lang="en">this property expresses the fact some object can create information</rdfs:comment>
+        <rdfs:range rdf:resource="&simu;Simulation"/>
+        <rdfs:domain rdf:resource="&simu;SimulatorEvolutionModel"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasGlobalStateTransitionFunction -->
+
+    <owl:ObjectProperty rdf:about="&simu;hasGlobalStateTransitionFunction">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:subPropertyOf rdf:resource="&info;hasFunction"/>
+        <rdfs:domain rdf:resource="&simu;SystemSpecification"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasInput -->
+
+    <owl:ObjectProperty rdf:about="&simu;hasInput">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">Set used as source of the system specification</rdfs:comment>
+        <rdfs:range rdf:resource="&info;Set"/>
+        <rdfs:subPropertyOf rdf:resource="&info;hasSet"/>
+        <rdfs:domain rdf:resource="&simu;SystemSpecification"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasInputSegments -->
+
+    <owl:ObjectProperty rdf:about="&simu;hasInputSegments">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment rdf:datatype="&xsd;string">this property explicits the fact that there is a need to specify the time segments used over the input set. The input set is the set as defined by the property simulation:hasInputSet. The set of input segment is called OMEGA.</rdfs:comment>
+        <rdfs:domain rdf:resource="&simu;SystemSpecification"/>
+        <rdfs:subPropertyOf rdf:resource="&simu;hasInput"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasInputSet -->
+
+    <owl:ObjectProperty rdf:about="&simu;hasInputSet">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">The set of the different inputs</rdfs:comment>
+        <rdfs:range rdf:resource="&info;Set"/>
+        <rdfs:domain rdf:resource="&simu;SystemSpecification"/>
+        <rdfs:subPropertyOf rdf:resource="&simu;hasInput"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasModelReferenceSet -->
+
+    <owl:ObjectProperty rdf:about="&simu;hasModelReferenceSet">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:subPropertyOf rdf:resource="&info;hasSet"/>
+        <rdfs:domain rdf:resource="&simu;SystemSpecification"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasOutput -->
+
+    <owl:ObjectProperty rdf:about="&simu;hasOutput">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">Set used as destination of the system specification</rdfs:comment>
+        <rdfs:range rdf:resource="&info;Set"/>
+        <rdfs:subPropertyOf rdf:resource="&info;hasSet"/>
+        <rdfs:domain rdf:resource="&simu;SystemSpecification"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasOutputFunction -->
+
+    <owl:ObjectProperty rdf:about="&simu;hasOutputFunction">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:subPropertyOf rdf:resource="&info;hasFunction"/>
+        <rdfs:domain rdf:resource="&simu;SystemSpecification"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasOutputSet -->
+
+    <owl:ObjectProperty rdf:about="&simu;hasOutputSet">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">the set used as output</rdfs:comment>
+        <rdfs:range rdf:resource="&info;Set"/>
+        <rdfs:domain rdf:resource="&simu;SystemSpecification"/>
+        <rdfs:subPropertyOf rdf:resource="&simu;hasOutput"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasPointOfViewConfiguration -->
+
+    <owl:ObjectProperty rdf:about="&simu;hasPointOfViewConfiguration">
+        <rdfs:comment xml:lang="en">null</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+        <rdfs:domain rdf:resource="&simu;SimulatedSceneCamera"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&info;Orientation3DEuler"/>
+                    <rdf:Description rdf:about="&info;Position3DCartesian"/>
+                    <rdf:Description rdf:about="&simu;Frustum"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasRelation -->
+
+    <owl:ObjectProperty rdf:about="&simu;hasRelation">
+        <rdfs:comment xml:lang="en">A relation establishes a property that the elements of a set have to respect. This property allows to &quot;structure&quot; the set associated.</rdfs:comment>
+        <rdfs:range rdf:resource="&info;Relation"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasSimulationOrientation -->
+
+    <owl:ObjectProperty rdf:about="&simu;hasSimulationOrientation">
+        <rdfs:range rdf:resource="&info;Orientation"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+        <rdfs:domain rdf:resource="&simu;SimulatedPhysicalSystem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasSimulationPosition -->
+
+    <owl:ObjectProperty rdf:about="&simu;hasSimulationPosition">
+        <rdfs:range rdf:resource="&info;Position"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+        <rdfs:domain rdf:resource="&simu;SimulatedPhysicalSystem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasStateSet -->
+
+    <owl:ObjectProperty rdf:about="&simu;hasStateSet">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:subPropertyOf rdf:resource="&info;hasSet"/>
+        <rdfs:domain rdf:resource="&simu;SystemSpecification"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasSystemSet -->
+
+    <owl:ObjectProperty rdf:about="&simu;hasSystemSet">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:subPropertyOf rdf:resource="&info;hasSet"/>
+        <rdfs:range rdf:resource="&simu;SystemSet"/>
+        <rdfs:domain rdf:resource="&simu;SystemSpecification"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasTimeBase -->
+
+    <owl:ObjectProperty rdf:about="&simu;hasTimeBase">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This property explains that any of the specification must be associated to at least one time base</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&info;hasSet"/>
+        <rdfs:domain rdf:resource="&simu;SystemSpecification"/>
+        <rdfs:range rdf:resource="&simu;TimeBase"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasTimeDomainFunctionSet -->
+
+    <owl:ObjectProperty rdf:about="&simu;hasTimeDomainFunctionSet">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&info;Set"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasTimeFactor -->
+
+    <owl:ObjectProperty rdf:about="&simu;hasTimeFactor">
+        <rdfs:comment xml:lang="en">A render engine or a physics engine have a time factor.</rdfs:comment>
+        <rdfs:range rdf:resource="&info;Real"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+        <rdfs:domain rdf:resource="&simu;GraphicsEngine"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasTimeSample -->
+
+    <owl:ObjectProperty rdf:about="&simu;hasTimeSample">
+        <rdfs:comment xml:lang="en">Time base has time samples.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Time"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+        <rdfs:domain rdf:resource="&simu;TimeBase"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasTimeStep -->
+
+    <owl:ObjectProperty rdf:about="&simu;hasTimeStep">
+        <rdfs:comment xml:lang="en">An render engine or a physics engine have a time step.</rdfs:comment>
+        <rdfs:range rdf:resource="&info;Real"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+        <rdfs:domain rdf:resource="&simu;GraphicsEngine"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasTrajectory -->
+
+    <owl:ObjectProperty rdf:about="&simu;hasTrajectory">
+        <rdfs:comment xml:lang="en"></rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+        <rdfs:domain rdf:resource="&simu;SimulatedPedestrian"/>
+        <rdfs:range rdf:resource="&simu;Trajectory"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasValues -->
+
+    <owl:ObjectProperty rdf:about="&simu;hasValues">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">This property only indicates that a set is composed of values that are instances of the info:data</rdfs:comment>
+        <rdfs:domain rdf:resource="&info;Set"/>
+        <rdfs:range rdf:resource="&kern;Data"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#isAssociatedTo -->
+
+    <owl:ObjectProperty rdf:about="&simu;isAssociatedTo">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">This association states that a relation is between elements of the same set and thus associated to only one set.</rdfs:comment>
+        <rdfs:range rdf:resource="&info;Set"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#isComposedOfAlgorithmicModule -->
+
+    <owl:ObjectProperty rdf:about="&simu;isComposedOfAlgorithmicModule">
+        <rdfs:comment xml:lang="en">this property allows an application to use module meaning also libraires and thus linking external libraries to application and to its inherited simulator</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;AlgorithmicModule"/>
+        <rdfs:domain rdf:resource="&kern;Application"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;isComposedOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#isComposedOfAlgorithms -->
+
+    <owl:ObjectProperty rdf:about="&simu;isComposedOfAlgorithms">
+        <rdfs:comment xml:lang="en">Global illumination is a general name for a group of algorithms used in 3D computer graphics.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Algorithm"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;isComposedOf"/>
+        <rdfs:domain rdf:resource="&simu;Illumination"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#isComposedOfElements -->
+
+    <owl:ObjectProperty rdf:about="&simu;isComposedOfElements">
+        <rdfs:comment xml:lang="en">This trajectory is composed of trajectory elements which represent the keyframes along the path.</rdfs:comment>
+        <rdfs:range rdf:resource="&info;TrajectoryElement"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;isComposedOf"/>
+        <rdfs:domain rdf:resource="&simu;TrajectoryKeyFrames"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#isCreatedBy -->
+
+    <owl:ObjectProperty rdf:about="&simu;isCreatedBy">
+        <rdfs:comment xml:lang="en">This property allows to link Data to Probe</rdfs:comment>
+        <rdfs:domain rdf:resource="&simu;Simulation"/>
+        <rdfs:range rdf:resource="&simu;SimulatorEvolutionModel"/>
+        <owl:inverseOf rdf:resource="&simu;creates"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#isPartitionedBy -->
+
+    <owl:ObjectProperty rdf:about="&simu;isPartitionedBy">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:comment xml:lang="en">This property states that the set obtained through the Time domain property is partitionnedd by the time domain function.</rdfs:comment>
+        <rdfs:range rdf:resource="&info;Function"/>
+        <owl:inverseOf rdf:resource="&simu;Partitions"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#isRepresentedBy -->
+
+    <owl:ObjectProperty rdf:about="&simu;isRepresentedBy">
+        <rdfs:comment xml:lang="en">A 3D Object can be represented by several elements: meshes (one or several. e.g.: physical mesh and render mesh); texture mappings, object illumination ...</rdfs:comment>
+        <rdfs:domain rdf:resource="&info;Object3D"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&simu;Illumination"/>
+                    <rdf:Description rdf:about="&simu;Mesh"/>
+                    <rdf:Description rdf:about="&simu;Textures"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#isSampleOf -->
+
+    <owl:ObjectProperty rdf:about="&simu;isSampleOf">
+        <rdfs:comment xml:lang="en">Times are samples of time base.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Time"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;isPropertyOf"/>
+        <rdfs:range rdf:resource="&simu;TimeBase"/>
+        <owl:inverseOf rdf:resource="&simu;hasTimeSample"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#mayCollaborateWith -->
+
+    <owl:ObjectProperty rdf:about="&simu;mayCollaborateWith">
+        <rdfs:comment xml:lang="en">this property explains that a simulator can collaborate with another application. An application being a software, this application can also be a simulator.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Application"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#usesDiscreteTimeBase -->
+
+    <owl:ObjectProperty rdf:about="&simu;usesDiscreteTimeBase">
+        <rdfs:comment xml:lang="en">The engines in a 3D virtual world simulation use  a discrete time base to achieve the execution of the simulation.</rdfs:comment>
+        <rdfs:range rdf:resource="&simu;DiscreteTimeBase"/>
+        <rdfs:domain rdf:resource="&simu;GraphicsEngine"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#usesRenderSceneCamera -->
+
+    <owl:ObjectProperty rdf:about="&simu;usesRenderSceneCamera">
+        <rdfs:comment xml:lang="en">The render engine uses and manages the render camera of the scene. It controls the point of view of the 3D world.</rdfs:comment>
+        <rdfs:domain rdf:resource="&simu;RenderEngine"/>
+        <rdfs:range rdf:resource="&simu;SimulatedSceneCamera"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#withDeployementBecomes -->
+
+    <owl:ObjectProperty rdf:about="&simu;withDeployementBecomes">
+        <rdfs:comment xml:lang="en">expresses the fact that a Simulated system models specifically a system</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;System"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;isModelledBy"/>
+        <rdfs:range rdf:resource="&simu;SimulatedSystem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#Configuration -->
+
+    <owl:DatatypeProperty rdf:about="&simu;Configuration">
+        <rdfs:comment xml:lang="en">Configuration means to complete the simulator information in order to allow it to provide life to a system. At this step the configuration does not mean the configuration of the system to be simulated but information on the simulator itself, its distribution properties onto a hardware architecture, ...</rdfs:comment>
+        <rdfs:domain rdf:resource="&simu;SimulatorEvolutionModel"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#EnvironmentMeshes -->
+
+    <owl:DatatypeProperty rdf:about="&simu;EnvironmentMeshes">
+        <rdfs:comment xml:lang="en">PhysicsEngines use Meshes in order to represent many parts of the environment. This Data type is inherited of what can be found in the Data tree of the information ontology</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#dimension -->
+
+    <owl:DatatypeProperty rdf:about="&simu;dimension">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">number of set in the cross product</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#homogeneous -->
+
+    <owl:DatatypeProperty rdf:about="&simu;homogeneous">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">this homogeenous property indicates that sets composing the cross product are identical (useful to create Rn and In). False means it is not homogeneous.</rdfs:comment>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;boolean">false</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;boolean">true</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#manageDifferentialEquationAlgorithmicSoftwareModules -->
+
+    <owl:DatatypeProperty rdf:about="&simu;manageDifferentialEquationAlgorithmicSoftwareModules">
+        <rdfs:comment xml:lang="en">This property indicates that the software simulator is able to manage software modules  that are using the differential equation theory.</rdfs:comment>
+        <rdfs:domain rdf:resource="&simu;SoftwareSimulator"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;boolean">false</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;boolean">true</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#managePartialDerivativeEquationAlgorithmicSoftwareModules -->
+
+    <owl:DatatypeProperty rdf:about="&simu;managePartialDerivativeEquationAlgorithmicSoftwareModules">
+        <rdfs:comment xml:lang="en">this paramater indicates the capability of the software simulator to manipulate software Modules using the Derivative equation theory</rdfs:comment>
+        <rdfs:domain rdf:resource="&simu;SoftwareSimulator"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;boolean">false</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;boolean">true</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#AudioPacket -->
+
+    <rdf:Description rdf:about="&info;AudioPacket">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#CANFrame -->
+
+    <rdf:Description rdf:about="&info;CANFrame">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Constraint -->
+
+    <rdf:Description rdf:about="&info;Constraint">
+        <owl:disjointWith rdf:resource="&simu;PropertyTimeDomain"/>
+        <owl:disjointWith rdf:resource="&simu;Trajectory"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#CrossProduct -->
+
+    <rdf:Description rdf:about="&info;CrossProduct">
+        <owl:disjointWith rdf:resource="&simu;Frustum"/>
+        <owl:disjointWith rdf:resource="&simu;SystemSet"/>
+        <owl:disjointWith rdf:resource="&simu;TimeBase"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#GPS -->
+
+    <rdf:Description rdf:about="&info;GPS">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#I -->
+
+    <rdf:Description rdf:about="&info;I">
+        <owl:disjointWith rdf:resource="&simu;Frustum"/>
+        <owl:disjointWith rdf:resource="&simu;SystemSet"/>
+        <owl:disjointWith rdf:resource="&simu;TimeBase"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Image -->
+
+    <rdf:Description rdf:about="&info;Image">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#LaserScan -->
+
+    <rdf:Description rdf:about="&info;LaserScan">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Message -->
+
+    <rdf:Description rdf:about="&info;Message">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#MissionEvaluation -->
+
+    <rdf:Description rdf:about="&info;MissionEvaluation">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Object2D -->
+
+    <rdf:Description rdf:about="&info;Object2D">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Object3D -->
+
+    <rdf:Description rdf:about="&info;Object3D">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#OrderedSet -->
+
+    <rdf:Description rdf:about="&info;OrderedSet">
+        <owl:disjointWith rdf:resource="&simu;SystemSpecification"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Orientation2DAngle -->
+
+    <rdf:Description rdf:about="&info;Orientation2DAngle">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Orientation2DMatrix -->
+
+    <rdf:Description rdf:about="&info;Orientation2DMatrix">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Orientation3DEuler -->
+
+    <rdf:Description rdf:about="&info;Orientation3DEuler">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Orientation3DMatrix -->
+
+    <rdf:Description rdf:about="&info;Orientation3DMatrix">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Orientation3DQuaternion -->
+
+    <rdf:Description rdf:about="&info;Orientation3DQuaternion">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#PhysicalData -->
+
+    <rdf:Description rdf:about="&info;PhysicalData">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Position2DCartesian -->
+
+    <rdf:Description rdf:about="&info;Position2DCartesian">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Position2DPolar -->
+
+    <rdf:Description rdf:about="&info;Position2DPolar">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Position3DCartesian -->
+
+    <rdf:Description rdf:about="&info;Position3DCartesian">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Position3DCylindrical -->
+
+    <rdf:Description rdf:about="&info;Position3DCylindrical">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Position3DSpherical -->
+
+    <rdf:Description rdf:about="&info;Position3DSpherical">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Position6D -->
+
+    <rdf:Description rdf:about="&info;Position6D">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#R -->
+
+    <rdf:Description rdf:about="&info;R">
+        <owl:disjointWith rdf:resource="&simu;Frustum"/>
+        <owl:disjointWith rdf:resource="&simu;SystemSet"/>
+        <owl:disjointWith rdf:resource="&simu;TimeBase"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Referential -->
+
+    <rdf:Description rdf:about="&info;Referential">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Set -->
+
+    <rdf:Description rdf:about="&info;Set">
+        <rdfs:comment xml:lang="en">A collection of elements without repetition</rdfs:comment>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#StreamPacket -->
+
+    <rdf:Description rdf:about="&info;StreamPacket">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#StructuredData -->
+
+    <rdf:Description rdf:about="&info;StructuredData">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#TimeStampedData -->
+
+    <rdf:Description rdf:about="&info;TimeStampedData">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#TrajectoryElement -->
+
+    <rdf:Description rdf:about="&info;TrajectoryElement">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Translation2D -->
+
+    <rdf:Description rdf:about="&info;Translation2D">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Translation3D -->
+
+    <rdf:Description rdf:about="&info;Translation3D">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#UUID -->
+
+    <rdf:Description rdf:about="&info;UUID">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Waypoint2D -->
+
+    <rdf:Description rdf:about="&info;Waypoint2D">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Waypoint3D -->
+
+    <rdf:Description rdf:about="&info;Waypoint3D">
+        <owl:disjointWith rdf:resource="&simu;Simulation"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Algorithm -->
+
+    <rdf:Description rdf:about="&kern;Algorithm">
+        <owl:disjointWith rdf:resource="&simu;SimulatorEvolutionModel"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AlgorithmicModule -->
+
+    <rdf:Description rdf:about="&kern;AlgorithmicModule">
+        <owl:disjointWith rdf:resource="&simu;SoftwareSimulator"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AtomicModel -->
+
+    <rdf:Description rdf:about="&kern;AtomicModel">
+        <owl:disjointWith rdf:resource="&kern;Human"/>
+        <owl:disjointWith rdf:resource="&simu;AtomicAlgorithmicModule"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Clock -->
+
+    <rdf:Description rdf:about="&kern;Clock">
+        <owl:disjointWith rdf:resource="&simu;HardwareSimulator"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#CompositeModel -->
+
+    <rdf:Description rdf:about="&kern;CompositeModel">
+        <owl:disjointWith rdf:resource="&kern;Environment"/>
+        <owl:disjointWith rdf:resource="&simu;SoftwareLibrary"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#DeterministicEvolutionModel -->
+
+    <rdf:Description rdf:about="&kern;DeterministicEvolutionModel">
+        <owl:disjointWith rdf:resource="&simu;SimulatorEvolutionModel"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Driver -->
+
+    <rdf:Description rdf:about="&kern;Driver">
+        <owl:disjointWith rdf:resource="&simu;SoftwareSimulator"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Environment -->
+
+    <rdf:Description rdf:about="&kern;Environment">
+        <owl:disjointWith rdf:resource="&simu;HybridSimulator"/>
+        <owl:disjointWith rdf:resource="&simu;SoftwareLibrary"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Human -->
+
+    <rdf:Description rdf:about="&kern;Human">
+        <owl:disjointWith rdf:resource="&simu;AtomicAlgorithmicModule"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#SoftwareProbe -->
+
+    <rdf:Description rdf:about="&kern;SoftwareProbe">
+        <owl:disjointWith rdf:resource="&simu;SoftwareSimulator"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#StochasticEvolutionModel -->
+
+    <rdf:Description rdf:about="&kern;StochasticEvolutionModel">
+        <owl:disjointWith rdf:resource="&simu;SimulatorEvolutionModel"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Wrapper -->
+
+    <rdf:Description rdf:about="&kern;Wrapper">
+        <owl:disjointWith rdf:resource="&simu;SoftwareSimulator"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#AtomicAlgorithmicModule -->
+
+    <owl:Class rdf:about="&simu;AtomicAlgorithmicModule">
+        <rdfs:subClassOf rdf:resource="&kern;AlgorithmicModule"/>
+        <rdfs:subClassOf rdf:resource="&kern;AtomicSystem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;models"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&simu;SoftwareLibrary"/>
+        <rdfs:comment xml:lang="en">These software are elementary chunk of code compiled into something that can be either used by an application or can be grouped to produce an application.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#DifferentialEquationModel -->
+
+    <owl:Class rdf:about="&simu;DifferentialEquationModel">
+        <rdfs:subClassOf rdf:resource="&kern;AtomicModel"/>
+        <owl:disjointWith rdf:resource="&simu;PartialDerivativeModel"/>
+        <rdfs:comment xml:lang="en">this model of a system uses differential equations to describe how the modelled system evolve with time WITHOUT considering how time is evolving.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#DifferentialEquationSoftwareModule -->
+
+    <owl:Class rdf:about="&simu;DifferentialEquationSoftwareModule">
+        <rdfs:subClassOf rdf:resource="&simu;AtomicAlgorithmicModule"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;models"/>
+                <owl:allValuesFrom rdf:resource="&simu;DifferentialEquationModel"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&simu;PartialDerivativeSoftwareModule"/>
+        <rdfs:comment xml:lang="en">piece of compiled implementing the DifferentialEquationModel</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#DiscreteTimeBase -->
+
+    <owl:Class rdf:about="&simu;DiscreteTimeBase">
+        <rdfs:subClassOf rdf:resource="&simu;TimeBase"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This time base is a specific one. It is a totally ordered set where the set used can be mapped (isomorphism) onto N</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#ExternalSoftwareModule -->
+
+    <owl:Class rdf:about="&simu;ExternalSoftwareModule">
+        <rdfs:subClassOf rdf:resource="&simu;AtomicAlgorithmicModule"/>
+        <rdfs:comment xml:lang="en">ExternalSoftwareModule are considered as AtomicSystem because there is no way ot describe their inside and thus can be considered from the current modelled system as an atomic thing.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This module is know only by its interface and nothing more. It is always associated if implemented / deployed to an external library (see experiment ontology for more detail). Nevertheless, even not known, the module can use whatever the theory it likes thus it is not a concept disjoint of its primitive subclasses.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#ExternalSoftwareModuleLibrary -->
+
+    <owl:Class rdf:about="&simu;ExternalSoftwareModuleLibrary">
+        <rdfs:subClassOf rdf:resource="&simu;SoftwareLibrary"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:allValuesFrom rdf:resource="&simu;ExternalSoftwareModule"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&simu;Illumination"/>
+        <rdfs:comment xml:lang="en">These libraries groups only modules known by their interfaces and which internal are not known or lightly described not using the ontology.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#Frustum -->
+
+    <owl:Class rdf:about="&simu;Frustum">
+        <rdfs:subClassOf rdf:resource="&info;Set"/>
+        <owl:disjointWith rdf:resource="&simu;SystemSet"/>
+        <owl:disjointWith rdf:resource="&simu;TimeBase"/>
+        <owl:versionInfo rdf:datatype="&xsd;string">TODO: verify we have a Set</owl:versionInfo>
+        <rdfs:comment xml:lang="en">In geometry, a frustum is the portion of a solid (normally a cone or pyramid) that lies between two parallel planes cutting it.
+
+The term is commonly used in computer graphics to describe the three-dimensional region which is visible on the screen, the &apos;viewing frustum&apos;, which is formed by a clipped pyramid; in particular, frustum culling is a method of hidden surface determination.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#GraphicsEngine -->
+
+    <owl:Class rdf:about="&simu;GraphicsEngine">
+        <rdfs:subClassOf rdf:resource="&kern;Application"/>
+        <owl:disjointWith rdf:resource="&simu;SoftwareSimulator"/>
+        <rdfs:comment xml:lang="en">Piece of software frequently used by developers to describe some libraries, platforms, SDK or objects, to denote an encapsulated block of functionalities oriented to graphics development and execution in a 3D virtual world.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#HardwareSimulator -->
+
+    <owl:Class rdf:about="&simu;HardwareSimulator">
+        <rdfs:subClassOf rdf:resource="&kern;Hardware"/>
+        <rdfs:subClassOf rdf:resource="&simu;SimulatorEvolutionModel"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;animates"/>
+                <owl:allValuesFrom rdf:resource="&kern;PhysicalObject"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&simu;HybridSimulator"/>
+        <owl:disjointWith rdf:resource="&simu;SoftwareSimulator"/>
+        <rdfs:comment xml:lang="en">A hardware simulator manages only systems composed of hardware components. It is itself a hardware aggregate.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#HybridSimulator -->
+
+    <owl:Class rdf:about="&simu;HybridSimulator">
+        <rdfs:subClassOf rdf:resource="&kern;CompositeModel"/>
+        <rdfs:subClassOf rdf:resource="&simu;SimulatorEvolutionModel"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&simu;HardwareSimulator"/>
+                            <rdf:Description rdf:about="&simu;SoftwareSimulator"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&simu;SoftwareSimulator"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&simu;HardwareSimulator"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;animates"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&simu;SoftwareSimulator"/>
+        <rdfs:comment xml:lang="en">This simulator provides life to a system composed of software and hardware components (at least one of each as if not it is one of the other category).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#Illumination -->
+
+    <owl:Class rdf:about="&simu;Illumination">
+        <rdfs:subClassOf rdf:resource="&simu;SoftwareLibrary"/>
+        <rdfs:comment xml:lang="en">Global illumination is a general name for a group of algorithms used in 3D computer graphics that are meant to add more realistic lighting to 3D scenes. Such algorithms take into account not only the light which comes directly from a light source (direct illumination), but also subsequent cases in which light rays from the same source are reflected by other surfaces in the scene, whether reflective or not (indirect illumination). Sometimes some components of illumination can be parametrized an aproximated in terms of &quot;ambient&quot;, &quot;specular&quot; and &quot;diffuse&quot; parameters.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#Mesh -->
+
+    <owl:Class rdf:about="&simu;Mesh">
+        <rdfs:subClassOf rdf:resource="&info;OrderedSetForSimulation"/>
+        <owl:disjointWith rdf:resource="&simu;Textures"/>
+        <owl:disjointWith rdf:resource="&simu;TrajectoryKeyFrames"/>
+        <rdfs:comment xml:lang="en">A polygon mesh or unstructured grid is a collection of vertices, edges and faces that defines the shape of a polyhedral object in 3D computer graphics and solid modeling. The faces usually consist of triangles, quadrilaterals or other simple convex polygons, since this simplifies rendering, but may also be composed of more general concave polygons, or polygons with holes.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#PartialDerivativeModel -->
+
+    <owl:Class rdf:about="&simu;PartialDerivativeModel">
+        <rdfs:subClassOf rdf:resource="&kern;AtomicModel"/>
+        <rdfs:comment xml:lang="en">this model of a system uses partially derivative equations to describe how the modelled system evolve with time WITHOUT considering how time is evolving.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#PartialDerivativeSoftwareModule -->
+
+    <owl:Class rdf:about="&simu;PartialDerivativeSoftwareModule">
+        <rdfs:subClassOf rdf:resource="&simu;AtomicAlgorithmicModule"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;models"/>
+                <owl:allValuesFrom rdf:resource="&simu;PartialDerivativeModel"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">piece of compiled implementing the PartielDerivativeModel</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#PhysicEngine -->
+
+    <owl:Class rdf:about="&simu;PhysicEngine">
+        <rdfs:subClassOf rdf:resource="&simu;SoftwareSimulator"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;uses"/>
+                <owl:someValuesFrom rdf:resource="&simu;PhysicsMesh"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A physics engine is a computer software that provides an approximate simulation of certain physical systems, such as rigid body dynamics (including collision detection), soft body dynamics, and fluid dynamics, of use in the domains of computer graphics, video games and film. The term is sometimes used more generally to describe any software system for simulating physical phenomena, such as high-performance scientific simulation.</rdfs:comment>
+        <rdfs:comment xml:lang="en">there is a restriction on kern:uses for this concept as the PhysicsEngine concept specificity is to use specific Meshes to implements internally at least the terrain.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#PhysicsMesh -->
+
+    <owl:Class rdf:about="&simu;PhysicsMesh">
+        <rdfs:subClassOf rdf:resource="&simu;Mesh"/>
+        <owl:disjointWith rdf:resource="&simu;RenderMesh"/>
+        <rdfs:comment xml:lang="en">This is a mesh managed by the physics engine. It is a support mesh of the render mesh for the physics world interaction. It has no texture mapping and it&apos;s normally a simplified mesh of the render mesh (less complexity in terms of polygons and vertices). It is normally hidden from user view, because it is attached to the render mesh which already shows the graphical aspect of the 3D object.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#PropertyTimeDomain -->
+
+    <owl:Class rdf:about="&simu;PropertyTimeDomain">
+        <rdfs:subClassOf rdf:resource="&info;Relation"/>
+        <owl:disjointWith rdf:resource="&simu;Trajectory"/>
+        <rdfs:comment xml:lang="en">This relation states that v1 and v2 are related if they are segment (an element of OMEGAS) (not over the same set but using the same time base) and if the domain of the time base is identical for the two of them.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#RenderEngine -->
+
+    <owl:Class rdf:about="&simu;RenderEngine">
+        <rdfs:subClassOf rdf:resource="&simu;GraphicsEngine"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;uses"/>
+                <owl:someValuesFrom rdf:resource="&simu;RenderMesh"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A render engine is a computer software that achieves the process of generating an image from a model (or models in what collectively could be called a scene file), by means of computer programs. A scene file contains objects in a strictly defined language or data structure; it would contain geometry, viewpoint, texture, lighting, and shading information as a description of the virtual scene.</rdfs:comment>
+        <rdfs:comment xml:lang="en">there is a restriction onto the kern:uses property in order to specify that tha specifficity of this engine is to use Meshes dedicatedd to Rendering aspects</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#RenderMesh -->
+
+    <owl:Class rdf:about="&simu;RenderMesh">
+        <rdfs:subClassOf rdf:resource="&simu;Mesh"/>
+        <rdfs:comment xml:lang="en">This is a mesh managed by the render engine. It is only a graphic mesh represented by a set of polygons, normally textured with no physics interaction in the 3D world.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SimulatedPedestrian -->
+
+    <owl:Class rdf:about="&simu;SimulatedPedestrian">
+        <rdfs:subClassOf rdf:resource="&simu;SimulatedPhysicalSystem"/>
+        <owl:disjointWith rdf:resource="&simu;SimulatedVehicle"/>
+        <rdfs:comment xml:lang="en">Simulation of the pedestrian physical agent which performs the action of walking in a simulated scenario within a 3D virtual world simulation.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SimulatedPhysicalSystem -->
+
+    <owl:Class rdf:about="&simu;SimulatedPhysicalSystem">
+        <rdfs:subClassOf rdf:resource="&simu;SimulatedSystem"/>
+        <owl:disjointWith rdf:resource="&simu;SimulatedSceneCamera"/>
+        <rdfs:comment xml:lang="en">A Physical Object can be deployed in a simulation context as a simulated system, piece of software within the simulator.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SimulatedSceneCamera -->
+
+    <owl:Class rdf:about="&simu;SimulatedSceneCamera">
+        <rdfs:subClassOf rdf:resource="&simu;SimulatedSystem"/>
+        <rdfs:comment xml:lang="en">This is a simulated camera in a 3D world. It represents the render point of view of the scene. It mainly has a position, an orientation and a frustum as parameters.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SimulatedSystem -->
+
+    <owl:Class rdf:about="&simu;SimulatedSystem">
+        <rdfs:subClassOf rdf:resource="&kern;Model"/>
+        <rdfs:subClassOf rdf:resource="&kern;Software"/>
+        <rdfs:comment xml:lang="en">A simulated system is a piece of software managed by a software simulator. It is a software element inside the simulation. It is an easy way to categorise modelled system using software.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SimulatedVehicle -->
+
+    <owl:Class rdf:about="&simu;SimulatedVehicle">
+        <rdfs:subClassOf rdf:resource="&simu;SimulatedPhysicalSystem"/>
+        <rdfs:comment xml:lang="en">Simulation of  a physical vehicle in a simulated scenario within a 3D virtual world simulation.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#Simulation -->
+
+    <owl:Class rdf:about="&simu;Simulation">
+        <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
+        <rdfs:comment xml:lang="en">A simulation is a set of results got thanks to the simulator that created them. Its type is as different as the many simulators that can exists. It can be writings on sheet of paper or notebooks, analogic recordings on old disks.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SimulatorEvolutionModel -->
+
+    <owl:Class rdf:about="&simu;SimulatorEvolutionModel">
+        <rdfs:subClassOf rdf:resource="&kern;EvolutionModel"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;animates"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;has"/>
+                <owl:allValuesFrom rdf:resource="&kern;Probe"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;animates"/>
+                <owl:allValuesFrom rdf:resource="&kern;System"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;has"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:versionInfo rdf:datatype="&xsd;string">TODO: write a rule allowing to state that the simulation is created from the information produced by the implemented Probe</owl:versionInfo>
+        <rdfs:comment xml:lang="en">It is an evolution model that allows to provide one timeframe to one system. it can be synchronised with other simulators. The system manipulated by the simulator does not need to be specific. It can be an hardware (reduced scale models), a software (HLA like) or an hybrid one where there are software and hardware components (hybrid simulator). It corresponds mainly to the simulation theory that is used.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SoftwareLibrary -->
+
+    <owl:Class rdf:about="&simu;SoftwareLibrary">
+        <rdfs:subClassOf rdf:resource="&kern;AlgorithmicModule"/>
+        <rdfs:subClassOf rdf:resource="&kern;CompositeSystem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:allValuesFrom rdf:resource="&kern;AlgorithmicModule"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A software library is a piece of code providing some code header in order to be able to address the different AlgorithmicModule that are present inside.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SoftwareSimulator -->
+
+    <owl:Class rdf:about="&simu;SoftwareSimulator">
+        <rdfs:subClassOf rdf:resource="&kern;Application"/>
+        <rdfs:subClassOf rdf:resource="&simu;SimulatorEvolutionModel"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;has"/>
+                <owl:allValuesFrom rdf:resource="&kern;SoftwareProbe"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;animates"/>
+                <owl:allValuesFrom rdf:resource="&simu;SimulatedSystem"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;executesOn"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A software simulator manages only systems composed of software components. It is itself an application. A software simulator can manage software components that are NOT executable thus only code (interpreter as an examaple).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SystemSet -->
+
+    <owl:Class rdf:about="&simu;SystemSet">
+        <rdfs:subClassOf rdf:resource="&info;Set"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&info;contains"/>
+                <owl:allValuesFrom rdf:resource="&kern;System"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&simu;TimeBase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SystemSpecification -->
+
+    <owl:Class rdf:about="&simu;SystemSpecification">
+        <rdfs:subClassOf rdf:resource="&info;StructuredData"/>
+        <owl:versionInfo rdf:datatype="&xsd;string">TODO: simplification to be done with respect to the &quot;hasInput&quot;, &quot;hasInputSet&quot;, etc</owl:versionInfo>
+        <rdfs:comment xml:lang="en">The theory of modeling and simulation introduces a hierarchy of specifications and expresses how the elements of one level map onto the elements of its neighbours (see reference 1, section 5 and after).
+What is specific of these different specifications is that they all are structure assembling sets through relations.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#Textures -->
+
+    <owl:Class rdf:about="&simu;Textures">
+        <rdfs:subClassOf rdf:resource="&info;OrderedSetForSimulation"/>
+        <owl:disjointWith rdf:resource="&simu;TrajectoryKeyFrames"/>
+        <rdfs:comment xml:lang="en">Texture mapping is a method for adding detail, surface texture (a bitmap or raster image), or color to a computer-generated graphic or 3D model.
+A texture map is applied (mapped) to the surface of a shape or polygon (mesh). This process is akin to applying patterned paper to a plain white box. Every vertex in a polygon is assigned a texture coordinate (which in the 2d case is also known as a UV coordinate) either via explicit assignment or by procedural definition. Image sampling locations are then interpolated across the face of a polygon to produce a visual result that seems to have more richness than could otherwise be achieved with a limited number of polygons.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#TimeBase -->
+
+    <owl:Class rdf:about="&simu;TimeBase">
+        <rdfs:subClassOf rdf:resource="&info;Set"/>
+        <rdfs:comment xml:lang="en">this definition refers to section 5.1 of reference 1. It states that a time base, ultimately, is an ordered set not even a total one that allows to state if an event has occurred before or after another one.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#Trajectory -->
+
+    <owl:Class rdf:about="&simu;Trajectory">
+        <rdfs:subClassOf rdf:resource="&info;Relation"/>
+        <rdfs:comment xml:lang="en">A trajectory is the path that a moving object follows through space as a function of time. A trajectory can be described mathematically either by the geometry of the path (Trajectory), or as the position of the object over time (TrajectoryFunction).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#TrajectoryKeyFrames -->
+
+    <owl:Class rdf:about="&simu;TrajectoryKeyFrames">
+        <rdfs:subClassOf rdf:resource="&info;OrderedSetForSimulation"/>
+        <rdfs:comment xml:lang="en">This trajectory will define an ordered set of key frames or positions over time.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SimulatorForDifferentialEquationsAndExternalModels -->
+
+    <owl:NamedIndividual rdf:about="&simu;SimulatorForDifferentialEquationsAndExternalModels">
+        <rdf:type rdf:resource="&simu;SoftwareSimulator"/>
+        <kern:isAtomic rdf:datatype="&xsd;boolean">true</kern:isAtomic>
+        <rdfs:comment xml:lang="en">This instance should allow us to verify that our simulator representation is workinng</rdfs:comment>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.5.1928) http://owlapi.sourceforge.net -->
+

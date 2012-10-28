@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1333913075828" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Proteus.owl" uri="Proteus.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1333913075828" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl" uri="environment.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1333913075828" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/experiment.owl" uri="experiment.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1333913075828" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl" uri="information.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1333913075828" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl" uri="kernel.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1333913075828" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl" uri="mission.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1333913075828" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl" uri="robot.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1333913075828" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl" uri="simulation.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1333913075828" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl" uri="system.owl"/>
+    </group>
+</catalog>

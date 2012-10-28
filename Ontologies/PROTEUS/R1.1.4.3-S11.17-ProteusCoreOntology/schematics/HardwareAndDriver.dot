@@ -1,0 +1,31 @@
+digraph Proteus {
+	node [label="\N"];
+	graph [bb="0,0,1209,396"];
+	"http://www.owl-ontologies.com/Systems#PowerDriver" [label="syst:PowerDriver", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="600,18", width="1.86", height="0.50"];
+	"http://www.owl-ontologies.com/kernel.owl#Driver" [label="kern:Driver", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="843,108", width="1.31", height="0.50"];
+	"http://www.owl-ontologies.com/kernel.owl#Hardware" [label="kern:Hardware", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="518,198", width="1.67", height="0.50"];
+	"http://www.owl-ontologies.com/kernel.owl#PhysicalObject" [label="kern:PhysicalObject", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="587,288", width="2.08", height="0.50"];
+	"http://www.owl-ontologies.com/kernel.owl#Application" [label="kern:Application", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="787,198", width="1.75", height="0.50"];
+	"http://www.owl-ontologies.com/kernel.owl#Software" [label="kern:Software", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="741,288", width="1.58", height="0.50"];
+	"http://www.owl-ontologies.com/kernel.owl#System" [label="kern:System", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="678,378", width="1.42", height="0.50"];
+	"http://www.owl-ontologies.com/Systems#CommunicationHardware" [label="syst:CommunicationHardware", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="112,108", width="3.11", height="0.50"];
+	"http://www.owl-ontologies.com/Systems#ActuatorDriver" [label="syst:ActuatorDriver", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="761,18", width="2.11", height="0.50"];
+	"http://www.owl-ontologies.com/Systems#SensorDriver" [label="syst:SensorDriver", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="924,18", width="1.92", height="0.50"];
+	"http://www.owl-ontologies.com/Systems#CommunicationDriver" [label="syst:CommunicationDriver", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1110,18", width="2.75", height="0.50"];
+	"http://www.owl-ontologies.com/Systems#ActuatorHardware" [label="syst:ActuatorHardware", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="330,108", width="2.44", height="0.50"];
+	"http://www.owl-ontologies.com/Systems#SensorHardware" [label="syst:SensorHardware", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="518,108", width="2.28", height="0.50"];
+	"http://www.owl-ontologies.com/Systems#PowerHardware" [label="syst:PowerHardware", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="698,108", width="2.22", height="0.50"];
+	"http://www.owl-ontologies.com/kernel.owl#Driver" -> "http://www.owl-ontologies.com/Systems#PowerDriver" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,796,91 787,87 745,72 689,51 649,36", lp="755,63"];
+	"http://www.owl-ontologies.com/kernel.owl#PhysicalObject" -> "http://www.owl-ontologies.com/kernel.owl#Hardware" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,573,270 567,262 556,247 542,229 532,216", lp="570,243"];
+	"http://www.owl-ontologies.com/kernel.owl#Software" -> "http://www.owl-ontologies.com/kernel.owl#Application" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,750,270 755,261 762,246 771,229 778,216", lp="779,243"];
+	"http://www.owl-ontologies.com/kernel.owl#System" -> "http://www.owl-ontologies.com/kernel.owl#PhysicalObject" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,660,360 653,353 638,338 619,320 605,306", lp="652,333"];
+	"http://www.owl-ontologies.com/kernel.owl#Hardware" -> "http://www.owl-ontologies.com/Systems#CommunicationHardware" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,458,185 448,183 377,167 267,142 193,126", lp="362,153"];
+	"http://www.owl-ontologies.com/kernel.owl#Application" -> "http://www.owl-ontologies.com/kernel.owl#Driver" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,798,180 803,171 813,157 824,139 832,126", lp="831,153"];
+	"http://www.owl-ontologies.com/kernel.owl#System" -> "http://www.owl-ontologies.com/kernel.owl#Software" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,691,360 697,352 707,337 719,319 728,306", lp="727,333"];
+	"http://www.owl-ontologies.com/kernel.owl#Driver" -> "http://www.owl-ontologies.com/Systems#ActuatorDriver" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,826,90 819,82 806,67 790,50 777,36", lp="820,63"];
+	"http://www.owl-ontologies.com/kernel.owl#Driver" -> "http://www.owl-ontologies.com/Systems#SensorDriver" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,859,90 866,82 879,67 895,50 908,36", lp="902,63"];
+	"http://www.owl-ontologies.com/kernel.owl#Driver" -> "http://www.owl-ontologies.com/Systems#CommunicationDriver" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,890,92 900,89 946,73 1010,51 1056,36", lp="1012,63"];
+	"http://www.owl-ontologies.com/kernel.owl#Hardware" -> "http://www.owl-ontologies.com/Systems#ActuatorHardware" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,480,180 471,176 439,160 398,141 368,126", lp="452,153"];
+	"http://www.owl-ontologies.com/kernel.owl#Hardware" -> "http://www.owl-ontologies.com/Systems#SensorHardware" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,518,180 518,170 518,155 518,139 518,126", lp="528,153"];
+	"http://www.owl-ontologies.com/kernel.owl#Hardware" -> "http://www.owl-ontologies.com/Systems#PowerHardware" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,554,180 563,175 593,160 633,141 662,126", lp="635,153"];
+}

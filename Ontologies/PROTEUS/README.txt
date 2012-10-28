@@ -1,0 +1,1 @@
+Si l'on veut utiliser l'ontologie qui se trouve sur le serveur web alors il faut être sur que la version de ProteusServices.repository est ProteusServices.repository.web, sinon, il faut utiliser, si l'on veut travailler avec les fichiers qui se trouvent sur le disque, ProteusServices.repository.local (en le renommant bien sur).

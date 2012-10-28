@@ -1,0 +1,35 @@
+digraph Proteus {
+	label="Agents in environment"
+	fontname="Arial-Bold";
+	labeljust=left;
+	fontsize=20;
+	fontcolor=red;
+	bgcolor=lightgrey;
+	subgraph cluster0 {
+		label="Surfaces concepts"
+		fontname="Arial-Bold";
+		labeljust=left;
+		fontsize=15;
+		fontcolor=black;
+		bgcolor=white;
+		"Stairs" [label="envi:Stairs", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.0625", height="0.5"];
+		"Floor" [label="envi:Floor", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.0625", height="0.5"];
+		"LandSurface" [label="envi:LandSurface", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.6389", height="0.5"];
+	}
+	subgraph cluster1 {
+		label="Agents"
+		fontname="Arial-Bold";
+		labeljust=left;
+		fontsize=15;
+		fontcolor=black;
+		bgcolor=white;
+		"Human" [label="kern:Human", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.2292", height="0.5"];
+		"GroundVehicle" [label="robo:GroundVehicle", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.8889", height="0.5"];
+	}
+	"Human" -> "Floor" [style=filled, label="robo:movesOverGround*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"Human" -> "Stairs" [style=filled, label="robo:movesOverGround*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"Human" -> "LandSurface" [style=filled, label="robo:movesOverGround*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"GroundVehicle" -> "Floor" [style=filled, label="robo:movesOverGround*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"GroundVehicle" -> "Stairs" [style=filled, label="robo:movesOverGround*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+	"GroundVehicle" -> "LandSurface" [style=filled, label="robo:movesOverGround*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"];
+}

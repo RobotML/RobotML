@@ -1,0 +1,561 @@
+﻿<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY protege "http://protege.stanford.edu/plugins/owl/protege#" >
+    <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
+    <!ENTITY swrla "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#" >
+    <!ENTITY sqwrl "http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#" >
+    <!ENTITY robo "http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#" >
+    <!ENTITY kern "http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#" >
+    <!ENTITY syst "http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#" >
+    <!ENTITY miss "http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#" >
+    <!ENTITY expe "http://www.anr-proteus.fr/sites/default/files/download/Ontology/experiment.owl#" >
+    <!ENTITY envi "http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#" >
+    <!ENTITY info "http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#" >
+    <!ENTITY airg "http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#" >
+]>
+
+
+<rdf:RDF xmlns:airg="http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#"
+     xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl"
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+     xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+     xmlns:robo="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#"
+     xmlns:kern="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
+     xmlns:info="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#"
+     xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:envi="http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#"
+     xmlns:expe="http://www.anr-proteus.fr/sites/default/files/download/Ontology/experiment.owl#"
+     xmlns:syst="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:miss="http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
+    <owl:Ontology rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl">
+        <owl:versionInfo rdf:datatype="&xsd;string">version delivered 1.0</owl:versionInfo>
+        <rdfs:comment xml:lang="en">FaCT++ does not work with this ontology. HermiT shall be used for reasoning.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This ontology tries to use the whole set of proteus ontologies stack in order to describe a scenario encompassing aircraft collaborating with a car in order to track people in a forbidden area.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
+        <rdfs:comment xml:lang="en">Version for Protégé 4.2 beta.</rdfs:comment>
+        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Proteus.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&kern;definesAReferential"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#H_InfinityLoopSharingController -->
+
+    <rdf:Description rdf:about="&syst;H_InfinityLoopSharingController">
+        <rdfs:subClassOf rdf:resource="&syst;ModelPredictiveController"/>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#ArmyMission -->
+
+    <owl:NamedIndividual rdf:about="&airg;ArmyMission">
+        <rdf:type rdf:resource="&miss;Mission"/>
+        <miss:isDescribedBy rdf:resource="&airg;ToControl"/>
+        <miss:isDescribedBy rdf:resource="&airg;ToDetect"/>
+        <miss:isDescribedBy rdf:resource="&airg;ToKeepWatchOn"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#BuildingXM010YP030 -->
+
+    <owl:NamedIndividual rdf:about="&airg;BuildingXM010YP030">
+        <rdf:type rdf:resource="&envi;Building"/>
+        <rdfs:comment xml:lang="en">Building at X=-10 Y=30 from start point.</rdfs:comment>
+        <kern:isPositionedIn rdf:resource="&airg;StartPointReferential"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#BuildingXM025YP025 -->
+
+    <owl:NamedIndividual rdf:about="&airg;BuildingXM025YP025">
+        <rdf:type rdf:resource="&envi;Building"/>
+        <rdfs:comment xml:lang="en">Building at X=-25 Y=25 from start point.</rdfs:comment>
+        <kern:isPositionedIn rdf:resource="&airg;StartPointReferential"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#BuildingXP010YP075 -->
+
+    <owl:NamedIndividual rdf:about="&airg;BuildingXP010YP075">
+        <rdf:type rdf:resource="&envi;Building"/>
+        <rdfs:comment xml:lang="en">Building at X=10 Y=75 from start point.</rdfs:comment>
+        <kern:isPositionedIn rdf:resource="&airg;StartPointReferential"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#BuildingXP030YP080 -->
+
+    <owl:NamedIndividual rdf:about="&airg;BuildingXP030YP080">
+        <rdf:type rdf:resource="&envi;Building"/>
+        <rdfs:comment xml:lang="en">Building at X=30 Y=80 from start point.</rdfs:comment>
+        <kern:isPositionedIn rdf:resource="&airg;StartPointReferential"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#BuildingXP050YP050 -->
+
+    <owl:NamedIndividual rdf:about="&airg;BuildingXP050YP050">
+        <rdf:type rdf:resource="&envi;Building"/>
+        <rdfs:comment xml:lang="en">Building at X=50 Y=50 from start point.</rdfs:comment>
+        <kern:isPositionedIn rdf:resource="&airg;StartPointReferential"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#BuildingXP060YP080 -->
+
+    <owl:NamedIndividual rdf:about="&airg;BuildingXP060YP080">
+        <rdf:type rdf:resource="&envi;Building"/>
+        <rdfs:comment xml:lang="en">Building at X=60 Y=80 from start point.</rdfs:comment>
+        <kern:isPositionedIn rdf:resource="&airg;StartPointReferential"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#BuildingXP080YP075 -->
+
+    <owl:NamedIndividual rdf:about="&airg;BuildingXP080YP075">
+        <rdf:type rdf:resource="&envi;Building"/>
+        <rdfs:comment xml:lang="en">Building at X=80 Y=75 from start point.</rdfs:comment>
+        <kern:isPositionedIn rdf:resource="&airg;StartPointReferential"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#CameraOfRmax -->
+
+    <owl:NamedIndividual rdf:about="&airg;CameraOfRmax">
+        <rdf:type rdf:resource="&syst;ImageSensorHardware"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#CaylusLandSurface -->
+
+    <owl:NamedIndividual rdf:about="&airg;CaylusLandSurface">
+        <rdf:type rdf:resource="&envi;LandSurface"/>
+        <kern:definesAReferential rdf:resource="&airg;StartPointReferential"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#Controlling -->
+
+    <owl:NamedIndividual rdf:about="&airg;Controlling">
+        <rdf:type rdf:resource="&kern;FSMActivity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#Crossing -->
+
+    <owl:NamedIndividual rdf:about="&airg;Crossing">
+        <rdf:type rdf:resource="&kern;FSMActivity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#CrossingState -->
+
+    <owl:NamedIndividual rdf:about="&airg;CrossingState">
+        <rdf:type rdf:resource="&kern;AutomataInitialState"/>
+        <kern:hasFSMActivity rdf:resource="&airg;Crossing"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#CrossingToHidingTransition -->
+
+    <owl:NamedIndividual rdf:about="&airg;CrossingToHidingTransition">
+        <rdf:type rdf:resource="&kern;Transition"/>
+        <kern:from rdf:resource="&airg;CrossingState"/>
+        <kern:to rdf:resource="&airg;HidingState"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#DecisionalPartOfRTrooper -->
+
+    <owl:NamedIndividual rdf:about="&airg;DecisionalPartOfRTrooper">
+        <rdf:type rdf:resource="&kern;Application"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#DecisionalPartOfRmax -->
+
+    <owl:NamedIndividual rdf:about="&airg;DecisionalPartOfRmax">
+        <rdf:type rdf:resource="&kern;Application"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#Detecting -->
+
+    <owl:NamedIndividual rdf:about="&airg;Detecting">
+        <rdf:type rdf:resource="&kern;FSMActivity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#DistributedDecisionalSystem -->
+
+    <owl:NamedIndividual rdf:about="&airg;DistributedDecisionalSystem">
+        <rdf:type rdf:resource="&expe;Solution"/>
+        <rdf:type rdf:resource="&kern;CompositeSystem"/>
+        <kern:isAtomic rdf:datatype="&xsd;boolean">false</kern:isAtomic>
+        <kern:aggregates rdf:resource="&airg;DecisionalPartOfRTrooper"/>
+        <kern:aggregates rdf:resource="&airg;DecisionalPartOfRmax"/>
+        <kern:aggregates rdf:resource="&airg;OnGroundDecision"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#Escaping -->
+
+    <owl:NamedIndividual rdf:about="&airg;Escaping">
+        <rdf:type rdf:resource="&kern;FSMActivity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#EverythingAtCaylus -->
+
+    <owl:NamedIndividual rdf:about="&airg;EverythingAtCaylus">
+        <rdf:type rdf:resource="&kern;Environment"/>
+        <kern:isAtomic rdf:datatype="&xsd;boolean">false</kern:isAtomic>
+        <rdfs:comment xml:lang="en">Aggregation of robot team is anecdotic.</rdfs:comment>
+        <kern:aggregates rdf:resource="&airg;DistributedDecisionalSystem"/>
+        <kern:aggregates rdf:resource="&airg;RobotTeam"/>
+        <kern:aggregates rdf:resource="&airg;SearchAndTrackProblem"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#GPSSensorOfRTrooper -->
+
+    <owl:NamedIndividual rdf:about="&airg;GPSSensorOfRTrooper">
+        <rdf:type rdf:resource="&syst;LocalizationSensorHardware"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#Hiding -->
+
+    <owl:NamedIndividual rdf:about="&airg;Hiding">
+        <rdf:type rdf:resource="&kern;FSMActivity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#HidingState -->
+
+    <owl:NamedIndividual rdf:about="&airg;HidingState">
+        <rdf:type rdf:resource="&kern;AutomataState"/>
+        <kern:hasFSMActivity rdf:resource="&airg;Hiding"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#Intruder -->
+
+    <owl:NamedIndividual rdf:about="&airg;Intruder">
+        <rdf:type rdf:resource="&envi;Pedestrian"/>
+        <kern:isAnimatedByEvolutionModel rdf:resource="&airg;IntruderExpectedBehavior"/>
+        <kern:isPositionedIn rdf:resource="&airg;StartPointReferential"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#IntruderExpectedBehavior -->
+
+    <owl:NamedIndividual rdf:about="&airg;IntruderExpectedBehavior">
+        <rdf:type rdf:resource="&miss;MissionStateMachine"/>
+        <kern:startsFrom rdf:resource="&airg;CrossingState"/>
+        <kern:isDefinedBy rdf:resource="&airg;CrossingToHidingTransition"/>
+        <kern:isDefinedBy rdf:resource="&airg;HidingState"/>
+        <kern:animates rdf:resource="&airg;Intruder"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#IntruderMission -->
+
+    <owl:NamedIndividual rdf:about="&airg;IntruderMission">
+        <rdf:type rdf:resource="&miss;Mission"/>
+        <miss:isDescribedBy rdf:resource="&airg;IntruderExpectedBehavior"/>
+        <miss:isDescribedBy rdf:resource="&airg;ToCross"/>
+        <miss:isDescribedBy rdf:resource="&airg;ToEscape"/>
+        <miss:isDescribedBy rdf:resource="&airg;ToHide"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#KeepingWatchOn -->
+
+    <owl:NamedIndividual rdf:about="&airg;KeepingWatchOn">
+        <rdf:type rdf:resource="&kern;FSMActivity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#LoftBarnOrShedReachedCondition -->
+
+    <owl:NamedIndividual rdf:about="&airg;LoftBarnOrShedReachedCondition">
+        <rdf:type rdf:resource="&kern;Condition"/>
+        <kern:evaluatesToTruth rdf:resource="&airg;LoftBarnOrShedReachedTrunsToTrue"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#LoftBarnOrShedReachedTrunsToTrue -->
+
+    <owl:NamedIndividual rdf:about="&airg;LoftBarnOrShedReachedTrunsToTrue">
+        <rdf:type rdf:resource="&kern;Event"/>
+        <kern:entail rdf:resource="&airg;CrossingToHidingTransition"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#NonDecisionalPartOfRTrooper -->
+
+    <owl:NamedIndividual rdf:about="&airg;NonDecisionalPartOfRTrooper">
+        <rdf:type rdf:resource="&syst;RoboticSystem"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#NonDecisionalPartOfRmax -->
+
+    <owl:NamedIndividual rdf:about="&airg;NonDecisionalPartOfRmax">
+        <rdf:type rdf:resource="&syst;RoboticSystem"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#OnGroundDecision -->
+
+    <owl:NamedIndividual rdf:about="&airg;OnGroundDecision">
+        <rdf:type rdf:resource="&kern;Application"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#R-TrooperEvolutionModel -->
+
+    <owl:NamedIndividual rdf:about="&airg;R-TrooperEvolutionModel">
+        <rdf:type rdf:resource="&kern;EvolutionModel"/>
+        <kern:animates rdf:resource="&airg;RTrooper"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#RTrooper -->
+
+    <owl:NamedIndividual rdf:about="&airg;RTrooper">
+        <rdf:type rdf:resource="&kern;CompositeSystem"/>
+        <rdf:type rdf:resource="&robo;Car-likeVehicle"/>
+        <kern:isAtomic rdf:datatype="&xsd;boolean">false</kern:isAtomic>
+        <kern:aggregates rdf:resource="&airg;GPSSensorOfRTrooper"/>
+        <kern:isAnimatedByEvolutionModel rdf:resource="&airg;R-TrooperEvolutionModel"/>
+        <kern:isPositionedIn rdf:resource="&airg;StartPointReferential"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#Rmax -->
+
+    <owl:NamedIndividual rdf:about="&airg;Rmax">
+        <rdf:type rdf:resource="&kern;CompositeSystem"/>
+        <rdf:type rdf:resource="&robo;AirVehicle"/>
+        <kern:isAtomic rdf:datatype="&xsd;boolean">false</kern:isAtomic>
+        <kern:isAnimatedByEvolutionModel rdf:resource="&airg;RmaxEvolutionModel"/>
+        <kern:isPositionedIn rdf:resource="&airg;StartPointReferential"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#RmaxEvolutionModel -->
+
+    <owl:NamedIndividual rdf:about="&airg;RmaxEvolutionModel">
+        <rdf:type rdf:resource="&kern;EvolutionModel"/>
+        <kern:animates rdf:resource="&airg;Rmax"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#RobotTeam -->
+
+    <owl:NamedIndividual rdf:about="&airg;RobotTeam">
+        <rdf:type rdf:resource="&kern;CompositeSystem"/>
+        <kern:isAtomic rdf:datatype="&xsd;boolean">false</kern:isAtomic>
+        <kern:aggregates rdf:resource="&airg;RTrooper"/>
+        <kern:aggregates rdf:resource="&airg;Rmax"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#RobotTeamMission -->
+
+    <owl:NamedIndividual rdf:about="&airg;RobotTeamMission">
+        <rdf:type rdf:resource="&miss;Mission"/>
+        <miss:hasRessource rdf:resource="&airg;RTrooper"/>
+        <miss:hasRessource rdf:resource="&airg;Rmax"/>
+        <miss:isDescribedBy rdf:resource="&airg;ToDetect"/>
+        <miss:isDescribedBy rdf:resource="&airg;ToKeepWatchOn"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#SearchAndTrackProblem -->
+
+    <owl:NamedIndividual rdf:about="&airg;SearchAndTrackProblem">
+        <rdf:type rdf:resource="&expe;Problem"/>
+        <kern:isAtomic rdf:datatype="&xsd;boolean">false</kern:isAtomic>
+        <kern:aggregates rdf:resource="&airg;BuildingXM010YP030"/>
+        <kern:aggregates rdf:resource="&airg;BuildingXM025YP025"/>
+        <kern:aggregates rdf:resource="&airg;BuildingXP010YP075"/>
+        <kern:aggregates rdf:resource="&airg;BuildingXP030YP080"/>
+        <kern:aggregates rdf:resource="&airg;BuildingXP050YP050"/>
+        <kern:aggregates rdf:resource="&airg;BuildingXP060YP080"/>
+        <kern:aggregates rdf:resource="&airg;BuildingXP080YP075"/>
+        <kern:aggregates rdf:resource="&airg;CaylusLandSurface"/>
+        <kern:aggregates rdf:resource="&airg;Intruder"/>
+        <kern:aggregates rdf:resource="&airg;NonDecisionalPartOfRTrooper"/>
+        <kern:aggregates rdf:resource="&airg;NonDecisionalPartOfRmax"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#Solution_1 -->
+
+    <owl:NamedIndividual rdf:about="&airg;Solution_1">
+        <rdf:type rdf:resource="&kern;CompositeSystem"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#StartPointReferential -->
+
+    <owl:NamedIndividual rdf:about="&airg;StartPointReferential">
+        <rdf:type rdf:resource="&kern;Frame"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#ToControl -->
+
+    <owl:NamedIndividual rdf:about="&airg;ToControl">
+        <rdf:type rdf:resource="&miss;Task"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#ToCross -->
+
+    <owl:NamedIndividual rdf:about="&airg;ToCross">
+        <rdf:type rdf:resource="&miss;Task"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#ToDetect -->
+
+    <owl:NamedIndividual rdf:about="&airg;ToDetect">
+        <rdf:type rdf:resource="&miss;Task"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#ToEscape -->
+
+    <owl:NamedIndividual rdf:about="&airg;ToEscape">
+        <rdf:type rdf:resource="&miss;Task"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#ToHide -->
+
+    <owl:NamedIndividual rdf:about="&airg;ToHide">
+        <rdf:type rdf:resource="&miss;Task"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#ToKeepWatchOn -->
+
+    <owl:NamedIndividual rdf:about="&airg;ToKeepWatchOn">
+        <rdf:type rdf:resource="&miss;Task"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.5.1928) http://owlapi.sourceforge.net -->
+

@@ -1,0 +1,247 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:land="http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#"
+    xmlns:syst="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Systems.owl#"
+    xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+    xmlns:robo="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Robot.owl#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns:envi="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Environment.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:kern="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
+    xmlns:miss="http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#"
+    xmlns:info="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#"
+  xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl">
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >version delivered 1.0</owl:versionInfo>
+    <rdfs:comment xml:lang="en">This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
+    <rdfs:comment xml:lang="en">This scenario is closely associated with the young challenge as it provides a description of what they will have to do (namely to find landmarks in a simpllified area).</rdfs:comment>
+    <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Proteus.owl"/>
+  </owl:Ontology>
+  <kern:CompositeSystem rdf:ID="WifiBot">
+    <kern:aggregates>
+      <syst:EngineSystem rdf:ID="LeftEngineSystem">
+        <kern:aggregates>
+          <syst:EngineHardware rdf:ID="WheelMotor1">
+            <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Systems.owl#MotorizationHardware"/>
+          </syst:EngineHardware>
+        </kern:aggregates>
+        <kern:aggregates>
+          <syst:EngineHardware rdf:ID="WheelMotor2">
+            <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Systems.owl#MotorizationHardware"/>
+          </syst:EngineHardware>
+        </kern:aggregates>
+        <kern:aggregates>
+          <syst:EngineDriver rdf:ID="LeftEngineDriver"/>
+        </kern:aggregates>
+      </syst:EngineSystem>
+    </kern:aggregates>
+    <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Robot.owl#DifferentialVehicle"/>
+    <kern:aggregates>
+      <syst:ObjectDetectionOrTrackingSensorSystem rdf:ID="ProxymetrySystem">
+        <kern:aggregates>
+          <syst:ObjectDetectionSensorDriver rdf:ID="ProxymetryDriver"/>
+        </kern:aggregates>
+        <kern:aggregates>
+          <syst:ObjectDetectionOrTrackingSensorHardware rdf:ID="Proxymeter4"/>
+        </kern:aggregates>
+        <kern:aggregates>
+          <syst:ObjectDetectionOrTrackingSensorHardware rdf:ID="Proxymeter1"/>
+        </kern:aggregates>
+        <kern:aggregates>
+          <syst:ObjectDetectionOrTrackingSensorHardware rdf:ID="Proxymeter2"/>
+        </kern:aggregates>
+        <kern:aggregates>
+          <syst:ObjectDetectionOrTrackingSensorHardware rdf:ID="Proxymeter3"/>
+        </kern:aggregates>
+      </syst:ObjectDetectionOrTrackingSensorSystem>
+    </kern:aggregates>
+    <kern:aggregates>
+      <syst:LocalizationSensorSystem rdf:ID="OdometrySystem">
+        <kern:aggregates>
+          <syst:LocalizationSensorDriver rdf:ID="OdometerDriver"/>
+        </kern:aggregates>
+        <kern:aggregates>
+          <syst:LocalizationSensorHardware rdf:ID="Odometer1"/>
+        </kern:aggregates>
+        <kern:aggregates>
+          <syst:LocalizationSensorHardware rdf:ID="Odometer3"/>
+        </kern:aggregates>
+        <kern:aggregates>
+          <syst:LocalizationSensorHardware rdf:ID="Odometer2"/>
+        </kern:aggregates>
+        <kern:aggregates>
+          <syst:LocalizationSensorHardware rdf:ID="Odometer4"/>
+        </kern:aggregates>
+      </syst:LocalizationSensorSystem>
+    </kern:aggregates>
+    <kern:aggregates>
+      <syst:GPSSystem rdf:ID="GPSSystem">
+        <kern:aggregates>
+          <syst:LocalizationSensorDriver rdf:ID="GPSDriver"/>
+        </kern:aggregates>
+        <kern:aggregates>
+          <syst:LocalizationSensorHardware rdf:ID="GPS"/>
+        </kern:aggregates>
+      </syst:GPSSystem>
+    </kern:aggregates>
+    <kern:aggregates>
+      <syst:LocalizationSensorSystem rdf:ID="IMUSystem">
+        <kern:aggregates>
+          <syst:LocalizationSensorDriver rdf:ID="IMUDriver"/>
+        </kern:aggregates>
+        <kern:aggregates>
+          <syst:LocalizationSensorHardware rdf:ID="IMU"/>
+        </kern:aggregates>
+      </syst:LocalizationSensorSystem>
+    </kern:aggregates>
+    <kern:aggregates>
+      <syst:LocalizationSensorSystem rdf:ID="MagneticCompasSystem">
+        <kern:aggregates>
+          <syst:LocalizationSensorDriver rdf:ID="MagneticCompasDriver"/>
+        </kern:aggregates>
+        <kern:aggregates>
+          <syst:LocalizationSensorHardware rdf:ID="MagneticCompas"/>
+        </kern:aggregates>
+      </syst:LocalizationSensorSystem>
+    </kern:aggregates>
+    <kern:aggregates>
+      <syst:EngineSystem rdf:ID="RightEngineSystem">
+        <kern:aggregates>
+          <syst:EngineHardware rdf:ID="WheelMotor3">
+            <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Systems.owl#MotorizationHardware"/>
+          </syst:EngineHardware>
+        </kern:aggregates>
+        <kern:aggregates>
+          <syst:EngineHardware rdf:ID="WheelMotor4">
+            <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Systems.owl#MotorizationHardware"/>
+          </syst:EngineHardware>
+        </kern:aggregates>
+        <kern:aggregates>
+          <syst:EngineDriver rdf:ID="RightEngineDriver"/>
+        </kern:aggregates>
+      </syst:EngineSystem>
+    </kern:aggregates>
+    <kern:aggregates>
+      <syst:CommunicationSystem rdf:ID="WifiCommunicationSystem">
+        <kern:isAtomic rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >false</kern:isAtomic>
+        <kern:aggregates>
+          <syst:CommunicationHardware rdf:ID="WifiLink"/>
+        </kern:aggregates>
+        <kern:aggregates>
+          <syst:CommunicationDriver rdf:ID="WifiCommunicationDriver"/>
+        </kern:aggregates>
+      </syst:CommunicationSystem>
+    </kern:aggregates>
+    <kern:aggregates>
+      <syst:CameraSystem rdf:ID="CameraSystem">
+        <syst:isActive rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >false</syst:isActive>
+        <kern:isAtomic rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >false</kern:isAtomic>
+        <kern:aggregates>
+          <syst:ImageSensorHardware rdf:ID="Camera"/>
+        </kern:aggregates>
+        <kern:aggregates>
+          <syst:ImageSensorDriver rdf:ID="CameraDriver">
+            <kern:isAtomic rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+            >true</kern:isAtomic>
+          </syst:ImageSensorDriver>
+        </kern:aggregates>
+      </syst:CameraSystem>
+    </kern:aggregates>
+    <kern:aggregates>
+      <syst:ObjectDetectionOrTrackingSensorSystem rdf:ID="LaserRangingSystem">
+        <kern:aggregates>
+          <syst:ObjectDetectionSensorDriver rdf:ID="LaserRangingDriver"/>
+        </kern:aggregates>
+        <kern:aggregates>
+          <syst:ObjectDetectionOrTrackingSensorHardware rdf:ID="LaserRanging"/>
+        </kern:aggregates>
+      </syst:ObjectDetectionOrTrackingSensorSystem>
+    </kern:aggregates>
+    <kern:isAtomic rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >false</kern:isAtomic>
+  </kern:CompositeSystem>
+  <syst:SecuritySystem rdf:ID="ProximityMapping">
+    <kern:triggers>
+      <syst:ApplicationInteraction rdf:ID="ExProximityMapInfo">
+        <kern:impacts>
+          <syst:ControlSystem rdf:ID="Servoing">
+            <kern:triggers>
+              <syst:ControlAndCommand rdf:ID="ExCommands">
+                <kern:impacts>
+                  <syst:Closed-LoopControlSystem rdf:ID="WheelControl"/>
+                </kern:impacts>
+              </syst:ControlAndCommand>
+            </kern:triggers>
+          </syst:ControlSystem>
+        </kern:impacts>
+        <kern:impacts>
+          <syst:MotionPlanningSystem rdf:ID="LocalMapping">
+            <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Software"/>
+            <kern:triggers>
+              <syst:ApplicationInteraction rdf:ID="ExLocalMapInfo">
+                <kern:impacts rdf:resource="#Servoing"/>
+                <kern:impacts>
+                  <syst:PlatformManagementSystem rdf:ID="Localization">
+                    <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Software"/>
+                    <kern:triggers>
+                      <syst:ApplicationInteraction rdf:ID="ExEstimatedPosition">
+                        <kern:impacts rdf:resource="#Servoing"/>
+                        <kern:impacts>
+                          <syst:MotionPlanningSystem rdf:ID="PathPlanning">
+                            <kern:triggers>
+                              <syst:ApplicationInteraction rdf:ID="ExPath">
+                                <kern:impacts>
+                                  <syst:PlatformManagementSystem rdf:ID="Navigator">
+                                    <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Software"/>
+                                    <kern:triggers>
+                                      <syst:ApplicationInteraction rdf:ID="ExShortTermTarget">
+                                        <kern:impacts rdf:resource="#Servoing"/>
+                                      </syst:ApplicationInteraction>
+                                    </kern:triggers>
+                                  </syst:PlatformManagementSystem>
+                                </kern:impacts>
+                              </syst:ApplicationInteraction>
+                            </kern:triggers>
+                            <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Software"/>
+                          </syst:MotionPlanningSystem>
+                        </kern:impacts>
+                        <kern:impacts rdf:resource="#Navigator"/>
+                        <kern:impacts rdf:resource="#LocalMapping"/>
+                        <kern:impacts>
+                          <syst:MissionManagementSystem rdf:ID="GlobalPlanning">
+                            <kern:triggers>
+                              <syst:ApplicationInteraction rdf:ID="ExLongTermObjective">
+                                <kern:impacts rdf:resource="#PathPlanning"/>
+                              </syst:ApplicationInteraction>
+                            </kern:triggers>
+                            <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Software"/>
+                          </syst:MissionManagementSystem>
+                        </kern:impacts>
+                      </syst:ApplicationInteraction>
+                    </kern:triggers>
+                  </syst:PlatformManagementSystem>
+                </kern:impacts>
+                <kern:impacts rdf:resource="#GlobalPlanning"/>
+                <kern:impacts rdf:resource="#Navigator"/>
+              </syst:ApplicationInteraction>
+            </kern:triggers>
+          </syst:MotionPlanningSystem>
+        </kern:impacts>
+      </syst:ApplicationInteraction>
+    </kern:triggers>
+    <rdf:type rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Software"/>
+  </syst:SecuritySystem>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.4.8, Build 629)  http://protege.stanford.edu -->

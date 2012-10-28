@@ -1,0 +1,598 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY protege "http://protege.stanford.edu/plugins/owl/protege#" >
+    <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
+    <!ENTITY swrla "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#" >
+    <!ENTITY sqwrl "http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#" >
+    <!ENTITY robo "http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#" >
+    <!ENTITY kern "http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#" >
+    <!ENTITY syst "http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#" >
+    <!ENTITY miss "http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#" >
+    <!ENTITY envi "http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#" >
+    <!ENTITY info "http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#" >
+    <!ENTITY land "http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#"
+     xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl"
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+     xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+     xmlns:robo="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#"
+     xmlns:land="http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#"
+     xmlns:kern="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
+     xmlns:info="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#"
+     xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:envi="http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#"
+     xmlns:syst="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:miss="http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
+    <owl:Ontology rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl">
+        <owl:versionInfo rdf:datatype="&xsd;string">version delivered 1.0</owl:versionInfo>
+        <rdfs:comment xml:lang="en">FaCT++ does not work with this ontology. Reasoning shall be performed with HermiT.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This scenario is closely associated with the young challenge as it provides a description of what they will have to do (namely to find landmarks in a simpllified area).</rdfs:comment>
+        <rdfs:comment xml:lang="en">This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
+        <rdfs:comment xml:lang="en">Version for Protégé 4.2 beta.</rdfs:comment>
+        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Proteus.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#Camera -->
+
+    <owl:NamedIndividual rdf:about="&land;Camera">
+        <rdf:type rdf:resource="&syst;ImageSensorHardware"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#CameraDriver -->
+
+    <owl:NamedIndividual rdf:about="&land;CameraDriver">
+        <rdf:type rdf:resource="&syst;ImageSensorDriver"/>
+        <kern:isAtomic rdf:datatype="&xsd;boolean">true</kern:isAtomic>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#CameraSystem -->
+
+    <owl:NamedIndividual rdf:about="&land;CameraSystem">
+        <rdf:type rdf:resource="&syst;CameraSystem"/>
+        <kern:isAtomic rdf:datatype="&xsd;boolean">false</kern:isAtomic>
+        <syst:isActive rdf:datatype="&xsd;boolean">false</syst:isActive>
+        <kern:aggregates rdf:resource="&land;Camera"/>
+        <kern:aggregates rdf:resource="&land;CameraDriver"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#ExCommands -->
+
+    <owl:NamedIndividual rdf:about="&land;ExCommands">
+        <rdf:type rdf:resource="&syst;ControlAndCommand"/>
+        <kern:impacts rdf:resource="&land;WheelControl"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#ExEstimatedPosition -->
+
+    <owl:NamedIndividual rdf:about="&land;ExEstimatedPosition">
+        <rdf:type rdf:resource="&syst;ApplicationInteraction"/>
+        <kern:impacts rdf:resource="&land;GlobalPlanning"/>
+        <kern:impacts rdf:resource="&land;LocalMapping"/>
+        <kern:impacts rdf:resource="&land;Navigator"/>
+        <kern:impacts rdf:resource="&land;PathPlanning"/>
+        <kern:impacts rdf:resource="&land;Servoing"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#ExLocalMapInfo -->
+
+    <owl:NamedIndividual rdf:about="&land;ExLocalMapInfo">
+        <rdf:type rdf:resource="&syst;ApplicationInteraction"/>
+        <kern:impacts rdf:resource="&land;GlobalPlanning"/>
+        <kern:impacts rdf:resource="&land;Localization"/>
+        <kern:impacts rdf:resource="&land;Navigator"/>
+        <kern:impacts rdf:resource="&land;Servoing"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#ExLongTermObjective -->
+
+    <owl:NamedIndividual rdf:about="&land;ExLongTermObjective">
+        <rdf:type rdf:resource="&syst;ApplicationInteraction"/>
+        <kern:impacts rdf:resource="&land;PathPlanning"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#ExPath -->
+
+    <owl:NamedIndividual rdf:about="&land;ExPath">
+        <rdf:type rdf:resource="&syst;ApplicationInteraction"/>
+        <kern:impacts rdf:resource="&land;Navigator"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#ExProximityMapInfo -->
+
+    <owl:NamedIndividual rdf:about="&land;ExProximityMapInfo">
+        <rdf:type rdf:resource="&syst;ApplicationInteraction"/>
+        <kern:impacts rdf:resource="&land;LocalMapping"/>
+        <kern:impacts rdf:resource="&land;Servoing"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#ExShortTermTarget -->
+
+    <owl:NamedIndividual rdf:about="&land;ExShortTermTarget">
+        <rdf:type rdf:resource="&syst;ApplicationInteraction"/>
+        <kern:impacts rdf:resource="&land;Servoing"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#GPS -->
+
+    <owl:NamedIndividual rdf:about="&land;GPS">
+        <rdf:type rdf:resource="&syst;LocalizationSensorHardware"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#GPSDriver -->
+
+    <owl:NamedIndividual rdf:about="&land;GPSDriver">
+        <rdf:type rdf:resource="&syst;LocalizationSensorDriver"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#GPSSystem -->
+
+    <owl:NamedIndividual rdf:about="&land;GPSSystem">
+        <rdf:type rdf:resource="&syst;GPSSystem"/>
+        <kern:aggregates rdf:resource="&land;GPS"/>
+        <kern:aggregates rdf:resource="&land;GPSDriver"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#GlobalPlanning -->
+
+    <owl:NamedIndividual rdf:about="&land;GlobalPlanning">
+        <rdf:type rdf:resource="&kern;Software"/>
+        <rdf:type rdf:resource="&syst;MissionManagementSystem"/>
+        <kern:triggers rdf:resource="&land;ExLongTermObjective"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#IMU -->
+
+    <owl:NamedIndividual rdf:about="&land;IMU">
+        <rdf:type rdf:resource="&syst;LocalizationSensorHardware"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#IMUDriver -->
+
+    <owl:NamedIndividual rdf:about="&land;IMUDriver">
+        <rdf:type rdf:resource="&syst;LocalizationSensorDriver"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#IMUSystem -->
+
+    <owl:NamedIndividual rdf:about="&land;IMUSystem">
+        <rdf:type rdf:resource="&syst;LocalizationSensorSystem"/>
+        <kern:aggregates rdf:resource="&land;IMU"/>
+        <kern:aggregates rdf:resource="&land;IMUDriver"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#LaserRanging -->
+
+    <owl:NamedIndividual rdf:about="&land;LaserRanging">
+        <rdf:type rdf:resource="&syst;ObjectDetectionOrTrackingSensorHardware"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#LaserRangingDriver -->
+
+    <owl:NamedIndividual rdf:about="&land;LaserRangingDriver">
+        <rdf:type rdf:resource="&syst;ObjectDetectionSensorDriver"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#LaserRangingSystem -->
+
+    <owl:NamedIndividual rdf:about="&land;LaserRangingSystem">
+        <rdf:type rdf:resource="&syst;ObjectDetectionOrTrackingSensorSystem"/>
+        <kern:aggregates rdf:resource="&land;LaserRanging"/>
+        <kern:aggregates rdf:resource="&land;LaserRangingDriver"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#LeftEngineDriver -->
+
+    <owl:NamedIndividual rdf:about="&land;LeftEngineDriver">
+        <rdf:type rdf:resource="&syst;EngineDriver"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#LeftEngineSystem -->
+
+    <owl:NamedIndividual rdf:about="&land;LeftEngineSystem">
+        <rdf:type rdf:resource="&syst;EngineSystem"/>
+        <kern:aggregates rdf:resource="&land;LeftEngineDriver"/>
+        <kern:aggregates rdf:resource="&land;WheelMotor1"/>
+        <kern:aggregates rdf:resource="&land;WheelMotor2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#LocalMapping -->
+
+    <owl:NamedIndividual rdf:about="&land;LocalMapping">
+        <rdf:type rdf:resource="&kern;Software"/>
+        <rdf:type rdf:resource="&syst;MotionPlanningSystem"/>
+        <kern:triggers rdf:resource="&land;ExLocalMapInfo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#Localization -->
+
+    <owl:NamedIndividual rdf:about="&land;Localization">
+        <rdf:type rdf:resource="&kern;Software"/>
+        <rdf:type rdf:resource="&syst;PlatformManagementSystem"/>
+        <kern:triggers rdf:resource="&land;ExEstimatedPosition"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#MagneticCompas -->
+
+    <owl:NamedIndividual rdf:about="&land;MagneticCompas">
+        <rdf:type rdf:resource="&syst;LocalizationSensorHardware"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#MagneticCompasDriver -->
+
+    <owl:NamedIndividual rdf:about="&land;MagneticCompasDriver">
+        <rdf:type rdf:resource="&syst;LocalizationSensorDriver"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#MagneticCompasSystem -->
+
+    <owl:NamedIndividual rdf:about="&land;MagneticCompasSystem">
+        <rdf:type rdf:resource="&syst;LocalizationSensorSystem"/>
+        <kern:aggregates rdf:resource="&land;MagneticCompas"/>
+        <kern:aggregates rdf:resource="&land;MagneticCompasDriver"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#Navigator -->
+
+    <owl:NamedIndividual rdf:about="&land;Navigator">
+        <rdf:type rdf:resource="&kern;Software"/>
+        <rdf:type rdf:resource="&syst;PlatformManagementSystem"/>
+        <kern:triggers rdf:resource="&land;ExShortTermTarget"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#Odometer1 -->
+
+    <owl:NamedIndividual rdf:about="&land;Odometer1">
+        <rdf:type rdf:resource="&syst;LocalizationSensorHardware"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#Odometer2 -->
+
+    <owl:NamedIndividual rdf:about="&land;Odometer2">
+        <rdf:type rdf:resource="&syst;LocalizationSensorHardware"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#Odometer3 -->
+
+    <owl:NamedIndividual rdf:about="&land;Odometer3">
+        <rdf:type rdf:resource="&syst;LocalizationSensorHardware"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#Odometer4 -->
+
+    <owl:NamedIndividual rdf:about="&land;Odometer4">
+        <rdf:type rdf:resource="&syst;LocalizationSensorHardware"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#OdometerDriver -->
+
+    <owl:NamedIndividual rdf:about="&land;OdometerDriver">
+        <rdf:type rdf:resource="&syst;LocalizationSensorDriver"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#OdometrySystem -->
+
+    <owl:NamedIndividual rdf:about="&land;OdometrySystem">
+        <rdf:type rdf:resource="&syst;LocalizationSensorSystem"/>
+        <kern:aggregates rdf:resource="&land;Odometer1"/>
+        <kern:aggregates rdf:resource="&land;Odometer2"/>
+        <kern:aggregates rdf:resource="&land;Odometer3"/>
+        <kern:aggregates rdf:resource="&land;Odometer4"/>
+        <kern:aggregates rdf:resource="&land;OdometerDriver"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#PathPlanning -->
+
+    <owl:NamedIndividual rdf:about="&land;PathPlanning">
+        <rdf:type rdf:resource="&kern;Software"/>
+        <rdf:type rdf:resource="&syst;MotionPlanningSystem"/>
+        <kern:triggers rdf:resource="&land;ExPath"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#ProximityMapping -->
+
+    <owl:NamedIndividual rdf:about="&land;ProximityMapping">
+        <rdf:type rdf:resource="&kern;Software"/>
+        <rdf:type rdf:resource="&syst;SecuritySystem"/>
+        <kern:triggers rdf:resource="&land;ExProximityMapInfo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#Proxymeter1 -->
+
+    <owl:NamedIndividual rdf:about="&land;Proxymeter1">
+        <rdf:type rdf:resource="&syst;ObjectDetectionOrTrackingSensorHardware"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#Proxymeter2 -->
+
+    <owl:NamedIndividual rdf:about="&land;Proxymeter2">
+        <rdf:type rdf:resource="&syst;ObjectDetectionOrTrackingSensorHardware"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#Proxymeter3 -->
+
+    <owl:NamedIndividual rdf:about="&land;Proxymeter3">
+        <rdf:type rdf:resource="&syst;ObjectDetectionOrTrackingSensorHardware"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#Proxymeter4 -->
+
+    <owl:NamedIndividual rdf:about="&land;Proxymeter4">
+        <rdf:type rdf:resource="&syst;ObjectDetectionOrTrackingSensorHardware"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#ProxymetryDriver -->
+
+    <owl:NamedIndividual rdf:about="&land;ProxymetryDriver">
+        <rdf:type rdf:resource="&syst;ObjectDetectionSensorDriver"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#ProxymetrySystem -->
+
+    <owl:NamedIndividual rdf:about="&land;ProxymetrySystem">
+        <rdf:type rdf:resource="&syst;ObjectDetectionOrTrackingSensorSystem"/>
+        <kern:aggregates rdf:resource="&land;Proxymeter1"/>
+        <kern:aggregates rdf:resource="&land;Proxymeter2"/>
+        <kern:aggregates rdf:resource="&land;Proxymeter3"/>
+        <kern:aggregates rdf:resource="&land;Proxymeter4"/>
+        <kern:aggregates rdf:resource="&land;ProxymetryDriver"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#RightEngineDriver -->
+
+    <owl:NamedIndividual rdf:about="&land;RightEngineDriver">
+        <rdf:type rdf:resource="&syst;EngineDriver"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#RightEngineSystem -->
+
+    <owl:NamedIndividual rdf:about="&land;RightEngineSystem">
+        <rdf:type rdf:resource="&syst;EngineSystem"/>
+        <kern:aggregates rdf:resource="&land;RightEngineDriver"/>
+        <kern:aggregates rdf:resource="&land;WheelMotor3"/>
+        <kern:aggregates rdf:resource="&land;WheelMotor4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#Servoing -->
+
+    <owl:NamedIndividual rdf:about="&land;Servoing">
+        <rdf:type rdf:resource="&syst;ControlSystem"/>
+        <kern:triggers rdf:resource="&land;ExCommands"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#WheelControl -->
+
+    <owl:NamedIndividual rdf:about="&land;WheelControl">
+        <rdf:type rdf:resource="&syst;Closed-LoopControlSystem"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#WheelMotor1 -->
+
+    <owl:NamedIndividual rdf:about="&land;WheelMotor1">
+        <rdf:type rdf:resource="&syst;EngineHardware"/>
+        <rdf:type rdf:resource="&syst;MotorizationHardware"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#WheelMotor2 -->
+
+    <owl:NamedIndividual rdf:about="&land;WheelMotor2">
+        <rdf:type rdf:resource="&syst;EngineHardware"/>
+        <rdf:type rdf:resource="&syst;MotorizationHardware"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#WheelMotor3 -->
+
+    <owl:NamedIndividual rdf:about="&land;WheelMotor3">
+        <rdf:type rdf:resource="&syst;EngineHardware"/>
+        <rdf:type rdf:resource="&syst;MotorizationHardware"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#WheelMotor4 -->
+
+    <owl:NamedIndividual rdf:about="&land;WheelMotor4">
+        <rdf:type rdf:resource="&syst;EngineHardware"/>
+        <rdf:type rdf:resource="&syst;MotorizationHardware"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#WifiBot -->
+
+    <owl:NamedIndividual rdf:about="&land;WifiBot">
+        <rdf:type rdf:resource="&kern;CompositeSystem"/>
+        <rdf:type rdf:resource="&robo;DifferentialVehicle"/>
+        <kern:isAtomic rdf:datatype="&xsd;boolean">false</kern:isAtomic>
+        <kern:aggregates rdf:resource="&land;CameraSystem"/>
+        <kern:aggregates rdf:resource="&land;GPSSystem"/>
+        <kern:aggregates rdf:resource="&land;IMUSystem"/>
+        <kern:aggregates rdf:resource="&land;LaserRangingSystem"/>
+        <kern:aggregates rdf:resource="&land;LeftEngineSystem"/>
+        <kern:aggregates rdf:resource="&land;MagneticCompasSystem"/>
+        <kern:aggregates rdf:resource="&land;OdometrySystem"/>
+        <kern:aggregates rdf:resource="&land;ProxymetrySystem"/>
+        <kern:aggregates rdf:resource="&land;RightEngineSystem"/>
+        <kern:aggregates rdf:resource="&land;WifiCommunicationSystem"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#WifiCommunicationDriver -->
+
+    <owl:NamedIndividual rdf:about="&land;WifiCommunicationDriver">
+        <rdf:type rdf:resource="&syst;CommunicationDriver"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#WifiCommunicationSystem -->
+
+    <owl:NamedIndividual rdf:about="&land;WifiCommunicationSystem">
+        <rdf:type rdf:resource="&syst;CommunicationSystem"/>
+        <kern:isAtomic rdf:datatype="&xsd;boolean">false</kern:isAtomic>
+        <kern:aggregates rdf:resource="&land;WifiCommunicationDriver"/>
+        <kern:aggregates rdf:resource="&land;WifiLink"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#WifiLink -->
+
+    <owl:NamedIndividual rdf:about="&land;WifiLink">
+        <rdf:type rdf:resource="&syst;CommunicationHardware"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.5.1928) http://owlapi.sourceforge.net -->
+

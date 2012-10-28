@@ -1,0 +1,866 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY protege "http://protege.stanford.edu/plugins/owl/protege#" >
+    <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
+    <!ENTITY swrla "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#" >
+    <!ENTITY sqwrl "http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#" >
+    <!ENTITY robo "http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#" >
+    <!ENTITY kern "http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#" >
+    <!ENTITY miss "http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#" >
+    <!ENTITY simu "http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#" >
+    <!ENTITY envi "http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#" >
+    <!ENTITY info "http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#"
+     xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl"
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+     xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+     xmlns:robo="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#"
+     xmlns:simu="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#"
+     xmlns:kern="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
+     xmlns:info="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#"
+     xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:envi="http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:miss="http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
+    <owl:Ontology rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl">
+        <owl:versionInfo rdf:datatype="&xsd;string">version delivered 1.0</owl:versionInfo>
+        <rdfs:comment xml:lang="en">FaCT++ does not work on this ontology. Reasoning shall be performed using HermiT.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This ontology describes the mission as seen by a system. It is mainly a part of the information ontology.It is using as its main paradigm for representing the mission, the Hierarchical Tasks Network as can be seen described in Julien Guitton Thesis - &quot;Architecture Hybride pour la planification d&apos;actions et de déplacements&quot; - ISAE 2010.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1  licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
+        <rdfs:comment xml:lang="en">Version for Protégé 4.2 beta.</rdfs:comment>
+        <owl:imports rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl"/>
+        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl"/>
+        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl"/>
+        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#allocatesTask -->
+
+    <owl:ObjectProperty rdf:about="&miss;allocatesTask">
+        <rdfs:comment xml:lang="en">Distributed task allocation allocates tasks</rdfs:comment>
+        <rdfs:domain rdf:resource="&miss;DistributedTaskAllocation"/>
+        <rdfs:range rdf:resource="&miss;Task"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#executesPlan -->
+
+    <owl:ObjectProperty rdf:about="&miss;executesPlan">
+        <rdfs:comment xml:lang="en">The executive System executes de plan generated by the planning system.</rdfs:comment>
+        <rdfs:domain rdf:resource="&miss;ExecutiveSystem"/>
+        <rdfs:range rdf:resource="&miss;Plan"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#hasAPlan -->
+
+    <owl:ObjectProperty rdf:about="&miss;hasAPlan">
+        <rdfs:comment xml:lang="en">The mission has a plan.</rdfs:comment>
+        <rdfs:domain rdf:resource="&miss;Mission"/>
+        <rdfs:range rdf:resource="&miss;Plan"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#hasConstraint -->
+
+    <owl:ObjectProperty rdf:about="&miss;hasConstraint">
+        <rdfs:comment xml:lang="en">The constraints of a mission define what is not possible or forbidden.</rdfs:comment>
+        <rdfs:range rdf:resource="&info;Constraint"/>
+        <rdfs:domain rdf:resource="&miss;Mission"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#hasDecomposition -->
+
+    <owl:ObjectProperty rdf:about="&miss;hasDecomposition">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:comment xml:lang="en">A task has zero to several decompositions i.e. different ways to perform the task.</rdfs:comment>
+        <rdfs:range rdf:resource="&miss;Decomposition"/>
+        <rdfs:domain rdf:resource="&miss;Task"/>
+        <owl:inverseOf rdf:resource="&miss;isDecompositionOfTask"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#hasGoalState -->
+
+    <owl:ObjectProperty rdf:about="&miss;hasGoalState">
+        <rdfs:comment xml:lang="en">A mission objective may be specified as a state to be reached.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;State"/>
+        <rdfs:domain rdf:resource="&miss;MissionObjective"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#hasHighLevelTask -->
+
+    <owl:ObjectProperty rdf:about="&miss;hasHighLevelTask">
+        <rdfs:domain rdf:resource="&miss;MissionObjective"/>
+        <rdfs:range rdf:resource="&miss;Task"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#hasObjective -->
+
+    <owl:ObjectProperty rdf:about="&miss;hasObjective">
+        <rdfs:comment xml:lang="en">A mission has objectives.</rdfs:comment>
+        <rdfs:domain rdf:resource="&miss;Mission"/>
+        <rdfs:range rdf:resource="&miss;MissionObjective"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#hasPlannedOperator -->
+
+    <owl:ObjectProperty rdf:about="&miss;hasPlannedOperator">
+        <rdfs:comment xml:lang="en">A plan always has planned operators.</rdfs:comment>
+        <rdfs:range rdf:resource="&miss;Operator"/>
+        <rdfs:domain rdf:resource="&miss;Plan"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#hasPostCondition -->
+
+    <owl:ObjectProperty rdf:about="&miss;hasPostCondition">
+        <rdfs:comment xml:lang="en">An oprator has post conditions indicating how the state is changed by the operator.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Condition"/>
+        <rdfs:domain rdf:resource="&miss;Operator"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#hasPrecondition -->
+
+    <owl:ObjectProperty rdf:about="&miss;hasPrecondition">
+        <rdfs:comment xml:lang="en">A decompostion or an operator has a pre condition indicating that it is allowed.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Condition"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&miss;Decomposition"/>
+                    <rdf:Description rdf:about="&miss;Operator"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#hasReductionTask -->
+
+    <owl:ObjectProperty rdf:about="&miss;hasReductionTask">
+        <rdfs:comment xml:lang="en">A decomposition has reduction tasks.</rdfs:comment>
+        <rdfs:domain rdf:resource="&miss;Decomposition"/>
+        <rdfs:range rdf:resource="&miss;Task"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#hasRessource -->
+
+    <owl:ObjectProperty rdf:about="&miss;hasRessource">
+        <rdfs:comment xml:lang="en">The ressources of a mission are the agents in charge of performing it.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Agent"/>
+        <rdfs:domain rdf:resource="&miss;Mission"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#hasTaskAllocationProtocol -->
+
+    <owl:ObjectProperty rdf:about="&miss;hasTaskAllocationProtocol">
+        <rdfs:comment xml:lang="en">Distributed task allocation is based on a task allocation protocol.</rdfs:comment>
+        <rdfs:domain rdf:resource="&miss;DistributedTaskAllocation"/>
+        <rdfs:range rdf:resource="&miss;TaskAllocationProtocol"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#hasType -->
+
+    <owl:ObjectProperty rdf:about="&miss;hasType">
+        <rdfs:domain rdf:resource="&miss;Mission"/>
+        <rdfs:range rdf:resource="&miss;MissionType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#hasWorkFlow -->
+
+    <owl:ObjectProperty rdf:about="&miss;hasWorkFlow">
+        <rdfs:comment xml:lang="en">A mission has a workflow.</rdfs:comment>
+        <rdfs:domain rdf:resource="&miss;Mission"/>
+        <rdfs:range rdf:resource="&miss;WorkFlow"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#includesConstraint -->
+
+    <owl:ObjectProperty rdf:about="&miss;includesConstraint">
+        <rdfs:range rdf:resource="&info;Constraint"/>
+        <rdfs:domain rdf:resource="&info;OperationalInformation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#induceActivity -->
+
+    <owl:ObjectProperty rdf:about="&miss;induceActivity">
+        <rdfs:comment xml:lang="en">An operator, when executed, induces activities.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Activity"/>
+        <rdfs:domain rdf:resource="&miss;Operator"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#isBuiltBy -->
+
+    <owl:ObjectProperty rdf:about="&miss;isBuiltBy">
+        <rdfs:comment xml:lang="en">A plan is build by an agent.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Agent"/>
+        <rdfs:domain rdf:resource="&miss;Plan"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#isBuiltFrom -->
+
+    <owl:ObjectProperty rdf:about="&miss;isBuiltFrom">
+        <rdfs:domain rdf:resource="&miss;Plan"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&info;Constraint"/>
+                    <rdf:Description rdf:about="&miss;MissionObjective"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#isDecompositionOfTask -->
+
+    <owl:ObjectProperty rdf:about="&miss;isDecompositionOfTask">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">A decomposition is always the decomposition of a task.</rdfs:comment>
+        <rdfs:domain rdf:resource="&miss;Decomposition"/>
+        <rdfs:range rdf:resource="&miss;Task"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#isDescribedBy -->
+
+    <owl:ObjectProperty rdf:about="&miss;isDescribedBy">
+        <rdfs:comment xml:lang="en">A mission is described by its state machine, its constraints and its tasks. The workflow of the mission is described by the same state machine.</rdfs:comment>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&info;Constraint"/>
+                    <rdf:Description rdf:about="&miss;MissionStateMachine"/>
+                    <rdf:Description rdf:about="&miss;Task"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&miss;Mission"/>
+                    <rdf:Description rdf:about="&miss;WorkFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#isExpectedToChangeState -->
+
+    <owl:ObjectProperty rdf:about="&miss;isExpectedToChangeState">
+        <rdfs:comment xml:lang="en">An operator is expected to change state.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;State"/>
+        <rdfs:domain rdf:resource="&miss;Operator"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#manageMission -->
+
+    <owl:ObjectProperty rdf:about="&miss;manageMission">
+        <rdfs:comment xml:lang="en">The mission management system generates the plan with the planning system and executes it with the executive system.</rdfs:comment>
+        <rdfs:range rdf:resource="&miss;Mission"/>
+        <rdfs:domain rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#MissionManagementSystem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#performs -->
+
+    <owl:ObjectProperty rdf:about="&miss;performs">
+        <rdfs:comment xml:lang="en">An agent performs actions.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Agent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#producesPlan -->
+
+    <owl:ObjectProperty rdf:about="&miss;producesPlan">
+        <rdfs:comment xml:lang="en">The planning system generates a Plan which would be executed by the executive System.</rdfs:comment>
+        <rdfs:range rdf:resource="&miss;Plan"/>
+        <rdfs:domain rdf:resource="&miss;PlanningSystem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#takesIntoAccount -->
+
+    <owl:ObjectProperty rdf:about="&miss;takesIntoAccount">
+        <rdfs:comment xml:lang="en">takesIntoAccount</rdfs:comment>
+        <rdfs:domain rdf:resource="&miss;PlanningSystem"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&info;Constraint"/>
+                    <rdf:Description rdf:about="&miss;MissionObjective"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#takesPlaceInto -->
+
+    <owl:ObjectProperty rdf:about="&miss;takesPlaceInto">
+        <rdfs:comment xml:lang="en">A mission takes place into an environement.</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Environment"/>
+        <rdfs:domain rdf:resource="&miss;Mission"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#isSequencial -->
+
+    <owl:DatatypeProperty rdf:about="&miss;isSequencial">
+        <rdfs:comment xml:lang="en">If it is not sequencial parallelism is allowed.</rdfs:comment>
+        <rdfs:domain rdf:resource="&miss;Decomposition"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#CommunicationOfBeliefAboutEnvironment -->
+
+    <owl:Class rdf:about="&miss;CommunicationOfBeliefAboutEnvironment">
+        <rdfs:subClassOf rdf:resource="&miss;CommunicationOfBeliefs"/>
+        <owl:disjointWith rdf:resource="&miss;CommunicationOfBeliefAboutOtherAgents"/>
+        <owl:disjointWith rdf:resource="&miss;CommunicationOfSelfStateEstimation"/>
+        <rdfs:comment xml:lang="en">Estimation of the state of the things such as targets and landmarks and of the agents not performing the mission.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#CommunicationOfBeliefAboutOtherAgents -->
+
+    <owl:Class rdf:about="&miss;CommunicationOfBeliefAboutOtherAgents">
+        <rdfs:subClassOf rdf:resource="&miss;CommunicationOfBeliefs"/>
+        <owl:disjointWith rdf:resource="&miss;CommunicationOfSelfStateEstimation"/>
+        <rdfs:comment xml:lang="en">The belief about others may be expressed with respect to own. For istance relative distance.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#CommunicationOfBeliefs -->
+
+    <owl:Class rdf:about="&miss;CommunicationOfBeliefs">
+        <rdfs:subClassOf rdf:resource="&kern;InterAgentCommunication"/>
+        <owl:disjointWith rdf:resource="&miss;CommunicationOfIntents"/>
+        <owl:disjointWith rdf:resource="&miss;CoordinationSignal"/>
+        <owl:disjointWith rdf:resource="&miss;Negotiation"/>
+        <rdfs:comment xml:lang="en">Exchange of data about belived state of ownship, of other agents and of the world.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#CommunicationOfIntents -->
+
+    <owl:Class rdf:about="&miss;CommunicationOfIntents">
+        <rdfs:subClassOf rdf:resource="&kern;InterAgentCommunication"/>
+        <owl:disjointWith rdf:resource="&miss;CoordinationSignal"/>
+        <owl:disjointWith rdf:resource="&miss;Negotiation"/>
+        <rdfs:comment xml:lang="en">Communication of own plans.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#CommunicationOfSelfStateEstimation -->
+
+    <owl:Class rdf:about="&miss;CommunicationOfSelfStateEstimation">
+        <rdfs:subClassOf rdf:resource="&miss;CommunicationOfBeliefs"/>
+        <rdfs:comment xml:lang="en">Corresponds mainly to the broadcast of bevived position and attitude.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#ContractNetProtocol -->
+
+    <owl:Class rdf:about="&miss;ContractNetProtocol">
+        <rdfs:subClassOf rdf:resource="&miss;TaskAllocationProtocol"/>
+        <owl:disjointWith rdf:resource="&miss;FoundationForIntelligentPhysicalAgentsProtocol"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#CoordinationSignal -->
+
+    <owl:Class rdf:about="&miss;CoordinationSignal">
+        <rdfs:subClassOf rdf:resource="&kern;InterAgentCommunication"/>
+        <owl:disjointWith rdf:resource="&miss;Negotiation"/>
+        <rdfs:comment xml:lang="en">This kind of communication allows coordination and synchronization at execution time.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#Decomposition -->
+
+    <owl:Class rdf:about="&miss;Decomposition">
+        <rdfs:subClassOf rdf:resource="&info;OperationalInformation"/>
+        <owl:disjointWith rdf:resource="&miss;Mission"/>
+        <owl:disjointWith rdf:resource="&miss;MissionObjective"/>
+        <owl:disjointWith rdf:resource="&miss;MissionType"/>
+        <owl:disjointWith rdf:resource="&miss;OperationalConstraint"/>
+        <owl:disjointWith rdf:resource="&miss;Plan"/>
+        <owl:disjointWith rdf:resource="&miss;Task"/>
+        <owl:disjointWith rdf:resource="&miss;WorkFlow"/>
+        <rdfs:comment xml:lang="en">Decomposition of a task.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#DistributedConflictSolving -->
+
+    <owl:Class rdf:about="&miss;DistributedConflictSolving">
+        <rdfs:subClassOf rdf:resource="&miss;Negotiation"/>
+        <owl:disjointWith rdf:resource="&miss;DistributedTaskAllocation"/>
+        <rdfs:comment xml:lang="en">Exchanges for solving conflicts.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#DistributedTaskAllocation -->
+
+    <owl:Class rdf:about="&miss;DistributedTaskAllocation">
+        <rdfs:subClassOf rdf:resource="&miss;Negotiation"/>
+        <rdfs:comment xml:lang="en">Communication for distributed task allocation.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#EnvironmentalConstraint -->
+
+    <owl:Class rdf:about="&miss;EnvironmentalConstraint">
+        <rdfs:subClassOf rdf:resource="&info;Constraint"/>
+        <owl:disjointWith rdf:resource="&miss;OperationalConstraint"/>
+        <rdfs:comment xml:lang="en">This type of constraint describes the impacts of the environment on degrees of freedom for the agents involved in the mission.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#ExecutiveSystem -->
+
+    <owl:Class rdf:about="&miss;ExecutiveSystem">
+        <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticFunctionalSystem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#hasImplementingHardware"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#hasImplementingSoftware"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&miss;PlanningSystem"/>
+        <owl:disjointWith rdf:resource="&miss;ReactiveSystem"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ControlSystem"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#MissionManagementSystem"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#MotionPlanningSystem"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#PlatformManagementSystem"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SecuritySystem"/>
+        <rdfs:comment xml:lang="en">This system is able to produce actions on the basis of a plan. It is part of the MissionManagementSystem.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#FiniteStateMachine -->
+
+    <owl:Class rdf:about="&miss;FiniteStateMachine">
+        <rdfs:subClassOf rdf:resource="&kern;StateMachine"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#FoundationForIntelligentPhysicalAgentsProtocol -->
+
+    <owl:Class rdf:about="&miss;FoundationForIntelligentPhysicalAgentsProtocol">
+        <rdfs:subClassOf rdf:resource="&miss;TaskAllocationProtocol"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#Mission -->
+
+    <owl:Class rdf:about="&miss;Mission">
+        <rdfs:subClassOf rdf:resource="&info;OperationalInformation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;isAnimatedByEvolutionModel"/>
+                <owl:allValuesFrom rdf:resource="&miss;MissionStateMachine"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&miss;MissionObjective"/>
+        <owl:disjointWith rdf:resource="&miss;MissionType"/>
+        <owl:disjointWith rdf:resource="&miss;OperationalConstraint"/>
+        <owl:disjointWith rdf:resource="&miss;Plan"/>
+        <owl:disjointWith rdf:resource="&miss;Task"/>
+        <owl:disjointWith rdf:resource="&miss;WorkFlow"/>
+        <rdfs:comment xml:lang="en">Description of an operational mission that can be used by the components performing it and that can be used for performence assessment.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#MissionObjective -->
+
+    <owl:Class rdf:about="&miss;MissionObjective">
+        <rdfs:subClassOf rdf:resource="&info;OperationalInformation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
+                <owl:allValuesFrom rdf:resource="&info;String"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&miss;MissionType"/>
+        <owl:disjointWith rdf:resource="&miss;OperationalConstraint"/>
+        <owl:disjointWith rdf:resource="&miss;Plan"/>
+        <owl:disjointWith rdf:resource="&miss;Task"/>
+        <owl:disjointWith rdf:resource="&miss;WorkFlow"/>
+        <rdfs:comment xml:lang="en">The objective of a mission can be described either has a high level task to perform or as a state to be reached.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#MissionStateMachine -->
+
+    <owl:Class rdf:about="&miss;MissionStateMachine">
+        <rdfs:subClassOf rdf:resource="&miss;FiniteStateMachine"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;animates"/>
+                <owl:someValuesFrom rdf:resource="&miss;Mission"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#MissionType -->
+
+    <owl:Class rdf:about="&miss;MissionType">
+        <rdfs:subClassOf rdf:resource="&info;OperationalInformation"/>
+        <owl:disjointWith rdf:resource="&miss;OperationalConstraint"/>
+        <owl:disjointWith rdf:resource="&miss;Plan"/>
+        <owl:disjointWith rdf:resource="&miss;Task"/>
+        <owl:disjointWith rdf:resource="&miss;WorkFlow"/>
+        <rdfs:comment xml:lang="en">Textual or mathematical description of the kind of Mission for a specific Scenario.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#Negotiation -->
+
+    <owl:Class rdf:about="&miss;Negotiation">
+        <rdfs:subClassOf rdf:resource="&kern;InterAgentCommunication"/>
+        <rdfs:comment xml:lang="en">For solving conflicts or for assigning tasks agents have to communicate.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#OperationalConstraint -->
+
+    <owl:Class rdf:about="&miss;OperationalConstraint">
+        <rdfs:subClassOf rdf:resource="&info;Constraint"/>
+        <owl:disjointWith rdf:resource="&miss;Plan"/>
+        <owl:disjointWith rdf:resource="&miss;Task"/>
+        <owl:disjointWith rdf:resource="&miss;WorkFlow"/>
+        <rdfs:comment xml:lang="en">This type of constraint defines requirements on the way the mission should be conducted and on minimal mission achievements.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#Operator -->
+
+    <owl:Class rdf:about="&miss;Operator">
+        <rdfs:subClassOf rdf:resource="&miss;Task"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&miss;hasDecomposition"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">An operator is an atomic task i.e. a task without decomposition.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#Plan -->
+
+    <owl:Class rdf:about="&miss;Plan">
+        <rdfs:subClassOf rdf:resource="&info;OperationalInformation"/>
+        <owl:disjointWith rdf:resource="&miss;Task"/>
+        <owl:disjointWith rdf:resource="&miss;WorkFlow"/>
+        <rdfs:comment xml:lang="en">A plan has planned operators and is built by agents taking into account mission constraints and objective.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#PlanningSystem -->
+
+    <owl:Class rdf:about="&miss;PlanningSystem">
+        <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticFunctionalSystem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#hasImplementingHardware"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#hasImplementingSoftware"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&miss;ReactiveSystem"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ControlSystem"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#MissionManagementSystem"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#MotionPlanningSystem"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#PlatformManagementSystem"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SecuritySystem"/>
+        <rdfs:comment xml:lang="en">This is a system which generates the plan of the mission that would be executed by the ExecutiveSystem. It is part ofo the MissionManagementSystem.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#ReactiveSystem -->
+
+    <owl:Class rdf:about="&miss;ReactiveSystem">
+        <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticFunctionalSystem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#hasImplementingHardware"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#hasImplementingSoftware"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ControlSystem"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#MissionManagementSystem"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#MotionPlanningSystem"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#PlatformManagementSystem"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SecuritySystem"/>
+        <rdfs:comment xml:lang="en">This system is able to produce actions based on a behaviour.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#Task -->
+
+    <owl:Class rdf:about="&miss;Task">
+        <rdfs:subClassOf rdf:resource="&info;OperationalInformation"/>
+        <owl:disjointWith rdf:resource="&miss;WorkFlow"/>
+        <rdfs:comment xml:lang="en">It corresponds to a task as defined in Hierarchical Task Networks.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#TaskAllocationProtocol -->
+
+    <owl:Class rdf:about="&miss;TaskAllocationProtocol">
+        <rdfs:subClassOf rdf:resource="&kern;Protocol"/>
+        <rdfs:comment xml:lang="en">A protocol to support inter-agent communication for distributed task allocation process.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#WorkFlow -->
+
+    <owl:Class rdf:about="&miss;WorkFlow">
+        <rdfs:subClassOf rdf:resource="&info;OperationalInformation"/>
+        <rdfs:comment xml:lang="en">The way the mission should be executed.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ControlSystem -->
+
+    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ControlSystem">
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#MissionManagementSystem"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#MotionPlanningSystem"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#PlatformManagementSystem"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SecuritySystem"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#MissionManagementSystem -->
+
+    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#MissionManagementSystem">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#hasImplementingSoftware"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&miss;ExecutiveSystem"/>
+                            <rdf:Description rdf:about="&miss;PlanningSystem"/>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#MotionPlanningSystem"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#PlatformManagementSystem"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SecuritySystem"/>
+        <rdfs:comment xml:lang="en">This system is in charge of the generation and execution of the plan. Thus it is composed of the planning and the executive system.</rdfs:comment>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#MotionPlanningSystem -->
+
+    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#MotionPlanningSystem">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#hasImplementingSoftware"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#PlatformManagementSystem"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SecuritySystem"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#PlatformManagementSystem -->
+
+    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#PlatformManagementSystem">
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SecuritySystem"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SecuritySystem -->
+
+    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SecuritySystem"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.5.1928) http://owlapi.sourceforge.net -->
+

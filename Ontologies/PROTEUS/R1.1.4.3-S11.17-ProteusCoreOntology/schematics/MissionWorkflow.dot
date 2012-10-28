@@ -1,0 +1,47 @@
+digraph Proteus {
+	label="Workflow and Mission state machine"
+	fontname="Arial-Bold";
+	labeljust=left;
+	fontsize=20;
+	fontcolor=red;
+	bgcolor=lightgrey;
+	subgraph cluster0 {
+		label="Mission state machine hierarchy"
+		fontname="Arial-Bold";
+		labeljust=left;
+		fontsize=15;
+		fontcolor=black;
+		bgcolor=white;
+		"EvolutionModel" [label="kern:EvolutionModel", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.9514", height="0.5"];
+		"FiniteStateMachine" [label="miss:FiniteStateMachine", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="2.1667", height="0.5"];
+		"StateMachine" [label="kern:StateMachine", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.7014", height="0.5"];
+		"Algorithm" [label="kern:Algorithm", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.4722", height="0.5"];
+		"MissionStateMachine" [label="miss:MissionStateMachine", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="2.3403", height="0.5"];
+	}
+	subgraph cluster1 {
+		label="Mission hierarchy"
+		fontname="Arial-Bold";
+		labeljust=left;
+		fontsize=15;
+		fontcolor=black;
+		bgcolor=white;
+		"Mission" [label="miss:Mission", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.2778", height="0.5"];
+		"OperationalInformation" [label="info:OperationalInformation", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="2.4792", height="0.5"];
+		"WorkFlow" [label="miss:WorkFlow", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.5069", height="0.5"];
+		"Abstraction" [label="kern:Abstraction", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.5556", height="0.5"];
+		"Information" [label="kern:Information", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", width="1.5833", height="0.5"];
+	}
+	"StateMachine" -> "FiniteStateMachine" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"Algorithm" -> "StateMachine" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"OperationalInformation" -> "Mission" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"Mission" -> "MissionStateMachine" [label="kern:isAnimatedByEvolutionModel*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"Mission" -> "WorkFlow" [label="miss:hasWorkFlow*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"Mission" -> "MissionStateMachine" [label="miss:isDescribedBy*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"EvolutionModel" -> "Abstraction" [label="kern:animates*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+	"FiniteStateMachine" -> "MissionStateMachine" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"Abstraction" -> "OperationalInformation" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"Information" -> "Abstraction" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"EvolutionModel" -> "Algorithm" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"OperationalInformation" -> "WorkFlow" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"];
+	"WorkFlow" -> "MissionStateMachine" [label="miss:isDescribedBy*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled];
+}
