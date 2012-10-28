@@ -7,9 +7,9 @@ It has been implemented in a platform based upon eclipse (http://www.eclipse.org
 This language has been defined through redaction of an ontology.
 
 This project includes:
-- RobotML Ontology package (named RobotML-ontology)
+- RobotML Ontology package (see ontologies in the repositories)
 - Documentation of RobotML-ontology (text in OASIS format created using open office then libre office)
-- Documentation of RobotML language (code is to be found in the RobotML-platform project)
+- Documentation of RobotML language (code is to be found in the RobotML-SDK project)
 
 Types of issues to be discussed in this project
 - Organisation of development for RobotML (language, platform as well as sdk and ontologies)
