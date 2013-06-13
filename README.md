@@ -12,5 +12,8 @@ This project includes:
 - Documentation of RobotML language (code is to be found in the RobotML-SDK project)
 
 Types of issues to be discussed in this project
-- Organisation of development for RobotML (language, platform as well as sdk and ontologies)
+- Definition of the concepts and properties that have to exist in order to describe the Robotic domain
+- Definition of the concepts / properties to be translated inn the semi graphic language
+- Definition of the semi graphic language that is sometimes called the RobotML DSL from the above ontology elements
 - bugs / features requests for the ontology
+- features requests for the semi-graphic language
