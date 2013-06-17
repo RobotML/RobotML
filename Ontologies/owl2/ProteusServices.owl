@@ -41,6 +41,7 @@ It is more than the proteus.owl ontology as it also provides the scenario and ex
         <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl"/>
         <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Proteus.owl"/>
         <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl"/>
+        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/OARPs/AirOARP.owl"/>
     </owl:Ontology>
     
 
