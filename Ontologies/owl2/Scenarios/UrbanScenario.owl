@@ -48,7 +48,7 @@
         <rdfs:comment xml:lang="en">This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
         <rdfs:comment xml:lang="en">Version for Protégé 4.2 beta.</rdfs:comment>
         <rdfs:comment xml:lang="en">this scenario is closely linked to the urban challenge where a unmanned car is taxiing a person avoiding obstacles in the streets and obeying regulations.</rdfs:comment>
-        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Proteus.owl"/>
+        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Core.owl"/>
     </owl:Ontology>
     
 

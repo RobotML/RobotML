@@ -15,7 +15,7 @@
     <!ENTITY robo "http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#" >
     <!ENTITY kern "http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#" >
     <!ENTITY syst "http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#" >
-    <!ENTITY prot "http://www.anr-proteus.fr/sites/default/files/download/Ontology/Proteus.owl#" >
+    <!ENTITY prot "http://www.anr-proteus.fr/sites/default/files/download/Ontology/Core.owl#" >
     <!ENTITY miss "http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#" >
     <!ENTITY expe "http://www.anr-proteus.fr/sites/default/files/download/Ontology/experiment.owl#" >
     <!ENTITY simu "http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#" >
@@ -24,14 +24,14 @@
 ]>
 
 
-<rdf:RDF xmlns="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Proteus.owl#"
-     xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Proteus.owl"
+<rdf:RDF xmlns="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Core.owl#"
+     xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Core.owl"
      xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
      xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
      xmlns:robo="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#"
      xmlns:kern="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
      xmlns:simu="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#"
-     xmlns:prot="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Proteus.owl#"
+     xmlns:prot="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Core.owl#"
      xmlns:info="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#"
      xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
@@ -45,7 +45,7 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:miss="http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#"
      xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
-    <owl:Ontology rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Proteus.owl">
+    <owl:Ontology rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Core.owl">
         <rdfs:comment rdf:datatype="&xsd;string">This ontology is the consolidation of different underlying ontology modules:
 - kernel
 - environment

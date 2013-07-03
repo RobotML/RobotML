@@ -47,7 +47,7 @@
         <rdfs:comment xml:lang="en">This scenario is closely associated with the young challenge as it provides a description of what they will have to do (namely to find landmarks in a simpllified area).</rdfs:comment>
         <rdfs:comment xml:lang="en">This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
         <rdfs:comment xml:lang="en">Version for Protégé 4.2 beta.</rdfs:comment>
-        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Proteus.owl"/>
+        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Core.owl"/>
     </owl:Ontology>
     
 
