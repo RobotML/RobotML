@@ -463,6 +463,15 @@
     
 
 
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#simulatesAnimationOf -->
+
+    <owl:ObjectProperty rdf:about="&simu;simulatesAnimationOf">
+        <rdfs:range rdf:resource="&simu;SimulatedSystem"/>
+        <rdfs:domain rdf:resource="&simu;SimulatorEvolutionModel"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#usesDiscreteTimeBase -->
 
     <owl:ObjectProperty rdf:about="&simu;usesDiscreteTimeBase">
@@ -1150,19 +1159,6 @@ The term is commonly used in computer graphics to describe the three-dimensional
         <rdfs:subClassOf rdf:resource="&simu;SimulatorEvolutionModel"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="&simu;HardwareSimulator"/>
-                            <rdf:Description rdf:about="&simu;SoftwareSimulator"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;animates"/>
                 <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
             </owl:Restriction>
@@ -1177,6 +1173,19 @@ The term is commonly used in computer graphics to describe the three-dimensional
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom rdf:resource="&simu;SoftwareSimulator"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&simu;HardwareSimulator"/>
+                            <rdf:Description rdf:about="&simu;SoftwareSimulator"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&simu;SoftwareSimulator"/>
@@ -1350,7 +1359,7 @@ The term is commonly used in computer graphics to describe the three-dimensional
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SimulatorEvolutionModel -->
 
     <owl:Class rdf:about="&simu;SimulatorEvolutionModel">
-        <rdfs:subClassOf rdf:resource="&kern;EvolutionModel"/>
+        <rdfs:subClassOf rdf:resource="&kern;Model"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;has"/>
@@ -1359,24 +1368,13 @@ The term is commonly used in computer graphics to describe the three-dimensional
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;animates"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;has"/>
                 <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;animates"/>
-                <owl:allValuesFrom rdf:resource="&kern;System"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <owl:versionInfo rdf:datatype="&xsd;string">TODO: write a rule allowing to state that the simulation is created from the information produced by the implemented Probe</owl:versionInfo>
-        <rdfs:comment xml:lang="en">It is an evolution model that allows to provide one timeframe to one system. it can be synchronised with other simulators. The system manipulated by the simulator does not need to be specific. It can be an hardware (reduced scale models), a software (HLA like) or an hybrid one where there are software and hardware components (hybrid simulator). It corresponds mainly to the simulation theory that is used.</rdfs:comment>
+        <kern:TODO xml:lang="en">1. write a rule allowing to state that the simulation is created from the information produced by the implemented Probe
+2. it is necessary to create a property model of the animates property in order to express the fact the timeline provided by simulation is only a fake of the real world timeline</kern:TODO>
+        <rdfs:comment xml:lang="en">It is a model of an evolution model that allows to provide one fake timeframe to one simulated system. it can be synchronised with other simulators. The model system manipulated by the simulator does not need to be specific. It can be an hardware (reduced scale models), a software (HLA like) or an hybrid one where there are software and hardware components (hybrid simulator). It corresponds mainly to the simulation theory that is used.</rdfs:comment>
     </owl:Class>
     
 
@@ -1410,6 +1408,12 @@ The term is commonly used in computer graphics to describe the three-dimensional
         <rdfs:subClassOf rdf:resource="&simu;SimulatorEvolutionModel"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;animates"/>
+                <owl:allValuesFrom rdf:resource="&simu;SimulatedSystem"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;has"/>
                 <owl:allValuesFrom rdf:resource="&kern;SoftwareProbe"/>
             </owl:Restriction>
@@ -1418,12 +1422,6 @@ The term is commonly used in computer graphics to describe the three-dimensional
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;executesOn"/>
                 <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;animates"/>
-                <owl:allValuesFrom rdf:resource="&simu;SimulatedSystem"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A software simulator manages only systems composed of software components. It is itself an application. A software simulator can manage software components that are NOT executable thus only code (interpreter as an examaple).</rdfs:comment>
