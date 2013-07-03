@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 
 
 <!DOCTYPE rdf:RDF [
@@ -37,38 +37,16 @@
         <owl:versionInfo rdf:datatype="&xsd;string">version delivered 1.0</owl:versionInfo>
         <rdfs:comment xml:lang="en">FaCT++ does not work on this ontology. HermiT shall be used for reasoning.</rdfs:comment>
         <rdfs:comment xml:lang="en">This ontology describes the lifecycle process adopted in the PROTEUS project for the problem builders and solution providers</rdfs:comment>
-        <rdfs:comment xml:lang="en">This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
-        <rdfs:comment xml:lang="en">Version for Protégé 4.2 beta.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This work is based upon a previous one funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project (see http://www.anr-project.fr). It is the property of its authors and is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
+        <rdfs:comment xml:lang="en">Version for Protégé 4.x flavors.</rdfs:comment>
         <owl:imports rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl"/>
         <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/3.3/swrla.owl"/>
-        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl"/>
-        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl"/>
         <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl"/>
         <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl"/>
+        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl"/>
         <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl"/>
+        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl"/>
     </owl:Ontology>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotation properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Datatypes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
     
 
 
@@ -87,14 +65,6 @@
 
     <owl:ObjectProperty rdf:about="&expe;Creates">
         <rdfs:comment xml:lang="en">This property explains what is a provider. It is exactly the guy or the guys creating the problem or the solution.</rdfs:comment>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&expe;ProblemProvider"/>
-                    <rdf:Description rdf:about="&expe;SolutionProvider"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -103,6 +73,14 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&expe;ProblemProvider"/>
+                    <rdf:Description rdf:about="&expe;SolutionProvider"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -112,9 +90,9 @@
     <owl:ObjectProperty rdf:about="&expe;communicatesWith">
         <rdf:type rdf:resource="&owl;SymmetricProperty"/>
         <rdfs:comment rdf:datatype="&xsd;string">The Proteus Simulator and the Robotic Middlewares communicate.</rdfs:comment>
+        <owl:inverseOf rdf:resource="&expe;communicatesWith"/>
         <rdfs:range rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticMiddleware"/>
         <rdfs:domain rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticMiddleware"/>
-        <owl:inverseOf rdf:resource="&expe;communicatesWith"/>
     </owl:ObjectProperty>
     
 
@@ -192,8 +170,8 @@
 
     <owl:ObjectProperty rdf:about="&expe;isPartOf">
         <rdfs:comment rdf:datatype="&xsd;string">A Solution is a part of the Software System of a Robot</rdfs:comment>
-        <rdfs:range rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticFunctionalSystem"/>
         <rdfs:domain rdf:resource="&expe;Solution"/>
+        <rdfs:range rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticFunctionalSystem"/>
     </owl:ObjectProperty>
     
 
@@ -223,8 +201,8 @@
 
     <owl:ObjectProperty rdf:about="&expe;providesClockTo">
         <rdfs:comment rdf:datatype="&xsd;string">The Proteus Simulator provides a clock to the middleware it communicates with.</rdfs:comment>
-        <rdfs:range rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticMiddleware"/>
         <rdfs:domain rdf:resource="&expe;RobotMLSimulator"/>
+        <rdfs:range rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticMiddleware"/>
     </owl:ObjectProperty>
     
 
@@ -264,12 +242,12 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#Force -->
 
     <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#Force">
-        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ApplicationInteraction"/>
-        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#NoiseSignal"/>
         <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Action"/>
         <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#DriverToHardwareInteraction"/>
         <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#HardwareToDriverInteraction"/>
         <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#InterAgentCommunication"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ApplicationInteraction"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#NoiseSignal"/>
     </rdf:Description>
     
 
@@ -279,113 +257,6 @@
     <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#Pedestrian">
         <owl:disjointWith rdf:resource="&expe;ChallengeProvider"/>
         <owl:disjointWith rdf:resource="&expe;Challenger"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#GlobalPlatform -->
-
-    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#GlobalPlatform">
-        <owl:disjointWith rdf:resource="&expe;Problem"/>
-        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#HybridSimulator"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#Robot -->
-
-    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#Robot">
-        <owl:disjointWith rdf:resource="&expe;Problem"/>
-        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#HybridSimulator"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ActuatorHardware -->
-
-    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ActuatorHardware">
-        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#HardwareSimulator"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ApplicationInteraction -->
-
-    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ApplicationInteraction">
-        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#NoiseSignal"/>
-        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Action"/>
-        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#InterAgentCommunication"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#CommunicationHardware -->
-
-    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#CommunicationHardware">
-        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#HardwareSimulator"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#NoiseSignal -->
-
-    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#NoiseSignal">
-        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Action"/>
-        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#DriverToHardwareInteraction"/>
-        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#HardwareToDriverInteraction"/>
-        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#InterAgentCommunication"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#PowerHardware -->
-
-    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#PowerHardware">
-        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#HardwareSimulator"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticApplication -->
-
-    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticApplication">
-        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#GraphicsEngine"/>
-        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SoftwareSimulator"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticMiddleware -->
-
-    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticMiddleware">
-        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#GraphicsEngine"/>
-        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SoftwareSimulator"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticSystem -->
-
-    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticSystem">
-        <owl:disjointWith rdf:resource="&expe;Problem"/>
-        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#HybridSimulator"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SensorHardware -->
-
-    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SensorHardware">
-        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#HardwareSimulator"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SystemInterface -->
-
-    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SystemInterface">
-        <owl:disjointWith rdf:resource="&expe;Solution"/>
-        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SimulatedSystem"/>
     </rdf:Description>
     
 
@@ -441,13 +312,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#models"/>
-                <owl:allValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Environment"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#models"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+                <owl:allValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Environment"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -497,14 +368,14 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;hasOutput"/>
-                <owl:allValuesFrom rdf:resource="&info;OrderedSet"/>
+                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isCodedIn"/>
+                <owl:allValuesFrom rdf:resource="&info;StructuredData"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isCodedIn"/>
-                <owl:allValuesFrom rdf:resource="&info;StructuredData"/>
+                <owl:onProperty rdf:resource="&info;hasOutput"/>
+                <owl:allValuesFrom rdf:resource="&info;OrderedSet"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;Relation"/>
@@ -543,18 +414,6 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#uses"/>
-                <owl:someValuesFrom rdf:resource="&expe;Scenario"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#uses"/>
-                <owl:someValuesFrom rdf:resource="&expe;Configuration"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#uses"/>
                 <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -567,17 +426,32 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
-                <owl:someValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#Robot"/>
+                <owl:someValuesFrom rdf:resource="&expe;RobotMLSimulator"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#uses"/>
+                <owl:someValuesFrom rdf:resource="&expe;Scenario"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
-                <owl:someValuesFrom rdf:resource="&expe;RobotMLSimulator"/>
+                <owl:someValuesFrom rdf:resource="&robo;Robot"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#uses"/>
+                <owl:someValuesFrom rdf:resource="&expe;Configuration"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Environment"/>
+        <owl:disjointWith rdf:resource="&robo;GlobalPlatform"/>
+        <owl:disjointWith rdf:resource="&robo;Robot"/>
         <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#HybridSimulator"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticSystem"/>
         <owl:versionInfo rdf:datatype="&xsd;string">TODO: problem aggregates a robotic application as there are no other word in order to describe the software piece above the robotic middleware above the OS. The word robotic system is already used with another meaning. Robotic application should probbaly host the different drivers.</owl:versionInfo>
         <rdfs:comment xml:lang="en">A problem is the implementation of a subset of a scenario, it then defines a particular situation: environment and robot architecture. A problem goal is to study the behavior and performance of a particular system. The studied system must be completed with a Solution.</rdfs:comment>
     </owl:Class>
@@ -590,6 +464,12 @@
         <rdfs:subClassOf rdf:resource="&expe;RobotMLPlatformUser"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&robo;pilots"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&expe;Creates"/>
                 <owl:allValuesFrom rdf:resource="&expe;Problem"/>
             </owl:Restriction>
@@ -598,12 +478,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&expe;Creates"/>
                 <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#pilots"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">The Problem Provider defines the scenario, problem, configurations and metrics.</rdfs:comment>
@@ -617,13 +491,13 @@
         <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Application"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#withDeployementBecomes"/>
+                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#canBeDeployedIn"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#canBeDeployedIn"/>
+                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#withDeployementBecomes"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -655,6 +529,12 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
+                <owl:someValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#CommunicationMiddleware"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
                 <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">4</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -667,19 +547,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
-                <owl:someValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#CommunicationMiddleware"/>
+                <owl:someValuesFrom rdf:resource="&expe;EnvironmentSimulator"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
                 <owl:someValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticApplication"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
-                <owl:someValuesFrom rdf:resource="&expe;EnvironmentSimulator"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#PhysicEngine"/>
@@ -745,19 +619,20 @@ It is not necessary in the scope of this ontology to refine what is a scenario.<
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
-                <owl:someValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AlgorithmicModule"/>
+                <owl:someValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticApplication"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates"/>
-                <owl:someValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticApplication"/>
+                <owl:someValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AlgorithmicModule"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Application"/>
         <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#FileSystem"/>
         <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#OperatingSystem"/>
         <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SimulatedSystem"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SystemInterface"/>
         <owl:versionInfo rdf:datatype="&xsd;string">TODO: for the time being there is no existing relation to the Problem thus there should be a link created.</owl:versionInfo>
         <rdfs:comment xml:lang="en">A Solution is an answer to a Problem. It is provided by a Challenger. It is the implementation of the System targeted by the problem. The solution is a part of the Software of the Robot system. thus a part of an RoboticApplication.</rdfs:comment>
     </owl:Class>
@@ -770,14 +645,14 @@ It is not necessary in the scope of this ontology to refine what is a scenario.<
         <rdfs:subClassOf rdf:resource="&expe;RobotMLPlatformUser"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&expe;Creates"/>
-                <owl:allValuesFrom rdf:resource="&expe;Solution"/>
+                <owl:onProperty rdf:resource="&robo;pilots"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#pilots"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
+                <owl:onProperty rdf:resource="&expe;Creates"/>
+                <owl:allValuesFrom rdf:resource="&expe;Solution"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -872,6 +747,8 @@ It is not necessary in the scope of this ontology to refine what is a scenario.<
 
     <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Action">
         <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#InterAgentCommunication"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ApplicationInteraction"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#NoiseSignal"/>
     </rdf:Description>
     
 
@@ -916,6 +793,7 @@ It is not necessary in the scope of this ontology to refine what is a scenario.<
 
     <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#DriverToHardwareInteraction">
         <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#InterAgentCommunication"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#NoiseSignal"/>
     </rdf:Description>
     
 
@@ -938,6 +816,7 @@ It is not necessary in the scope of this ontology to refine what is a scenario.<
 
     <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#HardwareToDriverInteraction">
         <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#InterAgentCommunication"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#NoiseSignal"/>
     </rdf:Description>
     
 
@@ -953,12 +832,6 @@ It is not necessary in the scope of this ontology to refine what is a scenario.<
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#models"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#canBeDeployedIn"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
@@ -969,13 +842,22 @@ It is not necessary in the scope of this ontology to refine what is a scenario.<
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#models"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </rdf:Description>
     
 
 
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#InterAgentCommunication -->
 
-    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#InterAgentCommunication"/>
+    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#InterAgentCommunication">
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ApplicationInteraction"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#NoiseSignal"/>
+    </rdf:Description>
     
 
 
@@ -1015,23 +897,48 @@ It is not necessary in the scope of this ontology to refine what is a scenario.<
     
 
 
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#GlobalPlatform -->
+
+    <rdf:Description rdf:about="&robo;GlobalPlatform">
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#HybridSimulator"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#Robot -->
+
+    <rdf:Description rdf:about="&robo;Robot">
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#HybridSimulator"/>
+    </rdf:Description>
+    
+
+
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#GraphicsEngine -->
 
     <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#GraphicsEngine">
         <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SoftwareSimulator"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticApplication"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticMiddleware"/>
     </rdf:Description>
     
 
 
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#HardwareSimulator -->
 
-    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#HardwareSimulator"/>
+    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#HardwareSimulator">
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ActuatorHardware"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#CommunicationHardware"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#PowerHardware"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SensorHardware"/>
+    </rdf:Description>
     
 
 
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#HybridSimulator -->
 
-    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#HybridSimulator"/>
+    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#HybridSimulator">
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticSystem"/>
+    </rdf:Description>
     
 
 
@@ -1049,7 +956,9 @@ It is not necessary in the scope of this ontology to refine what is a scenario.<
 
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SimulatedSystem -->
 
-    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SimulatedSystem"/>
+    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SimulatedSystem">
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SystemInterface"/>
+    </rdf:Description>
     
 
 
@@ -1068,7 +977,71 @@ It is not necessary in the scope of this ontology to refine what is a scenario.<
                 <owl:allValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#OperatingSystem"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticApplication"/>
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticMiddleware"/>
     </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ActuatorHardware -->
+
+    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ActuatorHardware"/>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ApplicationInteraction -->
+
+    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ApplicationInteraction">
+        <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#NoiseSignal"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#CommunicationHardware -->
+
+    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#CommunicationHardware"/>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#NoiseSignal -->
+
+    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#NoiseSignal"/>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#PowerHardware -->
+
+    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#PowerHardware"/>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticApplication -->
+
+    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticApplication"/>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticMiddleware -->
+
+    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticMiddleware"/>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticSystem -->
+
+    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticSystem"/>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SensorHardware -->
+
+    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SensorHardware"/>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SystemInterface -->
+
+    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SystemInterface"/>
     
 
 
@@ -1087,5 +1060,5 @@ It is not necessary in the scope of this ontology to refine what is a scenario.<
 
 
 
-<!-- Generated by the OWL API (version 3.2.5.1928) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
 

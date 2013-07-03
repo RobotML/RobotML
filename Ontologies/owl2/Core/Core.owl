@@ -12,10 +12,10 @@
     <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
     <!ENTITY swrla "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#" >
     <!ENTITY sqwrl "http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#" >
+    <!ENTITY prot "http://www.anr-proteus.fr/sites/default/files/download/Ontology/Core.owl#" >
     <!ENTITY robo "http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#" >
     <!ENTITY kern "http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#" >
     <!ENTITY syst "http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#" >
-    <!ENTITY prot "http://www.anr-proteus.fr/sites/default/files/download/Ontology/Core.owl#" >
     <!ENTITY miss "http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#" >
     <!ENTITY expe "http://www.anr-proteus.fr/sites/default/files/download/Ontology/experiment.owl#" >
     <!ENTITY simu "http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#" >
@@ -46,7 +46,9 @@
      xmlns:miss="http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#"
      xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
     <owl:Ontology rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Core.owl">
-        <rdfs:comment rdf:datatype="&xsd;string">This ontology is the consolidation of different underlying ontology modules:
+        <rdfs:comment rdf:datatype="&xsd;string">This work is based upon a previous one funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project (see http://www.anr-project.fr). It is the property of its authors and is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
+        <rdfs:comment xml:lang="en">FaCT++ does not work with this ontology. HermiT shall be used for reasoning.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This ontology is the consolidation of different underlying ontology modules:
 - kernel
 - environment
 - experiment
@@ -56,10 +58,8 @@
 - mission
 - simulation
 
-NO MODIFICATION ARE TO BE DONE ONTO THE CONCEPTS DEFINED IN THESE UNDERLYING ONTOLOGIES.</rdfs:comment>
-        <rdfs:comment rdf:datatype="&xsd;string">This work is based upon a previous one funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project (see http://www.anr-project.fr). It is the property of its authors and is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
-        <rdfs:comment rdf:datatype="&xsd;string">Version for Protégé 4.x flavor.</rdfs:comment>
-        <rdfs:comment xml:lang="en">FaCT++ does not work with this ontology. HermiT shall be used for reasoning.</rdfs:comment>
+NO MODIFICATION ARE TO BE DONE ONTO THE CONCEPTS DEFINED IN THESE UNDERLYING ONTOLOGIES WHEN EDITING THIS CONTAINER. DO SELECT THE ONTOLOGY CONCERNED FIRST.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Version for Protégé 4.x flavors.</rdfs:comment>
         <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/3.3/swrla.owl"/>
         <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl"/>
         <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/experiment.owl"/>
