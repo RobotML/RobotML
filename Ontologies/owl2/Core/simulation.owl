@@ -466,6 +466,7 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#simulatesAnimationOf -->
 
     <owl:ObjectProperty rdf:about="&simu;simulatesAnimationOf">
+        <rdfs:comment xml:lang="en">this property is linked to animates property. It is the property allowing a simulator to fake animation of simulated systems.</rdfs:comment>
         <rdfs:range rdf:resource="&simu;SimulatedSystem"/>
         <rdfs:domain rdf:resource="&simu;SimulatorEvolutionModel"/>
     </owl:ObjectProperty>
@@ -1159,18 +1160,6 @@ The term is commonly used in computer graphics to describe the three-dimensional
         <rdfs:subClassOf rdf:resource="&simu;SimulatorEvolutionModel"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;animates"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&simu;HardwareSimulator"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom rdf:resource="&simu;SoftwareSimulator"/>
             </owl:Restriction>
@@ -1186,6 +1175,18 @@ The term is commonly used in computer graphics to describe the three-dimensional
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&simu;HardwareSimulator"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&simu;simulatesAnimationOf"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&simu;SoftwareSimulator"/>
@@ -1363,13 +1364,13 @@ The term is commonly used in computer graphics to describe the three-dimensional
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:allValuesFrom rdf:resource="&kern;Probe"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+                <owl:allValuesFrom rdf:resource="&kern;Probe"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <kern:TODO xml:lang="en">1. write a rule allowing to state that the simulation is created from the information produced by the implemented Probe
