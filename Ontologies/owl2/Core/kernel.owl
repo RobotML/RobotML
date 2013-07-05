@@ -84,6 +84,12 @@ Third part is the representation of the software &quot;world&quot;. All that con
     
 
 
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#otherURI -->
+
+    <owl:AnnotationProperty rdf:about="&kern;otherURI"/>
+    
+
+
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#wikipediaURI -->
 
     <owl:AnnotationProperty rdf:about="&kern;wikipediaURI"/>
@@ -134,7 +140,7 @@ Third part is the representation of the software &quot;world&quot;. All that con
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#animates -->
 
     <owl:ObjectProperty rdf:about="&kern;animates">
-        <TODO xml:lang="en">I propose to associate evolutionn model to system only and for the interaction to be triggered by system.</TODO>
+        <TODO xml:lang="en">I propose to associate evolution model to system only and for the interaction to be triggered by system.</TODO>
         <rdfs:comment xml:lang="en">animation is a property describing dynamicity of objects. In the scope of this ontology, Evolution models animates systems and the model of an evolution model provided by </rdfs:comment>
         <rdfs:domain rdf:resource="&kern;EvolutionModel"/>
         <rdfs:range rdf:resource="&kern;System"/>
@@ -504,16 +510,9 @@ Third part is the representation of the software &quot;world&quot;. All that con
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isAnimatedByEvolutionModel -->
 
     <owl:ObjectProperty rdf:about="&kern;isAnimatedByEvolutionModel">
-        <rdfs:comment xml:lang="en">abstract property of interactions and components to live.</rdfs:comment>
+        <rdfs:comment xml:lang="en">abstract property of systems to live.</rdfs:comment>
         <rdfs:range rdf:resource="&kern;EvolutionModel"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&kern;Interaction"/>
-                    <rdf:Description rdf:about="&kern;System"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
+        <rdfs:domain rdf:resource="&kern;System"/>
     </owl:ObjectProperty>
     
 
@@ -1041,7 +1040,8 @@ Note that time dependency (InputTime) is taken into account through a specific r
         <owl:disjointWith rdf:resource="&kern;System"/>
         <owl:disjointWith rdf:resource="&kern;Time"/>
         <owl:disjointWith rdf:resource="&kern;Transition"/>
-        <rdfs:comment xml:lang="en">An Activity is a set of Actions performed by an Agent.</rdfs:comment>
+        <wikipediaURI rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/Action_%28philosophy%29</wikipediaURI>
+        <rdfs:comment xml:lang="en">An Activity is a set of Actions performed by an Agent. In the wikipedia definition activity is seen as action (theory of action).</rdfs:comment>
     </owl:Class>
     
 
@@ -1240,7 +1240,8 @@ A conditional expression is associated with an operation on two logical values, 
         <owl:disjointWith rdf:resource="&kern;System"/>
         <owl:disjointWith rdf:resource="&kern;Time"/>
         <owl:disjointWith rdf:resource="&kern;Transition"/>
-        <rdfs:comment xml:lang="en">A connector has a unique upstream port and a unique downstream port. It carries interactions.
+        <rdfs:comment xml:lang="en">A connector isthe link that can exist between ports of systems. It  has a unique upstream port and a unique downstream port. There are no interaction possible between two systems if no connector relies them.
+
 This concept is closely linked to systems modelling.</rdfs:comment>
     </owl:Class>
     
@@ -1326,8 +1327,11 @@ The difference between physical objects and THE environment is that the Physical
         <owl:disjointWith rdf:resource="&kern;System"/>
         <owl:disjointWith rdf:resource="&kern;Time"/>
         <owl:disjointWith rdf:resource="&kern;Transition"/>
-        <rdfs:comment xml:lang="en">Entails the transition from origin State to a destination State in a StateMachine. Sub classes are consistent with UML definition.</rdfs:comment>
-        <TODO xml:lang="en">This definition is too close to state machine definitions. The event considered here is something closer to DEVS definition.</TODO>
+        <otherURI rdf:datatype="&xsd;anyURI">Stanford encyclopedia of philosophy
+http://plato.stanford.edu/entries/events/</otherURI>
+        <wikipediaURI rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/Event_%28philosophy%29</wikipediaURI>
+        <rdfs:comment xml:lang="en">In philosophy, events are objects in time or instantiations of properties in objects. Here events are closely linked to systems ass they are the modalities that make them change their states.</rdfs:comment>
+        <TODO xml:lang="en">This definition is too close to state machine definitions. The event considered here is something closer to DEVS definition. For the time being in the documentation, there is no usage of event outside the FSM context.</TODO>
     </owl:Class>
     
 
@@ -1352,7 +1356,8 @@ The difference between physical objects and THE environment is that the Physical
         <owl:disjointWith rdf:resource="&kern;Time"/>
         <owl:disjointWith rdf:resource="&kern;Transition"/>
         <TODO xml:lang="en">1. EvolutionModel should be disjoint with System (false if evolution model is condered representable by a system) -&gt; done
-2. EvolutionModel should not have inputState or the like, it should have system associated with time value. It means that if a system is associated to time then an evolution model is able to make it change changing the value of time.</TODO>
+2. EvolutionModel should not have inputState or the like, it should have system associated with time value. It means that if a system is associated to time then an evolution model is able to make it change changing the value of time.
+3. The wording &quot;evolutionModel&quot; refers to the fact that the type of evolution we foresee here is a model of the real one. This is not consistent with different point of expressed for innstance in the property &quot;models&quot;.</TODO>
         <rdfs:comment xml:lang="en">Evolution model is what allows systems to live through a state trajectory either in a discrete or in a continuous form depending on the type of law used. Here evolution model means the intrinsic property of any object to evolve through time.
 
 An evolution model has some several inputs to process to achieve a state transition:
@@ -1405,9 +1410,12 @@ Depending on the presence of noise or biais in the model, we can classify the Ev
         <owl:disjointWith rdf:resource="&kern;System"/>
         <owl:disjointWith rdf:resource="&kern;Time"/>
         <owl:disjointWith rdf:resource="&kern;Transition"/>
+        <wikipediaURI rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/Frame_of_reference</wikipediaURI>
         <rdfs:comment xml:lang="en">This class instantiates the abstract capability to link points in space. Space can be any dimension needed. This property can be constrained when the class is linked to others. As an example, physical object will use 3D coordinate systems using euclidean representation or 4D if using an einsteinen representation.
+
 It is through this class that space will have an associated metric.
-Attention must be focused on the fact there is an essential difference between the referential that expresses the fundamental property of object to be referenced and reference system that are the capability to manipulate referential (cartesian, circular, spherical, whatever). It means that there is only one referential associated to the environment and each of the physical objects it includes and there are many ways to manipulate them through reference systems.</rdfs:comment>
+
+Attention must be focused on the fact there is an essential difference between the frame that expresses the fundamental property of object to be referenced and reference system that are the capability to manipulate referential (cartesian, circular, spherical, whatever). It means that there is only one referential associated to the environment and each of the physical objects it includes and there are many ways to manipulate them through reference systems.</rdfs:comment>
     </owl:Class>
     
 
@@ -1460,10 +1468,12 @@ Attention must be focused on the fact there is an essential difference between t
     <owl:Class rdf:about="&kern;Information">
         <owl:disjointWith rdf:resource="&kern;Interaction"/>
         <owl:disjointWith rdf:resource="&kern;Port"/>
+        <owl:disjointWith rdf:resource="&kern;Probe"/>
         <owl:disjointWith rdf:resource="&kern;Protocol"/>
+        <owl:disjointWith rdf:resource="&kern;System"/>
         <owl:disjointWith rdf:resource="&kern;Time"/>
         <owl:disjointWith rdf:resource="&kern;Transition"/>
-        <owl:versionInfo rdf:datatype="&xsd;string">TODO: probe and system are not disjoints from information (error in proteus.owl)</owl:versionInfo>
+        <wikipediaURI rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/Information</wikipediaURI>
         <rdfs:comment xml:lang="en">Sequence or set of symbols that record or transmit a message or the abstract meaning of an entity. Information can be classified in Data or Abstraction entities.</rdfs:comment>
     </owl:Class>
     
@@ -1488,7 +1498,8 @@ Attention must be focused on the fact there is an essential difference between t
         <owl:disjointWith rdf:resource="&kern;Time"/>
         <owl:disjointWith rdf:resource="&kern;TimeEvent"/>
         <owl:disjointWith rdf:resource="&kern;Transition"/>
-        <rdfs:comment xml:lang="en">abstract concept used to describe interactions between parts of an architecture. It is represented as a class because of the meta modeling approach and the fact that it will also support an evolution model.</rdfs:comment>
+        <wikipediaURI rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/Interaction</wikipediaURI>
+        <rdfs:comment xml:lang="en">Interaction is a kind of action that occurs as two or more Objects/Systems have an effect upon one another.</rdfs:comment>
     </owl:Class>
     
 
@@ -1604,7 +1615,9 @@ A physical object, defining a border, can contain many other physical objects or
         <owl:disjointWith rdf:resource="&kern;System"/>
         <owl:disjointWith rdf:resource="&kern;Time"/>
         <owl:disjointWith rdf:resource="&kern;Transition"/>
-        <rdfs:comment xml:lang="en">&quot;in&quot; and/or &quot;out&quot; point of a componant, where data, events and so on pass through</rdfs:comment>
+        <rdfs:comment xml:lang="en">&quot;in&quot; and/or &quot;out&quot; point of a component (here component means system), where data, events and so on pass through.
+
+This definition is closely linked to the definition of systems as they are the entry/output point through which interaction can occur.</rdfs:comment>
         <rdfs:comment xml:lang="fr">point d&apos;entrée et/ou de sortie d&apos;un composant, par où peuvent transiter des données, des événements, etc.</rdfs:comment>
     </owl:Class>
     
@@ -1616,8 +1629,8 @@ A physical object, defining a border, can contain many other physical objects or
         <owl:disjointWith rdf:resource="&kern;Protocol"/>
         <owl:disjointWith rdf:resource="&kern;Time"/>
         <owl:disjointWith rdf:resource="&kern;Transition"/>
-        <owl:versionInfo rdf:datatype="&xsd;string">TODO: information and system are not disjoints from probe (error in proteus.owl)</owl:versionInfo>
         <rdfs:comment xml:lang="en">Probe is the concept that provides the capability to create information from the observation of states and thus of a system due to the fact systems have states.</rdfs:comment>
+        <TODO xml:lang="en">System is not disjoint from probe - Probes can be modelled as system.</TODO>
     </owl:Class>
     
 
@@ -1628,6 +1641,8 @@ A physical object, defining a border, can contain many other physical objects or
         <owl:disjointWith rdf:resource="&kern;System"/>
         <owl:disjointWith rdf:resource="&kern;Time"/>
         <owl:disjointWith rdf:resource="&kern;Transition"/>
+        <wikipediaURI rdf:datatype="&xsd;anyURI">Protocols in communication field is slightly expanded in this ontology
+http://en.wikipedia.org/wiki/Communications_protocol</wikipediaURI>
         <rdfs:comment xml:lang="en">A protocol is a convention on the way systems interact. It then constrains the information exchanges which implements an interaction.</rdfs:comment>
     </owl:Class>
     
@@ -1670,14 +1685,14 @@ A physical object, defining a border, can contain many other physical objects or
         <rdfs:subClassOf rdf:resource="&kern;Probe"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;observes"/>
-                <owl:allValuesFrom rdf:resource="&kern;AutomataState"/>
+                <owl:onProperty rdf:resource="&kern;produces"/>
+                <owl:allValuesFrom rdf:resource="&kern;Data"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;produces"/>
-                <owl:allValuesFrom rdf:resource="&kern;Data"/>
+                <owl:onProperty rdf:resource="&kern;observes"/>
+                <owl:allValuesFrom rdf:resource="&kern;AutomataState"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&kern;Wrapper"/>
@@ -1731,6 +1746,7 @@ A physical object, defining a border, can contain many other physical objects or
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&kern;Time"/>
         <owl:disjointWith rdf:resource="&kern;Transition"/>
+        <wikipediaURI rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/System</wikipediaURI>
         <rdfs:comment xml:lang="en">The system class is an abstract representation of system. It allows the user to create drawings, schematic, etc, with boxes and links to maps after either on the hardware as well as on the software. Every system can be animated through an evolution model allowing it to have a trajectory.</rdfs:comment>
     </owl:Class>
     
@@ -1740,6 +1756,7 @@ A physical object, defining a border, can contain many other physical objects or
 
     <owl:Class rdf:about="&kern;Time">
         <owl:disjointWith rdf:resource="&kern;Transition"/>
+        <wikipediaURI rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/Time</wikipediaURI>
         <rdfs:comment xml:lang="en">Time here is the concept that allows to represent evolution. It is not said how it is represented but that it exists. It allows evolution model to have a meaning.</rdfs:comment>
     </owl:Class>
     
@@ -1757,6 +1774,7 @@ A physical object, defining a border, can contain many other physical objects or
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Transition -->
 
     <owl:Class rdf:about="&kern;Transition">
+        <TODO rdf:datatype="&xsd;anyURI">This description should be expanded to the generic system modelling we have here in this ontology. FSM is a way to model evolution model</TODO>
         <rdfs:comment xml:lang="en">A transition is a part of the description of a finite state machine. It describes the possible transition between 2 states of a FSM. a transition is triggered by an event.</rdfs:comment>
     </owl:Class>
     
@@ -1804,6 +1822,19 @@ A physical object, defining a border, can contain many other physical objects or
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;DifferentIndividualsAtom"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#z"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
         <swrl:body>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -1831,185 +1862,15 @@ A physical object, defining a border, can contain many other physical objects or
                 </rdf:first>
             </rdf:Description>
         </swrl:body>
-        <swrl:head>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:rest rdf:resource="&rdf;nil"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;DifferentIndividualsAtom"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
-                        <swrl:argument2 rdf:resource="urn:swrl#z"/>
-                    </rdf:Description>
-                </rdf:first>
-            </rdf:Description>
-        </swrl:head>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&swrl;Imp"/>
-        <swrl:head>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:rest>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;AtomList"/>
-                        <rdf:rest rdf:resource="&rdf;nil"/>
-                        <rdf:first>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                <swrl:propertyPredicate rdf:resource="&kern;constrainsFrame"/>
-                                <swrl:argument2 rdf:resource="urn:swrl#a"/>
-                                <swrl:argument1 rdf:resource="urn:swrl#b"/>
-                            </rdf:Description>
-                        </rdf:first>
-                    </rdf:Description>
-                </rdf:rest>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                        <swrl:propertyPredicate rdf:resource="&kern;constrainsFrame"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#a"/>
-                        <swrl:argument2 rdf:resource="urn:swrl#b"/>
-                    </rdf:Description>
-                </rdf:first>
-            </rdf:Description>
-        </swrl:head>
-        <swrl:body>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="&kern;Frame"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#a"/>
-                    </rdf:Description>
-                </rdf:first>
-                <rdf:rest>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;AtomList"/>
-                        <rdf:first>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                <swrl:classPredicate rdf:resource="&kern;Frame"/>
-                                <swrl:argument1 rdf:resource="urn:swrl#b"/>
-                            </rdf:Description>
-                        </rdf:first>
-                        <rdf:rest>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;AtomList"/>
-                                <rdf:rest>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="&swrl;AtomList"/>
-                                        <rdf:first>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                                <swrl:classPredicate rdf:resource="&kern;PhysicalObject"/>
-                                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                                            </rdf:Description>
-                                        </rdf:first>
-                                        <rdf:rest>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="&swrl;AtomList"/>
-                                                <rdf:rest>
-                                                    <rdf:Description>
-                                                        <rdf:type rdf:resource="&swrl;AtomList"/>
-                                                        <rdf:first>
-                                                            <rdf:Description>
-                                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                                <swrl:propertyPredicate rdf:resource="&kern;definesAFrame"/>
-                                                                <swrl:argument2 rdf:resource="urn:swrl#a"/>
-                                                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                                                            </rdf:Description>
-                                                        </rdf:first>
-                                                        <rdf:rest>
-                                                            <rdf:Description>
-                                                                <rdf:type rdf:resource="&swrl;AtomList"/>
-                                                                <rdf:rest>
-                                                                    <rdf:Description>
-                                                                        <rdf:type rdf:resource="&swrl;AtomList"/>
-                                                                        <rdf:rest>
-                                                                            <rdf:Description>
-                                                                                <rdf:type rdf:resource="&swrl;AtomList"/>
-                                                                                <rdf:rest rdf:resource="&rdf;nil"/>
-                                                                                <rdf:first>
-                                                                                    <rdf:Description>
-                                                                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                                                        <swrl:propertyPredicate rdf:resource="&kern;triggers"/>
-                                                                                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                                                                                        <swrl:argument2 rdf:resource="urn:swrl#z"/>
-                                                                                    </rdf:Description>
-                                                                                </rdf:first>
-                                                                            </rdf:Description>
-                                                                        </rdf:rest>
-                                                                        <rdf:first>
-                                                                            <rdf:Description>
-                                                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                                                <swrl:propertyPredicate rdf:resource="&kern;impacts"/>
-                                                                                <swrl:argument2 rdf:resource="urn:swrl#y"/>
-                                                                                <swrl:argument1 rdf:resource="urn:swrl#z"/>
-                                                                            </rdf:Description>
-                                                                        </rdf:first>
-                                                                    </rdf:Description>
-                                                                </rdf:rest>
-                                                                <rdf:first>
-                                                                    <rdf:Description>
-                                                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                                        <swrl:propertyPredicate rdf:resource="&kern;definesAFrame"/>
-                                                                        <swrl:argument2 rdf:resource="urn:swrl#b"/>
-                                                                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
-                                                                    </rdf:Description>
-                                                                </rdf:first>
-                                                            </rdf:Description>
-                                                        </rdf:rest>
-                                                    </rdf:Description>
-                                                </rdf:rest>
-                                                <rdf:first>
-                                                    <rdf:Description>
-                                                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                                        <swrl:classPredicate rdf:resource="&kern;PhysicalObject"/>
-                                                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
-                                                    </rdf:Description>
-                                                </rdf:first>
-                                            </rdf:Description>
-                                        </rdf:rest>
-                                    </rdf:Description>
-                                </rdf:rest>
-                                <rdf:first>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                        <swrl:classPredicate rdf:resource="&kern;PhysicalInteraction"/>
-                                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
-                                    </rdf:Description>
-                                </rdf:first>
-                            </rdf:Description>
-                        </rdf:rest>
-                    </rdf:Description>
-                </rdf:rest>
-            </rdf:Description>
-        </swrl:body>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&swrl;Imp"/>
         <swrl:body>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="&kern;System"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                    </rdf:Description>
-                </rdf:first>
                 <rdf:rest>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;AtomList"/>
-                        <rdf:first>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                <swrl:classPredicate rdf:resource="&kern;System"/>
-                                <swrl:argument1 rdf:resource="urn:swrl#y"/>
-                            </rdf:Description>
-                        </rdf:first>
                         <rdf:rest>
                             <rdf:Description>
                                 <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2024,8 +1885,22 @@ A physical object, defining a border, can contain many other physical objects or
                                 </rdf:first>
                             </rdf:Description>
                         </rdf:rest>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="&kern;System"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                            </rdf:Description>
+                        </rdf:first>
                     </rdf:Description>
                 </rdf:rest>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&kern;System"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                    </rdf:Description>
+                </rdf:first>
             </rdf:Description>
         </swrl:body>
         <swrl:head>
@@ -2048,6 +1923,13 @@ A physical object, defining a border, can contain many other physical objects or
         <swrl:body>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&kern;Interaction"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                    </rdf:Description>
+                </rdf:first>
                 <rdf:rest>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2061,13 +1943,6 @@ A physical object, defining a border, can contain many other physical objects or
                         <rdf:rest>
                             <rdf:Description>
                                 <rdf:type rdf:resource="&swrl;AtomList"/>
-                                <rdf:first>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                        <swrl:classPredicate rdf:resource="&kern;System"/>
-                                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                                    </rdf:Description>
-                                </rdf:first>
                                 <rdf:rest>
                                     <rdf:Description>
                                         <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2095,17 +1970,17 @@ A physical object, defining a border, can contain many other physical objects or
                                         </rdf:first>
                                     </rdf:Description>
                                 </rdf:rest>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="&kern;System"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                    </rdf:Description>
+                                </rdf:first>
                             </rdf:Description>
                         </rdf:rest>
                     </rdf:Description>
                 </rdf:rest>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="&kern;Interaction"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
-                    </rdf:Description>
-                </rdf:first>
             </rdf:Description>
         </swrl:body>
         <swrl:head>
@@ -2120,6 +1995,149 @@ A physical object, defining a border, can contain many other physical objects or
                         <swrl:argument2 rdf:resource="urn:swrl#y"/>
                     </rdf:Description>
                 </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="&kern;PhysicalInteraction"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="&swrl;AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                                        <swrl:classPredicate rdf:resource="&kern;PhysicalObject"/>
+                                                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                                <swrl:propertyPredicate rdf:resource="&kern;definesAFrame"/>
+                                                                <swrl:argument2 rdf:resource="urn:swrl#a"/>
+                                                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="&swrl;AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                                        <swrl:propertyPredicate rdf:resource="&kern;definesAFrame"/>
+                                                                        <swrl:argument2 rdf:resource="urn:swrl#b"/>
+                                                                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
+                                                                <rdf:rest>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                                                                        <rdf:rest>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="&swrl;AtomList"/>
+                                                                                <rdf:rest rdf:resource="&rdf;nil"/>
+                                                                                <rdf:first>
+                                                                                    <rdf:Description>
+                                                                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                                                        <swrl:propertyPredicate rdf:resource="&kern;triggers"/>
+                                                                                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                                                                        <swrl:argument2 rdf:resource="urn:swrl#z"/>
+                                                                                    </rdf:Description>
+                                                                                </rdf:first>
+                                                                            </rdf:Description>
+                                                                        </rdf:rest>
+                                                                        <rdf:first>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                                                <swrl:propertyPredicate rdf:resource="&kern;impacts"/>
+                                                                                <swrl:argument2 rdf:resource="urn:swrl#y"/>
+                                                                                <swrl:argument1 rdf:resource="urn:swrl#z"/>
+                                                                            </rdf:Description>
+                                                                        </rdf:first>
+                                                                    </rdf:Description>
+                                                                </rdf:rest>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                                <swrl:classPredicate rdf:resource="&kern;PhysicalObject"/>
+                                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="&kern;Frame"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#b"/>
+                            </rdf:Description>
+                        </rdf:first>
+                    </rdf:Description>
+                </rdf:rest>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&kern;Frame"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#a"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="&kern;constrainsFrame"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#a"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#b"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:rest rdf:resource="&rdf;nil"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="&kern;constrainsFrame"/>
+                                <swrl:argument2 rdf:resource="urn:swrl#a"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#b"/>
+                            </rdf:Description>
+                        </rdf:first>
+                    </rdf:Description>
+                </rdf:rest>
             </rdf:Description>
         </swrl:head>
     </rdf:Description>
