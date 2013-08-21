@@ -813,8 +813,8 @@
         <rdfs:subClassOf rdf:resource="&info;CrossProduct"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;containsAbstraction"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
+                <owl:onProperty rdf:resource="&info;homogeneous"/>
+                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -825,8 +825,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;homogeneous"/>
-                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
+                <owl:onProperty rdf:resource="&info;containsAbstraction"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">Necessary to have binary operations and thus functions.</rdfs:comment>
@@ -853,13 +853,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&info;hasValue"/>
-                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
+                <owl:hasValue rdf:datatype="&xsd;boolean">false</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&info;hasValue"/>
-                <owl:hasValue rdf:datatype="&xsd;boolean">false</owl:hasValue>
+                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;Character"/>
@@ -876,6 +876,18 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&info;containsAbstraction"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
+                <owl:allValuesFrom rdf:resource="&info;Boolean"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&info;containsAbstraction"/>
                 <owl:someValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -884,18 +896,6 @@
                         </owl:unionOf>
                     </owl:Class>
                 </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;containsAbstraction"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
-                <owl:allValuesFrom rdf:resource="&info;Boolean"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;CrossProduct"/>
@@ -1031,7 +1031,7 @@ See messages like defined in JAUS, FIPA, ADL...</rdfs:comment>
         <rdfs:subClassOf rdf:resource="&info;Set"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;containsAbstraction"/>
+                <owl:onProperty rdf:resource="&info;Dimension"/>
                 <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1043,7 +1043,7 @@ See messages like defined in JAUS, FIPA, ADL...</rdfs:comment>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;Dimension"/>
+                <owl:onProperty rdf:resource="&info;containsAbstraction"/>
                 <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1758,14 +1758,14 @@ Message code and/or text info.</rdfs:comment>
         <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;hasSet"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
+                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
+                <owl:allValuesFrom rdf:resource="&info;PrimitiveData"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
-                <owl:allValuesFrom rdf:resource="&info;PrimitiveData"/>
+                <owl:onProperty rdf:resource="&info;hasSet"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;OperationalInformation"/>
@@ -1857,7 +1857,8 @@ Ex : sphere, box,...</rdfs:comment>
         <owl:disjointWith rdf:resource="&info;Vector"/>
         <owl:disjointWith rdf:resource="&kern;LogicalExpression"/>
         <owl:disjointWith rdf:resource="&kern;State"/>
-        <rdfs:comment xml:lang="en">Here are grouped the information that are used to describe operations of robots in environment. It is all the elements that can be shared between robots and human (do betweenn agents).</rdfs:comment>
+        <rdfs:comment xml:lang="en">Here are grouped the information that are used to describe operations of robots in environment. It is all the elements that can be shared between robots and human (do between agents).</rdfs:comment>
+        <kern:TODO xml:lang="en">What are the characteristics expressed as new properties or realtionships that this concept exhibits ?</kern:TODO>
     </owl:Class>
     
 
@@ -1869,13 +1870,13 @@ Ex : sphere, box,...</rdfs:comment>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&info;hasFunction"/>
-                <owl:someValuesFrom rdf:resource="&info;SortingRelation"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&info;hasFunction"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+                <owl:someValuesFrom rdf:resource="&info;SortingRelation"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:versionInfo rdf:datatype="&xsd;string">TODO: create the mirror in the Data:Collection (could be many)</owl:versionInfo>
@@ -2381,14 +2382,14 @@ Relation is linking two elements of the same Set and assumes this link is either
         <rdfs:subClassOf rdf:resource="&info;CrossProduct"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;homogeneous"/>
-                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
+                <owl:onProperty rdf:resource="&info;containsAbstraction"/>
+                <owl:someValuesFrom rdf:resource="&info;R"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;containsAbstraction"/>
-                <owl:someValuesFrom rdf:resource="&info;R"/>
+                <owl:onProperty rdf:resource="&info;homogeneous"/>
+                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">the Rn cross product is a very important one to be used throughout the simulation ontology</rdfs:comment>
@@ -2998,6 +2999,12 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDifferent"/>
         <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&info;length"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
             <rdf:Description rdf:about="&info;true"/>
         </owl:distinctMembers>
     </rdf:Description>
@@ -3007,12 +3014,6 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
             <rdf:Description rdf:about="&info;length"/>
             <rdf:Description rdf:about="&info;mass"/>
             <rdf:Description rdf:about="&info;time"/>
-        </owl:distinctMembers>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDifferent"/>
-        <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="&info;length"/>
         </owl:distinctMembers>
     </rdf:Description>
 </rdf:RDF>

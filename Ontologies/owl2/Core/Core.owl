@@ -48,7 +48,8 @@
     <owl:Ontology rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Core.owl">
         <rdfs:comment rdf:datatype="&xsd;string">This work is based upon a previous one funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project (see http://www.anr-project.fr). It is the property of its authors and is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
         <kern:TODO xml:lang="en">1. A rule is to be added in order to express the fact there are no ports on environment
-2. A rule is to be added in order to express the fact that a physical object if not included in any other object IS THE environment</kern:TODO>
+2. A rule is to be added in order to express the fact that a physical object if not included in any other object IS THE environment
+3. It is necessary to know who is the origin of concepts as sometimes they are poorly described and thus are leading to inconsistencies</kern:TODO>
         <rdfs:comment xml:lang="en">FaCT++ does not work with this ontology. HermiT shall be used for reasoning.</rdfs:comment>
         <rdfs:comment xml:lang="en">This ontology is the consolidation of different underlying ontology modules:
 - kernel

@@ -1161,6 +1161,12 @@ The term is commonly used in computer graphics to describe the three-dimensional
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&simu;HardwareSimulator"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom rdf:resource="&simu;SoftwareSimulator"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1175,12 +1181,6 @@ The term is commonly used in computer graphics to describe the three-dimensional
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&simu;HardwareSimulator"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1260,6 +1260,7 @@ The term is commonly used in computer graphics to describe the three-dimensional
     <owl:Class rdf:about="&simu;PhysicsMesh">
         <rdfs:subClassOf rdf:resource="&simu;Mesh"/>
         <owl:disjointWith rdf:resource="&simu;RenderMesh"/>
+        <kern:TODO xml:lang="en">PhysicsMesh are used by PhysicsEngine that is an actual application. It means that PhysicMesh cannot be an abstraction.</kern:TODO>
         <rdfs:comment xml:lang="en">This is a mesh managed by the physics engine. It is a support mesh of the render mesh for the physics world interaction. It has no texture mapping and it&apos;s normally a simplified mesh of the render mesh (less complexity in terms of polygons and vertices). It is normally hidden from user view, because it is attached to the render mesh which already shows the graphical aspect of the 3D object.</rdfs:comment>
     </owl:Class>
     
@@ -1388,13 +1389,13 @@ The term is commonly used in computer graphics to describe the three-dimensional
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+                <owl:allValuesFrom rdf:resource="&kern;AlgorithmicModule"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:allValuesFrom rdf:resource="&kern;AlgorithmicModule"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A software library is a piece of code providing some code header in order to be able to address the different AlgorithmicModule that are present inside.</rdfs:comment>
@@ -1409,8 +1410,8 @@ The term is commonly used in computer graphics to describe the three-dimensional
         <rdfs:subClassOf rdf:resource="&simu;SimulatorEvolutionModel"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;animates"/>
-                <owl:allValuesFrom rdf:resource="&simu;SimulatedSystem"/>
+                <owl:onProperty rdf:resource="&kern;executesOn"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1421,8 +1422,8 @@ The term is commonly used in computer graphics to describe the three-dimensional
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;executesOn"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+                <owl:onProperty rdf:resource="&kern;animates"/>
+                <owl:allValuesFrom rdf:resource="&simu;SimulatedSystem"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A software simulator manages only systems composed of software components. It is itself an application. A software simulator can manage software components that are NOT executable thus only code (interpreter as an examaple).</rdfs:comment>
