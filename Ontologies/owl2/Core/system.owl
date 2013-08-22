@@ -530,6 +530,14 @@ Each time we introduced relationships between concepts defined in the system ont
     
 
 
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#PhysicalInteraction -->
+
+    <rdf:Description rdf:about="&kern;PhysicalInteraction">
+        <owl:disjointWith rdf:resource="&syst;ApplicationInteraction"/>
+    </rdf:Description>
+    
+
+
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Software -->
 
     <rdf:Description rdf:about="&kern;Software">
@@ -820,12 +828,6 @@ IMPORTANT WARNINGS, In the scope of PROTEUS project different comments are added
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;hasPort"/>
-                <owl:someValuesFrom rdf:resource="&syst;ControlCommandInputPort"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom>
                     <owl:Class>
@@ -835,6 +837,12 @@ IMPORTANT WARNINGS, In the scope of PROTEUS project different comments are added
                         </owl:intersectionOf>
                     </owl:Class>
                 </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;hasPort"/>
+                <owl:someValuesFrom rdf:resource="&syst;ControlCommandInputPort"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">This system use a measurtement feedback, a command input to compute control for controlled systems</rdfs:comment>
@@ -902,6 +910,12 @@ IMPORTANT WARNINGS, In the scope of PROTEUS project different comments are added
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;CommunicationDriver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -916,12 +930,6 @@ IMPORTANT WARNINGS, In the scope of PROTEUS project different comments are added
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom rdf:resource="&syst;CommunicationHardware"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;CommunicationDriver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;PowerSystem"/>
@@ -1202,6 +1210,42 @@ IMPORTANT WARNINGS, In the scope of PROTEUS project different comments are added
                 <owl:hasValue rdf:datatype="&xsd;boolean">false</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#GraspingDriver -->
+
+    <owl:Class rdf:about="&syst;GraspingDriver">
+        <rdfs:subClassOf rdf:resource="&syst;ActuatorDriver"/>
+        <owl:disjointWith rdf:resource="&syst;MotorizationDriver"/>
+        <owl:disjointWith rdf:resource="&syst;NavigationCommandDriver"/>
+        <owl:disjointWith rdf:resource="&syst;WeaponDriver"/>
+        <rdfs:comment xml:lang="en">Software/Driver of an actuator of the DeviceSystem of a platform, which correspond with the prehension system of  a mechanical platform (mechanical fingers, mechanical arms, grabs ...).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#GraspingHardware -->
+
+    <owl:Class rdf:about="&syst;GraspingHardware">
+        <rdfs:subClassOf rdf:resource="&syst;ActuatorHardware"/>
+        <owl:disjointWith rdf:resource="&syst;MotorizationHardware"/>
+        <owl:disjointWith rdf:resource="&syst;NavigationCommandHardware"/>
+        <owl:disjointWith rdf:resource="&syst;WeaponHardware"/>
+        <rdfs:comment xml:lang="en">Hardware Actuator of the DeviceSystem of a platform, which correspond with the prehension system of  a mechanical platform (mechanical fingers, mechanical arms, grabs ...).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#GraspingSystem -->
+
+    <owl:Class rdf:about="&syst;GraspingSystem">
+        <rdfs:subClassOf rdf:resource="&syst;ActuatorSystem"/>
+        <owl:disjointWith rdf:resource="&syst;MotorizationSystem"/>
+        <owl:disjointWith rdf:resource="&syst;NavigationCommandSystem"/>
+        <owl:disjointWith rdf:resource="&syst;WeaponSystem"/>
+        <rdfs:comment xml:lang="en">System of a robotic platform which correspond with the software and hardware of the manipulating effectors of the robot: mechanical fingers, mechanical arms, grabs ...</rdfs:comment>
     </owl:Class>
     
 
@@ -1530,7 +1574,6 @@ IMPORTANT WARNINGS, In the scope of PROTEUS project different comments are added
     <owl:Class rdf:about="&syst;MotorizationDriver">
         <rdfs:subClassOf rdf:resource="&syst;ActuatorDriver"/>
         <owl:disjointWith rdf:resource="&syst;NavigationCommandDriver"/>
-        <owl:disjointWith rdf:resource="&syst;PrehensionDriver"/>
         <owl:disjointWith rdf:resource="&syst;WeaponDriver"/>
         <rdfs:comment xml:lang="en">Software/Driver of an actuator of the DeviceSystem of a platform, which correspond with the Driving system of an autonomous mechanical platform (wheels, axes, wings, propulsion, engine, brakes, ...).</rdfs:comment>
     </owl:Class>
@@ -1542,7 +1585,6 @@ IMPORTANT WARNINGS, In the scope of PROTEUS project different comments are added
     <owl:Class rdf:about="&syst;MotorizationHardware">
         <rdfs:subClassOf rdf:resource="&syst;ActuatorHardware"/>
         <owl:disjointWith rdf:resource="&syst;NavigationCommandHardware"/>
-        <owl:disjointWith rdf:resource="&syst;PrehensionHardware"/>
         <owl:disjointWith rdf:resource="&syst;WeaponHardware"/>
         <rdfs:comment xml:lang="en">Hardware Actuator of the DeviceSystem of a platform, which correspond with the Driving system of  an autonomous mechanical platform (wheels, axes, wings, propulsion, engine, brakes, ...).</rdfs:comment>
     </owl:Class>
@@ -1554,7 +1596,6 @@ IMPORTANT WARNINGS, In the scope of PROTEUS project different comments are added
     <owl:Class rdf:about="&syst;MotorizationSystem">
         <rdfs:subClassOf rdf:resource="&syst;ActuatorSystem"/>
         <owl:disjointWith rdf:resource="&syst;NavigationCommandSystem"/>
-        <owl:disjointWith rdf:resource="&syst;PrehensionSystem"/>
         <owl:disjointWith rdf:resource="&syst;WeaponSystem"/>
         <rdfs:comment xml:lang="en">Mechanical device associated to its Driver for moving or controlling a mechanism or a system.
 It is operated by a source of energy, usually in the form of an electric current, hydraulic fluid pressure or pneumatic pressure, and converts that energy into some kind of motion.
@@ -1606,7 +1647,6 @@ The &quot;Effector&quot; Wording refers EXACTLY to the Motorisation system.</rdf
 
     <owl:Class rdf:about="&syst;NavigationCommandDriver">
         <rdfs:subClassOf rdf:resource="&syst;ActuatorDriver"/>
-        <owl:disjointWith rdf:resource="&syst;PrehensionDriver"/>
         <owl:disjointWith rdf:resource="&syst;WeaponDriver"/>
     </owl:Class>
     
@@ -1616,7 +1656,6 @@ The &quot;Effector&quot; Wording refers EXACTLY to the Motorisation system.</rdf
 
     <owl:Class rdf:about="&syst;NavigationCommandHardware">
         <rdfs:subClassOf rdf:resource="&syst;ActuatorHardware"/>
-        <owl:disjointWith rdf:resource="&syst;PrehensionHardware"/>
         <owl:disjointWith rdf:resource="&syst;WeaponHardware"/>
     </owl:Class>
     
@@ -1626,7 +1665,6 @@ The &quot;Effector&quot; Wording refers EXACTLY to the Motorisation system.</rdf
 
     <owl:Class rdf:about="&syst;NavigationCommandSystem">
         <rdfs:subClassOf rdf:resource="&syst;ActuatorSystem"/>
-        <owl:disjointWith rdf:resource="&syst;PrehensionSystem"/>
         <owl:disjointWith rdf:resource="&syst;WeaponSystem"/>
     </owl:Class>
     
@@ -1788,6 +1826,12 @@ The PID controller calculation (algorithm) involves three separate constant para
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;PowerDriver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -1804,45 +1848,9 @@ The PID controller calculation (algorithm) involves three separate constant para
                 <owl:someValuesFrom rdf:resource="&syst;PowerHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;PowerDriver"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;SensorSystem"/>
         <owl:disjointWith rdf:resource="&syst;StructuralSystem"/>
         <rdfs:comment xml:lang="en">System in charge of providing and managing electrical energy to the robotic platform.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#PrehensionDriver -->
-
-    <owl:Class rdf:about="&syst;PrehensionDriver">
-        <rdfs:subClassOf rdf:resource="&syst;ActuatorDriver"/>
-        <owl:disjointWith rdf:resource="&syst;WeaponDriver"/>
-        <rdfs:comment xml:lang="en">Software/Driver of an actuator of the DeviceSystem of a platform, which correspond with the prehension system of  a mechanical platform (mechanical fingers, mechanical arms, grabs ...).</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#PrehensionHardware -->
-
-    <owl:Class rdf:about="&syst;PrehensionHardware">
-        <rdfs:subClassOf rdf:resource="&syst;ActuatorHardware"/>
-        <owl:disjointWith rdf:resource="&syst;WeaponHardware"/>
-        <rdfs:comment xml:lang="en">Hardware Actuator of the DeviceSystem of a platform, which correspond with the prehension system of  a mechanical platform (mechanical fingers, mechanical arms, grabs ...).</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#PrehensionSystem -->
-
-    <owl:Class rdf:about="&syst;PrehensionSystem">
-        <rdfs:subClassOf rdf:resource="&syst;ActuatorSystem"/>
-        <owl:disjointWith rdf:resource="&syst;WeaponSystem"/>
-        <rdfs:comment xml:lang="en">System of a robotic platform which correspond with the software and hardware of the manipulating effectors of the robot: mechanical fingers, mechanical arms, grabs ...</rdfs:comment>
     </owl:Class>
     
 
@@ -2013,12 +2021,6 @@ Considering the PROTEUS project it uses for the same concept the wording Robot s
         <rdfs:subClassOf rdf:resource="&syst;RoboticSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&syst;isActive"/>
-                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
@@ -2040,6 +2042,12 @@ Considering the PROTEUS project it uses for the same concept the wording Robot s
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom rdf:resource="&syst;SensorDriver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&syst;isActive"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;StructuralSystem"/>

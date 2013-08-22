@@ -162,6 +162,15 @@
     
 
 
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#isAssociatedToPO -->
+
+    <owl:ObjectProperty rdf:about="&envi;isAssociatedToPO">
+        <rdfs:domain rdf:resource="&kern;Frame"/>
+        <rdfs:range rdf:resource="&kern;PhysicalObject"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#isLocatedOver -->
 
     <owl:ObjectProperty rdf:about="&envi;isLocatedOver">
@@ -179,6 +188,25 @@
         <rdfs:domain rdf:resource="&envi;Surface"/>
         <rdfs:range rdf:resource="&kern;PhysicalObject"/>
     </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#produceGravityForce -->
+
+    <owl:ObjectProperty rdf:about="&envi;produceGravityForce">
+        <rdfs:comment xml:lang="en">this property specifies that a planet is able to locally create for any phyical object on or above its surface a gravity force.</rdfs:comment>
+        <rdfs:range rdf:resource="&envi;GravityForce"/>
+        <rdfs:domain rdf:resource="&envi;Planet"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#definesAFrame -->
+
+    <rdf:Description rdf:about="&kern;definesAFrame">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <owl:inverseOf rdf:resource="&envi;isAssociatedToPO"/>
+    </rdf:Description>
     
 
 
@@ -239,6 +267,16 @@
         <rdfs:subClassOf rdf:resource="&envi;FluidObject"/>
         <owl:disjointWith rdf:resource="&envi;Waterbody"/>
         <rdfs:comment xml:lang="en">a layer of gases that may surround a planet ]and that is held in place by the gravity of the planet. It is of interest if there are influences exercising on included physical objects.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#AtomicSurface -->
+
+    <owl:Class rdf:about="&envi;AtomicSurface">
+        <rdfs:subClassOf rdf:resource="&envi;Surface"/>
+        <rdfs:subClassOf rdf:resource="&kern;AtomicSystem"/>
+        <rdfs:comment xml:lang="en">An atomic surface is a surface where properties applie to every point of this surface.</rdfs:comment>
     </owl:Class>
     
 
@@ -376,6 +414,16 @@ Linkages may be constructed from open chains, closed chains, or a combination of
         <owl:disjointWith rdf:resource="&envi;Stairs"/>
         <owl:disjointWith rdf:resource="&envi;WaterSurface"/>
         <rdfs:comment xml:lang="en">The solid surface of a planet.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#NEDFrame -->
+
+    <owl:Class rdf:about="&envi;NEDFrame">
+        <rdfs:subClassOf rdf:resource="&kern;Frame"/>
+        <kern:wikipediaURI rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/North_east_down</kern:wikipediaURI>
+        <rdfs:comment rdf:datatype="&xsd;anyURI">the north east down frame is a local coordinate system linked to global planet frame.</rdfs:comment>
     </owl:Class>
     
 
@@ -524,43 +572,9 @@ This concept IS NOT the &quot;Waterbody concept&quot; as defined in openCyc and 
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&swrl;Imp"/>
-        <swrl:head>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:rest>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;AtomList"/>
-                        <rdf:rest rdf:resource="&rdf;nil"/>
-                        <rdf:first>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                <swrl:propertyPredicate rdf:resource="&envi;forbidsMovement"/>
-                                <swrl:argument2 rdf:resource="urn:swrl#a"/>
-                                <swrl:argument1 rdf:resource="urn:swrl#b"/>
-                            </rdf:Description>
-                        </rdf:first>
-                    </rdf:Description>
-                </rdf:rest>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                        <swrl:propertyPredicate rdf:resource="&envi;forbidsMovement"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#a"/>
-                        <swrl:argument2 rdf:resource="urn:swrl#b"/>
-                    </rdf:Description>
-                </rdf:first>
-            </rdf:Description>
-        </swrl:head>
         <swrl:body>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="&envi;Joint"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
-                    </rdf:Description>
-                </rdf:first>
                 <rdf:rest>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -570,25 +584,34 @@ This concept IS NOT the &quot;Waterbody concept&quot; as defined in openCyc and 
                                 <rdf:rest>
                                     <rdf:Description>
                                         <rdf:type rdf:resource="&swrl;AtomList"/>
-                                        <rdf:first>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                                <swrl:classPredicate rdf:resource="&kern;PhysicalObject"/>
-                                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                                            </rdf:Description>
-                                        </rdf:first>
                                         <rdf:rest>
                                             <rdf:Description>
                                                 <rdf:type rdf:resource="&swrl;AtomList"/>
                                                 <rdf:rest>
                                                     <rdf:Description>
                                                         <rdf:type rdf:resource="&swrl;AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                                <swrl:propertyPredicate rdf:resource="&kern;definesAFrame"/>
+                                                                <swrl:argument2 rdf:resource="urn:swrl#a"/>
+                                                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                                            </rdf:Description>
+                                                        </rdf:first>
                                                         <rdf:rest>
                                                             <rdf:Description>
                                                                 <rdf:type rdf:resource="&swrl;AtomList"/>
                                                                 <rdf:rest>
                                                                     <rdf:Description>
                                                                         <rdf:type rdf:resource="&swrl;AtomList"/>
+                                                                        <rdf:first>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                                                <swrl:propertyPredicate rdf:resource="&kern;impacts"/>
+                                                                                <swrl:argument2 rdf:resource="urn:swrl#y"/>
+                                                                                <swrl:argument1 rdf:resource="urn:swrl#z"/>
+                                                                            </rdf:Description>
+                                                                        </rdf:first>
                                                                         <rdf:rest>
                                                                             <rdf:Description>
                                                                                 <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -603,14 +626,6 @@ This concept IS NOT the &quot;Waterbody concept&quot; as defined in openCyc and 
                                                                                 </rdf:first>
                                                                             </rdf:Description>
                                                                         </rdf:rest>
-                                                                        <rdf:first>
-                                                                            <rdf:Description>
-                                                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                                                <swrl:propertyPredicate rdf:resource="&kern;impacts"/>
-                                                                                <swrl:argument2 rdf:resource="urn:swrl#y"/>
-                                                                                <swrl:argument1 rdf:resource="urn:swrl#z"/>
-                                                                            </rdf:Description>
-                                                                        </rdf:first>
                                                                     </rdf:Description>
                                                                 </rdf:rest>
                                                                 <rdf:first>
@@ -623,14 +638,6 @@ This concept IS NOT the &quot;Waterbody concept&quot; as defined in openCyc and 
                                                                 </rdf:first>
                                                             </rdf:Description>
                                                         </rdf:rest>
-                                                        <rdf:first>
-                                                            <rdf:Description>
-                                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                                <swrl:propertyPredicate rdf:resource="&kern;definesAFrame"/>
-                                                                <swrl:argument2 rdf:resource="urn:swrl#a"/>
-                                                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                                                            </rdf:Description>
-                                                        </rdf:first>
                                                     </rdf:Description>
                                                 </rdf:rest>
                                                 <rdf:first>
@@ -642,6 +649,13 @@ This concept IS NOT the &quot;Waterbody concept&quot; as defined in openCyc and 
                                                 </rdf:first>
                                             </rdf:Description>
                                         </rdf:rest>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                                <swrl:classPredicate rdf:resource="&kern;PhysicalObject"/>
+                                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                            </rdf:Description>
+                                        </rdf:first>
                                     </rdf:Description>
                                 </rdf:rest>
                                 <rdf:first>
@@ -662,8 +676,42 @@ This concept IS NOT the &quot;Waterbody concept&quot; as defined in openCyc and 
                         </rdf:first>
                     </rdf:Description>
                 </rdf:rest>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&envi;Joint"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
+                    </rdf:Description>
+                </rdf:first>
             </rdf:Description>
         </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="&envi;forbidsMovement"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#a"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#b"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:rest rdf:resource="&rdf;nil"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="&envi;forbidsMovement"/>
+                                <swrl:argument2 rdf:resource="urn:swrl#a"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#b"/>
+                            </rdf:Description>
+                        </rdf:first>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:head>
     </rdf:Description>
 </rdf:RDF>
 

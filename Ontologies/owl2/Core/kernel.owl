@@ -97,6 +97,12 @@ Third part is the representation of the software &quot;world&quot;. All that con
     
 
 
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#wiktionaryURI -->
+
+    <owl:AnnotationProperty rdf:about="&kern;wiktionaryURI"/>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -209,7 +215,6 @@ DONE
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#definesAFrame -->
 
     <owl:ObjectProperty rdf:about="&kern;definesAFrame">
-        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
         <rdfs:comment xml:lang="en">this property expresses the fact that every physical object is associated to a frame providing it its existence in space and time.</rdfs:comment>
         <rdfs:range rdf:resource="&kern;Frame"/>
         <rdfs:domain rdf:resource="&kern;PhysicalObject"/>
@@ -223,6 +228,17 @@ DONE
         <rdfs:comment xml:lang="en">A referential defines a local time</rdfs:comment>
         <rdfs:domain rdf:resource="&kern;Frame"/>
         <rdfs:range rdf:resource="&kern;Time"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#describe -->
+
+    <owl:ObjectProperty rdf:about="&kern;describe">
+        <wiktionaryURI rdf:datatype="&xsd;anyURI">http://en.wiktionary.org/wiki/describe</wiktionaryURI>
+        <rdfs:comment xml:lang="en">The &quot;describe&quot; property is the capability for any piece of information to provide an insight on universe / world and its content. It means everything including information (quotation or comment)</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;Information"/>
+        <rdfs:range rdf:resource="&owl;Thing"/>
     </owl:ObjectProperty>
     
 
@@ -320,7 +336,7 @@ DONE
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasAction -->
 
     <owl:ObjectProperty rdf:about="&kern;hasAction">
-        <rdfs:comment xml:lang="en">An Activity is made by a set of Actions.</rdfs:comment>
+        <rdfs:comment xml:lang="en">An Activity is constituted by a set of Actions.</rdfs:comment>
         <rdfs:range rdf:resource="&kern;Action"/>
         <rdfs:domain rdf:resource="&kern;Activity"/>
         <rdfs:subPropertyOf rdf:resource="&kern;has"/>
@@ -1751,6 +1767,7 @@ http://en.wikipedia.org/wiki/Communications_protocol</wikipediaURI>
         <owl:disjointWith rdf:resource="&kern;Transition"/>
         <wikipediaURI rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/System</wikipediaURI>
         <rdfs:comment xml:lang="en">The system class is an abstract representation of system. It allows the user to create drawings, schematic, etc, with boxes and links to maps after either on the hardware as well as on the software. Every system can be animated through an evolution model allowing it to have a trajectory.</rdfs:comment>
+        <TODO xml:lang="en">the description here joined is not corresponding to the true concept. We should state that system IS object of the world but that there could be schematic (an actual concrete information) that could represent it (describe it thus). The world IS a system in our ontology. A system that models another means a conrete and actual &quot;in the world&quot; system (such as a simulator that is an software application) providing similar behaviour that another one (such as an aircraft).</TODO>
     </owl:Class>
     
 
@@ -1825,63 +1842,6 @@ http://en.wikipedia.org/wiki/Communications_protocol</wikipediaURI>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&swrl;Imp"/>
-        <swrl:head>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:rest rdf:resource="&rdf;nil"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;DifferentIndividualsAtom"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
-                        <swrl:argument2 rdf:resource="urn:swrl#z"/>
-                    </rdf:Description>
-                </rdf:first>
-            </rdf:Description>
-        </swrl:head>
-        <swrl:body>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:rest>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;AtomList"/>
-                        <rdf:rest rdf:resource="&rdf;nil"/>
-                        <rdf:first>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                <swrl:propertyPredicate rdf:resource="&kern;isPositionedIn"/>
-                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                                <swrl:argument2 rdf:resource="urn:swrl#y"/>
-                            </rdf:Description>
-                        </rdf:first>
-                    </rdf:Description>
-                </rdf:rest>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                        <swrl:propertyPredicate rdf:resource="&kern;definesAFrame"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                        <swrl:argument2 rdf:resource="urn:swrl#z"/>
-                    </rdf:Description>
-                </rdf:first>
-            </rdf:Description>
-        </swrl:body>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&swrl;Imp"/>
-        <swrl:head>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:rest rdf:resource="&rdf;nil"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                        <swrl:propertyPredicate rdf:resource="&kern;triggers"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                        <swrl:argument2 rdf:resource="urn:swrl#y"/>
-                    </rdf:Description>
-                </rdf:first>
-            </rdf:Description>
-        </swrl:head>
         <swrl:body>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -1905,24 +1865,9 @@ http://en.wikipedia.org/wiki/Communications_protocol</wikipediaURI>
                         <rdf:rest>
                             <rdf:Description>
                                 <rdf:type rdf:resource="&swrl;AtomList"/>
-                                <rdf:first>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                        <swrl:classPredicate rdf:resource="&kern;System"/>
-                                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                                    </rdf:Description>
-                                </rdf:first>
                                 <rdf:rest>
                                     <rdf:Description>
                                         <rdf:type rdf:resource="&swrl;AtomList"/>
-                                        <rdf:first>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                <swrl:propertyPredicate rdf:resource="&kern;emits"/>
-                                                <swrl:argument2 rdf:resource="urn:swrl#y"/>
-                                                <swrl:argument1 rdf:resource="urn:swrl#z"/>
-                                            </rdf:Description>
-                                        </rdf:first>
                                         <rdf:rest>
                                             <rdf:Description>
                                                 <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -1937,54 +1882,49 @@ http://en.wikipedia.org/wiki/Communications_protocol</wikipediaURI>
                                                 </rdf:first>
                                             </rdf:Description>
                                         </rdf:rest>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="&kern;emits"/>
+                                                <swrl:argument2 rdf:resource="urn:swrl#y"/>
+                                                <swrl:argument1 rdf:resource="urn:swrl#z"/>
+                                            </rdf:Description>
+                                        </rdf:first>
                                     </rdf:Description>
                                 </rdf:rest>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="&kern;System"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                    </rdf:Description>
+                                </rdf:first>
                             </rdf:Description>
                         </rdf:rest>
                     </rdf:Description>
                 </rdf:rest>
             </rdf:Description>
         </swrl:body>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&swrl;Imp"/>
         <swrl:head>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:rest>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;AtomList"/>
-                        <rdf:rest rdf:resource="&rdf;nil"/>
-                        <rdf:first>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                <swrl:propertyPredicate rdf:resource="&kern;constrainsFrame"/>
-                                <swrl:argument2 rdf:resource="urn:swrl#a"/>
-                                <swrl:argument1 rdf:resource="urn:swrl#b"/>
-                            </rdf:Description>
-                        </rdf:first>
-                    </rdf:Description>
-                </rdf:rest>
+                <rdf:rest rdf:resource="&rdf;nil"/>
                 <rdf:first>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                        <swrl:propertyPredicate rdf:resource="&kern;constrainsFrame"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#a"/>
-                        <swrl:argument2 rdf:resource="urn:swrl#b"/>
+                        <swrl:propertyPredicate rdf:resource="&kern;triggers"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#y"/>
                     </rdf:Description>
                 </rdf:first>
             </rdf:Description>
         </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
         <swrl:body>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="&kern;Frame"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#a"/>
-                    </rdf:Description>
-                </rdf:first>
                 <rdf:rest>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2001,30 +1941,23 @@ http://en.wikipedia.org/wiki/Communications_protocol</wikipediaURI>
                                 <rdf:rest>
                                     <rdf:Description>
                                         <rdf:type rdf:resource="&swrl;AtomList"/>
-                                        <rdf:first>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                                <swrl:classPredicate rdf:resource="&kern;PhysicalObject"/>
-                                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                                            </rdf:Description>
-                                        </rdf:first>
                                         <rdf:rest>
                                             <rdf:Description>
                                                 <rdf:type rdf:resource="&swrl;AtomList"/>
                                                 <rdf:rest>
                                                     <rdf:Description>
                                                         <rdf:type rdf:resource="&swrl;AtomList"/>
-                                                        <rdf:first>
-                                                            <rdf:Description>
-                                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                                <swrl:propertyPredicate rdf:resource="&kern;definesAFrame"/>
-                                                                <swrl:argument2 rdf:resource="urn:swrl#a"/>
-                                                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                                                            </rdf:Description>
-                                                        </rdf:first>
                                                         <rdf:rest>
                                                             <rdf:Description>
                                                                 <rdf:type rdf:resource="&swrl;AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                                        <swrl:propertyPredicate rdf:resource="&kern;definesAFrame"/>
+                                                                        <swrl:argument2 rdf:resource="urn:swrl#b"/>
+                                                                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
                                                                 <rdf:rest>
                                                                     <rdf:Description>
                                                                         <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2052,16 +1985,16 @@ http://en.wikipedia.org/wiki/Communications_protocol</wikipediaURI>
                                                                         </rdf:first>
                                                                     </rdf:Description>
                                                                 </rdf:rest>
-                                                                <rdf:first>
-                                                                    <rdf:Description>
-                                                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                                        <swrl:propertyPredicate rdf:resource="&kern;definesAFrame"/>
-                                                                        <swrl:argument2 rdf:resource="urn:swrl#b"/>
-                                                                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
-                                                                    </rdf:Description>
-                                                                </rdf:first>
                                                             </rdf:Description>
                                                         </rdf:rest>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                                <swrl:propertyPredicate rdf:resource="&kern;definesAFrame"/>
+                                                                <swrl:argument2 rdf:resource="urn:swrl#a"/>
+                                                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                                            </rdf:Description>
+                                                        </rdf:first>
                                                     </rdf:Description>
                                                 </rdf:rest>
                                                 <rdf:first>
@@ -2073,6 +2006,13 @@ http://en.wikipedia.org/wiki/Communications_protocol</wikipediaURI>
                                                 </rdf:first>
                                             </rdf:Description>
                                         </rdf:rest>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                                <swrl:classPredicate rdf:resource="&kern;PhysicalObject"/>
+                                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                            </rdf:Description>
+                                        </rdf:first>
                                     </rdf:Description>
                                 </rdf:rest>
                             </rdf:Description>
@@ -2086,31 +2026,65 @@ http://en.wikipedia.org/wiki/Communications_protocol</wikipediaURI>
                         </rdf:first>
                     </rdf:Description>
                 </rdf:rest>
-            </rdf:Description>
-        </swrl:body>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&swrl;Imp"/>
-        <swrl:head>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:rest rdf:resource="&rdf;nil"/>
                 <rdf:first>
                     <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;DatavaluedPropertyAtom"/>
-                        <swrl:argument2 rdf:datatype="&xsd;boolean">false</swrl:argument2>
-                        <swrl:propertyPredicate rdf:resource="&kern;isAtomic"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&kern;Frame"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#a"/>
                     </rdf:Description>
                 </rdf:first>
             </rdf:Description>
-        </swrl:head>
-        <swrl:body>
+        </swrl:body>
+        <swrl:head>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="&kern;constrainsFrame"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#a"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#b"/>
+                    </rdf:Description>
+                </rdf:first>
                 <rdf:rest>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:rest rdf:resource="&rdf;nil"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="&kern;constrainsFrame"/>
+                                <swrl:argument2 rdf:resource="urn:swrl#a"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#b"/>
+                            </rdf:Description>
+                        </rdf:first>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&kern;System"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="&kern;System"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                            </rdf:Description>
+                        </rdf:first>
                         <rdf:rest>
                             <rdf:Description>
                                 <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2125,22 +2099,65 @@ http://en.wikipedia.org/wiki/Communications_protocol</wikipediaURI>
                                 </rdf:first>
                             </rdf:Description>
                         </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;DatavaluedPropertyAtom"/>
+                        <swrl:argument2 rdf:datatype="&xsd;boolean">false</swrl:argument2>
+                        <swrl:propertyPredicate rdf:resource="&kern;isAtomic"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;DifferentIndividualsAtom"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#z"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="&kern;definesAFrame"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#z"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:rest rdf:resource="&rdf;nil"/>
                         <rdf:first>
                             <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                <swrl:classPredicate rdf:resource="&kern;System"/>
-                                <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="&kern;isPositionedIn"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                <swrl:argument2 rdf:resource="urn:swrl#y"/>
                             </rdf:Description>
                         </rdf:first>
                     </rdf:Description>
                 </rdf:rest>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="&kern;System"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                    </rdf:Description>
-                </rdf:first>
             </rdf:Description>
         </swrl:body>
     </rdf:Description>

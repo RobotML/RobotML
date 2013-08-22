@@ -127,15 +127,6 @@
     <owl:ObjectProperty rdf:about="&robo;movesOverGround">
         <rdfs:comment xml:lang="en">UGV and humans move over stairs, floor and land surface.</rdfs:comment>
         <rdfs:subPropertyOf rdf:resource="&robo;movesOver"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&kern;Human"/>
-                    <rdf:Description rdf:about="&robo;GroundVehicle"/>
-                    <rdf:Description rdf:about="&robo;HybridVehicle"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -145,6 +136,15 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&kern;Human"/>
+                    <rdf:Description rdf:about="&robo;GroundVehicle"/>
+                    <rdf:Description rdf:about="&robo;HybridVehicle"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -219,7 +219,7 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#AirVehicle -->
 
     <owl:Class rdf:about="&robo;AirVehicle">
-        <rdfs:subClassOf rdf:resource="&robo;Robot"/>
+        <rdfs:subClassOf rdf:resource="&robo;MobileRobot"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&robo;movesIn"/>
@@ -231,6 +231,7 @@
         <owl:disjointWith rdf:resource="&robo;SurfaceVehicle"/>
         <owl:disjointWith rdf:resource="&robo;UnderwaterVehicle"/>
         <rdfs:comment xml:lang="en">Air Vehicle. Only the vehicles with either fixed (like planes) either turning (like helicopters) sails will be considered in this definition.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Considering wikipedia definition, vehicle refers to something transporting cargo or persons.</rdfs:comment>
     </owl:Class>
     
 
@@ -314,7 +315,7 @@ A “robotic system of systems” is a specialised system of systems where there
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#GroundVehicle -->
 
     <owl:Class rdf:about="&robo;GroundVehicle">
-        <rdfs:subClassOf rdf:resource="&robo;Robot"/>
+        <rdfs:subClassOf rdf:resource="&robo;MobileRobot"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&robo;movesOver"/>
@@ -332,10 +333,36 @@ A “robotic system of systems” is a specialised system of systems where there
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#HybridVehicle -->
 
     <owl:Class rdf:about="&robo;HybridVehicle">
-        <rdfs:subClassOf rdf:resource="&robo;Robot"/>
+        <rdfs:subClassOf rdf:resource="&robo;MobileRobot"/>
         <owl:disjointWith rdf:resource="&robo;SurfaceVehicle"/>
         <owl:disjointWith rdf:resource="&robo;UnderwaterVehicle"/>
         <rdfs:comment xml:lang="en">Type of vehicle which can move in different environments. Like the Amphibious vehicles.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#LeggedVehicle -->
+
+    <owl:Class rdf:about="&robo;LeggedVehicle">
+        <rdfs:subClassOf rdf:resource="&robo;GroundVehicle"/>
+        <rdfs:comment xml:lang="en">For these robots locomotion is assured thanks to articulated bodies (legs for human).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#Manipulator -->
+
+    <owl:Class rdf:about="&robo;Manipulator">
+        <rdfs:subClassOf rdf:resource="&robo;Robot"/>
+        <rdfs:comment xml:lang="en">This is a robot that have at least one grasping system.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#MobileRobot -->
+
+    <owl:Class rdf:about="&robo;MobileRobot">
+        <rdfs:subClassOf rdf:resource="&robo;Robot"/>
     </owl:Class>
     
 
@@ -357,14 +384,14 @@ A “robotic system of systems” is a specialised system of systems where there
         <rdfs:subClassOf rdf:resource="&kern;CompositeSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;hasProbe"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:allValuesFrom rdf:resource="&syst;RoboticSystem"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:allValuesFrom rdf:resource="&syst;RoboticSystem"/>
+                <owl:onProperty rdf:resource="&kern;hasProbe"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -382,7 +409,7 @@ A “robotic system of systems” is a specialised system of systems where there
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#SurfaceVehicle -->
 
     <owl:Class rdf:about="&robo;SurfaceVehicle">
-        <rdfs:subClassOf rdf:resource="&robo;Robot"/>
+        <rdfs:subClassOf rdf:resource="&robo;MobileRobot"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&robo;movesOver"/>
@@ -398,7 +425,7 @@ A “robotic system of systems” is a specialised system of systems where there
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#UnderwaterVehicle -->
 
     <owl:Class rdf:about="&robo;UnderwaterVehicle">
-        <rdfs:subClassOf rdf:resource="&robo;Robot"/>
+        <rdfs:subClassOf rdf:resource="&robo;MobileRobot"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&robo;movesIn"/>
@@ -414,7 +441,7 @@ A “robotic system of systems” is a specialised system of systems where there
 
     <owl:Class rdf:about="&robo;UnmannedSystem">
         <rdfs:subClassOf rdf:resource="&robo;Robot"/>
-        <rdfs:comment xml:lang="en">To represent the unmanned robots category and specificities. Unmanned only means nobody control the robot from inside (no p&quot;pilot&quot; onboard).</rdfs:comment>
+        <rdfs:comment xml:lang="en">To represent the unmanned robots category and specificities. Unmanned only means nobody control the robot from inside (no &quot;pilot&quot; onboard).</rdfs:comment>
     </owl:Class>
     
 

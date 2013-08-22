@@ -74,6 +74,9 @@ It is more than the proteus.owl ontology as it also provides the scenario and ex
     <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#CaylusLandSurface">
         <kern:definesAReferential rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#StartPointReferential"/>
     </rdf:Description>
+    <rdf:Description rdf:about="&kern;Environment">
+        <kern:TODO xml:lang="en">a rule exhibiting the fact that no system includes an environment and there is no associated port is needed. If no possibility exists with a rule then a property will be created to explict</kern:TODO>
+    </rdf:Description>
 </rdf:RDF>
 
 
