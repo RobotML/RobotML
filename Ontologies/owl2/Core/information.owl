@@ -768,6 +768,18 @@
     
 
 
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#AssociativeArrayForSimulation -->
+
+    <owl:Class rdf:about="&info;AssociativeArrayForSimulation">
+        <rdfs:subClassOf rdf:resource="&info;AssociativeArray"/>
+        <owl:disjointWith rdf:resource="&info;I"/>
+        <owl:disjointWith rdf:resource="&info;OrderedSetForSystemDescription"/>
+        <owl:disjointWith rdf:resource="&info;R"/>
+        <rdfs:comment xml:lang="en">Any collection used for simulation purpose. As an Application, a simulation consumes lots of data such meshes of configuration files.</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#AudioPacket -->
 
     <owl:Class rdf:about="&info;AudioPacket">
@@ -813,14 +825,14 @@
         <rdfs:subClassOf rdf:resource="&info;CrossProduct"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;homogeneous"/>
-                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
+                <owl:onProperty rdf:resource="&info;Dimension"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;Dimension"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
+                <owl:onProperty rdf:resource="&info;homogeneous"/>
+                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -853,13 +865,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&info;hasValue"/>
-                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
+                <owl:hasValue rdf:datatype="&xsd;boolean">false</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&info;hasValue"/>
-                <owl:hasValue rdf:datatype="&xsd;boolean">false</owl:hasValue>
+                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;Character"/>
@@ -873,12 +885,6 @@
 
     <owl:Class rdf:about="&info;BooleanSet">
         <rdfs:subClassOf rdf:resource="&info;Set"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;containsAbstraction"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;isCodedIn"/>
@@ -896,6 +902,12 @@
                         </owl:unionOf>
                     </owl:Class>
                 </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&info;containsAbstraction"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;CrossProduct"/>
@@ -1385,7 +1397,6 @@ Can be completed with additional attributes such as : satellites information, ep
                 <owl:allValuesFrom rdf:resource="&info;IntegerAbstraction"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="&info;OrderedSetForSimulation"/>
         <owl:disjointWith rdf:resource="&info;OrderedSetForSystemDescription"/>
         <owl:disjointWith rdf:resource="&info;R"/>
         <rdfs:comment xml:lang="en">Integer set composed of integer values</rdfs:comment>
@@ -1870,29 +1881,18 @@ Ex : sphere, box,...</rdfs:comment>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&info;hasFunction"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+                <owl:someValuesFrom rdf:resource="&info;SortingRelation"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&info;hasFunction"/>
-                <owl:someValuesFrom rdf:resource="&info;SortingRelation"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:versionInfo rdf:datatype="&xsd;string">TODO: create the mirror in the Data:Collection (could be many)</owl:versionInfo>
         <rdfs:comment xml:lang="en">It is a Set which elements respect a law ordering them :
 aRb true and bRa true implies a=b.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#OrderedSetForSimulation -->
-
-    <owl:Class rdf:about="&info;OrderedSetForSimulation">
-        <rdfs:subClassOf rdf:resource="&info;OrderedSet"/>
-        <owl:disjointWith rdf:resource="&info;OrderedSetForSystemDescription"/>
-        <owl:disjointWith rdf:resource="&info;R"/>
-        <rdfs:comment xml:lang="en">Any ordered set used for simulation purpose.</rdfs:comment>
     </owl:Class>
     
 
@@ -2426,14 +2426,14 @@ Relation is linking two elements of the same Set and assumes this link is either
         <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
-                <owl:allValuesFrom rdf:resource="&info;Collection"/>
+                <owl:onProperty rdf:resource="&info;hasSet"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;hasSet"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
+                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
+                <owl:allValuesFrom rdf:resource="&info;Collection"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;Tensor"/>
@@ -2999,14 +2999,6 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDifferent"/>
         <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="&info;length"/>
-            <rdf:Description rdf:about="&info;mass"/>
-            <rdf:Description rdf:about="&info;time"/>
-        </owl:distinctMembers>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDifferent"/>
-        <owl:distinctMembers rdf:parseType="Collection">
             <rdf:Description rdf:about="&info;true"/>
         </owl:distinctMembers>
     </rdf:Description>
@@ -3014,6 +3006,14 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
         <rdf:type rdf:resource="&owl;AllDifferent"/>
         <owl:distinctMembers rdf:parseType="Collection">
             <rdf:Description rdf:about="&info;length"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&info;length"/>
+            <rdf:Description rdf:about="&info;mass"/>
+            <rdf:Description rdf:about="&info;time"/>
         </owl:distinctMembers>
     </rdf:Description>
 </rdf:RDF>
