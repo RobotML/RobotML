@@ -321,7 +321,7 @@
 
     <owl:NamedIndividual rdf:about="&airg;Intruder">
         <rdf:type rdf:resource="&envi;Pedestrian"/>
-        <kern:isAnimatedByEvolutionModel rdf:resource="&airg;IntruderExpectedBehavior"/>
+        <kern:isAnimatedByEvolution rdf:resource="&airg;IntruderExpectedBehavior"/>
         <kern:isPositionedIn rdf:resource="&airg;StartPointReferential"/>
     </owl:NamedIndividual>
     
@@ -417,7 +417,7 @@
         <rdf:type rdf:resource="&robo;Car-likeVehicle"/>
         <kern:isAtomic rdf:datatype="&xsd;boolean">false</kern:isAtomic>
         <kern:aggregates rdf:resource="&airg;GPSSensorOfRTrooper"/>
-        <kern:isAnimatedByEvolutionModel rdf:resource="&airg;R-TrooperEvolutionModel"/>
+        <kern:isAnimatedByEvolution rdf:resource="&airg;R-TrooperEvolutionModel"/>
         <kern:isPositionedIn rdf:resource="&airg;StartPointReferential"/>
     </owl:NamedIndividual>
     
@@ -429,7 +429,7 @@
         <rdf:type rdf:resource="&kern;CompositeSystem"/>
         <rdf:type rdf:resource="&robo;AirVehicle"/>
         <kern:isAtomic rdf:datatype="&xsd;boolean">false</kern:isAtomic>
-        <kern:isAnimatedByEvolutionModel rdf:resource="&airg;RmaxEvolutionModel"/>
+        <kern:isAnimatedByEvolution rdf:resource="&airg;RmaxEvolutionModel"/>
         <kern:isPositionedIn rdf:resource="&airg;StartPointReferential"/>
     </owl:NamedIndividual>
     
