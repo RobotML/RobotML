@@ -123,6 +123,12 @@
     
 
 
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#LocomotionDriver -->
+
+    <owl:Class rdf:about="&syst;LocomotionDriver"/>
+    
+
+
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#LocomotionHardware -->
 
     <owl:Class rdf:about="&syst;LocomotionHardware"/>
@@ -138,12 +144,6 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#MotionPlanningSystem -->
 
     <owl:Class rdf:about="&syst;MotionPlanningSystem"/>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#MotorizationDriver -->
-
-    <owl:Class rdf:about="&syst;MotorizationDriver"/>
     
 
 
@@ -181,7 +181,7 @@
 
     <owl:NamedIndividual rdf:about="&urba;BrakesDriver">
         <rdf:type rdf:resource="&kern;AtomicSystem"/>
-        <rdf:type rdf:resource="&syst;MotorizationDriver"/>
+        <rdf:type rdf:resource="&syst;LocomotionDriver"/>
         <kern:isAtomic rdf:datatype="&xsd;boolean">true</kern:isAtomic>
         <kern:triggers rdf:resource="&urba;BrakesCommandOutput"/>
     </owl:NamedIndividual>
@@ -352,7 +352,7 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#MotorDriver -->
 
     <owl:NamedIndividual rdf:about="&urba;MotorDriver">
-        <rdf:type rdf:resource="&syst;MotorizationDriver"/>
+        <rdf:type rdf:resource="&syst;LocomotionDriver"/>
         <kern:triggers rdf:resource="&urba;MotorCommandOutput"/>
     </owl:NamedIndividual>
     
@@ -411,7 +411,7 @@
 
     <owl:NamedIndividual rdf:about="&urba;SteeringWheelDriver">
         <rdf:type rdf:resource="&kern;AtomicSystem"/>
-        <rdf:type rdf:resource="&syst;MotorizationDriver"/>
+        <rdf:type rdf:resource="&syst;LocomotionDriver"/>
         <kern:isAtomic rdf:datatype="&xsd;boolean">true</kern:isAtomic>
         <kern:triggers rdf:resource="&urba;SteeringWheelCommandOutput"/>
     </owl:NamedIndividual>

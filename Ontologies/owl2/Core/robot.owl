@@ -249,6 +249,13 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;has"/>
+                <owl:onClass rdf:resource="&syst;Chassis"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:onClass rdf:resource="&syst;SteeringWheelSystem"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
@@ -474,19 +481,25 @@ A “robotic system of systems” is a specialised system of systems where there
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&envi;Joint"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
         <swrl:body>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
                 <rdf:rest>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;AtomList"/>
-                        <rdf:first>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                <swrl:classPredicate rdf:resource="&kern;PhysicalObject"/>
-                                <swrl:argument1 rdf:resource="urn:swrl#x1"/>
-                            </rdf:Description>
-                        </rdf:first>
                         <rdf:rest>
                             <rdf:Description>
                                 <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -517,14 +530,6 @@ A “robotic system of systems” is a specialised system of systems where there
                                                         <rdf:rest>
                                                             <rdf:Description>
                                                                 <rdf:type rdf:resource="&swrl;AtomList"/>
-                                                                <rdf:first>
-                                                                    <rdf:Description>
-                                                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                                        <swrl:propertyPredicate rdf:resource="&kern;impacts"/>
-                                                                        <swrl:argument2 rdf:resource="urn:swrl#x2"/>
-                                                                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
-                                                                    </rdf:Description>
-                                                                </rdf:first>
                                                                 <rdf:rest>
                                                                     <rdf:Description>
                                                                         <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -539,6 +544,14 @@ A “robotic system of systems” is a specialised system of systems where there
                                                                         </rdf:first>
                                                                     </rdf:Description>
                                                                 </rdf:rest>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                                        <swrl:propertyPredicate rdf:resource="&kern;impacts"/>
+                                                                        <swrl:argument2 rdf:resource="urn:swrl#x2"/>
+                                                                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
                                                             </rdf:Description>
                                                         </rdf:rest>
                                                         <rdf:first>
@@ -564,6 +577,13 @@ A “robotic system of systems” is a specialised system of systems where there
                                 </rdf:rest>
                             </rdf:Description>
                         </rdf:rest>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="&kern;PhysicalObject"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#x1"/>
+                            </rdf:Description>
+                        </rdf:first>
                     </rdf:Description>
                 </rdf:rest>
                 <rdf:first>
@@ -575,19 +595,6 @@ A “robotic system of systems” is a specialised system of systems where there
                 </rdf:first>
             </rdf:Description>
         </swrl:body>
-        <swrl:head>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:rest rdf:resource="&rdf;nil"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="&envi;Joint"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
-                    </rdf:Description>
-                </rdf:first>
-            </rdf:Description>
-        </swrl:head>
     </rdf:Description>
 </rdf:RDF>
 
