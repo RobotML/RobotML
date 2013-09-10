@@ -316,16 +316,17 @@
         <rdfs:subClassOf rdf:resource="&kern;PhysicalInteraction"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;impacts"/>
+                <owl:onProperty rdf:resource="&kern;systemSource"/>
                 <owl:allValuesFrom rdf:resource="&kern;PhysicalObject"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;systemSource"/>
+                <owl:onProperty rdf:resource="&kern;impacts"/>
                 <owl:allValuesFrom rdf:resource="&kern;PhysicalObject"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&envi;Torque"/>
         <rdfs:comment xml:lang="en">A force is any influence that causes a free body to undergo a change in speed, a change in direction, or a change in shape. It is an interaction as it can be caused either by another body or as a synthesis of the environment influence (the two of them are systems).</rdfs:comment>
     </owl:Class>
     
@@ -361,6 +362,15 @@
         <owl:disjointWith rdf:resource="&envi;Stairs"/>
         <owl:disjointWith rdf:resource="&envi;WaterSurface"/>
         <rdfs:comment xml:lang="en">The solid surface of a planet.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#MachineTorque -->
+
+    <owl:Class rdf:about="&envi;MachineTorque">
+        <rdfs:subClassOf rdf:resource="&envi;Torque"/>
+        <kern:wikipediaURI>http://en.wikipedia.org/wiki/Torque#Machine_torque</kern:wikipediaURI>
     </owl:Class>
     
 
@@ -442,6 +452,16 @@
         <owl:disjointWith rdf:resource="&kern;Environment"/>
         <owl:disjointWith rdf:resource="&kern;Hardware"/>
         <rdfs:comment xml:lang="en">A two-dimensional topological manifold that is a boundary of a physical object</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#Torque -->
+
+    <owl:Class rdf:about="&envi;Torque">
+        <rdfs:subClassOf rdf:resource="&kern;PhysicalInteraction"/>
+        <rdfs:comment>Following wikipedia, torque, moment or moment of force, is the tendency of a force to rotate an object about an axis, fulcrum, or pivot.</rdfs:comment>
+        <kern:wikipediaURI>http://en.wikipedia.org/wiki/Torque</kern:wikipediaURI>
     </owl:Class>
     
 
