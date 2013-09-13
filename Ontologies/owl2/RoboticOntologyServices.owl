@@ -46,23 +46,6 @@ It is more than the proteus.owl ontology as it also provides the scenario and ex
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
-    // Annotation properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#definesAReferential -->
-
-    <owl:AnnotationProperty rdf:about="&kern;definesAReferential"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
     // Annotations
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -70,9 +53,6 @@ It is more than the proteus.owl ontology as it also provides the scenario and ex
 
     <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#Force">
         <kern:wikipediaURI>http://en.wikipedia.org/wiki/Force</kern:wikipediaURI>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#CaylusLandSurface">
-        <kern:definesAReferential rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#StartPointReferential"/>
     </rdf:Description>
     <rdf:Description rdf:about="&kern;Evolution">
         <kern:wikipediaURI rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/Time_evolution</kern:wikipediaURI>
