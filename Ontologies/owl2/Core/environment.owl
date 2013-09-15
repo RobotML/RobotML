@@ -316,13 +316,13 @@
         <rdfs:subClassOf rdf:resource="&kern;PhysicalInteraction"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;systemSource"/>
+                <owl:onProperty rdf:resource="&kern;impacts"/>
                 <owl:allValuesFrom rdf:resource="&kern;PhysicalObject"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;impacts"/>
+                <owl:onProperty rdf:resource="&kern;systemSource"/>
                 <owl:allValuesFrom rdf:resource="&kern;PhysicalObject"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -370,6 +370,12 @@
 
     <owl:Class rdf:about="&envi;MachineTorque">
         <rdfs:subClassOf rdf:resource="&envi;Torque"/>
+        <kern:openCycURI rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rvVkFSJwpEbGdrcN5Y29ycA</kern:openCycURI>
+        <kern:Author xml:lang="en">creation Jean-Loup Farges - 10/09/2013
+modified Bruno Patin - 15/09/2013
+- authorship added
+- comment added
+- TODO added</kern:Author>
         <kern:wikipediaURI>http://en.wikipedia.org/wiki/Torque#Machine_torque</kern:wikipediaURI>
     </owl:Class>
     
@@ -461,6 +467,9 @@
     <owl:Class rdf:about="&envi;Torque">
         <rdfs:subClassOf rdf:resource="&kern;PhysicalInteraction"/>
         <rdfs:comment>Following wikipedia, torque, moment or moment of force, is the tendency of a force to rotate an object about an axis, fulcrum, or pivot.</rdfs:comment>
+        <kern:Author xml:lang="en">creation Jean-Loup Farges - 10/09/2013
+modified Bruno Patin - 15/09/2013
+- authorship added</kern:Author>
         <kern:wikipediaURI>http://en.wikipedia.org/wiki/Torque</kern:wikipediaURI>
     </owl:Class>
     
@@ -502,7 +511,14 @@ This concept IS NOT the &quot;Waterbody concept&quot; as defined in openCyc and 
 
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Environment -->
 
-    <rdf:Description rdf:about="&kern;Environment"/>
+    <rdf:Description rdf:about="&kern;Environment">
+        <kern:wikipediaURI rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/Environment_%28systems%29</kern:wikipediaURI>
+        <kern:openCycURI rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rwLW-jpwpEbGdrcN5Y29ycA</kern:openCycURI>
+        <kern:Author xml:lang="en">creation PROTEUS consortium - 
+modified Bruno Patin - 15/09/2013
+- OpenCyc and Wikipedia reference added
+- comment explaining difference between the two concepts.</kern:Author>
+    </rdf:Description>
     
 
 
