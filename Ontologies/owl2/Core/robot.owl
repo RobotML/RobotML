@@ -238,6 +238,7 @@
         <owl:disjointWith rdf:resource="&robo;UnderwaterVehicle"/>
         <rdfs:comment xml:lang="en">Air Vehicle. Only the vehicles with either fixed (like planes) either turning (like helicopters) sails will be considered in this definition.</rdfs:comment>
         <rdfs:comment xml:lang="en">Considering wikipedia definition, vehicle refers to something transporting cargo or persons.</rdfs:comment>
+        <kern:TODO xml:lang="en">there must be linked somewhat like a chassis but there is a specific aeronautical wording.</kern:TODO>
     </owl:Class>
     
 
@@ -249,14 +250,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:onClass rdf:resource="&syst;SteeringWheelSystem"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:onClass rdf:resource="&syst;Chassis"/>
+                <owl:onClass rdf:resource="&syst;SteeredWheelSystem"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -264,6 +258,13 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:onClass rdf:resource="&syst;EngineSystem"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;has"/>
+                <owl:onClass rdf:resource="&syst;Chassis"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -282,6 +283,13 @@
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:onClass rdf:resource="&syst;EngineSystem"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;has"/>
+                <owl:onClass rdf:resource="&syst;Chassis"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A differential vehicle is a mobile robot whose movement is based on two separately driven velocities of the rotational mechanism of both sides of the robot body. It can thus change its direction by varying the relative rate of rotation and hence does not require an additional steering motion. We can find wheeled differential vehicles or caterpillar vehicles.</rdfs:comment>
@@ -312,7 +320,7 @@
             </owl:Class>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&robo;Robot"/>
-        <owl:disjointWith rdf:resource="&syst;RoboticSystem"/>
+        <owl:disjointWith rdf:resource="&syst;DriverDeviceSystem"/>
         <rdfs:comment xml:lang="en">This composite system groups at least three other ones:
 - one robot
 - one control station
@@ -358,6 +366,20 @@ A “robotic system of systems” is a specialised system of systems where there
 
     <owl:Class rdf:about="&robo;LeggedVehicle">
         <rdfs:subClassOf rdf:resource="&robo;GroundVehicle"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;has"/>
+                <owl:onClass rdf:resource="&syst;Chassis"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;has"/>
+                <owl:onClass rdf:resource="&syst;LegSystem"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">For these robots locomotion is assured thanks to articulated bodies (legs for human).</rdfs:comment>
     </owl:Class>
     
@@ -397,12 +419,6 @@ A “robotic system of systems” is a specialised system of systems where there
         <rdfs:subClassOf rdf:resource="&kern;CompositeSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:allValuesFrom rdf:resource="&syst;EmbeddedSystem"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;hasProbe"/>
                 <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
@@ -413,8 +429,17 @@ A “robotic system of systems” is a specialised system of systems where there
                 <owl:allValuesFrom rdf:resource="&syst;SensorSystem"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="&syst;RoboticSystem"/>
-        <rdfs:comment xml:lang="en">A robot is not only an agent but also a composite system. It aggregates only robotic systems. These systems, for their software application parts uses one or multiple robotic middlewares.</rdfs:comment>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:allValuesFrom rdf:resource="&syst;CyberPhysicalSystem"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&syst;DriverDeviceSystem"/>
+        <rdfs:comment xml:lang="en">A robot is not only an agent but also a composite system. It aggregates only embedded systems. Mainly this system is used as a classifier for the different types of robots.</rdfs:comment>
+        <kern:Author xml:lang="en">creation PROTEUS consortium - 
+modified Bruno Patin - 30/09/2013
+- comment has changed due to revision of what is the concept</kern:Author>
     </owl:Class>
     
 
@@ -459,9 +484,9 @@ A “robotic system of systems” is a specialised system of systems where there
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticSystem -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#DriverDeviceSystem -->
 
-    <rdf:Description rdf:about="&syst;RoboticSystem"/>
+    <rdf:Description rdf:about="&syst;DriverDeviceSystem"/>
     
 
 
@@ -503,16 +528,16 @@ A “robotic system of systems” is a specialised system of systems where there
         <swrl:body>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="&kern;Interaction"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
-                    </rdf:Description>
-                </rdf:first>
                 <rdf:rest>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="&kern;PhysicalObject"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#x1"/>
+                            </rdf:Description>
+                        </rdf:first>
                         <rdf:rest>
                             <rdf:Description>
                                 <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -529,6 +554,14 @@ A “robotic system of systems” is a specialised system of systems where there
                                         <rdf:rest>
                                             <rdf:Description>
                                                 <rdf:type rdf:resource="&swrl;AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="&kern;aggregates"/>
+                                                        <swrl:argument2 rdf:resource="urn:swrl#x1"/>
+                                                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
                                                 <rdf:rest>
                                                     <rdf:Description>
                                                         <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -569,14 +602,6 @@ A “robotic system of systems” is a specialised system of systems where there
                                                         </rdf:first>
                                                     </rdf:Description>
                                                 </rdf:rest>
-                                                <rdf:first>
-                                                    <rdf:Description>
-                                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                        <swrl:propertyPredicate rdf:resource="&kern;aggregates"/>
-                                                        <swrl:argument2 rdf:resource="urn:swrl#x1"/>
-                                                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
-                                                    </rdf:Description>
-                                                </rdf:first>
                                             </rdf:Description>
                                         </rdf:rest>
                                     </rdf:Description>
@@ -590,15 +615,15 @@ A “robotic system of systems” is a specialised system of systems where there
                                 </rdf:first>
                             </rdf:Description>
                         </rdf:rest>
-                        <rdf:first>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                <swrl:classPredicate rdf:resource="&kern;PhysicalObject"/>
-                                <swrl:argument1 rdf:resource="urn:swrl#x1"/>
-                            </rdf:Description>
-                        </rdf:first>
                     </rdf:Description>
                 </rdf:rest>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&kern;Interaction"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
+                    </rdf:Description>
+                </rdf:first>
             </rdf:Description>
         </swrl:body>
     </rdf:Description>

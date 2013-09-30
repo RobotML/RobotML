@@ -362,7 +362,7 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#NonDecisionalPartOfRTrooper -->
 
     <owl:NamedIndividual rdf:about="&airg;NonDecisionalPartOfRTrooper">
-        <rdf:type rdf:resource="&syst;RoboticSystem"/>
+        <rdf:type rdf:resource="&syst;DriverDeviceSystem"/>
     </owl:NamedIndividual>
     
 
@@ -370,7 +370,7 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#NonDecisionalPartOfRmax -->
 
     <owl:NamedIndividual rdf:about="&airg;NonDecisionalPartOfRmax">
-        <rdf:type rdf:resource="&syst;RoboticSystem"/>
+        <rdf:type rdf:resource="&syst;DriverDeviceSystem"/>
     </owl:NamedIndividual>
     
 

@@ -107,7 +107,7 @@ Each time we introduced relationships between concepts defined in the system ont
     <owl:ObjectProperty rdf:about="&syst;controlsSystem">
         <rdfs:comment xml:lang="en">Interaction between a Control System and a Robotic System in order to achieve the corresponding control process:  regulators will take part to get the final output command to send to the Hardware or software of the robotic system. This property is not mapped anymore on the generic system definition that tackles only</rdfs:comment>
         <rdfs:domain rdf:resource="&syst;ControlSystem"/>
-        <rdfs:range rdf:resource="&syst;RoboticSystem"/>
+        <rdfs:range rdf:resource="&syst;DriverDeviceSystem"/>
     </owl:ObjectProperty>
     
 
@@ -139,7 +139,7 @@ Each time we introduced relationships between concepts defined in the system ont
     <owl:ObjectProperty rdf:about="&syst;hasConfigurationData">
         <rdfs:comment xml:lang="en">Each one of the robotic components (actuators, sensors, etc) has some configuration parameter data.</rdfs:comment>
         <rdfs:subPropertyOf rdf:resource="&kern;has"/>
-        <rdfs:domain rdf:resource="&syst;RoboticSystem"/>
+        <rdfs:domain rdf:resource="&syst;DriverDeviceSystem"/>
         <rdfs:range rdf:resource="&syst;RoboticSystemConfigurationData"/>
     </owl:ObjectProperty>
     
@@ -182,7 +182,7 @@ Each time we introduced relationships between concepts defined in the system ont
 
     <owl:ObjectProperty rdf:about="&syst;hasInfoData">
         <rdfs:subPropertyOf rdf:resource="&kern;has"/>
-        <rdfs:domain rdf:resource="&syst;RoboticSystem"/>
+        <rdfs:domain rdf:resource="&syst;DriverDeviceSystem"/>
         <rdfs:range rdf:resource="&syst;RoboticSystemInfoData"/>
     </owl:ObjectProperty>
     
@@ -244,7 +244,7 @@ Each time we introduced relationships between concepts defined in the system ont
     <owl:ObjectProperty rdf:about="&syst;hasinterface">
         <rdfs:comment xml:lang="en">A robotic system has an interface to publish or subscribe to its corresponding robotic middleware.</rdfs:comment>
         <rdfs:subPropertyOf rdf:resource="&kern;has"/>
-        <rdfs:domain rdf:resource="&syst;RoboticSystem"/>
+        <rdfs:domain rdf:resource="&syst;DriverDeviceSystem"/>
         <rdfs:range rdf:resource="&syst;SystemInterface"/>
     </owl:ObjectProperty>
     
@@ -265,7 +265,7 @@ Each time we introduced relationships between concepts defined in the system ont
     <owl:ObjectProperty rdf:about="&syst;isControlledBy">
         <rdfs:comment xml:lang="en">A robotic system is a controllable system as such there could exists a function (without any concern on how it is implemented) that takes into account the control of this particular robotic system.</rdfs:comment>
         <rdfs:range rdf:resource="&syst;ControlSystem"/>
-        <rdfs:domain rdf:resource="&syst;RoboticSystem"/>
+        <rdfs:domain rdf:resource="&syst;DriverDeviceSystem"/>
         <owl:inverseOf rdf:resource="&syst;controlsSystem"/>
     </owl:ObjectProperty>
     
@@ -295,7 +295,7 @@ Each time we introduced relationships between concepts defined in the system ont
 
     <owl:ObjectProperty rdf:about="&syst;isProtectedBy">
         <rdfs:comment xml:lang="en">A robotic system is a controllable system as such there could exists a function (without any concern on how it is implemented) that takes into account the protection of this particular robotic system. Protection means that in case of abnormal behaviour of the robotic system considered, there will be interactions occurring that will allow it to go on working on degraded modes or to stop it completely in order not to be destryed.</rdfs:comment>
-        <rdfs:domain rdf:resource="&syst;RoboticSystem"/>
+        <rdfs:domain rdf:resource="&syst;DriverDeviceSystem"/>
         <rdfs:range rdf:resource="&syst;SecuritySystem"/>
     </owl:ObjectProperty>
     
@@ -342,8 +342,8 @@ Each time we introduced relationships between concepts defined in the system ont
 
     <owl:ObjectProperty rdf:about="&syst;mapsOnto">
         <rdfs:comment xml:lang="en">A robotic functional system in order to exist must be mapped onto an existing robotic system. Either it is mapped through software or hardware implementation or a mix is not described into this property. Two robotic systems can be different but implement the saame functional system.</rdfs:comment>
+        <rdfs:range rdf:resource="&syst;DriverDeviceSystem"/>
         <rdfs:domain rdf:resource="&syst;RoboticFunctionalSystem"/>
-        <rdfs:range rdf:resource="&syst;RoboticSystem"/>
     </owl:ObjectProperty>
     
 
@@ -361,7 +361,7 @@ Each time we introduced relationships between concepts defined in the system ont
 
     <owl:ObjectProperty rdf:about="&syst;protectsSystem">
         <rdfs:comment xml:lang="en">Interaction between a Security System and a Robotic System (in general). This interaction guarantees the protection in different levels (network, criptography, control, etc...) of a robotic system. This property does not concern the generic system concept that tackles only with composition and interefacing properties.</rdfs:comment>
-        <rdfs:range rdf:resource="&syst;RoboticSystem"/>
+        <rdfs:range rdf:resource="&syst;DriverDeviceSystem"/>
         <rdfs:domain rdf:resource="&syst;SecuritySystem"/>
         <owl:inverseOf rdf:resource="&syst;isProtectedBy"/>
     </owl:ObjectProperty>
@@ -512,7 +512,7 @@ Each time we introduced relationships between concepts defined in the system ont
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Environment -->
 
     <rdf:Description rdf:about="&kern;Environment">
-        <owl:disjointWith rdf:resource="&syst;RoboticSystem"/>
+        <owl:disjointWith rdf:resource="&syst;DriverDeviceSystem"/>
     </rdf:Description>
     
 
@@ -643,13 +643,7 @@ Each time we introduced relationships between concepts defined in the system ont
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ActuatorSystem -->
 
     <owl:Class rdf:about="&syst;ActuatorSystem">
-        <rdfs:subClassOf rdf:resource="&syst;RoboticSystem"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;ActuatorHardware"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="&syst;DriverDeviceSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
@@ -666,11 +660,17 @@ Each time we introduced relationships between concepts defined in the system ont
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;ActuatorHardware"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom rdf:resource="&syst;ActuatorDriver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;CommunicationSystem"/>
-        <owl:disjointWith rdf:resource="&syst;PowerSystem"/>
+        <owl:disjointWith rdf:resource="&syst;PowerManagedSystem"/>
         <owl:disjointWith rdf:resource="&syst;SensorSystem"/>
         <owl:disjointWith rdf:resource="&syst;SupportingStructure"/>
         <rdfs:comment xml:lang="en">System INCLUDING software which control effectors, like a mechanical arm driver.
@@ -861,18 +861,6 @@ modified Bruno Patin - 14/09/2013
         <rdfs:subClassOf rdf:resource="&syst;ControlSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;hasPort"/>
-                <owl:someValuesFrom rdf:resource="&syst;ControlCommandInputPort"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;hasPort"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom>
                     <owl:Class>
@@ -882,6 +870,18 @@ modified Bruno Patin - 14/09/2013
                         </owl:intersectionOf>
                     </owl:Class>
                 </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;hasPort"/>
+                <owl:someValuesFrom rdf:resource="&syst;ControlCommandInputPort"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;hasPort"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">This system use a measurtement feedback, a command input to compute control for controlled systems</rdfs:comment>
@@ -944,7 +944,7 @@ modified Bruno Patin - 14/09/2013
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#CommunicationSystem -->
 
     <owl:Class rdf:about="&syst;CommunicationSystem">
-        <rdfs:subClassOf rdf:resource="&syst;RoboticSystem"/>
+        <rdfs:subClassOf rdf:resource="&syst;DriverDeviceSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
@@ -970,7 +970,7 @@ modified Bruno Patin - 14/09/2013
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="&syst;PowerSystem"/>
+        <owl:disjointWith rdf:resource="&syst;PowerManagedSystem"/>
         <owl:disjointWith rdf:resource="&syst;SensorSystem"/>
         <owl:disjointWith rdf:resource="&syst;SupportingStructure"/>
         <rdfs:comment xml:lang="en">Robotic susbstystems which achieves a communication process in the robotic platform. We can find different communication technologies to execute these functions: wifi, bluetooth, infrared, ethernet conections, etc...</rdfs:comment>
@@ -995,7 +995,7 @@ modified Bruno Patin - 14/09/2013
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ComputationalSystem -->
 
     <owl:Class rdf:about="&syst;ComputationalSystem">
-        <rdfs:subClassOf rdf:resource="&syst;EmbeddedSystem"/>
+        <rdfs:subClassOf rdf:resource="&syst;CyberPhysicalSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
@@ -1008,7 +1008,7 @@ modified Bruno Patin - 14/09/2013
                 <owl:someValuesFrom rdf:resource="&kern;FileSystem"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="&syst;RoboticSystem"/>
+        <owl:disjointWith rdf:resource="&syst;DriverDeviceSystem"/>
         <kern:wikipediaURI rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/Computer</kern:wikipediaURI>
         <kern:openCycURI rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rwGq7AZwpEbGdrcN5Y29ycA</kern:openCycURI>
         <rdfs:comment xml:lang="en">A computer is a piece of hardware dedicated to computation needs. It groups many resources such as an operating system, a file system etc.
@@ -1127,18 +1127,16 @@ modified Bruno Patin - 30/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#DeadbeatController -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#CyberPhysicalSystem -->
 
-    <owl:Class rdf:about="&syst;DeadbeatController">
-        <rdfs:subClassOf rdf:resource="&syst;Closed-LoopControlSystem"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#EmbeddedSystem -->
-
-    <owl:Class rdf:about="&syst;EmbeddedSystem">
+    <owl:Class rdf:about="&syst;CyberPhysicalSystem">
         <rdfs:subClassOf rdf:resource="&kern;CompositeSystem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&kern;Hardware"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
@@ -1155,13 +1153,57 @@ modified Bruno Patin - 30/09/2013
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&kern;Application"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <kern:wikipediaURI rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/Cyber-physical_system</kern:wikipediaURI>
+        <rdfs:comment xml:lang="en">The CyberPhysicalSystem concept or entity is the combination of hardware providing some computing abilities (but not only) in order to host an application managing it (managing is control as well as measures).
+
+This System aggregates an application and a Hardware part in order to build a physical-logical component at the service of a more complex System such as a Robot.
+
+Considering the RobotML meta-model it uses for the same concept the wording Robotic system.</rdfs:comment>
+        <kern:Author xml:lang="en">creation Bruno Patin - 30/09/2013
+- EmbeddedSystem is more generic than RoboticSystem and covers applications as well as drivers for its software part(s).
+- renaming because concept was wrongly named</kern:Author>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#DeadbeatController -->
+
+    <owl:Class rdf:about="&syst;DeadbeatController">
+        <rdfs:subClassOf rdf:resource="&syst;Closed-LoopControlSystem"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#DriverDeviceSystem -->
+
+    <owl:Class rdf:about="&syst;DriverDeviceSystem">
+        <rdfs:subClassOf rdf:resource="&syst;CyberPhysicalSystem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom rdf:resource="&kern;Hardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&kern;Application"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&kern;Driver"/>
+                            <rdf:Description rdf:about="&kern;Hardware"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&kern;Driver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">The RoboticSystem concept or entity is the combination of hardware providing some computing abilities (but not only) in order to host a software managing it (managing is control as well as measures).
@@ -1169,8 +1211,10 @@ modified Bruno Patin - 30/09/2013
 Each one of the components of the robotic system will be managed by the corresponding system. This System aggregates a Software (application or driver when interactions with the physical world is concerned) and a Hardware part in order to build a physical-logical component at the service of a more complex System as a Robot.
 
 Considering the RobotML meta-model it uses for the same concept the wording Robot system.</rdfs:comment>
-        <kern:Author xml:lang="en">creation Bruno Patin - 30/09/2013
-- EmbeddedSystem is more generic than RoboticSystem and covers applications as well as drivers for its software part(s).</kern:Author>
+        <kern:Author xml:lang="en">creation PROTEUS consortium - 
+modified Bruno Patin - 14/09/2013
+- it is no more driver that is specifyed but application (due to Robotic System using a robotic middleware that is not a driver)
+- two rules were suppressed specifying there was at least one hardware and one application because there is at leas one system and it must be from application or hardware nature.</kern:Author>
     </owl:Class>
     
 
@@ -1218,16 +1262,16 @@ Considering the RobotML meta-model it uses for the same concept the wording Robo
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;EngineDriver"/>
+                <owl:someValuesFrom rdf:resource="&syst;EngineHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;EngineHardware"/>
+                <owl:someValuesFrom rdf:resource="&syst;EngineDriver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="&syst;SteeringWheelSystem"/>
+        <owl:disjointWith rdf:resource="&syst;SteeredWheelSystem"/>
         <rdfs:comment xml:lang="en">This is the motorization system focused in the engine of a robotic vehicle.</rdfs:comment>
         <kern:TODO xml:lang="en">use OpenCyc / Wikipedia definition</kern:TODO>
     </owl:Class>
@@ -1724,6 +1768,14 @@ It is operated by a source of energy, usually in the form of an electric current
     
 
 
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ManMachineInterfaceSystem -->
+
+    <owl:Class rdf:about="&syst;ManMachineInterfaceSystem">
+        <rdfs:subClassOf rdf:resource="&syst;DriverDeviceSystem"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#Manipulator -->
 
     <owl:Class rdf:about="&syst;Manipulator">
@@ -1870,7 +1922,7 @@ It is operated by a source of energy, usually in the form of an electric current
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#NavigationCommandSystem -->
 
     <owl:Class rdf:about="&syst;NavigationCommandSystem">
-        <rdfs:subClassOf rdf:resource="&syst;RoboticSystem"/>
+        <rdfs:subClassOf rdf:resource="&syst;ManMachineInterfaceSystem"/>
         <owl:disjointWith rdf:resource="&syst;WeaponSystem"/>
     </owl:Class>
     
@@ -2026,14 +2078,20 @@ The PID controller calculation (algorithm) involves three separate constant para
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#PowerSystem -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#PowerManagedSystem -->
 
-    <owl:Class rdf:about="&syst;PowerSystem">
-        <rdfs:subClassOf rdf:resource="&syst;RoboticSystem"/>
+    <owl:Class rdf:about="&syst;PowerManagedSystem">
+        <rdfs:subClassOf rdf:resource="&syst;DriverDeviceSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom rdf:resource="&syst;PowerDriver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;PowerHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2049,15 +2107,12 @@ The PID controller calculation (algorithm) involves three separate constant para
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;PowerHardware"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;SensorSystem"/>
         <owl:disjointWith rdf:resource="&syst;SupportingStructure"/>
         <rdfs:comment xml:lang="en">System in charge of providing and managing electrical energy to the robotic platform.</rdfs:comment>
+        <kern:Author xml:lang="en">creation PROTEUS Consortium -
+modification Bruno Patin - 30/09/2013
+- A power system is not every time controlled, thus name has schanged from PowerSystem to PowerMangedSystem</kern:Author>
     </owl:Class>
     
 
@@ -2106,6 +2161,26 @@ The PID controller calculation (algorithm) involves three separate constant para
     
 
 
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticHead -->
+
+    <owl:Class rdf:about="&syst;RoboticHead">
+        <rdfs:subClassOf rdf:resource="&syst;ManMachineInterfaceSystem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;CameraSystem"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A robotic head is a robotic system that is considered as a human-like head which it can communicated with.
+
+It can be assimilated as a head when it is supported by the robot shape (moving or not).
+It is almost like the shape of a head (even if rectangular).
+It must assume approximately respective positionning of (mouth and eyes) shape in this general shape.</rdfs:comment>
+        <kern:Author xml:lang="en">creation rgelin - 30/09/2013</kern:Author>
+    </owl:Class>
+    
+
+
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticMiddleware -->
 
     <owl:Class rdf:about="&syst;RoboticMiddleware">
@@ -2120,48 +2195,6 @@ Thus It represents an abstraction layer in the interoperability of the whole sys
 
 -------------- To Be Verified
 In a robotic platform this is an interoperative software which should be transparent between components and introduce no overhead or extra constraints on the robotic subsystems. It can achieve several functionalities, as it can be the communication or data transmission, the standardization of structures and message passing, the interconnection of homogeneous or/and heterogeneous components/systems, the authority to execute and transmit the output of distributed or centralized applications.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticSystem -->
-
-    <owl:Class rdf:about="&syst;RoboticSystem">
-        <rdfs:subClassOf rdf:resource="&syst;EmbeddedSystem"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&kern;Driver"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&kern;Hardware"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="&kern;Driver"/>
-                            <rdf:Description rdf:about="&kern;Hardware"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">The RoboticSystem concept or entity is the combination of hardware providing some computing abilities (but not only) in order to host a software managing it (managing is control as well as measures).
-
-Each one of the components of the robotic system will be managed by the corresponding system. This System aggregates a Software (application or driver when interactions with the physical world is concerned) and a Hardware part in order to build a physical-logical component at the service of a more complex System as a Robot.
-
-Considering the RobotML meta-model it uses for the same concept the wording Robot system.</rdfs:comment>
-        <kern:Author xml:lang="en">creation PROTEUS consortium - 
-modified Bruno Patin - 14/09/2013
-- it is no more driver that is specifyed but application (due to Robotic System using a robotic middleware that is not a driver)
-- two rules were suppressed specifying there was at least one hardware and one application because there is at leas one system and it must be from application or hardware nature.</kern:Author>
     </owl:Class>
     
 
@@ -2230,17 +2263,11 @@ modified Bruno Patin - 14/09/2013
 
     <owl:Class rdf:about="&syst;SensorSystem">
         <rdfs:subClassOf rdf:resource="&kern;Probe"/>
-        <rdfs:subClassOf rdf:resource="&syst;RoboticSystem"/>
+        <rdfs:subClassOf rdf:resource="&syst;DriverDeviceSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&syst;isActive"/>
                 <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;SensorHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2259,12 +2286,33 @@ modified Bruno Patin - 14/09/2013
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;SensorHardware"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom rdf:resource="&syst;SensorDriver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;SupportingStructure"/>
         <rdfs:comment xml:lang="en">Equipment that detects, measures, and/or records physical phenomena, and indicates objects and activities by means of energy or particles emitted, reflected, or modified by the objects and activities.</rdfs:comment>
         <rdfs:comment xml:lang="en">The SensorSystem wording could be simplfied to Sensor directly</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SteeredWheelSystem -->
+
+    <owl:Class rdf:about="&syst;SteeredWheelSystem">
+        <rdfs:subClassOf rdf:resource="&syst;LocomotionSystem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;SteeringWheelHardware"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">This is the motorization system focused in the wheels of a robotic vehicle.</rdfs:comment>
     </owl:Class>
     
 
@@ -2281,21 +2329,6 @@ modified Bruno Patin - 14/09/2013
 
     <owl:Class rdf:about="&syst;SteeringWheelHardware">
         <rdfs:subClassOf rdf:resource="&syst;LocomotionHardware"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SteeringWheelSystem -->
-
-    <owl:Class rdf:about="&syst;SteeringWheelSystem">
-        <rdfs:subClassOf rdf:resource="&syst;LocomotionSystem"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;SteeringWheelHardware"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">This is the motorization system focused in the wheels of a robotic vehicle.</rdfs:comment>
     </owl:Class>
     
 
