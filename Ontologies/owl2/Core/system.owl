@@ -68,7 +68,7 @@ Each time we introduced relationships between concepts defined in the system ont
         <rdfs:comment xml:lang="en">Clocks are providing timeframe to hardware</rdfs:comment>
         <rdfs:domain rdf:resource="&kern;Clock"/>
         <rdfs:subPropertyOf rdf:resource="&kern;isPropertyOf"/>
-        <rdfs:range rdf:resource="&syst;Computer"/>
+        <rdfs:range rdf:resource="&syst;ComputationalSystem"/>
     </owl:ObjectProperty>
     
 
@@ -128,7 +128,7 @@ Each time we introduced relationships between concepts defined in the system ont
         <rdfs:comment xml:lang="en">Some hardware are using a specific piece of hardware modeling a timeframe and called a clock</rdfs:comment>
         <rdfs:range rdf:resource="&kern;Clock"/>
         <rdfs:subPropertyOf rdf:resource="&kern;has"/>
-        <rdfs:domain rdf:resource="&syst;Computer"/>
+        <rdfs:domain rdf:resource="&syst;ComputationalSystem"/>
         <owl:inverseOf rdf:resource="&syst;Timeframes"/>
     </owl:ObjectProperty>
     
@@ -483,7 +483,6 @@ Each time we introduced relationships between concepts defined in the system ont
     <rdf:Description rdf:about="&kern;Clock">
         <owl:disjointWith rdf:resource="&syst;ActuatorHardware"/>
         <owl:disjointWith rdf:resource="&syst;CommunicationHardware"/>
-        <owl:disjointWith rdf:resource="&syst;Computer"/>
         <owl:disjointWith rdf:resource="&syst;ControlStationSystem"/>
         <owl:disjointWith rdf:resource="&syst;HardwareImplementationOfController"/>
         <owl:disjointWith rdf:resource="&syst;PowerHardware"/>
@@ -497,6 +496,7 @@ Each time we introduced relationships between concepts defined in the system ont
     <owl:Class rdf:about="&kern;Driver">
         <owl:disjointWith rdf:resource="&syst;RoboticApplication"/>
         <owl:disjointWith rdf:resource="&syst;RoboticMiddleware"/>
+        <kern:TODO xml:lang="en">Driver should triggers interactions between software and physical world (see definition of RoboticSystem)</kern:TODO>
     </owl:Class>
     
 
@@ -512,7 +512,6 @@ Each time we introduced relationships between concepts defined in the system ont
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Environment -->
 
     <rdf:Description rdf:about="&kern;Environment">
-        <owl:disjointWith rdf:resource="&syst;Computer"/>
         <owl:disjointWith rdf:resource="&syst;RoboticSystem"/>
     </rdf:Description>
     
@@ -521,7 +520,7 @@ Each time we introduced relationships between concepts defined in the system ont
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#FileSystem -->
 
     <rdf:Description rdf:about="&kern;FileSystem">
-        <owl:disjointWith rdf:resource="&syst;SystemInterface"/>
+        <owl:disjointWith rdf:resource="&syst;CommunicationMiddleware"/>
     </rdf:Description>
     
 
@@ -567,7 +566,7 @@ Each time we introduced relationships between concepts defined in the system ont
                 <owl:someValuesFrom rdf:resource="&syst;ApplicationInteraction"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">In this scope Models means Implements</rdfs:comment>
+        <rdfs:comment xml:lang="en">In this scope, &quot;Models&quot; property means &quot;Implements&quot;.</rdfs:comment>
     </rdf:Description>
     
 
@@ -625,7 +624,6 @@ Each time we introduced relationships between concepts defined in the system ont
     <owl:Class rdf:about="&syst;ActuatorHardware">
         <rdfs:subClassOf rdf:resource="&kern;Hardware"/>
         <owl:disjointWith rdf:resource="&syst;CommunicationHardware"/>
-        <owl:disjointWith rdf:resource="&syst;Computer"/>
         <owl:disjointWith rdf:resource="&syst;PowerHardware"/>
         <owl:disjointWith rdf:resource="&syst;SensorHardware"/>
         <rdfs:comment xml:lang="en">the Actuator Hardware is a hardware to be included in a mechanical platform which will be composed of many different parts. Actuator hardware implements the capability to act on environment thanks to energy transformation using for example an engine.</rdfs:comment>
@@ -649,12 +647,6 @@ Each time we introduced relationships between concepts defined in the system ont
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;ActuatorDriver"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom rdf:resource="&syst;ActuatorHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -669,6 +661,12 @@ Each time we introduced relationships between concepts defined in the system ont
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;ActuatorDriver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;CommunicationSystem"/>
@@ -827,13 +825,13 @@ modified Bruno Patin - 14/09/2013
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&syst;isActive"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+                <owl:hasValue rdf:datatype="&xsd;boolean">false</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&syst;isActive"/>
-                <owl:hasValue rdf:datatype="&xsd;boolean">false</owl:hasValue>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -869,6 +867,12 @@ modified Bruno Patin - 14/09/2013
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;hasPort"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom>
                     <owl:Class>
@@ -878,12 +882,6 @@ modified Bruno Patin - 14/09/2013
                         </owl:intersectionOf>
                     </owl:Class>
                 </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;hasPort"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">This system use a measurtement feedback, a command input to compute control for controlled systems</rdfs:comment>
@@ -926,7 +924,6 @@ modified Bruno Patin - 14/09/2013
 
     <owl:Class rdf:about="&syst;CommunicationHardware">
         <rdfs:subClassOf rdf:resource="&kern;Hardware"/>
-        <owl:disjointWith rdf:resource="&syst;Computer"/>
         <owl:disjointWith rdf:resource="&syst;HardwareImplementationOfController"/>
         <owl:disjointWith rdf:resource="&syst;PowerHardware"/>
         <owl:disjointWith rdf:resource="&syst;SensorHardware"/>
@@ -995,11 +992,10 @@ modified Bruno Patin - 14/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#Computer -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ComputationalSystem -->
 
-    <owl:Class rdf:about="&syst;Computer">
-        <rdfs:subClassOf rdf:resource="&kern;CompositeSystem"/>
-        <rdfs:subClassOf rdf:resource="&kern;Hardware"/>
+    <owl:Class rdf:about="&syst;ComputationalSystem">
+        <rdfs:subClassOf rdf:resource="&syst;EmbeddedSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
@@ -1012,13 +1008,15 @@ modified Bruno Patin - 14/09/2013
                 <owl:someValuesFrom rdf:resource="&kern;FileSystem"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="&syst;ControlStationSystem"/>
-        <owl:disjointWith rdf:resource="&syst;HardwareImplementationOfController"/>
-        <owl:disjointWith rdf:resource="&syst;PowerHardware"/>
         <owl:disjointWith rdf:resource="&syst;RoboticSystem"/>
-        <owl:disjointWith rdf:resource="&syst;SensorHardware"/>
-        <owl:versionInfo rdf:datatype="&xsd;string">TODO: this concept needs to be enriched</owl:versionInfo>
-        <rdfs:comment xml:lang="en">A computer is a piece of hardware dedicated to computation needs. It groups many resources such as an operating system, a file system etc.</rdfs:comment>
+        <kern:wikipediaURI rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/Computer</kern:wikipediaURI>
+        <kern:openCycURI rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rwGq7AZwpEbGdrcN5Y29ycA</kern:openCycURI>
+        <rdfs:comment xml:lang="en">A computer is a piece of hardware dedicated to computation needs. It groups many resources such as an operating system, a file system etc.
+
+This concept is to be linked exactly to OpenCyc concept of ComputationalSystem but to be linked to Computer concept of wikipedia. A computer in opencyc has devices dedcated to inputs/outputs and not only ports.</rdfs:comment>
+        <kern:Author xml:lang="en">creation PROTEUS consortium - 
+modified Bruno Patin - 30/09/2013
+- name has been changed from Computer to ComputationalSystem due to alignment with OpenCyc ontology</kern:Author>
     </owl:Class>
     
 
@@ -1137,6 +1135,46 @@ modified Bruno Patin - 14/09/2013
     
 
 
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#EmbeddedSystem -->
+
+    <owl:Class rdf:about="&syst;EmbeddedSystem">
+        <rdfs:subClassOf rdf:resource="&kern;CompositeSystem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&kern;Application"/>
+                            <rdf:Description rdf:about="&kern;Hardware"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&kern;Hardware"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&kern;Application"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">The RoboticSystem concept or entity is the combination of hardware providing some computing abilities (but not only) in order to host a software managing it (managing is control as well as measures).
+
+Each one of the components of the robotic system will be managed by the corresponding system. This System aggregates a Software (application or driver when interactions with the physical world is concerned) and a Hardware part in order to build a physical-logical component at the service of a more complex System as a Robot.
+
+Considering the RobotML meta-model it uses for the same concept the wording Robot system.</rdfs:comment>
+        <kern:Author xml:lang="en">creation Bruno Patin - 30/09/2013
+- EmbeddedSystem is more generic than RoboticSystem and covers applications as well as drivers for its software part(s).</kern:Author>
+    </owl:Class>
+    
+
+
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#EngineConfigurationData -->
 
     <owl:Class rdf:about="&syst;EngineConfigurationData">
@@ -1180,13 +1218,13 @@ modified Bruno Patin - 14/09/2013
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;EngineHardware"/>
+                <owl:someValuesFrom rdf:resource="&syst;EngineDriver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;EngineDriver"/>
+                <owl:someValuesFrom rdf:resource="&syst;EngineHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;SteeringWheelSystem"/>
@@ -1995,6 +2033,12 @@ The PID controller calculation (algorithm) involves three separate constant para
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;PowerDriver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -2009,12 +2053,6 @@ The PID controller calculation (algorithm) involves three separate constant para
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom rdf:resource="&syst;PowerHardware"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;PowerDriver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;SensorSystem"/>
@@ -2089,7 +2127,13 @@ In a robotic platform this is an interoperative software which should be transpa
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticSystem -->
 
     <owl:Class rdf:about="&syst;RoboticSystem">
-        <rdfs:subClassOf rdf:resource="&kern;CompositeSystem"/>
+        <rdfs:subClassOf rdf:resource="&syst;EmbeddedSystem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&kern;Driver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
@@ -2102,17 +2146,11 @@ In a robotic platform this is an interoperative software which should be transpa
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="&kern;Application"/>
+                            <rdf:Description rdf:about="&kern;Driver"/>
                             <rdf:Description rdf:about="&kern;Hardware"/>
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&kern;Application"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">The RoboticSystem concept or entity is the combination of hardware providing some computing abilities (but not only) in order to host a software managing it (managing is control as well as measures).
@@ -2195,14 +2233,14 @@ modified Bruno Patin - 14/09/2013
         <rdfs:subClassOf rdf:resource="&syst;RoboticSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;SensorHardware"/>
+                <owl:onProperty rdf:resource="&syst;isActive"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;SensorDriver"/>
+                <owl:someValuesFrom rdf:resource="&syst;SensorHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2220,8 +2258,8 @@ modified Bruno Patin - 14/09/2013
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&syst;isActive"/>
-                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;SensorDriver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;SupportingStructure"/>
@@ -2391,27 +2429,6 @@ modified Bruno Patin - 14/09/2013
     <owl:Class rdf:about="&syst;WifibotOdometry_msg">
         <rdfs:subClassOf rdf:resource="&syst;MiddlewareMessage"/>
     </owl:Class>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // General axioms
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&kern;Clock"/>
-            <rdf:Description rdf:about="&syst;CommunicationHardware"/>
-            <rdf:Description rdf:about="&syst;Computer"/>
-            <rdf:Description rdf:about="&syst;ControlStationSystem"/>
-            <rdf:Description rdf:about="&syst;MechanicalLinkage"/>
-        </owl:members>
-    </rdf:Description>
 </rdf:RDF>
 
 
