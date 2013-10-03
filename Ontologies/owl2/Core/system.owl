@@ -254,7 +254,7 @@ Each time we introduced relationships between concepts defined in the system ont
 
     <owl:ObjectProperty rdf:about="&syst;hostInteractions">
         <rdfs:comment xml:lang="en">A RoboticMiddleware is an interoperability software that not only executes applications, send and triggers interactions between systems/components, but it also hosts the interactions of the robotic platform.</rdfs:comment>
-        <rdfs:range rdf:resource="&syst;ApplicationInteraction"/>
+        <rdfs:range rdf:resource="&kern;ApplicationInteraction"/>
         <rdfs:domain rdf:resource="&syst;RoboticMiddleware"/>
     </owl:ObjectProperty>
     
@@ -455,7 +455,6 @@ Each time we introduced relationships between concepts defined in the system ont
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Action -->
 
     <rdf:Description rdf:about="&kern;Action">
-        <owl:disjointWith rdf:resource="&syst;ApplicationInteraction"/>
         <owl:disjointWith rdf:resource="&syst;NoiseSignal"/>
     </rdf:Description>
     
@@ -504,14 +503,6 @@ This is clearly a mistake to be repaired.</kern:TODO>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#DriverToHardwareInteraction -->
-
-    <rdf:Description rdf:about="&kern;DriverToHardwareInteraction">
-        <owl:disjointWith rdf:resource="&syst;ApplicationInteraction"/>
-    </rdf:Description>
-    
-
-
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Environment -->
 
     <rdf:Description rdf:about="&kern;Environment">
@@ -536,26 +527,10 @@ This is clearly a mistake to be repaired.</kern:TODO>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#HardwareToDriverInteraction -->
-
-    <rdf:Description rdf:about="&kern;HardwareToDriverInteraction">
-        <owl:disjointWith rdf:resource="&syst;ApplicationInteraction"/>
-    </rdf:Description>
-    
-
-
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#OperatingSystem -->
 
     <rdf:Description rdf:about="&kern;OperatingSystem">
         <owl:disjointWith rdf:resource="&syst;SystemInterface"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#PhysicalInteraction -->
-
-    <rdf:Description rdf:about="&kern;PhysicalInteraction">
-        <owl:disjointWith rdf:resource="&syst;ApplicationInteraction"/>
     </rdf:Description>
     
 
@@ -566,7 +541,7 @@ This is clearly a mistake to be repaired.</kern:TODO>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;triggers"/>
-                <owl:someValuesFrom rdf:resource="&syst;ApplicationInteraction"/>
+                <owl:someValuesFrom rdf:resource="&kern;ApplicationInteraction"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">In this scope, &quot;Models&quot; property means &quot;Implements&quot;.</rdfs:comment>
@@ -697,21 +672,6 @@ modified Bruno Patin - 14/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ApplicationInteraction -->
-
-    <owl:Class rdf:about="&syst;ApplicationInteraction">
-        <rdfs:subClassOf rdf:resource="&kern;Interaction"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;impacts"/>
-                <owl:allValuesFrom rdf:resource="&kern;Software"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">Interaction between two Applications that are parts of a RoboticSystem. They could be interactions between frameworks, applications, libraries, drivers, processes, or other logical units of Application. In order to avoid redendancy the name does not quote two times the Aplication word</rdfs:comment>
-    </owl:Class>
-    
-
-
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#Arm -->
 
     <owl:Class rdf:about="&syst;Arm">
@@ -828,13 +788,13 @@ modified Bruno Patin - 14/09/2013
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&syst;isActive"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+                <owl:hasValue rdf:datatype="&xsd;boolean">false</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&syst;isActive"/>
-                <owl:hasValue rdf:datatype="&xsd;boolean">false</owl:hasValue>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -864,8 +824,15 @@ modified Bruno Patin - 14/09/2013
         <rdfs:subClassOf rdf:resource="&syst;ControlSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;hasPort"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&syst;HardwareImplementationOfController"/>
+                            <rdf:Description rdf:about="&syst;ProprioceptiveSensorSystem"/>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -876,15 +843,8 @@ modified Bruno Patin - 14/09/2013
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="&syst;HardwareImplementationOfController"/>
-                            <rdf:Description rdf:about="&syst;ProprioceptiveSensorSystem"/>
-                        </owl:intersectionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
+                <owl:onProperty rdf:resource="&kern;hasPort"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">This system use a measurtement feedback, a command input to compute control for controlled systems</rdfs:comment>
@@ -1002,13 +962,13 @@ modified Bruno Patin - 14/09/2013
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&kern;OperatingSystem"/>
+                <owl:someValuesFrom rdf:resource="&kern;FileSystem"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&kern;FileSystem"/>
+                <owl:someValuesFrom rdf:resource="&kern;OperatingSystem"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;DriverDeviceSystem"/>
@@ -1042,7 +1002,7 @@ modified Bruno Patin - 30/09/2013
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ControlAndCommand -->
 
     <owl:Class rdf:about="&syst;ControlAndCommand">
-        <rdfs:subClassOf rdf:resource="&syst;ApplicationInteraction"/>
+        <rdfs:subClassOf rdf:resource="&kern;ApplicationInteraction"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;impacts"/>
@@ -1138,18 +1098,6 @@ modified Bruno Patin - 30/09/2013
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&kern;Hardware"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&kern;Application"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -1158,6 +1106,18 @@ modified Bruno Patin - 30/09/2013
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&kern;Hardware"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&kern;Application"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <kern:wikipediaURI rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/Cyber-physical_system</kern:wikipediaURI>
@@ -1194,12 +1154,6 @@ Considering the RobotML meta-model it uses for the same concept the wording Robo
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&kern;Hardware"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -1208,6 +1162,12 @@ Considering the RobotML meta-model it uses for the same concept the wording Robo
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&kern;Hardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">The RoboticSystem concept or entity is the combination of hardware providing some computing abilities (but not only) in order to host a software managing it (managing is control as well as measures).
@@ -1266,13 +1226,13 @@ modified Bruno Patin - 14/09/2013
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;EngineHardware"/>
+                <owl:someValuesFrom rdf:resource="&syst;EngineDriver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;EngineDriver"/>
+                <owl:someValuesFrom rdf:resource="&syst;EngineHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;SteeredWheelSystem"/>
@@ -1646,6 +1606,12 @@ Linkages may be constructed from open chains, closed chains, or a combination of
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;Leg"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -1654,12 +1620,6 @@ Linkages may be constructed from open chains, closed chains, or a combination of
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;Leg"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -2095,6 +2055,12 @@ The PID controller calculation (algorithm) involves three separate constant para
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;PowerHardware"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -2103,12 +2069,6 @@ The PID controller calculation (algorithm) involves three separate constant para
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;PowerHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;SensorSystem"/>
@@ -2282,7 +2242,14 @@ modified Bruno Patin - 03/10/2013
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;SensorDriver"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&syst;SensorDriver"/>
+                            <rdf:Description rdf:about="&syst;SensorHardware"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2294,14 +2261,7 @@ modified Bruno Patin - 03/10/2013
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="&syst;SensorDriver"/>
-                            <rdf:Description rdf:about="&syst;SensorHardware"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
+                <owl:someValuesFrom rdf:resource="&syst;SensorDriver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>

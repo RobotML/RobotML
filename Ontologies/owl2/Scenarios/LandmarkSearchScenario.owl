@@ -104,7 +104,7 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#ExEstimatedPosition -->
 
     <owl:NamedIndividual rdf:about="&land;ExEstimatedPosition">
-        <rdf:type rdf:resource="&syst;ApplicationInteraction"/>
+        <rdf:type rdf:resource="&kern;ApplicationInteraction"/>
         <kern:impacts rdf:resource="&land;GlobalPlanning"/>
         <kern:impacts rdf:resource="&land;LocalMapping"/>
         <kern:impacts rdf:resource="&land;Navigator"/>
@@ -117,7 +117,7 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#ExLocalMapInfo -->
 
     <owl:NamedIndividual rdf:about="&land;ExLocalMapInfo">
-        <rdf:type rdf:resource="&syst;ApplicationInteraction"/>
+        <rdf:type rdf:resource="&kern;ApplicationInteraction"/>
         <kern:impacts rdf:resource="&land;GlobalPlanning"/>
         <kern:impacts rdf:resource="&land;Localization"/>
         <kern:impacts rdf:resource="&land;Navigator"/>
@@ -129,7 +129,7 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#ExLongTermObjective -->
 
     <owl:NamedIndividual rdf:about="&land;ExLongTermObjective">
-        <rdf:type rdf:resource="&syst;ApplicationInteraction"/>
+        <rdf:type rdf:resource="&kern;ApplicationInteraction"/>
         <kern:impacts rdf:resource="&land;PathPlanning"/>
     </owl:NamedIndividual>
     
@@ -138,7 +138,7 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#ExPath -->
 
     <owl:NamedIndividual rdf:about="&land;ExPath">
-        <rdf:type rdf:resource="&syst;ApplicationInteraction"/>
+        <rdf:type rdf:resource="&kern;ApplicationInteraction"/>
         <kern:impacts rdf:resource="&land;Navigator"/>
     </owl:NamedIndividual>
     
@@ -147,7 +147,7 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#ExProximityMapInfo -->
 
     <owl:NamedIndividual rdf:about="&land;ExProximityMapInfo">
-        <rdf:type rdf:resource="&syst;ApplicationInteraction"/>
+        <rdf:type rdf:resource="&kern;ApplicationInteraction"/>
         <kern:impacts rdf:resource="&land;LocalMapping"/>
         <kern:impacts rdf:resource="&land;Servoing"/>
     </owl:NamedIndividual>
@@ -157,7 +157,7 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl#ExShortTermTarget -->
 
     <owl:NamedIndividual rdf:about="&land;ExShortTermTarget">
-        <rdf:type rdf:resource="&syst;ApplicationInteraction"/>
+        <rdf:type rdf:resource="&kern;ApplicationInteraction"/>
         <kern:impacts rdf:resource="&land;Servoing"/>
     </owl:NamedIndividual>
     

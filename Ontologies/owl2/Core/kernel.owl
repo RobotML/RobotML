@@ -58,6 +58,8 @@ Third part is the representation of the software &quot;world&quot;. All that con
 - SoftwareToHardwareInteraction and HardwareToSoftwareInteraction (These two are very important as they allow the software to live in the hardware)</rdfs:comment>
         <rdfs:comment xml:lang="en">This work is based upon a previous one funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project (see http://www.anr-project.fr). It is the property of its authors and is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
         <rdfs:comment xml:lang="en">Version for Protégé 4.x flavors.</rdfs:comment>
+        <Author xml:lang="en">modified Bruno Patin - 03/10/2013
+- addition of rule stating that an action is only done by an agent</Author>
     </owl:Ontology>
     
 
@@ -1065,12 +1067,16 @@ The Abstraction concept here mentionned is closer to the ideas world of Plato.</
 
     <owl:Class rdf:about="&kern;Action">
         <rdfs:subClassOf rdf:resource="&kern;Interaction"/>
+        <owl:disjointWith rdf:resource="&kern;ApplicationInteraction"/>
         <owl:disjointWith rdf:resource="&kern;DriverToHardwareInteraction"/>
         <owl:disjointWith rdf:resource="&kern;HardwareToDriverInteraction"/>
         <openCycURI rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rvVieP5wpEbGdrcN5Y29ycA</openCycURI>
         <rdfs:comment xml:lang="en">An action is a specific kind of interaction. Actions are performed by agents that are either robots or humans. For robots, actions are performed on external world (Software to hardware interaction) or on internal components (Software to software interaction). For humans, actions are only physical interaction because the ontology does not describe psychology. Notice that it exists software to hardware interactions and software to software interactions that are not actions but only dataflow.
 
 Action in the Ontology is the OpenCyc PurposefulAction.</rdfs:comment>
+        <Author xml:lang="en">creation PROTEUS consortium - 
+modified Bruno Patin - 03/10/2013
+- rule added to express tha fact that only human and robot can interact using actions</Author>
     </owl:Class>
     
 
@@ -1130,6 +1136,12 @@ Action in the Ontology is the OpenCyc PurposefulAction.</rdfs:comment>
 
     <owl:Class rdf:about="&kern;AlgorithmicModule">
         <rdfs:subClassOf rdf:resource="&kern;Software"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;triggers"/>
+                <owl:someValuesFrom rdf:resource="&kern;ApplicationInteraction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&kern;Application"/>
         <rdfs:comment xml:lang="en">It is an application that is not executable by itself but can be composed through tooling such as the PROTEUS main tool.</rdfs:comment>
     </owl:Class>
@@ -1142,6 +1154,25 @@ Action in the Ontology is the OpenCyc PurposefulAction.</rdfs:comment>
         <rdfs:subClassOf rdf:resource="&kern;Software"/>
         <rdfs:comment xml:lang="en">It is a computing entity able to work upon a hardware that provides computing capcabilities.
 It is a computing entity capable of providing life to another software. At the bottom level, it is the OS of the computer.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#ApplicationInteraction -->
+
+    <owl:Class rdf:about="&kern;ApplicationInteraction">
+        <rdfs:subClassOf rdf:resource="&kern;Interaction"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;impacts"/>
+                <owl:allValuesFrom rdf:resource="&kern;Software"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&kern;DriverToHardwareInteraction"/>
+        <owl:disjointWith rdf:resource="&kern;HardwareToDriverInteraction"/>
+        <owl:disjointWith rdf:resource="&kern;InterAgentCommunication"/>
+        <owl:disjointWith rdf:resource="&kern;PhysicalInteraction"/>
+        <rdfs:comment xml:lang="en">Interaction between two Applications that are parts of a RoboticSystem. They could be interactions between frameworks, applications, libraries, drivers, processes, or other logical units of Application. In order to avoid redendancy the name does not quote two times the Aplication word</rdfs:comment>
     </owl:Class>
     
 
@@ -1239,6 +1270,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     <owl:Class rdf:about="&kern;CompositeModel">
         <rdfs:subClassOf rdf:resource="&kern;CompositeSystem"/>
         <rdfs:subClassOf rdf:resource="&kern;Model"/>
+        <owl:disjointWith rdf:resource="&kern;Environment"/>
         <rdfs:comment xml:lang="en">This concept groups the different theory that can be used to model one or more system. It is often linked to a mathematical theory. In the composite model case it is also often linked to architecture representation of this same system. E.g. the environment, reality of it, can be represented as the aggregation of terrain and buildings or it can be represented by the surface where only one system represent terrain AND buildings. As for any model (as is this ontology), the way to represent depends of its usage.
 An atomic model being an atomic system is thus disjoint from a composite model as it is a composite system.</rdfs:comment>
     </owl:Class>
@@ -1376,6 +1408,12 @@ This concept is closely linked to system concept.</rdfs:comment>
                 <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:maxCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;triggers"/>
+                <owl:allValuesFrom rdf:resource="&kern;PhysicalInteraction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&kern;Hardware"/>
         <rdfs:comment xml:lang="en">This environment groups everything that exist. Nothing is outside and everything lives in it. An alias for environment could be Universe or World in an ontologic meaning. This is the highest possible &quot;container&quot; for the physical objects to exist.
 Considering the scenario to be represented using this concept it expresses also the boundary we imagine for the problem. As an example, for a mobile on ground robot there is no need to represent anything concerning water.
@@ -1392,6 +1430,17 @@ There is a difference between the meaning of OpenCyc concept to the one of the o
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;hasPort"/>
                 <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:maxCardinality>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+    </owl:Axiom>
+    <owl:Axiom>
+        <rdfs:comment xml:lang="en">this property expresses the fact that the environment is not associated to any software running in it.</rdfs:comment>
+        <owl:annotatedSource rdf:resource="&kern;Environment"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;triggers"/>
+                <owl:allValuesFrom rdf:resource="&kern;PhysicalInteraction"/>
             </owl:Restriction>
         </owl:annotatedTarget>
     </owl:Axiom>
@@ -1659,6 +1708,12 @@ http://en.wikipedia.org/wiki/Conceptual_model</wikipediaURI>
 
     <owl:Class rdf:about="&kern;PhysicalInteraction">
         <rdfs:subClassOf rdf:resource="&kern;Interaction"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;impacts"/>
+                <owl:allValuesFrom rdf:resource="&kern;PhysicalObject"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment>It is the same type of object as DriverTo Hardware and HardwareToDriver but at a more abstract level because it is an interaction between two Physical objects.</rdfs:comment>
     </owl:Class>
     
@@ -1956,61 +2011,6 @@ http://en.wiktionary.org/wiki/transition</wiktionaryURI>
                 <rdf:rest rdf:resource="&rdf;nil"/>
                 <rdf:first>
                     <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;DatavaluedPropertyAtom"/>
-                        <swrl:argument2 rdf:datatype="&xsd;boolean">false</swrl:argument2>
-                        <swrl:propertyPredicate rdf:resource="&kern;isAtomic"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                    </rdf:Description>
-                </rdf:first>
-            </rdf:Description>
-        </swrl:head>
-        <swrl:body>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="&kern;System"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                    </rdf:Description>
-                </rdf:first>
-                <rdf:rest>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;AtomList"/>
-                        <rdf:rest>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;AtomList"/>
-                                <rdf:rest rdf:resource="&rdf;nil"/>
-                                <rdf:first>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                        <swrl:propertyPredicate rdf:resource="&kern;aggregates"/>
-                                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                                        <swrl:argument2 rdf:resource="urn:swrl#y"/>
-                                    </rdf:Description>
-                                </rdf:first>
-                            </rdf:Description>
-                        </rdf:rest>
-                        <rdf:first>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                <swrl:classPredicate rdf:resource="&kern;System"/>
-                                <swrl:argument1 rdf:resource="urn:swrl#y"/>
-                            </rdf:Description>
-                        </rdf:first>
-                    </rdf:Description>
-                </rdf:rest>
-            </rdf:Description>
-        </swrl:body>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&swrl;Imp"/>
-        <swrl:head>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:rest rdf:resource="&rdf;nil"/>
-                <rdf:first>
-                    <rdf:Description>
                         <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
                         <swrl:propertyPredicate rdf:resource="&kern;triggers"/>
                         <swrl:argument1 rdf:resource="urn:swrl#x"/>
@@ -2022,44 +2022,15 @@ http://en.wiktionary.org/wiki/transition</wiktionaryURI>
         <swrl:body>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="&kern;Interaction"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
-                    </rdf:Description>
-                </rdf:first>
                 <rdf:rest>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;AtomList"/>
-                        <rdf:first>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                <swrl:classPredicate rdf:resource="&kern;Port"/>
-                                <swrl:argument1 rdf:resource="urn:swrl#z"/>
-                            </rdf:Description>
-                        </rdf:first>
                         <rdf:rest>
                             <rdf:Description>
                                 <rdf:type rdf:resource="&swrl;AtomList"/>
-                                <rdf:first>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                        <swrl:classPredicate rdf:resource="&kern;System"/>
-                                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                                    </rdf:Description>
-                                </rdf:first>
                                 <rdf:rest>
                                     <rdf:Description>
                                         <rdf:type rdf:resource="&swrl;AtomList"/>
-                                        <rdf:first>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                <swrl:propertyPredicate rdf:resource="&kern;emits"/>
-                                                <swrl:argument2 rdf:resource="urn:swrl#y"/>
-                                                <swrl:argument1 rdf:resource="urn:swrl#z"/>
-                                            </rdf:Description>
-                                        </rdf:first>
                                         <rdf:rest>
                                             <rdf:Description>
                                                 <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2074,17 +2045,59 @@ http://en.wiktionary.org/wiki/transition</wiktionaryURI>
                                                 </rdf:first>
                                             </rdf:Description>
                                         </rdf:rest>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="&kern;emits"/>
+                                                <swrl:argument2 rdf:resource="urn:swrl#y"/>
+                                                <swrl:argument1 rdf:resource="urn:swrl#z"/>
+                                            </rdf:Description>
+                                        </rdf:first>
                                     </rdf:Description>
                                 </rdf:rest>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="&kern;System"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                    </rdf:Description>
+                                </rdf:first>
                             </rdf:Description>
                         </rdf:rest>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="&kern;Port"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#z"/>
+                            </rdf:Description>
+                        </rdf:first>
                     </rdf:Description>
                 </rdf:rest>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&kern;Interaction"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                    </rdf:Description>
+                </rdf:first>
             </rdf:Description>
         </swrl:body>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;DifferentIndividualsAtom"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#z"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
         <swrl:body>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2112,19 +2125,6 @@ http://en.wiktionary.org/wiki/transition</wiktionaryURI>
                 </rdf:rest>
             </rdf:Description>
         </swrl:body>
-        <swrl:head>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:rest rdf:resource="&rdf;nil"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;DifferentIndividualsAtom"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
-                        <swrl:argument2 rdf:resource="urn:swrl#z"/>
-                    </rdf:Description>
-                </rdf:first>
-            </rdf:Description>
-        </swrl:head>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&swrl;Imp"/>
@@ -2158,13 +2158,6 @@ http://en.wiktionary.org/wiki/transition</wiktionaryURI>
         <swrl:body>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="&kern;Frame"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#a"/>
-                    </rdf:Description>
-                </rdf:first>
                 <rdf:rest>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2178,6 +2171,13 @@ http://en.wiktionary.org/wiki/transition</wiktionaryURI>
                         <rdf:rest>
                             <rdf:Description>
                                 <rdf:type rdf:resource="&swrl;AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="&kern;PhysicalInteraction"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
+                                    </rdf:Description>
+                                </rdf:first>
                                 <rdf:rest>
                                     <rdf:Description>
                                         <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2255,17 +2255,114 @@ http://en.wiktionary.org/wiki/transition</wiktionaryURI>
                                         </rdf:rest>
                                     </rdf:Description>
                                 </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&kern;Frame"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#a"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:body>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;DatavaluedPropertyAtom"/>
+                        <swrl:argument2 rdf:datatype="&xsd;boolean">false</swrl:argument2>
+                        <swrl:propertyPredicate rdf:resource="&kern;isAtomic"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&kern;System"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="&kern;System"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;AtomList"/>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
                                 <rdf:first>
                                     <rdf:Description>
-                                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                        <swrl:classPredicate rdf:resource="&kern;PhysicalInteraction"/>
-                                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
+                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="&kern;aggregates"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl#y"/>
                                     </rdf:Description>
                                 </rdf:first>
                             </rdf:Description>
                         </rdf:rest>
                     </rdf:Description>
                 </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&kern;Agent"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:rest rdf:resource="&rdf;nil"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="&kern;impacts"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                <swrl:argument2 rdf:resource="urn:swrl#y"/>
+                            </rdf:Description>
+                        </rdf:first>
+                    </rdf:Description>
+                </rdf:rest>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&kern;PhysicalObject"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                    </rdf:Description>
+                </rdf:first>
             </rdf:Description>
         </swrl:body>
     </rdf:Description>

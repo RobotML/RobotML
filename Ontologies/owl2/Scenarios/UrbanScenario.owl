@@ -93,12 +93,6 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ApplicationInteraction -->
-
-    <owl:Class rdf:about="&syst;ApplicationInteraction"/>
-    
-
-
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ControlAndCommand -->
 
     <owl:Class rdf:about="&syst;ControlAndCommand"/>
@@ -204,7 +198,7 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#ExBeliefAboutEnvironement -->
 
     <owl:NamedIndividual rdf:about="&urba;ExBeliefAboutEnvironement">
-        <rdf:type rdf:resource="&syst;ApplicationInteraction"/>
+        <rdf:type rdf:resource="&kern;ApplicationInteraction"/>
         <kern:impacts rdf:resource="&urba;TrajectoryPlanning"/>
     </owl:NamedIndividual>
     
@@ -222,7 +216,7 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#ExCommands -->
 
     <owl:NamedIndividual rdf:about="&urba;ExCommands">
-        <rdf:type rdf:resource="&syst;ApplicationInteraction"/>
+        <rdf:type rdf:resource="&kern;ApplicationInteraction"/>
         <kern:impacts rdf:resource="&urba;Control"/>
     </owl:NamedIndividual>
     
@@ -231,7 +225,7 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#ExDesiredDestination -->
 
     <owl:NamedIndividual rdf:about="&urba;ExDesiredDestination">
-        <rdf:type rdf:resource="&syst;ApplicationInteraction"/>
+        <rdf:type rdf:resource="&kern;ApplicationInteraction"/>
         <kern:impacts rdf:resource="&urba;TrajectoryPlanning"/>
     </owl:NamedIndividual>
     
@@ -240,9 +234,9 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#ExDestinationReachedSignal -->
 
     <owl:NamedIndividual rdf:about="&urba;ExDestinationReachedSignal">
+        <rdf:type rdf:resource="&kern;ApplicationInteraction"/>
         <rdf:type rdf:resource="&kern;Event"/>
         <rdf:type rdf:resource="&kern;SignalEvent"/>
-        <rdf:type rdf:resource="&syst;ApplicationInteraction"/>
         <kern:impacts rdf:resource="&urba;TaxiMissionManager"/>
     </owl:NamedIndividual>
     
@@ -251,7 +245,7 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#ExDetectedObstacle -->
 
     <owl:NamedIndividual rdf:about="&urba;ExDetectedObstacle">
-        <rdf:type rdf:resource="&syst;ApplicationInteraction"/>
+        <rdf:type rdf:resource="&kern;ApplicationInteraction"/>
         <kern:impacts rdf:resource="&urba;Maping"/>
         <kern:impacts rdf:resource="&urba;MonitoringAndIntegrity"/>
     </owl:NamedIndividual>
@@ -261,7 +255,7 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#ExLIDARMeasurement -->
 
     <owl:NamedIndividual rdf:about="&urba;ExLIDARMeasurement">
-        <rdf:type rdf:resource="&syst;ApplicationInteraction"/>
+        <rdf:type rdf:resource="&kern;ApplicationInteraction"/>
         <kern:impacts rdf:resource="&urba;ObstacleDetection"/>
     </owl:NamedIndividual>
     
@@ -288,7 +282,7 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#ExTrajectory -->
 
     <owl:NamedIndividual rdf:about="&urba;ExTrajectory">
-        <rdf:type rdf:resource="&syst;ApplicationInteraction"/>
+        <rdf:type rdf:resource="&kern;ApplicationInteraction"/>
         <kern:impacts rdf:resource="&urba;Servoing"/>
     </owl:NamedIndividual>
     

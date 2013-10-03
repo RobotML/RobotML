@@ -703,14 +703,14 @@
         <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#RoboticFunctionalSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#hasImplementingSoftware"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#hasImplementingHardware"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#hasImplementingHardware"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
+                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#hasImplementingSoftware"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&miss;ReactiveSystem"/>
@@ -794,12 +794,6 @@
     <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#MissionManagementSystem">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#hasImplementingSoftware"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
@@ -809,6 +803,12 @@
                         </owl:intersectionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#hasImplementingSoftware"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#MotionPlanningSystem"/>
