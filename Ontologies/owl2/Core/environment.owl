@@ -239,6 +239,17 @@
     
 
 
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#AstronomicalObject -->
+
+    <owl:Class rdf:about="&envi;AstronomicalObject">
+        <rdfs:subClassOf rdf:resource="&kern;PhysicalObject"/>
+        <kern:Author xml:lang="en">creation Bruno Patin - 04/10/2013
+- individuals creation process (solar system) leads to create such a class</kern:Author>
+        <kern:openCycURI xml:lang="en">http://sw.opencyc.org/concept/Mx4rvVjReJwpEbGdrcN5Y29ycA</kern:openCycURI>
+    </owl:Class>
+    
+
+
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#Atmosphere -->
 
     <owl:Class rdf:about="&envi;Atmosphere">
@@ -412,12 +423,15 @@ modified Bruno Patin - 15/09/2013
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#Planet -->
 
     <owl:Class rdf:about="&envi;Planet">
-        <rdfs:subClassOf rdf:resource="&kern;PhysicalObject"/>
+        <rdfs:subClassOf rdf:resource="&envi;AstronomicalObject"/>
         <owl:disjointWith rdf:resource="&envi;Surface"/>
         <owl:disjointWith rdf:resource="&kern;Agent"/>
         <owl:disjointWith rdf:resource="&kern;Environment"/>
         <owl:disjointWith rdf:resource="&kern;Hardware"/>
-        <rdfs:comment xml:lang="en">a celestial body  that is massive enough to be rounded by its own gravity</rdfs:comment>
+        <rdfs:comment xml:lang="en">a celestial body  that is massive enough to be rounded by its own gravity but not massive enough to initiate fusion process.</rdfs:comment>
+        <kern:Author xml:lang="en">creation PROTEUS consortium - 
+modified Bruno Patin - 04/10/2013
+- alignment to opencyc and move to new introduced class</kern:Author>
     </owl:Class>
     
 
@@ -439,6 +453,19 @@ modified Bruno Patin - 15/09/2013
         <rdfs:subClassOf rdf:resource="&envi;Surface"/>
         <owl:disjointWith rdf:resource="&envi;WaterSurface"/>
         <rdfs:comment xml:lang="en">a construction designed to bridge a large vertical distance by dividing it into smaller vertical distances, called steps.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#Star -->
+
+    <owl:Class rdf:about="&envi;Star">
+        <rdfs:subClassOf rdf:resource="&envi;AstronomicalObject"/>
+        <rdfs:comment xml:lang="en">a celestial body  that is massive enough to be rounded by its own gravity and massive enough to initiate fusion process.</rdfs:comment>
+        <kern:Author xml:lang="en">creation PROTEUS consortium - 
+modified Bruno Patin - 04/10/2013
+- alignment to opencyc and move to new introduced class</kern:Author>
+        <kern:openCycURI xml:lang="en">http://sw.opencyc.org/concept/Mx4rvVi80ZwpEbGdrcN5Y29ycA</kern:openCycURI>
     </owl:Class>
     
 
@@ -526,6 +553,41 @@ modified Bruno Patin - 15/09/2013
 
     <rdf:Description rdf:about="&kern;Hardware">
         <rdfs:subClassOf rdf:resource="&envi;SolidObject"/>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Earth -->
+
+    <rdf:Description rdf:about="&kern;Earth">
+        <rdf:type rdf:resource="&envi;Planet"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Moon -->
+
+    <rdf:Description rdf:about="&kern;Moon">
+        <rdf:type rdf:resource="&envi;Planet"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Sun -->
+
+    <rdf:Description rdf:about="&kern;Sun">
+        <rdf:type rdf:resource="&envi;Star"/>
     </rdf:Description>
 </rdf:RDF>
 
