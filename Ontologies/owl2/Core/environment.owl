@@ -243,8 +243,8 @@
 
     <owl:Class rdf:about="&envi;AstronomicalObject">
         <rdfs:subClassOf rdf:resource="&kern;PhysicalObject"/>
-        <kern:Author xml:lang="en">creation Bruno Patin - 04/10/2013
-- individuals creation process (solar system) leads to create such a class</kern:Author>
+        <kern:author xml:lang="en">creation Bruno Patin - 04/10/2013
+- individuals creation process (solar system) leads to create such a class</kern:author>
         <kern:openCycURI xml:lang="en">http://sw.opencyc.org/concept/Mx4rvVjReJwpEbGdrcN5Y29ycA</kern:openCycURI>
     </owl:Class>
     
@@ -382,11 +382,11 @@
     <owl:Class rdf:about="&envi;MachineTorque">
         <rdfs:subClassOf rdf:resource="&envi;Torque"/>
         <kern:openCycURI rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rvVkFSJwpEbGdrcN5Y29ycA</kern:openCycURI>
-        <kern:Author xml:lang="en">creation Jean-Loup Farges - 10/09/2013
+        <kern:author xml:lang="en">creation Jean-Loup Farges - 10/09/2013
 modified Bruno Patin - 15/09/2013
 - authorship added
 - comment added
-- TODO added</kern:Author>
+- TODO added</kern:author>
         <kern:wikipediaURI>http://en.wikipedia.org/wiki/Torque#Machine_torque</kern:wikipediaURI>
     </owl:Class>
     
@@ -429,9 +429,9 @@ modified Bruno Patin - 15/09/2013
         <owl:disjointWith rdf:resource="&kern;Environment"/>
         <owl:disjointWith rdf:resource="&kern;Hardware"/>
         <rdfs:comment xml:lang="en">a celestial body  that is massive enough to be rounded by its own gravity but not massive enough to initiate fusion process.</rdfs:comment>
-        <kern:Author xml:lang="en">creation PROTEUS consortium - 
+        <kern:author xml:lang="en">creation PROTEUS consortium - 
 modified Bruno Patin - 04/10/2013
-- alignment to opencyc and move to new introduced class</kern:Author>
+- alignment to opencyc and move to new introduced class</kern:author>
     </owl:Class>
     
 
@@ -462,9 +462,9 @@ modified Bruno Patin - 04/10/2013
     <owl:Class rdf:about="&envi;Star">
         <rdfs:subClassOf rdf:resource="&envi;AstronomicalObject"/>
         <rdfs:comment xml:lang="en">a celestial body  that is massive enough to be rounded by its own gravity and massive enough to initiate fusion process.</rdfs:comment>
-        <kern:Author xml:lang="en">creation PROTEUS consortium - 
+        <kern:author xml:lang="en">creation PROTEUS consortium - 
 modified Bruno Patin - 04/10/2013
-- alignment to opencyc and move to new introduced class</kern:Author>
+- alignment to opencyc and move to new introduced class</kern:author>
         <kern:openCycURI xml:lang="en">http://sw.opencyc.org/concept/Mx4rvVi80ZwpEbGdrcN5Y29ycA</kern:openCycURI>
     </owl:Class>
     
@@ -494,9 +494,9 @@ modified Bruno Patin - 04/10/2013
     <owl:Class rdf:about="&envi;Torque">
         <rdfs:subClassOf rdf:resource="&kern;PhysicalInteraction"/>
         <rdfs:comment>Following wikipedia, torque, moment or moment of force, is the tendency of a force to rotate an object about an axis, fulcrum, or pivot.</rdfs:comment>
-        <kern:Author xml:lang="en">creation Jean-Loup Farges - 10/09/2013
+        <kern:author xml:lang="en">creation Jean-Loup Farges - 10/09/2013
 modified Bruno Patin - 15/09/2013
-- authorship added</kern:Author>
+- authorship added</kern:author>
         <kern:wikipediaURI>http://en.wikipedia.org/wiki/Torque</kern:wikipediaURI>
     </owl:Class>
     
@@ -541,10 +541,10 @@ This concept IS NOT the &quot;Waterbody concept&quot; as defined in openCyc and 
     <rdf:Description rdf:about="&kern;Environment">
         <kern:wikipediaURI rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/Environment_%28systems%29</kern:wikipediaURI>
         <kern:openCycURI rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rwLW-jpwpEbGdrcN5Y29ycA</kern:openCycURI>
-        <kern:Author xml:lang="en">creation PROTEUS consortium - 
+        <kern:author xml:lang="en">creation PROTEUS consortium - 
 modified Bruno Patin - 15/09/2013
 - OpenCyc and Wikipedia reference added
-- comment explaining difference between the two concepts.</kern:Author>
+- comment explaining difference between the two concepts.</kern:author>
     </rdf:Description>
     
 

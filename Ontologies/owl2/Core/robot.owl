@@ -127,15 +127,6 @@
     <owl:ObjectProperty rdf:about="&robo;movesOverGround">
         <rdfs:comment xml:lang="en">UGV and humans move over stairs, floor and land surface.</rdfs:comment>
         <rdfs:subPropertyOf rdf:resource="&robo;movesOver"/>
-        <rdfs:range>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&envi;Floor"/>
-                    <rdf:Description rdf:about="&envi;LandSurface"/>
-                    <rdf:Description rdf:about="&envi;Stairs"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:range>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -145,6 +136,15 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&envi;Floor"/>
+                    <rdf:Description rdf:about="&envi;LandSurface"/>
+                    <rdf:Description rdf:about="&envi;Stairs"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
     </owl:ObjectProperty>
     
 
@@ -249,15 +249,15 @@
         <rdfs:subClassOf rdf:resource="&robo;GroundVehicle"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:onClass rdf:resource="&syst;Chassis"/>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:onClass rdf:resource="&syst;EngineSystem"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:onClass rdf:resource="&syst;EngineSystem"/>
+                <owl:onProperty rdf:resource="&kern;has"/>
+                <owl:onClass rdf:resource="&syst;Chassis"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -280,16 +280,16 @@
         <rdfs:subClassOf rdf:resource="&robo;GroundVehicle"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:onClass rdf:resource="&syst;EngineSystem"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minQualifiedCardinality>
+                <owl:onProperty rdf:resource="&kern;has"/>
+                <owl:onClass rdf:resource="&syst;Chassis"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:onClass rdf:resource="&syst;Chassis"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:onClass rdf:resource="&syst;EngineSystem"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A differential vehicle is a mobile robot whose movement is based on two separately driven velocities of the rotational mechanism of both sides of the robot body. It can thus change its direction by varying the relative rate of rotation and hence does not require an additional steering motion. We can find wheeled differential vehicles or caterpillar vehicles.</rdfs:comment>
@@ -369,14 +369,14 @@ A “robotic system of systems” is a specialised system of systems where there
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:onClass rdf:resource="&syst;Chassis"/>
+                <owl:onClass rdf:resource="&syst;LegSystem"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:onClass rdf:resource="&syst;LegSystem"/>
+                <owl:onClass rdf:resource="&syst;Chassis"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -425,21 +425,21 @@ A “robotic system of systems” is a specialised system of systems where there
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:allValuesFrom rdf:resource="&syst;CyberPhysicalSystem"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;hasProbe"/>
                 <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:allValuesFrom rdf:resource="&syst;CyberPhysicalSystem"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;DriverDeviceSystem"/>
         <rdfs:comment xml:lang="en">A robot is not only an agent but also a composite system. It aggregates only embedded systems. Mainly this system is used as a classifier for the different types of robots.</rdfs:comment>
-        <kern:Author xml:lang="en">creation PROTEUS consortium - 
+        <kern:author xml:lang="en">creation PROTEUS consortium - 
 modified Bruno Patin - 30/09/2013
-- comment has changed due to revision of what is the concept</kern:Author>
+- comment has changed due to revision of what is the concept</kern:author>
     </owl:Class>
     
 
@@ -515,13 +515,6 @@ modified Bruno Patin - 30/09/2013
         <swrl:body>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="&kern;Interaction"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
-                    </rdf:Description>
-                </rdf:first>
                 <rdf:rest>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -541,17 +534,17 @@ modified Bruno Patin - 30/09/2013
                                         <rdf:rest>
                                             <rdf:Description>
                                                 <rdf:type rdf:resource="&swrl;AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="&kern;aggregates"/>
+                                                        <swrl:argument2 rdf:resource="urn:swrl#x1"/>
+                                                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
                                                 <rdf:rest>
                                                     <rdf:Description>
                                                         <rdf:type rdf:resource="&swrl;AtomList"/>
-                                                        <rdf:first>
-                                                            <rdf:Description>
-                                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                                <swrl:propertyPredicate rdf:resource="&kern;aggregates"/>
-                                                                <swrl:argument2 rdf:resource="urn:swrl#x2"/>
-                                                                <swrl:argument1 rdf:resource="urn:swrl#y"/>
-                                                            </rdf:Description>
-                                                        </rdf:first>
                                                         <rdf:rest>
                                                             <rdf:Description>
                                                                 <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -579,16 +572,16 @@ modified Bruno Patin - 30/09/2013
                                                                 </rdf:first>
                                                             </rdf:Description>
                                                         </rdf:rest>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                                <swrl:propertyPredicate rdf:resource="&kern;aggregates"/>
+                                                                <swrl:argument2 rdf:resource="urn:swrl#x2"/>
+                                                                <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                                                            </rdf:Description>
+                                                        </rdf:first>
                                                     </rdf:Description>
                                                 </rdf:rest>
-                                                <rdf:first>
-                                                    <rdf:Description>
-                                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                        <swrl:propertyPredicate rdf:resource="&kern;aggregates"/>
-                                                        <swrl:argument2 rdf:resource="urn:swrl#x1"/>
-                                                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
-                                                    </rdf:Description>
-                                                </rdf:first>
                                             </rdf:Description>
                                         </rdf:rest>
                                         <rdf:first>
@@ -611,6 +604,13 @@ modified Bruno Patin - 30/09/2013
                         </rdf:first>
                     </rdf:Description>
                 </rdf:rest>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&kern;Interaction"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
+                    </rdf:Description>
+                </rdf:first>
             </rdf:Description>
         </swrl:body>
         <swrl:head>
