@@ -185,8 +185,8 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#Control -->
 
     <owl:NamedIndividual rdf:about="&urba;Control">
-        <rdf:type rdf:resource="&kern;AlgorithmicModule"/>
         <rdf:type rdf:resource="&kern;AtomicSystem"/>
+        <rdf:type rdf:resource="&kern;SoftwareModule"/>
         <rdf:type rdf:resource="&syst;ControlSystem"/>
         <kern:triggers rdf:resource="&urba;ExBrakesCommand"/>
         <kern:triggers rdf:resource="&urba;ExMotorCommand"/>
@@ -309,8 +309,8 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#Maping -->
 
     <owl:NamedIndividual rdf:about="&urba;Maping">
-        <rdf:type rdf:resource="&kern;AlgorithmicModule"/>
         <rdf:type rdf:resource="&kern;AtomicSystem"/>
+        <rdf:type rdf:resource="&kern;SoftwareModule"/>
         <rdf:type rdf:resource="&syst;MotionPlanningSystem"/>
         <kern:triggers rdf:resource="&urba;ExBeliefAboutEnvironement"/>
     </owl:NamedIndividual>
@@ -320,7 +320,7 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#MonitoringAndIntegrity -->
 
     <owl:NamedIndividual rdf:about="&urba;MonitoringAndIntegrity">
-        <rdf:type rdf:resource="&kern;AlgorithmicModule"/>
+        <rdf:type rdf:resource="&kern;SoftwareModule"/>
         <kern:triggers rdf:resource="&urba;ExCommands"/>
     </owl:NamedIndividual>
     
@@ -426,8 +426,8 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#TaxiMissionManager -->
 
     <owl:NamedIndividual rdf:about="&urba;TaxiMissionManager">
-        <rdf:type rdf:resource="&kern;AlgorithmicModule"/>
         <rdf:type rdf:resource="&kern;AtomicSystem"/>
+        <rdf:type rdf:resource="&kern;SoftwareModule"/>
         <rdf:type rdf:resource="&syst;MissionManagementSystem"/>
         <kern:isAtomic rdf:datatype="&xsd;boolean">true</kern:isAtomic>
         <kern:triggers rdf:resource="&urba;ExDesiredDestination"/>
@@ -438,8 +438,8 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#TrajectoryPlanning -->
 
     <owl:NamedIndividual rdf:about="&urba;TrajectoryPlanning">
-        <rdf:type rdf:resource="&kern;AlgorithmicModule"/>
         <rdf:type rdf:resource="&kern;AtomicSystem"/>
+        <rdf:type rdf:resource="&kern;SoftwareModule"/>
         <rdf:type rdf:resource="&syst;MotionPlanningSystem"/>
         <kern:isAtomic rdf:datatype="&xsd;boolean">true</kern:isAtomic>
         <kern:triggers rdf:resource="&urba;ExTrajectory"/>

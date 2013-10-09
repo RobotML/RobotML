@@ -373,8 +373,8 @@
 
     <owl:ObjectProperty rdf:about="&simu;isComposedOfAlgorithmicModule">
         <rdfs:comment xml:lang="en">this property allows an application to use module meaning also libraires and thus linking external libraries to application and to its inherited simulator</rdfs:comment>
-        <rdfs:range rdf:resource="&kern;AlgorithmicModule"/>
         <rdfs:domain rdf:resource="&kern;Application"/>
+        <rdfs:range rdf:resource="&kern;SoftwareModule"/>
     </owl:ObjectProperty>
     
 
@@ -921,14 +921,6 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AlgorithmicModule -->
-
-    <rdf:Description rdf:about="&kern;AlgorithmicModule">
-        <owl:disjointWith rdf:resource="&simu;SoftwareSimulator"/>
-    </rdf:Description>
-    
-
-
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AtomicModel -->
 
     <rdf:Description rdf:about="&kern;AtomicModel">
@@ -979,6 +971,14 @@
     
 
 
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#SoftwareModule -->
+
+    <rdf:Description rdf:about="&kern;SoftwareModule">
+        <owl:disjointWith rdf:resource="&simu;SoftwareSimulator"/>
+    </rdf:Description>
+    
+
+
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#SoftwareProbe -->
 
     <rdf:Description rdf:about="&kern;SoftwareProbe">
@@ -998,8 +998,8 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#AtomicAlgorithmicModule -->
 
     <owl:Class rdf:about="&simu;AtomicAlgorithmicModule">
-        <rdfs:subClassOf rdf:resource="&kern;AlgorithmicModule"/>
         <rdfs:subClassOf rdf:resource="&kern;AtomicSystem"/>
+        <rdfs:subClassOf rdf:resource="&kern;SoftwareModule"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;models"/>
@@ -1123,18 +1123,6 @@ The term is commonly used in computer graphics to describe the three-dimensional
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&simu;HardwareSimulator"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&simu;simulatesAnimationOf"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom rdf:resource="&simu;SoftwareSimulator"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1149,6 +1137,18 @@ The term is commonly used in computer graphics to describe the three-dimensional
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&simu;simulatesAnimationOf"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&simu;HardwareSimulator"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&simu;SoftwareSimulator"/>
@@ -1327,13 +1327,13 @@ The term is commonly used in computer graphics to describe the three-dimensional
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:allValuesFrom rdf:resource="&kern;Probe"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+                <owl:allValuesFrom rdf:resource="&kern;Probe"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <kern:TODO xml:lang="en">1. write a rule allowing to state that the simulation is created from the information produced by the implemented Probe
@@ -1346,12 +1346,12 @@ The term is commonly used in computer graphics to describe the three-dimensional
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SoftwareLibrary -->
 
     <owl:Class rdf:about="&simu;SoftwareLibrary">
-        <rdfs:subClassOf rdf:resource="&kern;AlgorithmicModule"/>
         <rdfs:subClassOf rdf:resource="&kern;CompositeSystem"/>
+        <rdfs:subClassOf rdf:resource="&kern;SoftwareModule"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:allValuesFrom rdf:resource="&kern;AlgorithmicModule"/>
+                <owl:allValuesFrom rdf:resource="&kern;SoftwareModule"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1372,14 +1372,14 @@ The term is commonly used in computer graphics to describe the three-dimensional
         <rdfs:subClassOf rdf:resource="&simu;SimulatorEvolutionModel"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:allValuesFrom rdf:resource="&kern;SoftwareProbe"/>
+                <owl:onProperty rdf:resource="&kern;executesOn"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;executesOn"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+                <owl:onProperty rdf:resource="&kern;has"/>
+                <owl:allValuesFrom rdf:resource="&kern;SoftwareProbe"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
