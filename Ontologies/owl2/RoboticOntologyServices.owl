@@ -30,16 +30,32 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
     <owl:Ontology rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/RoboticOntologyServices.owl">
-        <owl:versionInfo rdf:datatype="&xsd;string">version delivered 1.0</owl:versionInfo>
-        <rdfs:comment xml:lang="en">FaCT++ does not work on this ontology. Reasoning shall be done using HermiT.</rdfs:comment>
         <rdfs:comment xml:lang="en">This ontology is the consolidation of the different ontology modules providing the result of the PROTEUS consortium work. No modifications should be done on any of the concepts and properties defined. These modifications have to be done on the concerned ontology.
 It is more than the proteus.owl ontology as it also provides the scenario and extensions.</rdfs:comment>
         <rdfs:comment xml:lang="en">This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
-        <rdfs:comment xml:lang="en">Version for Protégé 4.2 beta.</rdfs:comment>
         <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Core.owl"/>
         <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/OARPs.owl"/>
         <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Scenarios.owl"/>
     </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/RoboticOntologyServices.owl#language -->
+
+    <owl:DatatypeProperty rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/RoboticOntologyServices.owl#language">
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
     
 
 

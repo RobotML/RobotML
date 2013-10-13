@@ -210,6 +210,27 @@
     
 
 
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasFSMActivity -->
+
+    <owl:ObjectProperty rdf:about="&kern;hasFSMActivity">
+        <rdfs:comment xml:lang="en">A state can be associated to Finite State Machine Activities.</rdfs:comment>
+        <rdfs:domain rdf:resource="&kern;AutomataState"/>
+        <rdfs:range rdf:resource="&kern;FSMActivity"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isImplementedWith -->
+
+    <owl:ObjectProperty rdf:about="&kern;isImplementedWith">
+        <rdfs:comment xml:lang="en">An FSMActivity is implemented by an algorithm</rdfs:comment>
+        <rdfs:range rdf:resource="&kern;Algorithm"/>
+        <rdfs:domain rdf:resource="&kern;FSMActivity"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -546,6 +567,15 @@ modified Bruno Patin - 15/09/2013
 - OpenCyc and Wikipedia reference added
 - comment explaining difference between the two concepts.</kern:author>
     </rdf:Description>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#FSMActivity -->
+
+    <owl:Class rdf:about="&kern;FSMActivity">
+        <rdfs:subClassOf rdf:resource="&kern;Activity"/>
+        <rdfs:comment xml:lang="en">A Finite State Machine Activity is an Activity linked to an AutomateState which is implemented by means of Algorithms.</rdfs:comment>
+    </owl:Class>
     
 
 

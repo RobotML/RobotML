@@ -32,11 +32,11 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
     <owl:Ontology rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl">
-        <owl:versionInfo rdf:datatype="&xsd;string">version delivered 1.0</owl:versionInfo>
-        <rdfs:comment xml:lang="en">FaCT++ does not work with this ontology. HermiT shall be used.</rdfs:comment>
         <rdfs:comment xml:lang="en">The information ontology is based upon the kernel ontology. It explicits many of the concepts in the information kernel container.</rdfs:comment>
         <rdfs:comment xml:lang="en">This work is based upon a previous one funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project (see http://www.anr-project.fr). It is the property of its authors and is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
-        <rdfs:comment xml:lang="en">Version for Protégé 4.x flavors.</rdfs:comment>
+        <kern:author xml:lang="en">creation PROTEUS Consortium -
+modified Bruno Patin - 13/10/2013
+- introduction of a new rule</kern:author>
         <owl:imports rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl"/>
         <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/3.3/swrla.owl"/>
         <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl"/>
@@ -304,6 +304,34 @@
     
 
 
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#evaluatesToTruth -->
+
+    <owl:ObjectProperty rdf:about="&kern;evaluatesToTruth">
+        <rdfs:comment xml:lang="en">When a condition placed in a state of a StateMachine evaluates to truth value, and event takes place and carries out the transition to another state.</rdfs:comment>
+        <rdfs:domain rdf:resource="&info;Condition"/>
+        <rdfs:range rdf:resource="&kern;ChangeEvent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#takesAsStochasticInput -->
+
+    <owl:ObjectProperty rdf:about="&kern;takesAsStochasticInput">
+        <rdfs:comment xml:lang="en">An evolution model which introduces distortion in the inputs (either in the information itself, either in the acquisition process of this information), obtains these inputs from a noise model or a biais model.</rdfs:comment>
+        <kern:TODO xml:lang="en">This comment is to be reviewed. The NoiseModel is here an algorithm. Are we sure that the stochastic nature of the stochastic evolution must be described by an algorithm?</kern:TODO>
+        <rdfs:domain rdf:resource="&kern;StochasticEvolutionModel"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&kern;BiaisModel"/>
+                    <rdf:Description rdf:about="&kern;NoiseModel"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#hasInput -->
 
     <owl:ObjectProperty rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#hasInput"/>
@@ -327,6 +355,18 @@
         <rdfs:comment xml:lang="en">Number of set of the cross product</rdfs:comment>
         <rdfs:domain rdf:resource="&info;CrossProduct"/>
         <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#computerLanguage -->
+
+    <owl:DatatypeProperty rdf:about="&info;computerLanguage">
+        <kern:openCycURI rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rv36oXZwpEbGdrcN5Y29ycA</kern:openCycURI>
+        <kern:author xml:lang="en">creation Bruno Patin - 12/10/2013
+- allows to know encoding of source code</kern:author>
+        <rdfs:domain rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SourceCode"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
 
@@ -518,16 +558,6 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#hasValue -->
-
-    <owl:DatatypeProperty rdf:about="&info;hasValue">
-        <rdfs:comment rdf:datatype="&xsd;string">Protégé primitive value for Primitive data</rdfs:comment>
-        <rdfs:domain rdf:resource="&info;PrimitiveData"/>
-        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
-    </owl:DatatypeProperty>
-    
-
-
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#homogeneous -->
 
     <owl:DatatypeProperty rdf:about="&info;homogeneous">
@@ -668,6 +698,14 @@
         <rdfs:domain rdf:resource="&info;Position2DCartesian"/>
         <rdfs:range rdf:resource="&xsd;double"/>
     </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#valued -->
+
+    <rdf:Description rdf:about="&kern;valued">
+        <rdfs:domain rdf:resource="&kern;Information"/>
+    </rdf:Description>
     
 
 
@@ -831,8 +869,8 @@
         <rdfs:subClassOf rdf:resource="&info;CrossProduct"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;Dimension"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
+                <owl:onProperty rdf:resource="&info;homogeneous"/>
+                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -843,8 +881,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;homogeneous"/>
-                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
+                <owl:onProperty rdf:resource="&info;Dimension"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">Necessary to have binary operations and thus functions.</rdfs:comment>
@@ -855,11 +893,56 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Binary -->
 
     <owl:Class rdf:about="&info;Binary">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;valued"/>
+                <owl:someValuesFrom rdf:resource="&xsd;byte"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="&info;PrimitiveData"/>
         <owl:disjointWith rdf:resource="&info;Boolean"/>
         <owl:disjointWith rdf:resource="&info;Character"/>
         <owl:disjointWith rdf:resource="&info;Number"/>
         <rdfs:comment xml:lang="en">Binary type of data is a way of representing computer processor instructions or computing information (any kind of computer data) by the use of the binary number system&apos;s two-binary digits 0 and 1. This is accomplished by assigning a bit string to each particular symbol or instruction.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#BinaryCode -->
+
+    <owl:Class rdf:about="&info;BinaryCode">
+        <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SourceCode"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;valued"/>
+                <owl:someValuesFrom rdf:resource="&xsd;byte"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;describe"/>
+                <owl:allValuesFrom rdf:resource="&info;BinarySoftware"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <kern:author xml:lang="en">creation Bruno Patin - 13/10/2013</kern:author>
+        <kern:openCycURI xml:lang="en">http://sw.opencyc.org/concept/Mx4rt0AfUsGkQrCZCXT5HYmagA</kern:openCycURI>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#BinarySoftware -->
+
+    <owl:Class rdf:about="&info;BinarySoftware">
+        <rdfs:subClassOf rdf:resource="&kern;Software"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;uses"/>
+                <owl:allValuesFrom rdf:resource="&info;BinaryCode"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&info;InterpretedSoftware"/>
+        <rdfs:comment xml:lang="en">BinarySoftware executes directly on the hardware without any more translation. It is used either by an underlying application implementing the Tuting machine or directly by hardware mechanism doing the same thing.</rdfs:comment>
+        <kern:author xml:lang="en">creation Bruno Patin - 13/10/2013</kern:author>
     </owl:Class>
     
 
@@ -870,14 +953,8 @@
         <rdfs:subClassOf rdf:resource="&info;PrimitiveData"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;hasValue"/>
-                <owl:hasValue rdf:datatype="&xsd;boolean">false</owl:hasValue>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;hasValue"/>
-                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
+                <owl:onProperty rdf:resource="&kern;valued"/>
+                <owl:someValuesFrom rdf:resource="&xsd;boolean"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;Character"/>
@@ -899,6 +976,12 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
+                <owl:allValuesFrom rdf:resource="&info;Boolean"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&info;containsAbstraction"/>
                 <owl:someValuesFrom>
                     <owl:Class>
@@ -908,12 +991,6 @@
                         </owl:unionOf>
                     </owl:Class>
                 </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
-                <owl:allValuesFrom rdf:resource="&info;Boolean"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;CrossProduct"/>
@@ -974,6 +1051,12 @@
 
     <owl:Class rdf:about="&info;Collection">
         <rdfs:subClassOf rdf:resource="&info;StructuredData"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&info;containsData"/>
+                <owl:someValuesFrom rdf:resource="&kern;Data"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">Represents a possibly modifiable set of data with coherent types and fitted with a data structure (indexation, ad hoc or natural order, father/child relation, etc). This is not the collection that could exist to group the set as indicated in the Abstracted information (Set).</rdfs:comment>
     </owl:Class>
     
@@ -984,6 +1067,7 @@
     <owl:Class rdf:about="&info;Command">
         <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
         <owl:disjointWith rdf:resource="&info;Function"/>
+        <owl:disjointWith rdf:resource="&info;LogicalExpression"/>
         <owl:disjointWith rdf:resource="&info;NumberAbstraction"/>
         <owl:disjointWith rdf:resource="&info;OperationalInformation"/>
         <owl:disjointWith rdf:resource="&info;PhysicalQuantity"/>
@@ -991,7 +1075,6 @@
         <owl:disjointWith rdf:resource="&info;Tensor"/>
         <owl:disjointWith rdf:resource="&info;Unit"/>
         <owl:disjointWith rdf:resource="&info;Vector"/>
-        <owl:disjointWith rdf:resource="&kern;LogicalExpression"/>
         <owl:disjointWith rdf:resource="&kern;State"/>
         <rdfs:comment xml:lang="en">In computer science it is a keyword or a keystatement used to execute an action in a computer by means of a Command-line interface or commonly a Shell.</rdfs:comment>
         <rdfs:comment xml:lang="en">In control theory it is a message send to a system in order to take place in the control.</rdfs:comment>
@@ -1006,7 +1089,7 @@
         <rdfs:subClassOf rdf:resource="&kern;Data"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;Implements"/>
+                <owl:onProperty rdf:resource="&kern;implements"/>
                 <owl:allValuesFrom rdf:resource="&info;CrossProduct"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1023,6 +1106,17 @@ See messages like defined in JAUS, FIPA, ADL...</rdfs:comment>
     <owl:Class rdf:about="&info;ComputerFile">
         <rdfs:subClassOf rdf:resource="&info;TimeStampedData"/>
         <rdfs:comment xml:lang="en">A computer file is a block of arbitrary information, or resource for storing information, which is available to a computer program and is usually based on some kind of durable storage. A file is durable in the sense that it remains available for programs to use after the current program has finished. It is indexed in a computer file system and has a file path within.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Condition -->
+
+    <owl:Class rdf:about="&info;Condition">
+        <rdfs:subClassOf rdf:resource="&info;LogicalExpression"/>
+        <rdfs:comment xml:lang="en">It is a logical expression composed by two statemens A, B called  antecedent (A) and consequent (B)  typically symbolized as A --&gt; B  (typically read &quot;if A then B&quot;, &quot;when A then B&quot; or &quot;A implies B&quot;).
+
+A conditional expression is associated with an operation on two logical values, typically the values of two propositions, that produces a value of false just in case the first operand is true and the second operand is false.</rdfs:comment>
     </owl:Class>
     
 
@@ -1049,13 +1143,13 @@ See messages like defined in JAUS, FIPA, ADL...</rdfs:comment>
         <rdfs:subClassOf rdf:resource="&info;Set"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;containsAbstraction"/>
+                <owl:onProperty rdf:resource="&info;Dimension"/>
                 <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;Dimension"/>
+                <owl:onProperty rdf:resource="&info;containsAbstraction"/>
                 <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1230,6 +1324,15 @@ See messages like defined in JAUS, FIPA, ADL...</rdfs:comment>
     
 
 
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Expression -->
+
+    <owl:Class rdf:about="&info;Expression">
+        <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
+        <rdfs:comment xml:lang="en">All different types of mathematical and computer science expressions. Composition of symbols.</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#False -->
 
     <owl:Class rdf:about="&info;False">
@@ -1258,7 +1361,7 @@ See messages like defined in JAUS, FIPA, ADL...</rdfs:comment>
         <rdfs:subClassOf rdf:resource="&info;FloatingPointNumber"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;hasValue"/>
+                <owl:onProperty rdf:resource="&kern;valued"/>
                 <owl:someValuesFrom rdf:resource="&xsd;float"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1274,7 +1377,7 @@ See messages like defined in JAUS, FIPA, ADL...</rdfs:comment>
         <rdfs:subClassOf rdf:resource="&info;FloatingPointNumber"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;hasValue"/>
+                <owl:onProperty rdf:resource="&kern;valued"/>
                 <owl:someValuesFrom rdf:resource="&xsd;double"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1319,6 +1422,7 @@ See messages like defined in JAUS, FIPA, ADL...</rdfs:comment>
 
     <owl:Class rdf:about="&info;Function">
         <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
+        <owl:disjointWith rdf:resource="&info;LogicalExpression"/>
         <owl:disjointWith rdf:resource="&info;NumberAbstraction"/>
         <owl:disjointWith rdf:resource="&info;OperationalInformation"/>
         <owl:disjointWith rdf:resource="&info;PhysicalQuantity"/>
@@ -1326,7 +1430,6 @@ See messages like defined in JAUS, FIPA, ADL...</rdfs:comment>
         <owl:disjointWith rdf:resource="&info;Tensor"/>
         <owl:disjointWith rdf:resource="&info;Unit"/>
         <owl:disjointWith rdf:resource="&info;Vector"/>
-        <owl:disjointWith rdf:resource="&kern;LogicalExpression"/>
         <owl:disjointWith rdf:resource="&kern;State"/>
         <rdfs:comment xml:lang="en">It represents mathematical functions as interaction between two sets.</rdfs:comment>
     </owl:Class>
@@ -1492,20 +1595,19 @@ Can be completed with additional attributes such as : satellites information, ep
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Int16 -->
 
     <owl:Class rdf:about="&info;Int16">
+        <owl:equivalentClass rdf:resource="&info;UInt16"/>
         <rdfs:subClassOf rdf:resource="&info;Integer"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;hasValue"/>
+                <owl:onProperty rdf:resource="&kern;valued"/>
                 <owl:someValuesFrom rdf:resource="&xsd;short"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;Int32"/>
         <owl:disjointWith rdf:resource="&info;Int64"/>
         <owl:disjointWith rdf:resource="&info;Int8"/>
-        <owl:disjointWith rdf:resource="&info;UInt16"/>
         <owl:disjointWith rdf:resource="&info;UInt32"/>
         <owl:disjointWith rdf:resource="&info;UInt64"/>
-        <owl:disjointWith rdf:resource="&info;UInt8"/>
         <rdfs:comment rdf:datatype="&xsd;string">Signed integer on 16 bits</rdfs:comment>
     </owl:Class>
     
@@ -1514,17 +1616,17 @@ Can be completed with additional attributes such as : satellites information, ep
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Int32 -->
 
     <owl:Class rdf:about="&info;Int32">
+        <owl:equivalentClass rdf:resource="&info;UInt32"/>
         <rdfs:subClassOf rdf:resource="&info;Integer"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;hasValue"/>
+                <owl:onProperty rdf:resource="&kern;valued"/>
                 <owl:someValuesFrom rdf:resource="&xsd;int"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;Int64"/>
         <owl:disjointWith rdf:resource="&info;Int8"/>
         <owl:disjointWith rdf:resource="&info;UInt16"/>
-        <owl:disjointWith rdf:resource="&info;UInt32"/>
         <owl:disjointWith rdf:resource="&info;UInt64"/>
         <owl:disjointWith rdf:resource="&info;UInt8"/>
         <rdfs:comment rdf:datatype="&xsd;string">Signed integer on 32 bits</rdfs:comment>
@@ -1535,17 +1637,17 @@ Can be completed with additional attributes such as : satellites information, ep
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Int64 -->
 
     <owl:Class rdf:about="&info;Int64">
+        <owl:equivalentClass rdf:resource="&info;UInt64"/>
         <rdfs:subClassOf rdf:resource="&info;Integer"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;hasValue"/>
+                <owl:onProperty rdf:resource="&kern;valued"/>
                 <owl:someValuesFrom rdf:resource="&xsd;long"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;Int8"/>
         <owl:disjointWith rdf:resource="&info;UInt16"/>
         <owl:disjointWith rdf:resource="&info;UInt32"/>
-        <owl:disjointWith rdf:resource="&info;UInt64"/>
         <owl:disjointWith rdf:resource="&info;UInt8"/>
         <rdfs:comment rdf:datatype="&xsd;string">Signed integer on 64 bits</rdfs:comment>
     </owl:Class>
@@ -1555,17 +1657,17 @@ Can be completed with additional attributes such as : satellites information, ep
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Int8 -->
 
     <owl:Class rdf:about="&info;Int8">
+        <owl:equivalentClass rdf:resource="&info;UInt8"/>
         <rdfs:subClassOf rdf:resource="&info;Integer"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;hasValue"/>
-                <owl:someValuesFrom rdf:resource="&xsd;byte"/>
+                <owl:onProperty rdf:resource="&kern;valued"/>
+                <owl:someValuesFrom rdf:resource="&xsd;short"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;UInt16"/>
         <owl:disjointWith rdf:resource="&info;UInt32"/>
         <owl:disjointWith rdf:resource="&info;UInt64"/>
-        <owl:disjointWith rdf:resource="&info;UInt8"/>
         <rdfs:comment rdf:datatype="&xsd;string">Signed integer on 8 bits</rdfs:comment>
     </owl:Class>
     
@@ -1587,6 +1689,12 @@ Can be completed with additional attributes such as : satellites information, ep
         <rdfs:subClassOf rdf:resource="&info;NumberAbstraction"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;valued"/>
+                <owl:someValuesFrom rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;isCodedIn"/>
                 <owl:allValuesFrom rdf:resource="&info;Integer"/>
             </owl:Restriction>
@@ -1594,6 +1702,20 @@ Can be completed with additional attributes such as : satellites information, ep
         <owl:disjointWith rdf:resource="&info;RealAbstraction"/>
         <owl:disjointWith rdf:resource="&info;True"/>
         <rdfs:comment xml:lang="en">it is necessary to express the mathematical object that is the Integer set that can be defined implicitly but must be coded explicitly</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#InterpretedSoftware -->
+
+    <owl:Class rdf:about="&info;InterpretedSoftware">
+        <rdfs:subClassOf rdf:resource="&kern;Software"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;uses"/>
+                <owl:allValuesFrom rdf:resource="&info;TextCode"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -1629,6 +1751,24 @@ Can be completed with additional attributes such as : satellites information, ep
         <owl:disjointWith rdf:resource="&info;Waypoint2D"/>
         <owl:disjointWith rdf:resource="&info;Waypoint3D"/>
         <rdfs:comment rdf:datatype="&xsd;string">Data from a laser scanner sensor (ex : SICK, IBEO, HOKUYO...)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#LogicalExpression -->
+
+    <owl:Class rdf:about="&info;LogicalExpression">
+        <rdfs:subClassOf rdf:resource="&info;Expression"/>
+        <owl:disjointWith rdf:resource="&info;NumberAbstraction"/>
+        <owl:disjointWith rdf:resource="&info;OperationalInformation"/>
+        <owl:disjointWith rdf:resource="&info;PhysicalQuantity"/>
+        <owl:disjointWith rdf:resource="&info;Relation"/>
+        <owl:disjointWith rdf:resource="&info;Set"/>
+        <owl:disjointWith rdf:resource="&info;Tensor"/>
+        <owl:disjointWith rdf:resource="&info;Unit"/>
+        <owl:disjointWith rdf:resource="&info;Vector"/>
+        <owl:disjointWith rdf:resource="&kern;State"/>
+        <rdfs:comment xml:lang="en">Two or more arithmetic expressions connected by a relational operator indicating whether an expression is greater than, equal to, or less than the other, or connected by a logical variable, logical constant (true or false), or logical operator.</rdfs:comment>
     </owl:Class>
     
 
@@ -1791,7 +1931,6 @@ Message code and/or text info.</rdfs:comment>
         <owl:disjointWith rdf:resource="&info;Tensor"/>
         <owl:disjointWith rdf:resource="&info;Unit"/>
         <owl:disjointWith rdf:resource="&info;Vector"/>
-        <owl:disjointWith rdf:resource="&kern;LogicalExpression"/>
         <owl:disjointWith rdf:resource="&kern;State"/>
         <rdfs:comment xml:lang="en">In order to be able to manipulate abstract values, we need to define them and it is what is done here.</rdfs:comment>
     </owl:Class>
@@ -1872,7 +2011,6 @@ Ex : sphere, box,...</rdfs:comment>
         <owl:disjointWith rdf:resource="&info;Tensor"/>
         <owl:disjointWith rdf:resource="&info;Unit"/>
         <owl:disjointWith rdf:resource="&info;Vector"/>
-        <owl:disjointWith rdf:resource="&kern;LogicalExpression"/>
         <owl:disjointWith rdf:resource="&kern;State"/>
         <rdfs:comment xml:lang="en">Here are grouped the information that are used to describe operations of robots in environment. It is all the elements that can be shared between robots and human (or between agents).</rdfs:comment>
         <kern:TODO xml:lang="en">What are the characteristics expressed as new properties or realtionships that this concept exhibits ?</kern:TODO>
@@ -1887,13 +2025,13 @@ Ex : sphere, box,...</rdfs:comment>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&info;hasFunction"/>
-                <owl:someValuesFrom rdf:resource="&info;SortingRelation"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&info;hasFunction"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+                <owl:someValuesFrom rdf:resource="&info;SortingRelation"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:versionInfo rdf:datatype="&xsd;string">TODO: create the mirror in the Data:Collection (could be many)</owl:versionInfo>
@@ -2105,7 +2243,6 @@ aRb true and bRa true implies a=b.</rdfs:comment>
         <owl:disjointWith rdf:resource="&info;Tensor"/>
         <owl:disjointWith rdf:resource="&info;Unit"/>
         <owl:disjointWith rdf:resource="&info;Vector"/>
-        <owl:disjointWith rdf:resource="&kern;LogicalExpression"/>
         <owl:disjointWith rdf:resource="&kern;State"/>
         <rdfs:comment rdf:datatype="&xsd;string">Corresponds to the physical quantities that can all be created from the seven standard quantities :
 - Length
@@ -2279,12 +2416,6 @@ Although angle are generally considered as dimensionless, we can add them for co
 
     <owl:Class rdf:about="&info;PrimitiveData">
         <rdfs:subClassOf rdf:resource="&kern;Data"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;hasValue"/>
-                <owl:someValuesFrom rdf:resource="&xsd;anySimpleType"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;TimeStampedData"/>
         <rdfs:comment rdf:datatype="&xsd;string">This is a type of Data which corresponds to the primitives of the standard computing interpretation:
 boolean, classical number representation (int, double, ...), character</rdfs:comment>
@@ -2326,6 +2457,12 @@ boolean, classical number representation (int, double, ...), character</rdfs:com
                 <owl:allValuesFrom rdf:resource="&info;Real"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;valued"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;True"/>
         <rdfs:comment xml:lang="en">it is necessary to express the mathematical object that is the Real set that can be defined implicitly but must be coded explicitly</rdfs:comment>
     </owl:Class>
@@ -2357,12 +2494,6 @@ boolean, classical number representation (int, double, ...), character</rdfs:com
         <rdfs:subClassOf rdf:resource="&info;Function"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#hasInput"/>
-                <owl:allValuesFrom rdf:resource="&info;BiProduct"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&info;hasSet"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
             </owl:Restriction>
@@ -2373,8 +2504,13 @@ boolean, classical number representation (int, double, ...), character</rdfs:com
                 <owl:allValuesFrom rdf:resource="&info;BooleanSet"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#hasInput"/>
+                <owl:allValuesFrom rdf:resource="&info;BiProduct"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;TrajectoryFunction"/>
-        <owl:disjointWith rdf:resource="&kern;LogicalExpression"/>
         <owl:disjointWith rdf:resource="&kern;State"/>
         <rdfs:comment xml:lang="en">The relation is an abstract concept to be used in order to express properties between elements of a set (see info:Collection:Set). It allows its user to create structure if the relation(s) have the &quot;good&quot; properties.
 Relation is linking two elements of the same Set and assumes this link is either true or false. The relation is a function with two sets one being the cross product and the second being the Boolean set.</rdfs:comment>
@@ -2432,20 +2568,19 @@ Relation is linking two elements of the same Set and assumes this link is either
         <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
-                <owl:allValuesFrom rdf:resource="&info;Collection"/>
+                <owl:onProperty rdf:resource="&info;hasSet"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;hasSet"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
+                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
+                <owl:allValuesFrom rdf:resource="&info;Collection"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;Tensor"/>
         <owl:disjointWith rdf:resource="&info;Unit"/>
         <owl:disjointWith rdf:resource="&info;Vector"/>
-        <owl:disjointWith rdf:resource="&kern;LogicalExpression"/>
         <owl:disjointWith rdf:resource="&kern;State"/>
         <rdfs:comment rdf:datatype="&xsd;string">a Set is not associated with any Set. This recursivity is forbidden as it would not allow to</rdfs:comment>
         <rdfs:comment xml:lang="en">Set means some collection of object having some commonalities between them.</rdfs:comment>
@@ -2497,7 +2632,7 @@ Relation is linking two elements of the same Set and assumes this link is either
     <owl:Class rdf:about="&info;String">
         <owl:equivalentClass>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;hasValue"/>
+                <owl:onProperty rdf:resource="&kern;valued"/>
                 <owl:someValuesFrom rdf:resource="&xsd;string"/>
             </owl:Restriction>
         </owl:equivalentClass>
@@ -2549,8 +2684,23 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
         <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
         <owl:disjointWith rdf:resource="&info;Unit"/>
         <owl:disjointWith rdf:resource="&info;Vector"/>
-        <owl:disjointWith rdf:resource="&kern;LogicalExpression"/>
         <owl:disjointWith rdf:resource="&kern;State"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#TextCode -->
+
+    <owl:Class rdf:about="&info;TextCode">
+        <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SourceCode"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;valued"/>
+                <owl:someValuesFrom rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <kern:author xml:lang="en">creation Bruno Patin - 13/10/2013</kern:author>
+        <rdfs:comment xml:lang="en">difference between text code and binary code is that it is (almost) readable by software guys reading it.</rdfs:comment>
     </owl:Class>
     
 
@@ -2708,7 +2858,6 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;Vector"/>
-        <owl:disjointWith rdf:resource="&kern;LogicalExpression"/>
         <owl:disjointWith rdf:resource="&kern;State"/>
         <rdfs:comment rdf:datatype="&xsd;string">Contains the possible phisical units, SI or not. Every unit has a physical dimension</rdfs:comment>
     </owl:Class>
@@ -2719,7 +2868,6 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
 
     <owl:Class rdf:about="&info;Vector">
         <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
-        <owl:disjointWith rdf:resource="&kern;LogicalExpression"/>
         <owl:disjointWith rdf:resource="&kern;State"/>
     </owl:Class>
     
@@ -2769,23 +2917,100 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Data -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Algorithm -->
 
-    <owl:Class rdf:about="&kern;Data">
-        <owl:versionInfo rdf:datatype="&xsd;string">TODO: Data is defiend in kernel but is completed in information by the canBeSavedIn. Could be that it is not necessary to add this property in information meaning we should move info:ComputerFile also. To be discussed.</owl:versionInfo>
+    <owl:Class rdf:about="&kern;Algorithm">
+        <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;describe"/>
+                <owl:someValuesFrom rdf:resource="&kern;Software"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <kern:wikipediaURI rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/Algorithm</kern:wikipediaURI>
+        <kern:wiktionaryURI rdf:datatype="&xsd;anyURI">http://en.wiktionary.org/wiki/algorithm</kern:wiktionaryURI>
+        <kern:wikipediaURI rdf:datatype="&xsd;anyURI">http://fr.wikipedia.org/wiki/Algorithme</kern:wikipediaURI>
+        <kern:openCycURI rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rvVjuaJwpEbGdrcN5Y29ycA</kern:openCycURI>
+        <rdfs:comment xml:lang="en">In mathematics and computer science, an algorithm is a step-by-step procedure for calculations. Algorithms are used for calculation, data processing, and automated reasoning.</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#LogicalExpression -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#BiaisModel -->
 
-    <rdf:Description rdf:about="&kern;LogicalExpression"/>
+    <owl:Class rdf:about="&kern;BiaisModel">
+        <rdfs:subClassOf rdf:resource="&kern;Algorithm"/>
+        <owl:disjointWith rdf:resource="&kern;NoiseModel"/>
+        <owl:disjointWith rdf:resource="&kern;StateMachine"/>
+        <rdfs:comment xml:lang="en">Evolution Model that could be simulated by an algorithm that introduces a statistical distortion of the acquisition of the input data of the evolution process. This is a distortion because it is systematically different from the population parameter of interest. It can be caused by the selection process of the inputs or how these inputs were obtained.
+Thus, the inputs of the different states would be different from a non-distortion scenario, so the evolution would correspond to a stochastic model.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Data -->
+
+    <owl:Class rdf:about="&kern;Data">
+        <kern:TODO xml:lang="en">Data is defined in kernel but is completed in information by the canBeSavedIn. Could be that it is not necessary to add this property in information meaning we should move info:ComputerFile also. To be discussed.</kern:TODO>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#NoiseModel -->
+
+    <owl:Class rdf:about="&kern;NoiseModel">
+        <rdfs:subClassOf rdf:resource="&kern;Algorithm"/>
+        <owl:disjointWith rdf:resource="&kern;StateMachine"/>
+        <rdfs:comment xml:lang="en">Evolution Model that could be simulated by an algorithm that introduces entropy or some random distortion in the extrinsec or intrinsec data flow of a system or interaction. Thus, the inputs of the different states would be different from a non-distortion scenario, so the evolution would correspond to a stochastic model.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Software -->
+
+    <rdf:Description rdf:about="&kern;Software">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;uses"/>
+                <owl:someValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SourceCode"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
     
 
 
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#State -->
 
     <rdf:Description rdf:about="&kern;State"/>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#StateMachine -->
+
+    <rdf:Description rdf:about="&kern;StateMachine"/>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SourceCode -->
+
+    <owl:Class rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SourceCode">
+        <rdfs:subClassOf rdf:resource="&kern;Data"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;describe"/>
+                <owl:allValuesFrom rdf:resource="&kern;Software"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;implements"/>
+                <owl:someValuesFrom rdf:resource="&kern;Algorithm"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:isDefinedBy rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rwIZO5pwpEbGdrcN5Y29ycA</rdfs:isDefinedBy>
+        <kern:author xml:lang="en">creation Bruno Patin - 12/10/2013
+- introduced in order to make the link to ComputableSystem that needs binaryCode to work</kern:author>
+    </owl:Class>
     
 
 
@@ -2845,7 +3070,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
 
     <owl:NamedIndividual rdf:about="&info;false">
         <rdf:type rdf:resource="&info;Boolean"/>
-        <hasValue rdf:datatype="&xsd;boolean">false</hasValue>
+        <kern:valued rdf:datatype="&xsd;boolean">false</kern:valued>
     </owl:NamedIndividual>
     
 
@@ -2896,7 +3121,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
 
     <owl:NamedIndividual rdf:about="&info;number-0.72_asFloat64">
         <rdf:type rdf:resource="&info;Float64"/>
-        <hasValue rdf:datatype="&xsd;double">-0.72</hasValue>
+        <kern:valued rdf:datatype="&xsd;double">-0.72</kern:valued>
     </owl:NamedIndividual>
     
 
@@ -2905,7 +3130,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
 
     <owl:NamedIndividual rdf:about="&info;number12999.9_asFloat64">
         <rdf:type rdf:resource="&info;Float64"/>
-        <hasValue rdf:datatype="&xsd;double">12999.9</hasValue>
+        <kern:valued rdf:datatype="&xsd;double">12999.9</kern:valued>
     </owl:NamedIndividual>
     
 
@@ -2914,7 +3139,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
 
     <owl:NamedIndividual rdf:about="&info;number3.45_asFloat64">
         <rdf:type rdf:resource="&info;Float64"/>
-        <hasValue rdf:datatype="&xsd;double">3.45</hasValue>
+        <kern:valued rdf:datatype="&xsd;double">3.45</kern:valued>
     </owl:NamedIndividual>
     
 
@@ -2961,10 +3186,10 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#setOfAngles -->
 
     <owl:NamedIndividual rdf:about="&info;setOfAngles">
-        <rdf:type rdf:resource="&info;Set"/>
-        <contains rdf:resource="&info;qu-0.72rad_asFloat64"/>
-        <contains rdf:resource="&info;qu12999.9deg_asFloat64"/>
-        <contains rdf:resource="&info;qu3.45rad_asFloat64"/>
+        <rdf:type rdf:resource="&info;Collection"/>
+        <containsData rdf:resource="&info;qu-0.72rad_asFloat64"/>
+        <containsData rdf:resource="&info;qu12999.9deg_asFloat64"/>
+        <containsData rdf:resource="&info;qu3.45rad_asFloat64"/>
     </owl:NamedIndividual>
     
 
@@ -2989,7 +3214,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
 
     <owl:NamedIndividual rdf:about="&info;true">
         <rdf:type rdf:resource="&info;Boolean"/>
-        <hasValue rdf:datatype="&xsd;boolean">true</hasValue>
+        <kern:valued rdf:datatype="&xsd;boolean">true</kern:valued>
     </owl:NamedIndividual>
     
 
@@ -3005,6 +3230,12 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDifferent"/>
         <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&info;true"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
             <rdf:Description rdf:about="&info;length"/>
         </owl:distinctMembers>
     </rdf:Description>
@@ -3014,12 +3245,6 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
             <rdf:Description rdf:about="&info;length"/>
             <rdf:Description rdf:about="&info;mass"/>
             <rdf:Description rdf:about="&info;time"/>
-        </owl:distinctMembers>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDifferent"/>
-        <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="&info;true"/>
         </owl:distinctMembers>
     </rdf:Description>
 </rdf:RDF>

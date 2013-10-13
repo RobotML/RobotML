@@ -344,7 +344,7 @@
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#LoftBarnOrShedReachedCondition -->
 
     <owl:NamedIndividual rdf:about="&airg;LoftBarnOrShedReachedCondition">
-        <rdf:type rdf:resource="&kern;Condition"/>
+        <rdf:type rdf:resource="&info;Condition"/>
         <kern:evaluatesToTruth rdf:resource="&airg;LoftBarnOrShedReachedTrunsToTrue"/>
     </owl:NamedIndividual>
     
