@@ -32,10 +32,7 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
     <owl:Ontology rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl">
-        <owl:versionInfo rdf:datatype="&xsd;string">version delivered 1.0</owl:versionInfo>
-        <rdfs:comment xml:lang="en">Fact++ do not work with this ontology. HermiT shall be used.</rdfs:comment>
         <rdfs:comment xml:lang="en">This work is based upon a previous one funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project (see http://www.anr-project.fr). It is the property of its authors and is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
-        <rdfs:comment xml:lang="en">Version for Protégé 4.x flavors.</rdfs:comment>
         <owl:imports rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl"/>
         <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl"/>
         <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl"/>
@@ -264,6 +261,9 @@
 
     <owl:Class rdf:about="&envi;AstronomicalObject">
         <rdfs:subClassOf rdf:resource="&kern;PhysicalObject"/>
+        <owl:disjointWith rdf:resource="&kern;Agent"/>
+        <owl:disjointWith rdf:resource="&kern;Environment"/>
+        <owl:disjointWith rdf:resource="&kern;Hardware"/>
         <kern:author xml:lang="en">creation Bruno Patin - 04/10/2013
 - individuals creation process (solar system) leads to create such a class</kern:author>
         <kern:openCycURI xml:lang="en">http://sw.opencyc.org/concept/Mx4rvVjReJwpEbGdrcN5Y29ycA</kern:openCycURI>
@@ -298,7 +298,6 @@
         <owl:disjointWith rdf:resource="&envi;Planet"/>
         <owl:disjointWith rdf:resource="&envi;Surface"/>
         <owl:disjointWith rdf:resource="&kern;Agent"/>
-        <owl:disjointWith rdf:resource="&kern;Environment"/>
         <owl:disjointWith rdf:resource="&kern;Hardware"/>
         <rdfs:comment xml:lang="en">human-made structure used or intended for supporting or sheltering any use or continuous occupancy</rdfs:comment>
     </owl:Class>
@@ -348,13 +347,13 @@
         <rdfs:subClassOf rdf:resource="&kern;PhysicalInteraction"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;impacts"/>
+                <owl:onProperty rdf:resource="&kern;systemSource"/>
                 <owl:allValuesFrom rdf:resource="&kern;PhysicalObject"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;systemSource"/>
+                <owl:onProperty rdf:resource="&kern;impacts"/>
                 <owl:allValuesFrom rdf:resource="&kern;PhysicalObject"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -447,7 +446,6 @@ modified Bruno Patin - 15/09/2013
         <rdfs:subClassOf rdf:resource="&envi;AstronomicalObject"/>
         <owl:disjointWith rdf:resource="&envi;Surface"/>
         <owl:disjointWith rdf:resource="&kern;Agent"/>
-        <owl:disjointWith rdf:resource="&kern;Environment"/>
         <owl:disjointWith rdf:resource="&kern;Hardware"/>
         <rdfs:comment xml:lang="en">a celestial body  that is massive enough to be rounded by its own gravity but not massive enough to initiate fusion process.</rdfs:comment>
         <kern:author xml:lang="en">creation PROTEUS consortium - 
@@ -462,6 +460,7 @@ modified Bruno Patin - 04/10/2013
     <owl:Class rdf:about="&envi;SolidObject">
         <rdfs:subClassOf rdf:resource="&kern;PhysicalObject"/>
         <owl:disjointWith rdf:resource="&envi;Surface"/>
+        <owl:disjointWith rdf:resource="&kern;Environment"/>
         <rdfs:isDefinedBy rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rvVjElJwpEbGdrcN5Y29ycA</rdfs:isDefinedBy>
         <rdfs:seeAlso rdf:datatype="&xsd;string">openCyc: SolidTangibleThing</rdfs:seeAlso>
     </owl:Class>
