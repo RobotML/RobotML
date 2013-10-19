@@ -616,7 +616,7 @@ This is clearly a mistake to be repaired.</kern:TODO>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;ActuatorHardware"/>
+                <owl:someValuesFrom rdf:resource="&syst;ActuatorDriver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -635,7 +635,7 @@ This is clearly a mistake to be repaired.</kern:TODO>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;ActuatorDriver"/>
+                <owl:someValuesFrom rdf:resource="&syst;ActuatorHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;CommunicationSystem"/>
@@ -779,13 +779,13 @@ modified Bruno Patin - 14/09/2013
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&syst;isActive"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+                <owl:hasValue rdf:datatype="&xsd;boolean">false</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&syst;isActive"/>
-                <owl:hasValue rdf:datatype="&xsd;boolean">false</owl:hasValue>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -812,14 +812,20 @@ modified Bruno Patin - 14/09/2013
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#Closed-LoopControlSystem -->
 
     <owl:Class rdf:about="&syst;Closed-LoopControlSystem">
-        <rdfs:subClassOf rdf:resource="&syst;ControlSystem"/>
+        <rdfs:subClassOf rdf:resource="&syst;DriverDeviceSystem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;hasPort"/>
+                <owl:someValuesFrom rdf:resource="&syst;ControlCommandInputPort"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom>
                     <owl:Class>
                         <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="&syst;HardwareImplementationOfController"/>
+                            <rdf:Description rdf:about="&syst;ComputationalHardware"/>
                             <rdf:Description rdf:about="&syst;ProprioceptiveSensorSystem"/>
                         </owl:intersectionOf>
                     </owl:Class>
@@ -832,13 +838,7 @@ modified Bruno Patin - 14/09/2013
                 <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;hasPort"/>
-                <owl:someValuesFrom rdf:resource="&syst;ControlCommandInputPort"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">This system use a measurtement feedback, a command input to compute control for controlled systems</rdfs:comment>
+        <rdfs:comment xml:lang="en">This system use a measurement feedback, a command input to compute control for controlled systems</rdfs:comment>
     </owl:Class>
     
 
@@ -968,6 +968,19 @@ modified Bruno Patin - 14/09/2013
 
     <owl:Class rdf:about="&syst;ComputationalSystem">
         <rdfs:subClassOf rdf:resource="&syst;CyberPhysicalSystem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&kern;Application"/>
+                            <rdf:Description rdf:about="&kern;Hardware"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
@@ -1110,6 +1123,7 @@ modified Bruno Patin - 19/10/2013
                         <owl:unionOf rdf:parseType="Collection">
                             <rdf:Description rdf:about="&kern;Application"/>
                             <rdf:Description rdf:about="&kern;Hardware"/>
+                            <rdf:Description rdf:about="&syst;CyberPhysicalSystem"/>
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
@@ -1134,8 +1148,8 @@ This System aggregates an application and a Hardware part in order to build a ph
 
 Considering the RobotML meta-model it uses for the same concept the wording Robotic system.</rdfs:comment>
         <kern:author xml:lang="en">creation Bruno Patin - 30/09/2013
-- EmbeddedSystem is more generic than RoboticSystem and covers applications as well as drivers for its software part(s).
-- renaming because concept was wrongly named</kern:author>
+modified Bruno Patin - 19/10/2013
+- aggregation was extended to other cycber physical systems</kern:author>
     </owl:Class>
     
 
@@ -1161,13 +1175,13 @@ Considering the RobotML meta-model it uses for the same concept the wording Robo
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&kern;Driver"/>
+                <owl:someValuesFrom rdf:resource="&kern;Hardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&kern;Hardware"/>
+                <owl:someValuesFrom rdf:resource="&kern;Driver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1619,6 +1633,12 @@ Linkages may be constructed from open chains, closed chains, or a combination of
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;Leg"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -1627,12 +1647,6 @@ Linkages may be constructed from open chains, closed chains, or a combination of
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;Leg"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -1802,6 +1816,15 @@ It is operated by a source of energy, usually in the form of an electric current
         <owl:disjointWith rdf:resource="&syst;MotionPlanningSystem"/>
         <owl:disjointWith rdf:resource="&syst;PlatformManagementSystem"/>
         <owl:disjointWith rdf:resource="&syst;SecuritySystem"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#MixedSystem -->
+
+    <owl:Class rdf:about="&syst;MixedSystem">
+        <rdfs:subClassOf rdf:resource="&syst;CyberPhysicalSystem"/>
+        <kern:author xml:lang="en">creation Bruno Patin - 19/10/2013</kern:author>
     </owl:Class>
     
 
@@ -1991,7 +2014,7 @@ It is operated by a source of energy, usually in the form of an electric current
     <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#Open-LoopControlSystem -->
 
     <owl:Class rdf:about="&syst;Open-LoopControlSystem">
-        <rdfs:subClassOf rdf:resource="&syst;ControlSystem"/>
+        <rdfs:subClassOf rdf:resource="&syst;ComputationalSystem"/>
     </owl:Class>
     
 
@@ -2133,11 +2156,16 @@ modification Bruno Patin - 30/09/2013
 
     <owl:Class rdf:about="&syst;RoboticFunctionalSystem">
         <rdfs:subClassOf rdf:resource="&kern;Model"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;models"/>
+                <owl:allValuesFrom rdf:resource="&syst;RoboticSystem"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">This entity defines the functional Architecture that can be found in a Robotic System. The Functional System is the logical view of the Robotic Platform. Thus, we can find function as control, mission management, motion planning, platform management, or security. It can be also seen as acomplete. It is often associated to the software implementing this functional view.</rdfs:comment>
         <kern:author xml:lang="en">creation PROTEUS consortium - 
 modified Bruno Patin - 19/10/2013
-- addition of a TODO annotation</kern:author>
-        <kern:TODO xml:lang="en">it seems clear that these so-called functional systems could be in fact the software part of the cyberphysical systems. Perhaps only a name scheming issue.</kern:TODO>
+- addition of the models relation to RoboticSystem</kern:author>
     </owl:Class>
     
 
@@ -2258,14 +2286,14 @@ modified Bruno Patin - 03/10/2013
         <rdfs:subClassOf rdf:resource="&syst;DriverDeviceSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&syst;isActive"/>
-                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;SensorDriver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;SensorDriver"/>
+                <owl:onProperty rdf:resource="&syst;isActive"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2477,17 +2505,12 @@ modified Bruno Patin - 03/10/2013
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&kern;CompositeModel"/>
-            <rdf:Description rdf:about="&kern;Environment"/>
-            <rdf:Description rdf:about="&syst;CyberPhysicalSystem"/>
-            <rdf:Description rdf:about="&syst;MechanicalLinkage"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
             <rdf:Description rdf:about="&kern;Clock"/>
-            <rdf:Description rdf:about="&syst;ComputationalHardware"/>
+            <rdf:Description rdf:about="&syst;ActuatorHardware"/>
+            <rdf:Description rdf:about="&syst;CommunicationHardware"/>
+            <rdf:Description rdf:about="&syst;ControlStationSystem"/>
+            <rdf:Description rdf:about="&syst;PowerHardware"/>
+            <rdf:Description rdf:about="&syst;SensorHardware"/>
             <rdf:Description rdf:about="&syst;SupportingStructure"/>
         </owl:members>
     </rdf:Description>
@@ -2495,11 +2518,7 @@ modified Bruno Patin - 03/10/2013
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
             <rdf:Description rdf:about="&kern;Clock"/>
-            <rdf:Description rdf:about="&syst;ActuatorHardware"/>
-            <rdf:Description rdf:about="&syst;CommunicationHardware"/>
-            <rdf:Description rdf:about="&syst;ControlStationSystem"/>
-            <rdf:Description rdf:about="&syst;PowerHardware"/>
-            <rdf:Description rdf:about="&syst;SensorHardware"/>
+            <rdf:Description rdf:about="&syst;ComputationalHardware"/>
             <rdf:Description rdf:about="&syst;SupportingStructure"/>
         </owl:members>
     </rdf:Description>
@@ -2542,9 +2561,23 @@ modified Bruno Patin - 03/10/2013
         <swrl:body>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&kern;Application"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
+                    </rdf:Description>
+                </rdf:first>
                 <rdf:rest>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="&syst;ComputationalHardware"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                            </rdf:Description>
+                        </rdf:first>
                         <rdf:rest>
                             <rdf:Description>
                                 <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2584,22 +2617,8 @@ modified Bruno Patin - 03/10/2013
                                 </rdf:first>
                             </rdf:Description>
                         </rdf:rest>
-                        <rdf:first>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                <swrl:classPredicate rdf:resource="&syst;ComputationalHardware"/>
-                                <swrl:argument1 rdf:resource="urn:swrl#y"/>
-                            </rdf:Description>
-                        </rdf:first>
                     </rdf:Description>
                 </rdf:rest>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="&kern;Software"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
-                    </rdf:Description>
-                </rdf:first>
             </rdf:Description>
         </swrl:body>
     </rdf:Description>
