@@ -10,19 +10,17 @@
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
     <!ENTITY protege "http://protege.stanford.edu/plugins/owl/protege#" >
     <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
-    <!ENTITY kern "http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#" >
     <!ENTITY kernel "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#" >
 ]>
 
 
-<rdf:RDF xmlns="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
-     xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl"
+<rdf:RDF xmlns="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#"
+     xml:base="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:swrl="http://www.w3.org/2003/11/swrl#"
      xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
      xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:kern="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
