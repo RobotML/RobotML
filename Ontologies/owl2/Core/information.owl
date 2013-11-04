@@ -33,7 +33,7 @@
      xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
-    <owl:Ontology rdf:about="http://http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl">
+    <owl:Ontology rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl">
         <owl:versionInfo rdf:datatype="&xsd;string">version delivered 1.0</owl:versionInfo>
         <rdfs:comment xml:lang="en">FaCT++ does not work with this ontology. HermiT shall be used.</rdfs:comment>
         <rdfs:comment xml:lang="en">The information ontology is based upon the kernel ontology. It explicits many of the concepts in the information kernel container.</rdfs:comment>
