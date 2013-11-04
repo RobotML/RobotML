@@ -12,32 +12,32 @@
     <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
     <!ENTITY swrla "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#" >
     <!ENTITY sqwrl "http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#" >
-    <!ENTITY robo "http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#" >
-    <!ENTITY kern "http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#" >
-    <!ENTITY syst "http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#" >
-    <!ENTITY envi "http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#" >
-    <!ENTITY info "http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#" >
+    <!ENTITY robo "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#" >
+    <!ENTITY kern "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#" >
+    <!ENTITY syst "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#" >
+    <!ENTITY envi "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#" >
+    <!ENTITY info "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#" >
 ]>
 
 
-<rdf:RDF xmlns="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#"
-     xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl"
+<rdf:RDF xmlns="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#"
+     xml:base="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl"
      xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
      xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
-     xmlns:robo="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#"
-     xmlns:kern="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
-     xmlns:info="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#"
+     xmlns:robo="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#"
+     xmlns:kern="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#"
+     xmlns:info="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#"
      xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:swrl="http://www.w3.org/2003/11/swrl#"
-     xmlns:envi="http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#"
-     xmlns:syst="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#"
+     xmlns:envi="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#"
+     xmlns:syst="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
-    <owl:Ontology rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl">
+    <owl:Ontology rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl">
         <owl:versionInfo rdf:datatype="&xsd;string">version delivered 1.0</owl:versionInfo>
         <rdfs:comment xml:lang="en">FaCT++ does not work with this ontology. HermiT shall be used for reasoning.</rdfs:comment>
         <rdfs:comment xml:lang="en">This ontology describes the robot field providing their classification</rdfs:comment>
@@ -45,10 +45,33 @@
         <rdfs:comment xml:lang="en">Version for Protégé 4.x flavors.</rdfs:comment>
         <owl:imports rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl"/>
         <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/3.3/swrla.owl"/>
-        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl"/>
-        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl"/>
-        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl"/>
+        <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl"/>
+        <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl"/>
+        <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl"/>
     </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#TODO -->
+
+    <owl:AnnotationProperty rdf:about="&kern;TODO"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#author -->
+
+    <owl:AnnotationProperty rdf:about="&kern;author"/>
     
 
 
@@ -63,9 +86,9 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#movesIn -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesIn -->
 
-    <owl:ObjectProperty rdf:about="&robo;movesIn">
+    <owl:ObjectProperty rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesIn">
         <rdfs:comment xml:lang="en">Some robots are merged in the air or in the water</rdfs:comment>
         <rdfs:domain rdf:resource="&kern;Agent"/>
         <rdfs:range rdf:resource="&kern;PhysicalObject"/>
@@ -74,17 +97,17 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#movesInAtmosphere -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesInAtmosphere -->
 
-    <owl:ObjectProperty rdf:about="&robo;movesInAtmosphere">
+    <owl:ObjectProperty rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesInAtmosphere">
         <rdfs:comment xml:lang="en">UAV move in atmosphere.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesIn"/>
         <rdfs:range rdf:resource="&envi;Atmosphere"/>
-        <rdfs:subPropertyOf rdf:resource="&robo;movesIn"/>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&robo;AirVehicle"/>
-                    <rdf:Description rdf:about="&robo;HybridVehicle"/>
+                    <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#AirVehicle"/>
+                    <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#HybridVehicle"/>
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
@@ -92,18 +115,18 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#movesInWaterbody -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesInWaterbody -->
 
-    <owl:ObjectProperty rdf:about="&robo;movesInWaterbody">
+    <owl:ObjectProperty rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesInWaterbody">
         <rdfs:comment xml:lang="en">UUV and diving humans move in waterbodies.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesIn"/>
         <rdfs:range rdf:resource="&envi;Waterbody"/>
-        <rdfs:subPropertyOf rdf:resource="&robo;movesIn"/>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#HybridVehicle"/>
+                    <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#UnderwaterVehicle"/>
                     <rdf:Description rdf:about="&kern;Human"/>
-                    <rdf:Description rdf:about="&robo;HybridVehicle"/>
-                    <rdf:Description rdf:about="&robo;UnderwaterVehicle"/>
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
@@ -111,9 +134,9 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#movesOver -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesOver -->
 
-    <owl:ObjectProperty rdf:about="&robo;movesOver">
+    <owl:ObjectProperty rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesOver">
         <rdfs:comment xml:lang="en">Some robots moves over a ground surface or a surface of a waterbody</rdfs:comment>
         <rdfs:range rdf:resource="&envi;Surface"/>
         <rdfs:domain rdf:resource="&kern;Agent"/>
@@ -122,17 +145,17 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#movesOverGround -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesOverGround -->
 
-    <owl:ObjectProperty rdf:about="&robo;movesOverGround">
+    <owl:ObjectProperty rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesOverGround">
         <rdfs:comment xml:lang="en">UGV and humans move over stairs, floor and land surface.</rdfs:comment>
-        <rdfs:subPropertyOf rdf:resource="&robo;movesOver"/>
+        <rdfs:subPropertyOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesOver"/>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#GroundVehicle"/>
+                    <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#HybridVehicle"/>
                     <rdf:Description rdf:about="&kern;Human"/>
-                    <rdf:Description rdf:about="&robo;GroundVehicle"/>
-                    <rdf:Description rdf:about="&robo;HybridVehicle"/>
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
@@ -149,18 +172,18 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#movesOverWatersurface -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesOverWatersurface -->
 
-    <owl:ObjectProperty rdf:about="&robo;movesOverWatersurface">
+    <owl:ObjectProperty rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesOverWatersurface">
         <rdfs:comment xml:lang="en">USV and swiming humans move over watersurface</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesOver"/>
         <rdfs:range rdf:resource="&envi;WaterSurface"/>
-        <rdfs:subPropertyOf rdf:resource="&robo;movesOver"/>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#HybridVehicle"/>
+                    <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#SurfaceVehicle"/>
                     <rdf:Description rdf:about="&kern;Human"/>
-                    <rdf:Description rdf:about="&robo;HybridVehicle"/>
-                    <rdf:Description rdf:about="&robo;SurfaceVehicle"/>
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
@@ -168,21 +191,21 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#pilots -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#pilots -->
 
-    <owl:ObjectProperty rdf:about="&robo;pilots">
+    <owl:ObjectProperty rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#pilots">
         <rdfs:comment xml:lang="en">A human agent can drive a robotic Vehicle (AV, GV, SV, UV), this action will be achieved on these piloted systems.</rdfs:comment>
+        <rdfs:range rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#PilotedSystem"/>
         <rdfs:domain rdf:resource="&kern;Human"/>
-        <rdfs:range rdf:resource="&robo;PilotedSystem"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#uses -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#uses -->
 
-    <owl:ObjectProperty rdf:about="&robo;uses">
+    <owl:ObjectProperty rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#uses">
         <rdfs:comment xml:lang="en">A robot needs on or multiple robotic middleware to makes all the application of its robotic systems works.</rdfs:comment>
-        <rdfs:domain rdf:resource="&robo;Robot"/>
+        <rdfs:domain rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#Robot"/>
         <rdfs:range rdf:resource="&syst;RoboticMiddleware"/>
     </owl:ObjectProperty>
     
@@ -199,43 +222,20 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#Joint -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#AirVehicle -->
 
-    <owl:Class rdf:about="&envi;Joint"/>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Environment -->
-
-    <rdf:Description rdf:about="&kern;Environment">
-        <owl:disjointWith rdf:resource="&robo;GlobalPlatform"/>
-        <owl:disjointWith rdf:resource="&robo;Robot"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Human -->
-
-    <rdf:Description rdf:about="&kern;Human">
-        <owl:disjointWith rdf:resource="&robo;Robot"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#AirVehicle -->
-
-    <owl:Class rdf:about="&robo;AirVehicle">
-        <rdfs:subClassOf rdf:resource="&robo;MobileRobot"/>
+    <owl:Class rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#AirVehicle">
+        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#MobileRobot"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&robo;movesIn"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesIn"/>
                 <owl:someValuesFrom rdf:resource="&envi;Atmosphere"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="&robo;GroundVehicle"/>
-        <owl:disjointWith rdf:resource="&robo;HybridVehicle"/>
-        <owl:disjointWith rdf:resource="&robo;SurfaceVehicle"/>
-        <owl:disjointWith rdf:resource="&robo;UnderwaterVehicle"/>
+        <owl:disjointWith rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#GroundVehicle"/>
+        <owl:disjointWith rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#HybridVehicle"/>
+        <owl:disjointWith rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#SurfaceVehicle"/>
+        <owl:disjointWith rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#UnderwaterVehicle"/>
         <rdfs:comment xml:lang="en">Air Vehicle. Only the vehicles with either fixed (like planes) either turning (like helicopters) sails will be considered in this definition.</rdfs:comment>
         <rdfs:comment xml:lang="en">Considering wikipedia definition, vehicle refers to something transporting cargo or persons.</rdfs:comment>
         <kern:TODO xml:lang="en">there must be linked somewhat like a chassis but there is a specific aeronautical wording.</kern:TODO>
@@ -243,10 +243,10 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#Car-likeVehicle -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#Car-likeVehicle -->
 
-    <owl:Class rdf:about="&robo;Car-likeVehicle">
-        <rdfs:subClassOf rdf:resource="&robo;GroundVehicle"/>
+    <owl:Class rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#Car-likeVehicle">
+        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#GroundVehicle"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
@@ -268,23 +268,16 @@
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="&robo;DifferentialVehicle"/>
+        <owl:disjointWith rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#DifferentialVehicle"/>
         <rdfs:comment xml:lang="en">Wheeled robot with a driven mechanism based in axes of wheels (Front-wheel Driven, Rear-wheel Driven or Four-wheel Driven). Normally composed of 4 wheels. It requires an additional steering motion mechanism to turn the vehicle.</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#DifferentialVehicle -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#DifferentialVehicle -->
 
-    <owl:Class rdf:about="&robo;DifferentialVehicle">
-        <rdfs:subClassOf rdf:resource="&robo;GroundVehicle"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:onClass rdf:resource="&syst;Chassis"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+    <owl:Class rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#DifferentialVehicle">
+        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#GroundVehicle"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
@@ -292,25 +285,32 @@
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;has"/>
+                <owl:onClass rdf:resource="&syst;Chassis"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A differential vehicle is a mobile robot whose movement is based on two separately driven velocities of the rotational mechanism of both sides of the robot body. It can thus change its direction by varying the relative rate of rotation and hence does not require an additional steering motion. We can find wheeled differential vehicles or caterpillar vehicles.</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#GlobalPlatform -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#GlobalPlatform -->
 
-    <owl:Class rdf:about="&robo;GlobalPlatform">
+    <owl:Class rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#GlobalPlatform">
         <rdfs:subClassOf rdf:resource="&kern;CompositeSystem"/>
         <rdfs:subClassOf>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="&kern;aggregates"/>
-                        <owl:someValuesFrom rdf:resource="&kern;Human"/>
+                        <owl:someValuesFrom rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#Robot"/>
                     </owl:Restriction>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="&kern;aggregates"/>
-                        <owl:someValuesFrom rdf:resource="&robo;Robot"/>
+                        <owl:someValuesFrom rdf:resource="&kern;Human"/>
                     </owl:Restriction>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="&kern;aggregates"/>
@@ -319,7 +319,8 @@
                 </owl:intersectionOf>
             </owl:Class>
         </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="&robo;Robot"/>
+        <owl:disjointWith rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#Robot"/>
+        <owl:disjointWith rdf:resource="&kern;Environment"/>
         <owl:disjointWith rdf:resource="&syst;DriverDeviceSystem"/>
         <rdfs:comment xml:lang="en">This composite system groups at least three other ones:
 - one robot
@@ -333,50 +334,50 @@ A “robotic system of systems” is a specialised system of systems where there
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#GroundVehicle -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#GroundVehicle -->
 
-    <owl:Class rdf:about="&robo;GroundVehicle">
-        <rdfs:subClassOf rdf:resource="&robo;MobileRobot"/>
+    <owl:Class rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#GroundVehicle">
+        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#MobileRobot"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&robo;movesOver"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesOver"/>
                 <owl:someValuesFrom rdf:resource="&envi;Surface"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="&robo;HybridVehicle"/>
-        <owl:disjointWith rdf:resource="&robo;SurfaceVehicle"/>
-        <owl:disjointWith rdf:resource="&robo;UnderwaterVehicle"/>
+        <owl:disjointWith rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#HybridVehicle"/>
+        <owl:disjointWith rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#SurfaceVehicle"/>
+        <owl:disjointWith rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#UnderwaterVehicle"/>
         <rdfs:comment xml:lang="en">Ground Vehicle. Only the wheeled and caterpillar robotic vehicles will be considered.</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#HybridVehicle -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#HybridVehicle -->
 
-    <owl:Class rdf:about="&robo;HybridVehicle">
-        <rdfs:subClassOf rdf:resource="&robo;MobileRobot"/>
-        <owl:disjointWith rdf:resource="&robo;SurfaceVehicle"/>
-        <owl:disjointWith rdf:resource="&robo;UnderwaterVehicle"/>
+    <owl:Class rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#HybridVehicle">
+        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#MobileRobot"/>
+        <owl:disjointWith rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#SurfaceVehicle"/>
+        <owl:disjointWith rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#UnderwaterVehicle"/>
         <rdfs:comment xml:lang="en">Type of vehicle which can move in different environments. Like the Amphibious vehicles.</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#LeggedVehicle -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#LeggedVehicle -->
 
-    <owl:Class rdf:about="&robo;LeggedVehicle">
-        <rdfs:subClassOf rdf:resource="&robo;GroundVehicle"/>
+    <owl:Class rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#LeggedVehicle">
+        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#GroundVehicle"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:onClass rdf:resource="&syst;LegSystem"/>
+                <owl:onClass rdf:resource="&syst;Chassis"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:onClass rdf:resource="&syst;Chassis"/>
+                <owl:onClass rdf:resource="&syst;LegSystem"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -385,44 +386,38 @@ A “robotic system of systems” is a specialised system of systems where there
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#ManipulatorRobot -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#ManipulatorRobot -->
 
-    <owl:Class rdf:about="&robo;ManipulatorRobot">
-        <rdfs:subClassOf rdf:resource="&robo;Robot"/>
+    <owl:Class rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#ManipulatorRobot">
+        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#Robot"/>
         <rdfs:comment xml:lang="en">This is a robot that have at least one grasping system.</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#MobileRobot -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#MobileRobot -->
 
-    <owl:Class rdf:about="&robo;MobileRobot">
-        <rdfs:subClassOf rdf:resource="&robo;Robot"/>
+    <owl:Class rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#MobileRobot">
+        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#Robot"/>
     </owl:Class>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#PilotedSystem -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#PilotedSystem -->
 
-    <owl:Class rdf:about="&robo;PilotedSystem">
-        <rdfs:subClassOf rdf:resource="&robo;Robot"/>
-        <owl:disjointWith rdf:resource="&robo;UnmannedSystem"/>
+    <owl:Class rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#PilotedSystem">
+        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#Robot"/>
+        <owl:disjointWith rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#UnmannedSystem"/>
         <rdfs:comment xml:lang="en">To represent the piloted robots category and specificities. A car, A piloted aircraft are robots.</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#Robot -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#Robot -->
 
-    <owl:Class rdf:about="&robo;Robot">
+    <owl:Class rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#Robot">
         <rdfs:subClassOf rdf:resource="&kern;Agent"/>
         <rdfs:subClassOf rdf:resource="&kern;CompositeSystem"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;hasProbe"/>
-                <owl:allValuesFrom rdf:resource="&syst;SensorSystem"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;hasProbe"/>
@@ -431,10 +426,18 @@ A “robotic system of systems” is a specialised system of systems where there
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;hasProbe"/>
+                <owl:allValuesFrom rdf:resource="&syst;SensorSystem"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom rdf:resource="&syst;CyberPhysicalSystem"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&kern;Environment"/>
+        <owl:disjointWith rdf:resource="&kern;Human"/>
         <owl:disjointWith rdf:resource="&syst;DriverDeviceSystem"/>
         <rdfs:comment xml:lang="en">A robot is not only an agent but also a composite system. It aggregates only embedded systems. Mainly this system is used as a classifier for the different types of robots.</rdfs:comment>
         <kern:author xml:lang="en">creation PROTEUS consortium - 
@@ -444,29 +447,29 @@ modified Bruno Patin - 30/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#SurfaceVehicle -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#SurfaceVehicle -->
 
-    <owl:Class rdf:about="&robo;SurfaceVehicle">
-        <rdfs:subClassOf rdf:resource="&robo;MobileRobot"/>
+    <owl:Class rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#SurfaceVehicle">
+        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#MobileRobot"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&robo;movesOver"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesOver"/>
                 <owl:someValuesFrom rdf:resource="&envi;WaterSurface"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="&robo;UnderwaterVehicle"/>
+        <owl:disjointWith rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#UnderwaterVehicle"/>
         <rdfs:comment xml:lang="en">Water Vehicle that remains in the surface of the water (boats or ships-like vehicles).</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#UnderwaterVehicle -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#UnderwaterVehicle -->
 
-    <owl:Class rdf:about="&robo;UnderwaterVehicle">
-        <rdfs:subClassOf rdf:resource="&robo;MobileRobot"/>
+    <owl:Class rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#UnderwaterVehicle">
+        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#MobileRobot"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&robo;movesIn"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesIn"/>
                 <owl:someValuesFrom rdf:resource="&envi;Waterbody"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -475,18 +478,132 @@ modified Bruno Patin - 30/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#UnmannedSystem -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#UnmannedSystem -->
 
-    <owl:Class rdf:about="&robo;UnmannedSystem">
-        <rdfs:subClassOf rdf:resource="&robo;Robot"/>
+    <owl:Class rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#UnmannedSystem">
+        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#Robot"/>
         <rdfs:comment xml:lang="en">To represent the unmanned robots category and specificities. Unmanned only means nobody control the robot from inside (no &quot;pilot&quot; onboard).</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#DriverDeviceSystem -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Atmosphere -->
 
-    <rdf:Description rdf:about="&syst;DriverDeviceSystem"/>
+    <owl:Class rdf:about="&envi;Atmosphere"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Floor -->
+
+    <owl:Class rdf:about="&envi;Floor"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Joint -->
+
+    <owl:Class rdf:about="&envi;Joint"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#LandSurface -->
+
+    <owl:Class rdf:about="&envi;LandSurface"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Stairs -->
+
+    <owl:Class rdf:about="&envi;Stairs"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Surface -->
+
+    <owl:Class rdf:about="&envi;Surface"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#WaterSurface -->
+
+    <owl:Class rdf:about="&envi;WaterSurface"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Waterbody -->
+
+    <owl:Class rdf:about="&envi;Waterbody"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Environment -->
+
+    <rdf:Description rdf:about="&kern;Environment"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Human -->
+
+    <rdf:Description rdf:about="&kern;Human"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#Chassis -->
+
+    <owl:Class rdf:about="&syst;Chassis"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlStationSystem -->
+
+    <owl:Class rdf:about="&syst;ControlStationSystem"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CyberPhysicalSystem -->
+
+    <owl:Class rdf:about="&syst;CyberPhysicalSystem"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#DriverDeviceSystem -->
+
+    <owl:Class rdf:about="&syst;DriverDeviceSystem"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#EngineSystem -->
+
+    <owl:Class rdf:about="&syst;EngineSystem"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LegSystem -->
+
+    <owl:Class rdf:about="&syst;LegSystem"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#MechanicalLinkage -->
+
+    <owl:Class rdf:about="&syst;MechanicalLinkage"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticMiddleware -->
+
+    <owl:Class rdf:about="&syst;RoboticMiddleware"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SensorSystem -->
+
+    <owl:Class rdf:about="&syst;SensorSystem"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SteeredWheelSystem -->
+
+    <owl:Class rdf:about="&syst;SteeredWheelSystem"/>
     
 
 
@@ -512,22 +629,35 @@ modified Bruno Patin - 30/09/2013
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&envi;Joint"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
         <swrl:body>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&kern;Interaction"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
+                    </rdf:Description>
+                </rdf:first>
                 <rdf:rest>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;AtomList"/>
                         <rdf:rest>
                             <rdf:Description>
                                 <rdf:type rdf:resource="&swrl;AtomList"/>
-                                <rdf:first>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                        <swrl:classPredicate rdf:resource="&kern;PhysicalObject"/>
-                                        <swrl:argument1 rdf:resource="urn:swrl#x2"/>
-                                    </rdf:Description>
-                                </rdf:first>
                                 <rdf:rest>
                                     <rdf:Description>
                                         <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -545,9 +675,25 @@ modified Bruno Patin - 30/09/2013
                                                 <rdf:rest>
                                                     <rdf:Description>
                                                         <rdf:type rdf:resource="&swrl;AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                                <swrl:propertyPredicate rdf:resource="&kern;aggregates"/>
+                                                                <swrl:argument2 rdf:resource="urn:swrl#x2"/>
+                                                                <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                                                            </rdf:Description>
+                                                        </rdf:first>
                                                         <rdf:rest>
                                                             <rdf:Description>
                                                                 <rdf:type rdf:resource="&swrl;AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                                        <swrl:propertyPredicate rdf:resource="&kern;impacts"/>
+                                                                        <swrl:argument2 rdf:resource="urn:swrl#x2"/>
+                                                                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
                                                                 <rdf:rest>
                                                                     <rdf:Description>
                                                                         <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -562,24 +708,8 @@ modified Bruno Patin - 30/09/2013
                                                                         </rdf:first>
                                                                     </rdf:Description>
                                                                 </rdf:rest>
-                                                                <rdf:first>
-                                                                    <rdf:Description>
-                                                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                                        <swrl:propertyPredicate rdf:resource="&kern;impacts"/>
-                                                                        <swrl:argument2 rdf:resource="urn:swrl#x2"/>
-                                                                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
-                                                                    </rdf:Description>
-                                                                </rdf:first>
                                                             </rdf:Description>
                                                         </rdf:rest>
-                                                        <rdf:first>
-                                                            <rdf:Description>
-                                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                                <swrl:propertyPredicate rdf:resource="&kern;aggregates"/>
-                                                                <swrl:argument2 rdf:resource="urn:swrl#x2"/>
-                                                                <swrl:argument1 rdf:resource="urn:swrl#y"/>
-                                                            </rdf:Description>
-                                                        </rdf:first>
                                                     </rdf:Description>
                                                 </rdf:rest>
                                             </rdf:Description>
@@ -593,6 +723,13 @@ modified Bruno Patin - 30/09/2013
                                         </rdf:first>
                                     </rdf:Description>
                                 </rdf:rest>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="&kern;PhysicalObject"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#x2"/>
+                                    </rdf:Description>
+                                </rdf:first>
                             </rdf:Description>
                         </rdf:rest>
                         <rdf:first>
@@ -604,28 +741,8 @@ modified Bruno Patin - 30/09/2013
                         </rdf:first>
                     </rdf:Description>
                 </rdf:rest>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="&kern;Interaction"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
-                    </rdf:Description>
-                </rdf:first>
             </rdf:Description>
         </swrl:body>
-        <swrl:head>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:rest rdf:resource="&rdf;nil"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="&envi;Joint"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
-                    </rdf:Description>
-                </rdf:first>
-            </rdf:Description>
-        </swrl:head>
     </rdf:Description>
 </rdf:RDF>
 
