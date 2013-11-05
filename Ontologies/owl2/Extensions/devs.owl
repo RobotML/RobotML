@@ -10,13 +10,13 @@
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
     <!ENTITY protege "http://protege.stanford.edu/plugins/owl/protege#" >
     <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
-    <!ENTITY devs "http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#" >
-    <!ENTITY info "http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#" >
+    <!ENTITY devs "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#" >
+    <!ENTITY info "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#" >
 ]>
 
 
-<rdf:RDF xmlns="http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#"
-     xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl"
+<rdf:RDF xmlns="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#"
+     xml:base="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:swrl="http://www.w3.org/2003/11/swrl#"
      xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
@@ -25,9 +25,9 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:devs="http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#"
-     xmlns:info="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#">
-    <owl:Ontology rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl">
+     xmlns:devs="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#"
+     xmlns:info="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#">
+    <owl:Ontology rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl">
         <owl:versionInfo rdf:datatype="&xsd;string">version delivered 1.0</owl:versionInfo>
         <rdfs:comment>FaCT++ does not work with this ontology. HermiT shall be used for reasoning.</rdfs:comment>
         <rdfs:comment xml:lang="en">This ontology extends the simulation one by providing the DEVS instanciation of a software simulator.
@@ -35,32 +35,10 @@
 The part of the ontology of simulation dedicated to the DEVS approach is based uppon its foundation reference book: &quot;Bernard P. Zeigler, Herbert Praehofer, Tag Gon Kim - Theory of Modeling and simulation - Academic Press - 2000&quot;. In order to understand this approach, it is mandatory to get it or at least to read some tutorials such as those that can be found following: http://www.vle-project.org/</rdfs:comment>
         <rdfs:comment xml:lang="en">This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1  licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
         <rdfs:comment xml:lang="en">Version for Protégé 4.2 beta.</rdfs:comment>
-        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl"/>
-        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl"/>
-        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl"/>
+        <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl"/>
+        <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl"/>
+        <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl"/>
     </owl:Ontology>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotation properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Datatypes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
     
 
 
@@ -75,7 +53,7 @@ The part of the ontology of simulation dedicated to the DEVS approach is based u
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#ComponentSpecification -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#ComponentSpecification -->
 
     <owl:Class rdf:about="&devs;ComponentSpecification">
         <rdfs:subClassOf rdf:resource="&devs;DEVSAtomicSpecification"/>
@@ -83,7 +61,7 @@ The part of the ontology of simulation dedicated to the DEVS approach is based u
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#ContinuousSegment -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#ContinuousSegment -->
 
     <owl:Class rdf:about="&devs;ContinuousSegment">
         <rdfs:subClassOf rdf:resource="&devs;TimeSegment"/>
@@ -92,7 +70,7 @@ The part of the ontology of simulation dedicated to the DEVS approach is based u
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#CoupledSystemSpecification -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#CoupledSystemSpecification -->
 
     <owl:Class rdf:about="&devs;CoupledSystemSpecification">
         <rdfs:subClassOf rdf:resource="&devs;DEVSCompositeSpecification"/>
@@ -101,13 +79,13 @@ The part of the ontology of simulation dedicated to the DEVS approach is based u
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#DELTA -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#DELTA -->
 
     <owl:Class rdf:about="&devs;DELTA">
         <rdfs:subClassOf rdf:resource="&info;Function"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasInput"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasInput"/>
                 <owl:allValuesFrom rdf:resource="&devs;QxOMEGA"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -116,21 +94,27 @@ The part of the ontology of simulation dedicated to the DEVS approach is based u
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#DEVSAtomicSpecification -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#DEVSAtomicSpecification -->
 
     <owl:Class rdf:about="&devs;DEVSAtomicSpecification">
-        <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AtomicSystem"/>
-        <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SystemSpecification"/>
+        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#AtomicSystem"/>
+        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SystemSpecification"/>
         <rdfs:comment xml:lang="en">Atomic specification means that there is no reference to another system whatsoever. The characteristics modelled are those of the system in itself considering what is occurring on its inputs / outputs and eventually measuring its activity</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#DEVSCompositeSpecification -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#DEVSCompositeSpecification -->
 
     <owl:Class rdf:about="&devs;DEVSCompositeSpecification">
-        <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#CompositeSystem"/>
-        <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SystemSpecification"/>
+        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#CompositeSystem"/>
+        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SystemSpecification"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasRelation"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&info;hasFunction"/>
@@ -143,27 +127,21 @@ The part of the ontology of simulation dedicated to the DEVS approach is based u
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">5</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasRelation"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A composite specification tackles with the modelling of systems&apos; interactions. It means it considers that the sytems to couple exist at the level of description specified by the IO system specification (see atomic specification). The composite specification then provides a modelling of the links and their nature.</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#DEVSSimulator -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#DEVSSimulator -->
 
     <owl:Class rdf:about="&devs;DEVSSimulator">
-        <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#SoftwareSimulator"/>
+        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SoftwareSimulator"/>
         <rdfs:comment xml:lang="en">This specific simulator is able to provide life to DEVS modelled system</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#EventSegment -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#EventSegment -->
 
     <owl:Class rdf:about="&devs;EventSegment">
         <rdfs:subClassOf rdf:resource="&devs;TimeSegment"/>
@@ -172,13 +150,13 @@ The part of the ontology of simulation dedicated to the DEVS approach is based u
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#IOFunctionSpecification -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#IOFunctionSpecification -->
 
     <owl:Class rdf:about="&devs;IOFunctionSpecification">
         <rdfs:subClassOf rdf:resource="&devs;DEVSAtomicSpecification"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;hasFunction"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasRelation"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -191,13 +169,13 @@ The part of the ontology of simulation dedicated to the DEVS approach is based u
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasRelation"/>
+                <owl:onProperty rdf:resource="&info;hasFunction"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasTimeDomainFunctionSet"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasTimeDomainFunctionSet"/>
                 <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -206,14 +184,21 @@ The part of the ontology of simulation dedicated to the DEVS approach is based u
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#IORelationSpecification -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#IORelationSpecification -->
 
     <owl:Class rdf:about="&devs;IORelationSpecification">
         <rdfs:subClassOf rdf:resource="&devs;DEVSAtomicSpecification"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasRelation"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasRelation"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&info;hasSet"/>
+                <owl:onClass rdf:resource="&info;Set"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">3</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -224,15 +209,8 @@ The part of the ontology of simulation dedicated to the DEVS approach is based u
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasRelation"/>
-                <owl:allValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#PropertyTimeDomain"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;hasSet"/>
-                <owl:onClass rdf:resource="&info;Set"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">3</owl:qualifiedCardinality>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasRelation"/>
+                <owl:allValuesFrom rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#PropertyTimeDomain"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">This specification provides the association between the input sets and the output sets. It is the last system specification that considers the system as a blackbox. The relation establishes the fact that some input segments can be associated to some output respecting the property that the time interval of the input segment is identical to the interval of the output segment.
@@ -242,7 +220,7 @@ The associated definition is to be found in section 5</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#IOSpecification -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#IOSpecification -->
 
     <owl:Class rdf:about="&devs;IOSpecification">
         <rdfs:subClassOf rdf:resource="&devs;DEVSAtomicSpecification"/>
@@ -255,13 +233,13 @@ The associated definition is to be found in section 5</rdfs:comment>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasRelation"/>
+                <owl:onProperty rdf:resource="&info;hasFunction"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;hasFunction"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasRelation"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -270,19 +248,19 @@ The associated definition is to be found in section 5</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#IOSystemSpecification -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#IOSystemSpecification -->
 
     <owl:Class rdf:about="&devs;IOSystemSpecification">
         <rdfs:subClassOf rdf:resource="&devs;DEVSAtomicSpecification"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasRelation"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasRelation"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasStateSet"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasStateSet"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -298,13 +276,13 @@ The associated definition is to be found in section 5</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#LAMBDA -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#LAMBDA -->
 
     <owl:Class rdf:about="&devs;LAMBDA">
         <rdfs:subClassOf rdf:resource="&info;Function"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasInput"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasInput"/>
                 <owl:allValuesFrom rdf:resource="&devs;QxA"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -313,7 +291,7 @@ The associated definition is to be found in section 5</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#MulticomponentSystemSpecification -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#MulticomponentSystemSpecification -->
 
     <owl:Class rdf:about="&devs;MulticomponentSystemSpecification">
         <rdfs:subClassOf rdf:resource="&devs;DEVSCompositeSpecification"/>
@@ -322,7 +300,7 @@ The associated definition is to be found in section 5</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#OMEGA -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#OMEGA -->
 
     <owl:Class rdf:about="&devs;OMEGA">
         <rdfs:subClassOf rdf:resource="&info;Set"/>
@@ -331,25 +309,19 @@ The associated definition is to be found in section 5</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#OMEGAS -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#OMEGAS -->
 
     <owl:Class rdf:about="&devs;OMEGAS">
         <rdfs:subClassOf rdf:resource="&info;CrossProduct"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#dimension"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#dimension"/>
                 <owl:hasValue rdf:datatype="&xsd;int">2</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isComposedOf"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#homogeneous"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#homogeneous"/>
                 <owl:hasValue rdf:datatype="&xsd;boolean">false</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -358,7 +330,7 @@ The associated definition is to be found in section 5</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#PiecewiseConstantSegment -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#PiecewiseConstantSegment -->
 
     <owl:Class rdf:about="&devs;PiecewiseConstantSegment">
         <rdfs:subClassOf rdf:resource="&devs;PiecewiseContinuousSegment"/>
@@ -367,7 +339,7 @@ The associated definition is to be found in section 5</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#PiecewiseContinuousSegment -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#PiecewiseContinuousSegment -->
 
     <owl:Class rdf:about="&devs;PiecewiseContinuousSegment">
         <rdfs:subClassOf rdf:resource="&devs;TimeSegment"/>
@@ -376,26 +348,20 @@ The associated definition is to be found in section 5</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#QxA -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#QxA -->
 
     <owl:Class rdf:about="&devs;QxA">
         <rdfs:subClassOf rdf:resource="&info;CrossProduct"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#homogeneous"/>
-                <owl:hasValue rdf:datatype="&xsd;boolean">false</owl:hasValue>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isComposedOf"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#dimension"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#dimension"/>
                 <owl:hasValue rdf:datatype="&xsd;int">2</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#homogeneous"/>
+                <owl:hasValue rdf:datatype="&xsd;boolean">false</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">cross product allowing the asssociation of a segment set to any set</rdfs:comment>
@@ -403,25 +369,19 @@ The associated definition is to be found in section 5</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#QxOMEGA -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#QxOMEGA -->
 
     <owl:Class rdf:about="&devs;QxOMEGA">
         <rdfs:subClassOf rdf:resource="&info;CrossProduct"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isComposedOf"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#dimension"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#dimension"/>
                 <owl:hasValue rdf:datatype="&xsd;int">2</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#homogeneous"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#homogeneous"/>
                 <owl:hasValue rdf:datatype="&xsd;boolean">false</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -429,14 +389,14 @@ The associated definition is to be found in section 5</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#StateSet -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#StateSet -->
 
     <owl:Class rdf:about="&devs;StateSet">
         <rdfs:subClassOf rdf:resource="&info;Set"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasValues"/>
-                <owl:allValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#State"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasValues"/>
+                <owl:allValuesFrom rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#State"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">This type of set introduces a list of set as used into the system specification for example. The values here are to be related to the kernel:state concept.</rdfs:comment>
@@ -444,7 +404,7 @@ The associated definition is to be found in section 5</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#StringSet -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#StringSet -->
 
     <owl:Class rdf:about="&devs;StringSet">
         <rdfs:subClassOf rdf:resource="&info;Set"/>
@@ -458,7 +418,7 @@ The associated definition is to be found in section 5</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#SystemSet -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#SystemSet -->
 
     <owl:Class rdf:about="&devs;SystemSet">
         <rdfs:subClassOf rdf:resource="&info;Set"/>
@@ -466,7 +426,7 @@ The associated definition is to be found in section 5</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#TimeDomainFunction -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#TimeDomainFunction -->
 
     <owl:Class rdf:about="&devs;TimeDomainFunction">
         <rdfs:subClassOf rdf:resource="&info;Function"/>
@@ -475,7 +435,7 @@ The associated definition is to be found in section 5</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#TimeSegment -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#TimeSegment -->
 
     <owl:Class rdf:about="&devs;TimeSegment">
         <rdfs:subClassOf rdf:resource="&devs;TimeTrajectory"/>
@@ -484,14 +444,14 @@ The associated definition is to be found in section 5</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#TimeSequence -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#TimeSequence -->
 
     <owl:Class rdf:about="&devs;TimeSequence">
         <rdfs:subClassOf rdf:resource="&devs;TimeSegment"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasInput"/>
-                <owl:allValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#DiscreteTimeBase"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasInput"/>
+                <owl:allValuesFrom rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#DiscreteTimeBase"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">the input is homogeneous to I</rdfs:comment>
@@ -499,14 +459,14 @@ The associated definition is to be found in section 5</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/devs.owl#TimeTrajectory -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Extensions/devs.owl#TimeTrajectory -->
 
     <owl:Class rdf:about="&devs;TimeTrajectory">
         <rdfs:subClassOf rdf:resource="&info;Function"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#hasInput"/>
-                <owl:allValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#TimeBase"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasInput"/>
+                <owl:allValuesFrom rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#TimeBase"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">This function allows to index unique values of output Set to the value of the time base. It means that to each value of time there is only one value of the set. The function is surjective.</rdfs:comment>
@@ -515,5 +475,5 @@ The associated definition is to be found in section 5</rdfs:comment>
 
 
 
-<!-- Generated by the OWL API (version 3.2.5.1928) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
 
