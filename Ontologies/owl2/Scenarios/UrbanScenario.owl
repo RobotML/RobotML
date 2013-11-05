@@ -12,43 +12,43 @@
     <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
     <!ENTITY swrla "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#" >
     <!ENTITY sqwrl "http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#" >
-    <!ENTITY robo "http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#" >
-    <!ENTITY kern "http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#" >
-    <!ENTITY syst "http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#" >
-    <!ENTITY miss "http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#" >
-    <!ENTITY expe "http://www.anr-proteus.fr/sites/default/files/download/Ontology/experiment.owl#" >
-    <!ENTITY envi "http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#" >
-    <!ENTITY info "http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#" >
-    <!ENTITY urba "http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#" >
+    <!ENTITY robo "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#" >
+    <!ENTITY kern "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#" >
+    <!ENTITY syst "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#" >
+    <!ENTITY miss "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#" >
+    <!ENTITY expe "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#" >
+    <!ENTITY envi "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#" >
+    <!ENTITY info "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#" >
+    <!ENTITY urba "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#" >
 ]>
 
 
-<rdf:RDF xmlns="http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#"
-     xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl"
+<rdf:RDF xmlns="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#"
+     xml:base="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl"
      xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
      xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
-     xmlns:robo="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#"
-     xmlns:kern="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
-     xmlns:info="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#"
+     xmlns:robo="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#"
+     xmlns:kern="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#"
+     xmlns:info="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#"
      xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:swrl="http://www.w3.org/2003/11/swrl#"
-     xmlns:envi="http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#"
-     xmlns:expe="http://www.anr-proteus.fr/sites/default/files/download/Ontology/experiment.owl#"
-     xmlns:syst="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#"
-     xmlns:urba="http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#"
+     xmlns:envi="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#"
+     xmlns:expe="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#"
+     xmlns:syst="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#"
+     xmlns:urba="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:miss="http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#"
+     xmlns:miss="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#"
      xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
-    <owl:Ontology rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl">
+    <owl:Ontology rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl">
         <owl:versionInfo rdf:datatype="&xsd;string">version delivered 1.0</owl:versionInfo>
         <rdfs:comment xml:lang="en">This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
         <rdfs:comment xml:lang="en">Version for Protégé 4.2 beta.</rdfs:comment>
         <rdfs:comment xml:lang="en">this scenario is closely linked to the urban challenge where a unmanned car is taxiing a person avoiding obstacles in the streets and obeying regulations.</rdfs:comment>
-        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Core.owl"/>
+        <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/Core.owl"/>
     </owl:Ontology>
     
 
@@ -64,7 +64,31 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#movesOver -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates -->
+
+    <owl:AnnotationProperty rdf:about="&kern;aggregates"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#impacts -->
+
+    <owl:AnnotationProperty rdf:about="&kern;impacts"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isAtomic -->
+
+    <owl:AnnotationProperty rdf:about="&kern;isAtomic"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#triggers -->
+
+    <owl:AnnotationProperty rdf:about="&kern;triggers"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesOver -->
 
     <owl:AnnotationProperty rdf:about="&robo;movesOver"/>
     
@@ -81,61 +105,97 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#LandSurface -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#LandSurface -->
 
     <owl:Class rdf:about="&envi;LandSurface"/>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#Car-likeVehicle -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#ApplicationInteraction -->
+
+    <owl:Class rdf:about="&kern;ApplicationInteraction"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#AtomicSystem -->
+
+    <owl:Class rdf:about="&kern;AtomicSystem"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#DriverToHardwareInteraction -->
+
+    <owl:Class rdf:about="&kern;DriverToHardwareInteraction"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Event -->
+
+    <owl:Class rdf:about="&kern;Event"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SignalEvent -->
+
+    <owl:Class rdf:about="&kern;SignalEvent"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SoftwareModule -->
+
+    <owl:Class rdf:about="&kern;SoftwareModule"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#Car-likeVehicle -->
 
     <owl:Class rdf:about="&robo;Car-likeVehicle"/>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ControlAndCommand -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlAndCommand -->
 
     <owl:Class rdf:about="&syst;ControlAndCommand"/>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ControlSystem -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlSystem -->
 
     <owl:Class rdf:about="&syst;ControlSystem"/>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#EnvironmentParametersSensorDriver -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#EnvironmentParametersSensorDriver -->
 
     <owl:Class rdf:about="&syst;EnvironmentParametersSensorDriver"/>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#EnvironmentParametersSensorSystem -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#EnvironmentParametersSensorSystem -->
 
     <owl:Class rdf:about="&syst;EnvironmentParametersSensorSystem"/>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#LocomotionDriver -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LocomotionDriver -->
 
     <owl:Class rdf:about="&syst;LocomotionDriver"/>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#LocomotionHardware -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LocomotionHardware -->
 
     <owl:Class rdf:about="&syst;LocomotionHardware"/>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#MissionManagementSystem -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#MissionManagementSystem -->
 
     <owl:Class rdf:about="&syst;MissionManagementSystem"/>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#MotionPlanningSystem -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#MotionPlanningSystem -->
 
     <owl:Class rdf:about="&syst;MotionPlanningSystem"/>
     
@@ -152,9 +212,9 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#Brakes -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#Brakes -->
 
-    <owl:NamedIndividual rdf:about="&urba;Brakes">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#Brakes">
         <rdf:type rdf:resource="&kern;AtomicSystem"/>
         <rdf:type rdf:resource="&syst;LocomotionHardware"/>
         <kern:isAtomic rdf:datatype="&xsd;boolean">true</kern:isAtomic>
@@ -162,229 +222,229 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#BrakesCommandOutput -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#BrakesCommandOutput -->
 
-    <owl:NamedIndividual rdf:about="&urba;BrakesCommandOutput">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#BrakesCommandOutput">
         <rdf:type rdf:resource="&kern;DriverToHardwareInteraction"/>
-        <kern:impacts rdf:resource="&urba;Brakes"/>
+        <kern:impacts rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#Brakes"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#BrakesDriver -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#BrakesDriver -->
 
-    <owl:NamedIndividual rdf:about="&urba;BrakesDriver">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#BrakesDriver">
         <rdf:type rdf:resource="&kern;AtomicSystem"/>
         <rdf:type rdf:resource="&syst;LocomotionDriver"/>
         <kern:isAtomic rdf:datatype="&xsd;boolean">true</kern:isAtomic>
-        <kern:triggers rdf:resource="&urba;BrakesCommandOutput"/>
+        <kern:triggers rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#BrakesCommandOutput"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#Control -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#Control -->
 
-    <owl:NamedIndividual rdf:about="&urba;Control">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#Control">
         <rdf:type rdf:resource="&kern;AtomicSystem"/>
         <rdf:type rdf:resource="&kern;SoftwareModule"/>
         <rdf:type rdf:resource="&syst;ControlSystem"/>
-        <kern:triggers rdf:resource="&urba;ExBrakesCommand"/>
-        <kern:triggers rdf:resource="&urba;ExMotorCommand"/>
-        <kern:triggers rdf:resource="&urba;ExSteeringWheelCommand"/>
+        <kern:triggers rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExBrakesCommand"/>
+        <kern:triggers rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExMotorCommand"/>
+        <kern:triggers rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExSteeringWheelCommand"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#ExBeliefAboutEnvironement -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExBeliefAboutEnvironement -->
 
-    <owl:NamedIndividual rdf:about="&urba;ExBeliefAboutEnvironement">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExBeliefAboutEnvironement">
         <rdf:type rdf:resource="&kern;ApplicationInteraction"/>
-        <kern:impacts rdf:resource="&urba;TrajectoryPlanning"/>
+        <kern:impacts rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#TrajectoryPlanning"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#ExBrakesCommand -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExBrakesCommand -->
 
-    <owl:NamedIndividual rdf:about="&urba;ExBrakesCommand">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExBrakesCommand">
         <rdf:type rdf:resource="&syst;ControlAndCommand"/>
-        <kern:impacts rdf:resource="&urba;BrakesDriver"/>
+        <kern:impacts rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#BrakesDriver"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#ExCommands -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExCommands -->
 
-    <owl:NamedIndividual rdf:about="&urba;ExCommands">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExCommands">
         <rdf:type rdf:resource="&kern;ApplicationInteraction"/>
-        <kern:impacts rdf:resource="&urba;Control"/>
+        <kern:impacts rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#Control"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#ExDesiredDestination -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExDesiredDestination -->
 
-    <owl:NamedIndividual rdf:about="&urba;ExDesiredDestination">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExDesiredDestination">
         <rdf:type rdf:resource="&kern;ApplicationInteraction"/>
-        <kern:impacts rdf:resource="&urba;TrajectoryPlanning"/>
+        <kern:impacts rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#TrajectoryPlanning"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#ExDestinationReachedSignal -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExDestinationReachedSignal -->
 
-    <owl:NamedIndividual rdf:about="&urba;ExDestinationReachedSignal">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExDestinationReachedSignal">
         <rdf:type rdf:resource="&kern;ApplicationInteraction"/>
         <rdf:type rdf:resource="&kern;Event"/>
         <rdf:type rdf:resource="&kern;SignalEvent"/>
-        <kern:impacts rdf:resource="&urba;TaxiMissionManager"/>
+        <kern:impacts rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#TaxiMissionManager"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#ExDetectedObstacle -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExDetectedObstacle -->
 
-    <owl:NamedIndividual rdf:about="&urba;ExDetectedObstacle">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExDetectedObstacle">
         <rdf:type rdf:resource="&kern;ApplicationInteraction"/>
-        <kern:impacts rdf:resource="&urba;Maping"/>
-        <kern:impacts rdf:resource="&urba;MonitoringAndIntegrity"/>
+        <kern:impacts rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#Maping"/>
+        <kern:impacts rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#MonitoringAndIntegrity"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#ExLIDARMeasurement -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExLIDARMeasurement -->
 
-    <owl:NamedIndividual rdf:about="&urba;ExLIDARMeasurement">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExLIDARMeasurement">
         <rdf:type rdf:resource="&kern;ApplicationInteraction"/>
-        <kern:impacts rdf:resource="&urba;ObstacleDetection"/>
+        <kern:impacts rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ObstacleDetection"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#ExMotorCommand -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExMotorCommand -->
 
-    <owl:NamedIndividual rdf:about="&urba;ExMotorCommand">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExMotorCommand">
         <rdf:type rdf:resource="&syst;ControlAndCommand"/>
-        <kern:impacts rdf:resource="&urba;MotorDriver"/>
+        <kern:impacts rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#MotorDriver"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#ExSteeringWheelCommand -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExSteeringWheelCommand -->
 
-    <owl:NamedIndividual rdf:about="&urba;ExSteeringWheelCommand">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExSteeringWheelCommand">
         <rdf:type rdf:resource="&syst;ControlAndCommand"/>
-        <kern:impacts rdf:resource="&urba;SteeringWheelDriver"/>
+        <kern:impacts rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#SteeringWheelDriver"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#ExTrajectory -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExTrajectory -->
 
-    <owl:NamedIndividual rdf:about="&urba;ExTrajectory">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExTrajectory">
         <rdf:type rdf:resource="&kern;ApplicationInteraction"/>
-        <kern:impacts rdf:resource="&urba;Servoing"/>
+        <kern:impacts rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#Servoing"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#LIDARDriver -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#LIDARDriver -->
 
-    <owl:NamedIndividual rdf:about="&urba;LIDARDriver">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#LIDARDriver">
         <rdf:type rdf:resource="&syst;EnvironmentParametersSensorDriver"/>
-        <kern:triggers rdf:resource="&urba;ExLIDARMeasurement"/>
+        <kern:triggers rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExLIDARMeasurement"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#LIDARSystem -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#LIDARSystem -->
 
-    <owl:NamedIndividual rdf:about="&urba;LIDARSystem">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#LIDARSystem">
         <rdf:type rdf:resource="&syst;EnvironmentParametersSensorSystem"/>
-        <kern:aggregates rdf:resource="&urba;LIDARDriver"/>
+        <kern:aggregates rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#LIDARDriver"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#Maping -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#Maping -->
 
-    <owl:NamedIndividual rdf:about="&urba;Maping">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#Maping">
         <rdf:type rdf:resource="&kern;AtomicSystem"/>
         <rdf:type rdf:resource="&kern;SoftwareModule"/>
         <rdf:type rdf:resource="&syst;MotionPlanningSystem"/>
-        <kern:triggers rdf:resource="&urba;ExBeliefAboutEnvironement"/>
+        <kern:triggers rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExBeliefAboutEnvironement"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#MonitoringAndIntegrity -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#MonitoringAndIntegrity -->
 
-    <owl:NamedIndividual rdf:about="&urba;MonitoringAndIntegrity">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#MonitoringAndIntegrity">
         <rdf:type rdf:resource="&kern;SoftwareModule"/>
-        <kern:triggers rdf:resource="&urba;ExCommands"/>
+        <kern:triggers rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExCommands"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#Motor -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#Motor -->
 
-    <owl:NamedIndividual rdf:about="&urba;Motor">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#Motor">
         <rdf:type rdf:resource="&syst;LocomotionHardware"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#MotorCommandOutput -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#MotorCommandOutput -->
 
-    <owl:NamedIndividual rdf:about="&urba;MotorCommandOutput">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#MotorCommandOutput">
         <rdf:type rdf:resource="&kern;DriverToHardwareInteraction"/>
-        <kern:impacts rdf:resource="&urba;Motor"/>
+        <kern:impacts rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#Motor"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#MotorDriver -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#MotorDriver -->
 
-    <owl:NamedIndividual rdf:about="&urba;MotorDriver">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#MotorDriver">
         <rdf:type rdf:resource="&syst;LocomotionDriver"/>
-        <kern:triggers rdf:resource="&urba;MotorCommandOutput"/>
+        <kern:triggers rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#MotorCommandOutput"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#ObstacleDetection -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ObstacleDetection -->
 
-    <owl:NamedIndividual rdf:about="&urba;ObstacleDetection">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ObstacleDetection">
         <rdf:type rdf:resource="&kern;AtomicSystem"/>
         <kern:isAtomic rdf:datatype="&xsd;boolean">true</kern:isAtomic>
-        <kern:triggers rdf:resource="&urba;ExDetectedObstacle"/>
+        <kern:triggers rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExDetectedObstacle"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#PavinTerrain -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#PavinTerrain -->
 
-    <owl:NamedIndividual rdf:about="&urba;PavinTerrain">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#PavinTerrain">
         <rdf:type rdf:resource="&envi;LandSurface"/>
         <kern:isAtomic rdf:datatype="&xsd;boolean">true</kern:isAtomic>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#Servoing -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#Servoing -->
 
-    <owl:NamedIndividual rdf:about="&urba;Servoing">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#Servoing">
         <rdf:type rdf:resource="&kern;AtomicSystem"/>
         <kern:isAtomic rdf:datatype="&xsd;boolean">true</kern:isAtomic>
-        <kern:triggers rdf:resource="&urba;ExCommands"/>
-        <kern:triggers rdf:resource="&urba;ExDestinationReachedSignal"/>
+        <kern:triggers rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExCommands"/>
+        <kern:triggers rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExDestinationReachedSignal"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#SteeringWheel -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#SteeringWheel -->
 
-    <owl:NamedIndividual rdf:about="&urba;SteeringWheel">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#SteeringWheel">
         <rdf:type rdf:resource="&kern;AtomicSystem"/>
         <rdf:type rdf:resource="&syst;LocomotionHardware"/>
         <kern:isAtomic rdf:datatype="&xsd;boolean">true</kern:isAtomic>
@@ -392,57 +452,57 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#SteeringWheelCommandOutput -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#SteeringWheelCommandOutput -->
 
-    <owl:NamedIndividual rdf:about="&urba;SteeringWheelCommandOutput">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#SteeringWheelCommandOutput">
         <rdf:type rdf:resource="&kern;DriverToHardwareInteraction"/>
-        <kern:impacts rdf:resource="&urba;SteeringWheel"/>
+        <kern:impacts rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#SteeringWheel"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#SteeringWheelDriver -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#SteeringWheelDriver -->
 
-    <owl:NamedIndividual rdf:about="&urba;SteeringWheelDriver">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#SteeringWheelDriver">
         <rdf:type rdf:resource="&kern;AtomicSystem"/>
         <rdf:type rdf:resource="&syst;LocomotionDriver"/>
         <kern:isAtomic rdf:datatype="&xsd;boolean">true</kern:isAtomic>
-        <kern:triggers rdf:resource="&urba;SteeringWheelCommandOutput"/>
+        <kern:triggers rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#SteeringWheelCommandOutput"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#Taxi -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#Taxi -->
 
-    <owl:NamedIndividual rdf:about="&urba;Taxi">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#Taxi">
         <rdf:type rdf:resource="&robo;Car-likeVehicle"/>
         <kern:isAtomic rdf:datatype="&xsd;boolean">false</kern:isAtomic>
-        <kern:aggregates rdf:resource="&urba;LIDARSystem"/>
-        <robo:movesOver rdf:resource="&urba;PavinTerrain"/>
+        <kern:aggregates rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#LIDARSystem"/>
+        <robo:movesOver rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#PavinTerrain"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#TaxiMissionManager -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#TaxiMissionManager -->
 
-    <owl:NamedIndividual rdf:about="&urba;TaxiMissionManager">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#TaxiMissionManager">
         <rdf:type rdf:resource="&kern;AtomicSystem"/>
         <rdf:type rdf:resource="&kern;SoftwareModule"/>
         <rdf:type rdf:resource="&syst;MissionManagementSystem"/>
         <kern:isAtomic rdf:datatype="&xsd;boolean">true</kern:isAtomic>
-        <kern:triggers rdf:resource="&urba;ExDesiredDestination"/>
+        <kern:triggers rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExDesiredDestination"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl#TrajectoryPlanning -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#TrajectoryPlanning -->
 
-    <owl:NamedIndividual rdf:about="&urba;TrajectoryPlanning">
+    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#TrajectoryPlanning">
         <rdf:type rdf:resource="&kern;AtomicSystem"/>
         <rdf:type rdf:resource="&kern;SoftwareModule"/>
         <rdf:type rdf:resource="&syst;MotionPlanningSystem"/>
         <kern:isAtomic rdf:datatype="&xsd;boolean">true</kern:isAtomic>
-        <kern:triggers rdf:resource="&urba;ExTrajectory"/>
+        <kern:triggers rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExTrajectory"/>
     </owl:NamedIndividual>
 </rdf:RDF>
 
