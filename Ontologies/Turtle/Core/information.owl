@@ -1,0 +1,3112 @@
+@prefix : <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xsp: <http://www.owl-ontologies.com/2005/08/07/xsp.owl#> .
+@prefix info: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#> .
+@prefix kern: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix sqwrl: <http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
+@base <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl> .
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl> rdf:type owl:Ontology ;
+                                                                                                   
+                                                                                                   owl:versionInfo "version delivered 1.0"^^xsd:string ;
+                                                                                                   
+                                                                                                   rdfs:comment "FaCT++ does not work with this ontology. HermiT shall be used."@en ,
+                                                                                                                "The information ontology is based upon the kernel ontology. It explicits many of the concepts in the information kernel container."@en ,
+                                                                                                                "This work is based upon a previous one funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project (see http://www.anr-project.fr). It is the property of its authors and is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files)."@en ,
+                                                                                                                "Version for Protégé 4.x flavors."@en ;
+                                                                                                   
+                                                                                                   owl:imports <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl> ,
+                                                                                                               <http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl> ,
+                                                                                                               <http://swrl.stanford.edu/ontologies/3.3/swrla.owl> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#TODO
+
+kern:TODO rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.w3.org/2000/01/rdf-schema#comment
+
+rdfs:comment rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Datatypes
+#
+#################################################################
+
+
+###  http://www.w3.org/2001/XMLSchema#anySimpleType
+
+xsd:anySimpleType rdf:type rdfs:Datatype .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#canBeSavedin
+
+:canBeSavedin rdf:type owl:ObjectProperty ;
+              
+              rdfs:comment "Any kind of Data can be saved or stored in a file of the system."@en ;
+              
+              rdfs:range :ComputerFile ;
+              
+              rdfs:domain kern:Data .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#contains
+
+:contains rdf:type owl:ObjectProperty ;
+          
+          rdfs:comment "Relation between a group and its elements"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#containsAbstraction
+
+:containsAbstraction rdf:type owl:ObjectProperty ;
+                     
+                     rdfs:comment "This property is the mirror of the info:containsData property linking Collection to its values. It links Set to its values in Abstraction."@en ;
+                     
+                     rdfs:domain :Set ;
+                     
+                     rdfs:subPropertyOf :contains ;
+                     
+                     rdfs:range kern:Abstraction .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#containsAsKeys
+
+:containsAsKeys rdf:type owl:ObjectProperty ;
+                
+                rdfs:comment "To specify the keys used for each data in this AssociativeArray."^^xsd:string ;
+                
+                rdfs:domain :AssociativeArray ;
+                
+                rdfs:subPropertyOf :containsData ;
+                
+                rdfs:range kern:Data .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#containsData
+
+:containsData rdf:type owl:ObjectProperty ;
+              
+              rdfs:comment "This property is the mirror of the info:containsAbstraction property linking Set to its values. It links Collection to its values in Data."@en ;
+              
+              rdfs:domain :Collection ;
+              
+              rdfs:subPropertyOf :contains ;
+              
+              rdfs:range kern:Data .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#has3DRepresentation
+
+:has3DRepresentation rdf:type owl:ObjectProperty ;
+                     
+                     rdfs:comment "A physical object can be represented by a 3D object in a virtual world."@en ;
+                     
+                     rdfs:range :Object3D ;
+                     
+                     rdfs:domain kern:PhysicalObject ;
+                     
+                     rdfs:subPropertyOf kern:has .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#hasAMathematicalDatum
+
+:hasAMathematicalDatum rdf:type owl:ObjectProperty ;
+                       
+                       rdfs:domain :PhysicalData ;
+                       
+                       rdfs:subPropertyOf kern:has .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#hasAPhysicalQuantity
+
+:hasAPhysicalQuantity rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:comment "The physical quantity of a given unit"^^xsd:string ;
+                      
+                      rdfs:range :PhysicalQuantity ;
+                      
+                      rdfs:subPropertyOf kern:has ;
+                      
+                      rdfs:domain [ rdf:type owl:Class ;
+                                    owl:unionOf ( :PhysicalData
+                                                  :Unit
+                                                )
+                                  ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#hasAUnit
+
+:hasAUnit rdf:type owl:ObjectProperty ;
+          
+          rdfs:domain :PhysicalData ;
+          
+          rdfs:range :Unit ;
+          
+          rdfs:subPropertyOf kern:has .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#hasFunction
+
+:hasFunction rdf:type owl:ObjectProperty ;
+             
+             rdfs:range :Function ;
+             
+             rdfs:subPropertyOf kern:has ;
+             
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( :OrderedSet
+                                         :StructuredData
+                                       )
+                         ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#hasInput
+
+:hasInput rdf:type owl:FunctionalProperty ,
+                   owl:ObjectProperty ;
+          
+          rdfs:comment "specific properties of Functions that associate Set to Set"@en ;
+          
+          rdfs:domain :Function ;
+          
+          rdfs:range :Set ;
+          
+          rdfs:subPropertyOf :hasSet .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#hasOutput
+
+:hasOutput rdf:type owl:FunctionalProperty ,
+                    owl:ObjectProperty ;
+           
+           rdfs:comment "property associated to Function that links Set to Set"@en ;
+           
+           rdfs:domain :Function ;
+           
+           rdfs:range :Set ;
+           
+           rdfs:subPropertyOf :hasSet .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#hasPath
+
+:hasPath rdf:type owl:ObjectProperty ;
+         
+         rdfs:comment "A file has a string descriptor for its path which indicates its localization in the file system of the Operating System."@en ;
+         
+         rdfs:domain :ComputerFile ;
+         
+         rdfs:range :String ;
+         
+         rdfs:subPropertyOf kern:has .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#hasPhysicalCharacteristics
+
+:hasPhysicalCharacteristics rdf:type owl:ObjectProperty ;
+                            
+                            rdfs:comment "A physical object can have phycal information like, length, position, velocity, acceleration, etc.."@en ;
+                            
+                            rdfs:range :PhysicalData ;
+                            
+                            rdfs:domain kern:PhysicalObject ;
+                            
+                            rdfs:subPropertyOf kern:has .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#hasPositionRepresentation
+
+:hasPositionRepresentation rdf:type owl:ObjectProperty ;
+                           
+                           rdfs:comment "A position can have different types of representation depending on the world reference."@en ;
+                           
+                           rdfs:domain :Position ;
+                           
+                           rdfs:subPropertyOf kern:has ;
+                           
+                           rdfs:range [ rdf:type owl:Class ;
+                                        owl:unionOf ( :Position2DCartesian
+                                                      :Position2DPolar
+                                                      :Position3DCartesian
+                                                      :Position3DCylindrical
+                                                      :Position3DSpherical
+                                                      :Position6D
+                                                    )
+                                      ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#hasSet
+
+:hasSet rdf:type owl:ObjectProperty ;
+        
+        rdfs:comment "Whatever the information it can asks to be associated to Set."@en ;
+        
+        rdfs:range :Set ;
+        
+        rdfs:domain kern:Information ;
+        
+        rdfs:subPropertyOf kern:has .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#isRepresented
+
+:isRepresented rdf:type owl:ObjectProperty ;
+               
+               rdfs:comment "A file is represented by a binary stream stored in the file system of the operating system."@en ;
+               
+               rdfs:range :Binary ;
+               
+               rdfs:domain :ComputerFile .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#managesFile
+
+:managesFile rdf:type owl:ObjectProperty ;
+             
+             rdfs:comment "A computer file is indexed and stored in an File System. It represents the standard storage unit of the system."@en ;
+             
+             rdfs:range :ComputerFile ;
+             
+             rdfs:domain kern:FileSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasInput
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasInput> rdf:type owl:ObjectProperty .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Dimension
+
+:Dimension rdf:type owl:DatatypeProperty ;
+           
+           rdfs:comment "Number of set of the cross product"@en ;
+           
+           rdfs:domain :CrossProduct ;
+           
+           rdfs:range xsd:int .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#gps_UTC_time
+
+:gps_UTC_time rdf:type owl:DatatypeProperty ;
+              
+              rdfs:comment "UTC time for the current position"^^xsd:string ;
+              
+              rdfs:domain :GPS ;
+              
+              rdfs:range xsd:dateTime .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#gps_altitude_1
+
+:gps_altitude_1 rdf:type owl:DatatypeProperty ,
+                         owl:FunctionalProperty ;
+                
+                rdfs:comment "Altitude above mean sea level (in meters)"^^xsd:string ;
+                
+                rdfs:domain :GPS ;
+                
+                rdfs:range xsd:double .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#gps_altitude_2
+
+:gps_altitude_2 rdf:type owl:DatatypeProperty ,
+                         owl:FunctionalProperty ;
+                
+                rdfs:comment "Altitude above ellipsoid (in meters)"^^xsd:string ;
+                
+                rdfs:domain :GPS ;
+                
+                rdfs:range xsd:double .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#gps_heading
+
+:gps_heading rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty ;
+             
+             rdfs:comment "Current heading in degrees"^^xsd:string ;
+             
+             rdfs:domain :GPS ;
+             
+             rdfs:range xsd:double .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#gps_latitude
+
+:gps_latitude rdf:type owl:DatatypeProperty ,
+                       owl:FunctionalProperty ;
+              
+              rdfs:comment "WGS84 latitude (in degrees)"^^xsd:string ;
+              
+              rdfs:domain :GPS ;
+              
+              rdfs:range xsd:double .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#gps_longitude
+
+:gps_longitude rdf:type owl:DatatypeProperty ,
+                        owl:FunctionalProperty ;
+               
+               rdfs:comment "WGS84 longitude (in degrees)"^^xsd:string ;
+               
+               rdfs:domain :GPS ;
+               
+               rdfs:range xsd:double .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#gps_nb_sats
+
+:gps_nb_sats rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty ;
+             
+             rdfs:comment "Number of satellites in view"^^xsd:string ;
+             
+             rdfs:domain :GPS ;
+             
+             rdfs:range xsd:int .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#gps_quality_indicator
+
+:gps_quality_indicator rdf:type owl:DatatypeProperty ,
+                                owl:FunctionalProperty ;
+                       
+                       rdfs:comment """Normalized quality indicator.
+0 = invalid
+1 = GPS fix (SPS)
+2 = DGPS fix
+3 = PPS fix
+4 = Real Time Kinematic
+5 = Float RTK
+6 = estimated (dead reckoning) (2.3 feature)
+7 = Manual input mode
+8 = Simulation mode"""^^xsd:string ;
+                       
+                       rdfs:domain :GPS ;
+                       
+                       rdfs:range [ rdf:type rdfs:Datatype ;
+                                    owl:oneOf [ rdf:type rdf:List ;
+                                                rdf:first "0"^^xsd:int ;
+                                                rdf:rest [ rdf:type rdf:List ;
+                                                           rdf:first "1"^^xsd:int ;
+                                                           rdf:rest [ rdf:type rdf:List ;
+                                                                      rdf:first "2"^^xsd:int ;
+                                                                      rdf:rest [ rdf:type rdf:List ;
+                                                                                 rdf:first "3"^^xsd:int ;
+                                                                                 rdf:rest [ rdf:type rdf:List ;
+                                                                                            rdf:first "4"^^xsd:int ;
+                                                                                            rdf:rest [ rdf:type rdf:List ;
+                                                                                                       rdf:first "5"^^xsd:int ;
+                                                                                                       rdf:rest [ rdf:type rdf:List ;
+                                                                                                                  rdf:first "6"^^xsd:int ;
+                                                                                                                  rdf:rest [ rdf:type rdf:List ;
+                                                                                                                             rdf:first "7"^^xsd:int ;
+                                                                                                                             rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                        rdf:first "8"^^xsd:int ;
+                                                                                                                                        rdf:rest rdf:nil
+                                                                                                                                      ]
+                                                                                                                           ]
+                                                                                                                ]
+                                                                                                     ]
+                                                                                          ]
+                                                                               ]
+                                                                    ]
+                                                         ]
+                                              ]
+                                  ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#gps_speed_east
+
+:gps_speed_east rdf:type owl:DatatypeProperty ,
+                         owl:FunctionalProperty ;
+                
+                rdfs:comment "Current speed - East component (in m/s)"^^xsd:string ;
+                
+                rdfs:domain :GPS ;
+                
+                rdfs:range xsd:float .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#gps_speed_north
+
+:gps_speed_north rdf:type owl:DatatypeProperty ,
+                          owl:FunctionalProperty ;
+                 
+                 rdfs:comment "Current speed - North component (in m/s)"^^xsd:string ;
+                 
+                 rdfs:domain :GPS ;
+                 
+                 rdfs:range xsd:float .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#gps_speed_up
+
+:gps_speed_up rdf:type owl:DatatypeProperty ,
+                       owl:FunctionalProperty ;
+              
+              rdfs:comment "Current speed - Up component (in m/s)"^^xsd:string ;
+              
+              rdfs:domain :GPS ;
+              
+              rdfs:range xsd:float .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#hasValue
+
+:hasValue rdf:type owl:DatatypeProperty ;
+          
+          rdfs:comment "Protégé primitive value for Primitive data"^^xsd:string ;
+          
+          rdfs:domain :PrimitiveData ;
+          
+          rdfs:subPropertyOf owl:topDataProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#homogeneous
+
+:homogeneous rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty ;
+             
+             rdfs:comment "this property indicates the fact that the sets of the cross product are identical or not"@en ;
+             
+             rdfs:domain :CrossProduct ;
+             
+             rdfs:range [ rdf:type rdfs:Datatype ;
+                          owl:oneOf [ rdf:type rdf:List ;
+                                      rdf:first "false"^^xsd:boolean ;
+                                      rdf:rest [ rdf:type rdf:List ;
+                                                 rdf:first "true"^^xsd:boolean ;
+                                                 rdf:rest rdf:nil
+                                               ]
+                                    ]
+                        ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#image_coding
+
+:image_coding rdf:type owl:DatatypeProperty ,
+                       owl:FunctionalProperty ;
+              
+              rdfs:comment "Usually a four characters code"^^xsd:string ;
+              
+              rdfs:domain :Image ;
+              
+              rdfs:range xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#image_data
+
+:image_data rdf:type owl:DatatypeProperty ;
+            
+            rdfs:comment "Pixel data bytes"^^xsd:string ;
+            
+            rdfs:domain :Image ;
+            
+            rdfs:range xsd:byte .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#image_depth
+
+:image_depth rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty ;
+             
+             rdfs:comment "Depth of current pixels (usually 8 bits but can also be 10, 12, 16...)"^^xsd:string ;
+             
+             rdfs:domain :Image ;
+             
+             rdfs:range xsd:int .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#image_height
+
+:image_height rdf:type owl:DatatypeProperty ,
+                       owl:FunctionalProperty ;
+              
+              rdfs:comment "Number of lines."^^xsd:string ;
+              
+              rdfs:domain :Image ;
+              
+              rdfs:range xsd:int .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#image_nb_channels
+
+:image_nb_channels rdf:type owl:DatatypeProperty ;
+                   
+                   rdfs:comment "Number of channels in image (ex : GRAY = 1 chan, RGB  = 3 chans, RGBA = 4 chans)"^^xsd:string ;
+                   
+                   rdfs:domain :Image ;
+                   
+                   rdfs:range xsd:int .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#image_size
+
+:image_size rdf:type owl:DatatypeProperty ,
+                     owl:FunctionalProperty ;
+            
+            rdfs:comment "Size of pixel data in bytes."^^xsd:string ;
+            
+            rdfs:domain :Image ;
+            
+            rdfs:range xsd:int .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#image_width
+
+:image_width rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty ;
+             
+             rdfs:comment "Number of pixels per line."^^xsd:string ;
+             
+             rdfs:domain :Image ;
+             
+             rdfs:range xsd:int .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#isTimestampedBy
+
+:isTimestampedBy rdf:type owl:DatatypeProperty ,
+                          owl:FunctionalProperty ;
+                 
+                 rdfs:comment "this property memorises a date and hour associated to the Data itself. There is here neither description of the source of this tag (creation of the Data, emission of the data, else) nor of the entity responsible for the tag (physical or else)."@en ;
+                 
+                 rdfs:domain :TimeStampedData ;
+                 
+                 rdfs:range xsd:dateTime ;
+                 
+                 rdfs:subPropertyOf owl:topDataProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#producedTimestamp
+
+:producedTimestamp rdf:type owl:DatatypeProperty ;
+                   
+                   rdfs:domain kern:Clock ;
+                   
+                   rdfs:range xsd:dateTime .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#x
+
+:x rdf:type owl:DatatypeProperty ,
+            owl:FunctionalProperty ;
+   
+   rdfs:domain :Position2DCartesian ;
+   
+   rdfs:range xsd:double .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#y
+
+:y rdf:type owl:DatatypeProperty ,
+            owl:FunctionalProperty ;
+   
+   rdfs:domain :Position2DCartesian ;
+   
+   rdfs:range xsd:double .
+
+
+
+###  http://www.w3.org/2002/07/owl#topDataProperty
+
+owl:topDataProperty rdf:type owl:DatatypeProperty .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#ASCIICharacter
+
+:ASCIICharacter rdf:type owl:Class ;
+                
+                rdfs:subClassOf :Character ;
+                
+                owl:disjointWith :UTF8Character .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Acceleration
+
+:Acceleration rdf:type owl:Class ;
+              
+              rdfs:subClassOf :PhysicalData ;
+              
+              owl:disjointWith :Angle ,
+                               :Date ,
+                               :Distance ,
+                               :Duration ,
+                               :ElectricField ,
+                               :ElectricalCurrent ,
+                               :Energy ,
+                               :Force ,
+                               :Humidity ,
+                               :InstantPower ,
+                               :Luminosity ,
+                               :MagneticField ,
+                               :Mass ,
+                               :Orientation ,
+                               :Position ,
+                               :Pressure ,
+                               :RotationRate ,
+                               :Speed ,
+                               :Temperature ,
+                               :Torque ,
+                               :Voltage ,
+                               :Wavelength ,
+                               :Weight .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Angle
+
+:Angle rdf:type owl:Class ;
+       
+       rdfs:subClassOf :PhysicalData ;
+       
+       owl:disjointWith :Date ,
+                        :Distance ,
+                        :Duration ,
+                        :ElectricField ,
+                        :ElectricalCurrent ,
+                        :Energy ,
+                        :Force ,
+                        :Humidity ,
+                        :InstantPower ,
+                        :Luminosity ,
+                        :MagneticField ,
+                        :Mass ,
+                        :Orientation ,
+                        :Position ,
+                        :Pressure ,
+                        :RotationRate ,
+                        :Speed ,
+                        :Temperature ,
+                        :Torque ,
+                        :Voltage ,
+                        :Wavelength ,
+                        :Weight .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#AssociativeArray
+
+:AssociativeArray rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :Collection ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :containsAsKeys ;
+                                    owl:someValuesFrom kern:Data
+                                  ] ;
+                  
+                  owl:disjointWith :Sequence ;
+                  
+                  rdfs:comment "A set of pairs key/value where keys are unique."^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#AssociativeArrayForSimulation
+
+:AssociativeArrayForSimulation rdf:type owl:Class ;
+                               
+                               rdfs:subClassOf :AssociativeArray ;
+                               
+                               owl:disjointWith :I ,
+                                                :OrderedSetForSystemDescription ,
+                                                :R ;
+                               
+                               rdfs:comment "Any collection used for simulation purpose. As an Application, a simulation consumes lots of data such meshes of configuration files."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#AudioPacket
+
+:AudioPacket rdf:type owl:Class ;
+             
+             rdfs:subClassOf :ComposedData ;
+             
+             owl:disjointWith :CANFrame ,
+                              :GPS ,
+                              :Image ,
+                              :LaserScan ,
+                              :Message ,
+                              :MissionEvaluation ,
+                              :Object2D ,
+                              :Object3D ,
+                              :Orientation2DAngle ,
+                              :Orientation2DMatrix ,
+                              :Orientation3DEuler ,
+                              :Orientation3DMatrix ,
+                              :Orientation3DQuaternion ,
+                              :PhysicalData ,
+                              :Position2DCartesian ,
+                              :Position2DPolar ,
+                              :Position3DCartesian ,
+                              :Position3DCylindrical ,
+                              :Position3DSpherical ,
+                              :Position6D ,
+                              :Referential ,
+                              :StreamPacket ,
+                              :StructuredData ,
+                              :TimeStampedData ,
+                              :TrajectoryElement ,
+                              :Translation2D ,
+                              :Translation3D ,
+                              :UUID ,
+                              :Waypoint2D ,
+                              :Waypoint3D ;
+             
+             rdfs:comment ""^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#BiProduct
+
+:BiProduct rdf:type owl:Class ;
+           
+           rdfs:subClassOf :CrossProduct ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :containsAbstraction ;
+                             owl:cardinality "2"^^xsd:nonNegativeInteger
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :homogeneous ;
+                             owl:hasValue "true"^^xsd:boolean
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :Dimension ;
+                             owl:cardinality "2"^^xsd:nonNegativeInteger
+                           ] ;
+           
+           rdfs:comment "Necessary to have binary operations and thus functions."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Binary
+
+:Binary rdf:type owl:Class ;
+        
+        rdfs:subClassOf :PrimitiveData ;
+        
+        owl:disjointWith :Boolean ,
+                         :Character ,
+                         :Number ;
+        
+        rdfs:comment "Binary type of data is a way of representing computer processor instructions or computing information (any kind of computer data) by the use of the binary number system's two-binary digits 0 and 1. This is accomplished by assigning a bit string to each particular symbol or instruction."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Boolean
+
+:Boolean rdf:type owl:Class ;
+         
+         rdfs:subClassOf :PrimitiveData ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasValue ;
+                           owl:hasValue "true"^^xsd:boolean
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasValue ;
+                           owl:hasValue "false"^^xsd:boolean
+                         ] ;
+         
+         owl:disjointWith :Character ,
+                          :Number ;
+         
+         rdfs:comment "True or False"^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#BooleanSet
+
+:BooleanSet rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Set ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :containsAbstraction ;
+                              owl:someValuesFrom [ rdf:type owl:Class ;
+                                                   owl:unionOf ( :False
+                                                                 :True
+                                                               )
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty kern:isCodedIn ;
+                              owl:allValuesFrom :Boolean
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :containsAbstraction ;
+                              owl:cardinality "2"^^xsd:nonNegativeInteger
+                            ] ;
+            
+            owl:disjointWith :CrossProduct ,
+                             :OrderedSet ;
+            
+            rdfs:comment "It is the set composed of the true and false values."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#CANFrame
+
+:CANFrame rdf:type owl:Class ;
+          
+          rdfs:subClassOf :ComposedData ;
+          
+          owl:disjointWith :GPS ,
+                           :Image ,
+                           :LaserScan ,
+                           :Message ,
+                           :MissionEvaluation ,
+                           :Object2D ,
+                           :Object3D ,
+                           :Orientation2DAngle ,
+                           :Orientation2DMatrix ,
+                           :Orientation3DEuler ,
+                           :Orientation3DMatrix ,
+                           :Orientation3DQuaternion ,
+                           :PhysicalData ,
+                           :Position2DCartesian ,
+                           :Position2DPolar ,
+                           :Position3DCartesian ,
+                           :Position3DCylindrical ,
+                           :Position3DSpherical ,
+                           :Position6D ,
+                           :Referential ,
+                           :StreamPacket ,
+                           :StructuredData ,
+                           :TimeStampedData ,
+                           :TrajectoryElement ,
+                           :Translation2D ,
+                           :Translation3D ,
+                           :UUID ,
+                           :Waypoint2D ,
+                           :Waypoint3D .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Character
+
+:Character rdf:type owl:Class ;
+           
+           rdfs:subClassOf :PrimitiveData ;
+           
+           owl:disjointWith :Number ;
+           
+           rdfs:comment "A character"^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Collection
+
+:Collection rdf:type owl:Class ;
+            
+            rdfs:subClassOf :StructuredData ;
+            
+            rdfs:comment "Represents a possibly modifiable set of data with coherent types and fitted with a data structure (indexation, ad hoc or natural order, father/child relation, etc). This is not the collection that could exist to group the set as indicated in the Abstracted information (Set)."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Command
+
+:Command rdf:type owl:Class ;
+         
+         rdfs:subClassOf kern:Abstraction ;
+         
+         owl:disjointWith :Function ,
+                          :NumberAbstraction ,
+                          :OperationalInformation ,
+                          :PhysicalQuantity ,
+                          :Set ,
+                          :Tensor ,
+                          :Unit ,
+                          :Vector ,
+                          kern:LogicalExpression ,
+                          kern:State ;
+         
+         rdfs:comment "In computer science it is a keyword or a keystatement used to execute an action in a computer by means of a Command-line interface or commonly a Shell."@en ,
+                      "In control theory it is a message send to a system in order to take place in the control."@en ;
+         
+         kern:TODO "It is not an information concept. As shown by the comment specifying that it describes an input to control system, there is a need to describe a port called like that. More than that it is deemed necessary in control theory but doesn't seem to have any links with it."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#ComposedData
+
+:ComposedData rdf:type owl:Class ;
+              
+              rdfs:subClassOf kern:Data ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty kern:Implements ;
+                                owl:allValuesFrom :CrossProduct
+                              ] ;
+              
+              owl:disjointWith :PrimitiveData ;
+              
+              rdfs:comment """This represent any aggregation of heterogenous data with no specific structure (in the computer science meaning) which can be consistantly interpreted in robotics.
+Of course, this is not exhaustive. This class can be widely extended depending on application.
+See messages like defined in JAUS, FIPA, ADL..."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#ComputerFile
+
+:ComputerFile rdf:type owl:Class ;
+              
+              rdfs:subClassOf :TimeStampedData ;
+              
+              rdfs:comment "A computer file is a block of arbitrary information, or resource for storing information, which is available to a computer program and is usually based on some kind of durable storage. A file is durable in the sense that it remains available for programs to use after the current program has finished. It is indexed in a computer file system and has a file path within."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Constraint
+
+:Constraint rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Relation ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty kern:isCodedIn ;
+                              owl:allValuesFrom :String
+                            ] ;
+            
+            owl:disjointWith :SortingRelation ;
+            
+            rdfs:comment "It corresponds to a textual (IsCodedIn String) or mathematical (Abstraction) description of  what is allowed and what is forbidden during the course of the mission."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#CrossProduct
+
+:CrossProduct rdf:type owl:Class ;
+              
+              rdfs:subClassOf :Set ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :containsAbstraction ;
+                                owl:allValuesFrom :Set
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :Dimension ;
+                                owl:minCardinality "2"^^xsd:nonNegativeInteger
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :containsAbstraction ;
+                                owl:minCardinality "2"^^xsd:nonNegativeInteger
+                              ] ;
+              
+              owl:disjointWith :OrderedSet ;
+              
+              rdfs:comment "Cross Product means that the set is a composition of a list of ordered sets"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Date
+
+:Date rdf:type owl:Class ;
+      
+      rdfs:subClassOf :PhysicalData ;
+      
+      owl:disjointWith :Distance ,
+                       :Duration ,
+                       :ElectricField ,
+                       :ElectricalCurrent ,
+                       :Energy ,
+                       :Force ,
+                       :Humidity ,
+                       :InstantPower ,
+                       :Luminosity ,
+                       :MagneticField ,
+                       :Mass ,
+                       :Orientation ,
+                       :Position ,
+                       :Pressure ,
+                       :RotationRate ,
+                       :Speed ,
+                       :Temperature ,
+                       :Torque ,
+                       :Voltage ,
+                       :Wavelength ,
+                       :Weight .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Distance
+
+:Distance rdf:type owl:Class ;
+          
+          rdfs:subClassOf :PhysicalData ;
+          
+          owl:disjointWith :Duration ,
+                           :ElectricField ,
+                           :ElectricalCurrent ,
+                           :Energy ,
+                           :Force ,
+                           :Humidity ,
+                           :InstantPower ,
+                           :Luminosity ,
+                           :MagneticField ,
+                           :Mass ,
+                           :Orientation ,
+                           :Position ,
+                           :Pressure ,
+                           :RotationRate ,
+                           :Speed ,
+                           :Temperature ,
+                           :Torque ,
+                           :Voltage ,
+                           :Wavelength ,
+                           :Weight .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Duration
+
+:Duration rdf:type owl:Class ;
+          
+          rdfs:subClassOf :PhysicalData ;
+          
+          owl:disjointWith :ElectricField ,
+                           :ElectricalCurrent ,
+                           :Energy ,
+                           :Force ,
+                           :Humidity ,
+                           :InstantPower ,
+                           :Luminosity ,
+                           :MagneticField ,
+                           :Mass ,
+                           :Orientation ,
+                           :Position ,
+                           :Pressure ,
+                           :RotationRate ,
+                           :Speed ,
+                           :Temperature ,
+                           :Torque ,
+                           :Voltage ,
+                           :Wavelength ,
+                           :Weight .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#ElectricField
+
+:ElectricField rdf:type owl:Class ;
+               
+               rdfs:subClassOf :PhysicalData ;
+               
+               owl:disjointWith :ElectricalCurrent ,
+                                :Energy ,
+                                :Force ,
+                                :Humidity ,
+                                :InstantPower ,
+                                :Luminosity ,
+                                :MagneticField ,
+                                :Mass ,
+                                :Orientation ,
+                                :Position ,
+                                :Pressure ,
+                                :RotationRate ,
+                                :Speed ,
+                                :Temperature ,
+                                :Torque ,
+                                :Voltage ,
+                                :Wavelength ,
+                                :Weight .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#ElectricalCurrent
+
+:ElectricalCurrent rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :PhysicalData ;
+                   
+                   owl:disjointWith :Energy ,
+                                    :Force ,
+                                    :Humidity ,
+                                    :InstantPower ,
+                                    :Luminosity ,
+                                    :MagneticField ,
+                                    :Mass ,
+                                    :Orientation ,
+                                    :Position ,
+                                    :Pressure ,
+                                    :RotationRate ,
+                                    :Speed ,
+                                    :Temperature ,
+                                    :Torque ,
+                                    :Voltage ,
+                                    :Wavelength ,
+                                    :Weight .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Energy
+
+:Energy rdf:type owl:Class ;
+        
+        rdfs:subClassOf :PhysicalData ;
+        
+        owl:disjointWith :Force ,
+                         :Humidity ,
+                         :InstantPower ,
+                         :Luminosity ,
+                         :MagneticField ,
+                         :Mass ,
+                         :Orientation ,
+                         :Position ,
+                         :Pressure ,
+                         :RotationRate ,
+                         :Speed ,
+                         :Temperature ,
+                         :Torque ,
+                         :Voltage ,
+                         :Wavelength ,
+                         :Weight .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#False
+
+:False rdf:type owl:Class ;
+       
+       rdfs:subClassOf :NumberAbstraction ;
+       
+       owl:disjointWith :IntegerAbstraction ,
+                        :RealAbstraction ,
+                        :True ;
+       
+       rdfs:comment "necessary for the Boolean Set to exist. Embodies the false value"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#FixedPointNumber
+
+:FixedPointNumber rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :Real ;
+                  
+                  owl:disjointWith :FloatingPointNumber ;
+                  
+                  rdfs:comment "Number with a fixed precision."^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Float32
+
+:Float32 rdf:type owl:Class ;
+         
+         rdfs:subClassOf :FloatingPointNumber ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasValue ;
+                           owl:someValuesFrom xsd:float
+                         ] ;
+         
+         owl:disjointWith :Float64 ;
+         
+         rdfs:comment "IEEE 754-2008 float."^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Float64
+
+:Float64 rdf:type owl:Class ;
+         
+         rdfs:subClassOf :FloatingPointNumber ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasValue ;
+                           owl:someValuesFrom xsd:double
+                         ] ;
+         
+         rdfs:comment "IEEE 754-2008 double"^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#FloatingPointNumber
+
+:FloatingPointNumber rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :Real ;
+                     
+                     rdfs:comment "Number with a floatting precision."^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Force
+
+:Force rdf:type owl:Class ;
+       
+       rdfs:subClassOf :PhysicalData ;
+       
+       owl:disjointWith :Humidity ,
+                        :InstantPower ,
+                        :Luminosity ,
+                        :MagneticField ,
+                        :Mass ,
+                        :Orientation ,
+                        :Position ,
+                        :Pressure ,
+                        :RotationRate ,
+                        :Speed ,
+                        :Temperature ,
+                        :Torque ,
+                        :Voltage ,
+                        :Wavelength ,
+                        :Weight .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Function
+
+:Function rdf:type owl:Class ;
+          
+          rdfs:subClassOf kern:Abstraction ;
+          
+          owl:disjointWith :NumberAbstraction ,
+                           :OperationalInformation ,
+                           :PhysicalQuantity ,
+                           :Set ,
+                           :Tensor ,
+                           :Unit ,
+                           :Vector ,
+                           kern:LogicalExpression ,
+                           kern:State ;
+          
+          rdfs:comment "It represents mathematical functions as interaction between two sets."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#GPS
+
+:GPS rdf:type owl:Class ;
+     
+     rdfs:subClassOf :ComposedData ;
+     
+     owl:disjointWith :Image ,
+                      :LaserScan ,
+                      :Message ,
+                      :MissionEvaluation ,
+                      :Object2D ,
+                      :Object3D ,
+                      :Orientation2DAngle ,
+                      :Orientation2DMatrix ,
+                      :Orientation3DEuler ,
+                      :Orientation3DMatrix ,
+                      :Orientation3DQuaternion ,
+                      :PhysicalData ,
+                      :Position2DCartesian ,
+                      :Position2DPolar ,
+                      :Position3DCartesian ,
+                      :Position3DCylindrical ,
+                      :Position3DSpherical ,
+                      :Position6D ,
+                      :Referential ,
+                      :StreamPacket ,
+                      :StructuredData ,
+                      :TimeStampedData ,
+                      :TrajectoryElement ,
+                      :Translation2D ,
+                      :Translation3D ,
+                      :UUID ,
+                      :Waypoint2D ,
+                      :Waypoint3D ;
+     
+     rdfs:comment """GPS Position and attributes.
+Can be completed with additional attributes such as : satellites information, ephemerids information, pseudo ranges, dillution of precision, position and velocity var/covar matrices, horizontal and vertical protection levels, ..."""^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Humidity
+
+:Humidity rdf:type owl:Class ;
+          
+          rdfs:subClassOf :PhysicalData ;
+          
+          owl:disjointWith :InstantPower ,
+                           :Luminosity ,
+                           :MagneticField ,
+                           :Mass ,
+                           :Orientation ,
+                           :Position ,
+                           :Pressure ,
+                           :RotationRate ,
+                           :Speed ,
+                           :Temperature ,
+                           :Torque ,
+                           :Voltage ,
+                           :Wavelength ,
+                           :Weight .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#I
+
+:I rdf:type owl:Class ;
+   
+   rdfs:subClassOf :OrderedSet ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :containsAbstraction ;
+                     owl:allValuesFrom :IntegerAbstraction
+                   ] ;
+   
+   owl:disjointWith :OrderedSetForSystemDescription ,
+                    :R ;
+   
+   rdfs:comment "Integer set composed of integer values"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Image
+
+:Image rdf:type owl:Class ;
+       
+       rdfs:subClassOf :ComposedData ;
+       
+       owl:disjointWith :LaserScan ,
+                        :Message ,
+                        :MissionEvaluation ,
+                        :Object2D ,
+                        :Object3D ,
+                        :Orientation2DAngle ,
+                        :Orientation2DMatrix ,
+                        :Orientation3DEuler ,
+                        :Orientation3DMatrix ,
+                        :Orientation3DQuaternion ,
+                        :PhysicalData ,
+                        :Position2DCartesian ,
+                        :Position2DPolar ,
+                        :Position3DCartesian ,
+                        :Position3DCylindrical ,
+                        :Position3DSpherical ,
+                        :Position6D ,
+                        :Referential ,
+                        :StreamPacket ,
+                        :StructuredData ,
+                        :TimeStampedData ,
+                        :TrajectoryElement ,
+                        :Translation2D ,
+                        :Translation3D ,
+                        :UUID ,
+                        :Waypoint2D ,
+                        :Waypoint3D ;
+       
+       rdfs:comment "Representation of an image from a camera for instance"^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#In
+
+:In rdf:type owl:Class ;
+    
+    rdfs:subClassOf :CrossProduct ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :containsAbstraction ;
+                      owl:allValuesFrom :I
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :homogeneous ;
+                      owl:hasValue "true"^^xsd:boolean
+                    ] ;
+    
+    owl:disjointWith :Rn ;
+    
+    rdfs:comment "the In cross product is a very important one to be used throughout the simulation ontology"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#InstantPower
+
+:InstantPower rdf:type owl:Class ;
+              
+              rdfs:subClassOf :PhysicalData ;
+              
+              owl:disjointWith :Luminosity ,
+                               :MagneticField ,
+                               :Mass ,
+                               :Orientation ,
+                               :Position ,
+                               :Pressure ,
+                               :RotationRate ,
+                               :Speed ,
+                               :Temperature ,
+                               :Torque ,
+                               :Voltage ,
+                               :Wavelength ,
+                               :Weight .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Int16
+
+:Int16 rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Integer ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasValue ;
+                         owl:someValuesFrom xsd:short
+                       ] ;
+       
+       owl:disjointWith :Int32 ,
+                        :Int64 ,
+                        :Int8 ,
+                        :UInt16 ,
+                        :UInt32 ,
+                        :UInt64 ,
+                        :UInt8 ;
+       
+       rdfs:comment "Signed integer on 16 bits"^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Int32
+
+:Int32 rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Integer ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasValue ;
+                         owl:someValuesFrom xsd:int
+                       ] ;
+       
+       owl:disjointWith :Int64 ,
+                        :Int8 ,
+                        :UInt16 ,
+                        :UInt32 ,
+                        :UInt64 ,
+                        :UInt8 ;
+       
+       rdfs:comment "Signed integer on 32 bits"^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Int64
+
+:Int64 rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Integer ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasValue ;
+                         owl:someValuesFrom xsd:long
+                       ] ;
+       
+       owl:disjointWith :Int8 ,
+                        :UInt16 ,
+                        :UInt32 ,
+                        :UInt64 ,
+                        :UInt8 ;
+       
+       rdfs:comment "Signed integer on 64 bits"^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Int8
+
+:Int8 rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Integer ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasValue ;
+                        owl:someValuesFrom xsd:byte
+                      ] ;
+      
+      owl:disjointWith :UInt16 ,
+                       :UInt32 ,
+                       :UInt64 ,
+                       :UInt8 ;
+      
+      rdfs:comment "Signed integer on 8 bits"^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Integer
+
+:Integer rdf:type owl:Class ;
+         
+         rdfs:subClassOf :Number ;
+         
+         owl:disjointWith :Real ;
+         
+         rdfs:comment "abstraction of the different encodings of an integer in a computer"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#IntegerAbstraction
+
+:IntegerAbstraction rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :NumberAbstraction ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty kern:isCodedIn ;
+                                      owl:allValuesFrom :Integer
+                                    ] ;
+                    
+                    owl:disjointWith :RealAbstraction ,
+                                     :True ;
+                    
+                    rdfs:comment "it is necessary to express the mathematical object that is the Integer set that can be defined implicitly but must be coded explicitly"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#LaserScan
+
+:LaserScan rdf:type owl:Class ;
+           
+           rdfs:subClassOf :ComposedData ;
+           
+           owl:disjointWith :Message ,
+                            :MissionEvaluation ,
+                            :Object2D ,
+                            :Object3D ,
+                            :Orientation2DAngle ,
+                            :Orientation2DMatrix ,
+                            :Orientation3DEuler ,
+                            :Orientation3DMatrix ,
+                            :Orientation3DQuaternion ,
+                            :PhysicalData ,
+                            :Position2DCartesian ,
+                            :Position2DPolar ,
+                            :Position3DCartesian ,
+                            :Position3DCylindrical ,
+                            :Position3DSpherical ,
+                            :Position6D ,
+                            :Referential ,
+                            :StreamPacket ,
+                            :StructuredData ,
+                            :TimeStampedData ,
+                            :TrajectoryElement ,
+                            :Translation2D ,
+                            :Translation3D ,
+                            :UUID ,
+                            :Waypoint2D ,
+                            :Waypoint3D ;
+           
+           rdfs:comment "Data from a laser scanner sensor (ex : SICK, IBEO, HOKUYO...)"^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Luminosity
+
+:Luminosity rdf:type owl:Class ;
+            
+            rdfs:subClassOf :PhysicalData ;
+            
+            owl:disjointWith :MagneticField ,
+                             :Mass ,
+                             :Orientation ,
+                             :Position ,
+                             :Pressure ,
+                             :RotationRate ,
+                             :Speed ,
+                             :Temperature ,
+                             :Torque ,
+                             :Voltage ,
+                             :Wavelength ,
+                             :Weight .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#MagneticField
+
+:MagneticField rdf:type owl:Class ;
+               
+               rdfs:subClassOf :PhysicalData ;
+               
+               owl:disjointWith :Mass ,
+                                :Orientation ,
+                                :Position ,
+                                :Pressure ,
+                                :RotationRate ,
+                                :Speed ,
+                                :Temperature ,
+                                :Torque ,
+                                :Voltage ,
+                                :Wavelength ,
+                                :Weight .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Mass
+
+:Mass rdf:type owl:Class ;
+      
+      rdfs:subClassOf :PhysicalData ;
+      
+      owl:disjointWith :Orientation ,
+                       :Position ,
+                       :Pressure ,
+                       :RotationRate ,
+                       :Speed ,
+                       :Temperature ,
+                       :Torque ,
+                       :Voltage ,
+                       :Wavelength ,
+                       :Weight .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Message
+
+:Message rdf:type owl:Class ;
+         
+         rdfs:subClassOf :ComposedData ;
+         
+         owl:disjointWith :MissionEvaluation ,
+                          :Object2D ,
+                          :Object3D ,
+                          :Orientation2DAngle ,
+                          :Orientation2DMatrix ,
+                          :Orientation3DEuler ,
+                          :Orientation3DMatrix ,
+                          :Orientation3DQuaternion ,
+                          :PhysicalData ,
+                          :Position2DCartesian ,
+                          :Position2DPolar ,
+                          :Position3DCartesian ,
+                          :Position3DCylindrical ,
+                          :Position3DSpherical ,
+                          :Position6D ,
+                          :Referential ,
+                          :StreamPacket ,
+                          :StructuredData ,
+                          :TimeStampedData ,
+                          :TrajectoryElement ,
+                          :Translation2D ,
+                          :Translation3D ,
+                          :UUID ,
+                          :Waypoint2D ,
+                          :Waypoint3D ;
+         
+         rdfs:comment """Any message with
+Type : info, warning, error...
+Importance / Priority : a level of importance
+Message code and/or text info."""^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#MissionEvaluation
+
+:MissionEvaluation rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :ComposedData ;
+                   
+                   owl:disjointWith :Object2D ,
+                                    :Object3D ,
+                                    :Orientation2DAngle ,
+                                    :Orientation2DMatrix ,
+                                    :Orientation3DEuler ,
+                                    :Orientation3DMatrix ,
+                                    :Orientation3DQuaternion ,
+                                    :PhysicalData ,
+                                    :Position2DCartesian ,
+                                    :Position2DPolar ,
+                                    :Position3DCartesian ,
+                                    :Position3DCylindrical ,
+                                    :Position3DSpherical ,
+                                    :Position6D ,
+                                    :Referential ,
+                                    :StreamPacket ,
+                                    :StructuredData ,
+                                    :TimeStampedData ,
+                                    :TrajectoryElement ,
+                                    :Translation2D ,
+                                    :Translation3D ,
+                                    :UUID ,
+                                    :Waypoint2D ,
+                                    :Waypoint3D ;
+                   
+                   rdfs:comment "Information at the end of the mission putting in contrast the achievement of the objectives with the real final results gotten. It could be presented in a statistic format."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Number
+
+:Number rdf:type owl:Class ;
+        
+        rdfs:subClassOf :PrimitiveData ;
+        
+        rdfs:comment "A computer representation of a numeric value"^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#NumberAbstraction
+
+:NumberAbstraction rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf kern:Abstraction ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty kern:isCodedIn ;
+                                     owl:allValuesFrom :PrimitiveData
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasSet ;
+                                     owl:cardinality "0"^^xsd:nonNegativeInteger
+                                   ] ;
+                   
+                   owl:disjointWith :OperationalInformation ,
+                                    :PhysicalQuantity ,
+                                    :Set ,
+                                    :Tensor ,
+                                    :Unit ,
+                                    :Vector ,
+                                    kern:LogicalExpression ,
+                                    kern:State ;
+                   
+                   rdfs:comment "In order to be able to manipulate abstract values, we need to define them and it is what is done here."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Object2D
+
+:Object2D rdf:type owl:Class ;
+          
+          rdfs:subClassOf :ComposedData ;
+          
+          owl:disjointWith :Object3D ,
+                           :Orientation2DAngle ,
+                           :Orientation2DMatrix ,
+                           :Orientation3DEuler ,
+                           :Orientation3DMatrix ,
+                           :Orientation3DQuaternion ,
+                           :PhysicalData ,
+                           :Position2DCartesian ,
+                           :Position2DPolar ,
+                           :Position3DCartesian ,
+                           :Position3DCylindrical ,
+                           :Position3DSpherical ,
+                           :Position6D ,
+                           :Referential ,
+                           :StreamPacket ,
+                           :StructuredData ,
+                           :TimeStampedData ,
+                           :TrajectoryElement ,
+                           :Translation2D ,
+                           :Translation3D ,
+                           :UUID ,
+                           :Waypoint2D ,
+                           :Waypoint3D ;
+          
+          rdfs:comment """Primitive representation of a 2D object (position, width, length, color, kind...)
+Ex : rectangle, circle, disc, line, ellipse, spot, ..."""^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Object3D
+
+:Object3D rdf:type owl:Class ;
+          
+          rdfs:subClassOf :ComposedData ;
+          
+          owl:disjointWith :Orientation2DAngle ,
+                           :Orientation2DMatrix ,
+                           :Orientation3DEuler ,
+                           :Orientation3DMatrix ,
+                           :Orientation3DQuaternion ,
+                           :PhysicalData ,
+                           :Position2DCartesian ,
+                           :Position2DPolar ,
+                           :Position3DCartesian ,
+                           :Position3DCylindrical ,
+                           :Position3DSpherical ,
+                           :Position6D ,
+                           :Referential ,
+                           :StreamPacket ,
+                           :StructuredData ,
+                           :TimeStampedData ,
+                           :TrajectoryElement ,
+                           :Translation2D ,
+                           :Translation3D ,
+                           :UUID ,
+                           :Waypoint2D ,
+                           :Waypoint3D ;
+          
+          rdfs:comment """Primitive representation of 3D object (position, orientation, width, length, height, kind, color...)
+Ex : sphere, box,..."""^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#OperationalInformation
+
+:OperationalInformation rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf kern:Abstraction ;
+                        
+                        owl:disjointWith :PhysicalQuantity ,
+                                         :Set ,
+                                         :Tensor ,
+                                         :Unit ,
+                                         :Vector ,
+                                         kern:LogicalExpression ,
+                                         kern:State ;
+                        
+                        rdfs:comment "Here are grouped the information that are used to describe operations of robots in environment. It is all the elements that can be shared between robots and human (or between agents)."@en ;
+                        
+                        kern:TODO "What are the characteristics expressed as new properties or realtionships that this concept exhibits ?"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#OrderedSet
+
+:OrderedSet rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Set ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasFunction ;
+                              owl:minCardinality "1"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasFunction ;
+                              owl:someValuesFrom :SortingRelation
+                            ] ;
+            
+            owl:versionInfo "TODO: create the mirror in the Data:Collection (could be many)"^^xsd:string ;
+            
+            rdfs:comment """It is a Set which elements respect a law ordering them :
+aRb true and bRa true implies a=b."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#OrderedSetForSystemDescription
+
+:OrderedSetForSystemDescription rdf:type owl:Class ;
+                                
+                                rdfs:subClassOf :OrderedSet ;
+                                
+                                owl:disjointWith :R ;
+                                
+                                rdfs:comment "Any ordered set used for system description purpose."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Orientation
+
+:Orientation rdf:type owl:Class ;
+             
+             rdfs:subClassOf :PhysicalData ;
+             
+             owl:disjointWith :Position ,
+                              :Pressure ,
+                              :RotationRate ,
+                              :Speed ,
+                              :Temperature ,
+                              :Torque ,
+                              :Voltage ,
+                              :Wavelength ,
+                              :Weight .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Orientation2DAngle
+
+:Orientation2DAngle rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :ComposedData ;
+                    
+                    owl:disjointWith :Orientation2DMatrix ,
+                                     :Orientation3DEuler ,
+                                     :Orientation3DMatrix ,
+                                     :Orientation3DQuaternion ,
+                                     :PhysicalData ,
+                                     :Position2DCartesian ,
+                                     :Position2DPolar ,
+                                     :Position3DCartesian ,
+                                     :Position3DCylindrical ,
+                                     :Position3DSpherical ,
+                                     :Position6D ,
+                                     :Referential ,
+                                     :StreamPacket ,
+                                     :StructuredData ,
+                                     :TimeStampedData ,
+                                     :TrajectoryElement ,
+                                     :Translation2D ,
+                                     :Translation3D ,
+                                     :UUID ,
+                                     :Waypoint2D ,
+                                     :Waypoint3D .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Orientation2DMatrix
+
+:Orientation2DMatrix rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :ComposedData ;
+                     
+                     owl:disjointWith :Orientation3DEuler ,
+                                      :Orientation3DMatrix ,
+                                      :Orientation3DQuaternion ,
+                                      :PhysicalData ,
+                                      :Position2DCartesian ,
+                                      :Position2DPolar ,
+                                      :Position3DCartesian ,
+                                      :Position3DCylindrical ,
+                                      :Position3DSpherical ,
+                                      :Position6D ,
+                                      :Referential ,
+                                      :StreamPacket ,
+                                      :StructuredData ,
+                                      :TimeStampedData ,
+                                      :TrajectoryElement ,
+                                      :Translation2D ,
+                                      :Translation3D ,
+                                      :UUID ,
+                                      :Waypoint2D ,
+                                      :Waypoint3D .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Orientation3DEuler
+
+:Orientation3DEuler rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :ComposedData ;
+                    
+                    owl:disjointWith :Orientation3DMatrix ,
+                                     :Orientation3DQuaternion ,
+                                     :PhysicalData ,
+                                     :Position2DCartesian ,
+                                     :Position2DPolar ,
+                                     :Position3DCartesian ,
+                                     :Position3DCylindrical ,
+                                     :Position3DSpherical ,
+                                     :Position6D ,
+                                     :Referential ,
+                                     :StreamPacket ,
+                                     :StructuredData ,
+                                     :TimeStampedData ,
+                                     :TrajectoryElement ,
+                                     :Translation2D ,
+                                     :Translation3D ,
+                                     :UUID ,
+                                     :Waypoint2D ,
+                                     :Waypoint3D .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Orientation3DMatrix
+
+:Orientation3DMatrix rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :ComposedData ;
+                     
+                     owl:disjointWith :Orientation3DQuaternion ,
+                                      :PhysicalData ,
+                                      :Position2DCartesian ,
+                                      :Position2DPolar ,
+                                      :Position3DCartesian ,
+                                      :Position3DCylindrical ,
+                                      :Position3DSpherical ,
+                                      :Position6D ,
+                                      :Referential ,
+                                      :StreamPacket ,
+                                      :StructuredData ,
+                                      :TimeStampedData ,
+                                      :TrajectoryElement ,
+                                      :Translation2D ,
+                                      :Translation3D ,
+                                      :UUID ,
+                                      :Waypoint2D ,
+                                      :Waypoint3D .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Orientation3DQuaternion
+
+:Orientation3DQuaternion rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf :ComposedData ;
+                         
+                         owl:disjointWith :PhysicalData ,
+                                          :Position2DCartesian ,
+                                          :Position2DPolar ,
+                                          :Position3DCartesian ,
+                                          :Position3DCylindrical ,
+                                          :Position3DSpherical ,
+                                          :Position6D ,
+                                          :Referential ,
+                                          :StreamPacket ,
+                                          :StructuredData ,
+                                          :TimeStampedData ,
+                                          :TrajectoryElement ,
+                                          :Translation2D ,
+                                          :Translation3D ,
+                                          :UUID ,
+                                          :Waypoint2D ,
+                                          :Waypoint3D .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#PhysicalData
+
+:PhysicalData rdf:type owl:Class ;
+              
+              rdfs:subClassOf :Real ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasAUnit ;
+                                owl:onClass :Unit ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                              ] ;
+              
+              owl:disjointWith :Position2DCartesian ,
+                               :Position2DPolar ,
+                               :Position3DCartesian ,
+                               :Position3DCylindrical ,
+                               :Position3DSpherical ,
+                               :Position6D ,
+                               :Referential ,
+                               :StreamPacket ,
+                               :StructuredData ,
+                               :TimeStampedData ,
+                               :TrajectoryElement ,
+                               :Translation2D ,
+                               :Translation3D ,
+                               :UUID ,
+                               :Waypoint2D ,
+                               :Waypoint3D ;
+              
+              rdfs:comment "This represents the composition of a mathematical algebric object with an associated physical unit."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#PhysicalQuantity
+
+:PhysicalQuantity rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf kern:Abstraction ;
+                  
+                  owl:disjointWith :Set ,
+                                   :Tensor ,
+                                   :Unit ,
+                                   :Vector ,
+                                   kern:LogicalExpression ,
+                                   kern:State ;
+                  
+                  rdfs:comment """Corresponds to the physical quantities that can all be created from the seven standard quantities :
+- Length
+- Time
+- Mass
+- Electric current
+- Thermodynamic temperature
+- Amount of substance 
+- Luminous intensity
+Although angle are generally considered as dimensionless, we can add them for convenience"""^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Position
+
+:Position rdf:type owl:Class ;
+          
+          rdfs:subClassOf :PhysicalData ;
+          
+          owl:disjointWith :Pressure ,
+                           :RotationRate ,
+                           :Speed ,
+                           :Temperature ,
+                           :Torque ,
+                           :Voltage ,
+                           :Wavelength ,
+                           :Weight .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Position2DCartesian
+
+:Position2DCartesian rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :ComposedData ;
+                     
+                     owl:disjointWith :Position2DPolar ,
+                                      :Position3DCartesian ,
+                                      :Position3DCylindrical ,
+                                      :Position3DSpherical ,
+                                      :Position6D ,
+                                      :Referential ,
+                                      :StreamPacket ,
+                                      :StructuredData ,
+                                      :TimeStampedData ,
+                                      :TrajectoryElement ,
+                                      :Translation2D ,
+                                      :Translation3D ,
+                                      :UUID ,
+                                      :Waypoint2D ,
+                                      :Waypoint3D .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Position2DPolar
+
+:Position2DPolar rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :ComposedData ;
+                 
+                 owl:disjointWith :Position3DCartesian ,
+                                  :Position3DCylindrical ,
+                                  :Position3DSpherical ,
+                                  :Position6D ,
+                                  :Referential ,
+                                  :StreamPacket ,
+                                  :StructuredData ,
+                                  :TimeStampedData ,
+                                  :TrajectoryElement ,
+                                  :Translation2D ,
+                                  :Translation3D ,
+                                  :UUID ,
+                                  :Waypoint2D ,
+                                  :Waypoint3D .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Position3DCartesian
+
+:Position3DCartesian rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :ComposedData ;
+                     
+                     owl:disjointWith :Position3DCylindrical ,
+                                      :Position3DSpherical ,
+                                      :Position6D ,
+                                      :Referential ,
+                                      :StreamPacket ,
+                                      :StructuredData ,
+                                      :TimeStampedData ,
+                                      :TrajectoryElement ,
+                                      :Translation2D ,
+                                      :Translation3D ,
+                                      :UUID ,
+                                      :Waypoint2D ,
+                                      :Waypoint3D .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Position3DCylindrical
+
+:Position3DCylindrical rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf :ComposedData ;
+                       
+                       owl:disjointWith :Position3DSpherical ,
+                                        :Position6D ,
+                                        :Referential ,
+                                        :StreamPacket ,
+                                        :StructuredData ,
+                                        :TimeStampedData ,
+                                        :TrajectoryElement ,
+                                        :Translation2D ,
+                                        :Translation3D ,
+                                        :UUID ,
+                                        :Waypoint2D ,
+                                        :Waypoint3D .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Position3DSpherical
+
+:Position3DSpherical rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :ComposedData ;
+                     
+                     owl:disjointWith :Position6D ,
+                                      :Referential ,
+                                      :StreamPacket ,
+                                      :StructuredData ,
+                                      :TimeStampedData ,
+                                      :TrajectoryElement ,
+                                      :Translation2D ,
+                                      :Translation3D ,
+                                      :UUID ,
+                                      :Waypoint2D ,
+                                      :Waypoint3D .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Position6D
+
+:Position6D rdf:type owl:Class ;
+            
+            rdfs:subClassOf :ComposedData ;
+            
+            owl:disjointWith :Referential ,
+                             :StreamPacket ,
+                             :StructuredData ,
+                             :TimeStampedData ,
+                             :TrajectoryElement ,
+                             :Translation2D ,
+                             :Translation3D ,
+                             :UUID ,
+                             :Waypoint2D ,
+                             :Waypoint3D ;
+            
+            rdfs:comment "3D position + orientation quaternion"^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Pressure
+
+:Pressure rdf:type owl:Class ;
+          
+          rdfs:subClassOf :PhysicalData ;
+          
+          owl:disjointWith :RotationRate ,
+                           :Speed ,
+                           :Temperature ,
+                           :Torque ,
+                           :Voltage ,
+                           :Wavelength ,
+                           :Weight .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#PrimitiveData
+
+:PrimitiveData rdf:type owl:Class ;
+               
+               rdfs:subClassOf kern:Data ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasValue ;
+                                 owl:someValuesFrom xsd:anySimpleType
+                               ] ;
+               
+               owl:disjointWith :TimeStampedData ;
+               
+               rdfs:comment """This is a type of Data which corresponds to the primitives of the standard computing interpretation:
+boolean, classical number representation (int, double, ...), character"""^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#R
+
+:R rdf:type owl:Class ;
+   
+   rdfs:subClassOf :OrderedSet ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :containsAbstraction ;
+                     owl:allValuesFrom :RealAbstraction
+                   ] ;
+   
+   rdfs:comment "Real set composed of real"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Real
+
+:Real rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Number ;
+      
+      rdfs:comment "abstraction of the different encodings of a real in a computer"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#RealAbstraction
+
+:RealAbstraction rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :NumberAbstraction ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty kern:isCodedIn ;
+                                   owl:allValuesFrom :Real
+                                 ] ;
+                 
+                 owl:disjointWith :True ;
+                 
+                 rdfs:comment "it is necessary to express the mathematical object that is the Real set that can be defined implicitly but must be coded explicitly"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Referential
+
+:Referential rdf:type owl:Class ;
+             
+             rdfs:subClassOf :ComposedData ;
+             
+             owl:disjointWith :StreamPacket ,
+                              :StructuredData ,
+                              :TimeStampedData ,
+                              :TrajectoryElement ,
+                              :Translation2D ,
+                              :Translation3D ,
+                              :UUID ,
+                              :Waypoint2D ,
+                              :Waypoint3D ;
+             
+             rdfs:comment """ID and info about a given referential.
+(parent referential if any, projection information...)"""^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Relation
+
+:Relation rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Function ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasOutput ;
+                            owl:allValuesFrom :BooleanSet
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasInput> ;
+                            owl:allValuesFrom :BiProduct
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasSet ;
+                            owl:cardinality "2"^^xsd:nonNegativeInteger
+                          ] ;
+          
+          owl:disjointWith :TrajectoryFunction ,
+                           kern:LogicalExpression ,
+                           kern:State ;
+          
+          rdfs:comment """The relation is an abstract concept to be used in order to express properties between elements of a set (see info:Collection:Set). It allows its user to create structure if the relation(s) have the \"good\" properties.
+Relation is linking two elements of the same Set and assumes this link is either true or false. The relation is a function with two sets one being the cross product and the second being the Boolean set."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Rn
+
+:Rn rdf:type owl:Class ;
+    
+    rdfs:subClassOf :CrossProduct ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :homogeneous ;
+                      owl:hasValue "true"^^xsd:boolean
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :containsAbstraction ;
+                      owl:someValuesFrom :R
+                    ] ;
+    
+    rdfs:comment "the Rn cross product is a very important one to be used throughout the simulation ontology"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#RotationRate
+
+:RotationRate rdf:type owl:Class ;
+              
+              rdfs:subClassOf :PhysicalData ;
+              
+              owl:disjointWith :Speed ,
+                               :Temperature ,
+                               :Torque ,
+                               :Voltage ,
+                               :Wavelength ,
+                               :Weight .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Sequence
+
+:Sequence rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Collection ;
+          
+          rdfs:comment "A collection of ordered elements with possible repetition"^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Set
+
+:Set rdf:type owl:Class ;
+     
+     rdfs:subClassOf kern:Abstraction ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty kern:isCodedIn ;
+                       owl:allValuesFrom :Collection
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :hasSet ;
+                       owl:cardinality "0"^^xsd:nonNegativeInteger
+                     ] ;
+     
+     owl:disjointWith :Tensor ,
+                      :Unit ,
+                      :Vector ,
+                      kern:LogicalExpression ,
+                      kern:State ;
+     
+     rdfs:comment "a Set is not associated with any Set. This recursivity is forbidden as it would not allow to"^^xsd:string ,
+                  "Set means some collection of object having some commonalities between them."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#SortingRelation
+
+:SortingRelation rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :Relation ;
+                 
+                 rdfs:comment "this relation allows to state if some element is greater than another one. Often its symbol is < or >"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Speed
+
+:Speed rdf:type owl:Class ;
+       
+       rdfs:subClassOf :PhysicalData ;
+       
+       owl:disjointWith :Temperature ,
+                        :Torque ,
+                        :Voltage ,
+                        :Wavelength ,
+                        :Weight .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#StreamPacket
+
+:StreamPacket rdf:type owl:Class ;
+              
+              rdfs:subClassOf :ComposedData ;
+              
+              owl:disjointWith :StructuredData ,
+                               :TimeStampedData ,
+                               :TrajectoryElement ,
+                               :Translation2D ,
+                               :Translation3D ,
+                               :UUID ,
+                               :Waypoint2D ,
+                               :Waypoint3D ;
+              
+              rdfs:comment "Packet of bytes."^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#String
+
+:String rdf:type owl:Class ;
+        
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasValue ;
+                              owl:someValuesFrom xsd:string
+                            ] ;
+        
+        rdfs:subClassOf :PrimitiveData ;
+        
+        rdfs:comment "I'm a sequence of characters, but I am a primitive data and not a Collection/Sequence of Characters..."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#StructuredData
+
+:StructuredData rdf:type owl:Class ;
+                
+                rdfs:subClassOf :ComposedData ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasSet ;
+                                  owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                ] ;
+                
+                owl:disjointWith :TimeStampedData ,
+                                 :TrajectoryElement ,
+                                 :Translation2D ,
+                                 :Translation3D ,
+                                 :UUID ,
+                                 :Waypoint2D ,
+                                 :Waypoint3D ;
+                
+                owl:versionInfo """TODO: the structured data as it is defiend should be abstract as it is asociated with abstraction through hasSet and hasFunction. As it is a data, it is mandatory to be able to save it in a Computer file... The Set and the function cannot...
+In order to solve this point, we could keep the \"info:hasSet\" and add a property specifying that it is implemented."""^^xsd:string ;
+                
+                rdfs:comment "A structure is a set associated with relations that obeys rules and functions that links the sets (if the input set is a cross product). These rules allow to state properties onto the set on which the relations(s) applies and the functions allows to explain how to create elemnts of some subsets from others."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Temperature
+
+:Temperature rdf:type owl:Class ;
+             
+             rdfs:subClassOf :PhysicalData ;
+             
+             owl:disjointWith :Torque ,
+                              :Voltage ,
+                              :Wavelength ,
+                              :Weight .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Tensor
+
+:Tensor rdf:type owl:Class ;
+        
+        rdfs:subClassOf kern:Abstraction ;
+        
+        owl:disjointWith :Unit ,
+                         :Vector ,
+                         kern:LogicalExpression ,
+                         kern:State .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#TimeStampedData
+
+:TimeStampedData rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :ComposedData ;
+                 
+                 owl:disjointWith :TrajectoryElement ,
+                                  :Translation2D ,
+                                  :Translation3D ,
+                                  :UUID ,
+                                  :Waypoint2D ,
+                                  :Waypoint3D ;
+                 
+                 rdfs:comment "The composition of any information with a timestamp that may represent its creation date"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Torque
+
+:Torque rdf:type owl:Class ;
+        
+        rdfs:subClassOf :PhysicalData ;
+        
+        owl:disjointWith :Voltage ,
+                         :Wavelength ,
+                         :Weight .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#TrajectoryElement
+
+:TrajectoryElement rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :ComposedData ;
+                   
+                   owl:disjointWith :Translation2D ,
+                                    :Translation3D ,
+                                    :UUID ,
+                                    :Waypoint2D ,
+                                    :Waypoint3D .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#TrajectoryFunction
+
+:TrajectoryFunction rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :Function ;
+                    
+                    rdfs:comment "Representation of the geometry of the path over time by means of equations."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Translation2D
+
+:Translation2D rdf:type owl:Class ;
+               
+               rdfs:subClassOf :ComposedData ;
+               
+               owl:disjointWith :Translation3D ,
+                                :UUID ,
+                                :Waypoint2D ,
+                                :Waypoint3D .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Translation3D
+
+:Translation3D rdf:type owl:Class ;
+               
+               rdfs:subClassOf :ComposedData ;
+               
+               owl:disjointWith :UUID ,
+                                :Waypoint2D ,
+                                :Waypoint3D .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#True
+
+:True rdf:type owl:Class ;
+      
+      rdfs:subClassOf :NumberAbstraction ;
+      
+      rdfs:comment "necessary for the Boolean Set to exist. Embodies the true value"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#UInt16
+
+:UInt16 rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Integer ;
+        
+        owl:disjointWith :UInt32 ,
+                         :UInt64 ,
+                         :UInt8 ;
+        
+        rdfs:comment "Unsigned integer on 16 bits"^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#UInt32
+
+:UInt32 rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Integer ;
+        
+        owl:disjointWith :UInt64 ,
+                         :UInt8 ;
+        
+        rdfs:comment "Unsigned integer on 32 bits"^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#UInt64
+
+:UInt64 rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Integer ;
+        
+        owl:disjointWith :UInt8 ;
+        
+        rdfs:comment "Unsigned integer on 64 bits"^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#UInt8
+
+:UInt8 rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Integer ;
+       
+       rdfs:comment "Unsigned integer on 8 bits"^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#UTF8Character
+
+:UTF8Character rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Character .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#UUID
+
+:UUID rdf:type owl:Class ;
+      
+      rdfs:subClassOf :ComposedData ;
+      
+      owl:disjointWith :Waypoint2D ,
+                       :Waypoint3D ;
+      
+      rdfs:comment "Universal Unique ID (128 bits)"^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Unit
+
+:Unit rdf:type owl:Class ;
+      
+      rdfs:subClassOf kern:Abstraction ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasAPhysicalQuantity ;
+                        owl:onClass :PhysicalQuantity ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                      ] ;
+      
+      owl:disjointWith :Vector ,
+                       kern:LogicalExpression ,
+                       kern:State ;
+      
+      rdfs:comment "Contains the possible phisical units, SI or not. Every unit has a physical dimension"^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Vector
+
+:Vector rdf:type owl:Class ;
+        
+        rdfs:subClassOf kern:Abstraction ;
+        
+        owl:disjointWith kern:LogicalExpression ,
+                         kern:State .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Voltage
+
+:Voltage rdf:type owl:Class ;
+         
+         rdfs:subClassOf :PhysicalData ;
+         
+         owl:disjointWith :Wavelength ,
+                          :Weight .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Wavelength
+
+:Wavelength rdf:type owl:Class ;
+            
+            rdfs:subClassOf :PhysicalData ;
+            
+            owl:disjointWith :Weight .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Waypoint2D
+
+:Waypoint2D rdf:type owl:Class ;
+            
+            rdfs:subClassOf :ComposedData ;
+            
+            owl:disjointWith :Waypoint3D .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Waypoint3D
+
+:Waypoint3D rdf:type owl:Class ;
+            
+            rdfs:subClassOf :ComposedData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Weight
+
+:Weight rdf:type owl:Class ;
+        
+        rdfs:subClassOf :PhysicalData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Data
+
+kern:Data rdf:type owl:Class ;
+          
+          owl:versionInfo "TODO: Data is defiend in kernel but is completed in information by the canBeSavedIn. Could be that it is not necessary to add this property in information meaning we should move info:ComputerFile also. To be discussed."^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#LogicalExpression
+
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#State
+
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#amount_of_substance
+
+:amount_of_substance rdf:type :PhysicalQuantity ,
+                              owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#angle
+
+:angle rdf:type :PhysicalQuantity ,
+                owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#degree
+
+:degree rdf:type :Unit ,
+                 owl:NamedIndividual ;
+        
+        :hasAPhysicalQuantity :angle .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#electric_current
+
+:electric_current rdf:type :PhysicalQuantity ,
+                           owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#emptySet
+
+:emptySet rdf:type :Set ,
+                   owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#false
+
+:false rdf:type :Boolean ,
+                owl:NamedIndividual ;
+       
+       :hasValue "false"^^xsd:boolean .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#inch
+
+:inch rdf:type :Unit ,
+               owl:NamedIndividual ;
+      
+      :hasAPhysicalQuantity :length .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#length
+
+:length rdf:type :PhysicalQuantity ,
+                 owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#luminous_intensity
+
+:luminous_intensity rdf:type :PhysicalQuantity ,
+                             owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#mass
+
+:mass rdf:type :PhysicalQuantity ,
+               owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#meter
+
+:meter rdf:type :Unit ,
+                owl:NamedIndividual ;
+       
+       :hasAPhysicalQuantity :length .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#number-0.72_asFloat64
+
+:number-0.72_asFloat64 rdf:type :Float64 ,
+                                owl:NamedIndividual ;
+                       
+                       :hasValue "-0.72"^^xsd:double .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#number12999.9_asFloat64
+
+:number12999.9_asFloat64 rdf:type :Float64 ,
+                                  owl:NamedIndividual ;
+                         
+                         :hasValue "12999.9"^^xsd:double .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#number3.45_asFloat64
+
+:number3.45_asFloat64 rdf:type :Float64 ,
+                               owl:NamedIndividual ;
+                      
+                      :hasValue "3.45"^^xsd:double .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#qu-0.72rad_asFloat64
+
+:qu-0.72rad_asFloat64 rdf:type :PhysicalData ,
+                               owl:NamedIndividual ;
+                      
+                      :hasAMathematicalDatum :number-0.72_asFloat64 ;
+                      
+                      :hasAUnit :radian .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#qu12999.9deg_asFloat64
+
+:qu12999.9deg_asFloat64 rdf:type :PhysicalData ,
+                                 owl:NamedIndividual ;
+                        
+                        :hasAUnit :degree ;
+                        
+                        :hasAMathematicalDatum :number12999.9_asFloat64 .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#qu3.45rad_asFloat64
+
+:qu3.45rad_asFloat64 rdf:type :PhysicalData ,
+                              owl:NamedIndividual ;
+                     
+                     :hasAMathematicalDatum :number3.45_asFloat64 ;
+                     
+                     :hasAUnit :radian .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#radian
+
+:radian rdf:type :Unit ,
+                 owl:NamedIndividual ;
+        
+        :hasAPhysicalQuantity :angle .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#setOfAngles
+
+:setOfAngles rdf:type :Set ,
+                      owl:NamedIndividual ;
+             
+             :contains :qu-0.72rad_asFloat64 ,
+                       :qu12999.9deg_asFloat64 ,
+                       :qu3.45rad_asFloat64 .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#temperature
+
+:temperature rdf:type :PhysicalQuantity ,
+                      owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#time
+
+:time rdf:type :PhysicalQuantity ,
+               owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#true
+
+:true rdf:type :Boolean ,
+               owl:NamedIndividual ;
+      
+      :hasValue "true"^^xsd:boolean .
+
+
+
+
+
+#################################################################
+#
+#    General axioms
+#
+#################################################################
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :true
+                      )
+] .
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :length
+                      )
+] .
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :length
+                        :mass
+                        :time
+                      )
+] .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

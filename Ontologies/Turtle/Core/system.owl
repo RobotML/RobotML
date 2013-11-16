@@ -1,0 +1,2549 @@
+@prefix : <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xsp: <http://www.owl-ontologies.com/2005/08/07/xsp.owl#> .
+@prefix info: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#> .
+@prefix kern: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix syst: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#> .
+@prefix sqwrl: <http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
+@base <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl> .
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl> rdf:type owl:Ontology ;
+                                                                                              
+                                                                                              owl:versionInfo "version draft 2.0"^^xsd:string ;
+                                                                                              
+                                                                                              rdfs:comment "FaCT++ does not work with this ontology. HermiT shall be used."@en ,
+                                                                                                           "This work is based upon a previous one funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project (see http://www.anr-project.fr). It is the property of its authors and is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files)."@en ,
+                                                                                                           "Version for Protégé 4.x flavors."@en ;
+                                                                                              
+                                                                                              kern:Author """creation PROTEUS consortium - 
+modified Bruno Patin - 15/09/2013
+- dependancy introduced onto Environment ontology (linked to engine impacts machine torque)"""@en ;
+                                                                                              
+                                                                                              rdfs:comment """from version 1.0, contributions are no more PROTEUS contributions.
+authors are Jean-Loup Farges and Bruno Patin"""@en ,
+                                                                                                           """this ontology explicits the different systems that will be found in robots either hardware or software. Its new classes will be included for their most parts into the kernel:system concept. 
+Each time we introduced relationships between concepts defined in the system ontology, question is asked whether it should be put in the Robot ontology. This means that the user of this ontology is to do the same thing and if want to expand the list of concepts then he / she have to think iif it is not better placed elsewhere."""@en ;
+                                                                                              
+                                                                                              owl:imports <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl> ,
+                                                                                                          <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl> ,
+                                                                                                          <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl> ,
+                                                                                                          <http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#TODO
+
+kern:TODO rdf:type owl:AnnotationProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#author
+
+kern:author rdf:type owl:AnnotationProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#openCycURI
+
+kern:openCycURI rdf:type owl:AnnotationProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#wikipediaURI
+
+kern:wikipediaURI rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#Timeframes
+
+:Timeframes rdf:type owl:ObjectProperty ;
+            
+            rdfs:comment "Clocks are providing timeframe to hardware"@en ;
+            
+            rdfs:domain kern:Clock ;
+            
+            rdfs:subPropertyOf kern:isPropertyOf ;
+            
+            rdfs:range :ComputationalSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#canBeCodedInMessage
+
+:canBeCodedInMessage rdf:type owl:ObjectProperty ;
+                     
+                     rdfs:comment ""@en ;
+                     
+                     rdfs:range :MiddlewareMessage ;
+                     
+                     rdfs:domain [ rdf:type owl:Class ;
+                                   owl:unionOf ( :RoboticSystemConfigurationData
+                                                 :RoboticSystemInfoData
+                                               )
+                                 ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#canCommunicateThrough
+
+:canCommunicateThrough rdf:type owl:ObjectProperty ;
+                       
+                       rdfs:comment "An Application can use specific and dedicated applications called Communicatio middleware to communicate"@en ;
+                       
+                       rdfs:domain kern:Application ;
+                       
+                       rdfs:subPropertyOf kern:isPropertyOf ;
+                       
+                       rdfs:range :CommunicationMiddleware ;
+                       
+                       owl:inverseOf :hasApplicationPool .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#controlsSystem
+
+:controlsSystem rdf:type owl:ObjectProperty ;
+                
+                rdfs:comment "Interaction between a Control System and a Robotic System in order to achieve the corresponding control process:  regulators will take part to get the final output command to send to the Hardware or software of the robotic system. This property is not mapped anymore on the generic system definition that tackles only"@en ;
+                
+                rdfs:domain :ControlSystem ;
+                
+                rdfs:range :DriverDeviceSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasApplicationPool
+
+:hasApplicationPool rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:range kern:Application ;
+                    
+                    rdfs:subPropertyOf kern:has ;
+                    
+                    rdfs:domain :CommunicationMiddleware .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasClock
+
+:hasClock rdf:type owl:ObjectProperty ;
+          
+          rdfs:comment "Some hardware are using a specific piece of hardware modeling a timeframe and called a clock"@en ;
+          
+          rdfs:range kern:Clock ;
+          
+          rdfs:subPropertyOf kern:has ;
+          
+          rdfs:domain :ComputationalSystem ;
+          
+          owl:inverseOf :Timeframes .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasConfigurationData
+
+:hasConfigurationData rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:comment "Each one of the robotic components (actuators, sensors, etc) has some configuration parameter data."@en ;
+                      
+                      rdfs:subPropertyOf kern:has ;
+                      
+                      rdfs:domain :DriverDeviceSystem ;
+                      
+                      rdfs:range :RoboticSystemConfigurationData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasImplementingHardware
+
+:hasImplementingHardware rdf:type owl:ObjectProperty ;
+                         
+                         rdfs:comment "Robotic functional system has implementing hardware."@en ;
+                         
+                         rdfs:subPropertyOf kern:has ;
+                         
+                         rdfs:domain :RoboticFunctionalSystem ;
+                         
+                         owl:inverseOf :isHarwareImplementationOf ;
+                         
+                         rdfs:range [ rdf:type owl:Class ;
+                                      owl:unionOf ( :ActuatorHardware
+                                                    :CommunicationHardware
+                                                    :PowerHardware
+                                                    :SensorHardware
+                                                  )
+                                    ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasImplementingSoftware
+
+:hasImplementingSoftware rdf:type owl:ObjectProperty ;
+                         
+                         rdfs:comment "Robotic functional system has implementing software."@en ;
+                         
+                         rdfs:range kern:Software ;
+                         
+                         rdfs:subPropertyOf kern:has ;
+                         
+                         rdfs:domain :RoboticFunctionalSystem ;
+                         
+                         owl:inverseOf :isSoftwareImplementationOf .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasInfoData
+
+:hasInfoData rdf:type owl:ObjectProperty ;
+             
+             rdfs:subPropertyOf kern:has ;
+             
+             rdfs:domain :DriverDeviceSystem ;
+             
+             rdfs:range :RoboticSystemInfoData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasInput
+
+:hasInput rdf:type owl:ObjectProperty ;
+          
+          rdfs:comment "A control system or a commandable system can have some command orders as input of a desired action."@en ;
+          
+          rdfs:subPropertyOf kern:has ;
+          
+          rdfs:domain :Closed-LoopControlSystem ;
+          
+          rdfs:range :ControlCommandOrder .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasMethods
+
+:hasMethods rdf:type owl:ObjectProperty ;
+            
+            rdfs:subPropertyOf kern:has .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasNoise
+
+:hasNoise rdf:type owl:ObjectProperty ;
+          
+          rdfs:comment "A System has to deal with disruptions or perturbations known as Noise to process a signal. These perturbations are inherent in the data adquisition process or in the commandable processes, and they can be present, for instance, in a control system, actuator system, sensor system, etc..."@en ;
+          
+          rdfs:subPropertyOf kern:has ;
+          
+          rdfs:domain :Closed-LoopControlSystem ;
+          
+          rdfs:range :NoiseSignal .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasNoiseModel
+
+:hasNoiseModel rdf:type owl:ObjectProperty ;
+               
+               rdfs:comment "A distorted interaction due to a noise signal can be modelled by an Evolution model of the corresponding noise."@en ;
+               
+               rdfs:range kern:NoiseModel ;
+               
+               rdfs:subPropertyOf kern:has ;
+               
+               rdfs:domain :NoiseSignal .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasOutput
+
+:hasOutput rdf:type owl:ObjectProperty ;
+           
+           rdfs:subPropertyOf kern:has ;
+           
+           rdfs:domain :Closed-LoopControlSystem ;
+           
+           rdfs:range :ControlCommandOutput .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasinterface
+
+:hasinterface rdf:type owl:ObjectProperty ;
+              
+              rdfs:comment "A robotic system has an interface to publish or subscribe to its corresponding robotic middleware."@en ;
+              
+              rdfs:subPropertyOf kern:has ;
+              
+              rdfs:domain :DriverDeviceSystem ;
+              
+              rdfs:range :SystemInterface .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hostInteractions
+
+:hostInteractions rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:comment "A RoboticMiddleware is an interoperability software that not only executes applications, send and triggers interactions between systems/components, but it also hosts the interactions of the robotic platform."@en ;
+                  
+                  rdfs:range kern:ApplicationInteraction ;
+                  
+                  rdfs:domain :RoboticMiddleware .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#isControlledBy
+
+:isControlledBy rdf:type owl:ObjectProperty ;
+                
+                rdfs:comment "A robotic system is a controllable system as such there could exists a function (without any concern on how it is implemented) that takes into account the control of this particular robotic system."@en ;
+                
+                rdfs:range :ControlSystem ;
+                
+                rdfs:domain :DriverDeviceSystem ;
+                
+                owl:inverseOf :controlsSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#isHarwareImplementationOf
+
+:isHarwareImplementationOf rdf:type owl:ObjectProperty ;
+                           
+                           rdfs:comment "Hardware is implementation of robotic functional system."@en ;
+                           
+                           rdfs:subPropertyOf kern:isPropertyOf ;
+                           
+                           rdfs:range :RoboticFunctionalSystem ;
+                           
+                           rdfs:domain [ rdf:type owl:Class ;
+                                         owl:unionOf ( :ActuatorHardware
+                                                       :CommunicationHardware
+                                                       :PowerHardware
+                                                       :SensorHardware
+                                                     )
+                                       ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#isProtectedBy
+
+:isProtectedBy rdf:type owl:ObjectProperty ;
+               
+               rdfs:comment "A robotic system is a controllable system as such there could exists a function (without any concern on how it is implemented) that takes into account the protection of this particular robotic system. Protection means that in case of abnormal behaviour of the robotic system considered, there will be interactions occurring that will allow it to go on working on degraded modes or to stop it completely in order not to be destryed."@en ;
+               
+               rdfs:domain :DriverDeviceSystem ;
+               
+               rdfs:range :SecuritySystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#isRepresentedBy
+
+:isRepresentedBy rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:domain kern:State ;
+                 
+                 owl:inverseOf :isRepresentingA .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#isRepresentingA
+
+:isRepresentingA rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:range kern:State .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#isSoftwareImplementationOf
+
+:isSoftwareImplementationOf rdf:type owl:ObjectProperty ;
+                            
+                            rdfs:comment "Software is implementation of robotic functionnal system."@en ;
+                            
+                            rdfs:domain kern:Software ;
+                            
+                            rdfs:subPropertyOf kern:isPropertyOf ;
+                            
+                            rdfs:range :RoboticFunctionalSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#managesMiddlewareMessage
+
+:managesMiddlewareMessage rdf:type owl:ObjectProperty ;
+                          
+                          rdfs:range :MiddlewareMessage ;
+                          
+                          rdfs:domain :SystemInterface .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#mapsOnto
+
+:mapsOnto rdf:type owl:ObjectProperty ;
+          
+          rdfs:comment "A robotic functional system in order to exist must be mapped onto an existing robotic system. Either it is mapped through software or hardware implementation or a mix is not described into this property. Two robotic systems can be different but implement the saame functional system."@en ;
+          
+          rdfs:range :DriverDeviceSystem ;
+          
+          rdfs:domain :RoboticFunctionalSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#measuresOutput
+
+:measuresOutput rdf:type owl:ObjectProperty ;
+                
+                rdfs:range :ControlCommandOutput ;
+                
+                rdfs:domain :ProprioceptiveSensorSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#protectsSystem
+
+:protectsSystem rdf:type owl:ObjectProperty ;
+                
+                rdfs:comment "Interaction between a Security System and a Robotic System (in general). This interaction guarantees the protection in different levels (network, criptography, control, etc...) of a robotic system. This property does not concern the generic system concept that tackles only with composition and interefacing properties."@en ;
+                
+                rdfs:range :DriverDeviceSystem ;
+                
+                rdfs:domain :SecuritySystem ;
+                
+                owl:inverseOf :isProtectedBy .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#publish
+
+:publish rdf:type owl:ObjectProperty ;
+         
+         rdfs:comment "The output interface controller manages the publishment of dataflow from a robotic system to the corresponding robotic middleware."@en ;
+         
+         rdfs:domain :OutputSystemInterface ;
+         
+         rdfs:range :RoboticMiddleware .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#subscribe
+
+:subscribe rdf:type owl:ObjectProperty ;
+           
+           rdfs:domain :InputSystemInterface ;
+           
+           rdfs:range :RoboticMiddleware .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#DegreesOfFreedom
+
+:DegreesOfFreedom rdf:type owl:DatatypeProperty ;
+                  
+                  kern:wikipediaURI "http://en.wikipedia.org/wiki/Degrees_of_freedom"^^xsd:anyURI ;
+                  
+                  rdfs:comment "In many scientific fields, the degrees of freedom of a system is the number of parameters of the system that may vary independently. For example, the position of a figure in the plane has three degrees of freedom: its orientation and the two coordinates of any fixed point of the figure."@en ;
+                  
+                  rdfs:domain :Joint ;
+                  
+                  rdfs:range xsd:positiveInteger .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#isActive
+
+:isActive rdf:type owl:DatatypeProperty ;
+          
+          rdfs:comment "null"@en ;
+          
+          rdfs:domain :SensorSystem ;
+          
+          rdfs:range [ rdf:type rdfs:Datatype ;
+                       owl:oneOf [ rdf:type rdf:List ;
+                                   rdf:first "false"^^xsd:boolean ;
+                                   rdf:rest [ rdf:type rdf:List ;
+                                              rdf:first "true"^^xsd:boolean ;
+                                              rdf:rest rdf:nil
+                                            ]
+                                 ]
+                     ] .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#MachineTorque
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#MachineTorque> rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Action
+
+kern:Action owl:disjointWith :NoiseSignal .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Application
+
+kern:Application owl:disjointWith :SystemInterface ;
+                 
+                 kern:TODO """Application impacts only software through ApllicationInteraction and Driver that is an Application impacts Physical objects due to hardwaretosoftware and softwaretohardware interaction.
+
+This is clearly a mistake to be repaired."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#ApplicationInteraction
+
+kern:ApplicationInteraction rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Clock
+
+kern:Clock owl:disjointWith :ActuatorHardware ,
+                            :CommunicationHardware ,
+                            :ControlStationSystem ,
+                            :HardwareImplementationOfController ,
+                            :PowerHardware ,
+                            :SensorHardware .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Driver
+
+kern:Driver rdf:type owl:Class ;
+            
+            owl:disjointWith :RoboticApplication ,
+                             :RoboticMiddleware ;
+            
+            kern:TODO "Driver should triggers interactions between software and physical world (see definition of RoboticSystem)"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Environment
+
+kern:Environment owl:disjointWith :DriverDeviceSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#FileSystem
+
+kern:FileSystem owl:disjointWith :CommunicationMiddleware .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Hardware
+
+kern:Hardware rdfs:comment "The robotic System concept provides the tool to aggregate the driber onto its hardware counterpart."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#OperatingSystem
+
+kern:OperatingSystem owl:disjointWith :SystemInterface .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#PhysicalInteraction
+
+kern:PhysicalInteraction rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Software
+
+kern:Software rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                owl:onProperty kern:triggers ;
+                                owl:someValuesFrom kern:ApplicationInteraction
+                              ] ;
+              
+              rdfs:comment "In this scope, \"Models\" property means \"Implements\"."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SoftwareModule
+
+kern:SoftwareModule rdf:type owl:Class ;
+                    
+                    owl:disjointWith :RoboticApplication ,
+                                     :RoboticMiddleware .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SoftwareProbe
+
+kern:SoftwareProbe owl:disjointWith :RoboticApplication ,
+                                    :RoboticMiddleware .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Wrapper
+
+kern:Wrapper owl:disjointWith :RoboticApplication ,
+                              :RoboticMiddleware .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ActuatedJoint
+
+:ActuatedJoint rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Joint .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ActuatorConfigurationData
+
+:ActuatorConfigurationData rdf:type owl:Class ;
+                           
+                           rdfs:subClassOf :RoboticSystemConfigurationData ;
+                           
+                           owl:disjointWith :SensorConfigurationData ,
+                                            :StructuralConfigurationData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ActuatorDriver
+
+:ActuatorDriver rdf:type owl:Class ;
+                
+                rdfs:subClassOf kern:Driver ;
+                
+                owl:disjointWith :CommunicationDriver ,
+                                 :PowerDriver ,
+                                 :SensorDriver ;
+                
+                rdfs:comment "Software part of the Actuator System of a mechanical platform which will be composed of drivers to control the effectors like a mechanical arm driver."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ActuatorHardware
+
+:ActuatorHardware rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf kern:Hardware ;
+                  
+                  owl:disjointWith :CommunicationHardware ,
+                                   :PowerHardware ,
+                                   :SensorHardware ;
+                  
+                  rdfs:comment "the Actuator Hardware is a hardware to be included in a mechanical platform which will be composed of many different parts. Actuator hardware implements the capability to act on environment thanks to energy transformation using for example an engine."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ActuatorInfoData
+
+:ActuatorInfoData rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :RoboticSystemInfoData ;
+                  
+                  owl:disjointWith :SensorInfoData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ActuatorSystem
+
+:ActuatorSystem rdf:type owl:Class ;
+                
+                rdfs:subClassOf :DriverDeviceSystem ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty kern:aggregates ;
+                                  owl:allValuesFrom [ rdf:type owl:Class ;
+                                                      owl:unionOf ( :ActuatorDriver
+                                                                    :ActuatorHardware
+                                                                  )
+                                                    ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty kern:aggregates ;
+                                  owl:someValuesFrom :ActuatorHardware
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty kern:aggregates ;
+                                  owl:someValuesFrom :ActuatorDriver
+                                ] ;
+                
+                owl:disjointWith :CommunicationSystem ,
+                                 :PowerManagedSystem ,
+                                 :SensorSystem ,
+                                 :SupportingStructure ;
+                
+                rdfs:comment """System INCLUDING software which control effectors, like a mechanical arm driver.
+
+IMPORTANT WARNINGS, In the Robotic field different comments are added here:
+- When the \"Actuator\" word is used alone, it means the Actuator system includes only one non decomposable software and one non decomposable hardware. This is of great ambiguity but reflects usage in the community.
+- There is often a difference between the Motorisation system, able to move the robot or part of it, and the different other systems able to interact with the environment. They can be called Payload systems, Operational systems, Mission modules, etc (as an example, NRBC, Weapons, Communications, ...)"""@en ;
+                
+                kern:TODO "There are not only electromechanical systems that can be considered as actuators. Hydraulics could be or airflow or batteries..."@en ;
+                
+                kern:author """creation PROTEUS consortium - 
+modified Bruno Patin - 14/09/2013
+- comment has been modified to eliminate the reference to PROTEUS project"""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#AdaptiveController
+
+:AdaptiveController rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :Closed-LoopControlSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#Arm
+
+:Arm rdf:type owl:Class ;
+     
+     rdfs:subClassOf :Manipulator .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CameleonCommand_msg
+
+:CameleonCommand_msg rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :MiddlewareMessage ;
+                     
+                     owl:disjointWith :CameleonOdometry_msg ,
+                                      :CameraInfo_msg ,
+                                      :IMU_msg ,
+                                      :Image_msg ,
+                                      :LaserScan_msg ,
+                                      :MultiLaserScan_msg ,
+                                      :NavSatFix_msg ,
+                                      :Odometry_msg ,
+                                      :TwistStamped_msg ,
+                                      :Twist_msg ,
+                                      :VipalabCommand_msg ,
+                                      :VipalabOdometry_msg ,
+                                      :WifibotCommand_msg ,
+                                      :WifibotOdometry_msg .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CameleonOdometry_msg
+
+:CameleonOdometry_msg rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf :MiddlewareMessage ;
+                      
+                      owl:disjointWith :CameraInfo_msg ,
+                                       :IMU_msg ,
+                                       :Image_msg ,
+                                       :LaserScan_msg ,
+                                       :MultiLaserScan_msg ,
+                                       :NavSatFix_msg ,
+                                       :Odometry_msg ,
+                                       :TwistStamped_msg ,
+                                       :Twist_msg ,
+                                       :VipalabCommand_msg ,
+                                       :VipalabOdometry_msg ,
+                                       :WifibotCommand_msg ,
+                                       :WifibotOdometry_msg .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CameraConfigurationData
+
+:CameraConfigurationData rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf :SensorConfigurationData ;
+                         
+                         owl:disjointWith :GPSConfigurationData ,
+                                          :IMUConfigurationData ,
+                                          :LidarConfigurationData ,
+                                          :OdometryConfigurationData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CameraInfoData
+
+:CameraInfoData rdf:type owl:Class ;
+                
+                rdfs:subClassOf :SensorInfoData ;
+                
+                owl:disjointWith :CommandInfoData ,
+                                 :GPSInfoData ,
+                                 :IMUInfoData ,
+                                 :LidarInfoData ,
+                                 :OdometryInfoData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CameraInfo_msg
+
+:CameraInfo_msg rdf:type owl:Class ;
+                
+                rdfs:subClassOf :MiddlewareMessage ;
+                
+                owl:disjointWith :IMU_msg ,
+                                 :Image_msg ,
+                                 :LaserScan_msg ,
+                                 :MultiLaserScan_msg ,
+                                 :NavSatFix_msg ,
+                                 :Odometry_msg ,
+                                 :TwistStamped_msg ,
+                                 :Twist_msg ,
+                                 :VipalabCommand_msg ,
+                                 :VipalabOdometry_msg ,
+                                 :WifibotCommand_msg ,
+                                 :WifibotOdometry_msg .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CameraOutputInterface
+
+:CameraOutputInterface rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf :OutputSystemInterface ;
+                       
+                       owl:disjointWith :GPSOutputInterface ,
+                                        :IMUOutputInterface ,
+                                        :LidarOutputInterface ,
+                                        :OdometryOutputInterface ,
+                                        :TimeOutputInterface .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CameraSystem
+
+:CameraSystem rdf:type owl:Class ;
+              
+              rdfs:subClassOf :ImageSensorSystem ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :isActive ;
+                                owl:cardinality "1"^^xsd:nonNegativeInteger
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :isActive ;
+                                owl:hasValue "false"^^xsd:boolean
+                              ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#Chassis
+
+:Chassis rdf:type owl:Class ;
+         
+         rdfs:subClassOf :SupportingStructure ;
+         
+         rdfs:comment "The chassis is the part of the structure that supports everything. It is often used in automotive field."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ChassisConfigurationData
+
+:ChassisConfigurationData rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf :StructuralConfigurationData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#Closed-LoopControlSystem
+
+:Closed-LoopControlSystem rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf :ControlSystem ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty kern:hasPort ;
+                                            owl:someValuesFrom :ControlCommandInputPort
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty kern:aggregates ;
+                                            owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                 owl:intersectionOf ( :HardwareImplementationOfController
+                                                                                      :ProprioceptiveSensorSystem
+                                                                                    )
+                                                               ]
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty kern:hasPort ;
+                                            owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                          ] ;
+                          
+                          rdfs:comment "This system use a measurtement feedback, a command input to compute control for controlled systems"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommandInfoData
+
+:CommandInfoData rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :ActuatorInfoData ;
+                 
+                 owl:disjointWith :GPSInfoData ,
+                                  :IMUInfoData ,
+                                  :LidarInfoData ,
+                                  :OdometryInfoData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommandInputInterface
+
+:CommandInputInterface rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf :InputSystemInterface .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationDriver
+
+:CommunicationDriver rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf kern:Driver ;
+                     
+                     owl:disjointWith :PowerDriver ,
+                                      :SensorDriver ;
+                     
+                     rdfs:comment "Software part of the Communication System of a platform. Drivers for technologies like Blue-tooth, infra-red, radio-frequency, WAP, Ethernet, ..."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationHardware
+
+:CommunicationHardware rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf kern:Hardware ;
+                       
+                       owl:disjointWith :HardwareImplementationOfController ,
+                                        :PowerHardware ,
+                                        :SensorHardware ;
+                       
+                       rdfs:comment "Hardware part of the Communication System of a platform. Antenna, cables, and hardware support for Blue-tooth, infra-red, radio-frequency, WAP, Ethernet, ..."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationMiddleware
+
+:CommunicationMiddleware rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf kern:Application ;
+                         
+                         rdfs:comment "A communication middleware is an application that takes in charge the communications between Applications"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationSystem
+
+:CommunicationSystem rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :DriverDeviceSystem ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty kern:aggregates ;
+                                       owl:someValuesFrom :CommunicationHardware
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty kern:aggregates ;
+                                       owl:someValuesFrom :CommunicationDriver
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty kern:aggregates ;
+                                       owl:allValuesFrom [ rdf:type owl:Class ;
+                                                           owl:unionOf ( :CommunicationDriver
+                                                                         :CommunicationHardware
+                                                                       )
+                                                         ]
+                                     ] ;
+                     
+                     owl:disjointWith :PowerManagedSystem ,
+                                      :SensorSystem ,
+                                      :SupportingStructure ;
+                     
+                     rdfs:comment "Robotic susbstystems which achieves a communication process in the robotic platform. We can find different communication technologies to execute these functions: wifi, bluetooth, infrared, ethernet conections, etc..."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CompleteBonding
+
+:CompleteBonding rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :Joint ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :DegreesOfFreedom ;
+                                   owl:maxCardinality "0"^^xsd:nonNegativeInteger
+                                 ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ComputationalSystem
+
+:ComputationalSystem rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :CyberPhysicalSystem ;
+                     
+                     owl:disjointWith :DriverDeviceSystem ;
+                     
+                     kern:wikipediaURI "http://en.wikipedia.org/wiki/Computer"^^xsd:anyURI ;
+                     
+                     kern:openCycURI "http://sw.opencyc.org/concept/Mx4rwGq7AZwpEbGdrcN5Y29ycA"^^xsd:anyURI ;
+                     
+                     rdfs:comment """A ComputationalSystem is a piece of hardware dedicated to computation needs. It groups as many resources as needed to run an application. It is not to be confused with a computer that integrates input and output devices allowing Human agent to use it in order to fulfill generic software related tasks.
+
+This concept is to be linked exactly to OpenCyc concept of ComputationalSystem but to be linked to Computer concept of wikipedia. A computer in opencyc has devices dedcated to inputs/outputs and not only ports."""@en ;
+                     
+                     kern:author """creation PROTEUS consortium - 
+modified Bruno Patin - 30/09/2013
+- name has been changed from Computer to ComputationalSystem due to alignment with OpenCyc ontology"""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControCommandOutputPort
+
+:ControCommandOutputPort rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf kern:Port ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty kern:isIn_Out ;
+                                           owl:hasValue "out"^^xsd:string
+                                         ] ;
+                         
+                         rdfs:comment "Output port for control command as needed on commanding systems"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlAndCommand
+
+:ControlAndCommand rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf kern:ApplicationInteraction ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty kern:impacts ;
+                                     owl:allValuesFrom kern:Driver
+                                   ] ;
+                   
+                   rdfs:comment "This is an interaction produced by a ControlStationSystem that will impact on a RoboticSubsystem with the objective of control and command the target device."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlCommandInputPort
+
+:ControlCommandInputPort rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf kern:Port ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty kern:isIn_Out ;
+                                           owl:hasValue "in"^^xsd:string
+                                         ] ;
+                         
+                         rdfs:comment "Input port for control command as needed on commanded systems"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlCommandOrder
+
+:ControlCommandOrder rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf info:Command ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty kern:isCodedIn ;
+                                       owl:allValuesFrom info:PhysicalData
+                                     ] ;
+                     
+                     owl:disjointWith :ControlCommandOutput ;
+                     
+                     rdfs:comment "Command input order coming from a Human interaction or from the own platform (and finally translated into a software to software command), in order to achieve a control process to execute and keep the input values in, for instance, a closed-loop control system."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlCommandOutput
+
+:ControlCommandOutput rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf info:Command ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty kern:isCodedIn ;
+                                        owl:allValuesFrom info:PhysicalData
+                                      ] ;
+                      
+                      rdfs:comment "Final Control output order coming from a control process (PID control, etc...). This command is sent from the drivers (software part) to their corresponding hardware element."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlStationSystem
+
+:ControlStationSystem rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf kern:Hardware ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty kern:triggers ;
+                                        owl:someValuesFrom :ControlAndCommand
+                                      ] ;
+                      
+                      owl:disjointWith :HardwareImplementationOfController ,
+                                       :PowerHardware ,
+                                       :SensorHardware ;
+                      
+                      rdfs:comment "A control station system is a control centre that provides the facilities for human control ofrobots."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlSystem
+
+:ControlSystem rdf:type owl:Class ;
+               
+               rdfs:subClassOf :RoboticFunctionalSystem ;
+               
+               owl:disjointWith :MissionManagementSystem ,
+                                :MotionPlanningSystem ,
+                                :PlatformManagementSystem ,
+                                :SecuritySystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CyberPhysicalSystem
+
+:CyberPhysicalSystem rdf:type owl:Class ;
+                     
+                     owl:equivalentClass :RoboticSystem ;
+                     
+                     rdfs:subClassOf kern:CompositeSystem ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty kern:aggregates ;
+                                       owl:allValuesFrom [ rdf:type owl:Class ;
+                                                           owl:unionOf ( kern:Application
+                                                                         kern:Hardware
+                                                                       )
+                                                         ]
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty kern:aggregates ;
+                                       owl:someValuesFrom kern:Application
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty kern:aggregates ;
+                                       owl:someValuesFrom kern:Hardware
+                                     ] ;
+                     
+                     kern:wikipediaURI "http://en.wikipedia.org/wiki/Cyber-physical_system"^^xsd:anyURI ;
+                     
+                     rdfs:comment """The CyberPhysicalSystem concept or entity is the combination of hardware providing some computing abilities (but not only) in order to host an application managing it (managing is control as well as measures).
+
+This System aggregates an application and a Hardware part in order to build a physical-logical component at the service of a more complex System such as a Robot.
+
+Considering the RobotML meta-model it uses for the same concept the wording Robotic system."""@en ;
+                     
+                     kern:author """creation Bruno Patin - 30/09/2013
+- EmbeddedSystem is more generic than RoboticSystem and covers applications as well as drivers for its software part(s).
+- renaming because concept was wrongly named"""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#DeadbeatController
+
+:DeadbeatController rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :Closed-LoopControlSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#DriverDeviceSystem
+
+:DriverDeviceSystem rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :CyberPhysicalSystem ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty kern:aggregates ;
+                                      owl:allValuesFrom [ rdf:type owl:Class ;
+                                                          owl:unionOf ( kern:Driver
+                                                                        kern:Hardware
+                                                                      )
+                                                        ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty kern:aggregates ;
+                                      owl:someValuesFrom kern:Driver
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty kern:aggregates ;
+                                      owl:someValuesFrom kern:Hardware
+                                    ] ;
+                    
+                    rdfs:comment """The RoboticSystem concept or entity is the combination of hardware providing some computing abilities (but not only) in order to host a software managing it (managing is control as well as measures).
+
+Each one of the components of the robotic system will be managed by the corresponding system. This System aggregates a Software (application or driver when interactions with the physical world is concerned) and a Hardware part in order to build a physical-logical component at the service of a more complex System as a Robot.
+
+Considering the RobotML meta-model it uses for the same concept the wording Robot system."""@en ;
+                    
+                    kern:author """creation PROTEUS consortium - 
+modified Bruno Patin - 14/09/2013
+- it is no more driver that is specifyed but application (due to Robotic System using a robotic middleware that is not a driver)
+- two rules were suppressed specifying there was at least one hardware and one application because there is at leas one system and it must be from application or hardware nature."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#EngineConfigurationData
+
+:EngineConfigurationData rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf :MotorizationConfigurationData ;
+                         
+                         owl:disjointWith :SteeringWheelsConfigurationData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#EngineDriver
+
+:EngineDriver rdf:type owl:Class ;
+              
+              rdfs:subClassOf :ActuatorDriver ;
+              
+              owl:disjointWith :SteeringWheelDriver .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#EngineHardware
+
+:EngineHardware rdf:type owl:Class ;
+                
+                rdfs:subClassOf :ActuatorHardware ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty kern:triggers ;
+                                  owl:someValuesFrom <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#MachineTorque>
+                                ] ;
+                
+                owl:disjointWith :SteeringWheelHardware ;
+                
+                kern:wikipediaURI "http://en.wikipedia.org/wiki/Engine"^^xsd:anyURI ;
+                
+                kern:openCycURI "http://sw.opencyc.org/concept/Mx4rvVjOxJwpEbGdrcN5Y29ycA"^^xsd:anyURI ;
+                
+                rdfs:comment "this hardware is transfering energy to motion. Alignement is complete with OpenCyc and Wikipedia."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#EngineSystem
+
+:EngineSystem rdf:type owl:Class ;
+              
+              rdfs:subClassOf :ActuatorSystem ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty kern:aggregates ;
+                                owl:someValuesFrom :EngineDriver
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty kern:aggregates ;
+                                owl:someValuesFrom :EngineHardware
+                              ] ;
+              
+              owl:disjointWith :SteeredWheelSystem ;
+              
+              rdfs:comment "This is the motorization system focused in the engine of a robotic vehicle."@en ;
+              
+              kern:TODO "use OpenCyc / Wikipedia definition"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#EnvironmentParametersSensorDriver
+
+:EnvironmentParametersSensorDriver rdf:type owl:Class ;
+                                   
+                                   rdfs:subClassOf :SensorDriver ;
+                                   
+                                   owl:disjointWith :ImageSensorDriver ,
+                                                    :LocalizationSensorDriver ,
+                                                    :ObjectDetectionSensorDriver ,
+                                                    :ObjectTrackingSensorDriver ;
+                                   
+                                   rdfs:comment "Software part of the Sensor System responsible to measure the environment parameters like temperature, pressure, humidity, etc ..."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#EnvironmentParametersSensorHardware
+
+:EnvironmentParametersSensorHardware rdf:type owl:Class ;
+                                     
+                                     rdfs:subClassOf :SensorHardware ;
+                                     
+                                     owl:disjointWith :ImageSensorHardware ,
+                                                      :LocalizationSensorHardware ,
+                                                      :ObjectDetectionOrTrackingSensorHardware ;
+                                     
+                                     rdfs:comment "Hardware responsible of detection of temperature, pressure, humidity, airspeed, light intensity,..."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#EnvironmentParametersSensorSystem
+
+:EnvironmentParametersSensorSystem rdf:type owl:Class ;
+                                   
+                                   rdfs:subClassOf :ExteroceptiveSensorSystem ;
+                                   
+                                   owl:disjointWith :ImageSensorSystem ,
+                                                    :LocalizationSensorSystem ,
+                                                    :ObjectDetectionOrTrackingSensorSystem ;
+                                   
+                                   rdfs:comment "System which provides information about the environment characteristics: atmospheric pressure, external temperature, humidity, wind force, oxygen concentration, etc..."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ExteroceptiveSensorSystem
+
+:ExteroceptiveSensorSystem rdf:type owl:Class ;
+                           
+                           rdfs:subClassOf :SensorSystem ;
+                           
+                           owl:disjointWith :ProprioceptiveSensorSystem ;
+                           
+                           rdfs:comment "Exteroceptive sensors give the robot information about the surrounding environment allowing the robot to interact with the world. The exteroceptive sensors are classified according to their functionality. Examples: Cameras (image sensors), laser ranging, sonars, infrared sensors, tactile sensors, etc."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#GPSConfigurationData
+
+:GPSConfigurationData rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf :SensorConfigurationData ;
+                      
+                      owl:disjointWith :IMUConfigurationData ,
+                                       :LidarConfigurationData ,
+                                       :OdometryConfigurationData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#GPSInfoData
+
+:GPSInfoData rdf:type owl:Class ;
+             
+             rdfs:subClassOf :SensorInfoData ;
+             
+             owl:disjointWith :IMUInfoData ,
+                              :LidarInfoData ,
+                              :OdometryInfoData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#GPSOutputInterface
+
+:GPSOutputInterface rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :OutputSystemInterface ;
+                    
+                    owl:disjointWith :IMUOutputInterface ,
+                                     :LidarOutputInterface ,
+                                     :OdometryOutputInterface ,
+                                     :TimeOutputInterface .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#GPSSystem
+
+:GPSSystem rdf:type owl:Class ;
+           
+           rdfs:subClassOf :LocalizationSensorSystem ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :isActive ;
+                             owl:hasValue "false"^^xsd:boolean
+                           ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#GraspingDriver
+
+:GraspingDriver rdf:type owl:Class ;
+                
+                rdfs:subClassOf :ActuatorDriver ;
+                
+                owl:disjointWith :LocomotionDriver ,
+                                 :NavigationCommandDriver ,
+                                 :WeaponDriver ;
+                
+                rdfs:comment "Software/Driver of an actuator of the DeviceSystem of a platform, which correspond with the prehension system of  a mechanical platform (mechanical fingers, mechanical arms, grabs ...)."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#GraspingHardware
+
+:GraspingHardware rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :ActuatorHardware ;
+                  
+                  owl:disjointWith :LocomotionHardware ,
+                                   :NavigationCommandHardware ,
+                                   :WeaponHardware ;
+                  
+                  rdfs:comment "Hardware Actuator of the DeviceSystem of a platform, which correspond with the prehension system of  a mechanical platform (mechanical fingers, mechanical arms, grabs ...)."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#GraspingSystem
+
+:GraspingSystem rdf:type owl:Class ;
+                
+                rdfs:subClassOf :ActuatorSystem ;
+                
+                owl:disjointWith :LocomotionSystem ,
+                                 :NavigationCommandSystem ,
+                                 :WeaponSystem ;
+                
+                rdfs:comment "System of a robotic platform which correspond with the software and hardware of the manipulating effectors of the robot: mechanical fingers, mechanical arms, grabs ..."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#H_InfinityLoopSharingController
+
+:H_InfinityLoopSharingController rdf:type owl:Class ;
+                                 
+                                 rdfs:subClassOf :Closed-LoopControlSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#HardwareImplementationOfController
+
+:HardwareImplementationOfController rdf:type owl:Class ;
+                                    
+                                    rdfs:subClassOf :ActuatorHardware ;
+                                    
+                                    owl:disjointWith :PowerHardware ,
+                                                     :SensorHardware ;
+                                    
+                                    rdfs:comment "In automatic control, a controller is a device which has the function of maintaining a designated characteristics. For instance in a closed-loop control system, it performs the activity of managing or maintaining a range of values in a machine. The measurable property of a device is managed closely by specified conditions or an advance set value; or it can be a variable according to a predetermined arrangement scheme. It can be used generally to connote any set of various controls or devices for regulating or controlling items or objects."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#IMUConfigurationData
+
+:IMUConfigurationData rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf :SensorConfigurationData ;
+                      
+                      owl:disjointWith :LidarConfigurationData ,
+                                       :OdometryConfigurationData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#IMUInfoData
+
+:IMUInfoData rdf:type owl:Class ;
+             
+             rdfs:subClassOf :SensorInfoData ;
+             
+             owl:disjointWith :LidarInfoData ,
+                              :OdometryInfoData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#IMUOutputInterface
+
+:IMUOutputInterface rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :OutputSystemInterface ;
+                    
+                    owl:disjointWith :LidarOutputInterface ,
+                                     :OdometryOutputInterface ,
+                                     :TimeOutputInterface .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#IMU_msg
+
+:IMU_msg rdf:type owl:Class ;
+         
+         rdfs:subClassOf :MiddlewareMessage ;
+         
+         owl:disjointWith :Image_msg ,
+                          :LaserScan_msg ,
+                          :MultiLaserScan_msg ,
+                          :NavSatFix_msg ,
+                          :Odometry_msg ,
+                          :TwistStamped_msg ,
+                          :Twist_msg ,
+                          :VipalabCommand_msg ,
+                          :VipalabOdometry_msg ,
+                          :WifibotCommand_msg ,
+                          :WifibotOdometry_msg .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ImageSensorDriver
+
+:ImageSensorDriver rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :SensorDriver ;
+                   
+                   owl:disjointWith :LocalizationSensorDriver ,
+                                    :ObjectDetectionSensorDriver ,
+                                    :ObjectTrackingSensorDriver .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ImageSensorHardware
+
+:ImageSensorHardware rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :SensorHardware ;
+                     
+                     owl:disjointWith :LocalizationSensorHardware ,
+                                      :ObjectDetectionOrTrackingSensorHardware ;
+                     
+                     rdfs:comment "Hardware in charge of capture a graphical image of the environment. For example many types of cameras."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ImageSensorSystem
+
+:ImageSensorSystem rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :ExteroceptiveSensorSystem ;
+                   
+                   owl:disjointWith :LocalizationSensorSystem ,
+                                    :ObjectDetectionOrTrackingSensorSystem ;
+                   
+                   rdfs:comment "System which captures images from the environment. This is a system which achieves a data adquisition and a image processing. For instance a camera."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#Image_msg
+
+:Image_msg rdf:type owl:Class ;
+           
+           rdfs:subClassOf :MiddlewareMessage ;
+           
+           owl:disjointWith :LaserScan_msg ,
+                            :MultiLaserScan_msg ,
+                            :NavSatFix_msg ,
+                            :Odometry_msg ,
+                            :TwistStamped_msg ,
+                            :Twist_msg ,
+                            :VipalabCommand_msg ,
+                            :VipalabOdometry_msg ,
+                            :WifibotCommand_msg ,
+                            :WifibotOdometry_msg .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#InputSystemInterface
+
+:InputSystemInterface rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf :SystemInterface ;
+                      
+                      owl:disjointWith :OutputSystemInterface ;
+                      
+                      rdfs:comment "Software component which controls the input dataflow between a system and its corresponding middleware."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#IntelligentController
+
+:IntelligentController rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf :Closed-LoopControlSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#Joint
+
+:Joint rdf:type owl:Class ;
+       
+       rdfs:subClassOf kern:Connector ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :DegreesOfFreedom ;
+                         owl:maxCardinality "6"^^xsd:nonNegativeInteger
+                       ] ;
+       
+       kern:openCycURI "http://sw.opencyc.org/concept/Mx4r4wAZortWEdmAAAACs6hRjg"^^xsd:anyURI ;
+       
+       kern:TODO "In opencyc a joint is a sub-type of a junction that is a subtype of a connector. Here a joint is a sub-type of physical interaction that is a sub-type of interaction. To think to the possibility of allignment."@en ;
+       
+       rdfs:comment """In order to define Joint it is necessary to understand Mechanical linkage thus the following description.
+
+A mechanical linkage is an assembly of bodies connected to manage forces and movement. The movement of a body, or link, is studied using geometry so the link is considered to be rigid. The connections between links are modeled as providing ideal movement, pure rotation or sliding for example, and are called joints. A linkage modeled as a network of rigid links and ideal joints is called a kinematic chain.
+
+Linkages may be constructed from open chains, closed chains, or a combination of open and closed chains. Each link in a chain is connected by a joint to one or more other links. Thus, a kinematic chain can be modeled as a graph in which the links are paths and the joints are vertices, which is called a linkage graph."""@en ;
+       
+       kern:wikipediaURI "http://en.wikipedia.org/wiki/Linkage_%28mechanical%29#Joints"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#JoysticNavigationConfigurationData
+
+:JoysticNavigationConfigurationData rdf:type owl:Class ;
+                                    
+                                    rdfs:subClassOf :NavigationCommandConfigurationData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#JoysticNavigationDriver
+
+:JoysticNavigationDriver rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf :NavigationCommandDriver .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#JoysticNavigationHardware
+
+:JoysticNavigationHardware rdf:type owl:Class ;
+                           
+                           rdfs:subClassOf :NavigationCommandHardware .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#JoysticNavigationSystem
+
+:JoysticNavigationSystem rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf :NavigationCommandSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LaserScan_msg
+
+:LaserScan_msg rdf:type owl:Class ;
+               
+               rdfs:subClassOf :MiddlewareMessage ;
+               
+               owl:disjointWith :MultiLaserScan_msg ,
+                                :NavSatFix_msg ,
+                                :Odometry_msg ,
+                                :TwistStamped_msg ,
+                                :Twist_msg ,
+                                :VipalabCommand_msg ,
+                                :VipalabOdometry_msg ,
+                                :WifibotCommand_msg ,
+                                :WifibotOdometry_msg .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#Leg
+
+:Leg rdf:type owl:Class ;
+     
+     rdfs:subClassOf :LocomotionHardware ,
+                     :MechanicalLinkage .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LegDriver
+
+:LegDriver rdf:type owl:Class ;
+           
+           rdfs:subClassOf :LocomotionDriver .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LegSystem
+
+:LegSystem rdf:type owl:Class ;
+           
+           rdfs:subClassOf :LocomotionSystem ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty kern:aggregates ;
+                             owl:someValuesFrom :Leg
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty kern:aggregates ;
+                             owl:allValuesFrom [ rdf:type owl:Class ;
+                                                 owl:unionOf ( :Leg
+                                                               :LegDriver
+                                                             )
+                                               ]
+                           ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LidarConfigurationData
+
+:LidarConfigurationData rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf :SensorConfigurationData ;
+                        
+                        owl:disjointWith :OdometryConfigurationData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LidarInfoData
+
+:LidarInfoData rdf:type owl:Class ;
+               
+               rdfs:subClassOf :SensorInfoData ;
+               
+               owl:disjointWith :OdometryInfoData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LidarOutputInterface
+
+:LidarOutputInterface rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf :OutputSystemInterface ;
+                      
+                      owl:disjointWith :OdometryOutputInterface ,
+                                       :TimeOutputInterface .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LidarSystem
+
+:LidarSystem rdf:type owl:Class ;
+             
+             rdfs:subClassOf :ObjectDetectionOrTrackingSensorSystem ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :isActive ;
+                               owl:hasValue "true"^^xsd:boolean
+                             ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LocalizationSensorDriver
+
+:LocalizationSensorDriver rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf :SensorDriver ;
+                          
+                          owl:disjointWith :ObjectDetectionSensorDriver ,
+                                           :ObjectTrackingSensorDriver .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LocalizationSensorHardware
+
+:LocalizationSensorHardware rdf:type owl:Class ;
+                            
+                            rdfs:subClassOf :SensorHardware ;
+                            
+                            owl:disjointWith :ObjectDetectionOrTrackingSensorHardware ;
+                            
+                            rdfs:comment "Localization Hardware of the platform. GPS, gyrometer, accelerometer, magnetometer, altimeter, odometer. Proprioceptive Hardware for localization evaluation."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LocalizationSensorSystem
+
+:LocalizationSensorSystem rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf :ProprioceptiveSensorSystem ;
+                          
+                          owl:disjointWith :ObjectDetectionOrTrackingSensorSystem ;
+                          
+                          rdfs:comment "System which achieves a localization process within the environment based in a reference coordinate system. For example the GPS Sensors."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LocomotionDriver
+
+:LocomotionDriver rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :ActuatorDriver ;
+                  
+                  owl:disjointWith :NavigationCommandDriver ,
+                                   :WeaponDriver ;
+                  
+                  rdfs:comment "Software/Driver of an actuator of the DeviceSystem of a platform, which correspond with the Driving system of an autonomous mechanical platform (wheels, axes, wings, propulsion, engine, brakes, ...)."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LocomotionHardware
+
+:LocomotionHardware rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :ActuatorHardware ;
+                    
+                    owl:disjointWith :NavigationCommandHardware ,
+                                     :WeaponHardware ;
+                    
+                    rdfs:comment "Hardware Actuator of the DeviceSystem of a platform, which correspond with the Driving system of  an autonomous mechanical platform (wheels, axes, wings, propulsion, engine, brakes, ...)."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LocomotionSystem
+
+:LocomotionSystem rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :ActuatorSystem ;
+                  
+                  owl:disjointWith :NavigationCommandSystem ,
+                                   :WeaponSystem ;
+                  
+                  rdfs:comment """Mechanical device associated to its Driver for moving a Mobile Robot.
+It is operated by a source of energy, usually in the form of an electric current, hydraulic fluid pressure or pneumatic pressure, and converts that energy into some kind of motion (meaning position of gravity centre of the Robot that is using it has been changed significatively through time)."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ManMachineInterfaceSystem
+
+:ManMachineInterfaceSystem rdf:type owl:Class ;
+                           
+                           rdfs:subClassOf :DriverDeviceSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#Manipulator
+
+:Manipulator rdf:type owl:Class ;
+             
+             rdfs:subClassOf :MechanicalLinkage .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#MechanicalLinkage
+
+:MechanicalLinkage rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf kern:Hardware ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty kern:aggregates ;
+                                     owl:onClass kern:PhysicalObject ;
+                                     owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger
+                                   ] ;
+                   
+                   kern:openCycURI "http://sw.opencyc.org/concept/Mx4rvVjExZwpEbGdrcN5Y29ycA"^^xsd:anyURI ;
+                   
+                   rdfs:comment "From wikipedia: A mechanical linkage is an assembly of bodies connected to manage forces and movement. The movement of a body, or link, is studied using geometry so the link is considered to be rigid. The connections between links are modeled as providing ideal movement, pure rotation or sliding for example, and are called joints. A linkage modeled as a network of rigid links and ideal joints is called a kinematic chain."@en ;
+                   
+                   kern:wikipediaURI "https://en.wikipedia.org/wiki/Linkage_(mechanical)"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#MiddlewareMessage
+
+:MiddlewareMessage rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf info:OrderedSetForSystemDescription ;
+                   
+                   owl:disjointWith :RoboticSystemConfigurationData ,
+                                    :RoboticSystemInfoData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#MissionManagementSystem
+
+:MissionManagementSystem rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf :RoboticFunctionalSystem ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :hasImplementingHardware ;
+                                           owl:cardinality "0"^^xsd:nonNegativeInteger
+                                         ] ;
+                         
+                         owl:disjointWith :MotionPlanningSystem ,
+                                          :PlatformManagementSystem ,
+                                          :SecuritySystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ModelPredictiveController
+
+:ModelPredictiveController rdf:type owl:Class ;
+                           
+                           rdfs:subClassOf :Closed-LoopControlSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#MotionPlanningSystem
+
+:MotionPlanningSystem rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf :RoboticFunctionalSystem ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :hasImplementingHardware ;
+                                        owl:cardinality "0"^^xsd:nonNegativeInteger
+                                      ] ;
+                      
+                      owl:disjointWith :PlatformManagementSystem ,
+                                       :SecuritySystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#MotorizationConfigurationData
+
+:MotorizationConfigurationData rdf:type owl:Class ;
+                               
+                               rdfs:subClassOf :ActuatorConfigurationData ;
+                               
+                               owl:disjointWith :NavigationCommandConfigurationData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#MultiLaserScan_msg
+
+:MultiLaserScan_msg rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :MiddlewareMessage ;
+                    
+                    owl:disjointWith :NavSatFix_msg ,
+                                     :Odometry_msg ,
+                                     :TwistStamped_msg ,
+                                     :Twist_msg ,
+                                     :VipalabCommand_msg ,
+                                     :VipalabOdometry_msg ,
+                                     :WifibotCommand_msg ,
+                                     :WifibotOdometry_msg .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#NavSatFix_msg
+
+:NavSatFix_msg rdf:type owl:Class ;
+               
+               rdfs:subClassOf :MiddlewareMessage ;
+               
+               owl:disjointWith :Odometry_msg ,
+                                :TwistStamped_msg ,
+                                :Twist_msg ,
+                                :VipalabCommand_msg ,
+                                :VipalabOdometry_msg ,
+                                :WifibotCommand_msg ,
+                                :WifibotOdometry_msg .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#NavigationCommandConfigurationData
+
+:NavigationCommandConfigurationData rdf:type owl:Class ;
+                                    
+                                    rdfs:subClassOf :ActuatorConfigurationData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#NavigationCommandDriver
+
+:NavigationCommandDriver rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf :ActuatorDriver ;
+                         
+                         owl:disjointWith :WeaponDriver .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#NavigationCommandHardware
+
+:NavigationCommandHardware rdf:type owl:Class ;
+                           
+                           rdfs:subClassOf :ActuatorHardware ;
+                           
+                           owl:disjointWith :WeaponHardware .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#NavigationCommandSystem
+
+:NavigationCommandSystem rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf :ManMachineInterfaceSystem ;
+                         
+                         owl:disjointWith :WeaponSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#NoiseSignal
+
+:NoiseSignal rdf:type owl:Class ;
+             
+             rdfs:subClassOf kern:Interaction ;
+             
+             rdfs:comment "Interaction coming from the environment or from the own platform which could represent a disturbance of the information acquisition of a Hardware Device, or a disturbance of the data transmission between Software Components of the System. This disruption should be detected, interpreted and treated (or simply taken into consideration) by the platform."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ObjectDetectionOrTrackingSensorHardware
+
+:ObjectDetectionOrTrackingSensorHardware rdf:type owl:Class ;
+                                         
+                                         rdfs:subClassOf :SensorHardware ;
+                                         
+                                         rdfs:comment "Hardware involved in the detection of physical entities in the surrounding environment or the tracking processes to localize and follow some target objects. Telemeter laser, Radar, specific cameras etc..."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ObjectDetectionOrTrackingSensorSystem
+
+:ObjectDetectionOrTrackingSensorSystem rdf:type owl:Class ;
+                                       
+                                       rdfs:subClassOf :ExteroceptiveSensorSystem ;
+                                       
+                                       rdfs:comment "System which uses sensors to detect, localize or track specific target objects in the surrounding environment. For instance, Telemeter Laser, Radar, ultrasounds, etc..."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ObjectDetectionSensorDriver
+
+:ObjectDetectionSensorDriver rdf:type owl:Class ;
+                             
+                             rdfs:subClassOf :SensorDriver ;
+                             
+                             owl:disjointWith :ObjectTrackingSensorDriver .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ObjectTrackingSensorDriver
+
+:ObjectTrackingSensorDriver rdf:type owl:Class ;
+                            
+                            rdfs:subClassOf :SensorDriver .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#OdometryConfigurationData
+
+:OdometryConfigurationData rdf:type owl:Class ;
+                           
+                           rdfs:subClassOf :SensorConfigurationData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#OdometryInfoData
+
+:OdometryInfoData rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :SensorInfoData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#OdometryOutputInterface
+
+:OdometryOutputInterface rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf :OutputSystemInterface ;
+                         
+                         owl:disjointWith :TimeOutputInterface .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#Odometry_msg
+
+:Odometry_msg rdf:type owl:Class ;
+              
+              rdfs:subClassOf :MiddlewareMessage ;
+              
+              owl:disjointWith :TwistStamped_msg ,
+                               :Twist_msg ,
+                               :VipalabCommand_msg ,
+                               :VipalabOdometry_msg ,
+                               :WifibotCommand_msg ,
+                               :WifibotOdometry_msg .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#Open-LoopControlSystem
+
+:Open-LoopControlSystem rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf :ControlSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#OutputSystemInterface
+
+:OutputSystemInterface rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf :SystemInterface ;
+                       
+                       rdfs:comment "Software component which controls the output dataflow between a system and its corresponding middleware."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#PID_Controller
+
+:PID_Controller rdf:type owl:Class ;
+                
+                rdfs:subClassOf :Closed-LoopControlSystem ;
+                
+                rdfs:comment """A proportional–integral–derivative controller (PID controller) is a generic control loop feedback mechanism (controller) widely used in industrial control systems – a PID is the most commonly used feedback controller. A PID controller calculates an \"error\" value as the difference between a measured process variable and a desired setpoint. The controller attempts to minimize the error by adjusting the process control inputs.
+
+The PID controller calculation (algorithm) involves three separate constant parameters, and is accordingly sometimes called three-term control: the proportional, the integral and derivative values, denoted P, I, and D. Heuristically, these values can be interpreted in terms of time: P depends on the present error, I on the accumulation of past errors, and D is a prediction of future errors, based on current rate of change. The weighted sum of these three actions is used to adjust the process via a control element such as the position of a control valve or the power supply of a heating element."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#PI_Controller
+
+:PI_Controller rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Closed-LoopControlSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#PlatformManagementSystem
+
+:PlatformManagementSystem rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf :RoboticFunctionalSystem ;
+                          
+                          owl:disjointWith :SecuritySystem ;
+                          
+                          rdfs:comment ""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#PowerDriver
+
+:PowerDriver rdf:type owl:Class ;
+             
+             rdfs:subClassOf kern:Driver ;
+             
+             owl:disjointWith :SensorDriver ;
+             
+             rdfs:comment "Software/Driver part of the electric source system of the platform."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#PowerHardware
+
+:PowerHardware rdf:type owl:Class ;
+               
+               rdfs:subClassOf kern:Hardware ;
+               
+               owl:disjointWith :SensorHardware ;
+               
+               rdfs:comment "Hardware part of the electric source system of the platform."@en ;
+               
+               kern:TODO "to be consolidated. ambiguity on the wording as it does not cover for instance hydraulic, explosion, etc."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#PowerManagedSystem
+
+:PowerManagedSystem rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :DriverDeviceSystem ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty kern:aggregates ;
+                                      owl:someValuesFrom :PowerHardware
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty kern:aggregates ;
+                                      owl:someValuesFrom :PowerDriver
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty kern:aggregates ;
+                                      owl:allValuesFrom [ rdf:type owl:Class ;
+                                                          owl:unionOf ( :PowerDriver
+                                                                        :PowerHardware
+                                                                      )
+                                                        ]
+                                    ] ;
+                    
+                    owl:disjointWith :SensorSystem ,
+                                     :SupportingStructure ;
+                    
+                    rdfs:comment "System in charge of providing and managing electrical energy to the robotic platform."@en ;
+                    
+                    kern:author """creation PROTEUS Consortium -
+modification Bruno Patin - 30/09/2013
+- A power system is not every time controlled, thus name has schanged from PowerSystem to PowerMangedSystem"""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ProgrammableLogicController
+
+:ProgrammableLogicController rdf:type owl:Class ;
+                             
+                             rdfs:subClassOf :Closed-LoopControlSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ProportionalController
+
+:ProportionalController rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf :Closed-LoopControlSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ProprioceptiveSensorSystem
+
+:ProprioceptiveSensorSystem rdf:type owl:Class ;
+                            
+                            rdfs:subClassOf :SensorSystem ;
+                            
+                            rdfs:comment "The robot measures a signal originating from within using proprioseptive sensors. These sensors are responsible for monitoring self maintenance and controlling internal status. Common uses of proprioceptive measurements are for battery monitoring, current sensing, and heat monitoring. Examples: Global Positioning System (GPS), Inertial Navigation System (INS), Shaft Encoders, Compass, Inclinometer, etc."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticApplication
+
+:RoboticApplication rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf kern:Application ;
+                    
+                    owl:disjointWith :RoboticMiddleware ;
+                    
+                    rdfs:comment "applcation that is only processing of information."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticFunctionalSystem
+
+:RoboticFunctionalSystem rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf kern:Model ;
+                         
+                         rdfs:comment "This entity defines the functional Architecture that can be found in a Robotic System. The Functional System is the logical view of the Robotic Platform. Thus, we can find function as control, mission management, motion planning, platform management, or security. It can be also seen as acomplete. It is often associated to the software implementing this functional view."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticHead
+
+:RoboticHead rdf:type owl:Class ;
+             
+             rdfs:subClassOf :ManMachineInterfaceSystem ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty kern:aggregates ;
+                               owl:someValuesFrom :CameraSystem
+                             ] ;
+             
+             rdfs:comment """A robotic head is a robotic system that is considered as a human-like head which it can communicated with.
+
+It can be assimilated as a head when it is supported by the robot shape (moving or not).
+It is almost like the shape of a head (even if rectangular).
+It must assume approximately respective positionning of (mouth and eyes) shape in this general shape."""@en ;
+             
+             kern:author "creation rgelin - 30/09/2013"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticMiddleware
+
+:RoboticMiddleware rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf kern:Application ;
+                   
+                   rdfs:comment """A Middleware is an application that connects software with hardware. This application consists of a set of services that allows multiple processes running on one or more machines to interact. This technology evolved to provide for interoperability in support of the move to coherent distributed architectures.
+Middleware sits \"in the middle\" between software that may be working on different hardware.
+Considering a robotic middleware, its role is to allow the different robotic systems (their different application parts) composing the robot to:
+- work together because running above the robotic middleware
+- ignore for these applications to know the underlying actual hardware
+
+Thus It represents an abstraction layer in the interoperability of the whole system with its own API.
+
+-------------- To Be Verified
+In a robotic platform this is an interoperative software which should be transparent between components and introduce no overhead or extra constraints on the robotic subsystems. It can achieve several functionalities, as it can be the communication or data transmission, the standardization of structures and message passing, the interconnection of homogeneous or/and heterogeneous components/systems, the authority to execute and transmit the output of distributed or centralized applications."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticSystem
+
+:RoboticSystem rdf:type owl:Class ;
+               
+               rdfs:subClassOf kern:CompositeSystem ;
+               
+               kern:author """creation PROTEUS consortium - 
+modified Bruno Patin - 03/10/2013
+- Robotic system is very difficcult to qualify but is used as such in RobotML thus, an equivalence has been created to the new name, CyberPhysicalSystem"""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticSystemConfigurationData
+
+:RoboticSystemConfigurationData rdf:type owl:Class ;
+                                
+                                rdfs:subClassOf info:OrderedSetForSystemDescription ;
+                                
+                                owl:disjointWith :RoboticSystemInfoData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticSystemInfoData
+
+:RoboticSystemInfoData rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf info:OrderedSetForSystemDescription .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SecuritySystem
+
+:SecuritySystem rdf:type owl:Class ;
+                
+                rdfs:subClassOf :RoboticFunctionalSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SensorConfigurationData
+
+:SensorConfigurationData rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf :RoboticSystemConfigurationData ;
+                         
+                         owl:disjointWith :StructuralConfigurationData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SensorDriver
+
+:SensorDriver rdf:type owl:Class ;
+              
+              rdfs:subClassOf kern:Driver ;
+              
+              rdfs:comment "Software part of the Sensor System of a platform which will be composed of drivers for devices like motion tracker, camera, odometer, thermometer, telemeter laser, ..."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SensorHardware
+
+:SensorHardware rdf:type owl:Class ;
+                
+                rdfs:subClassOf kern:Hardware ;
+                
+                rdfs:comment "Hardware part of the Sensor System of a platform which will be composed of devices like motion tracker, camera, odometer, thermometer, telemeter laser, ..."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SensorInfoData
+
+:SensorInfoData rdf:type owl:Class ;
+                
+                rdfs:subClassOf :RoboticSystemInfoData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SensorSystem
+
+:SensorSystem rdf:type owl:Class ;
+              
+              rdfs:subClassOf kern:Probe ,
+                              :DriverDeviceSystem ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty kern:aggregates ;
+                                owl:allValuesFrom [ rdf:type owl:Class ;
+                                                    owl:unionOf ( :SensorDriver
+                                                                  :SensorHardware
+                                                                )
+                                                  ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty kern:aggregates ;
+                                owl:someValuesFrom :SensorDriver
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty kern:aggregates ;
+                                owl:someValuesFrom :SensorHardware
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :isActive ;
+                                owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                              ] ;
+              
+              owl:disjointWith :SupportingStructure ;
+              
+              rdfs:comment "Equipment that detects, measures, and/or records physical phenomena, and indicates objects and activities by means of energy or particles emitted, reflected, or modified by the objects and activities."@en ,
+                           "The SensorSystem wording could be simplfied to Sensor directly"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SteeredWheelSystem
+
+:SteeredWheelSystem rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :LocomotionSystem ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty kern:aggregates ;
+                                      owl:someValuesFrom :SteeringWheelHardware
+                                    ] ;
+                    
+                    rdfs:comment "This is the motorization system focused in the wheels of a robotic vehicle."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SteeringWheelDriver
+
+:SteeringWheelDriver rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :LocomotionDriver .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SteeringWheelHardware
+
+:SteeringWheelHardware rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf :LocomotionHardware .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SteeringWheelsConfigurationData
+
+:SteeringWheelsConfigurationData rdf:type owl:Class ;
+                                 
+                                 rdfs:subClassOf :MotorizationConfigurationData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#StructuralConfigurationData
+
+:StructuralConfigurationData rdf:type owl:Class ;
+                             
+                             rdfs:subClassOf :RoboticSystemConfigurationData .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SupportingStructure
+
+:SupportingStructure rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf kern:Hardware ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty kern:triggers ;
+                                       owl:someValuesFrom kern:PhysicalInteraction
+                                     ] ;
+                     
+                     rdfs:comment "This is the concept opposite to any hardware that would modify with time inside its own frame."@en ;
+                     
+                     kern:author """creation PROTEUS consortium - 
+modified Bruno Patin - 03/10/2013
+- modification of rule. There are no interaction with any software parts as it is a passive structure"""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SystemInterface
+
+:SystemInterface rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf kern:Software ;
+                 
+                 rdfs:comment "Software component which controls the input or/and output dataflow between a system and its corresponding middleware. A software component like that can be either an Algorithmic module ot an application. It explains that it is not disjoint of these two kind of concepts."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#TimeOutputInterface
+
+:TimeOutputInterface rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :OutputSystemInterface .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#TwistStamped_msg
+
+:TwistStamped_msg rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :MiddlewareMessage ;
+                  
+                  owl:disjointWith :Twist_msg ,
+                                   :VipalabCommand_msg ,
+                                   :VipalabOdometry_msg ,
+                                   :WifibotCommand_msg ,
+                                   :WifibotOdometry_msg .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#Twist_msg
+
+:Twist_msg rdf:type owl:Class ;
+           
+           rdfs:subClassOf :MiddlewareMessage ;
+           
+           owl:disjointWith :VipalabCommand_msg ,
+                            :VipalabOdometry_msg ,
+                            :WifibotCommand_msg ,
+                            :WifibotOdometry_msg .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#VipalabCommand_msg
+
+:VipalabCommand_msg rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :MiddlewareMessage ;
+                    
+                    owl:disjointWith :VipalabOdometry_msg ,
+                                     :WifibotCommand_msg ,
+                                     :WifibotOdometry_msg .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#VipalabOdometry_msg
+
+:VipalabOdometry_msg rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :MiddlewareMessage ;
+                     
+                     owl:disjointWith :WifibotCommand_msg ,
+                                      :WifibotOdometry_msg .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#WeaponDriver
+
+:WeaponDriver rdf:type owl:Class ;
+              
+              rdfs:subClassOf :ActuatorDriver ;
+              
+              rdfs:comment "Software/Driver of an actuator of the DeviceSystem of a platform, which correspond with the weapon system (attack-defense) of  a mechanical platform (guns, shields, missiles ...)."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#WeaponHardware
+
+:WeaponHardware rdf:type owl:Class ;
+                
+                rdfs:subClassOf :ActuatorHardware ;
+                
+                rdfs:comment "Hardware Actuator of the DeviceSystem of a platform, which correspond with the weapon system (attack-defense) of  a mechanical platform (guns, shields, missiles ...)."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#WeaponSystem
+
+:WeaponSystem rdf:type owl:Class ;
+              
+              rdfs:subClassOf :ActuatorSystem ;
+              
+              rdfs:comment "System of a robotic platform which correspond with the software and hardware of the weapon components (attack-defense) of  a robot."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#WifibotCommand_msg
+
+:WifibotCommand_msg rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :MiddlewareMessage ;
+                    
+                    owl:disjointWith :WifibotOdometry_msg .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#WifibotOdometry_msg
+
+:WifibotOdometry_msg rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :MiddlewareMessage .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

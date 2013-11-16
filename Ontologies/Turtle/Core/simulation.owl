@@ -1,0 +1,1452 @@
+@prefix : <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xsp: <http://www.owl-ontologies.com/2005/08/07/xsp.owl#> .
+@prefix info: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#> .
+@prefix kern: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix simu: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix sqwrl: <http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
+@base <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl> .
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl> rdf:type owl:Ontology ;
+                                                                                                  
+                                                                                                  owl:versionInfo "version delivered 1.0"^^xsd:string ;
+                                                                                                  
+                                                                                                  rdfs:comment "FaCT++ does not work on this ontology. HermiT shall be used for reasoning."@en ,
+                                                                                                               "The simulation ontology evolved from the specifications developped by experts in the field of robotics, simulation and modelling tooling. It uses the kernel and informations ontologies as its sole resources."@en ,
+                                                                                                               "This work is based upon a previous one funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project (see http://www.anr-project.fr). It is the property of its authors and is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files)."@en ,
+                                                                                                               "Version for Protégé 4.x flavors."@en ;
+                                                                                                  
+                                                                                                  owl:imports <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl> ,
+                                                                                                              <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#TODO
+
+kern:TODO rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates
+
+kern:aggregates rdfs:comment "indicates that systems will be aggregated in order to create a composite system"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#produces
+
+kern:produces rdfs:range kern:Information ;
+              
+              rdfs:domain kern:Probe .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#Partitions
+
+:Partitions rdf:type owl:FunctionalProperty ,
+                     owl:ObjectProperty ;
+            
+            rdfs:comment "This property states that the Time domain function partitions the set obtained thanks to the Time domain property when it is feasable."@en ;
+            
+            rdfs:range :PropertyTimeDomain .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#canBeAssociatedTo
+
+:canBeAssociatedTo rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:comment "Some of the simulated objects with a correspondance to a physical object in the real world can be associated to a 3D representation in the simulation."@en ;
+                   
+                   rdfs:range info:Object3D ;
+                   
+                   rdfs:domain :SimulatedSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#canBeDeployedIn
+
+:canBeDeployedIn rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:comment "This property, sub property of Models, specifies that any system can be deployed in a simulator."@en ;
+                 
+                 rdfs:domain kern:System ;
+                 
+                 rdfs:subPropertyOf kern:isModelledBy ;
+                 
+                 rdfs:range [ rdf:type owl:Class ;
+                              owl:unionOf ( :HardwareSimulator
+                                            :HybridSimulator
+                                            :SoftwareSimulator
+                                          )
+                            ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#creates
+
+:creates rdf:type owl:ObjectProperty ;
+         
+         rdfs:comment "this property expresses the fact some object can create information"@en ;
+         
+         rdfs:range :Simulation ;
+         
+         rdfs:domain :SimulatorEvolutionModel .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasGlobalStateTransitionFunction
+
+:hasGlobalStateTransitionFunction rdf:type owl:FunctionalProperty ,
+                                           owl:ObjectProperty ;
+                                  
+                                  rdfs:subPropertyOf info:hasFunction ;
+                                  
+                                  rdfs:domain :SystemSpecification .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasInput
+
+:hasInput rdf:type owl:FunctionalProperty ,
+                   owl:ObjectProperty ;
+          
+          rdfs:comment "Set used as source of the system specification"@en ;
+          
+          rdfs:range info:Set ;
+          
+          rdfs:subPropertyOf info:hasSet ;
+          
+          rdfs:domain :SystemSpecification .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasInputSegments
+
+:hasInputSegments rdf:type owl:FunctionalProperty ,
+                           owl:ObjectProperty ;
+                  
+                  rdfs:comment "this property explicits the fact that there is a need to specify the time segments used over the input set. The input set is the set as defined by the property simulation:hasInputSet. The set of input segment is called OMEGA."^^xsd:string ;
+                  
+                  rdfs:domain :SystemSpecification ;
+                  
+                  rdfs:subPropertyOf :hasInput .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasInputSet
+
+:hasInputSet rdf:type owl:FunctionalProperty ,
+                      owl:ObjectProperty ;
+             
+             rdfs:comment "The set of the different inputs"@en ;
+             
+             rdfs:range info:Set ;
+             
+             rdfs:domain :SystemSpecification ;
+             
+             rdfs:subPropertyOf :hasInput .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasModelReferenceSet
+
+:hasModelReferenceSet rdf:type owl:FunctionalProperty ,
+                               owl:ObjectProperty ;
+                      
+                      rdfs:subPropertyOf info:hasSet ;
+                      
+                      rdfs:domain :SystemSpecification .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasOutput
+
+:hasOutput rdf:type owl:FunctionalProperty ,
+                    owl:ObjectProperty ;
+           
+           rdfs:comment "Set used as destination of the system specification"@en ;
+           
+           rdfs:range info:Set ;
+           
+           rdfs:subPropertyOf info:hasSet ;
+           
+           rdfs:domain :SystemSpecification .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasOutputFunction
+
+:hasOutputFunction rdf:type owl:FunctionalProperty ,
+                            owl:ObjectProperty ;
+                   
+                   rdfs:subPropertyOf info:hasFunction ;
+                   
+                   rdfs:domain :SystemSpecification .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasOutputSet
+
+:hasOutputSet rdf:type owl:FunctionalProperty ,
+                       owl:ObjectProperty ;
+              
+              rdfs:comment "the set used as output"@en ;
+              
+              rdfs:range info:Set ;
+              
+              rdfs:domain :SystemSpecification ;
+              
+              rdfs:subPropertyOf :hasOutput .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasPointOfViewConfiguration
+
+:hasPointOfViewConfiguration rdf:type owl:ObjectProperty ;
+                             
+                             rdfs:comment "null"@en ;
+                             
+                             rdfs:subPropertyOf kern:has ;
+                             
+                             rdfs:domain :SimulatedSceneCamera ;
+                             
+                             rdfs:range [ rdf:type owl:Class ;
+                                          owl:unionOf ( info:Orientation3DEuler
+                                                        info:Position3DCartesian
+                                                        :Frustum
+                                                      )
+                                        ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasRelation
+
+:hasRelation rdf:type owl:ObjectProperty ;
+             
+             rdfs:comment "A relation establishes a property that the elements of a set have to respect. This property allows to \"structure\" the set associated."@en ;
+             
+             rdfs:range info:Relation ;
+             
+             rdfs:subPropertyOf kern:has .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasSimulationOrientation
+
+:hasSimulationOrientation rdf:type owl:ObjectProperty ;
+                          
+                          rdfs:range info:Orientation ;
+                          
+                          rdfs:subPropertyOf kern:has ;
+                          
+                          rdfs:domain :SimulatedPhysicalSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasSimulationPosition
+
+:hasSimulationPosition rdf:type owl:ObjectProperty ;
+                       
+                       rdfs:range info:Position ;
+                       
+                       rdfs:subPropertyOf kern:has ;
+                       
+                       rdfs:domain :SimulatedPhysicalSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasStateSet
+
+:hasStateSet rdf:type owl:FunctionalProperty ,
+                      owl:ObjectProperty ;
+             
+             rdfs:subPropertyOf info:hasSet ;
+             
+             rdfs:domain :SystemSpecification .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasSystemSet
+
+:hasSystemSet rdf:type owl:FunctionalProperty ,
+                       owl:ObjectProperty ;
+              
+              rdfs:subPropertyOf info:hasSet ;
+              
+              rdfs:range :SystemSet ;
+              
+              rdfs:domain :SystemSpecification .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasTimeBase
+
+:hasTimeBase rdf:type owl:FunctionalProperty ,
+                      owl:ObjectProperty ;
+             
+             rdfs:comment "This property explains that any of the specification must be associated to at least one time base"^^xsd:string ;
+             
+             rdfs:subPropertyOf info:hasSet ;
+             
+             rdfs:domain :SystemSpecification ;
+             
+             rdfs:range :TimeBase .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasTimeDomainFunctionSet
+
+:hasTimeDomainFunctionSet rdf:type owl:FunctionalProperty ,
+                                   owl:ObjectProperty ;
+                          
+                          rdfs:range info:Set ;
+                          
+                          rdfs:subPropertyOf kern:has .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasTimeFactor
+
+:hasTimeFactor rdf:type owl:ObjectProperty ;
+               
+               rdfs:comment "A render engine or a physics engine have a time factor."@en ;
+               
+               rdfs:range info:Real ;
+               
+               rdfs:subPropertyOf kern:has ;
+               
+               rdfs:domain :GraphicsEngine .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasTimeSample
+
+:hasTimeSample rdf:type owl:ObjectProperty ;
+               
+               rdfs:comment "Time base has time samples."@en ;
+               
+               rdfs:range kern:Time ;
+               
+               rdfs:subPropertyOf kern:has ;
+               
+               rdfs:domain :TimeBase .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasTimeStep
+
+:hasTimeStep rdf:type owl:ObjectProperty ;
+             
+             rdfs:comment "An render engine or a physics engine have a time step."@en ;
+             
+             rdfs:range info:Real ;
+             
+             rdfs:subPropertyOf kern:has ;
+             
+             rdfs:domain :GraphicsEngine .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasTrajectory
+
+:hasTrajectory rdf:type owl:ObjectProperty ;
+               
+               rdfs:comment ""@en ;
+               
+               rdfs:subPropertyOf kern:has ;
+               
+               rdfs:domain :SimulatedPedestrian ;
+               
+               rdfs:range :Trajectory .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#hasValues
+
+:hasValues rdf:type owl:FunctionalProperty ,
+                    owl:ObjectProperty ;
+           
+           rdfs:comment "This property only indicates that a set is composed of values that are instances of the info:data"@en ;
+           
+           rdfs:domain info:Set ;
+           
+           rdfs:range kern:Data ;
+           
+           rdfs:subPropertyOf kern:has .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#isAssociatedTo
+
+:isAssociatedTo rdf:type owl:FunctionalProperty ,
+                         owl:ObjectProperty ;
+                
+                rdfs:comment "This association states that a relation is between elements of the same set and thus associated to only one set."@en ;
+                
+                rdfs:range info:Set .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#isComposedOfAlgorithmicModule
+
+:isComposedOfAlgorithmicModule rdf:type owl:ObjectProperty ;
+                               
+                               rdfs:comment "this property allows an application to use module meaning also libraires and thus linking external libraries to application and to its inherited simulator"@en ;
+                               
+                               rdfs:domain kern:Application ;
+                               
+                               rdfs:range kern:SoftwareModule .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#isComposedOfElements
+
+:isComposedOfElements rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:comment "This trajectory is composed of trajectory elements which represent the keyframes along the path."@en ;
+                      
+                      rdfs:range info:TrajectoryElement ;
+                      
+                      rdfs:domain :TrajectoryKeyFrames .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#isCreatedBy
+
+:isCreatedBy rdf:type owl:ObjectProperty ;
+             
+             rdfs:comment "This property allows to link Data to Probe"@en ;
+             
+             rdfs:domain :Simulation ;
+             
+             rdfs:range :SimulatorEvolutionModel ;
+             
+             owl:inverseOf :creates .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#isPartitionedBy
+
+:isPartitionedBy rdf:type owl:InverseFunctionalProperty ,
+                          owl:ObjectProperty ;
+                 
+                 rdfs:comment "This property states that the set obtained through the Time domain property is partitionnedd by the time domain function."@en ;
+                 
+                 rdfs:range info:Function ;
+                 
+                 owl:inverseOf :Partitions .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#isRepresentedBy
+
+:isRepresentedBy rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:comment "A 3D Object can be represented by several elements: meshes (one or several. e.g.: physical mesh and render mesh); texture mappings, object illumination ..."@en ;
+                 
+                 rdfs:domain info:Object3D ;
+                 
+                 rdfs:range [ rdf:type owl:Class ;
+                              owl:unionOf ( :Illumination
+                                            :Mesh
+                                            :Textures
+                                          )
+                            ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#isSampleOf
+
+:isSampleOf rdf:type owl:ObjectProperty ;
+            
+            rdfs:comment "Times are samples of time base."@en ;
+            
+            rdfs:domain kern:Time ;
+            
+            rdfs:subPropertyOf kern:isPropertyOf ;
+            
+            rdfs:range :TimeBase ;
+            
+            owl:inverseOf :hasTimeSample .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#mayCollaborateWith
+
+:mayCollaborateWith rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:comment "this property explains that a simulator can collaborate with another application. An application being a software, this application can also be a simulator."@en ;
+                    
+                    rdfs:range kern:Application .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#simulatesAnimationOf
+
+:simulatesAnimationOf rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:comment "this property is linked to animates property. It is the property allowing a simulator to fake animation of simulated systems."@en ;
+                      
+                      rdfs:range :SimulatedSystem ;
+                      
+                      rdfs:domain :SimulatorEvolutionModel .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#usesDiscreteTimeBase
+
+:usesDiscreteTimeBase rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:comment "The engines in a 3D virtual world simulation use  a discrete time base to achieve the execution of the simulation."@en ;
+                      
+                      rdfs:range :DiscreteTimeBase ;
+                      
+                      rdfs:domain :GraphicsEngine .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#usesRenderSceneCamera
+
+:usesRenderSceneCamera rdf:type owl:ObjectProperty ;
+                       
+                       rdfs:comment "The render engine uses and manages the render camera of the scene. It controls the point of view of the 3D world."@en ;
+                       
+                       rdfs:domain :RenderEngine ;
+                       
+                       rdfs:range :SimulatedSceneCamera .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#withDeployementBecomes
+
+:withDeployementBecomes rdf:type owl:ObjectProperty ;
+                        
+                        rdfs:comment "expresses the fact that a Simulated system models specifically a system"@en ;
+                        
+                        rdfs:domain kern:System ;
+                        
+                        rdfs:subPropertyOf kern:isModelledBy ;
+                        
+                        rdfs:range :SimulatedSystem .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#Configuration
+
+:Configuration rdf:type owl:DatatypeProperty ;
+               
+               rdfs:comment "Configuration means to complete the simulator information in order to allow it to provide life to a system. At this step the configuration does not mean the configuration of the system to be simulated but information on the simulator itself, its distribution properties onto a hardware architecture, ..."@en ;
+               
+               rdfs:domain :SimulatorEvolutionModel .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#EnvironmentMeshes
+
+:EnvironmentMeshes rdf:type owl:DatatypeProperty ;
+                   
+                   rdfs:comment "PhysicsEngines use Meshes in order to represent many parts of the environment. This Data type is inherited of what can be found in the Data tree of the information ontology"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#dimension
+
+:dimension rdf:type owl:DatatypeProperty ,
+                    owl:FunctionalProperty ;
+           
+           rdfs:comment "number of set in the cross product"@en ;
+           
+           rdfs:range xsd:int .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#homogeneous
+
+:homogeneous rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty ;
+             
+             rdfs:comment "this homogeenous property indicates that sets composing the cross product are identical (useful to create Rn and In). False means it is not homogeneous."@en ;
+             
+             rdfs:range [ rdf:type rdfs:Datatype ;
+                          owl:oneOf [ rdf:type rdf:List ;
+                                      rdf:first "false"^^xsd:boolean ;
+                                      rdf:rest [ rdf:type rdf:List ;
+                                                 rdf:first "true"^^xsd:boolean ;
+                                                 rdf:rest rdf:nil
+                                               ]
+                                    ]
+                        ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#manageDifferentialEquationAlgorithmicSoftwareModules
+
+:manageDifferentialEquationAlgorithmicSoftwareModules rdf:type owl:DatatypeProperty ;
+                                                      
+                                                      rdfs:comment "This property indicates that the software simulator is able to manage software modules  that are using the differential equation theory."@en ;
+                                                      
+                                                      rdfs:domain :SoftwareSimulator ;
+                                                      
+                                                      rdfs:range [ rdf:type rdfs:Datatype ;
+                                                                   owl:oneOf [ rdf:type rdf:List ;
+                                                                               rdf:first "false"^^xsd:boolean ;
+                                                                               rdf:rest [ rdf:type rdf:List ;
+                                                                                          rdf:first "true"^^xsd:boolean ;
+                                                                                          rdf:rest rdf:nil
+                                                                                        ]
+                                                                             ]
+                                                                 ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#managePartialDerivativeEquationAlgorithmicSoftwareModules
+
+:managePartialDerivativeEquationAlgorithmicSoftwareModules rdf:type owl:DatatypeProperty ;
+                                                           
+                                                           rdfs:comment "this paramater indicates the capability of the software simulator to manipulate software Modules using the Derivative equation theory"@en ;
+                                                           
+                                                           rdfs:domain :SoftwareSimulator ;
+                                                           
+                                                           rdfs:range [ rdf:type rdfs:Datatype ;
+                                                                        owl:oneOf [ rdf:type rdf:List ;
+                                                                                    rdf:first "false"^^xsd:boolean ;
+                                                                                    rdf:rest [ rdf:type rdf:List ;
+                                                                                               rdf:first "true"^^xsd:boolean ;
+                                                                                               rdf:rest rdf:nil
+                                                                                             ]
+                                                                                  ]
+                                                                      ] .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#AssociativeArrayForSimulation
+
+info:AssociativeArrayForSimulation rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#AudioPacket
+
+info:AudioPacket owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#CANFrame
+
+info:CANFrame owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Constraint
+
+info:Constraint owl:disjointWith :PropertyTimeDomain ,
+                                 :Trajectory .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#CrossProduct
+
+info:CrossProduct owl:disjointWith :Frustum ,
+                                   :SystemSet ,
+                                   :TimeBase .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#GPS
+
+info:GPS owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#I
+
+info:I owl:disjointWith :Frustum ,
+                        :SystemSet ,
+                        :TimeBase .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Image
+
+info:Image owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#LaserScan
+
+info:LaserScan owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Message
+
+info:Message owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#MissionEvaluation
+
+info:MissionEvaluation owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Object2D
+
+info:Object2D owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Object3D
+
+info:Object3D owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#OrderedSet
+
+info:OrderedSet owl:disjointWith :SystemSpecification .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Orientation2DAngle
+
+info:Orientation2DAngle owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Orientation2DMatrix
+
+info:Orientation2DMatrix owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Orientation3DEuler
+
+info:Orientation3DEuler owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Orientation3DMatrix
+
+info:Orientation3DMatrix owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Orientation3DQuaternion
+
+info:Orientation3DQuaternion owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#PhysicalData
+
+info:PhysicalData owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Position2DCartesian
+
+info:Position2DCartesian owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Position2DPolar
+
+info:Position2DPolar owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Position3DCartesian
+
+info:Position3DCartesian owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Position3DCylindrical
+
+info:Position3DCylindrical owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Position3DSpherical
+
+info:Position3DSpherical owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Position6D
+
+info:Position6D owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#R
+
+info:R owl:disjointWith :Frustum ,
+                        :SystemSet ,
+                        :TimeBase .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Referential
+
+info:Referential owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Set
+
+info:Set rdfs:comment "A collection of elements without repetition"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#StreamPacket
+
+info:StreamPacket owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#StructuredData
+
+info:StructuredData owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#TimeStampedData
+
+info:TimeStampedData owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#TrajectoryElement
+
+info:TrajectoryElement owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Translation2D
+
+info:Translation2D owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Translation3D
+
+info:Translation3D owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#UUID
+
+info:UUID owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Waypoint2D
+
+info:Waypoint2D owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Waypoint3D
+
+info:Waypoint3D owl:disjointWith :Simulation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#AtomicModel
+
+kern:AtomicModel owl:disjointWith kern:Human ,
+                                  :AtomicAlgorithmicModule .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Clock
+
+kern:Clock owl:disjointWith :HardwareSimulator .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#CompositeModel
+
+kern:CompositeModel owl:disjointWith kern:Environment ,
+                                     :SoftwareLibrary .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Driver
+
+kern:Driver owl:disjointWith :SoftwareSimulator .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Environment
+
+kern:Environment owl:disjointWith :SoftwareLibrary .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Human
+
+kern:Human owl:disjointWith :AtomicAlgorithmicModule .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SoftwareModule
+
+kern:SoftwareModule rdf:type owl:Class ;
+                    
+                    owl:disjointWith :SoftwareSimulator .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SoftwareProbe
+
+kern:SoftwareProbe owl:disjointWith :SoftwareSimulator .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Wrapper
+
+kern:Wrapper owl:disjointWith :SoftwareSimulator .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#AtomicAlgorithmicModule
+
+:AtomicAlgorithmicModule rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf kern:AtomicSystem ,
+                                         kern:SoftwareModule ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty kern:models ;
+                                           owl:cardinality "1"^^xsd:nonNegativeInteger
+                                         ] ;
+                         
+                         owl:disjointWith :SoftwareLibrary ;
+                         
+                         rdfs:comment "These software are elementary chunk of code compiled into something that can be either used by an application or can be grouped to produce an application."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#DifferentialEquationModel
+
+:DifferentialEquationModel rdf:type owl:Class ;
+                           
+                           rdfs:subClassOf kern:AtomicModel ;
+                           
+                           owl:disjointWith :PartialDerivativeModel ;
+                           
+                           rdfs:comment "this model of a system uses differential equations to describe how the modelled system evolve with time WITHOUT considering how time is evolving."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#DifferentialEquationSoftwareModule
+
+:DifferentialEquationSoftwareModule rdf:type owl:Class ;
+                                    
+                                    rdfs:subClassOf :AtomicAlgorithmicModule ,
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty kern:models ;
+                                                      owl:allValuesFrom :DifferentialEquationModel
+                                                    ] ;
+                                    
+                                    owl:disjointWith :PartialDerivativeSoftwareModule ;
+                                    
+                                    rdfs:comment "piece of compiled implementing the DifferentialEquationModel"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#DiscreteTimeBase
+
+:DiscreteTimeBase rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :TimeBase ;
+                  
+                  rdfs:comment "This time base is a specific one. It is a totally ordered set where the set used can be mapped (isomorphism) onto N"^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#ExternalSoftwareModule
+
+:ExternalSoftwareModule rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf :AtomicAlgorithmicModule ;
+                        
+                        rdfs:comment "ExternalSoftwareModule are considered as AtomicSystem because there is no way ot describe their inside and thus can be considered from the current modelled system as an atomic thing."@en ,
+                                     "This module is know only by its interface and nothing more. It is always associated if implemented / deployed to an external library (see experiment ontology for more detail). Nevertheless, even not known, the module can use whatever the theory it likes thus it is not a concept disjoint of its primitive subclasses."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#ExternalSoftwareModuleLibrary
+
+:ExternalSoftwareModuleLibrary rdf:type owl:Class ;
+                               
+                               rdfs:subClassOf :SoftwareLibrary ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty kern:aggregates ;
+                                                 owl:allValuesFrom :ExternalSoftwareModule
+                                               ] ;
+                               
+                               owl:disjointWith :Illumination ;
+                               
+                               rdfs:comment "These libraries groups only modules known by their interfaces and which internal are not known or lightly described not using the ontology."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#Frustum
+
+:Frustum rdf:type owl:Class ;
+         
+         rdfs:subClassOf info:Set ;
+         
+         owl:disjointWith :SystemSet ,
+                          :TimeBase ;
+         
+         owl:versionInfo "TODO: verify we have a Set"^^xsd:string ;
+         
+         rdfs:comment """In geometry, a frustum is the portion of a solid (normally a cone or pyramid) that lies between two parallel planes cutting it.
+
+The term is commonly used in computer graphics to describe the three-dimensional region which is visible on the screen, the 'viewing frustum', which is formed by a clipped pyramid; in particular, frustum culling is a method of hidden surface determination."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#GraphicsEngine
+
+:GraphicsEngine rdf:type owl:Class ;
+                
+                rdfs:subClassOf kern:Application ;
+                
+                owl:disjointWith :SoftwareSimulator ;
+                
+                rdfs:comment "Piece of software frequently used by developers to describe some libraries, platforms, SDK or objects, to denote an encapsulated block of functionalities oriented to graphics development and execution in a 3D virtual world."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#HardwareSimulator
+
+:HardwareSimulator rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf kern:Hardware ,
+                                   :SimulatorEvolutionModel ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty kern:animates ;
+                                     owl:allValuesFrom kern:PhysicalObject
+                                   ] ;
+                   
+                   owl:disjointWith :HybridSimulator ,
+                                    :SoftwareSimulator ;
+                   
+                   rdfs:comment "A hardware simulator manages only systems composed of hardware components. It is itself a hardware aggregate."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#HybridSimulator
+
+:HybridSimulator rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf kern:CompositeModel ,
+                                 :SimulatorEvolutionModel ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty kern:aggregates ;
+                                   owl:someValuesFrom :SoftwareSimulator
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty kern:aggregates ;
+                                   owl:someValuesFrom :HardwareSimulator
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :simulatesAnimationOf ;
+                                   owl:minCardinality "2"^^xsd:nonNegativeInteger
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty kern:aggregates ;
+                                   owl:allValuesFrom [ rdf:type owl:Class ;
+                                                       owl:unionOf ( :HardwareSimulator
+                                                                     :SoftwareSimulator
+                                                                   )
+                                                     ]
+                                 ] ;
+                 
+                 owl:disjointWith :SoftwareSimulator ;
+                 
+                 rdfs:comment "This simulator provides life to a system composed of software and hardware components (at least one of each as if not it is one of the other category)."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#Illumination
+
+:Illumination rdf:type owl:Class ;
+              
+              rdfs:subClassOf :SoftwareLibrary ;
+              
+              rdfs:comment "Global illumination is a general name for a group of algorithms used in 3D computer graphics that are meant to add more realistic lighting to 3D scenes. Such algorithms take into account not only the light which comes directly from a light source (direct illumination), but also subsequent cases in which light rays from the same source are reflected by other surfaces in the scene, whether reflective or not (indirect illumination). Sometimes some components of illumination can be parametrized an aproximated in terms of \"ambient\", \"specular\" and \"diffuse\" parameters."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#Mesh
+
+:Mesh rdf:type owl:Class ;
+      
+      rdfs:subClassOf info:AssociativeArrayForSimulation ;
+      
+      owl:disjointWith :Textures ,
+                       :TrajectoryKeyFrames ;
+      
+      rdfs:comment "A polygon mesh or unstructured grid is a collection of vertices, edges and faces that defines the shape of a polyhedral object in 3D computer graphics and solid modeling. The faces usually consist of triangles, quadrilaterals or other simple convex polygons, since this simplifies rendering, but may also be composed of more general concave polygons, or polygons with holes."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#PartialDerivativeModel
+
+:PartialDerivativeModel rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf kern:AtomicModel ;
+                        
+                        rdfs:comment "this model of a system uses partially derivative equations to describe how the modelled system evolve with time WITHOUT considering how time is evolving."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#PartialDerivativeSoftwareModule
+
+:PartialDerivativeSoftwareModule rdf:type owl:Class ;
+                                 
+                                 rdfs:subClassOf :AtomicAlgorithmicModule ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty kern:models ;
+                                                   owl:allValuesFrom :PartialDerivativeModel
+                                                 ] ;
+                                 
+                                 rdfs:comment "piece of compiled implementing the PartielDerivativeModel"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#PhysicEngine
+
+:PhysicEngine rdf:type owl:Class ;
+              
+              rdfs:subClassOf :SoftwareSimulator ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty kern:uses ;
+                                owl:someValuesFrom :PhysicsMesh
+                              ] ;
+              
+              rdfs:comment "A physics engine is a computer software that provides an approximate simulation of certain physical systems, such as rigid body dynamics (including collision detection), soft body dynamics, and fluid dynamics, of use in the domains of computer graphics, video games and film. The term is sometimes used more generally to describe any software system for simulating physical phenomena, such as high-performance scientific simulation."@en ,
+                           "there is a restriction on kern:uses for this concept as the PhysicsEngine concept specificity is to use specific Meshes to implements internally at least the terrain."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#PhysicsMesh
+
+:PhysicsMesh rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Mesh ;
+             
+             owl:disjointWith :RenderMesh ;
+             
+             kern:TODO "PhysicsMesh are used by PhysicsEngine that is an actual application. It means that PhysicMesh cannot be an abstraction."@en ;
+             
+             rdfs:comment "This is a mesh managed by the physics engine. It is a support mesh of the render mesh for the physics world interaction. It has no texture mapping and it's normally a simplified mesh of the render mesh (less complexity in terms of polygons and vertices). It is normally hidden from user view, because it is attached to the render mesh which already shows the graphical aspect of the 3D object."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#PropertyTimeDomain
+
+:PropertyTimeDomain rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf info:Relation ;
+                    
+                    owl:disjointWith :Trajectory ;
+                    
+                    rdfs:comment "This relation states that v1 and v2 are related if they are segment (an element of OMEGAS) (not over the same set but using the same time base) and if the domain of the time base is identical for the two of them."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#RenderEngine
+
+:RenderEngine rdf:type owl:Class ;
+              
+              rdfs:subClassOf :GraphicsEngine ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty kern:uses ;
+                                owl:someValuesFrom :RenderMesh
+                              ] ;
+              
+              rdfs:comment "A render engine is a computer software that achieves the process of generating an image from a model (or models in what collectively could be called a scene file), by means of computer programs. A scene file contains objects in a strictly defined language or data structure; it would contain geometry, viewpoint, texture, lighting, and shading information as a description of the virtual scene."@en ,
+                           "there is a restriction onto the kern:uses property in order to specify that tha specifficity of this engine is to use Meshes dedicatedd to Rendering aspects"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#RenderMesh
+
+:RenderMesh rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Mesh ;
+            
+            rdfs:comment "This is a mesh managed by the render engine. It is only a graphic mesh represented by a set of polygons, normally textured with no physics interaction in the 3D world."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SimulatedPedestrian
+
+:SimulatedPedestrian rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :SimulatedPhysicalSystem ;
+                     
+                     owl:disjointWith :SimulatedVehicle ;
+                     
+                     rdfs:comment "Simulation of the pedestrian physical agent which performs the action of walking in a simulated scenario within a 3D virtual world simulation."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SimulatedPhysicalSystem
+
+:SimulatedPhysicalSystem rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf :SimulatedSystem ;
+                         
+                         owl:disjointWith :SimulatedSceneCamera ;
+                         
+                         rdfs:comment "A Physical Object can be deployed in a simulation context as a simulated system, piece of software within the simulator."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SimulatedSceneCamera
+
+:SimulatedSceneCamera rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf :SimulatedSystem ;
+                      
+                      rdfs:comment "This is a simulated camera in a 3D world. It represents the render point of view of the scene. It mainly has a position, an orientation and a frustum as parameters."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SimulatedSystem
+
+:SimulatedSystem rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf kern:Model ,
+                                 kern:Software ;
+                 
+                 rdfs:comment "A simulated system is a piece of software managed by a software simulator. It is a software element inside the simulation. It is an easy way to categorise modelled system using software."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SimulatedVehicle
+
+:SimulatedVehicle rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :SimulatedPhysicalSystem ;
+                  
+                  rdfs:comment "Simulation of  a physical vehicle in a simulated scenario within a 3D virtual world simulation."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#Simulation
+
+:Simulation rdf:type owl:Class ;
+            
+            rdfs:subClassOf info:ComposedData ;
+            
+            rdfs:comment "A simulation is a set of results got thanks to the simulator that created them. Its type is as different as the many simulators that can exists. It can be writings on sheet of paper or notebooks, analogic recordings on old disks."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SimulatorEvolutionModel
+
+:SimulatorEvolutionModel rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf kern:Model ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty kern:has ;
+                                           owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty kern:has ;
+                                           owl:allValuesFrom kern:Probe
+                                         ] ;
+                         
+                         kern:TODO """1. write a rule allowing to state that the simulation is created from the information produced by the implemented Probe
+2. it is necessary to create a property model of the animates property in order to express the fact the timeline provided by simulation is only a fake of the real world timeline"""@en ;
+                         
+                         rdfs:comment "It is a model of an evolution model that allows to provide one fake timeframe to one simulated system. it can be synchronised with other simulators. The model system manipulated by the simulator does not need to be specific. It can be an hardware (reduced scale models), a software (HLA like) or an hybrid one where there are software and hardware components (hybrid simulator). It corresponds mainly to the simulation theory that is used."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SoftwareLibrary
+
+:SoftwareLibrary rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf kern:CompositeSystem ,
+                                 kern:SoftwareModule ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty kern:aggregates ;
+                                   owl:allValuesFrom kern:SoftwareModule
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty kern:aggregates ;
+                                   owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                 ] ;
+                 
+                 rdfs:comment "A software library is a piece of code providing some code header in order to be able to address the different AlgorithmicModule that are present inside."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SoftwareSimulator
+
+:SoftwareSimulator rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf kern:Application ,
+                                   :SimulatorEvolutionModel ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty kern:animates ;
+                                     owl:allValuesFrom :SimulatedSystem
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty kern:has ;
+                                     owl:allValuesFrom kern:SoftwareProbe
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty kern:executesOn ;
+                                     owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                   ] ;
+                   
+                   rdfs:comment "A software simulator manages only systems composed of software components. It is itself an application. A software simulator can manage software components that are NOT executable thus only code (interpreter as an examaple)."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SystemSet
+
+:SystemSet rdf:type owl:Class ;
+           
+           rdfs:subClassOf info:Set ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty info:contains ;
+                             owl:allValuesFrom kern:System
+                           ] ;
+           
+           owl:disjointWith :TimeBase .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SystemSpecification
+
+:SystemSpecification rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf info:StructuredData ;
+                     
+                     owl:versionInfo "TODO: simplification to be done with respect to the \"hasInput\", \"hasInputSet\", etc"^^xsd:string ;
+                     
+                     rdfs:comment """The theory of modeling and simulation introduces a hierarchy of specifications and expresses how the elements of one level map onto the elements of its neighbours (see reference 1, section 5 and after).
+What is specific of these different specifications is that they all are structure assembling sets through relations."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#Textures
+
+:Textures rdf:type owl:Class ;
+          
+          rdfs:subClassOf info:AssociativeArrayForSimulation ;
+          
+          owl:disjointWith :TrajectoryKeyFrames ;
+          
+          rdfs:comment """Texture mapping is a method for adding detail, surface texture (a bitmap or raster image), or color to a computer-generated graphic or 3D model.
+A texture map is applied (mapped) to the surface of a shape or polygon (mesh). This process is akin to applying patterned paper to a plain white box. Every vertex in a polygon is assigned a texture coordinate (which in the 2d case is also known as a UV coordinate) either via explicit assignment or by procedural definition. Image sampling locations are then interpolated across the face of a polygon to produce a visual result that seems to have more richness than could otherwise be achieved with a limited number of polygons."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#TimeBase
+
+:TimeBase rdf:type owl:Class ;
+          
+          rdfs:subClassOf info:Set ;
+          
+          rdfs:comment "this definition refers to section 5.1 of reference 1. It states that a time base, ultimately, is an ordered set not even a total one that allows to state if an event has occurred before or after another one."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#Trajectory
+
+:Trajectory rdf:type owl:Class ;
+            
+            rdfs:subClassOf info:Relation ;
+            
+            rdfs:comment "A trajectory is the path that a moving object follows through space as a function of time. A trajectory can be described mathematically either by the geometry of the path (Trajectory), or as the position of the object over time (TrajectoryFunction)."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#TrajectoryKeyFrames
+
+:TrajectoryKeyFrames rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf info:AssociativeArrayForSimulation ;
+                     
+                     rdfs:comment "This trajectory will define an ordered set of key frames or positions over time."@en .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SimulatorForDifferentialEquationsAndExternalModels
+
+:SimulatorForDifferentialEquationsAndExternalModels rdf:type :SoftwareSimulator ,
+                                                             owl:NamedIndividual ;
+                                                    
+                                                    kern:isAtomic "true"^^xsd:boolean ;
+                                                    
+                                                    rdfs:comment "This instance should allow us to verify that our simulator representation is workinng"@en .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

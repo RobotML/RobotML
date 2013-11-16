@@ -1,0 +1,2584 @@
+@prefix : <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xsp: <http://www.owl-ontologies.com/2005/08/07/xsp.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix kernel: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#> .
+@prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
+@base <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl> .
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl> rdf:type owl:Ontology ;
+                                                                                              
+                                                                                              :TODO "Definitions linked to event, evolution machine, ... have to be aligned as close as possible to DEVS theory."@en ;
+                                                                                              
+                                                                                              rdfs:comment """The goal of the ontology is to help and support:
+- the creation of specialised languages for robotics
+- the creation of a standardised protocol dedicated to robots cooperation
+- the creation of a standardised way to understand what is a simulation
+
+It is organised in three logical parts. First part provides concepts to manipulate \"systems\", static as well as dynamic through:
+- Static representation
+-> System
+-> Architecture
+-> Component
+-> Interaction
+
+- Dynamic representation
+-> Evolution model
+-> State
+-> derived in InteractionState and ComponentState
+
+Second part is the representation of the physical world, of the universe of the problem. It includes:
+- Environment
+- PhysicalObject
+- Hardware and Hardware{Aggregate|Component}
+- PhysicalInteraction
+- Referential
+
+Third part is the representation of the software \"world\". All that concerns information and how it is mapped onto the hardware:
+- Software and Software{Aggregate|Component}
+- SoftwareConnector
+- Computer
+- SoftwareToHardwareInteraction and HardwareToSoftwareInteraction (These two are very important as they allow the software to live in the hardware)"""@en ,
+                                                                                                           "This work is based upon a previous one funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project (see http://www.anr-project.fr). It is the property of its authors and is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files)."@en ,
+                                                                                                           "Version for Protégé 4.x flavors."@en ;
+                                                                                              
+                                                                                              :author """modified Bruno Patin - 03/10/2013
+- addition of rule stating that an action is only done by an agent
+modified Bruno Patin - 09/10/2013
+- addition of a rule stating that hardware is built by human only"""@en .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#TODO
+
+:TODO rdf:type owl:AnnotationProperty ;
+      
+      rdfs:comment "this annotation allows its user to tag questions or requests for actions to be done / discussed with respect to the ontology."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#author
+
+:author rdf:type owl:AnnotationProperty ;
+        
+        rdfs:comment """creation Bruno Patin - 28/09/2013
+- annotation created to track changes"""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#openCycURI
+
+:openCycURI rdf:type owl:AnnotationProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#otherURI
+
+:otherURI rdf:type owl:AnnotationProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#wikipediaURI
+
+:wikipediaURI rdf:type owl:AnnotationProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#wiktionaryURI
+
+:wiktionaryURI rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Implements
+
+:Implements rdf:type owl:ObjectProperty ;
+            
+            rdfs:comment "Every data corresponds to an abstraction"@en ;
+            
+            rdfs:range :Abstraction ;
+            
+            rdfs:domain :Data .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#OccursAfterEvent
+
+:OccursAfterEvent rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:comment "A time event occurs after another event."@en ;
+                  
+                  rdfs:range :Event ;
+                  
+                  rdfs:domain :TimeEvent .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates
+
+:aggregates rdf:type owl:ObjectProperty ;
+            
+            :openCycURI """this property relates to the systemComponents OpenCyc property.
+http://sw.opencyc.org/concept/Mx4rqWixJi_fQdiDAuNReZaKSg"""^^xsd:anyURI ;
+            
+            rdfs:comment """aggregation is used in order to explains the system composition property. At this step, the \"min 2 system\" attribute of CompositeSystem leads to indecidability of ontology if putting in effect the ransitivity characteristic. 
+
+a head is composed of 2 eyes is composed of eye 1 and eye 2. No transititvity means no verification of existence of software andf haredware at the lowest level.
+
+This has to be tackled with in the meta-model itself."""@en ;
+            
+            :author """creation PROTEUS consortium - 
+modified Bruno Patin - 30/09/2013
+- comment modified"""@en ;
+            
+            rdfs:domain :CompositeSystem ;
+            
+            rdfs:range :System .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#animates
+
+:animates rdf:type owl:ObjectProperty ;
+          
+          :wiktionaryURI """See the first verb definition
+http://en.wiktionary.org/wiki/animate"""@en ;
+          
+          rdfs:comment "animation is a property describing dynamicity of objects. In the scope of this ontology, Evolution IS the mechanism providing change to systems. Time is how man measures course of change but it has not to be confused."@en ;
+          
+          :author """creation PROTEUS consortium - 
+modified Bruno Patin - 10/09/2013
+- comment modified"""@en ;
+          
+          rdfs:domain :Evolution ;
+          
+          rdfs:range :System ;
+          
+          owl:inverseOf :isAnimatedByEvolution .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#belongsTo
+
+:belongsTo rdf:type owl:ObjectProperty ;
+           
+           :TODO "Question arises of functionality of link one frame and one time Plus relations between the different frames/times?"@en ;
+           
+           rdfs:comment "This links is specific to the time class. It expresses the fact that the time concept means nothing outside the physical world and must be associated to at least one referential system."@en ;
+           
+           :author """creation PROTEUS consortium - 
+modified Bruno Patin - 10/09/2013
+- TODO annotation added"""@en ;
+           
+           rdfs:range :Frame ;
+           
+           rdfs:domain :Time ;
+           
+           owl:inverseOf :definesSpaceTime .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#carries
+
+:carries rdf:type owl:ObjectProperty ;
+         
+         rdfs:comment "A connector carries interactions."@en ;
+         
+         rdfs:domain :Connector ;
+         
+         rdfs:range :Interaction .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#constrains
+
+:constrains rdf:type owl:ObjectProperty ;
+            
+            rdfs:comment "A protocol constrains the way information is exchanged between systems"@en ;
+            
+            rdfs:range :Information ;
+            
+            rdfs:domain :Protocol .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#constrainsFrame
+
+:constrainsFrame rdf:type owl:ObjectProperty ;
+                 
+                 :author """creation PROTEUS consortium - 
+modified Bruno Patin - 10/09/2013
+- annotation TODO added"""@en ;
+                 
+                 :TODO "this predicate should be used for the definition of \"complete bonding\" concept. A rule should exist to tell that if there is such a bonding then the predicate applies to the two linked objects."@en ;
+                 
+                 rdfs:comment "this relation expresses the fact that there could exists contraints between frames of two physical objects for instance when two physical objects are in relation through joint. In order to implement the constraint, it is necessary to consider the parameterisation of the PhysicalInteraction in itself (or more its specialisations)." ;
+                 
+                 rdfs:range :Frame ;
+                 
+                 rdfs:domain :Frame .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#currentlyPerforms
+
+:currentlyPerforms rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:seeAlso "ORO: currentlyPerforms"^^xsd:string ;
+                   
+                   rdfs:isDefinedBy "http://kb.openrobots.org#currentlyPerforms"^^xsd:anyURI ;
+                   
+                   rdfs:comment "an Agent performs actions and thus is always currently performing some action even if it is nothing"@en ;
+                   
+                   rdfs:range :Action ;
+                   
+                   rdfs:domain :Agent ;
+                   
+                   owl:inverseOf :isPerformedBy .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#definesAFrame
+
+:definesAFrame rdf:type owl:ObjectProperty ;
+               
+               rdfs:comment "this property expresses the fact that every physical object is associated to a frame providing it its existence in space and time."@en ;
+               
+               rdfs:range :Frame ;
+               
+               rdfs:domain :PhysicalObject .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#definesSpaceTime
+
+:definesSpaceTime rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:comment "A frame is associated to a local time."@en ;
+                  
+                  rdfs:domain :Frame ;
+                  
+                  rdfs:range :Time .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#describe
+
+:describe rdf:type owl:ObjectProperty ;
+          
+          :wiktionaryURI "http://en.wiktionary.org/wiki/describe"^^xsd:anyURI ;
+          
+          :openCycURI "http://sw.opencyc.org/concept/Mx4rfQCRhMFcEdmAAAACs6hRjg"^^xsd:anyURI ;
+          
+          rdfs:comment "The \"describe\" property is the capability for any piece of information to provide an insight on universe / world and its content. It means everything including information (quotation or comment). This description is always done by an agent either writing something or speaking."@en ;
+          
+          :author """creation Bruno Patin - 08/09/2013
+modified Bruno Patin - 10/09/2013
+- addition of OpenCyc link
+- modification of comment"""@en ;
+          
+          rdfs:domain :Information ;
+          
+          rdfs:range owl:Thing .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#emits
+
+:emits rdf:type owl:ObjectProperty ;
+       
+       rdfs:comment "Ports emit interactions"@en ;
+       
+       rdfs:range :Interaction ;
+       
+       rdfs:domain :Port .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#endsOn
+
+:endsOn rdf:type owl:ObjectProperty ;
+        
+        rdfs:comment "A finite state machine has an end state"@en ;
+        
+        rdfs:range :AutomataEndState ;
+        
+        rdfs:domain :StateMachine .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#entail
+
+:entail rdf:type owl:ObjectProperty ;
+        
+        rdfs:comment "A transition is triggered by an event after evaluation to truth-value of the established condition."@en ;
+        
+        rdfs:domain :Event ;
+        
+        rdfs:range :Transition .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#evaluatesToTruth
+
+:evaluatesToTruth rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:comment "When a condition placed in a state of a StateMachine evaluates to truth value, and event takes place and carries out the transition to another state."@en ;
+                  
+                  rdfs:range :ChangeEvent ;
+                  
+                  rdfs:domain :Condition .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#evolvesIn
+
+:evolvesIn rdf:type owl:ObjectProperty ;
+           
+           :TODO """1. Clarify this property when evolution concerns the surface of the object (a surface IS an object in the ontology)
+2. The name of the property does not transmit clearly the property described (that is inclusion)"""^^xsd:string ;
+           
+           :author """creation PROTEUS consortium - 
+modified Bruno Patin - 10/09/2013
+- comment modified
+- TODO completed"""@en ;
+           
+           rdfs:comment "links the PhysicalObject to the physical object in which it exists. To be sure, there is a relationship between these two that is an inclusion one. Environment being the largest one at some step this inclusion story stops."@en ;
+           
+           rdfs:range :PhysicalObject ;
+           
+           rdfs:domain :PhysicalObject .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#executesOn
+
+:executesOn rdf:type owl:ObjectProperty ;
+            
+            rdfs:comment "This expresses the fact that there is no software running without a hardware that includes computation capability and supporting it."@en ;
+            
+            :author """creation PROTEUS consortium - 
+modified Bruno Patin - 10/09/2013
+- comment modified"""@en ;
+            
+            rdfs:range :Hardware ;
+            
+            rdfs:domain :Software .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#from
+
+:from rdf:type owl:ObjectProperty ;
+      
+      rdfs:comment "A transition is defined by a start state and an end state"@en ;
+      
+      rdfs:range :AutomataState ;
+      
+      rdfs:domain :Transition .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#givesNextState
+
+:givesNextState rdf:type owl:ObjectProperty ;
+                
+                rdfs:comment "The evolution model is able to provide the next state of a component using its previous known states and a time on which to evaluate the new state."@en ;
+                
+                rdfs:domain :Evolution ;
+                
+                rdfs:range :State .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#has
+
+:has rdf:type owl:ObjectProperty ;
+     
+     rdfs:comment "Things have things."@en ;
+     
+     owl:inverseOf :isPropertyOf .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasAction
+
+:hasAction rdf:type owl:ObjectProperty ;
+           
+           rdfs:comment "An Activity is constituted by a set of Actions."@en ;
+           
+           rdfs:range :Action ;
+           
+           rdfs:domain :Activity ;
+           
+           rdfs:subPropertyOf :has .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasActivity
+
+:hasActivity rdf:type owl:ObjectProperty ;
+             
+             rdfs:comment "An agent is linked to the Activity made by the actions performed by this agent."@en ;
+             
+             rdfs:range :Activity ;
+             
+             rdfs:domain :Agent ;
+             
+             rdfs:subPropertyOf :has .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasAsOrigin
+
+:hasAsOrigin rdf:type owl:ObjectProperty ;
+             
+             :TODO "There is an issue as frame is not identical to referential. A referential is an information that describes a frame and at this ppoint and only then there is a need to define an orifgin. Origin is not linked to frame. This property should be deleted."@en ;
+             
+             :author """creation PROTEUS consortium - 
+modified Bruno Patin - 10/09/2013
+- TODO added"""@en ;
+             
+             rdfs:comment "this link means that a referential has an origin."@en ;
+             
+             rdfs:domain :Frame ;
+             
+             rdfs:range :Information ;
+             
+             rdfs:subPropertyOf :has .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasDownstreamPort
+
+:hasDownstreamPort rdf:type owl:FunctionalProperty ,
+                            owl:ObjectProperty ;
+                   
+                   rdfs:comment "A connector has a unique downstream port."@en ;
+                   
+                   rdfs:domain :Connector ;
+                   
+                   rdfs:range :Port ;
+                   
+                   rdfs:subPropertyOf :has .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasFSMActivity
+
+:hasFSMActivity rdf:type owl:ObjectProperty ;
+                
+                rdfs:comment "A state can be associated to Finite State Machine Activities."@en ;
+                
+                rdfs:domain :AutomataState ;
+                
+                rdfs:range :FSMActivity ;
+                
+                rdfs:subPropertyOf :has .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasPort
+
+:hasPort rdf:type owl:InverseFunctionalProperty ,
+                  owl:ObjectProperty ;
+         
+         rdfs:comment "Property to qualify the fact that systems have ports."@en ;
+         
+         rdfs:range :Port ;
+         
+         rdfs:domain :System ;
+         
+         rdfs:subPropertyOf :has .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasPortValue
+
+:hasPortValue rdf:type owl:ObjectProperty ;
+              
+              rdfs:comment "Each port of a system has some information to receive or to send through interactions from or to other systems. System being the \"reality\", these information are abstraction."@en ;
+              
+              :author """creation PROTEUS consortium - 
+modified Bruno Patin - 10/09/2013
+- change of range (from data to information)
+- comment completed to take above modification into account"""@en ;
+              
+              rdfs:range :Abstraction ;
+              
+              rdfs:domain :Port ;
+              
+              rdfs:subPropertyOf :has .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasProbe
+
+:hasProbe rdf:type owl:ObjectProperty ;
+          
+          rdfs:comment "Systems can have probes to allow evolution model to survey the systems' states."@en ;
+          
+          rdfs:range :Probe ;
+          
+          rdfs:domain :System ;
+          
+          rdfs:subPropertyOf :has ;
+          
+          owl:inverseOf :isProbeOf .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasProtocol
+
+:hasProtocol rdf:type owl:ObjectProperty ;
+             
+             rdfs:comment "An interaction can implement a protocol"@en ;
+             
+             rdfs:range :Protocol ;
+             
+             rdfs:subPropertyOf :has ;
+             
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( :Interaction
+                                         :Port
+                                       )
+                         ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasState
+
+:hasState rdf:type owl:ObjectProperty ;
+          
+          rdfs:comment "each class associated through this link to state is able to have a set of state. It does not mean evolution because this is implemented through the evolution model that will allow an ordering of the set."@en ;
+          
+          rdfs:range :State ;
+          
+          rdfs:subPropertyOf :has ;
+          
+          rdfs:domain [ rdf:type owl:Class ;
+                        owl:unionOf ( :Interaction
+                                      :System
+                                    )
+                      ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasStateVariables
+
+:hasStateVariables rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:comment """States have several state variables.
+As State is an abstract concept describing object as they are thus the variables defining this state are of Abstraction types."""@en ;
+                   
+                   :author """creation PROTEUS consortium - 
+modified Bruno Patin - 10/09/2013
+- Range modified due to added comment"""@en ;
+                   
+                   rdfs:range :Abstraction ;
+                   
+                   rdfs:domain :State ;
+                   
+                   rdfs:subPropertyOf :has .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasUpstreamPort
+
+:hasUpstreamPort rdf:type owl:FunctionalProperty ,
+                          owl:ObjectProperty ;
+                 
+                 rdfs:comment "A connector has a unique upstream port."@en ;
+                 
+                 rdfs:domain :Connector ;
+                 
+                 rdfs:range :Port ;
+                 
+                 rdfs:subPropertyOf :has .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#impacts
+
+:impacts rdf:type owl:ObjectProperty ;
+         
+         :author """creation PROTEUS consortium - 
+modified Bruno Patin - 05/10/2013
+- impacts is now the inverse of triggers"""@en ;
+         
+         rdfs:comment "it is the interaction through its evolution that will impact the system by changing / modifying its state."@en ;
+         
+         rdfs:domain :Interaction ;
+         
+         rdfs:range :System .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#impactsEvolution
+
+:impactsEvolution rdf:type owl:FunctionalProperty ,
+                           owl:ObjectProperty ;
+                  
+                  rdfs:comment "For instance, the evolution of a stone is not the same in the air and in the water"@en ;
+                  
+                  rdfs:domain :Environment ;
+                  
+                  rdfs:range :PhysicalObject .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isAFunctionOfTime
+
+:isAFunctionOfTime rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:comment "ad'hoc link that needs to be reworked as the evolution model is an abstract view on the way architectures can evolve and time is a property of a physical object that is no more an abstraction."@en ;
+                   
+                   rdfs:domain :Evolution ;
+                   
+                   rdfs:range :Time .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isAnimatedByEvolution
+
+:isAnimatedByEvolution rdf:type owl:ObjectProperty ;
+                       
+                       rdfs:comment "abstract property of systems to live."@en ;
+                       
+                       rdfs:range :Evolution ;
+                       
+                       rdfs:domain :System .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isCarriedBy
+
+:isCarriedBy rdf:type owl:ObjectProperty ;
+             
+             rdfs:comment "An interaction is carried by connectors."@en ;
+             
+             rdfs:range :Connector ;
+             
+             rdfs:domain :Interaction ;
+             
+             owl:inverseOf :carries .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isCodedIn
+
+:isCodedIn rdf:type owl:ObjectProperty ;
+           
+           rdfs:comment "An abstraction is translated to be interpretable by a machine trough the Data concept."@en ;
+           
+           rdfs:domain :Abstraction ;
+           
+           rdfs:range :Data ;
+           
+           owl:inverseOf :Implements .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isDefinedBy
+
+:isDefinedBy rdf:type owl:ObjectProperty ;
+             
+             rdfs:comment "A finite state machine is defined by a set of states, a set of transitions and events."@en ;
+             
+             rdfs:domain :StateMachine ;
+             
+             rdfs:range [ rdf:type owl:Class ;
+                          owl:unionOf ( :AutomataState
+                                        :Event
+                                        :Transition
+                                      )
+                        ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isDefinedIn
+
+:isDefinedIn rdf:type owl:ObjectProperty ;
+             
+             owl:versionInfo "It is not functional."^^xsd:string ;
+             
+             rdfs:comment "This link means that you can relate any referential to any oher one. It is not functional because a referential may be defined in several referentials."@en ;
+             
+             rdfs:range :Frame ;
+             
+             rdfs:domain :Frame .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isDownstreamPortOf
+
+:isDownstreamPortOf rdf:type owl:InverseFunctionalProperty ,
+                             owl:ObjectProperty ;
+                    
+                    rdfs:comment "A port has incoming connectors."@en ;
+                    
+                    rdfs:range :Connector ;
+                    
+                    rdfs:domain :Port ;
+                    
+                    owl:inverseOf :hasDownstreamPort ;
+                    
+                    rdfs:subPropertyOf :isPropertyOf .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isEmittedOn
+
+:isEmittedOn rdf:type owl:ObjectProperty ;
+             
+             rdfs:comment "An interaction is emitted by a system through a port"@en ;
+             
+             rdfs:domain :Interaction ;
+             
+             rdfs:range :Port ;
+             
+             owl:inverseOf :emits .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isImplementedWith
+
+:isImplementedWith rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:comment "An FSMActivity is implemented by an algorithm"@en ;
+                   
+                   rdfs:range :Algorithm ;
+                   
+                   rdfs:domain :FSMActivity .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isModelledBy
+
+:isModelledBy rdf:type owl:ObjectProperty ;
+              
+              rdfs:comment "This property expresses the fact that there exists at least one system to model the system considered"@en ;
+              
+              rdfs:domain :System ;
+              
+              rdfs:range :System .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isPerformedBy
+
+:isPerformedBy rdf:type owl:ObjectProperty ;
+               
+               rdfs:comment "An action is necessarily carried out by an agent."@en ;
+               
+               rdfs:domain :Action ;
+               
+               rdfs:range :Agent .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isPortOf
+
+:isPortOf rdf:type owl:FunctionalProperty ,
+                   owl:ObjectProperty ;
+          
+          rdfs:comment "Property to qualify the fact that a port belongs to one and only one system."@en ;
+          
+          rdfs:domain :Port ;
+          
+          rdfs:range :System ;
+          
+          owl:inverseOf :hasPort ;
+          
+          rdfs:subPropertyOf :isPropertyOf .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isPositionedIn
+
+:isPositionedIn rdf:type owl:ObjectProperty ;
+                
+                owl:versionInfo "The fact that the referential defined by the object can not be the referential it is positioned in is expressed by a SWRL rule in proteus.owl."@en ;
+                
+                rdfs:comment "any physical object can be positioned at the very least in the environment referential. There is no meaning to position the object in its proper referential."@en ;
+                
+                rdfs:range :Frame ;
+                
+                rdfs:domain :PhysicalObject .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isProbeOf
+
+:isProbeOf rdf:type owl:ObjectProperty ;
+           
+           rdfs:comment "This allow to know to which system is associated a probe"@en ;
+           
+           rdfs:domain :Probe ;
+           
+           rdfs:range :System ;
+           
+           rdfs:subPropertyOf :isPropertyOf .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isProducedBy
+
+:isProducedBy rdf:type owl:ObjectProperty ;
+              
+              rdfs:comment "an event is produced by a particular state of a system."@en ;
+              
+              :author """creation PROTEUS consortium - 
+modified Bruno Patin - 05/10/2013
+- name has been changed from is TriggeredBy to is ProducedBy (trigger is associated to interaction and not event)"""@en ;
+              
+              rdfs:domain :Event ;
+              
+              rdfs:range :State .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isPropertyOf
+
+:isPropertyOf rdf:type owl:ObjectProperty ;
+              
+              rdfs:comment "Things are properties of things."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isReceivedOn
+
+:isReceivedOn rdf:type owl:ObjectProperty ;
+              
+              rdfs:comment "An interaction is received by a system through a port"@en ;
+              
+              rdfs:domain :Interaction ;
+              
+              rdfs:range :Port .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isTheSupport
+
+:isTheSupport rdf:type owl:ObjectProperty ;
+              
+              rdfs:comment "Ports support the emission/reception of interactions"@en ;
+              
+              rdfs:range :Interaction ;
+              
+              rdfs:domain :Port .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isUpstreamPortOf
+
+:isUpstreamPortOf rdf:type owl:InverseFunctionalProperty ,
+                           owl:ObjectProperty ;
+                  
+                  rdfs:comment "A port has exiting connectors."@en ;
+                  
+                  rdfs:range :Connector ;
+                  
+                  rdfs:domain :Port ;
+                  
+                  owl:inverseOf :hasUpstreamPort ;
+                  
+                  rdfs:subPropertyOf :isPropertyOf .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isUsedBy
+
+:isUsedBy rdf:type owl:ObjectProperty ;
+          
+          rdfs:comment "Information can be used by System"@en ;
+          
+          :TODO "This property used to be inherited from isPropertyOf. This had to be deleted due to an error on PhysicsEngine. It should be investigated. See also uses."@en ;
+          
+          rdfs:domain :Information ;
+          
+          rdfs:range :System ;
+          
+          owl:inverseOf :uses .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#keepsTrackOfTime
+
+:keepsTrackOfTime rdf:type owl:FunctionalProperty ,
+                           owl:ObjectProperty ;
+                  
+                  owl:versionInfo "We do not organize the property under things like roboticians properties. Only one kind of viewpoint is modelled."^^xsd:string ;
+                  
+                  rdfs:comment "This property expresses the fact that every hardware do need some way to provide a clock to its included software in order for it to live. This clock relies on the time of the physical object it lives in."@en ;
+                  
+                  rdfs:domain :Clock ;
+                  
+                  rdfs:range :Time .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#managesFileSystem
+
+:managesFileSystem rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:comment "An operating system manages (update, write, read, ...) the file system and the information stored within."@en ;
+                   
+                   rdfs:range :FileSystem ;
+                   
+                   rdfs:domain :OperatingSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#models
+
+:models rdf:type owl:ObjectProperty ;
+        
+        rdfs:comment "This property expresses the fact that a system can model another one as well as an evolution model. It is what we do when, considering reality or a first layer of reality, we model it. What is said here is that reality IS a system and that each time we want to represent it we use a system description to do just that."@en ;
+        
+        rdfs:domain :System ;
+        
+        owl:inverseOf :isModelledBy ;
+        
+        rdfs:range [ rdf:type owl:Class ;
+                     owl:unionOf ( :Evolution
+                                   :System
+                                 )
+                   ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#observes
+
+:observes rdf:type owl:ObjectProperty ;
+          
+          rdfs:comment "this property expresses the capability to extract information from a state."@en ;
+          
+          rdfs:domain :Probe ;
+          
+          rdfs:range :State .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#produces
+
+:produces rdf:type owl:ObjectProperty ;
+          
+          rdfs:comment "probes produce information thanks to observation of States"@en ;
+          
+          rdfs:range :Information ;
+          
+          rdfs:domain :Probe .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#receives
+
+:receives rdf:type owl:ObjectProperty ;
+          
+          rdfs:comment "Ports receive interactions"@en ;
+          
+          rdfs:range :Interaction ;
+          
+          rdfs:domain :Port ;
+          
+          owl:inverseOf :isReceivedOn .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#startsFrom
+
+:startsFrom rdf:type owl:ObjectProperty ;
+            
+            rdfs:comment "A finite state machine has an initial state"@en ;
+            
+            rdfs:range :AutomataInitialState ;
+            
+            rdfs:domain :StateMachine .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#systemSource
+
+:systemSource rdf:type owl:ObjectProperty ;
+              
+              rdfs:comment "This property allows the interaction to know which system triggered the interaction."@en ;
+              
+              rdfs:domain :Interaction ;
+              
+              rdfs:range :System .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#takesAsInput
+
+:takesAsInput rdf:type owl:ObjectProperty ;
+              
+              rdfs:comment """An evolution model has several inputs to process and evaluate which would be the corresponding evolution and destination state in a potential transition.
+
+We can list the general inputs:
+* InputState
+* InputPort Value
+
+Note that time dependency (InputTime) is taken into account through a specific relation: isAFunctionOfTime"""@en ;
+              
+              rdfs:domain :Evolution ;
+              
+              rdfs:range [ rdf:type owl:Class ;
+                           owl:unionOf ( :Port
+                                         :State
+                                       )
+                         ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#takesAsStochasticInput
+
+:takesAsStochasticInput rdf:type owl:ObjectProperty ;
+                        
+                        rdfs:comment "An evolution model which introduces distortion in the inputs (either in the information itself, either in the acquisition process of this information), obtains these inputs from a noise model or a biais model."@en ;
+                        
+                        :TODO "This comment is to be reviewed. The NoiseModel is here an algorithm. Are we sure that the stochastic nature of the stochastic evolution must be described by an algorithm?"@en ;
+                        
+                        rdfs:domain :StochasticEvolutionModel ;
+                        
+                        rdfs:range [ rdf:type owl:Class ;
+                                     owl:unionOf ( :BiaisModel
+                                                   :NoiseModel
+                                                 )
+                                   ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#to
+
+:to rdf:type owl:ObjectProperty ;
+    
+    rdfs:comment "A transition is defined by a start state and an end state"@en ;
+    
+    rdfs:range :AutomataState ;
+    
+    rdfs:domain :Transition .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#transmitInformation
+
+:transmitInformation rdf:type owl:ObjectProperty ;
+                     
+                     rdfs:comment "An interaction allows transitting information."@en ;
+                     
+                     rdfs:range :Information ;
+                     
+                     rdfs:domain :Interaction .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#triggers
+
+:triggers rdf:type owl:ObjectProperty ;
+          
+          :author """creation PROTEUS consortium - 
+modified Bruno Patin - 05/10/2013
+- triggers is now the inverse of impacts"""@en ;
+          
+          rdfs:comment "it is the property that will allow the interaction  through its evolution model to change the interaction state."@en ;
+          
+          :TODO "the only dynamicity of the interaction is its triggering by the system. To animate an interaction has no meaning. Evolution animates system that triggers interaction."@en ;
+          
+          rdfs:range :Interaction ;
+          
+          rdfs:domain :System .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#uses
+
+:uses rdf:type owl:ObjectProperty ;
+      
+      rdfs:comment "Systems needs information internally in order to work properly. At the most generic level, we do not need to know anything with respect to these internal information but in some cases this becomes an important point."@en ;
+      
+      rdfs:range :Information ;
+      
+      rdfs:domain :System .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#wraps
+
+:wraps rdf:type owl:ObjectProperty ;
+       
+       rdfs:comment "This means that the wrapper translates the dataflow from / to the two linked software."@en ;
+       
+       :author """creation PROTEUS Consortium
+modified Bruno Patin - 09/10/2013
+- due to reorganisation of software concept, wrapper wraps software and no more only Applications"""@en ;
+       
+       rdfs:range :Software ;
+       
+       rdfs:domain :Wrapper .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isAtomic
+
+:isAtomic rdf:type owl:DatatypeProperty ;
+          
+          rdfs:comment "A system is either atomic or composed. An atomic system do not aggregates other systems."@en ;
+          
+          rdfs:domain :System ;
+          
+          rdfs:range [ rdf:type rdfs:Datatype ;
+                       owl:oneOf [ rdf:type rdf:List ;
+                                   rdf:first "false"^^xsd:boolean ;
+                                   rdf:rest [ rdf:type rdf:List ;
+                                              rdf:first "true"^^xsd:boolean ;
+                                              rdf:rest rdf:nil
+                                            ]
+                                 ]
+                     ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isIn_Out
+
+:isIn_Out rdf:type owl:DatatypeProperty ;
+          
+          rdfs:comment "indicates the port type in terms of \"in\" or \"out\" or  \"in and out\" (in-out value) port."@en ;
+          
+          rdfs:domain :Port ;
+          
+          rdfs:range [ rdf:type rdfs:Datatype ;
+                       owl:oneOf [ rdf:type rdf:List ;
+                                   rdf:first "in"^^xsd:string ;
+                                   rdf:rest [ rdf:type rdf:List ;
+                                              rdf:first "out"^^xsd:string ;
+                                              rdf:rest rdf:nil
+                                            ]
+                                 ]
+                     ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#occursAfterDuration
+
+:occursAfterDuration rdf:type owl:DatatypeProperty ,
+                              owl:FunctionalProperty ;
+                     
+                     rdfs:comment "A time event occurs after a duration."@en ;
+                     
+                     rdfs:domain :TimeEvent ;
+                     
+                     rdfs:range xsd:dateTime .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Abstraction
+
+:Abstraction rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Information ;
+             
+             owl:disjointWith :Data ;
+             
+             :openCycURI "http://sw.opencyc.org/concept/Mx4r0EwZ9r8aEdmAAAACs6hRjg"^^xsd:anyURI ;
+             
+             rdfs:comment """Abstraction is an information that is disembodied. It means that there are no representaiton or, more to the point, that there is no interest to consider the concerned representation. The representation we are discussing is in the Data concept through the \"implements\" property.
+
+The OpenCyc and wikipefia concepts referenced are more generic as an abstraction is the set of common characteristics a set of things shares. There is no object that is The abstraction.
+
+The Abstraction concept here mentionned is closer to the ideas world of Plato."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Action
+
+:Action rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Interaction ;
+        
+        owl:disjointWith :HardwareToDriverInteraction ;
+        
+        :openCycURI "http://sw.opencyc.org/concept/Mx4rvVieP5wpEbGdrcN5Y29ycA"^^xsd:anyURI ;
+        
+        rdfs:comment """An action is a specific kind of interaction. Actions are performed by agents that are either robots or humans. For robots, actions are performed on external world (Software to hardware interaction) or on internal components (Software to software interaction). For humans, actions are only physical interaction because the ontology does not describe psychology. Notice that it exists software to hardware interactions and software to software interactions that are not actions but only dataflow.
+
+Action in the Ontology is the OpenCyc PurposefulAction."""@en ;
+        
+        :author """creation PROTEUS consortium - 
+modified Bruno Patin - 03/10/2013
+- rule added to express tha fact that only human and robot (Agent) can interact using actions
+modified Bruno Patin - 03/10/2013
+- equivalence established between action and (Physical or SoftwareToHardware)Interaction"""@en ;
+        
+        :TODO "why do equivalency puts PhysicalInteraction and HDriverToHardwareInteraction as sub classes of Action ?"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Activity
+
+:Activity rdf:type owl:Class ;
+          
+          owl:disjointWith :Connector ,
+                           :Event ,
+                           :Evolution ,
+                           :Frame ,
+                           :Information ,
+                           :Interaction ,
+                           :Port ,
+                           :Probe ,
+                           :Protocol ,
+                           :System ,
+                           :Time ,
+                           :Transition ;
+          
+          :wikipediaURI "http://en.wikipedia.org/wiki/Action_%28philosophy%29"^^xsd:anyURI ;
+          
+          rdfs:comment "An Activity is a set of Actions performed by an Agent. In the wikipedia definition activity is seen as action (theory of action)."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Agent
+
+:Agent rdf:type owl:Class ;
+       
+       rdfs:subClassOf :PhysicalObject ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :currentlyPerforms ;
+                         owl:onClass :Action ;
+                         owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :triggers ;
+                         owl:someValuesFrom :Action
+                       ] ;
+       
+       owl:disjointWith :Environment ,
+                        :Hardware ;
+       
+       rdfs:comment "A physical entity which is capable of action, such as robots, animals, human."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Algorithm
+
+:Algorithm rdf:type owl:Class ;
+           
+           rdfs:subClassOf :Abstraction ;
+           
+           :wikipediaURI "http://en.wikipedia.org/wiki/Algorithm"^^xsd:anyURI ;
+           
+           :wiktionaryURI "http://en.wiktionary.org/wiki/algorithm"^^xsd:anyURI ;
+           
+           :wikipediaURI "http://fr.wikipedia.org/wiki/Algorithme"^^xsd:anyURI ;
+           
+           rdfs:comment "In mathematics and computer science, an algorithm is a step-by-step procedure for calculations. Algorithms are used for calculation, data processing, and automated reasoning."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Application
+
+:Application rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Software ;
+             
+             owl:disjointWith :SoftwareModule ;
+             
+             rdfs:comment """It is a computing entity able to work upon a hardware that provides computing capcabilities.
+It is a computing entity capable of providing life to another software. At the bottom level, it is the OS of the computer."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#ApplicationInteraction
+
+:ApplicationInteraction rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf :Interaction ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :impacts ;
+                                          owl:allValuesFrom :Software
+                                        ] ;
+                        
+                        owl:disjointWith :DriverToHardwareInteraction ,
+                                         :HardwareToDriverInteraction ,
+                                         :PhysicalInteraction ;
+                        
+                        rdfs:comment "Interaction between two software that are parts of an application. They could be interactions between frameworks, applications, libraries, drivers, processes, or other logical units of Application. In order to avoid redendancy the name does not quote two times the Aplication word"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#AtomicModel
+
+:AtomicModel rdf:type owl:Class ;
+             
+             rdfs:subClassOf :AtomicSystem ,
+                             :Model ;
+             
+             owl:disjointWith :CompositeModel ;
+             
+             rdfs:comment """This concept groups the different theory that can be used to model one or more system. It is often linnked to a mathematical theory. It also defines the \"external\" model concept meaning that the model exist, is provided but is only known through its interface.
+An atomic system can models more than one system. It explains whay the properties models has cardinality more than one.
+An atomic model beiing an atomic system is thus disjoint from a composite model as it is a composite system."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#AtomicSystem
+
+:AtomicSystem rdf:type owl:Class ;
+              
+              rdfs:subClassOf :System ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :isAtomic ;
+                                owl:hasValue "true"^^xsd:boolean
+                              ] ;
+              
+              owl:disjointWith :CompositeSystem ;
+              
+              rdfs:comment "An atomic system can't be split into parts."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#AutomataEndState
+
+:AutomataEndState rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :AutomataState ;
+                  
+                  owl:disjointWith :AutomataInitialState ;
+                  
+                  rdfs:comment "End state of a Finite State Machine"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#AutomataInitialState
+
+:AutomataInitialState rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf :AutomataState ;
+                      
+                      rdfs:comment "Initial state of a Finite State Machine"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#AutomataState
+
+:AutomataState rdf:type owl:Class ;
+               
+               rdfs:subClassOf :State ;
+               
+               rdfs:comment "The states of a Finite State Machine are a particular case of state"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#BiaisModel
+
+:BiaisModel rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Algorithm ;
+            
+            owl:disjointWith :NoiseModel ,
+                             :StateMachine ;
+            
+            rdfs:comment """Evolution Model that could be simulated by an algorithm that introduces a statistical distortion of the acquisition of the input data of the evolution process. This is a distortion because it is systematically different from the population parameter of interest. It can be caused by the selection process of the inputs or how these inputs were obtained.
+Thus, the inputs of the different states would be different from a non-distortion scenario, so the evolution would correspond to a stochastic model."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Build
+
+:Build rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Action ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :impacts ;
+                         owl:allValuesFrom :Hardware
+                       ] ;
+       
+       :author """creation Bruno Patin - 09/10/2013
+- this action allows to explain the specificity of Hardware concept to be built by Humans"""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#ChangeEvent
+
+:ChangeEvent rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Event ;
+             
+             owl:disjointWith :Interaction ;
+             
+             rdfs:comment "A condition becomes true."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Clock
+
+:Clock rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Hardware ;
+       
+       rdfs:comment "The timeframe of the world needs to be translated in something usable by other hardware. This the role of the clock concept."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#CompositeModel
+
+:CompositeModel rdf:type owl:Class ;
+                
+                rdfs:subClassOf :CompositeSystem ,
+                                :Model ;
+                
+                owl:disjointWith :Environment ;
+                
+                rdfs:comment """This concept groups the different theory that can be used to model one or more system. It is often linked to a mathematical theory. In the composite model case it is also often linked to architecture representation of this same system. E.g. the environment, reality of it, can be represented as the aggregation of terrain and buildings or it can be represented by the surface where only one system represent terrain AND buildings. As for any model (as is this ontology), the way to represent depends of its usage.
+An atomic model being an atomic system is thus disjoint from a composite model as it is a composite system."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#CompositeSystem
+
+:CompositeSystem rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :System ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :isAtomic ;
+                                   owl:hasValue "false"^^xsd:boolean
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :aggregates ;
+                                   owl:onClass :System ;
+                                   owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger
+                                 ] ;
+                 
+                 rdfs:comment """A composite system is an aggregate of systems. 
+
+It is needed to use the Composite system approach if you work with two systems at least. If one system is concerned then you need in fact to use the underlying atomic system.
+
+In DEVS it is possible to create a system enclosing only one system. It is of no use if something else is not done in between (such as enclosing a differential modelled system into a DEVS block). When discussing composition here we are speaking of the intrinsic property of composition. These aspects of adapting one system to another interface will be of help when discussing the models exhibiting these composition properties in a computer for simulation purpose."""@en ;
+                 
+                 :author """creation PROTEUS consortium - 
+modified Bruno Patin - 09/09/2013
+- min value is changed from 2 to 1
+modified Bruno Patin - 14/09/2013
+- min value goes back to two because there was a misconception considering Robotic systems
+- explanations added in the comment
+- addition of OpenCyc link"""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Condition
+
+:Condition rdf:type owl:Class ;
+           
+           rdfs:subClassOf :LogicalExpression ;
+           
+           rdfs:comment """It is a logical expression composed by two statemens A, B called  antecedent (A) and consequent (B)  typically symbolized as A --> B  (typically read \"if A then B\", \"when A then B\" or \"A implies B\").
+
+A conditional expression is associated with an operation on two logical values, typically the values of two propositions, that produces a value of false just in case the first operand is true and the second operand is false."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Connector
+
+:Connector rdf:type owl:Class ;
+           
+           owl:disjointWith :Event ,
+                            :Evolution ,
+                            :Frame ,
+                            :Information ,
+                            :Interaction ,
+                            :Port ,
+                            :Probe ,
+                            :Protocol ,
+                            :System ,
+                            :Time ,
+                            :Transition ;
+           
+           rdfs:comment """A connector is the link that can exist between ports of systems. It  has a unique upstream port and a unique downstream port. There are no interaction possible between two systems if no connector relies them.
+
+This concept is closely linked to system concept."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Data
+
+:Data rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Information ;
+      
+      rdfs:comment "This type of information is directly interpretable by a machine, for example boolean, bits, etc."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#DeterministicEvolutionModel
+
+:DeterministicEvolutionModel rdf:type owl:Class ;
+                             
+                             rdfs:subClassOf :Evolution ;
+                             
+                             owl:disjointWith :StochasticEvolutionModel ;
+                             
+                             rdfs:comment "intrinsic property of any object to evolve through time without random phenomenon intervention which would affect the course of the evolution."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Driver
+
+:Driver rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Application ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :triggers ;
+                          owl:allValuesFrom [ rdf:type owl:Class ;
+                                              owl:unionOf ( :ApplicationInteraction
+                                                            :DriverToHardwareInteraction
+                                                          )
+                                            ]
+                        ] ;
+        
+        owl:disjointWith :FileSystem ,
+                         :OperatingSystem ,
+                         :SoftwareProbe ;
+        
+        rdfs:comment "It is an application which controls the corresponding hardware. The DeviceSystem of a platform like a RoboticSystem, will be composed of theHardware components and the corresponding software driver components. The hardware considered must have some computing abilities in order to allow the driver to execute."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#DriverToHardwareInteraction
+
+:DriverToHardwareInteraction rdf:type owl:Class ;
+                             
+                             rdfs:subClassOf :Interaction ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :impacts ;
+                                               owl:allValuesFrom :Hardware
+                                             ] ;
+                             
+                             owl:disjointWith :HardwareToDriverInteraction ,
+                                              :PhysicalInteraction ;
+                             
+                             rdfs:comment "Interaction from Drivers (ActuatorDriver, CommunicationDriver, PowerDriver, SensorDriver) to their corresponding hardware(ActuatorHardware, CommunicationHardware, PowerHardware, SensorHardware)."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Environment
+
+:Environment rdf:type owl:Class ;
+             
+             rdfs:subClassOf :CompositeSystem ,
+                             :PhysicalObject ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasPort ;
+                               owl:maxCardinality "0"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :triggers ;
+                               owl:allValuesFrom :PhysicalInteraction
+                             ] ;
+             
+             owl:disjointWith :Hardware ;
+             
+             rdfs:comment """This environment groups everything that exist. Nothing is outside and everything lives in it. An alias for environment could be Universe or World in an ontologic meaning. This is the highest possible \"container\" for the physical objects to exist.
+Considering the scenario to be represented using this concept it expresses also the boundary we imagine for the problem. As an example, for a mobile on ground robot there is no need to represent anything concerning water.
+
+The difference between physical objects and THE environment is that the PhysicalInteraction are part only of the latter and propagated into it.
+
+There is a difference between the meaning of OpenCyc concept to the one of the ontology due to the fact there is nothing enclosing RobotML Environment concept when OpenCyc does not state anything on this point."""@en .
+[ rdf:type owl:Axiom ;
+  rdfs:comment "this property constrains the environment not to have any port. Thus no interactions can occur between environment and another anything."@en ;
+  owl:annotatedSource :Environment ;
+  owl:annotatedProperty rdfs:subClassOf ;
+  owl:annotatedTarget [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasPort ;
+                        owl:maxCardinality "0"^^xsd:nonNegativeInteger
+                      ]
+] .
+[ rdf:type owl:Axiom ;
+  rdfs:comment "this property expresses the fact that the environment is not associated to any software running in it."@en ;
+  owl:annotatedSource :Environment ;
+  owl:annotatedProperty rdfs:subClassOf ;
+  owl:annotatedTarget [ rdf:type owl:Restriction ;
+                        owl:onProperty :triggers ;
+                        owl:allValuesFrom :PhysicalInteraction
+                      ]
+] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Event
+
+:Event rdf:type owl:Class ;
+       
+       owl:disjointWith :Evolution ,
+                        :Frame ,
+                        :Information ,
+                        :Port ,
+                        :Probe ,
+                        :Protocol ,
+                        :System ,
+                        :Time ,
+                        :Transition ;
+       
+       :otherURI """Stanford encyclopedia of philosophy
+http://plato.stanford.edu/entries/events/"""^^xsd:anyURI ;
+       
+       :wikipediaURI "http://en.wikipedia.org/wiki/Event_%28philosophy%29"^^xsd:anyURI ;
+       
+       :openCycURI "http://sw.opencyc.org/concept/Mx4rvViADZwpEbGdrcN5Y29ycA"^^xsd:anyURI ;
+       
+       rdfs:comment "In philosophy, events are objects in time or instantiations of properties in objects. Here events are closely linked to system concept as they are the modalities that make them change their states."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Evolution
+
+:Evolution rdf:type owl:Class ;
+           
+           rdfs:subClassOf owl:Thing ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :isAFunctionOfTime ;
+                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                           ] ;
+           
+           owl:disjointWith :Frame ,
+                            :Information ,
+                            :Interaction ,
+                            :Port ,
+                            :Probe ,
+                            :Protocol ,
+                            :System ,
+                            :Time ,
+                            :Transition ;
+           
+           :wikipediaURI "http://en.wikipedia.org/wiki/Time_evolution"^^xsd:anyURI ;
+           
+           :openCycURI "http://sw.opencyc.org/concept/Mx4rvoZDlZwpEbGdrcN5Y29ycA"^^xsd:anyURI ;
+           
+           :TODO "2. EvolutionModel should not have inputState or the like, it should have system associated with time value. It means that if a system is associated to time then an evolution model is able to make it change changing the value of time."@en ;
+           
+           rdfs:comment """Evolution is what allows systems to live through a state trajectory either in a discrete or in a continuous form depending on the type of law used. Here evolution means the intrinsic property of any object to evolve through time.
+
+Considering the wikipedia link, the closest wording to be considered is \"time evolution\" that introduces explicitely the internal state dynamic and in fact the system concept.
+
+Considering openCyc link it refers to darwin evolution theory. This is very close to this definition that refers to anything in the universe and not only biological entities."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Expression
+
+:Expression rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Abstraction ;
+            
+            rdfs:comment "All different types of mathematical and computer science expressions. Composition of symbols."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#FSMActivity
+
+:FSMActivity rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Activity ;
+             
+             rdfs:comment "A Finite State Machine Activity is an Activity linked to an AutomateState which is implemented by means of Algorithms."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#FileSystem
+
+:FileSystem rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Application ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :triggers ;
+                              owl:allValuesFrom :ApplicationInteraction
+                            ] ;
+            
+            owl:disjointWith :OperatingSystem ,
+                             :SoftwareProbe ,
+                             :Wrapper ;
+            
+            :openCycURI "http://sw.opencyc.org/concept/Mx4rv98a6JwpEbGdrcN5Y29ycA"^^xsd:anyURI ;
+            
+            rdfs:comment "A file system is an application that organizes data expected to be retained after a program terminates by providing procedures to store, retrieve and update data, as well as manage the available space on the device(s) which contain it. A file system organizes data in an efficient manner and is tuned to the specific characteristics of the device. There is usually a tight coupling between the operating system and the file system."@en ;
+            
+            :author """creation PROTEUS consortium - 
+modified Bruno Patin - 30/09/2013
+- FileSystem IS an application using the OperatingSystem to manage interaction with stored data
+- addition of openCyc reference"""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Frame
+
+:Frame rdf:type owl:Class ;
+       
+       owl:disjointWith :Information ,
+                        :Interaction ,
+                        :Port ,
+                        :Probe ,
+                        :Protocol ,
+                        :System ,
+                        :Time ,
+                        :Transition ;
+       
+       :wikipediaURI "http://en.wikipedia.org/wiki/Frame_of_reference"^^xsd:anyURI ;
+       
+       :openCycURI "http://sw.opencyc.org/concept/Mx4rvVjUoJwpEbGdrcN5Y29ycA"^^xsd:anyURI ;
+       
+       rdfs:comment """This class instantiates the capability to link points in space. Space can be any dimension needed. This property can be constrained when the class is linked to others. As an example, physical object will use 3D coordinate systems using euclidean representation or 4D if using an einsteinen representation.
+
+It is through this class that space will have an associated metric.
+
+Attention must be focused on the fact there is an essential difference between the frame that expresses the fundamental property of object to be referenced and reference system that are the capability to manipulate referential (cartesian, circular, spherical, whatever). It means that there is only one referential associated to the environment and each of the physical objects it includes and there are many ways to manipulate them through reference systems.
+
+The openCyc definition refers to a more generic concept. The capability that a frame has to provide a context in which objects can be referenced. Not only positionned."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Hardware
+
+:Hardware rdf:type owl:Class ;
+          
+          rdfs:subClassOf :PhysicalObject ;
+          
+          :author """creation PROTEUS consortium - 
+modified Bruno Patin - 30/09/2013
+- addition of opencyc reference"""^^xsd:anyURI ;
+          
+          :openCycURI "http://sw.opencyc.org/concept/Mx4rvVkH_ZwpEbGdrcN5Y29ycA"^^xsd:anyURI ;
+          
+          rdfs:comment """The hardware characteristics is to be man made. It means that when built, from human perspective, it had a goal. Can be changed because of its use. Such a hardware is supposed to have computing abilities if it is associated to some software.
+
+It is closer to \"Artifact\" opencyc definition than from the hardware part that is itself closer to \"marketable\" parts."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#HardwareToDriverInteraction
+
+:HardwareToDriverInteraction rdf:type owl:Class ;
+                             
+                             rdfs:subClassOf :Interaction ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :impacts ;
+                                               owl:allValuesFrom :Driver
+                                             ] ;
+                             
+                             owl:disjointWith :PhysicalInteraction ;
+                             
+                             rdfs:comment "Interaction from Hardware (ActuatorHardware, CommunicationHardware, PowerHardware, SensorHardware) to their corresponding Drivers (ActuatorDriver, CommunicationDriver, PowerDriver, SensorDriver)). For instance, return of information coming from the sensor hardware to be managed by the software part of the platform."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Human
+
+:Human rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Agent ,
+                       :AtomicSystem ;
+       
+       rdfs:isDefinedBy "http://sw.opencyc.org/concept/Mx4rIcwFloGUQdeMlsOWYLFB2w"^^xsd:anyURI ;
+       
+       rdfs:seeAlso "openCyc: HomoSapiens"^^xsd:string ;
+       
+       rdfs:comment "A human moves in waterbodies, over ground and over water surface (swiming). He or she pilots robots."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Information
+
+:Information rdf:type owl:Class ;
+             
+             owl:disjointWith :Interaction ,
+                              :Port ,
+                              :Probe ,
+                              :Protocol ,
+                              :System ,
+                              :Time ,
+                              :Transition ;
+             
+             :wikipediaURI "http://en.wikipedia.org/wiki/Information"^^xsd:anyURI ;
+             
+             :openCycURI "http://sw.opencyc.org/concept/Mx4rwQGTzJwpEbGdrcN5Y29ycA"^^xsd:anyURI ;
+             
+             :TODO "Data is linked completely to Computers. Abstarction is linked to nothing. We do not have a concept linked to human beings or other sentient objects of the Universe (thus agent minus robots, more or less)."@en ;
+             
+             rdfs:comment "Information concept is the concept dealing with meaning. It is the way \"things\" can be described. This concept is decomposed in the abstraction concept (meaning disembodied information whatever it can means - OpenCyc uses the word intangible) and data (meaning embodied information)."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#InterAgentCommunication
+
+:InterAgentCommunication rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf :Action ;
+                         
+                         rdfs:comment "For multi-robot and human-robot systems agents have to communicate in order to fulfill the mission."@en ;
+                         
+                         :author """creation PROTEUS consortium - 
+modified Bruno Patin - 04/10/2013
+- communication is a type of action as it concerns only interaction between agents, it is thus moved to Action"""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Interaction
+
+:Interaction rdf:type owl:Class ;
+             
+             owl:disjointWith :Port ,
+                              :Probe ,
+                              :Protocol ,
+                              :System ,
+                              :Time ,
+                              :TimeEvent ,
+                              :Transition ;
+             
+             :wikipediaURI "http://en.wikipedia.org/wiki/Interaction"^^xsd:anyURI ;
+             
+             :openCycURI "http://sw.opencyc.org/concept/Mx4rvVioQZwpEbGdrcN5Y29ycA"^^xsd:anyURI ;
+             
+             rdfs:comment """Interaction occurs when two or more Objects/Systems have an effect upon one another. This concept is closely linked to the system concept in this ontology. 
+
+Interaction is in fact close to Action OpenCyc concept. It is more abstract because it is not a tangible thing that is concerned but two systems (tangible thing = Physical Object and Physical object is a system)."""@en ,
+                          """creation PROTEUS consortium - 
+modified Bruno Patin - 04/10/2013
+- comment edition"""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#LogicalExpression
+
+:LogicalExpression rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :Expression ;
+                   
+                   owl:disjointWith :State ;
+                   
+                   rdfs:comment "Two or more arithmetic expressions connected by a relational operator indicating whether an expression is greater than, equal to, or less than the other, or connected by a logical variable, logical constant (true or false), or logical operator."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Model
+
+:Model rdf:type owl:Class ;
+       
+       rdfs:subClassOf :System ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :models ;
+                         owl:minCardinality "1"^^xsd:nonNegativeInteger
+                       ] ;
+       
+       :openCycURI """OpenCyc Model concept is linked to artefact build by human to model other things tangible or not. This concept is more specialised.
+http://sw.opencyc.org/concept/Mx4rvgEO8ZwpEbGdrcN5Y29ycA"""^^xsd:anyURI ;
+       
+       :wikipediaURI """this is more generic as almost anything can model almost anything. OpenCyc is not based upon system concept as the basis of the world.
+http://en.wikipedia.org/wiki/Conceptual_model"""^^xsd:anyURI ;
+       
+       rdfs:comment "Concept introduced in order to recognise when system is reality and when it is a model of this reality. It groups the Atomic and Composite Models."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#NoiseModel
+
+:NoiseModel rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Algorithm ;
+            
+            owl:disjointWith :StateMachine ;
+            
+            rdfs:comment "Evolution Model that could be simulated by an algorithm that introduces entropy or some random distortion in the extrinsec or intrinsec data flow of a system or interaction. Thus, the inputs of the different states would be different from a non-distortion scenario, so the evolution would correspond to a stochastic model."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#OperatingSystem
+
+:OperatingSystem rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :Application ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :triggers ;
+                                   owl:allValuesFrom :ApplicationInteraction
+                                 ] ;
+                 
+                 owl:disjointWith :SoftwareProbe ,
+                                  :Wrapper ;
+                 
+                 rdfs:comment "An operating system (OS) is a set of programs that manages computer hardware resources, and provides common services for application software and file management. The operating system is the most important type of system software in a computer system. Without an operating system, a user cannot run an application program on their computer, unless the application program is self booting."@en ;
+                 
+                 :openCycURI "http://sw.opencyc.org/concept/Mx4rvViws5wpEbGdrcN5Y29ycA"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#PhysicalInteraction
+
+:PhysicalInteraction rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :Interaction ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :impacts ;
+                                       owl:allValuesFrom :PhysicalObject
+                                     ] ;
+                     
+                     rdfs:comment "It is the same type of object as DriverTo Hardware and HardwareToDriver but at a more abstract level because it is an interaction between two Physical objects." .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#PhysicalObject
+
+:PhysicalObject rdf:type owl:Class ;
+                
+                rdfs:subClassOf :System ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :triggers ;
+                                  owl:someValuesFrom [ rdf:type owl:Class ;
+                                                       owl:unionOf ( :HardwareToDriverInteraction
+                                                                     :PhysicalInteraction
+                                                                   )
+                                                     ]
+                                ] ;
+                
+                owl:disjointWith :Software ;
+                
+                :openCycURI "http://sw.opencyc.org/concept/Mx4rvVj27ZwpEbGdrcN5Y29ycA"^^xsd:anyURI ;
+                
+                rdfs:comment """The Physical object is something that can be characterised through a border and considered as a whole with respect to the problem considered. As an example, a robot is an object when considering the mobile robotic problem. 
+It exist in itself in the environment and is submitted to laws (called here Physical interactions) that govern every aspects of its life in the environment. As an exemple the dynamic law of movement.
+A physical object, defining a border, can contain many other physical objects or no object. The decomposition is useful when the user needs to represent a frame supporting inside or at its surface other objects or when a robot is a multi part thing (articulated robot)."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Port
+
+:Port rdf:type owl:Class ;
+      
+      rdfs:subClassOf owl:Thing ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :isIn_Out ;
+                        owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                      ] ;
+      
+      owl:disjointWith :Probe ,
+                       :Protocol ,
+                       :System ,
+                       :Time ,
+                       :Transition ;
+      
+      :openCycURI """There is no equivalent of port concept in OpenCyc. There are three examples of port:
+Computer port: http://sw.opencyc.org/concept/Mx4rvVkGw5wpEbGdrcN5Y29ycA
+infrastructure, transport port: http://sw.opencyc.org/concept/Mx4r09gVMi_gEdyAAAACs6hRXg
+Naval, port facility: http://sw.opencyc.org/concept/Mx4rwRjaEpwpEbGdrcN5Y29ycA"""^^xsd:anyURI ;
+      
+      rdfs:comment """\"in\" and/or \"out\" point of a component (here component means system), where data, events and so on pass through.
+
+This definition is closely linked to the definition of systems as they are the entry/output point through which interactions can occur."""@en ,
+                   "point d'entrée et/ou de sortie d'un composant, par où peuvent transiter des données, des événements, etc."@fr .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Probe
+
+:Probe rdf:type owl:Class ;
+       
+       owl:disjointWith :Protocol ,
+                        :Time ,
+                        :Transition ;
+       
+       :wiktionaryURI """2nd and 3rd definitions are close to the definition provided here.
+http://en.wiktionary.org/wiki/probe"""^^xsd:anyURI ;
+       
+       rdfs:comment "Probe is the concept that provides the capability to create information from the observation of states and thus of a system due to the fact systems have states."@en ;
+       
+       :TODO "Sensors can be viewed as type of probes. This is to be verified as it would probably simplify the ontology."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Protocol
+
+:Protocol rdf:type owl:Class ;
+          
+          owl:disjointWith :System ,
+                           :Time ,
+                           :Transition ;
+          
+          :openCycURI """In this ontology the protocol concept is larger than this concept as it applies only to agent.
+http://sw.opencyc.org/concept/Mx4rxo_VAPHDEdaO6gABAkLVdg"""^^xsd:anyURI ;
+          
+          :wikipediaURI """Protocols in communication field is slightly expanded in this ontology
+http://en.wikipedia.org/wiki/Communications_protocol"""^^xsd:anyURI ;
+          
+          rdfs:comment "A protocol is a convention on the way systems interact. It then constrains the information exchanges which implements an interaction."@en ;
+          
+          :TODO "if a protocol is constraining information exchanges, it means that there are information exchange between physical objects due to intraction but there are no information specialisation for these type of objects in the informtion context."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#RequestEvent
+
+:RequestEvent rdf:type owl:Class ;
+              
+              rdfs:subClassOf :Event ,
+                              :Interaction ;
+              
+              rdfs:comment "Receipt of a call for an operation."@en ;
+              
+              :TODO "clarify concept"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SignalEvent
+
+:SignalEvent rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Event ,
+                             :Interaction ;
+             
+             :TODO "Clarify concept"@en ;
+             
+             rdfs:comment "Receipt of an explicit realtime signal."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Software
+
+:Software rdf:type owl:Class ;
+          
+          rdfs:subClassOf :System ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :aggregates ;
+                            owl:allValuesFrom [ rdf:type owl:Class ;
+                                                owl:unionOf ( :Application
+                                                              :SoftwareModule
+                                                            )
+                                              ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :triggers ;
+                            owl:allValuesFrom [ rdf:type owl:Class ;
+                                                owl:unionOf ( :ApplicationInteraction
+                                                              :DriverToHardwareInteraction
+                                                            )
+                                              ]
+                          ] ;
+          
+          :openCycURI "http://sw.opencyc.org/concept/Mx4rvcUMxZwpEbGdrcN5Y29ycA"^^xsd:anyURI ;
+          
+          rdfs:comment """This type of system represents Software, it can be an application, a framework, a library or an object  file....To actually execute it must be associated to some hardware but it does not need transformation done by an agent in order to be able to run on this hardware.
+
+Considering what is software, it is in fact a state of the hardware supporting it. It is at some point the combination of electrical charges of some piece of semi-conductor. To distinghish it from the hardware is simply a way to categorise it and work with it."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SoftwareModule
+
+:SoftwareModule rdf:type owl:Class ;
+                
+                rdfs:subClassOf :Software ;
+                
+                rdfs:comment "It is an application that is not executable by itself but can be composed through tooling such as RobotML platform."@en ;
+                
+                :author """creation PROTEUS consortium - 
+modified Bruno Patin - 05/10/2013
+- AlgorithmicModule renamed SoftwareModule. It is due to the fact that ApplicationInteraction name does not corresponds too well to its usage as FDriver, being also an application renders ambiguous usage of (DriverToHardware|HardwareToDriver)Interaction disjonction with AplicationInteractino."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SoftwareProbe
+
+:SoftwareProbe rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Application ,
+                               :Probe ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :observes ;
+                                 owl:allValuesFrom :AutomataState
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :produces ;
+                                 owl:allValuesFrom :Data
+                               ] ;
+               
+               owl:disjointWith :Wrapper ;
+               
+               rdfs:comment "The software probe is able to provide data and not only information on the specific object states"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#State
+
+:State rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Abstraction ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasStateVariables ;
+                         owl:minCardinality "1"^^xsd:nonNegativeInteger
+                       ] ;
+       
+       rdfs:comment "The state expresses the fact that at some point in time (discrete or continuous expression of it), we will tag an object (interaction as well as component) and identify that it was as observed at this point. The fact that we need to \"measure\" values to identify the state of the object is of no concern here."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#StateMachine
+
+:StateMachine rdf:type owl:Class ;
+              
+              rdfs:subClassOf :Evolution ;
+              
+              rdfs:comment "A discrete type of a evolution model is a finite state machine (FSM). A FSM has a finite set of states, a finite set of transitions between these states, an initial state and an end state. Activities can be associated to states."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#StochasticEvolutionModel
+
+:StochasticEvolutionModel rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf :Evolution ;
+                          
+                          rdfs:comment "intrinsic property of any object to evolve through time with some random phenomenon intervention which would affect the course of the evolution. The Noise Model and Biais Model would be considered as these random phenomenon that will be taken as inputs to determine the new transition in the stochastic evolution."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#System
+
+:System rdf:type owl:Class ;
+        
+        rdfs:subClassOf owl:Thing ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :isAtomic ;
+                          owl:cardinality "1"^^xsd:nonNegativeInteger
+                        ] ;
+        
+        owl:disjointWith :Time ,
+                         :Transition ;
+        
+        :wikipediaURI "http://en.wikipedia.org/wiki/System"^^xsd:anyURI ;
+        
+        :openCycURI "http://sw.opencyc.org/concept/Mx4rv9Xu1ZwpEbGdrcN5Y29ycA"^^xsd:anyURI ;
+        
+        :author """creation PROTEUS consortium - 
+modified Bruno Patin - 30/09/2013
+- modification of descriptionn to stick to what is a System in this ontology"""@en ;
+        
+        rdfs:comment "system IS object of the world but that there could be schematic (an actual concrete information) that could represent it (describe it thus). The world IS a system in our ontology. A system that models another means a conrete and actual \"in the world\" system (such as a simulator that is a software application) providing similar behaviour that another one (such as an aircraft)."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Time
+
+:Time rdf:type owl:Class ;
+      
+      owl:disjointWith :Transition ;
+      
+      :openCycURI """here we are speaking of duration... Is it time?
+http://sw.opencyc.org/concept/Mx4rvViApZwpEbGdrcN5Y29ycA"""^^xsd:anyURI ;
+      
+      :wikipediaURI "http://en.wikipedia.org/wiki/Time"^^xsd:anyURI ;
+      
+      rdfs:comment "Time here is the concept that allows evolution to occur. It is not said how it is represented but that it exists. It allows evolution to have a meaning."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#TimeEvent
+
+:TimeEvent rdf:type owl:Class ;
+           
+           rdfs:subClassOf :Event ;
+           
+           rdfs:comment "Passage of a designated period of time from some time point. This kind of event occurs a duration after another event."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Transition
+
+:Transition rdf:type owl:Class ;
+            
+            :TODO "This description should be expanded to the generic system modelling we have here in this ontology. FSM is a way to model evolution model"^^xsd:anyURI ;
+            
+            :wiktionaryURI """see 1st definition
+http://en.wiktionary.org/wiki/transition"""^^xsd:anyURI ;
+            
+            rdfs:comment "The transition concept is closely linked to to the dynamic part of the ontology. It describes the period in which there is a change in the system. It is triggered by an event (internal or external to the system). Before the system is in its original state and then it has another one, its destination state. Transition can take time (duration) but the change is instantaneous at the end of the transition between origin and destination states."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Wrapper
+
+:Wrapper rdf:type owl:Class ;
+         
+         rdfs:subClassOf :SoftwareModule ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :triggers ;
+                           owl:allValuesFrom :ApplicationInteraction
+                         ] ;
+         
+         rdfs:comment "It is an “application” that allows another “application” to use  “External algorithmic modules”. Part of its ports are linked to the application using the module and part of them are link to the module used. The goal of this application is thus to translate the dataflow from one application to the other"@en .
+
+
+
+###  http://www.w3.org/2002/07/owl#Thing
+
+owl:Thing rdfs:comment "root of the whole PROTEUS ontology"@en .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Earth
+
+:Earth rdf:type :PhysicalObject ,
+                owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Gravity
+
+:Gravity rdf:type :PhysicalInteraction ,
+                  owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Me
+
+:Me rdf:type :Human ,
+             owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Moon
+
+:Moon rdf:type :PhysicalObject ,
+               owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Sun
+
+:Sun rdf:type :PhysicalObject ,
+              owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Universe
+
+:Universe rdf:type :Environment ,
+                   owl:NamedIndividual ;
+          
+          :aggregates :Earth ,
+                      :Me ,
+                      :Moon ,
+                      :Sun .
+
+
+
+
+
+#################################################################
+#
+#    General axioms
+#
+#################################################################
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :Earth
+                        :Me
+                        :Moon
+                        :Sun
+                        :Universe
+                      )
+] .
+
+
+
+
+
+#################################################################
+#
+#    Rules
+#
+#################################################################
+
+
+<urn:swrl#x> rdf:type swrl:Variable .
+<urn:swrl#y> rdf:type swrl:Variable .
+<urn:swrl#z> rdf:type swrl:Variable .
+<urn:swrl#a> rdf:type swrl:Variable .
+<urn:swrl#b> rdf:type swrl:Variable .
+[ rdf:type swrl:Imp ;
+  swrl:head [ rdf:type swrl:AtomList ;
+              rdf:rest rdf:nil ;
+              rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                          swrl:argument2 "false"^^xsd:boolean ;
+                          swrl:propertyPredicate :isAtomic ;
+                          swrl:argument1 <urn:swrl#x>
+                        ]
+            ] ;
+  swrl:body [ rdf:type swrl:AtomList ;
+              rdf:first [ rdf:type swrl:ClassAtom ;
+                          swrl:classPredicate :System ;
+                          swrl:argument1 <urn:swrl#x>
+                        ] ;
+              rdf:rest [ rdf:type swrl:AtomList ;
+                         rdf:rest [ rdf:type swrl:AtomList ;
+                                    rdf:rest rdf:nil ;
+                                    rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                swrl:propertyPredicate :aggregates ;
+                                                swrl:argument1 <urn:swrl#x> ;
+                                                swrl:argument2 <urn:swrl#y>
+                                              ]
+                                  ] ;
+                         rdf:first [ rdf:type swrl:ClassAtom ;
+                                     swrl:classPredicate :System ;
+                                     swrl:argument1 <urn:swrl#y>
+                                   ]
+                       ]
+            ]
+] .
+[ rdf:type swrl:Imp ;
+  swrl:head [ rdf:type swrl:AtomList ;
+              rdf:rest rdf:nil ;
+              rdf:first [ rdf:type swrl:ClassAtom ;
+                          swrl:classPredicate :Agent ;
+                          swrl:argument1 <urn:swrl#x>
+                        ]
+            ] ;
+  swrl:body [ rdf:type swrl:AtomList ;
+              rdf:first [ rdf:type swrl:ClassAtom ;
+                          swrl:classPredicate :Action ;
+                          swrl:argument1 <urn:swrl#y>
+                        ] ;
+              rdf:rest [ rdf:type swrl:AtomList ;
+                         rdf:rest [ rdf:type swrl:AtomList ;
+                                    rdf:rest rdf:nil ;
+                                    rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                swrl:propertyPredicate :triggers ;
+                                                swrl:argument1 <urn:swrl#x> ;
+                                                swrl:argument2 <urn:swrl#y>
+                                              ]
+                                  ] ;
+                         rdf:first [ rdf:type swrl:ClassAtom ;
+                                     swrl:classPredicate :PhysicalObject ;
+                                     swrl:argument1 <urn:swrl#x>
+                                   ]
+                       ]
+            ]
+] .
+[ rdf:type swrl:Imp ;
+  swrl:body [ rdf:type swrl:AtomList ;
+              rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                          swrl:propertyPredicate :definesAFrame ;
+                          swrl:argument1 <urn:swrl#x> ;
+                          swrl:argument2 <urn:swrl#z>
+                        ] ;
+              rdf:rest [ rdf:type swrl:AtomList ;
+                         rdf:rest rdf:nil ;
+                         rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                     swrl:propertyPredicate :isPositionedIn ;
+                                     swrl:argument1 <urn:swrl#x> ;
+                                     swrl:argument2 <urn:swrl#y>
+                                   ]
+                       ]
+            ] ;
+  swrl:head [ rdf:type swrl:AtomList ;
+              rdf:rest rdf:nil ;
+              rdf:first [ rdf:type swrl:DifferentIndividualsAtom ;
+                          swrl:argument1 <urn:swrl#y> ;
+                          swrl:argument2 <urn:swrl#z>
+                        ]
+            ]
+] .
+[ rdf:type swrl:Imp ;
+  swrl:head [ rdf:type swrl:AtomList ;
+              rdf:rest rdf:nil ;
+              rdf:first [ rdf:type swrl:ClassAtom ;
+                          swrl:classPredicate :Human ;
+                          swrl:argument1 <urn:swrl#x>
+                        ]
+            ] ;
+  swrl:body [ rdf:type swrl:AtomList ;
+              rdf:first [ rdf:type swrl:ClassAtom ;
+                          swrl:classPredicate :Build ;
+                          swrl:argument1 <urn:swrl#y>
+                        ] ;
+              rdf:rest [ rdf:type swrl:AtomList ;
+                         rdf:rest [ rdf:type swrl:AtomList ;
+                                    rdf:rest rdf:nil ;
+                                    rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                swrl:propertyPredicate :triggers ;
+                                                swrl:argument1 <urn:swrl#x> ;
+                                                swrl:argument2 <urn:swrl#y>
+                                              ]
+                                  ] ;
+                         rdf:first [ rdf:type swrl:ClassAtom ;
+                                     swrl:classPredicate :PhysicalObject ;
+                                     swrl:argument1 <urn:swrl#x>
+                                   ]
+                       ]
+            ]
+] .
+[ rdf:type swrl:Imp ;
+  swrl:head [ rdf:type swrl:AtomList ;
+              rdf:rest [ rdf:type swrl:AtomList ;
+                         rdf:rest rdf:nil ;
+                         rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                     swrl:propertyPredicate :constrainsFrame ;
+                                     swrl:argument2 <urn:swrl#a> ;
+                                     swrl:argument1 <urn:swrl#b>
+                                   ]
+                       ] ;
+              rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                          swrl:propertyPredicate :constrainsFrame ;
+                          swrl:argument1 <urn:swrl#a> ;
+                          swrl:argument2 <urn:swrl#b>
+                        ]
+            ] ;
+  swrl:body [ rdf:type swrl:AtomList ;
+              rdf:rest [ rdf:type swrl:AtomList ;
+                         rdf:first [ rdf:type swrl:ClassAtom ;
+                                     swrl:classPredicate :Frame ;
+                                     swrl:argument1 <urn:swrl#b>
+                                   ] ;
+                         rdf:rest [ rdf:type swrl:AtomList ;
+                                    rdf:first [ rdf:type swrl:ClassAtom ;
+                                                swrl:classPredicate :PhysicalInteraction ;
+                                                swrl:argument1 <urn:swrl#z>
+                                              ] ;
+                                    rdf:rest [ rdf:type swrl:AtomList ;
+                                               rdf:rest [ rdf:type swrl:AtomList ;
+                                                          rdf:rest [ rdf:type swrl:AtomList ;
+                                                                     rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                           rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                      rdf:rest rdf:nil ;
+                                                                                                      rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                                                                  swrl:propertyPredicate :triggers ;
+                                                                                                                  swrl:argument1 <urn:swrl#x> ;
+                                                                                                                  swrl:argument2 <urn:swrl#z>
+                                                                                                                ]
+                                                                                                    ] ;
+                                                                                           rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                                                       swrl:propertyPredicate :impacts ;
+                                                                                                       swrl:argument2 <urn:swrl#y> ;
+                                                                                                       swrl:argument1 <urn:swrl#z>
+                                                                                                     ]
+                                                                                         ] ;
+                                                                                rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                                            swrl:propertyPredicate :definesAFrame ;
+                                                                                            swrl:argument2 <urn:swrl#b> ;
+                                                                                            swrl:argument1 <urn:swrl#y>
+                                                                                          ]
+                                                                              ] ;
+                                                                     rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                                 swrl:propertyPredicate :definesAFrame ;
+                                                                                 swrl:argument2 <urn:swrl#a> ;
+                                                                                 swrl:argument1 <urn:swrl#x>
+                                                                               ]
+                                                                   ] ;
+                                                          rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                      swrl:classPredicate :PhysicalObject ;
+                                                                      swrl:argument1 <urn:swrl#y>
+                                                                    ]
+                                                        ] ;
+                                               rdf:first [ rdf:type swrl:ClassAtom ;
+                                                           swrl:classPredicate :PhysicalObject ;
+                                                           swrl:argument1 <urn:swrl#x>
+                                                         ]
+                                             ]
+                                  ]
+                       ] ;
+              rdf:first [ rdf:type swrl:ClassAtom ;
+                          swrl:classPredicate :Frame ;
+                          swrl:argument1 <urn:swrl#a>
+                        ]
+            ]
+] .
+[ rdf:type swrl:Imp ;
+  swrl:body [ rdf:type swrl:AtomList ;
+              rdf:first [ rdf:type swrl:ClassAtom ;
+                          swrl:classPredicate :Interaction ;
+                          swrl:argument1 <urn:swrl#y>
+                        ] ;
+              rdf:rest [ rdf:type swrl:AtomList ;
+                         rdf:rest [ rdf:type swrl:AtomList ;
+                                    rdf:rest [ rdf:type swrl:AtomList ;
+                                               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                           swrl:propertyPredicate :emits ;
+                                                           swrl:argument2 <urn:swrl#y> ;
+                                                           swrl:argument1 <urn:swrl#z>
+                                                         ] ;
+                                               rdf:rest [ rdf:type swrl:AtomList ;
+                                                          rdf:rest rdf:nil ;
+                                                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                      swrl:propertyPredicate :hasPort ;
+                                                                      swrl:argument1 <urn:swrl#x> ;
+                                                                      swrl:argument2 <urn:swrl#z>
+                                                                    ]
+                                                        ]
+                                             ] ;
+                                    rdf:first [ rdf:type swrl:ClassAtom ;
+                                                swrl:classPredicate :System ;
+                                                swrl:argument1 <urn:swrl#x>
+                                              ]
+                                  ] ;
+                         rdf:first [ rdf:type swrl:ClassAtom ;
+                                     swrl:classPredicate :Port ;
+                                     swrl:argument1 <urn:swrl#z>
+                                   ]
+                       ]
+            ] ;
+  swrl:head [ rdf:type swrl:AtomList ;
+              rdf:rest rdf:nil ;
+              rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                          swrl:propertyPredicate :triggers ;
+                          swrl:argument1 <urn:swrl#x> ;
+                          swrl:argument2 <urn:swrl#y>
+                        ]
+            ]
+] .
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+
