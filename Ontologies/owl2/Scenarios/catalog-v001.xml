@@ -2,22 +2,22 @@
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
     <uri id="Imports Wizard Entry" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl" uri="AirGroundScenario.owl"/>
     <group id="Folder Repository, directory=../Core/, recursive=false, Auto-Update=true, version=2" prefer="public" xml:base="../Core/">
-        <uri id="Automatically generated entry, Timestamp=1372838931234" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Core.owl" uri="Core.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1372838931234" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl" uri="environment.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1372838931234" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/experiment.owl" uri="experiment.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1372838931234" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl" uri="information.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1372838931234" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl" uri="kernel.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1372838931234" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl" uri="mission.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1372838931234" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl" uri="robot.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1372838931234" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl" uri="simulation.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1372838931234" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl" uri="system.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1384616263125" name="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/Core.owl" uri="Core.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1384616263125" name="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl" uri="environment.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1384616263125" name="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl" uri="experiment.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1384616263125" name="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl" uri="information.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1384616263125" name="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl" uri="kernel.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1384616263125" name="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl" uri="mission.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1384616263125" name="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl" uri="robot.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1384616263125" name="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl" uri="simulation.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1384616263125" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl" uri="system.owl"/>
     </group>
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1372841816312" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl" uri="AirGroundScenario.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1372841816312" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl" uri="IndoorScenario.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1372841816312" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl" uri="LandmarkSearchScenario.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1372841816312" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl" uri="MilitaryUnmannedAerialVehiclesScenario.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1372841816312" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Scenarios.owl" uri="Scenarios.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1372841816312" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/UrbanScenario.owl" uri="UrbanScenario.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1384618704734" name="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl" uri="AirGroundScenario.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1384618704734" name="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl" uri="IndoorScenario.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1384618704734" name="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl" uri="LandmarkSearchScenario.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1384618704734" name="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl" uri="MilitaryUnmannedAerialVehiclesScenario.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1384618704734" name="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/Scenarios.owl" uri="Scenarios.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1384618704734" name="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl" uri="UrbanScenario.owl"/>
     </group>
 </catalog>

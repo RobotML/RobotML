@@ -12,34 +12,34 @@
     <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
     <!ENTITY swrla "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#" >
     <!ENTITY sqwrl "http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#" >
-    <!ENTITY robo "http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#" >
-    <!ENTITY kern "http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#" >
-    <!ENTITY syst "http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#" >
-    <!ENTITY miss "http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#" >
-    <!ENTITY envi "http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#" >
-    <!ENTITY info "http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#" >
-    <!ENTITY indo "http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#" >
+    <!ENTITY robo "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#" >
+    <!ENTITY kern "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#" >
+    <!ENTITY syst "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#" >
+    <!ENTITY miss "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#" >
+    <!ENTITY envi "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#" >
+    <!ENTITY info "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#" >
+    <!ENTITY indo "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#" >
 ]>
 
 
-<rdf:RDF xmlns="http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#"
-     xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl"
+<rdf:RDF xmlns="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#"
+     xml:base="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl"
      xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
      xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
-     xmlns:robo="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#"
-     xmlns:kern="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
-     xmlns:info="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#"
+     xmlns:robo="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#"
+     xmlns:kern="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#"
+     xmlns:info="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#"
      xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:swrl="http://www.w3.org/2003/11/swrl#"
-     xmlns:envi="http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#"
-     xmlns:syst="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#"
+     xmlns:envi="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#"
+     xmlns:syst="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:indo="http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#"
-     xmlns:miss="http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#"
+     xmlns:indo="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#"
+     xmlns:miss="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#"
      xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
     <owl:Ontology rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl">
         <owl:versionInfo rdf:datatype="&xsd;string">version delivered 1.0</owl:versionInfo>
@@ -64,37 +64,37 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#CommunicationDriver -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationDriver -->
 
     <owl:Class rdf:about="&syst;CommunicationDriver"/>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#CommunicationHardware -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationHardware -->
 
     <owl:Class rdf:about="&syst;CommunicationHardware"/>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#CommunicationSystem -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationSystem -->
 
     <owl:Class rdf:about="&syst;CommunicationSystem"/>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ControlStationSystem -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlStationSystem -->
 
     <owl:Class rdf:about="&syst;ControlStationSystem"/>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ControlSystem -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlSystem -->
 
     <owl:Class rdf:about="&syst;ControlSystem"/>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#DriverDeviceSystem -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#DriverDeviceSystem -->
 
     <owl:Class rdf:about="&syst;DriverDeviceSystem"/>
     
@@ -111,7 +111,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#ControlStationToEmbeddedController -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#ControlStationToEmbeddedController -->
 
     <owl:NamedIndividual rdf:about="&indo;ControlStationToEmbeddedController">
         <rdf:type rdf:resource="&miss;CommunicationOfIntents"/>
@@ -122,7 +122,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#EmbeddedCommunicationDriver -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#EmbeddedCommunicationDriver -->
 
     <owl:NamedIndividual rdf:about="&indo;EmbeddedCommunicationDriver">
         <rdf:type rdf:resource="&syst;CommunicationDriver"/>
@@ -131,7 +131,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#EmbeddedCommunicationHardware -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#EmbeddedCommunicationHardware -->
 
     <owl:NamedIndividual rdf:about="&indo;EmbeddedCommunicationHardware">
         <rdf:type rdf:resource="&syst;CommunicationHardware"/>
@@ -141,7 +141,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#EmbeddedCommunicationSystem -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#EmbeddedCommunicationSystem -->
 
     <owl:NamedIndividual rdf:about="&indo;EmbeddedCommunicationSystem">
         <rdf:type rdf:resource="&syst;CommunicationSystem"/>
@@ -152,7 +152,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#EmbeddedController -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#EmbeddedController -->
 
     <owl:NamedIndividual rdf:about="&indo;EmbeddedController">
         <rdf:type rdf:resource="&syst;DriverDeviceSystem"/>
@@ -163,7 +163,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#EmbeddedControllerToControlStation -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#EmbeddedControllerToControlStation -->
 
     <owl:NamedIndividual rdf:about="&indo;EmbeddedControllerToControlStation">
         <rdf:type rdf:resource="&miss;CommunicationOfBeliefs"/>
@@ -173,7 +173,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#EmbeddedRx -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#EmbeddedRx -->
 
     <owl:NamedIndividual rdf:about="&indo;EmbeddedRx">
         <rdf:type rdf:resource="&kern;HardwareToDriverInteraction"/>
@@ -182,7 +182,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#EmbeddedTx -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#EmbeddedTx -->
 
     <owl:NamedIndividual rdf:about="&indo;EmbeddedTx">
         <rdf:type rdf:resource="&kern;DriverToHardwareInteraction"/>
@@ -191,7 +191,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#RemoteControlSupervisor -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#RemoteControlSupervisor -->
 
     <owl:NamedIndividual rdf:about="&indo;RemoteControlSupervisor">
         <rdf:type rdf:resource="&syst;ControlSystem"/>
@@ -200,7 +200,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#TabletPCCommunicationDriver -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#TabletPCCommunicationDriver -->
 
     <owl:NamedIndividual rdf:about="&indo;TabletPCCommunicationDriver">
         <rdf:type rdf:resource="&syst;CommunicationDriver"/>
@@ -209,7 +209,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#TabletPCCommunicationHardware -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#TabletPCCommunicationHardware -->
 
     <owl:NamedIndividual rdf:about="&indo;TabletPCCommunicationHardware">
         <rdf:type rdf:resource="&syst;CommunicationHardware"/>
@@ -219,7 +219,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#TabletPCCommunicationSystem -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#TabletPCCommunicationSystem -->
 
     <owl:NamedIndividual rdf:about="&indo;TabletPCCommunicationSystem">
         <rdf:type rdf:resource="&syst;CommunicationSystem"/>
@@ -231,7 +231,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#TabletPCRemoteControlStation -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#TabletPCRemoteControlStation -->
 
     <owl:NamedIndividual rdf:about="&indo;TabletPCRemoteControlStation">
         <rdf:type rdf:resource="&kern;CompositeSystem"/>
@@ -245,7 +245,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#TabletPCRx -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#TabletPCRx -->
 
     <owl:NamedIndividual rdf:about="&indo;TabletPCRx">
         <rdf:type rdf:resource="&kern;HardwareToDriverInteraction"/>
@@ -254,7 +254,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/IndoorScenario.owl#TabletPCTx -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#TabletPCTx -->
 
     <owl:NamedIndividual rdf:about="&indo;TabletPCTx">
         <rdf:type rdf:resource="&kern;DriverToHardwareInteraction"/>

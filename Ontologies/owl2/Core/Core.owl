@@ -12,45 +12,44 @@
     <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
     <!ENTITY swrla "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#" >
     <!ENTITY sqwrl "http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#" >
-    <!ENTITY prot "http://www.anr-proteus.fr/sites/default/files/download/Ontology/Core.owl#" >
-    <!ENTITY robo "http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#" >
-    <!ENTITY kern "http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#" >
-    <!ENTITY syst "http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#" >
-    <!ENTITY miss "http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#" >
-    <!ENTITY expe "http://www.anr-proteus.fr/sites/default/files/download/Ontology/experiment.owl#" >
-    <!ENTITY simu "http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#" >
-    <!ENTITY envi "http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#" >
-    <!ENTITY info "http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#" >
+    <!ENTITY prot "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/Core.owl#" >
+    <!ENTITY robo "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#" >
+    <!ENTITY syst "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#" >
+    <!ENTITY kern "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#" >
+    <!ENTITY miss "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#" >
+    <!ENTITY simu "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#" >
+    <!ENTITY expe "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#" >
+    <!ENTITY info "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#" >
+    <!ENTITY envi "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#" >
 ]>
 
 
-<rdf:RDF xmlns="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Core.owl#"
-     xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Core.owl"
+<rdf:RDF xmlns="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/Core.owl#"
+     xml:base="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/Core.owl"
      xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
      xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
-     xmlns:robo="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#"
-     xmlns:kern="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
-     xmlns:simu="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl#"
-     xmlns:prot="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Core.owl#"
-     xmlns:info="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#"
+     xmlns:robo="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#"
+     xmlns:kern="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#"
+     xmlns:simu="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#"
+     xmlns:prot="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/Core.owl#"
+     xmlns:info="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#"
      xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:swrl="http://www.w3.org/2003/11/swrl#"
-     xmlns:envi="http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#"
-     xmlns:expe="http://www.anr-proteus.fr/sites/default/files/download/Ontology/experiment.owl#"
-     xmlns:syst="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#"
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:expe="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#"
+     xmlns:envi="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#"
+     xmlns:syst="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:miss="http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#"
+     xmlns:miss="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#"
      xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
     <owl:Ontology rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/Core.owl">
         <rdfs:comment rdf:datatype="&xsd;string">This work is based upon a previous one funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project (see http://www.anr-project.fr). It is the property of its authors and is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
         <kern:TODO xml:lang="en">1. A rule is to be added in order to express the fact there are no ports on environment
 2. A rule is to be added in order to express the fact that a physical object if not included in any other object IS THE environment
 3. It is necessary to know who is the origin of concepts as sometimes they are poorly described and thus are leading to inconsistencies</kern:TODO>
-        <rdfs:comment xml:lang="en">FaCT++ does not work with this ontology. HermiT shall be used for reasoning.</rdfs:comment>
         <rdfs:comment xml:lang="en">This ontology is the consolidation of different underlying ontology modules:
 - kernel
 - environment
@@ -62,9 +61,8 @@
 - simulation
 
 NO MODIFICATION ARE TO BE DONE ONTO THE CONCEPTS DEFINED IN THESE UNDERLYING ONTOLOGIES WHEN EDITING THIS CONTAINER. DO SELECT THE ONTOLOGY CONCERNED FIRST.</rdfs:comment>
-        <rdfs:comment xml:lang="en">Version for Protégé 4.x flavors.</rdfs:comment>
-        <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/experiment.owl"/>
         <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl"/>
+        <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl"/>
         <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl"/>
         <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl"/>
         <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl"/>
@@ -79,39 +77,12 @@ NO MODIFICATION ARE TO BE DONE ONTO THE CONCEPTS DEFINED IN THESE UNDERLYING ONT
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
-    // Classes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#GlobalPlatform -->
-
-    <rdf:Description rdf:about="&robo;GlobalPlatform">
-        <rdfs:subClassOf rdf:resource="&kern;CompositeSystem"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#Robot -->
-
-    <rdf:Description rdf:about="&robo;Robot">
-        <rdfs:subClassOf rdf:resource="&kern;Agent"/>
-    </rdf:Description>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
     // Annotations
     //
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Object_cannot_be_positionned_in_referential_defined_by_itself">
+    <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Object_cannot_be_positionned_in_referential_defined_by_itself">
         <rdfs:comment rdf:datatype="&xsd;string">An object cannot be positioned in a referential that it desfines.</rdfs:comment>
     </rdf:Description>
 </rdf:RDF>

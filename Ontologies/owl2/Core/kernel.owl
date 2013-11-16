@@ -10,18 +10,18 @@
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
     <!ENTITY protege "http://protege.stanford.edu/plugins/owl/protege#" >
     <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
-    <!ENTITY kern "http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#" >
+    <!ENTITY kern "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#" >
 ]>
 
 
-<rdf:RDF xmlns="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
-     xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl"
+<rdf:RDF xmlns="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#"
+     xml:base="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:swrl="http://www.w3.org/2003/11/swrl#"
      xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
      xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:kern="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
+     xmlns:kern="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/kernel.owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -85,7 +85,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#TODO -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#TODO -->
 
     <owl:AnnotationProperty rdf:about="&kern;TODO">
         <rdfs:comment xml:lang="en">this annotation allows its user to tag questions or requests for actions to be done / discussed with respect to the ontology.</rdfs:comment>
@@ -93,7 +93,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#author -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#author -->
 
     <owl:AnnotationProperty rdf:about="&kern;author">
         <rdfs:comment xml:lang="en">creation Bruno Patin - 28/09/2013
@@ -102,25 +102,25 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#openCycURI -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#openCycURI -->
 
     <owl:AnnotationProperty rdf:about="&kern;openCycURI"/>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#otherURI -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#otherURI -->
 
     <owl:AnnotationProperty rdf:about="&kern;otherURI"/>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#wikipediaURI -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#wikipediaURI -->
 
     <owl:AnnotationProperty rdf:about="&kern;wikipediaURI"/>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#wiktionaryURI -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#wiktionaryURI -->
 
     <owl:AnnotationProperty rdf:about="&kern;wiktionaryURI"/>
     
@@ -137,7 +137,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#OccursAfterEvent -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#OccursAfterEvent -->
 
     <owl:ObjectProperty rdf:about="&kern;OccursAfterEvent">
         <rdfs:comment xml:lang="en">A time event occurs after another event.</rdfs:comment>
@@ -147,7 +147,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#aggregates -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates -->
 
     <owl:ObjectProperty rdf:about="&kern;aggregates">
         <openCycURI rdf:datatype="&xsd;anyURI">this property relates to the systemComponents OpenCyc property.
@@ -166,7 +166,7 @@ modified Bruno Patin - 30/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#animates -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#animates -->
 
     <owl:ObjectProperty rdf:about="&kern;animates">
         <wiktionaryURI xml:lang="en">See the first verb definition
@@ -182,7 +182,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#belongsTo -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#belongsTo -->
 
     <owl:ObjectProperty rdf:about="&kern;belongsTo">
         <TODO xml:lang="en">Question arises of functionality of link one frame and one time Plus relations between the different frames/times?</TODO>
@@ -197,7 +197,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#carries -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#carries -->
 
     <owl:ObjectProperty rdf:about="&kern;carries">
         <rdfs:comment xml:lang="en">A connector carries interactions.</rdfs:comment>
@@ -207,7 +207,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#constrains -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#constrains -->
 
     <owl:ObjectProperty rdf:about="&kern;constrains">
         <rdfs:comment xml:lang="en">A protocol constrains the way information is exchanged between systems</rdfs:comment>
@@ -217,7 +217,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#constrainsFrame -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#constrainsFrame -->
 
     <owl:ObjectProperty rdf:about="&kern;constrainsFrame">
         <author xml:lang="en">creation PROTEUS consortium - 
@@ -231,7 +231,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#currentlyPerforms -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#currentlyPerforms -->
 
     <owl:ObjectProperty rdf:about="&kern;currentlyPerforms">
         <rdfs:seeAlso rdf:datatype="&xsd;string">ORO: currentlyPerforms</rdfs:seeAlso>
@@ -244,7 +244,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#definesAFrame -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#definesAFrame -->
 
     <owl:ObjectProperty rdf:about="&kern;definesAFrame">
         <rdfs:comment xml:lang="en">this property expresses the fact that every physical object is associated to a frame providing it its existence in space and time.</rdfs:comment>
@@ -254,7 +254,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#definesSpaceTime -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#definesSpaceTime -->
 
     <owl:ObjectProperty rdf:about="&kern;definesSpaceTime">
         <rdfs:comment xml:lang="en">A frame is associated to a local time.</rdfs:comment>
@@ -264,7 +264,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#describe -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#describe -->
 
     <owl:ObjectProperty rdf:about="&kern;describe">
         <wiktionaryURI rdf:datatype="&xsd;anyURI">http://en.wiktionary.org/wiki/describe</wiktionaryURI>
@@ -280,7 +280,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#emits -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#emits -->
 
     <owl:ObjectProperty rdf:about="&kern;emits">
         <rdfs:comment xml:lang="en">Ports emit interactions</rdfs:comment>
@@ -290,7 +290,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#endsOn -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#endsOn -->
 
     <owl:ObjectProperty rdf:about="&kern;endsOn">
         <rdfs:comment xml:lang="en">A finite state machine has an end state</rdfs:comment>
@@ -300,7 +300,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#entail -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#entail -->
 
     <owl:ObjectProperty rdf:about="&kern;entail">
         <rdfs:comment xml:lang="en">A transition is triggered by an event after evaluation to truth-value of the established condition.</rdfs:comment>
@@ -310,7 +310,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#evolvesIn -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#evolvesIn -->
 
     <owl:ObjectProperty rdf:about="&kern;evolvesIn">
         <TODO rdf:datatype="&xsd;string">1. Clarify this property when evolution concerns the surface of the object (a surface IS an object in the ontology)
@@ -326,7 +326,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#executesOn -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#executesOn -->
 
     <owl:ObjectProperty rdf:about="&kern;executesOn">
         <rdfs:comment xml:lang="en">This expresses the fact that there is no software running without a hardware that includes computation capability and supporting it.</rdfs:comment>
@@ -339,7 +339,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#from -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#from -->
 
     <owl:ObjectProperty rdf:about="&kern;from">
         <rdfs:comment xml:lang="en">A transition is defined by a start state and an end state</rdfs:comment>
@@ -349,7 +349,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#givesNextState -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#givesNextState -->
 
     <owl:ObjectProperty rdf:about="&kern;givesNextState">
         <rdfs:comment xml:lang="en">The evolution model is able to provide the next state of a component using its previous known states and a time on which to evaluate the new state.</rdfs:comment>
@@ -359,7 +359,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#has -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#has -->
 
     <owl:ObjectProperty rdf:about="&kern;has">
         <rdfs:comment xml:lang="en">Things have things.</rdfs:comment>
@@ -368,7 +368,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasAction -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasAction -->
 
     <owl:ObjectProperty rdf:about="&kern;hasAction">
         <rdfs:comment xml:lang="en">An Activity is constituted by a set of Actions.</rdfs:comment>
@@ -379,7 +379,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasActivity -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasActivity -->
 
     <owl:ObjectProperty rdf:about="&kern;hasActivity">
         <rdfs:comment xml:lang="en">An agent is linked to the Activity made by the actions performed by this agent.</rdfs:comment>
@@ -390,7 +390,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasAsOrigin -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasAsOrigin -->
 
     <owl:ObjectProperty rdf:about="&kern;hasAsOrigin">
         <TODO xml:lang="en">There is an issue as frame is not identical to referential. A referential is an information that describes a frame and at this ppoint and only then there is a need to define an orifgin. Origin is not linked to frame. This property should be deleted.</TODO>
@@ -405,7 +405,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasDownstreamPort -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasDownstreamPort -->
 
     <owl:ObjectProperty rdf:about="&kern;hasDownstreamPort">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -417,7 +417,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasPort -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasPort -->
 
     <owl:ObjectProperty rdf:about="&kern;hasPort">
         <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
@@ -429,7 +429,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasPortValue -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasPortValue -->
 
     <owl:ObjectProperty rdf:about="&kern;hasPortValue">
         <rdfs:comment xml:lang="en">Each port of a system has some information to receive or to send through interactions from or to other systems. System being the &quot;reality&quot;, these information are abstraction.</rdfs:comment>
@@ -444,7 +444,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasProbe -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasProbe -->
 
     <owl:ObjectProperty rdf:about="&kern;hasProbe">
         <rdfs:comment xml:lang="en">Systems can have probes to allow evolution model to survey the systems&apos; states.</rdfs:comment>
@@ -456,7 +456,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasProtocol -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasProtocol -->
 
     <owl:ObjectProperty rdf:about="&kern;hasProtocol">
         <rdfs:comment xml:lang="en">An interaction can implement a protocol</rdfs:comment>
@@ -474,7 +474,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasState -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasState -->
 
     <owl:ObjectProperty rdf:about="&kern;hasState">
         <rdfs:comment xml:lang="en">each class associated through this link to state is able to have a set of state. It does not mean evolution because this is implemented through the evolution model that will allow an ordering of the set.</rdfs:comment>
@@ -492,7 +492,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasStateVariables -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasStateVariables -->
 
     <owl:ObjectProperty rdf:about="&kern;hasStateVariables">
         <rdfs:comment xml:lang="en">States have several state variables.
@@ -507,7 +507,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hasUpstreamPort -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasUpstreamPort -->
 
     <owl:ObjectProperty rdf:about="&kern;hasUpstreamPort">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -519,7 +519,7 @@ modified Bruno Patin - 10/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#impacts -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#impacts -->
 
     <owl:ObjectProperty rdf:about="&kern;impacts">
         <author xml:lang="en">creation PROTEUS consortium - 
@@ -532,7 +532,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#impactsEvolution -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#impactsEvolution -->
 
     <owl:ObjectProperty rdf:about="&kern;impactsEvolution">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -543,7 +543,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#implements -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#implements -->
 
     <owl:ObjectProperty rdf:about="&kern;implements">
         <rdfs:comment xml:lang="en">Every data corresponds to an abstraction</rdfs:comment>
@@ -553,7 +553,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isAFunctionOfTime -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isAFunctionOfTime -->
 
     <owl:ObjectProperty rdf:about="&kern;isAFunctionOfTime">
         <rdfs:comment xml:lang="en">ad&apos;hoc link that needs to be reworked as the evolution model is an abstract view on the way architectures can evolve and time is a property of a physical object that is no more an abstraction.</rdfs:comment>
@@ -563,7 +563,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isAnimatedByEvolution -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isAnimatedByEvolution -->
 
     <owl:ObjectProperty rdf:about="&kern;isAnimatedByEvolution">
         <rdfs:comment xml:lang="en">abstract property of systems to live.</rdfs:comment>
@@ -573,7 +573,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isCarriedBy -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isCarriedBy -->
 
     <owl:ObjectProperty rdf:about="&kern;isCarriedBy">
         <rdfs:comment xml:lang="en">An interaction is carried by connectors.</rdfs:comment>
@@ -584,7 +584,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isCodedIn -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isCodedIn -->
 
     <owl:ObjectProperty rdf:about="&kern;isCodedIn">
         <rdfs:comment xml:lang="en">An abstraction is translated to be interpretable by a machine trough the Data concept.</rdfs:comment>
@@ -595,7 +595,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isDefinedBy -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isDefinedBy -->
 
     <owl:ObjectProperty rdf:about="&kern;isDefinedBy">
         <rdfs:comment xml:lang="en">A finite state machine is defined by a set of states, a set of transitions and events.</rdfs:comment>
@@ -613,7 +613,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isDefinedIn -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isDefinedIn -->
 
     <owl:ObjectProperty rdf:about="&kern;isDefinedIn">
         <owl:versionInfo rdf:datatype="&xsd;string">It is not functional.</owl:versionInfo>
@@ -624,7 +624,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isDownstreamPortOf -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isDownstreamPortOf -->
 
     <owl:ObjectProperty rdf:about="&kern;isDownstreamPortOf">
         <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
@@ -637,7 +637,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isEmittedOn -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isEmittedOn -->
 
     <owl:ObjectProperty rdf:about="&kern;isEmittedOn">
         <rdfs:comment xml:lang="en">An interaction is emitted by a system through a port</rdfs:comment>
@@ -648,7 +648,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isModelledBy -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isModelledBy -->
 
     <owl:ObjectProperty rdf:about="&kern;isModelledBy">
         <rdfs:comment xml:lang="en">This property expresses the fact that there exists at least one system to model the system considered</rdfs:comment>
@@ -658,7 +658,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isPerformedBy -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isPerformedBy -->
 
     <owl:ObjectProperty rdf:about="&kern;isPerformedBy">
         <rdfs:comment xml:lang="en">An action is necessarily carried out by an agent.</rdfs:comment>
@@ -668,7 +668,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isPortOf -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isPortOf -->
 
     <owl:ObjectProperty rdf:about="&kern;isPortOf">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -681,7 +681,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isPositionedIn -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isPositionedIn -->
 
     <owl:ObjectProperty rdf:about="&kern;isPositionedIn">
         <owl:versionInfo xml:lang="en">The fact that the referential defined by the object can not be the referential it is positioned in is expressed by a SWRL rule in proteus.owl.</owl:versionInfo>
@@ -692,7 +692,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isProbeOf -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isProbeOf -->
 
     <owl:ObjectProperty rdf:about="&kern;isProbeOf">
         <rdfs:comment xml:lang="en">This allow to know to which system is associated a probe</rdfs:comment>
@@ -703,7 +703,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isProducedBy -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isProducedBy -->
 
     <owl:ObjectProperty rdf:about="&kern;isProducedBy">
         <rdfs:comment xml:lang="en">an event is produced by a particular state of a system.</rdfs:comment>
@@ -716,7 +716,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isPropertyOf -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isPropertyOf -->
 
     <owl:ObjectProperty rdf:about="&kern;isPropertyOf">
         <rdfs:comment xml:lang="en">Things are properties of things.</rdfs:comment>
@@ -724,7 +724,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isReceivedOn -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isReceivedOn -->
 
     <owl:ObjectProperty rdf:about="&kern;isReceivedOn">
         <rdfs:comment xml:lang="en">An interaction is received by a system through a port</rdfs:comment>
@@ -734,7 +734,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isTheSupport -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isTheSupport -->
 
     <owl:ObjectProperty rdf:about="&kern;isTheSupport">
         <rdfs:comment xml:lang="en">Ports support the emission/reception of interactions</rdfs:comment>
@@ -744,7 +744,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isUpstreamPortOf -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isUpstreamPortOf -->
 
     <owl:ObjectProperty rdf:about="&kern;isUpstreamPortOf">
         <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
@@ -757,7 +757,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isUsedBy -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isUsedBy -->
 
     <owl:ObjectProperty rdf:about="&kern;isUsedBy">
         <rdfs:comment xml:lang="en">Information can be used by System</rdfs:comment>
@@ -769,7 +769,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#keepsTrackOfTime -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#keepsTrackOfTime -->
 
     <owl:ObjectProperty rdf:about="&kern;keepsTrackOfTime">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -781,7 +781,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#managesFileSystem -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#managesFileSystem -->
 
     <owl:ObjectProperty rdf:about="&kern;managesFileSystem">
         <rdfs:comment xml:lang="en">An operating system manages (update, write, read, ...) the file system and the information stored within.</rdfs:comment>
@@ -791,7 +791,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#models -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#models -->
 
     <owl:ObjectProperty rdf:about="&kern;models">
         <rdfs:comment xml:lang="en">This property expresses the fact that a system can model another one as well as an evolution model. It is what we do when, considering reality or a first layer of reality, we model it. What is said here is that reality IS a system and that each time we want to represent it we use a system description to do just that.</rdfs:comment>
@@ -809,7 +809,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#observes -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#observes -->
 
     <owl:ObjectProperty rdf:about="&kern;observes">
         <rdfs:comment xml:lang="en">this property expresses the capability to extract information from a state.</rdfs:comment>
@@ -819,7 +819,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#produces -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#produces -->
 
     <owl:ObjectProperty rdf:about="&kern;produces">
         <rdfs:comment xml:lang="en">probes produce information thanks to observation of States</rdfs:comment>
@@ -829,7 +829,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#receives -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#receives -->
 
     <owl:ObjectProperty rdf:about="&kern;receives">
         <rdfs:comment xml:lang="en">Ports receive interactions</rdfs:comment>
@@ -840,7 +840,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#startsFrom -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#startsFrom -->
 
     <owl:ObjectProperty rdf:about="&kern;startsFrom">
         <rdfs:comment xml:lang="en">A finite state machine has an initial state</rdfs:comment>
@@ -850,7 +850,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#systemSource -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#systemSource -->
 
     <owl:ObjectProperty rdf:about="&kern;systemSource">
         <rdfs:comment xml:lang="en">This property allows the interaction to know which system triggered the interaction.</rdfs:comment>
@@ -860,7 +860,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#takesAsInput -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#takesAsInput -->
 
     <owl:ObjectProperty rdf:about="&kern;takesAsInput">
         <rdfs:comment xml:lang="en">An evolution model has several inputs to process and evaluate which would be the corresponding evolution and destination state in a potential transition.
@@ -883,7 +883,7 @@ Note that time dependency (InputTime) is taken into account through a specific r
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#to -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#to -->
 
     <owl:ObjectProperty rdf:about="&kern;to">
         <rdfs:comment xml:lang="en">A transition is defined by a start state and an end state</rdfs:comment>
@@ -893,7 +893,7 @@ Note that time dependency (InputTime) is taken into account through a specific r
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#transmitInformation -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#transmitInformation -->
 
     <owl:ObjectProperty rdf:about="&kern;transmitInformation">
         <rdfs:comment xml:lang="en">An interaction allows transitting information.</rdfs:comment>
@@ -903,7 +903,7 @@ Note that time dependency (InputTime) is taken into account through a specific r
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#triggers -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#triggers -->
 
     <owl:ObjectProperty rdf:about="&kern;triggers">
         <author xml:lang="en">creation PROTEUS consortium - 
@@ -917,7 +917,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#uses -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#uses -->
 
     <owl:ObjectProperty rdf:about="&kern;uses">
         <rdfs:comment xml:lang="en">Systems needs information internally in order to work properly. At the most generic level, we do not need to know anything with respect to these internal information but in some cases this becomes an important point.</rdfs:comment>
@@ -927,7 +927,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#wraps -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#wraps -->
 
     <owl:ObjectProperty rdf:about="&kern;wraps">
         <rdfs:comment xml:lang="en">This means that the wrapper translates the dataflow from / to the two linked software.</rdfs:comment>
@@ -951,7 +951,7 @@ modified Bruno Patin - 09/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isAtomic -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isAtomic -->
 
     <owl:DatatypeProperty rdf:about="&kern;isAtomic">
         <rdfs:comment xml:lang="en">A system is either atomic or composed. An atomic system do not aggregates other systems.</rdfs:comment>
@@ -977,7 +977,7 @@ modified Bruno Patin - 09/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#isIn_Out -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isIn_Out -->
 
     <owl:DatatypeProperty rdf:about="&kern;isIn_Out">
         <rdfs:comment xml:lang="en">indicates the port type in terms of &quot;in&quot; or &quot;out&quot; or  &quot;in and out&quot; (in-out value) port.</rdfs:comment>
@@ -1003,7 +1003,7 @@ modified Bruno Patin - 09/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#occursAfterDuration -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#occursAfterDuration -->
 
     <owl:DatatypeProperty rdf:about="&kern;occursAfterDuration">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -1014,7 +1014,7 @@ modified Bruno Patin - 09/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#valued -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#valued -->
 
     <owl:DatatypeProperty rdf:about="&kern;valued">
         <rdfs:comment rdf:datatype="&xsd;string">Protégé primitive value for Primitive data</rdfs:comment>
@@ -1034,7 +1034,7 @@ modified Bruno Patin - 09/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Abstraction -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Abstraction -->
 
     <owl:Class rdf:about="&kern;Abstraction">
         <rdfs:subClassOf rdf:resource="&kern;Information"/>
@@ -1049,7 +1049,7 @@ The Abstraction concept here mentionned is closer to the ideas world of Plato.</
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Action -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Action -->
 
     <owl:Class rdf:about="&kern;Action">
         <rdfs:subClassOf rdf:resource="&kern;Interaction"/>
@@ -1068,7 +1068,7 @@ modified Bruno Patin - 03/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Activity -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Activity -->
 
     <owl:Class rdf:about="&kern;Activity">
         <owl:disjointWith rdf:resource="&kern;Connector"/>
@@ -1089,21 +1089,21 @@ modified Bruno Patin - 03/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Agent -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Agent -->
 
     <owl:Class rdf:about="&kern;Agent">
         <rdfs:subClassOf rdf:resource="&kern;PhysicalObject"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;triggers"/>
-                <owl:someValuesFrom rdf:resource="&kern;Action"/>
+                <owl:onProperty rdf:resource="&kern;currentlyPerforms"/>
+                <owl:onClass rdf:resource="&kern;Action"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;currentlyPerforms"/>
-                <owl:onClass rdf:resource="&kern;Action"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onProperty rdf:resource="&kern;triggers"/>
+                <owl:someValuesFrom rdf:resource="&kern;Action"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&kern;Environment"/>
@@ -1113,7 +1113,7 @@ modified Bruno Patin - 03/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Application -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Application -->
 
     <owl:Class rdf:about="&kern;Application">
         <rdfs:subClassOf rdf:resource="&kern;Software"/>
@@ -1124,7 +1124,7 @@ It is a computing entity capable of providing life to another software. At the b
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#ApplicationInteraction -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#ApplicationInteraction -->
 
     <owl:Class rdf:about="&kern;ApplicationInteraction">
         <rdfs:subClassOf rdf:resource="&kern;Interaction"/>
@@ -1142,7 +1142,7 @@ It is a computing entity capable of providing life to another software. At the b
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AtomicModel -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#AtomicModel -->
 
     <owl:Class rdf:about="&kern;AtomicModel">
         <rdfs:subClassOf rdf:resource="&kern;AtomicSystem"/>
@@ -1155,7 +1155,7 @@ An atomic model beiing an atomic system is thus disjoint from a composite model 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AtomicSystem -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#AtomicSystem -->
 
     <owl:Class rdf:about="&kern;AtomicSystem">
         <rdfs:subClassOf rdf:resource="&kern;System"/>
@@ -1171,7 +1171,7 @@ An atomic model beiing an atomic system is thus disjoint from a composite model 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AutomataEndState -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#AutomataEndState -->
 
     <owl:Class rdf:about="&kern;AutomataEndState">
         <rdfs:subClassOf rdf:resource="&kern;AutomataState"/>
@@ -1181,7 +1181,7 @@ An atomic model beiing an atomic system is thus disjoint from a composite model 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AutomataInitialState -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#AutomataInitialState -->
 
     <owl:Class rdf:about="&kern;AutomataInitialState">
         <rdfs:subClassOf rdf:resource="&kern;AutomataState"/>
@@ -1190,7 +1190,7 @@ An atomic model beiing an atomic system is thus disjoint from a composite model 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#AutomataState -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#AutomataState -->
 
     <owl:Class rdf:about="&kern;AutomataState">
         <rdfs:subClassOf rdf:resource="&kern;State"/>
@@ -1199,7 +1199,7 @@ An atomic model beiing an atomic system is thus disjoint from a composite model 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Build -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Build -->
 
     <owl:Class rdf:about="&kern;Build">
         <rdfs:subClassOf rdf:resource="&kern;Action"/>
@@ -1215,7 +1215,7 @@ An atomic model beiing an atomic system is thus disjoint from a composite model 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#ChangeEvent -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#ChangeEvent -->
 
     <owl:Class rdf:about="&kern;ChangeEvent">
         <rdfs:subClassOf rdf:resource="&kern;Event"/>
@@ -1225,7 +1225,7 @@ An atomic model beiing an atomic system is thus disjoint from a composite model 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Clock -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Clock -->
 
     <owl:Class rdf:about="&kern;Clock">
         <rdfs:subClassOf rdf:resource="&kern;Hardware"/>
@@ -1234,7 +1234,7 @@ An atomic model beiing an atomic system is thus disjoint from a composite model 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#CompositeModel -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#CompositeModel -->
 
     <owl:Class rdf:about="&kern;CompositeModel">
         <rdfs:subClassOf rdf:resource="&kern;CompositeSystem"/>
@@ -1246,7 +1246,7 @@ An atomic model being an atomic system is thus disjoint from a composite model a
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#CompositeSystem -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#CompositeSystem -->
 
     <owl:Class rdf:about="&kern;CompositeSystem">
         <rdfs:subClassOf rdf:resource="&kern;System"/>
@@ -1279,7 +1279,7 @@ modified Bruno Patin - 14/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Connector -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Connector -->
 
     <owl:Class rdf:about="&kern;Connector">
         <owl:disjointWith rdf:resource="&kern;Event"/>
@@ -1300,7 +1300,7 @@ This concept is closely linked to system concept.</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Data -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Data -->
 
     <owl:Class rdf:about="&kern;Data">
         <rdfs:subClassOf rdf:resource="&kern;Information"/>
@@ -1313,7 +1313,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#DeterministicEvolutionModel -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#DeterministicEvolutionModel -->
 
     <owl:Class rdf:about="&kern;DeterministicEvolutionModel">
         <rdfs:subClassOf rdf:resource="&kern;Evolution"/>
@@ -1323,7 +1323,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Driver -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Driver -->
 
     <owl:Class rdf:about="&kern;Driver">
         <rdfs:subClassOf rdf:resource="&kern;Application"/>
@@ -1348,7 +1348,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#DriverToHardwareInteraction -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#DriverToHardwareInteraction -->
 
     <owl:Class rdf:about="&kern;DriverToHardwareInteraction">
         <rdfs:subClassOf rdf:resource="&kern;Interaction"/>
@@ -1365,7 +1365,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Environment -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Environment -->
 
     <owl:Class rdf:about="&kern;Environment">
         <rdfs:subClassOf rdf:resource="&kern;CompositeSystem"/>
@@ -1415,7 +1415,7 @@ There is a difference between the meaning of OpenCyc concept to the one of the o
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Event -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Event -->
 
     <owl:Class rdf:about="&kern;Event">
         <owl:disjointWith rdf:resource="&kern;Evolution"/>
@@ -1436,7 +1436,7 @@ http://plato.stanford.edu/entries/events/</otherURI>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Evolution -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Evolution -->
 
     <owl:Class rdf:about="&kern;Evolution">
         <rdfs:subClassOf rdf:resource="&owl;Thing"/>
@@ -1467,7 +1467,7 @@ Considering openCyc link it refers to darwin evolution theory. This is very clos
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#FileSystem -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#FileSystem -->
 
     <owl:Class rdf:about="&kern;FileSystem">
         <rdfs:subClassOf rdf:resource="&kern;Application"/>
@@ -1490,7 +1490,7 @@ modified Bruno Patin - 30/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Frame -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Frame -->
 
     <owl:Class rdf:about="&kern;Frame">
         <owl:disjointWith rdf:resource="&kern;Information"/>
@@ -1514,7 +1514,7 @@ The openCyc definition refers to a more generic concept. The capability that a f
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Hardware -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Hardware -->
 
     <owl:Class rdf:about="&kern;Hardware">
         <rdfs:subClassOf rdf:resource="&kern;PhysicalObject"/>
@@ -1529,7 +1529,7 @@ It is closer to &quot;Artifact&quot; opencyc definition than from the hardware p
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#HardwareToDriverInteraction -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#HardwareToDriverInteraction -->
 
     <owl:Class rdf:about="&kern;HardwareToDriverInteraction">
         <rdfs:subClassOf rdf:resource="&kern;Interaction"/>
@@ -1545,7 +1545,7 @@ It is closer to &quot;Artifact&quot; opencyc definition than from the hardware p
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Human -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/kernel.owl#Human -->
 
     <owl:Class rdf:about="&kern;Human">
         <rdfs:subClassOf rdf:resource="&kern;Agent"/>
@@ -1557,7 +1557,7 @@ It is closer to &quot;Artifact&quot; opencyc definition than from the hardware p
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Information -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Information -->
 
     <owl:Class rdf:about="&kern;Information">
         <owl:disjointWith rdf:resource="&kern;Interaction"/>
@@ -1577,7 +1577,7 @@ It is not in kernel that data and abstraction should be defined. In kernel we sp
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#InterAgentCommunication -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#InterAgentCommunication -->
 
     <owl:Class rdf:about="&kern;InterAgentCommunication">
         <rdfs:subClassOf rdf:resource="&kern;Action"/>
@@ -1589,7 +1589,7 @@ modified Bruno Patin - 04/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Interaction -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Interaction -->
 
     <owl:Class rdf:about="&kern;Interaction">
         <owl:disjointWith rdf:resource="&kern;Port"/>
@@ -1611,7 +1611,7 @@ modified Bruno Patin - 04/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Model -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Model -->
 
     <owl:Class rdf:about="&kern;Model">
         <rdfs:subClassOf rdf:resource="&kern;System"/>
@@ -1630,7 +1630,7 @@ http://en.wikipedia.org/wiki/Conceptual_model</wikipediaURI>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#OperatingSystem -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#OperatingSystem -->
 
     <owl:Class rdf:about="&kern;OperatingSystem">
         <rdfs:subClassOf rdf:resource="&kern;Application"/>
@@ -1648,7 +1648,7 @@ http://en.wikipedia.org/wiki/Conceptual_model</wikipediaURI>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#PhysicalInteraction -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#PhysicalInteraction -->
 
     <owl:Class rdf:about="&kern;PhysicalInteraction">
         <rdfs:subClassOf rdf:resource="&kern;Interaction"/>
@@ -1663,7 +1663,7 @@ http://en.wikipedia.org/wiki/Conceptual_model</wikipediaURI>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#PhysicalObject -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#PhysicalObject -->
 
     <owl:Class rdf:about="&kern;PhysicalObject">
         <rdfs:subClassOf rdf:resource="&kern;System"/>
@@ -1689,7 +1689,7 @@ A physical object, defining a border, can contain many other physical objects or
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Port -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Port -->
 
     <owl:Class rdf:about="&kern;Port">
         <rdfs:subClassOf rdf:resource="&owl;Thing"/>
@@ -1716,7 +1716,7 @@ This definition is closely linked to the definition of systems as they are the e
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Probe -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Probe -->
 
     <owl:Class rdf:about="&kern;Probe">
         <owl:disjointWith rdf:resource="&kern;Protocol"/>
@@ -1730,7 +1730,7 @@ http://en.wiktionary.org/wiki/probe</wiktionaryURI>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Protocol -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Protocol -->
 
     <owl:Class rdf:about="&kern;Protocol">
         <owl:disjointWith rdf:resource="&kern;System"/>
@@ -1753,7 +1753,7 @@ modified Bruno Patin - 19/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#RequestEvent -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#RequestEvent -->
 
     <owl:Class rdf:about="&kern;RequestEvent">
         <rdfs:subClassOf rdf:resource="&kern;Event"/>
@@ -1764,7 +1764,7 @@ modified Bruno Patin - 19/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#SignalEvent -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SignalEvent -->
 
     <owl:Class rdf:about="&kern;SignalEvent">
         <rdfs:subClassOf rdf:resource="&kern;Event"/>
@@ -1775,7 +1775,7 @@ modified Bruno Patin - 19/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Software -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Software -->
 
     <owl:Class rdf:about="&kern;Software">
         <rdfs:subClassOf rdf:resource="&kern;System"/>
@@ -1816,7 +1816,7 @@ modification Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#SoftwareModule -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SoftwareModule -->
 
     <owl:Class rdf:about="&kern;SoftwareModule">
         <rdfs:subClassOf rdf:resource="&kern;Software"/>
@@ -1828,7 +1828,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#SoftwareProbe -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SoftwareProbe -->
 
     <owl:Class rdf:about="&kern;SoftwareProbe">
         <rdfs:subClassOf rdf:resource="&kern;Application"/>
@@ -1851,7 +1851,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#State -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#State -->
 
     <owl:Class rdf:about="&kern;State">
         <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
@@ -1866,7 +1866,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#StateMachine -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#StateMachine -->
 
     <owl:Class rdf:about="&kern;StateMachine">
         <rdfs:subClassOf rdf:resource="&kern;Evolution"/>
@@ -1875,7 +1875,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#StochasticEvolutionModel -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#StochasticEvolutionModel -->
 
     <owl:Class rdf:about="&kern;StochasticEvolutionModel">
         <rdfs:subClassOf rdf:resource="&kern;Evolution"/>
@@ -1884,7 +1884,7 @@ modified Bruno Patin - 05/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#System -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#System -->
 
     <owl:Class rdf:about="&kern;System">
         <rdfs:subClassOf rdf:resource="&owl;Thing"/>
@@ -1906,7 +1906,7 @@ modified Bruno Patin - 30/09/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Time -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Time -->
 
     <owl:Class rdf:about="&kern;Time">
         <owl:disjointWith rdf:resource="&kern;Transition"/>
@@ -1918,7 +1918,7 @@ http://sw.opencyc.org/concept/Mx4rvViApZwpEbGdrcN5Y29ycA</openCycURI>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#TimeEvent -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#TimeEvent -->
 
     <owl:Class rdf:about="&kern;TimeEvent">
         <rdfs:subClassOf rdf:resource="&kern;Event"/>
@@ -1927,7 +1927,7 @@ http://sw.opencyc.org/concept/Mx4rvViApZwpEbGdrcN5Y29ycA</openCycURI>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Transition -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Transition -->
 
     <owl:Class rdf:about="&kern;Transition">
         <TODO rdf:datatype="&xsd;anyURI">This description should be expanded to the generic system modelling we have here in this ontology. FSM is a way to model evolution model</TODO>
@@ -1938,7 +1938,7 @@ http://en.wiktionary.org/wiki/transition</wiktionaryURI>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Wrapper -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Wrapper -->
 
     <owl:Class rdf:about="&kern;Wrapper">
         <rdfs:subClassOf rdf:resource="&kern;SoftwareModule"/>
@@ -1953,9 +1953,9 @@ http://en.wiktionary.org/wiki/transition</wiktionaryURI>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ComputationalHardware -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ComputationalHardware -->
 
-    <owl:Class rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ComputationalHardware"/>
+    <owl:Class rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ComputationalHardware"/>
     
 
 
@@ -1978,7 +1978,7 @@ http://en.wiktionary.org/wiki/transition</wiktionaryURI>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Earth -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Earth -->
 
     <owl:NamedIndividual rdf:about="&kern;Earth">
         <rdf:type rdf:resource="&kern;PhysicalObject"/>
@@ -1986,7 +1986,7 @@ http://en.wiktionary.org/wiki/transition</wiktionaryURI>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Gravity -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Gravity -->
 
     <owl:NamedIndividual rdf:about="&kern;Gravity">
         <rdf:type rdf:resource="&kern;PhysicalInteraction"/>
@@ -1994,7 +1994,7 @@ http://en.wiktionary.org/wiki/transition</wiktionaryURI>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Me -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Me -->
 
     <owl:NamedIndividual rdf:about="&kern;Me">
         <rdf:type rdf:resource="&kern;Human"/>
@@ -2002,7 +2002,7 @@ http://en.wiktionary.org/wiki/transition</wiktionaryURI>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Moon -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Moon -->
 
     <owl:NamedIndividual rdf:about="&kern;Moon">
         <rdf:type rdf:resource="&kern;PhysicalObject"/>
@@ -2010,7 +2010,7 @@ http://en.wiktionary.org/wiki/transition</wiktionaryURI>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Sun -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Sun -->
 
     <owl:NamedIndividual rdf:about="&kern;Sun">
         <rdf:type rdf:resource="&kern;PhysicalObject"/>
@@ -2018,7 +2018,7 @@ http://en.wiktionary.org/wiki/transition</wiktionaryURI>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Universe -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Universe -->
 
     <owl:NamedIndividual rdf:about="&kern;Universe">
         <rdf:type rdf:resource="&kern;Environment"/>
@@ -2081,47 +2081,11 @@ http://en.wiktionary.org/wiki/transition</wiktionaryURI>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
                 <rdf:first>
                     <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                        <swrl:propertyPredicate rdf:resource="&kern;definesAFrame"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                        <swrl:argument2 rdf:resource="urn:swrl#z"/>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&kern;Frame"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#a"/>
                     </rdf:Description>
                 </rdf:first>
-                <rdf:rest>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;AtomList"/>
-                        <rdf:rest rdf:resource="&rdf;nil"/>
-                        <rdf:first>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                <swrl:propertyPredicate rdf:resource="&kern;isPositionedIn"/>
-                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                                <swrl:argument2 rdf:resource="urn:swrl#y"/>
-                            </rdf:Description>
-                        </rdf:first>
-                    </rdf:Description>
-                </rdf:rest>
-            </rdf:Description>
-        </swrl:body>
-        <swrl:head>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:rest rdf:resource="&rdf;nil"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;DifferentIndividualsAtom"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
-                        <swrl:argument2 rdf:resource="urn:swrl#z"/>
-                    </rdf:Description>
-                </rdf:first>
-            </rdf:Description>
-        </swrl:head>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&swrl;Imp"/>
-        <swrl:body>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
                 <rdf:rest>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2141,13 +2105,6 @@ http://en.wiktionary.org/wiki/transition</wiktionaryURI>
                                         <rdf:rest>
                                             <rdf:Description>
                                                 <rdf:type rdf:resource="&swrl;AtomList"/>
-                                                <rdf:first>
-                                                    <rdf:Description>
-                                                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                                        <swrl:classPredicate rdf:resource="&kern;PhysicalObject"/>
-                                                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
-                                                    </rdf:Description>
-                                                </rdf:first>
                                                 <rdf:rest>
                                                     <rdf:Description>
                                                         <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2201,6 +2158,13 @@ http://en.wiktionary.org/wiki/transition</wiktionaryURI>
                                                         </rdf:rest>
                                                     </rdf:Description>
                                                 </rdf:rest>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                                        <swrl:classPredicate rdf:resource="&kern;PhysicalObject"/>
+                                                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
                                             </rdf:Description>
                                         </rdf:rest>
                                         <rdf:first>
@@ -2223,26 +2187,11 @@ http://en.wiktionary.org/wiki/transition</wiktionaryURI>
                         </rdf:first>
                     </rdf:Description>
                 </rdf:rest>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="&kern;Frame"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#a"/>
-                    </rdf:Description>
-                </rdf:first>
             </rdf:Description>
         </swrl:body>
         <swrl:head>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                        <swrl:propertyPredicate rdf:resource="&kern;constrainsFrame"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#a"/>
-                        <swrl:argument2 rdf:resource="urn:swrl#b"/>
-                    </rdf:Description>
-                </rdf:first>
                 <rdf:rest>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2257,88 +2206,16 @@ http://en.wiktionary.org/wiki/transition</wiktionaryURI>
                         </rdf:first>
                     </rdf:Description>
                 </rdf:rest>
-            </rdf:Description>
-        </swrl:head>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&swrl;Imp"/>
-        <swrl:head>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:rest rdf:resource="&rdf;nil"/>
                 <rdf:first>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                        <swrl:propertyPredicate rdf:resource="&kern;triggers"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                        <swrl:argument2 rdf:resource="urn:swrl#y"/>
+                        <swrl:propertyPredicate rdf:resource="&kern;constrainsFrame"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#a"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#b"/>
                     </rdf:Description>
                 </rdf:first>
             </rdf:Description>
         </swrl:head>
-        <swrl:body>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="&kern;Interaction"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
-                    </rdf:Description>
-                </rdf:first>
-                <rdf:rest>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;AtomList"/>
-                        <rdf:rest>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;AtomList"/>
-                                <rdf:rest>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="&swrl;AtomList"/>
-                                        <rdf:rest>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="&swrl;AtomList"/>
-                                                <rdf:rest rdf:resource="&rdf;nil"/>
-                                                <rdf:first>
-                                                    <rdf:Description>
-                                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                        <swrl:propertyPredicate rdf:resource="&kern;hasPort"/>
-                                                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                                                        <swrl:argument2 rdf:resource="urn:swrl#z"/>
-                                                    </rdf:Description>
-                                                </rdf:first>
-                                            </rdf:Description>
-                                        </rdf:rest>
-                                        <rdf:first>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                <swrl:propertyPredicate rdf:resource="&kern;emits"/>
-                                                <swrl:argument2 rdf:resource="urn:swrl#y"/>
-                                                <swrl:argument1 rdf:resource="urn:swrl#z"/>
-                                            </rdf:Description>
-                                        </rdf:first>
-                                    </rdf:Description>
-                                </rdf:rest>
-                                <rdf:first>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                        <swrl:classPredicate rdf:resource="&kern;System"/>
-                                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                                    </rdf:Description>
-                                </rdf:first>
-                            </rdf:Description>
-                        </rdf:rest>
-                        <rdf:first>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                <swrl:classPredicate rdf:resource="&kern;Port"/>
-                                <swrl:argument1 rdf:resource="urn:swrl#z"/>
-                            </rdf:Description>
-                        </rdf:first>
-                    </rdf:Description>
-                </rdf:rest>
-            </rdf:Description>
-        </swrl:body>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&swrl;Imp"/>
@@ -2358,16 +2235,16 @@ http://en.wiktionary.org/wiki/transition</wiktionaryURI>
         <swrl:body>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="&kern;Build"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
-                    </rdf:Description>
-                </rdf:first>
                 <rdf:rest>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="&kern;PhysicalObject"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                            </rdf:Description>
+                        </rdf:first>
                         <rdf:rest>
                             <rdf:Description>
                                 <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2382,11 +2259,54 @@ http://en.wiktionary.org/wiki/transition</wiktionaryURI>
                                 </rdf:first>
                             </rdf:Description>
                         </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&kern;Build"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:body>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;DifferentIndividualsAtom"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#z"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="&kern;definesAFrame"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#z"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:rest rdf:resource="&rdf;nil"/>
                         <rdf:first>
                             <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                <swrl:classPredicate rdf:resource="&kern;PhysicalObject"/>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="&kern;isPositionedIn"/>
                                 <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                <swrl:argument2 rdf:resource="urn:swrl#y"/>
                             </rdf:Description>
                         </rdf:first>
                     </rdf:Description>
@@ -2448,6 +2368,182 @@ http://en.wiktionary.org/wiki/transition</wiktionaryURI>
                 </rdf:first>
             </rdf:Description>
         </swrl:body>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="&kern;Port"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#z"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="&kern;System"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="&swrl;AtomList"/>
+                                                <rdf:rest rdf:resource="&rdf;nil"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="&kern;hasPort"/>
+                                                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                                        <swrl:argument2 rdf:resource="urn:swrl#z"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="&kern;emits"/>
+                                                <swrl:argument2 rdf:resource="urn:swrl#y"/>
+                                                <swrl:argument1 rdf:resource="urn:swrl#z"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&kern;Interaction"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="&kern;triggers"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#y"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ComputationalHardware"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:rest rdf:resource="&rdf;nil"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="&kern;executesOn"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                <swrl:argument2 rdf:resource="urn:swrl#y"/>
+                            </rdf:Description>
+                        </rdf:first>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:head>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&kern;Software"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:body>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="&kern;PhysicalObject"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;AtomList"/>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="&kern;triggers"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl#y"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&kern;Action"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&kern;Agent"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
     </rdf:Description>
 </rdf:RDF>
 

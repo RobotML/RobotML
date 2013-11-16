@@ -12,17 +12,17 @@
     <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
     <!ENTITY swrla "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#" >
     <!ENTITY sqwrl "http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#" >
-    <!ENTITY kern "http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#" >
-    <!ENTITY info "http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#" >
+    <!ENTITY kern "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#" >
+    <!ENTITY info "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#" >
 ]>
 
 
-<rdf:RDF xmlns="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#"
-     xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl"
+<rdf:RDF xmlns="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#"
+     xml:base="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl"
      xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
      xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
-     xmlns:kern="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
-     xmlns:info="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#"
+     xmlns:kern="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#"
+     xmlns:info="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#"
      xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:swrl="http://www.w3.org/2003/11/swrl#"
@@ -31,7 +31,7 @@
      xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
-    <owl:Ontology rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl">
+    <owl:Ontology rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/Core/information.owl">
         <rdfs:comment xml:lang="en">The information ontology is based upon the kernel ontology. It explicits many of the concepts in the information kernel container.</rdfs:comment>
         <rdfs:comment xml:lang="en">This work is based upon a previous one funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project (see http://www.anr-project.fr). It is the property of its authors and is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
         <kern:author xml:lang="en">creation PROTEUS Consortium -
@@ -89,7 +89,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#canBeSavedin -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#canBeSavedin -->
 
     <owl:ObjectProperty rdf:about="&info;canBeSavedin">
         <rdfs:comment xml:lang="en">Any kind of Data can be saved or stored in a file of the system.</rdfs:comment>
@@ -99,7 +99,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#contains -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#contains -->
 
     <owl:ObjectProperty rdf:about="&info;contains">
         <rdfs:comment xml:lang="en">Relation between a group and its elements</rdfs:comment>
@@ -107,7 +107,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#containsAbstraction -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#containsAbstraction -->
 
     <owl:ObjectProperty rdf:about="&info;containsAbstraction">
         <rdfs:comment xml:lang="en">This property is the mirror of the info:containsData property linking Collection to its values. It links Set to its values in Abstraction.</rdfs:comment>
@@ -118,7 +118,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#containsAsKeys -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#containsAsKeys -->
 
     <owl:ObjectProperty rdf:about="&info;containsAsKeys">
         <rdfs:comment rdf:datatype="&xsd;string">To specify the keys used for each data in this AssociativeArray.</rdfs:comment>
@@ -129,7 +129,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#containsData -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#containsData -->
 
     <owl:ObjectProperty rdf:about="&info;containsData">
         <rdfs:comment xml:lang="en">This property is the mirror of the info:containsAbstraction property linking Set to its values. It links Collection to its values in Data.</rdfs:comment>
@@ -140,7 +140,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#has3DRepresentation -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#has3DRepresentation -->
 
     <owl:ObjectProperty rdf:about="&info;has3DRepresentation">
         <rdfs:comment xml:lang="en">A physical object can be represented by a 3D object in a virtual world.</rdfs:comment>
@@ -151,7 +151,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#hasAMathematicalDatum -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#hasAMathematicalDatum -->
 
     <owl:ObjectProperty rdf:about="&info;hasAMathematicalDatum">
         <rdfs:domain rdf:resource="&info;PhysicalData"/>
@@ -160,7 +160,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#hasAPhysicalQuantity -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#hasAPhysicalQuantity -->
 
     <owl:ObjectProperty rdf:about="&info;hasAPhysicalQuantity">
         <rdfs:comment rdf:datatype="&xsd;string">The physical quantity of a given unit</rdfs:comment>
@@ -178,7 +178,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#hasAUnit -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#hasAUnit -->
 
     <owl:ObjectProperty rdf:about="&info;hasAUnit">
         <rdfs:domain rdf:resource="&info;PhysicalData"/>
@@ -188,7 +188,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#hasFunction -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#hasFunction -->
 
     <owl:ObjectProperty rdf:about="&info;hasFunction">
         <rdfs:range rdf:resource="&info;Function"/>
@@ -205,7 +205,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#hasInput -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#hasInput -->
 
     <owl:ObjectProperty rdf:about="&info;hasInput">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -217,7 +217,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#hasOutput -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#hasOutput -->
 
     <owl:ObjectProperty rdf:about="&info;hasOutput">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -229,7 +229,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#hasPath -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#hasPath -->
 
     <owl:ObjectProperty rdf:about="&info;hasPath">
         <rdfs:comment xml:lang="en">A file has a string descriptor for its path which indicates its localization in the file system of the Operating System.</rdfs:comment>
@@ -240,7 +240,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#hasPhysicalCharacteristics -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#hasPhysicalCharacteristics -->
 
     <owl:ObjectProperty rdf:about="&info;hasPhysicalCharacteristics">
         <rdfs:comment xml:lang="en">A physical object can have phycal information like, length, position, velocity, acceleration, etc..</rdfs:comment>
@@ -251,7 +251,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#hasPositionRepresentation -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#hasPositionRepresentation -->
 
     <owl:ObjectProperty rdf:about="&info;hasPositionRepresentation">
         <rdfs:comment xml:lang="en">A position can have different types of representation depending on the world reference.</rdfs:comment>
@@ -273,7 +273,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#hasSet -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#hasSet -->
 
     <owl:ObjectProperty rdf:about="&info;hasSet">
         <rdfs:comment xml:lang="en">Whatever the information it can asks to be associated to Set.</rdfs:comment>
@@ -284,7 +284,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#isRepresented -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#isRepresented -->
 
     <owl:ObjectProperty rdf:about="&info;isRepresented">
         <rdfs:comment xml:lang="en">A file is represented by a binary stream stored in the file system of the operating system.</rdfs:comment>
@@ -294,7 +294,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#managesFile -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#managesFile -->
 
     <owl:ObjectProperty rdf:about="&info;managesFile">
         <rdfs:comment xml:lang="en">A computer file is indexed and stored in an File System. It represents the standard storage unit of the system.</rdfs:comment>
@@ -304,7 +304,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#evaluatesToTruth -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#evaluatesToTruth -->
 
     <owl:ObjectProperty rdf:about="&kern;evaluatesToTruth">
         <rdfs:comment xml:lang="en">When a condition placed in a state of a StateMachine evaluates to truth value, and event takes place and carries out the transition to another state.</rdfs:comment>
@@ -314,7 +314,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#takesAsStochasticInput -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#takesAsStochasticInput -->
 
     <owl:ObjectProperty rdf:about="&kern;takesAsStochasticInput">
         <rdfs:comment xml:lang="en">An evolution model which introduces distortion in the inputs (either in the information itself, either in the acquisition process of this information), obtains these inputs from a noise model or a biais model.</rdfs:comment>
@@ -332,9 +332,9 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#hasInput -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasInput -->
 
-    <owl:ObjectProperty rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#hasInput"/>
+    <owl:ObjectProperty rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasInput"/>
     
 
 
@@ -349,7 +349,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Dimension -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Dimension -->
 
     <owl:DatatypeProperty rdf:about="&info;Dimension">
         <rdfs:comment xml:lang="en">Number of set of the cross product</rdfs:comment>
@@ -359,19 +359,19 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#computerLanguage -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#computerLanguage -->
 
     <owl:DatatypeProperty rdf:about="&info;computerLanguage">
         <kern:openCycURI rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rv36oXZwpEbGdrcN5Y29ycA</kern:openCycURI>
         <kern:author xml:lang="en">creation Bruno Patin - 12/10/2013
 - allows to know encoding of source code</kern:author>
-        <rdfs:domain rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SourceCode"/>
+        <rdfs:domain rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SourceCode"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#gps_UTC_time -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#gps_UTC_time -->
 
     <owl:DatatypeProperty rdf:about="&info;gps_UTC_time">
         <rdfs:comment rdf:datatype="&xsd;string">UTC time for the current position</rdfs:comment>
@@ -381,7 +381,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#gps_altitude_1 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#gps_altitude_1 -->
 
     <owl:DatatypeProperty rdf:about="&info;gps_altitude_1">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -392,7 +392,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#gps_altitude_2 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#gps_altitude_2 -->
 
     <owl:DatatypeProperty rdf:about="&info;gps_altitude_2">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -403,7 +403,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#gps_heading -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#gps_heading -->
 
     <owl:DatatypeProperty rdf:about="&info;gps_heading">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -414,7 +414,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#gps_latitude -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#gps_latitude -->
 
     <owl:DatatypeProperty rdf:about="&info;gps_latitude">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -425,7 +425,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#gps_longitude -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#gps_longitude -->
 
     <owl:DatatypeProperty rdf:about="&info;gps_longitude">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -436,7 +436,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#gps_nb_sats -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#gps_nb_sats -->
 
     <owl:DatatypeProperty rdf:about="&info;gps_nb_sats">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -447,7 +447,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#gps_quality_indicator -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#gps_quality_indicator -->
 
     <owl:DatatypeProperty rdf:about="&info;gps_quality_indicator">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -525,7 +525,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#gps_speed_east -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#gps_speed_east -->
 
     <owl:DatatypeProperty rdf:about="&info;gps_speed_east">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -536,7 +536,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#gps_speed_north -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#gps_speed_north -->
 
     <owl:DatatypeProperty rdf:about="&info;gps_speed_north">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -547,7 +547,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#gps_speed_up -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#gps_speed_up -->
 
     <owl:DatatypeProperty rdf:about="&info;gps_speed_up">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -558,7 +558,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#homogeneous -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#homogeneous -->
 
     <owl:DatatypeProperty rdf:about="&info;homogeneous">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -585,7 +585,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#image_coding -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#image_coding -->
 
     <owl:DatatypeProperty rdf:about="&info;image_coding">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -596,7 +596,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#image_data -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#image_data -->
 
     <owl:DatatypeProperty rdf:about="&info;image_data">
         <rdfs:comment rdf:datatype="&xsd;string">Pixel data bytes</rdfs:comment>
@@ -606,7 +606,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#image_depth -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#image_depth -->
 
     <owl:DatatypeProperty rdf:about="&info;image_depth">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -617,7 +617,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#image_height -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#image_height -->
 
     <owl:DatatypeProperty rdf:about="&info;image_height">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -628,7 +628,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#image_nb_channels -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#image_nb_channels -->
 
     <owl:DatatypeProperty rdf:about="&info;image_nb_channels">
         <rdfs:comment rdf:datatype="&xsd;string">Number of channels in image (ex : GRAY = 1 chan, RGB  = 3 chans, RGBA = 4 chans)</rdfs:comment>
@@ -638,7 +638,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#image_size -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#image_size -->
 
     <owl:DatatypeProperty rdf:about="&info;image_size">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -649,7 +649,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#image_width -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#image_width -->
 
     <owl:DatatypeProperty rdf:about="&info;image_width">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -660,7 +660,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#isTimestampedBy -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#isTimestampedBy -->
 
     <owl:DatatypeProperty rdf:about="&info;isTimestampedBy">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -672,7 +672,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#producedTimestamp -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#producedTimestamp -->
 
     <owl:DatatypeProperty rdf:about="&info;producedTimestamp">
         <rdfs:domain rdf:resource="&kern;Clock"/>
@@ -681,7 +681,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#x -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#x -->
 
     <owl:DatatypeProperty rdf:about="&info;x">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -691,7 +691,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#y -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#y -->
 
     <owl:DatatypeProperty rdf:about="&info;y">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -701,7 +701,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#valued -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#valued -->
 
     <rdf:Description rdf:about="&kern;valued">
         <rdfs:domain rdf:resource="&kern;Information"/>
@@ -726,7 +726,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#ASCIICharacter -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#ASCIICharacter -->
 
     <owl:Class rdf:about="&info;ASCIICharacter">
         <rdfs:subClassOf rdf:resource="&info;Character"/>
@@ -735,7 +735,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Acceleration -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Acceleration -->
 
     <owl:Class rdf:about="&info;Acceleration">
         <rdfs:subClassOf rdf:resource="&info;PhysicalData"/>
@@ -766,7 +766,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Angle -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Angle -->
 
     <owl:Class rdf:about="&info;Angle">
         <rdfs:subClassOf rdf:resource="&info;PhysicalData"/>
@@ -796,7 +796,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#AssociativeArray -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#AssociativeArray -->
 
     <owl:Class rdf:about="&info;AssociativeArray">
         <rdfs:subClassOf rdf:resource="&info;Collection"/>
@@ -812,7 +812,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#AssociativeArrayForSimulation -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#AssociativeArrayForSimulation -->
 
     <owl:Class rdf:about="&info;AssociativeArrayForSimulation">
         <rdfs:subClassOf rdf:resource="&info;AssociativeArray"/>
@@ -824,7 +824,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#AudioPacket -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#AudioPacket -->
 
     <owl:Class rdf:about="&info;AudioPacket">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -863,7 +863,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#BiProduct -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#BiProduct -->
 
     <owl:Class rdf:about="&info;BiProduct">
         <rdfs:subClassOf rdf:resource="&info;CrossProduct"/>
@@ -875,14 +875,14 @@ modified Bruno Patin - 13/10/2013
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;Dimension"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
+                <owl:onProperty rdf:resource="&info;homogeneous"/>
+                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;homogeneous"/>
-                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
+                <owl:onProperty rdf:resource="&info;Dimension"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">Necessary to have binary operations and thus functions.</rdfs:comment>
@@ -890,7 +890,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Binary -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Binary -->
 
     <owl:Class rdf:about="&info;Binary">
         <owl:equivalentClass>
@@ -908,20 +908,20 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#BinaryCode -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#BinaryCode -->
 
     <owl:Class rdf:about="&info;BinaryCode">
-        <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SourceCode"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;valued"/>
-                <owl:someValuesFrom rdf:resource="&xsd;byte"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SourceCode"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;describe"/>
                 <owl:allValuesFrom rdf:resource="&info;BinarySoftware"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;valued"/>
+                <owl:someValuesFrom rdf:resource="&xsd;byte"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <kern:author xml:lang="en">creation Bruno Patin - 13/10/2013</kern:author>
@@ -930,7 +930,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#BinarySoftware -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#BinarySoftware -->
 
     <owl:Class rdf:about="&info;BinarySoftware">
         <rdfs:subClassOf rdf:resource="&kern;Software"/>
@@ -947,7 +947,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Boolean -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Boolean -->
 
     <owl:Class rdf:about="&info;Boolean">
         <rdfs:subClassOf rdf:resource="&info;PrimitiveData"/>
@@ -964,16 +964,10 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#BooleanSet -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#BooleanSet -->
 
     <owl:Class rdf:about="&info;BooleanSet">
         <rdfs:subClassOf rdf:resource="&info;Set"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
-                <owl:allValuesFrom rdf:resource="&info;Boolean"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&info;containsAbstraction"/>
@@ -993,6 +987,12 @@ modified Bruno Patin - 13/10/2013
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
+                <owl:allValuesFrom rdf:resource="&info;Boolean"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;CrossProduct"/>
         <owl:disjointWith rdf:resource="&info;OrderedSet"/>
         <rdfs:comment xml:lang="en">It is the set composed of the true and false values.</rdfs:comment>
@@ -1000,7 +1000,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#CANFrame -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#CANFrame -->
 
     <owl:Class rdf:about="&info;CANFrame">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -1037,7 +1037,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Character -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Character -->
 
     <owl:Class rdf:about="&info;Character">
         <rdfs:subClassOf rdf:resource="&info;PrimitiveData"/>
@@ -1047,7 +1047,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Collection -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Collection -->
 
     <owl:Class rdf:about="&info;Collection">
         <rdfs:subClassOf rdf:resource="&info;StructuredData"/>
@@ -1062,7 +1062,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Command -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Command -->
 
     <owl:Class rdf:about="&info;Command">
         <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
@@ -1083,7 +1083,7 @@ modified Bruno Patin - 13/10/2013
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#ComposedData -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#ComposedData -->
 
     <owl:Class rdf:about="&info;ComposedData">
         <rdfs:subClassOf rdf:resource="&kern;Data"/>
@@ -1101,7 +1101,7 @@ See messages like defined in JAUS, FIPA, ADL...</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#ComputerFile -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#ComputerFile -->
 
     <owl:Class rdf:about="&info;ComputerFile">
         <rdfs:subClassOf rdf:resource="&info;TimeStampedData"/>
@@ -1110,7 +1110,7 @@ See messages like defined in JAUS, FIPA, ADL...</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Condition -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Condition -->
 
     <owl:Class rdf:about="&info;Condition">
         <rdfs:subClassOf rdf:resource="&info;LogicalExpression"/>
@@ -1121,7 +1121,7 @@ A conditional expression is associated with an operation on two logical values, 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Constraint -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Constraint -->
 
     <owl:Class rdf:about="&info;Constraint">
         <rdfs:subClassOf rdf:resource="&info;Relation"/>
@@ -1137,16 +1137,10 @@ A conditional expression is associated with an operation on two logical values, 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#CrossProduct -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#CrossProduct -->
 
     <owl:Class rdf:about="&info;CrossProduct">
         <rdfs:subClassOf rdf:resource="&info;Set"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;containsAbstraction"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&info;Dimension"/>
@@ -1159,13 +1153,19 @@ A conditional expression is associated with an operation on two logical values, 
                 <owl:allValuesFrom rdf:resource="&info;Set"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&info;containsAbstraction"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;OrderedSet"/>
         <rdfs:comment xml:lang="en">Cross Product means that the set is a composition of a list of ordered sets</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Date -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Date -->
 
     <owl:Class rdf:about="&info;Date">
         <rdfs:subClassOf rdf:resource="&info;PhysicalData"/>
@@ -1194,7 +1194,7 @@ A conditional expression is associated with an operation on two logical values, 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Distance -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Distance -->
 
     <owl:Class rdf:about="&info;Distance">
         <rdfs:subClassOf rdf:resource="&info;PhysicalData"/>
@@ -1222,7 +1222,7 @@ A conditional expression is associated with an operation on two logical values, 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Duration -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Duration -->
 
     <owl:Class rdf:about="&info;Duration">
         <rdfs:subClassOf rdf:resource="&info;PhysicalData"/>
@@ -1249,7 +1249,7 @@ A conditional expression is associated with an operation on two logical values, 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#ElectricField -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#ElectricField -->
 
     <owl:Class rdf:about="&info;ElectricField">
         <rdfs:subClassOf rdf:resource="&info;PhysicalData"/>
@@ -1275,7 +1275,7 @@ A conditional expression is associated with an operation on two logical values, 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#ElectricalCurrent -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#ElectricalCurrent -->
 
     <owl:Class rdf:about="&info;ElectricalCurrent">
         <rdfs:subClassOf rdf:resource="&info;PhysicalData"/>
@@ -1300,7 +1300,7 @@ A conditional expression is associated with an operation on two logical values, 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Energy -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Energy -->
 
     <owl:Class rdf:about="&info;Energy">
         <rdfs:subClassOf rdf:resource="&info;PhysicalData"/>
@@ -1324,7 +1324,7 @@ A conditional expression is associated with an operation on two logical values, 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Expression -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Expression -->
 
     <owl:Class rdf:about="&info;Expression">
         <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
@@ -1333,7 +1333,7 @@ A conditional expression is associated with an operation on two logical values, 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#False -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#False -->
 
     <owl:Class rdf:about="&info;False">
         <rdfs:subClassOf rdf:resource="&info;NumberAbstraction"/>
@@ -1345,7 +1345,7 @@ A conditional expression is associated with an operation on two logical values, 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#FixedPointNumber -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#FixedPointNumber -->
 
     <owl:Class rdf:about="&info;FixedPointNumber">
         <rdfs:subClassOf rdf:resource="&info;Real"/>
@@ -1355,7 +1355,7 @@ A conditional expression is associated with an operation on two logical values, 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Float32 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Float32 -->
 
     <owl:Class rdf:about="&info;Float32">
         <rdfs:subClassOf rdf:resource="&info;FloatingPointNumber"/>
@@ -1371,7 +1371,7 @@ A conditional expression is associated with an operation on two logical values, 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Float64 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Float64 -->
 
     <owl:Class rdf:about="&info;Float64">
         <rdfs:subClassOf rdf:resource="&info;FloatingPointNumber"/>
@@ -1386,7 +1386,7 @@ A conditional expression is associated with an operation on two logical values, 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#FloatingPointNumber -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#FloatingPointNumber -->
 
     <owl:Class rdf:about="&info;FloatingPointNumber">
         <rdfs:subClassOf rdf:resource="&info;Real"/>
@@ -1395,7 +1395,7 @@ A conditional expression is associated with an operation on two logical values, 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Force -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Force -->
 
     <owl:Class rdf:about="&info;Force">
         <rdfs:subClassOf rdf:resource="&info;PhysicalData"/>
@@ -1418,7 +1418,7 @@ A conditional expression is associated with an operation on two logical values, 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Function -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Function -->
 
     <owl:Class rdf:about="&info;Function">
         <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
@@ -1436,7 +1436,7 @@ A conditional expression is associated with an operation on two logical values, 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#GPS -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#GPS -->
 
     <owl:Class rdf:about="&info;GPS">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -1474,7 +1474,7 @@ Can be completed with additional attributes such as : satellites information, ep
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Humidity -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Humidity -->
 
     <owl:Class rdf:about="&info;Humidity">
         <rdfs:subClassOf rdf:resource="&info;PhysicalData"/>
@@ -1496,7 +1496,7 @@ Can be completed with additional attributes such as : satellites information, ep
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#I -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#I -->
 
     <owl:Class rdf:about="&info;I">
         <rdfs:subClassOf rdf:resource="&info;OrderedSet"/>
@@ -1513,7 +1513,7 @@ Can be completed with additional attributes such as : satellites information, ep
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Image -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Image -->
 
     <owl:Class rdf:about="&info;Image">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -1549,7 +1549,7 @@ Can be completed with additional attributes such as : satellites information, ep
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#In -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#In -->
 
     <owl:Class rdf:about="&info;In">
         <rdfs:subClassOf rdf:resource="&info;CrossProduct"/>
@@ -1571,7 +1571,7 @@ Can be completed with additional attributes such as : satellites information, ep
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#InstantPower -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#InstantPower -->
 
     <owl:Class rdf:about="&info;InstantPower">
         <rdfs:subClassOf rdf:resource="&info;PhysicalData"/>
@@ -1592,7 +1592,7 @@ Can be completed with additional attributes such as : satellites information, ep
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Int16 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Int16 -->
 
     <owl:Class rdf:about="&info;Int16">
         <owl:equivalentClass rdf:resource="&info;UInt16"/>
@@ -1613,7 +1613,7 @@ Can be completed with additional attributes such as : satellites information, ep
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Int32 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Int32 -->
 
     <owl:Class rdf:about="&info;Int32">
         <owl:equivalentClass rdf:resource="&info;UInt32"/>
@@ -1634,7 +1634,7 @@ Can be completed with additional attributes such as : satellites information, ep
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Int64 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Int64 -->
 
     <owl:Class rdf:about="&info;Int64">
         <owl:equivalentClass rdf:resource="&info;UInt64"/>
@@ -1654,7 +1654,7 @@ Can be completed with additional attributes such as : satellites information, ep
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Int8 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Int8 -->
 
     <owl:Class rdf:about="&info;Int8">
         <owl:equivalentClass rdf:resource="&info;UInt8"/>
@@ -1673,7 +1673,7 @@ Can be completed with additional attributes such as : satellites information, ep
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Integer -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Integer -->
 
     <owl:Class rdf:about="&info;Integer">
         <rdfs:subClassOf rdf:resource="&info;Number"/>
@@ -1683,7 +1683,7 @@ Can be completed with additional attributes such as : satellites information, ep
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#IntegerAbstraction -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#IntegerAbstraction -->
 
     <owl:Class rdf:about="&info;IntegerAbstraction">
         <rdfs:subClassOf rdf:resource="&info;NumberAbstraction"/>
@@ -1706,7 +1706,7 @@ Can be completed with additional attributes such as : satellites information, ep
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#InterpretedSoftware -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#InterpretedSoftware -->
 
     <owl:Class rdf:about="&info;InterpretedSoftware">
         <rdfs:subClassOf rdf:resource="&kern;Software"/>
@@ -1720,7 +1720,7 @@ Can be completed with additional attributes such as : satellites information, ep
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#LaserScan -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#LaserScan -->
 
     <owl:Class rdf:about="&info;LaserScan">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -1755,7 +1755,7 @@ Can be completed with additional attributes such as : satellites information, ep
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#LogicalExpression -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#LogicalExpression -->
 
     <owl:Class rdf:about="&info;LogicalExpression">
         <rdfs:subClassOf rdf:resource="&info;Expression"/>
@@ -1773,7 +1773,7 @@ Can be completed with additional attributes such as : satellites information, ep
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Luminosity -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Luminosity -->
 
     <owl:Class rdf:about="&info;Luminosity">
         <rdfs:subClassOf rdf:resource="&info;PhysicalData"/>
@@ -1793,7 +1793,7 @@ Can be completed with additional attributes such as : satellites information, ep
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#MagneticField -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#MagneticField -->
 
     <owl:Class rdf:about="&info;MagneticField">
         <rdfs:subClassOf rdf:resource="&info;PhysicalData"/>
@@ -1812,7 +1812,7 @@ Can be completed with additional attributes such as : satellites information, ep
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Mass -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Mass -->
 
     <owl:Class rdf:about="&info;Mass">
         <rdfs:subClassOf rdf:resource="&info;PhysicalData"/>
@@ -1830,7 +1830,7 @@ Can be completed with additional attributes such as : satellites information, ep
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Message -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Message -->
 
     <owl:Class rdf:about="&info;Message">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -1867,7 +1867,7 @@ Message code and/or text info.</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#MissionEvaluation -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#MissionEvaluation -->
 
     <owl:Class rdf:about="&info;MissionEvaluation">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -1900,7 +1900,7 @@ Message code and/or text info.</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Number -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Number -->
 
     <owl:Class rdf:about="&info;Number">
         <rdfs:subClassOf rdf:resource="&info;PrimitiveData"/>
@@ -1909,20 +1909,20 @@ Message code and/or text info.</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#NumberAbstraction -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#NumberAbstraction -->
 
     <owl:Class rdf:about="&info;NumberAbstraction">
         <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
-                <owl:allValuesFrom rdf:resource="&info;PrimitiveData"/>
+                <owl:onProperty rdf:resource="&info;hasSet"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;hasSet"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
+                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
+                <owl:allValuesFrom rdf:resource="&info;PrimitiveData"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;OperationalInformation"/>
@@ -1937,7 +1937,7 @@ Message code and/or text info.</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Object2D -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Object2D -->
 
     <owl:Class rdf:about="&info;Object2D">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -1970,7 +1970,7 @@ Ex : rectangle, circle, disc, line, ellipse, spot, ...</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Object3D -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Object3D -->
 
     <owl:Class rdf:about="&info;Object3D">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -2002,7 +2002,7 @@ Ex : sphere, box,...</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#OperationalInformation -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#OperationalInformation -->
 
     <owl:Class rdf:about="&info;OperationalInformation">
         <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
@@ -2018,20 +2018,20 @@ Ex : sphere, box,...</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#OrderedSet -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#OrderedSet -->
 
     <owl:Class rdf:about="&info;OrderedSet">
         <rdfs:subClassOf rdf:resource="&info;Set"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&info;hasFunction"/>
-                <owl:someValuesFrom rdf:resource="&info;SortingRelation"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&info;hasFunction"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+                <owl:someValuesFrom rdf:resource="&info;SortingRelation"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:versionInfo rdf:datatype="&xsd;string">TODO: create the mirror in the Data:Collection (could be many)</owl:versionInfo>
@@ -2041,7 +2041,7 @@ aRb true and bRa true implies a=b.</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#OrderedSetForSystemDescription -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#OrderedSetForSystemDescription -->
 
     <owl:Class rdf:about="&info;OrderedSetForSystemDescription">
         <rdfs:subClassOf rdf:resource="&info;OrderedSet"/>
@@ -2051,7 +2051,7 @@ aRb true and bRa true implies a=b.</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Orientation -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Orientation -->
 
     <owl:Class rdf:about="&info;Orientation">
         <rdfs:subClassOf rdf:resource="&info;PhysicalData"/>
@@ -2068,7 +2068,7 @@ aRb true and bRa true implies a=b.</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Orientation2DAngle -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Orientation2DAngle -->
 
     <owl:Class rdf:about="&info;Orientation2DAngle">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -2097,7 +2097,7 @@ aRb true and bRa true implies a=b.</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Orientation2DMatrix -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Orientation2DMatrix -->
 
     <owl:Class rdf:about="&info;Orientation2DMatrix">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -2125,7 +2125,7 @@ aRb true and bRa true implies a=b.</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Orientation3DEuler -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Orientation3DEuler -->
 
     <owl:Class rdf:about="&info;Orientation3DEuler">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -2152,7 +2152,7 @@ aRb true and bRa true implies a=b.</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Orientation3DMatrix -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Orientation3DMatrix -->
 
     <owl:Class rdf:about="&info;Orientation3DMatrix">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -2178,7 +2178,7 @@ aRb true and bRa true implies a=b.</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Orientation3DQuaternion -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Orientation3DQuaternion -->
 
     <owl:Class rdf:about="&info;Orientation3DQuaternion">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -2203,7 +2203,7 @@ aRb true and bRa true implies a=b.</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#PhysicalData -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#PhysicalData -->
 
     <owl:Class rdf:about="&info;PhysicalData">
         <rdfs:subClassOf rdf:resource="&info;Real"/>
@@ -2235,7 +2235,7 @@ aRb true and bRa true implies a=b.</rdfs:comment>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#PhysicalQuantity -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#PhysicalQuantity -->
 
     <owl:Class rdf:about="&info;PhysicalQuantity">
         <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
@@ -2257,7 +2257,7 @@ Although angle are generally considered as dimensionless, we can add them for co
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Position -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Position -->
 
     <owl:Class rdf:about="&info;Position">
         <rdfs:subClassOf rdf:resource="&info;PhysicalData"/>
@@ -2273,7 +2273,7 @@ Although angle are generally considered as dimensionless, we can add them for co
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Position2DCartesian -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Position2DCartesian -->
 
     <owl:Class rdf:about="&info;Position2DCartesian">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -2296,7 +2296,7 @@ Although angle are generally considered as dimensionless, we can add them for co
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Position2DPolar -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Position2DPolar -->
 
     <owl:Class rdf:about="&info;Position2DPolar">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -2318,7 +2318,7 @@ Although angle are generally considered as dimensionless, we can add them for co
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Position3DCartesian -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Position3DCartesian -->
 
     <owl:Class rdf:about="&info;Position3DCartesian">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -2339,7 +2339,7 @@ Although angle are generally considered as dimensionless, we can add them for co
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Position3DCylindrical -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Position3DCylindrical -->
 
     <owl:Class rdf:about="&info;Position3DCylindrical">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -2359,7 +2359,7 @@ Although angle are generally considered as dimensionless, we can add them for co
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Position3DSpherical -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Position3DSpherical -->
 
     <owl:Class rdf:about="&info;Position3DSpherical">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -2378,7 +2378,7 @@ Although angle are generally considered as dimensionless, we can add them for co
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Position6D -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Position6D -->
 
     <owl:Class rdf:about="&info;Position6D">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -2397,7 +2397,7 @@ Although angle are generally considered as dimensionless, we can add them for co
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Pressure -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Pressure -->
 
     <owl:Class rdf:about="&info;Pressure">
         <rdfs:subClassOf rdf:resource="&info;PhysicalData"/>
@@ -2412,7 +2412,7 @@ Although angle are generally considered as dimensionless, we can add them for co
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#PrimitiveData -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#PrimitiveData -->
 
     <owl:Class rdf:about="&info;PrimitiveData">
         <rdfs:subClassOf rdf:resource="&kern;Data"/>
@@ -2423,7 +2423,7 @@ boolean, classical number representation (int, double, ...), character</rdfs:com
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#R -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#R -->
 
     <owl:Class rdf:about="&info;R">
         <rdfs:subClassOf rdf:resource="&info;OrderedSet"/>
@@ -2438,7 +2438,7 @@ boolean, classical number representation (int, double, ...), character</rdfs:com
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Real -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Real -->
 
     <owl:Class rdf:about="&info;Real">
         <rdfs:subClassOf rdf:resource="&info;Number"/>
@@ -2447,7 +2447,7 @@ boolean, classical number representation (int, double, ...), character</rdfs:com
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#RealAbstraction -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#RealAbstraction -->
 
     <owl:Class rdf:about="&info;RealAbstraction">
         <rdfs:subClassOf rdf:resource="&info;NumberAbstraction"/>
@@ -2469,7 +2469,7 @@ boolean, classical number representation (int, double, ...), character</rdfs:com
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Referential -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Referential -->
 
     <owl:Class rdf:about="&info;Referential">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -2488,19 +2488,13 @@ boolean, classical number representation (int, double, ...), character</rdfs:com
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Relation -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Relation -->
 
     <owl:Class rdf:about="&info;Relation">
         <rdfs:subClassOf rdf:resource="&info;Function"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;hasOutput"/>
-                <owl:allValuesFrom rdf:resource="&info;BooleanSet"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#hasInput"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasInput"/>
                 <owl:allValuesFrom rdf:resource="&info;BiProduct"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -2508,6 +2502,12 @@ boolean, classical number representation (int, double, ...), character</rdfs:com
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&info;hasSet"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&info;hasOutput"/>
+                <owl:allValuesFrom rdf:resource="&info;BooleanSet"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;TrajectoryFunction"/>
@@ -2518,7 +2518,7 @@ Relation is linking two elements of the same Set and assumes this link is either
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Rn -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Rn -->
 
     <owl:Class rdf:about="&info;Rn">
         <rdfs:subClassOf rdf:resource="&info;CrossProduct"/>
@@ -2539,7 +2539,7 @@ Relation is linking two elements of the same Set and assumes this link is either
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#RotationRate -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#RotationRate -->
 
     <owl:Class rdf:about="&info;RotationRate">
         <rdfs:subClassOf rdf:resource="&info;PhysicalData"/>
@@ -2553,7 +2553,7 @@ Relation is linking two elements of the same Set and assumes this link is either
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Sequence -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Sequence -->
 
     <owl:Class rdf:about="&info;Sequence">
         <rdfs:subClassOf rdf:resource="&info;Collection"/>
@@ -2562,7 +2562,7 @@ Relation is linking two elements of the same Set and assumes this link is either
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Set -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Set -->
 
     <owl:Class rdf:about="&info;Set">
         <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
@@ -2588,7 +2588,7 @@ Relation is linking two elements of the same Set and assumes this link is either
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#SortingRelation -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#SortingRelation -->
 
     <owl:Class rdf:about="&info;SortingRelation">
         <rdfs:subClassOf rdf:resource="&info;Relation"/>
@@ -2597,7 +2597,7 @@ Relation is linking two elements of the same Set and assumes this link is either
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Speed -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Speed -->
 
     <owl:Class rdf:about="&info;Speed">
         <rdfs:subClassOf rdf:resource="&info;PhysicalData"/>
@@ -2610,7 +2610,7 @@ Relation is linking two elements of the same Set and assumes this link is either
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#StreamPacket -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#StreamPacket -->
 
     <owl:Class rdf:about="&info;StreamPacket">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -2627,7 +2627,7 @@ Relation is linking two elements of the same Set and assumes this link is either
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#String -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#String -->
 
     <owl:Class rdf:about="&info;String">
         <owl:equivalentClass>
@@ -2642,7 +2642,7 @@ Relation is linking two elements of the same Set and assumes this link is either
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#StructuredData -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#StructuredData -->
 
     <owl:Class rdf:about="&info;StructuredData">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -2666,7 +2666,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Temperature -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Temperature -->
 
     <owl:Class rdf:about="&info;Temperature">
         <rdfs:subClassOf rdf:resource="&info;PhysicalData"/>
@@ -2678,7 +2678,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Tensor -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Tensor -->
 
     <owl:Class rdf:about="&info;Tensor">
         <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
@@ -2689,10 +2689,10 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#TextCode -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#TextCode -->
 
     <owl:Class rdf:about="&info;TextCode">
-        <rdfs:subClassOf rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SourceCode"/>
+        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SourceCode"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;valued"/>
@@ -2705,7 +2705,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#TimeStampedData -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#TimeStampedData -->
 
     <owl:Class rdf:about="&info;TimeStampedData">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -2720,7 +2720,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Torque -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Torque -->
 
     <owl:Class rdf:about="&info;Torque">
         <rdfs:subClassOf rdf:resource="&info;PhysicalData"/>
@@ -2731,7 +2731,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#TrajectoryElement -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#TrajectoryElement -->
 
     <owl:Class rdf:about="&info;TrajectoryElement">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -2744,7 +2744,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#TrajectoryFunction -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#TrajectoryFunction -->
 
     <owl:Class rdf:about="&info;TrajectoryFunction">
         <rdfs:subClassOf rdf:resource="&info;Function"/>
@@ -2753,7 +2753,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Translation2D -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Translation2D -->
 
     <owl:Class rdf:about="&info;Translation2D">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -2765,7 +2765,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Translation3D -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Translation3D -->
 
     <owl:Class rdf:about="&info;Translation3D">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -2776,7 +2776,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#True -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#True -->
 
     <owl:Class rdf:about="&info;True">
         <rdfs:subClassOf rdf:resource="&info;NumberAbstraction"/>
@@ -2785,7 +2785,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#UInt16 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#UInt16 -->
 
     <owl:Class rdf:about="&info;UInt16">
         <rdfs:subClassOf rdf:resource="&info;Integer"/>
@@ -2797,7 +2797,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#UInt32 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#UInt32 -->
 
     <owl:Class rdf:about="&info;UInt32">
         <rdfs:subClassOf rdf:resource="&info;Integer"/>
@@ -2808,7 +2808,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#UInt64 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#UInt64 -->
 
     <owl:Class rdf:about="&info;UInt64">
         <rdfs:subClassOf rdf:resource="&info;Integer"/>
@@ -2818,7 +2818,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#UInt8 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#UInt8 -->
 
     <owl:Class rdf:about="&info;UInt8">
         <rdfs:subClassOf rdf:resource="&info;Integer"/>
@@ -2827,7 +2827,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#UTF8Character -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#UTF8Character -->
 
     <owl:Class rdf:about="&info;UTF8Character">
         <rdfs:subClassOf rdf:resource="&info;Character"/>
@@ -2835,7 +2835,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#UUID -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#UUID -->
 
     <owl:Class rdf:about="&info;UUID">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -2846,7 +2846,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Unit -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Unit -->
 
     <owl:Class rdf:about="&info;Unit">
         <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
@@ -2864,7 +2864,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Vector -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Vector -->
 
     <owl:Class rdf:about="&info;Vector">
         <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
@@ -2873,7 +2873,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Voltage -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Voltage -->
 
     <owl:Class rdf:about="&info;Voltage">
         <rdfs:subClassOf rdf:resource="&info;PhysicalData"/>
@@ -2883,7 +2883,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Wavelength -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Wavelength -->
 
     <owl:Class rdf:about="&info;Wavelength">
         <rdfs:subClassOf rdf:resource="&info;PhysicalData"/>
@@ -2892,7 +2892,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Waypoint2D -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Waypoint2D -->
 
     <owl:Class rdf:about="&info;Waypoint2D">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -2901,7 +2901,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Waypoint3D -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Waypoint3D -->
 
     <owl:Class rdf:about="&info;Waypoint3D">
         <rdfs:subClassOf rdf:resource="&info;ComposedData"/>
@@ -2909,7 +2909,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#Weight -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Weight -->
 
     <owl:Class rdf:about="&info;Weight">
         <rdfs:subClassOf rdf:resource="&info;PhysicalData"/>
@@ -2917,7 +2917,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Algorithm -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Algorithm -->
 
     <owl:Class rdf:about="&kern;Algorithm">
         <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
@@ -2936,7 +2936,7 @@ In order to solve this point, we could keep the &quot;info:hasSet&quot; and add 
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#BiaisModel -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#BiaisModel -->
 
     <owl:Class rdf:about="&kern;BiaisModel">
         <rdfs:subClassOf rdf:resource="&kern;Algorithm"/>
@@ -2948,7 +2948,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Data -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Data -->
 
     <owl:Class rdf:about="&kern;Data">
         <kern:TODO xml:lang="en">Data is defined in kernel but is completed in information by the canBeSavedIn. Could be that it is not necessary to add this property in information meaning we should move info:ComputerFile also. To be discussed.</kern:TODO>
@@ -2956,7 +2956,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#NoiseModel -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#NoiseModel -->
 
     <owl:Class rdf:about="&kern;NoiseModel">
         <rdfs:subClassOf rdf:resource="&kern;Algorithm"/>
@@ -2966,45 +2966,45 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#Software -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Software -->
 
     <rdf:Description rdf:about="&kern;Software">
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;uses"/>
-                <owl:someValuesFrom rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SourceCode"/>
+                <owl:someValuesFrom rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SourceCode"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </rdf:Description>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#State -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#State -->
 
     <rdf:Description rdf:about="&kern;State"/>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#StateMachine -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#StateMachine -->
 
     <rdf:Description rdf:about="&kern;StateMachine"/>
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SourceCode -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SourceCode -->
 
-    <owl:Class rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#SourceCode">
+    <owl:Class rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SourceCode">
         <rdfs:subClassOf rdf:resource="&kern;Data"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;describe"/>
-                <owl:allValuesFrom rdf:resource="&kern;Software"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;implements"/>
                 <owl:someValuesFrom rdf:resource="&kern;Algorithm"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;describe"/>
+                <owl:allValuesFrom rdf:resource="&kern;Software"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:isDefinedBy rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rwIZO5pwpEbGdrcN5Y29ycA</rdfs:isDefinedBy>
@@ -3025,7 +3025,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#amount_of_substance -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#amount_of_substance -->
 
     <owl:NamedIndividual rdf:about="&info;amount_of_substance">
         <rdf:type rdf:resource="&info;PhysicalQuantity"/>
@@ -3033,7 +3033,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#angle -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#angle -->
 
     <owl:NamedIndividual rdf:about="&info;angle">
         <rdf:type rdf:resource="&info;PhysicalQuantity"/>
@@ -3041,7 +3041,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#degree -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#degree -->
 
     <owl:NamedIndividual rdf:about="&info;degree">
         <rdf:type rdf:resource="&info;Unit"/>
@@ -3050,7 +3050,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#electric_current -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#electric_current -->
 
     <owl:NamedIndividual rdf:about="&info;electric_current">
         <rdf:type rdf:resource="&info;PhysicalQuantity"/>
@@ -3058,7 +3058,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#emptySet -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#emptySet -->
 
     <owl:NamedIndividual rdf:about="&info;emptySet">
         <rdf:type rdf:resource="&info;Set"/>
@@ -3066,7 +3066,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#false -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#false -->
 
     <owl:NamedIndividual rdf:about="&info;false">
         <rdf:type rdf:resource="&info;Boolean"/>
@@ -3075,7 +3075,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#inch -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#inch -->
 
     <owl:NamedIndividual rdf:about="&info;inch">
         <rdf:type rdf:resource="&info;Unit"/>
@@ -3084,7 +3084,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#length -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#length -->
 
     <owl:NamedIndividual rdf:about="&info;length">
         <rdf:type rdf:resource="&info;PhysicalQuantity"/>
@@ -3092,7 +3092,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#luminous_intensity -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#luminous_intensity -->
 
     <owl:NamedIndividual rdf:about="&info;luminous_intensity">
         <rdf:type rdf:resource="&info;PhysicalQuantity"/>
@@ -3100,7 +3100,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#mass -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#mass -->
 
     <owl:NamedIndividual rdf:about="&info;mass">
         <rdf:type rdf:resource="&info;PhysicalQuantity"/>
@@ -3108,7 +3108,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#meter -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#meter -->
 
     <owl:NamedIndividual rdf:about="&info;meter">
         <rdf:type rdf:resource="&info;Unit"/>
@@ -3117,7 +3117,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#number-0.72_asFloat64 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#number-0.72_asFloat64 -->
 
     <owl:NamedIndividual rdf:about="&info;number-0.72_asFloat64">
         <rdf:type rdf:resource="&info;Float64"/>
@@ -3126,7 +3126,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#number12999.9_asFloat64 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#number12999.9_asFloat64 -->
 
     <owl:NamedIndividual rdf:about="&info;number12999.9_asFloat64">
         <rdf:type rdf:resource="&info;Float64"/>
@@ -3135,7 +3135,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#number3.45_asFloat64 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#number3.45_asFloat64 -->
 
     <owl:NamedIndividual rdf:about="&info;number3.45_asFloat64">
         <rdf:type rdf:resource="&info;Float64"/>
@@ -3144,7 +3144,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#qu-0.72rad_asFloat64 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#qu-0.72rad_asFloat64 -->
 
     <owl:NamedIndividual rdf:about="&info;qu-0.72rad_asFloat64">
         <rdf:type rdf:resource="&info;PhysicalData"/>
@@ -3154,7 +3154,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#qu12999.9deg_asFloat64 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#qu12999.9deg_asFloat64 -->
 
     <owl:NamedIndividual rdf:about="&info;qu12999.9deg_asFloat64">
         <rdf:type rdf:resource="&info;PhysicalData"/>
@@ -3164,7 +3164,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#qu3.45rad_asFloat64 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#qu3.45rad_asFloat64 -->
 
     <owl:NamedIndividual rdf:about="&info;qu3.45rad_asFloat64">
         <rdf:type rdf:resource="&info;PhysicalData"/>
@@ -3174,7 +3174,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#radian -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#radian -->
 
     <owl:NamedIndividual rdf:about="&info;radian">
         <rdf:type rdf:resource="&info;Unit"/>
@@ -3183,7 +3183,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#setOfAngles -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#setOfAngles -->
 
     <owl:NamedIndividual rdf:about="&info;setOfAngles">
         <rdf:type rdf:resource="&info;Collection"/>
@@ -3194,7 +3194,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#temperature -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#temperature -->
 
     <owl:NamedIndividual rdf:about="&info;temperature">
         <rdf:type rdf:resource="&info;PhysicalQuantity"/>
@@ -3202,7 +3202,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#time -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#time -->
 
     <owl:NamedIndividual rdf:about="&info;time">
         <rdf:type rdf:resource="&info;PhysicalQuantity"/>
@@ -3210,7 +3210,7 @@ Thus, the inputs of the different states would be different from a non-distortio
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#true -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#true -->
 
     <owl:NamedIndividual rdf:about="&info;true">
         <rdf:type rdf:resource="&info;Boolean"/>
@@ -3231,20 +3231,20 @@ Thus, the inputs of the different states would be different from a non-distortio
         <rdf:type rdf:resource="&owl;AllDifferent"/>
         <owl:distinctMembers rdf:parseType="Collection">
             <rdf:Description rdf:about="&info;length"/>
-            <rdf:Description rdf:about="&info;mass"/>
-            <rdf:Description rdf:about="&info;time"/>
-        </owl:distinctMembers>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDifferent"/>
-        <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="&info;length"/>
         </owl:distinctMembers>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDifferent"/>
         <owl:distinctMembers rdf:parseType="Collection">
             <rdf:Description rdf:about="&info;true"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&info;length"/>
+            <rdf:Description rdf:about="&info;mass"/>
+            <rdf:Description rdf:about="&info;time"/>
         </owl:distinctMembers>
     </rdf:Description>
 </rdf:RDF>

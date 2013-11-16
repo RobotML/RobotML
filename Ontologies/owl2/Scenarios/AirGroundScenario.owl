@@ -12,36 +12,36 @@
     <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
     <!ENTITY swrla "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#" >
     <!ENTITY sqwrl "http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#" >
-    <!ENTITY robo "http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#" >
-    <!ENTITY kern "http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#" >
-    <!ENTITY syst "http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#" >
-    <!ENTITY miss "http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#" >
-    <!ENTITY expe "http://www.anr-proteus.fr/sites/default/files/download/Ontology/experiment.owl#" >
-    <!ENTITY envi "http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#" >
-    <!ENTITY info "http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#" >
-    <!ENTITY airg "http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#" >
+    <!ENTITY robo "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#" >
+    <!ENTITY kern "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#" >
+    <!ENTITY syst "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#" >
+    <!ENTITY miss "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#" >
+    <!ENTITY expe "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#" >
+    <!ENTITY envi "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#" >
+    <!ENTITY info "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#" >
+    <!ENTITY airg "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/AirGroundScenario.owl#" >
 ]>
 
 
-<rdf:RDF xmlns="http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#"
-     xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl"
+<rdf:RDF xmlns="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#"
+     xml:base="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl"
      xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
      xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
-     xmlns:robo="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#"
-     xmlns:kern="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
-     xmlns:airg="http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#"
-     xmlns:info="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#"
+     xmlns:robo="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#"
+     xmlns:kern="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#"
+     xmlns:airg="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#"
+     xmlns:info="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#"
      xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:swrl="http://www.w3.org/2003/11/swrl#"
-     xmlns:envi="http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#"
-     xmlns:expe="http://www.anr-proteus.fr/sites/default/files/download/Ontology/experiment.owl#"
-     xmlns:syst="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#"
+     xmlns:envi="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#"
+     xmlns:expe="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#"
+     xmlns:syst="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:miss="http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#"
+     xmlns:miss="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#"
      xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
     <owl:Ontology rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl">
         <owl:versionInfo rdf:datatype="&xsd;string">version delivered 1.0</owl:versionInfo>
@@ -57,6 +57,101 @@
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates -->
+
+    <owl:AnnotationProperty rdf:about="&kern;aggregates"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#animates -->
+
+    <owl:AnnotationProperty rdf:about="&kern;animates"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#entail -->
+
+    <owl:AnnotationProperty rdf:about="&kern;entail"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#evaluatesToTruth -->
+
+    <owl:AnnotationProperty rdf:about="&kern;evaluatesToTruth"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#from -->
+
+    <owl:AnnotationProperty rdf:about="&kern;from"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasFSMActivity -->
+
+    <owl:AnnotationProperty rdf:about="&kern;hasFSMActivity"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isAnimatedByEvolution -->
+
+    <owl:AnnotationProperty rdf:about="&kern;isAnimatedByEvolution"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isAtomic -->
+
+    <owl:AnnotationProperty rdf:about="&kern;isAtomic"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isDefinedBy -->
+
+    <owl:AnnotationProperty rdf:about="&kern;isDefinedBy"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isPositionedIn -->
+
+    <owl:AnnotationProperty rdf:about="&kern;isPositionedIn"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#startsFrom -->
+
+    <owl:AnnotationProperty rdf:about="&kern;startsFrom"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#to -->
+
+    <owl:AnnotationProperty rdf:about="&kern;to"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#hasRessource -->
+
+    <owl:AnnotationProperty rdf:about="&miss;hasRessource"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#isDescribedBy -->
+
+    <owl:AnnotationProperty rdf:about="&miss;isDescribedBy"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
     // Classes
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -65,11 +160,161 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#H_InfinityLoopSharingController -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Building -->
 
-    <rdf:Description rdf:about="&syst;H_InfinityLoopSharingController">
+    <owl:Class rdf:about="&envi;Building"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#LandSurface -->
+
+    <owl:Class rdf:about="&envi;LandSurface"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Pedestrian -->
+
+    <owl:Class rdf:about="&envi;Pedestrian"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#Problem -->
+
+    <owl:Class rdf:about="&expe;Problem"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#Solution -->
+
+    <owl:Class rdf:about="&expe;Solution"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Condition -->
+
+    <owl:Class rdf:about="&info;Condition"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Application -->
+
+    <owl:Class rdf:about="&kern;Application"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#AutomataInitialState -->
+
+    <owl:Class rdf:about="&kern;AutomataInitialState"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#AutomataState -->
+
+    <owl:Class rdf:about="&kern;AutomataState"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#CompositeSystem -->
+
+    <owl:Class rdf:about="&kern;CompositeSystem"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Environment -->
+
+    <owl:Class rdf:about="&kern;Environment"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Event -->
+
+    <owl:Class rdf:about="&kern;Event"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Evolution -->
+
+    <owl:Class rdf:about="&kern;Evolution"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#FSMActivity -->
+
+    <owl:Class rdf:about="&kern;FSMActivity"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Frame -->
+
+    <owl:Class rdf:about="&kern;Frame"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Transition -->
+
+    <owl:Class rdf:about="&kern;Transition"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#Mission -->
+
+    <owl:Class rdf:about="&miss;Mission"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#MissionStateMachine -->
+
+    <owl:Class rdf:about="&miss;MissionStateMachine"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#Task -->
+
+    <owl:Class rdf:about="&miss;Task"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#AirVehicle -->
+
+    <owl:Class rdf:about="&robo;AirVehicle"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#Car-likeVehicle -->
+
+    <owl:Class rdf:about="&robo;Car-likeVehicle"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#DriverDeviceSystem -->
+
+    <owl:Class rdf:about="&syst;DriverDeviceSystem"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#H_InfinityLoopSharingController -->
+
+    <owl:Class rdf:about="&syst;H_InfinityLoopSharingController">
         <rdfs:subClassOf rdf:resource="&syst;ModelPredictiveController"/>
-    </rdf:Description>
+    </owl:Class>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ImageSensorHardware -->
+
+    <owl:Class rdf:about="&syst;ImageSensorHardware"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LocalizationSensorHardware -->
+
+    <owl:Class rdf:about="&syst;LocalizationSensorHardware"/>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ModelPredictiveController -->
+
+    <owl:Class rdf:about="&syst;ModelPredictiveController"/>
     
 
 
@@ -84,7 +329,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#ArmyMission -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/AirGroundScenario.owl#ArmyMission -->
 
     <owl:NamedIndividual rdf:about="&airg;ArmyMission">
         <rdf:type rdf:resource="&miss;Mission"/>
@@ -95,7 +340,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#BuildingXM010YP030 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#BuildingXM010YP030 -->
 
     <owl:NamedIndividual rdf:about="&airg;BuildingXM010YP030">
         <rdf:type rdf:resource="&envi;Building"/>
@@ -105,7 +350,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#BuildingXM025YP025 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#BuildingXM025YP025 -->
 
     <owl:NamedIndividual rdf:about="&airg;BuildingXM025YP025">
         <rdf:type rdf:resource="&envi;Building"/>
@@ -115,7 +360,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#BuildingXP010YP075 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#BuildingXP010YP075 -->
 
     <owl:NamedIndividual rdf:about="&airg;BuildingXP010YP075">
         <rdf:type rdf:resource="&envi;Building"/>
@@ -125,7 +370,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#BuildingXP030YP080 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#BuildingXP030YP080 -->
 
     <owl:NamedIndividual rdf:about="&airg;BuildingXP030YP080">
         <rdf:type rdf:resource="&envi;Building"/>
@@ -135,7 +380,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#BuildingXP050YP050 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#BuildingXP050YP050 -->
 
     <owl:NamedIndividual rdf:about="&airg;BuildingXP050YP050">
         <rdf:type rdf:resource="&envi;Building"/>
@@ -145,7 +390,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#BuildingXP060YP080 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#BuildingXP060YP080 -->
 
     <owl:NamedIndividual rdf:about="&airg;BuildingXP060YP080">
         <rdf:type rdf:resource="&envi;Building"/>
@@ -155,7 +400,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#BuildingXP080YP075 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#BuildingXP080YP075 -->
 
     <owl:NamedIndividual rdf:about="&airg;BuildingXP080YP075">
         <rdf:type rdf:resource="&envi;Building"/>
@@ -165,7 +410,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#CameraOfRmax -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#CameraOfRmax -->
 
     <owl:NamedIndividual rdf:about="&airg;CameraOfRmax">
         <rdf:type rdf:resource="&syst;ImageSensorHardware"/>
@@ -173,7 +418,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#CaylusLandSurface -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#CaylusLandSurface -->
 
     <owl:NamedIndividual rdf:about="&airg;CaylusLandSurface">
         <rdf:type rdf:resource="&envi;LandSurface"/>
@@ -181,7 +426,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#Controlling -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#Controlling -->
 
     <owl:NamedIndividual rdf:about="&airg;Controlling">
         <rdf:type rdf:resource="&kern;FSMActivity"/>
@@ -189,7 +434,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#Crossing -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#Crossing -->
 
     <owl:NamedIndividual rdf:about="&airg;Crossing">
         <rdf:type rdf:resource="&kern;FSMActivity"/>
@@ -197,7 +442,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#CrossingState -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#CrossingState -->
 
     <owl:NamedIndividual rdf:about="&airg;CrossingState">
         <rdf:type rdf:resource="&kern;AutomataInitialState"/>
@@ -206,7 +451,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#CrossingToHidingTransition -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#CrossingToHidingTransition -->
 
     <owl:NamedIndividual rdf:about="&airg;CrossingToHidingTransition">
         <rdf:type rdf:resource="&kern;Transition"/>
@@ -216,7 +461,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#DecisionalPartOfRTrooper -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#DecisionalPartOfRTrooper -->
 
     <owl:NamedIndividual rdf:about="&airg;DecisionalPartOfRTrooper">
         <rdf:type rdf:resource="&kern;Application"/>
@@ -224,7 +469,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#DecisionalPartOfRmax -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#DecisionalPartOfRmax -->
 
     <owl:NamedIndividual rdf:about="&airg;DecisionalPartOfRmax">
         <rdf:type rdf:resource="&kern;Application"/>
@@ -232,7 +477,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#Detecting -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#Detecting -->
 
     <owl:NamedIndividual rdf:about="&airg;Detecting">
         <rdf:type rdf:resource="&kern;FSMActivity"/>
@@ -240,7 +485,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#DistributedDecisionalSystem -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#DistributedDecisionalSystem -->
 
     <owl:NamedIndividual rdf:about="&airg;DistributedDecisionalSystem">
         <rdf:type rdf:resource="&expe;Solution"/>
@@ -253,7 +498,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#Escaping -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#Escaping -->
 
     <owl:NamedIndividual rdf:about="&airg;Escaping">
         <rdf:type rdf:resource="&kern;FSMActivity"/>
@@ -261,7 +506,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#EverythingAtCaylus -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#EverythingAtCaylus -->
 
     <owl:NamedIndividual rdf:about="&airg;EverythingAtCaylus">
         <rdf:type rdf:resource="&kern;Environment"/>
@@ -274,7 +519,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#GPSSensorOfRTrooper -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#GPSSensorOfRTrooper -->
 
     <owl:NamedIndividual rdf:about="&airg;GPSSensorOfRTrooper">
         <rdf:type rdf:resource="&syst;LocalizationSensorHardware"/>
@@ -282,7 +527,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#Hiding -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#Hiding -->
 
     <owl:NamedIndividual rdf:about="&airg;Hiding">
         <rdf:type rdf:resource="&kern;FSMActivity"/>
@@ -290,7 +535,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#HidingState -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#HidingState -->
 
     <owl:NamedIndividual rdf:about="&airg;HidingState">
         <rdf:type rdf:resource="&kern;AutomataState"/>
@@ -299,7 +544,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#Intruder -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#Intruder -->
 
     <owl:NamedIndividual rdf:about="&airg;Intruder">
         <rdf:type rdf:resource="&envi;Pedestrian"/>
@@ -309,7 +554,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#IntruderExpectedBehavior -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#IntruderExpectedBehavior -->
 
     <owl:NamedIndividual rdf:about="&airg;IntruderExpectedBehavior">
         <rdf:type rdf:resource="&miss;MissionStateMachine"/>
@@ -321,7 +566,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#IntruderMission -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#IntruderMission -->
 
     <owl:NamedIndividual rdf:about="&airg;IntruderMission">
         <rdf:type rdf:resource="&miss;Mission"/>
@@ -333,7 +578,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#KeepingWatchOn -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#KeepingWatchOn -->
 
     <owl:NamedIndividual rdf:about="&airg;KeepingWatchOn">
         <rdf:type rdf:resource="&kern;FSMActivity"/>
@@ -341,7 +586,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#LoftBarnOrShedReachedCondition -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#LoftBarnOrShedReachedCondition -->
 
     <owl:NamedIndividual rdf:about="&airg;LoftBarnOrShedReachedCondition">
         <rdf:type rdf:resource="&info;Condition"/>
@@ -350,7 +595,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#LoftBarnOrShedReachedTrunsToTrue -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#LoftBarnOrShedReachedTrunsToTrue -->
 
     <owl:NamedIndividual rdf:about="&airg;LoftBarnOrShedReachedTrunsToTrue">
         <rdf:type rdf:resource="&kern;Event"/>
@@ -359,7 +604,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#NonDecisionalPartOfRTrooper -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#NonDecisionalPartOfRTrooper -->
 
     <owl:NamedIndividual rdf:about="&airg;NonDecisionalPartOfRTrooper">
         <rdf:type rdf:resource="&syst;DriverDeviceSystem"/>
@@ -367,7 +612,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#NonDecisionalPartOfRmax -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#NonDecisionalPartOfRmax -->
 
     <owl:NamedIndividual rdf:about="&airg;NonDecisionalPartOfRmax">
         <rdf:type rdf:resource="&syst;DriverDeviceSystem"/>
@@ -375,7 +620,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#OnGroundDecision -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#OnGroundDecision -->
 
     <owl:NamedIndividual rdf:about="&airg;OnGroundDecision">
         <rdf:type rdf:resource="&kern;Application"/>
@@ -383,7 +628,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#R-TrooperEvolutionModel -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#R-TrooperEvolutionModel -->
 
     <owl:NamedIndividual rdf:about="&airg;R-TrooperEvolutionModel">
         <rdf:type rdf:resource="&kern;Evolution"/>
@@ -392,7 +637,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#RTrooper -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#RTrooper -->
 
     <owl:NamedIndividual rdf:about="&airg;RTrooper">
         <rdf:type rdf:resource="&kern;CompositeSystem"/>
@@ -405,7 +650,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#Rmax -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#Rmax -->
 
     <owl:NamedIndividual rdf:about="&airg;Rmax">
         <rdf:type rdf:resource="&kern;CompositeSystem"/>
@@ -417,7 +662,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#RmaxEvolutionModel -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#RmaxEvolutionModel -->
 
     <owl:NamedIndividual rdf:about="&airg;RmaxEvolutionModel">
         <rdf:type rdf:resource="&kern;Evolution"/>
@@ -426,7 +671,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#RobotTeam -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#RobotTeam -->
 
     <owl:NamedIndividual rdf:about="&airg;RobotTeam">
         <rdf:type rdf:resource="&kern;CompositeSystem"/>
@@ -437,7 +682,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#RobotTeamMission -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#RobotTeamMission -->
 
     <owl:NamedIndividual rdf:about="&airg;RobotTeamMission">
         <rdf:type rdf:resource="&miss;Mission"/>
@@ -449,7 +694,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#SearchAndTrackProblem -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#SearchAndTrackProblem -->
 
     <owl:NamedIndividual rdf:about="&airg;SearchAndTrackProblem">
         <rdf:type rdf:resource="&expe;Problem"/>
@@ -469,7 +714,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#Solution_1 -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#Solution_1 -->
 
     <owl:NamedIndividual rdf:about="&airg;Solution_1">
         <rdf:type rdf:resource="&kern;CompositeSystem"/>
@@ -477,7 +722,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#StartPointReferential -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#StartPointReferential -->
 
     <owl:NamedIndividual rdf:about="&airg;StartPointReferential">
         <rdf:type rdf:resource="&kern;Frame"/>
@@ -485,7 +730,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#ToControl -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#ToControl -->
 
     <owl:NamedIndividual rdf:about="&airg;ToControl">
         <rdf:type rdf:resource="&miss;Task"/>
@@ -493,7 +738,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#ToCross -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#ToCross -->
 
     <owl:NamedIndividual rdf:about="&airg;ToCross">
         <rdf:type rdf:resource="&miss;Task"/>
@@ -501,7 +746,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#ToDetect -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#ToDetect -->
 
     <owl:NamedIndividual rdf:about="&airg;ToDetect">
         <rdf:type rdf:resource="&miss;Task"/>
@@ -509,7 +754,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#ToEscape -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#ToEscape -->
 
     <owl:NamedIndividual rdf:about="&airg;ToEscape">
         <rdf:type rdf:resource="&miss;Task"/>
@@ -517,7 +762,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#ToHide -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#ToHide -->
 
     <owl:NamedIndividual rdf:about="&airg;ToHide">
         <rdf:type rdf:resource="&miss;Task"/>
@@ -525,7 +770,7 @@
     
 
 
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/AirGroundScenario.owl#ToKeepWatchOn -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/AirGroundScenario.owl#ToKeepWatchOn -->
 
     <owl:NamedIndividual rdf:about="&airg;ToKeepWatchOn">
         <rdf:type rdf:resource="&miss;Task"/>
