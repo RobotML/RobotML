@@ -1,0 +1,657 @@
+@prefix : <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xsp: <http://www.owl-ontologies.com/2005/08/07/xsp.owl#> .
+@prefix envi: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#> .
+@prefix info: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#> .
+@prefix kern: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix robo: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix syst: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#> .
+@prefix sqwrl: <http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
+@base <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl> .
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl> rdf:type owl:Ontology ;
+                                                                                             
+                                                                                             owl:versionInfo "version delivered 1.0"^^xsd:string ;
+                                                                                             
+                                                                                             rdfs:comment "FaCT++ does not work with this ontology. HermiT shall be used for reasoning."@en ,
+                                                                                                          "This ontology describes the robot field providing their classification"@en ,
+                                                                                                          "This work is based upon a previous one funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project (see http://www.anr-project.fr). It is the property of its authors and is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files)."@en ,
+                                                                                                          "Version for Protégé 4.x flavors."@en ;
+                                                                                             
+                                                                                             owl:imports <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl> ,
+                                                                                                         <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl> ,
+                                                                                                         <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl> ,
+                                                                                                         <http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl> ,
+                                                                                                         <http://swrl.stanford.edu/ontologies/3.3/swrla.owl> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#TODO
+
+kern:TODO rdf:type owl:AnnotationProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#author
+
+kern:author rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesIn
+
+:movesIn rdf:type owl:ObjectProperty ;
+         
+         rdfs:comment "Some robots are merged in the air or in the water"@en ;
+         
+         rdfs:domain kern:Agent ;
+         
+         rdfs:range kern:PhysicalObject ;
+         
+         rdfs:subPropertyOf kern:evolvesIn .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesInAtmosphere
+
+:movesInAtmosphere rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:comment "UAV move in atmosphere."@en ;
+                   
+                   rdfs:range envi:Atmosphere ;
+                   
+                   rdfs:subPropertyOf :movesIn ;
+                   
+                   rdfs:domain [ rdf:type owl:Class ;
+                                 owl:unionOf ( :AirVehicle
+                                               :HybridVehicle
+                                             )
+                               ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesInWaterbody
+
+:movesInWaterbody rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:comment "UUV and diving humans move in waterbodies."@en ;
+                  
+                  rdfs:range envi:Waterbody ;
+                  
+                  rdfs:subPropertyOf :movesIn ;
+                  
+                  rdfs:domain [ rdf:type owl:Class ;
+                                owl:unionOf ( kern:Human
+                                              :HybridVehicle
+                                              :UnderwaterVehicle
+                                            )
+                              ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesOver
+
+:movesOver rdf:type owl:ObjectProperty ;
+           
+           rdfs:comment "Some robots moves over a ground surface or a surface of a waterbody"@en ;
+           
+           rdfs:range envi:Surface ;
+           
+           rdfs:domain kern:Agent ;
+           
+           rdfs:subPropertyOf kern:evolvesIn .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesOverGround
+
+:movesOverGround rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:comment "UGV and humans move over stairs, floor and land surface."@en ;
+                 
+                 rdfs:subPropertyOf :movesOver ;
+                 
+                 rdfs:range [ rdf:type owl:Class ;
+                              owl:unionOf ( envi:Floor
+                                            envi:LandSurface
+                                            envi:Stairs
+                                          )
+                            ] ;
+                 
+                 rdfs:domain [ rdf:type owl:Class ;
+                               owl:unionOf ( kern:Human
+                                             :GroundVehicle
+                                             :HybridVehicle
+                                           )
+                             ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesOverWatersurface
+
+:movesOverWatersurface rdf:type owl:ObjectProperty ;
+                       
+                       rdfs:comment "USV and swiming humans move over watersurface"@en ;
+                       
+                       rdfs:range envi:WaterSurface ;
+                       
+                       rdfs:subPropertyOf :movesOver ;
+                       
+                       rdfs:domain [ rdf:type owl:Class ;
+                                     owl:unionOf ( kern:Human
+                                                   :HybridVehicle
+                                                   :SurfaceVehicle
+                                                 )
+                                   ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#pilots
+
+:pilots rdf:type owl:ObjectProperty ;
+        
+        rdfs:comment "A human agent can drive a robotic Vehicle (AV, GV, SV, UV), this action will be achieved on these piloted systems."@en ;
+        
+        rdfs:domain kern:Human ;
+        
+        rdfs:range :PilotedSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#uses
+
+:uses rdf:type owl:ObjectProperty ;
+      
+      rdfs:comment "A robot needs on or multiple robotic middleware to makes all the application of its robotic systems works."@en ;
+      
+      rdfs:domain :Robot ;
+      
+      rdfs:range syst:RoboticMiddleware .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Atmosphere
+
+envi:Atmosphere rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Floor
+
+envi:Floor rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Joint
+
+envi:Joint rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#LandSurface
+
+envi:LandSurface rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Stairs
+
+envi:Stairs rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Surface
+
+envi:Surface rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#WaterSurface
+
+envi:WaterSurface rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Waterbody
+
+envi:Waterbody rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Environment
+
+kern:Environment owl:disjointWith :GlobalPlatform ,
+                                  :Robot .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Human
+
+kern:Human owl:disjointWith :Robot .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#AirVehicle
+
+:AirVehicle rdf:type owl:Class ;
+            
+            rdfs:subClassOf :MobileRobot ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :movesIn ;
+                              owl:someValuesFrom envi:Atmosphere
+                            ] ;
+            
+            owl:disjointWith :GroundVehicle ,
+                             :HybridVehicle ,
+                             :SurfaceVehicle ,
+                             :UnderwaterVehicle ;
+            
+            rdfs:comment "Air Vehicle. Only the vehicles with either fixed (like planes) either turning (like helicopters) sails will be considered in this definition."@en ,
+                         "Considering wikipedia definition, vehicle refers to something transporting cargo or persons."@en ;
+            
+            kern:TODO "there must be linked somewhat like a chassis but there is a specific aeronautical wording."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#Car-likeVehicle
+
+:Car-likeVehicle rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :GroundVehicle ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty kern:aggregates ;
+                                   owl:onClass syst:SteeredWheelSystem ;
+                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty kern:has ;
+                                   owl:onClass syst:Chassis ;
+                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty kern:aggregates ;
+                                   owl:onClass syst:EngineSystem ;
+                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                 ] ;
+                 
+                 owl:disjointWith :DifferentialVehicle ;
+                 
+                 rdfs:comment "Wheeled robot with a driven mechanism based in axes of wheels (Front-wheel Driven, Rear-wheel Driven or Four-wheel Driven). Normally composed of 4 wheels. It requires an additional steering motion mechanism to turn the vehicle."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#DifferentialVehicle
+
+:DifferentialVehicle rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :GroundVehicle ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty kern:aggregates ;
+                                       owl:onClass syst:EngineSystem ;
+                                       owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty kern:has ;
+                                       owl:onClass syst:Chassis ;
+                                       owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                     ] ;
+                     
+                     rdfs:comment "A differential vehicle is a mobile robot whose movement is based on two separately driven velocities of the rotational mechanism of both sides of the robot body. It can thus change its direction by varying the relative rate of rotation and hence does not require an additional steering motion. We can find wheeled differential vehicles or caterpillar vehicles."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#GlobalPlatform
+
+:GlobalPlatform rdf:type owl:Class ;
+                
+                rdfs:subClassOf kern:CompositeSystem ,
+                                [ rdf:type owl:Class ;
+                                  owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                         owl:onProperty kern:aggregates ;
+                                                         owl:someValuesFrom kern:Human
+                                                       ]
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty kern:aggregates ;
+                                                         owl:someValuesFrom :Robot
+                                                       ]
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty kern:aggregates ;
+                                                         owl:someValuesFrom syst:ControlStationSystem
+                                                       ]
+                                                     )
+                                ] ;
+                
+                owl:disjointWith :Robot ,
+                                 syst:DriverDeviceSystem ;
+                
+                rdfs:comment """This composite system groups at least three other ones:
+- one robot
+- one control station
+- one human agent
+
+Its definition is:
+System of systems is a collection of task-oriented or dedicated systems that pool their resources and capabilities together to obtain a new, more complex, 'meta-system' which offers more functionality and performance than simply the sum of the constituent systems. Currently, systems of systems is a critical research discipline for which frames of reference, thought processes, quantitative analysis, tools, and design methods are incomplete. The methodology for defining, abstracting, modelling, and analysing system of systems problems is typically referred to as system of systems engineering. 
+A “robotic system of systems” is a specialised system of systems where there is at least one “robot”, one “control station” and one “human agent”."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#GroundVehicle
+
+:GroundVehicle rdf:type owl:Class ;
+               
+               rdfs:subClassOf :MobileRobot ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :movesOver ;
+                                 owl:someValuesFrom envi:Surface
+                               ] ;
+               
+               owl:disjointWith :HybridVehicle ,
+                                :SurfaceVehicle ,
+                                :UnderwaterVehicle ;
+               
+               rdfs:comment "Ground Vehicle. Only the wheeled and caterpillar robotic vehicles will be considered."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#HybridVehicle
+
+:HybridVehicle rdf:type owl:Class ;
+               
+               rdfs:subClassOf :MobileRobot ;
+               
+               owl:disjointWith :SurfaceVehicle ,
+                                :UnderwaterVehicle ;
+               
+               rdfs:comment "Type of vehicle which can move in different environments. Like the Amphibious vehicles."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#LeggedVehicle
+
+:LeggedVehicle rdf:type owl:Class ;
+               
+               rdfs:subClassOf :GroundVehicle ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty kern:has ;
+                                 owl:onClass syst:Chassis ;
+                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty kern:has ;
+                                 owl:onClass syst:LegSystem ;
+                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                               ] ;
+               
+               rdfs:comment "For these robots locomotion is assured thanks to articulated bodies (legs for human)."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#ManipulatorRobot
+
+:ManipulatorRobot rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :Robot ;
+                  
+                  rdfs:comment "This is a robot that have at least one grasping system."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#MobileRobot
+
+:MobileRobot rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Robot .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#PilotedSystem
+
+:PilotedSystem rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Robot ;
+               
+               owl:disjointWith :UnmannedSystem ;
+               
+               rdfs:comment "To represent the piloted robots category and specificities. A car, A piloted aircraft are robots."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#Robot
+
+:Robot rdf:type owl:Class ;
+       
+       rdfs:subClassOf kern:Agent ,
+                       kern:CompositeSystem ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty kern:hasProbe ;
+                         owl:allValuesFrom syst:SensorSystem
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty kern:aggregates ;
+                         owl:allValuesFrom syst:CyberPhysicalSystem
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty kern:hasProbe ;
+                         owl:minCardinality "1"^^xsd:nonNegativeInteger
+                       ] ;
+       
+       owl:disjointWith syst:DriverDeviceSystem ;
+       
+       rdfs:comment "A robot is not only an agent but also a composite system. It aggregates only embedded systems. Mainly this system is used as a classifier for the different types of robots."@en ;
+       
+       kern:author """creation PROTEUS consortium - 
+modified Bruno Patin - 30/09/2013
+- comment has changed due to revision of what is the concept"""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#SurfaceVehicle
+
+:SurfaceVehicle rdf:type owl:Class ;
+                
+                rdfs:subClassOf :MobileRobot ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :movesOver ;
+                                  owl:someValuesFrom envi:WaterSurface
+                                ] ;
+                
+                owl:disjointWith :UnderwaterVehicle ;
+                
+                rdfs:comment "Water Vehicle that remains in the surface of the water (boats or ships-like vehicles)."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#UnderwaterVehicle
+
+:UnderwaterVehicle rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :MobileRobot ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :movesIn ;
+                                     owl:someValuesFrom envi:Waterbody
+                                   ] ;
+                   
+                   rdfs:comment "Vehicles that can move under the water, fish-like or submarine-like vehicles."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#UnmannedSystem
+
+:UnmannedSystem rdf:type owl:Class ;
+                
+                rdfs:subClassOf :Robot ;
+                
+                rdfs:comment "To represent the unmanned robots category and specificities. Unmanned only means nobody control the robot from inside (no \"pilot\" onboard)."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#Chassis
+
+syst:Chassis rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlStationSystem
+
+syst:ControlStationSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CyberPhysicalSystem
+
+syst:CyberPhysicalSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#DriverDeviceSystem
+
+syst:DriverDeviceSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#EngineSystem
+
+syst:EngineSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LegSystem
+
+syst:LegSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#MechanicalLinkage
+
+syst:MechanicalLinkage rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticMiddleware
+
+syst:RoboticMiddleware rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SensorSystem
+
+syst:SensorSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SteeredWheelSystem
+
+syst:SteeredWheelSystem rdf:type owl:Class .
+
+
+
+
+
+#################################################################
+#
+#    Rules
+#
+#################################################################
+
+
+<urn:swrl#z> rdf:type swrl:Variable .
+<urn:swrl#x1> rdf:type swrl:Variable .
+<urn:swrl#x2> rdf:type swrl:Variable .
+<urn:swrl#y> rdf:type swrl:Variable .
+[ rdf:type swrl:Imp ;
+  swrl:body [ rdf:type swrl:AtomList ;
+              rdf:rest [ rdf:type swrl:AtomList ;
+                         rdf:rest [ rdf:type swrl:AtomList ;
+                                    rdf:first [ rdf:type swrl:ClassAtom ;
+                                                swrl:classPredicate kern:PhysicalObject ;
+                                                swrl:argument1 <urn:swrl#x2>
+                                              ] ;
+                                    rdf:rest [ rdf:type swrl:AtomList ;
+                                               rdf:rest [ rdf:type swrl:AtomList ;
+                                                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                      swrl:propertyPredicate kern:aggregates ;
+                                                                      swrl:argument2 <urn:swrl#x1> ;
+                                                                      swrl:argument1 <urn:swrl#y>
+                                                                    ] ;
+                                                          rdf:rest [ rdf:type swrl:AtomList ;
+                                                                     rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                                 swrl:propertyPredicate kern:aggregates ;
+                                                                                 swrl:argument2 <urn:swrl#x2> ;
+                                                                                 swrl:argument1 <urn:swrl#y>
+                                                                               ] ;
+                                                                     rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                           rdf:rest rdf:nil ;
+                                                                                           rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                                                       swrl:propertyPredicate kern:triggers ;
+                                                                                                       swrl:argument1 <urn:swrl#x1> ;
+                                                                                                       swrl:argument2 <urn:swrl#z>
+                                                                                                     ]
+                                                                                         ] ;
+                                                                                rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                                            swrl:propertyPredicate kern:impacts ;
+                                                                                            swrl:argument2 <urn:swrl#x2> ;
+                                                                                            swrl:argument1 <urn:swrl#z>
+                                                                                          ]
+                                                                              ]
+                                                                   ]
+                                                        ] ;
+                                               rdf:first [ rdf:type swrl:ClassAtom ;
+                                                           swrl:classPredicate syst:MechanicalLinkage ;
+                                                           swrl:argument1 <urn:swrl#y>
+                                                         ]
+                                             ]
+                                  ] ;
+                         rdf:first [ rdf:type swrl:ClassAtom ;
+                                     swrl:classPredicate kern:PhysicalObject ;
+                                     swrl:argument1 <urn:swrl#x1>
+                                   ]
+                       ] ;
+              rdf:first [ rdf:type swrl:ClassAtom ;
+                          swrl:classPredicate kern:Interaction ;
+                          swrl:argument1 <urn:swrl#z>
+                        ]
+            ] ;
+  swrl:head [ rdf:type swrl:AtomList ;
+              rdf:rest rdf:nil ;
+              rdf:first [ rdf:type swrl:ClassAtom ;
+                          swrl:classPredicate envi:Joint ;
+                          swrl:argument1 <urn:swrl#z>
+                        ]
+            ]
+] .
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

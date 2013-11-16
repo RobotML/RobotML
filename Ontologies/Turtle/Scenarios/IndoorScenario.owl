@@ -1,0 +1,315 @@
+@prefix : <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xsp: <http://www.owl-ontologies.com/2005/08/07/xsp.owl#> .
+@prefix envi: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#> .
+@prefix indo: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#> .
+@prefix info: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#> .
+@prefix kern: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#> .
+@prefix miss: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix robo: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix syst: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#> .
+@prefix sqwrl: <http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
+@base <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl> .
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl> rdf:type owl:Ontology ;
+                                                                                                           
+                                                                                                           owl:versionInfo "version delivered 1.0"^^xsd:string ;
+                                                                                                           
+                                                                                                           rdfs:comment "Formalization of Serge Deltour's R3.1.1-R1.3-IndoorRobotChallengeDescription.odt"@en ,
+                                                                                                                        "This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files)."@en ,
+                                                                                                                        "Version for Protégé 4.2 beta."@en ;
+                                                                                                           
+                                                                                                           owl:imports <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/Core.owl> ,
+                                                                                                                       <http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl> ,
+                                                                                                                       <http://swrl.stanford.edu/ontologies/3.3/swrla.owl> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates
+
+kern:aggregates rdf:type owl:AnnotationProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#impacts
+
+kern:impacts rdf:type owl:AnnotationProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isAtomic
+
+kern:isAtomic rdf:type owl:AnnotationProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#triggers
+
+kern:triggers rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#CompositeSystem
+
+kern:CompositeSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#DriverToHardwareInteraction
+
+kern:DriverToHardwareInteraction rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#HardwareToDriverInteraction
+
+kern:HardwareToDriverInteraction rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#CommunicationOfBeliefs
+
+miss:CommunicationOfBeliefs rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#CommunicationOfIntents
+
+miss:CommunicationOfIntents rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationDriver
+
+syst:CommunicationDriver rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationHardware
+
+syst:CommunicationHardware rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationSystem
+
+syst:CommunicationSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlStationSystem
+
+syst:ControlStationSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlSystem
+
+syst:ControlSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#DriverDeviceSystem
+
+syst:DriverDeviceSystem rdf:type owl:Class .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#ControlStationToEmbeddedController
+
+:ControlStationToEmbeddedController rdf:type miss:CommunicationOfIntents ,
+                                             owl:NamedIndividual ;
+                                    
+                                    rdfs:comment "From Figure 2 page 5"@en ;
+                                    
+                                    kern:impacts :EmbeddedCommunicationHardware ,
+                                                 :EmbeddedController .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#EmbeddedCommunicationDriver
+
+:EmbeddedCommunicationDriver rdf:type syst:CommunicationDriver ,
+                                      owl:NamedIndividual ;
+                             
+                             kern:isAtomic "true"^^xsd:boolean .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#EmbeddedCommunicationHardware
+
+:EmbeddedCommunicationHardware rdf:type syst:CommunicationHardware ,
+                                        owl:NamedIndividual ;
+                               
+                               kern:isAtomic "true"^^xsd:boolean ;
+                               
+                               kern:triggers :EmbeddedRx .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#EmbeddedCommunicationSystem
+
+:EmbeddedCommunicationSystem rdf:type syst:CommunicationSystem ,
+                                      owl:NamedIndividual ;
+                             
+                             kern:isAtomic "false"^^xsd:boolean ;
+                             
+                             kern:aggregates :EmbeddedCommunicationDriver ,
+                                             :EmbeddedCommunicationHardware .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#EmbeddedController
+
+:EmbeddedController rdf:type syst:DriverDeviceSystem ,
+                             owl:NamedIndividual ;
+                    
+                    kern:isAtomic "false"^^xsd:boolean ;
+                    
+                    rdfs:comment "From figure 2 page 5"@en ;
+                    
+                    kern:triggers :EmbeddedControllerToControlStation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#EmbeddedControllerToControlStation
+
+:EmbeddedControllerToControlStation rdf:type miss:CommunicationOfBeliefs ,
+                                             owl:NamedIndividual ;
+                                    
+                                    kern:impacts :TabletPCCommunicationHardware ,
+                                                 :TabletPCRemoteControlStation .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#EmbeddedRx
+
+:EmbeddedRx rdf:type kern:HardwareToDriverInteraction ,
+                     owl:NamedIndividual ;
+            
+            kern:impacts :EmbeddedCommunicationDriver .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#EmbeddedTx
+
+:EmbeddedTx rdf:type kern:DriverToHardwareInteraction ,
+                     owl:NamedIndividual ;
+            
+            kern:impacts :EmbeddedCommunicationHardware .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#RemoteControlSupervisor
+
+:RemoteControlSupervisor rdf:type syst:ControlSystem ,
+                                  owl:NamedIndividual ;
+                         
+                         kern:isAtomic "true"^^xsd:boolean .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#TabletPCCommunicationDriver
+
+:TabletPCCommunicationDriver rdf:type syst:CommunicationDriver ,
+                                      owl:NamedIndividual ;
+                             
+                             kern:isAtomic "true"^^xsd:boolean .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#TabletPCCommunicationHardware
+
+:TabletPCCommunicationHardware rdf:type syst:CommunicationHardware ,
+                                        owl:NamedIndividual ;
+                               
+                               kern:isAtomic "true"^^xsd:boolean ;
+                               
+                               kern:triggers :TabletPCRx .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#TabletPCCommunicationSystem
+
+:TabletPCCommunicationSystem rdf:type syst:CommunicationSystem ,
+                                      owl:NamedIndividual ;
+                             
+                             kern:isAtomic "false"^^xsd:boolean ;
+                             
+                             rdfs:comment "From figure 2 page 5"@en ;
+                             
+                             kern:aggregates :TabletPCCommunicationDriver ,
+                                             :TabletPCCommunicationHardware .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#TabletPCRemoteControlStation
+
+:TabletPCRemoteControlStation rdf:type kern:CompositeSystem ,
+                                       syst:ControlStationSystem ,
+                                       owl:NamedIndividual ;
+                              
+                              kern:isAtomic "false"^^xsd:boolean ;
+                              
+                              rdfs:comment "From figure2 page 5"@en ;
+                              
+                              kern:triggers :ControlStationToEmbeddedController ;
+                              
+                              kern:aggregates :RemoteControlSupervisor ,
+                                              :TabletPCCommunicationSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#TabletPCRx
+
+:TabletPCRx rdf:type kern:HardwareToDriverInteraction ,
+                     owl:NamedIndividual ;
+            
+            kern:impacts :TabletPCCommunicationDriver .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#TabletPCTx
+
+:TabletPCTx rdf:type kern:DriverToHardwareInteraction ,
+                     owl:NamedIndividual ;
+            
+            kern:impacts :TabletPCCommunicationHardware .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

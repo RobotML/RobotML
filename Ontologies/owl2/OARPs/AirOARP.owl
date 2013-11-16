@@ -10,31 +10,30 @@
 
 
 <Ontology xmlns="http://www.w3.org/2002/07/owl#"
-     xml:base="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/OARPs/AirOARP.owl"
+     xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/OARPs/AirOARP.owl"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
-     ontologyIRI="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/OARPs/AirOARP.owl">
-    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+     ontologyIRI="http://www.anr-proteus.fr/sites/default/files/download/Ontology/OARPs/AirOARP.owl">
     <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="xsp" IRI="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"/>
-    <Prefix name="envi" IRI="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#"/>
-    <Prefix name="expe" IRI="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#"/>
-    <Prefix name="info" IRI="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#"/>
-    <Prefix name="kern" IRI="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#"/>
-    <Prefix name="miss" IRI="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#"/>
+    <Prefix name="envi" IRI="http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#"/>
+    <Prefix name="expe" IRI="http://www.anr-proteus.fr/sites/default/files/download/Ontology/experiment.owl#"/>
+    <Prefix name="info" IRI="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#"/>
+    <Prefix name="kern" IRI="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"/>
+    <Prefix name="miss" IRI="http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
-    <Prefix name="robo" IRI="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#"/>
+    <Prefix name="robo" IRI="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#"/>
     <Prefix name="swrl" IRI="http://www.w3.org/2003/11/swrl#"/>
-    <Prefix name="syst" IRI="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#"/>
+    <Prefix name="syst" IRI="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#"/>
     <Prefix name="sqwrl" IRI="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"/>
     <Prefix name="swrla" IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"/>
     <Prefix name="swrlb" IRI="http://www.w3.org/2003/11/swrlb#"/>
     <Prefix name="protege" IRI="http://protege.stanford.edu/plugins/owl/protege#"/>
-    <Import>http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/Core.owl</Import>
+    <Import>http://www.anr-proteus.fr/sites/default/files/download/Ontology/Core.owl</Import>
     <Annotation>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</Literal>
@@ -55,6 +54,7 @@
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">FaCT++ does not work with this ontology. HermiT shall be used for reasoning.</Literal>
     </Annotation>
+
 </Ontology>
 
 

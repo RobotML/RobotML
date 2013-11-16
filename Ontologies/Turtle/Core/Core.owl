@@ -1,0 +1,95 @@
+@prefix : <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/Core.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xsp: <http://www.owl-ontologies.com/2005/08/07/xsp.owl#> .
+@prefix core: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/Core.owl#> .
+@prefix envi: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#> .
+@prefix expe: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#> .
+@prefix info: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#> .
+@prefix kern: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#> .
+@prefix miss: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix robo: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#> .
+@prefix simu: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix syst: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#> .
+@prefix sqwrl: <http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
+@base <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/Core.owl> .
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/Core.owl> rdf:type owl:Ontology ;
+                                                                                            
+                                                                                            rdfs:comment "This work is based upon a previous one funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project (see http://www.anr-project.fr). It is the property of its authors and is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files)."^^xsd:string ;
+                                                                                            
+                                                                                            kern:TODO """1. A rule is to be added in order to express the fact there are no ports on environment
+2. A rule is to be added in order to express the fact that a physical object if not included in any other object IS THE environment
+3. It is necessary to know who is the origin of concepts as sometimes they are poorly described and thus are leading to inconsistencies"""@en ;
+                                                                                            
+                                                                                            rdfs:comment "FaCT++ does not work with this ontology. HermiT shall be used for reasoning."@en ,
+                                                                                                         """This ontology is the consolidation of different underlying ontology modules:
+- kernel
+- environment
+- experiment
+- robot
+- system
+- information
+- mission
+- simulation
+
+NO MODIFICATION ARE TO BE DONE ONTO THE CONCEPTS DEFINED IN THESE UNDERLYING ONTOLOGIES WHEN EDITING THIS CONTAINER. DO SELECT THE ONTOLOGY CONCERNED FIRST."""@en ,
+                                                                                                         "Version for Protégé 4.x flavors."@en ;
+                                                                                            
+                                                                                            owl:imports <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl> ,
+                                                                                                        <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl> ,
+                                                                                                        <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl> ,
+                                                                                                        <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl> ,
+                                                                                                        <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl> ,
+                                                                                                        <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl> ,
+                                                                                                        <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl> ,
+                                                                                                        <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl> ,
+                                                                                                        <http://swrl.stanford.edu/ontologies/3.3/swrla.owl> .
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#GlobalPlatform
+
+robo:GlobalPlatform rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf kern:CompositeSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#Robot
+
+robo:Robot rdf:type owl:Class ;
+           
+           rdfs:subClassOf kern:Agent .
+
+
+
+
+
+#################################################################
+#
+#    Annotations
+#
+#################################################################
+
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/Object_cannot_be_positionned_in_referential_defined_by_itself> rdfs:comment "An object cannot be positioned in a referential that it desfines."^^xsd:string .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

@@ -1,0 +1,663 @@
+@prefix : <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xsp: <http://www.owl-ontologies.com/2005/08/07/xsp.owl#> .
+@prefix envi: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#> .
+@prefix kern: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix sqwrl: <http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
+@base <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl> .
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl> rdf:type owl:Ontology ;
+                                                                                                   
+                                                                                                   owl:versionInfo "version delivered 1.0"^^xsd:string ;
+                                                                                                   
+                                                                                                   rdfs:comment "Fact++ do not work with this ontology. HermiT shall be used."@en ,
+                                                                                                                "This work is based upon a previous one funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project (see http://www.anr-project.fr). It is the property of its authors and is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files)."@en ,
+                                                                                                                "Version for Protégé 4.x flavors."@en ;
+                                                                                                   
+                                                                                                   owl:imports <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl> ,
+                                                                                                               <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl> ,
+                                                                                                               <http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#author
+
+kern:author rdf:type owl:AnnotationProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#openCycURI
+
+kern:openCycURI rdf:type owl:AnnotationProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#wikipediaURI
+
+kern:wikipediaURI rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#accelerates
+
+:accelerates rdf:type owl:ObjectProperty ;
+             
+             rdfs:comment "force accelerates physical object"@en ;
+             
+             rdfs:domain :Force ;
+             
+             rdfs:range kern:PhysicalObject .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#forbidsMovement
+
+:forbidsMovement rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:comment "This relation is linked to the fact that some physical interactions are limited in their impact wrt movement of impacted Physical Object. For instance consdiering joint object they generally forbids movement other inside a specific subgroup of the euclidean displacements group." ;
+                 
+                 rdfs:subPropertyOf kern:constrainsFrame .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#hasAtmosphere
+
+:hasAtmosphere rdf:type owl:ObjectProperty ;
+               
+               rdfs:comment "Some planets have atmosphere"@en ;
+               
+               rdfs:range :Atmosphere ;
+               
+               rdfs:domain :Planet .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#hasBuilding
+
+:hasBuilding rdf:type owl:ObjectProperty ;
+             
+             rdfs:comment "Planets such as Earth have buildings."@en ;
+             
+             rdfs:range :Building ;
+             
+             rdfs:domain :Planet .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#hasCurrentInFluid
+
+:hasCurrentInFluid rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:comment "Atmospheres and waterbodies may have distribution of current in them and it is one of their physical characteristics"@en ;
+                   
+                   rdfs:domain :FluidObject ;
+                   
+                   rdfs:range <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Tensor> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#hasFloor
+
+:hasFloor rdf:type owl:ObjectProperty ;
+          
+          rdfs:comment "buildings have floors"@en ;
+          
+          rdfs:domain :Building ;
+          
+          rdfs:range :Floor .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#hasLandSurface
+
+:hasLandSurface rdf:type owl:ObjectProperty ;
+                
+                rdfs:comment "A planet has a land surface whose vertical and horizontal dimensions characteirse the terrain."@en ;
+                
+                rdfs:range :LandSurface ;
+                
+                rdfs:domain :Planet ;
+                
+                rdfs:subPropertyOf :hasSurface .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#hasStairs
+
+:hasStairs rdf:type owl:ObjectProperty ;
+           
+           rdfs:comment "Stairs are usually in buildings, but some stairs are outdoor."@en ;
+           
+           rdfs:range :Stairs ;
+           
+           rdfs:domain [ rdf:type owl:Class ;
+                         owl:unionOf ( :Building
+                                       :Planet
+                                     )
+                       ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#hasSurface
+
+:hasSurface rdf:type owl:ObjectProperty ;
+            
+            rdfs:comment "Physical objects have surfaces that determine their boudaries."@en ;
+            
+            rdfs:range :Surface ;
+            
+            owl:inverseOf :isSurfaceOf ;
+            
+            rdfs:domain kern:PhysicalObject .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#hasWaterbody
+
+:hasWaterbody rdf:type owl:ObjectProperty ;
+              
+              rdfs:comment "Planets have waterbodies such as oceans, seas..."@en ;
+              
+              rdfs:domain :Planet ;
+              
+              rdfs:range :Waterbody .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#isAssociatedToPO
+
+:isAssociatedToPO rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:domain kern:Frame ;
+                  
+                  rdfs:range kern:PhysicalObject .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#isLocatedOver
+
+:isLocatedOver rdf:type owl:ObjectProperty ;
+               
+               rdfs:comment "Buildings are located over land surface."@en ;
+               
+               rdfs:domain :Building ;
+               
+               rdfs:range :LandSurface .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#isSurfaceOf
+
+:isSurfaceOf rdf:type owl:ObjectProperty ;
+             
+             rdfs:comment "Surfaces are the borders of physical objects."@en ;
+             
+             rdfs:domain :Surface ;
+             
+             rdfs:range kern:PhysicalObject .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#produceGravityForce
+
+:produceGravityForce rdf:type owl:ObjectProperty ;
+                     
+                     rdfs:comment "this property specifies that a planet is able to locally create for any phyical object on or above its surface a gravity force."@en ;
+                     
+                     rdfs:range :GravityForce ;
+                     
+                     rdfs:domain :Planet .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#constrainsFrame
+
+kern:constrainsFrame rdf:type owl:ObjectProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#definesAFrame
+
+kern:definesAFrame rdf:type owl:FunctionalProperty ;
+                   
+                   owl:inverseOf :isAssociatedToPO .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#AerodynamicForce
+
+:AerodynamicForce rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :Force ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty kern:systemSource ;
+                                    owl:allValuesFrom :Atmosphere
+                                  ] ;
+                  
+                  owl:disjointWith :Buoyancy ,
+                                   :GravityForce ,
+                                   :NormalForce ;
+                  
+                  rdfs:comment "Aerodynamic force is the resultant force exerted on a body by the air (or some other gas) in which the body is immersed, and is due to the relative motion between the body and the fluid."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#AstronomicalObject
+
+:AstronomicalObject rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf kern:PhysicalObject ;
+                    
+                    kern:author """creation Bruno Patin - 04/10/2013
+- individuals creation process (solar system) leads to create such a class"""@en ;
+                    
+                    kern:openCycURI "http://sw.opencyc.org/concept/Mx4rvVjReJwpEbGdrcN5Y29ycA"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Atmosphere
+
+:Atmosphere rdf:type owl:Class ;
+            
+            rdfs:subClassOf :FluidObject ;
+            
+            owl:disjointWith :Waterbody ;
+            
+            rdfs:comment "a layer of gases that may surround a planet ]and that is held in place by the gravity of the planet. It is of interest if there are influences exercising on included physical objects."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#AtomicSurface
+
+:AtomicSurface rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Surface ,
+                               kern:AtomicSystem ;
+               
+               rdfs:comment "An atomic surface is a surface where properties applie to every point of this surface."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Building
+
+:Building rdf:type owl:Class ;
+          
+          rdfs:subClassOf :SolidObject ;
+          
+          owl:disjointWith :Planet ,
+                           :Surface ,
+                           kern:Agent ,
+                           kern:Environment ,
+                           kern:Hardware ;
+          
+          rdfs:comment "human-made structure used or intended for supporting or sheltering any use or continuous occupancy"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Buoyancy
+
+:Buoyancy rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Force ;
+          
+          owl:disjointWith :GravityForce ,
+                           :NormalForce ;
+          
+          rdfs:comment "Buoyancy is an upward acting force exerted by a fluid, that opposes an object's weight. This force is relevant for physical objects in waterbodies or at watersurface."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Floor
+
+:Floor rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Surface ;
+       
+       owl:disjointWith :LandSurface ,
+                        :Stairs ,
+                        :WaterSurface ;
+       
+       rdfs:comment "Walking surface of a room in a building."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#FluidObject
+
+:FluidObject rdf:type owl:Class ;
+             
+             rdfs:subClassOf kern:PhysicalObject ;
+             
+             owl:disjointWith :SolidObject ,
+                              :Surface ,
+                              kern:Environment ;
+             
+             rdfs:isDefinedBy "http://sw.opencyc.org/concept/Mx4rvVjR45wpEbGdrcN5Y29ycA"^^xsd:anyURI ;
+             
+             rdfs:seeAlso "openCyc: FluidTangibleThing"^^xsd:string ;
+             
+             rdfs:comment "Fluid objects are physical objects that are able to deform and to flow"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Force
+
+:Force rdf:type owl:Class ;
+       
+       rdfs:subClassOf kern:PhysicalInteraction ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty kern:impacts ;
+                         owl:allValuesFrom kern:PhysicalObject
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty kern:systemSource ;
+                         owl:allValuesFrom kern:PhysicalObject
+                       ] ;
+       
+       owl:disjointWith :Torque ;
+       
+       rdfs:comment "A force is any influence that causes a free body to undergo a change in speed, a change in direction, or a change in shape. It is an interaction as it can be caused either by another body or as a synthesis of the environment influence (the two of them are systems)."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#GravityForce
+
+:GravityForce rdf:type owl:Class ;
+              
+              rdfs:subClassOf :Force ;
+              
+              owl:disjointWith :NormalForce ;
+              
+              rdfs:comment "A force that is directly proportional to the PhysicalObject mass."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#LandSurface
+
+:LandSurface rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Surface ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :isSurfaceOf ;
+                               owl:someValuesFrom [ rdf:type owl:Class ;
+                                                    owl:intersectionOf ( :Planet
+                                                                         :SolidObject
+                                                                       )
+                                                  ]
+                             ] ;
+             
+             owl:disjointWith :Stairs ,
+                              :WaterSurface ;
+             
+             rdfs:comment "The solid surface of a planet."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#MachineTorque
+
+:MachineTorque rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Torque ;
+               
+               kern:openCycURI "http://sw.opencyc.org/concept/Mx4rvVkFSJwpEbGdrcN5Y29ycA"^^xsd:anyURI ;
+               
+               kern:wikipediaURI "http://en.wikipedia.org/wiki/Torque#Machine_torque" ;
+               
+               kern:author """creation Jean-Loup Farges - 10/09/2013
+modified Bruno Patin - 15/09/2013
+- authorship added
+- comment added
+- TODO added"""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#NEDFrame
+
+:NEDFrame rdf:type owl:Class ;
+          
+          rdfs:subClassOf kern:Frame ;
+          
+          kern:wikipediaURI "http://en.wikipedia.org/wiki/North_east_down"^^xsd:anyURI ;
+          
+          rdfs:comment "the north east down frame is a local coordinate system linked to global planet frame."^^xsd:anyURI .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#NormalForce
+
+:NormalForce rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Force ;
+             
+             rdfs:comment "The normal force is the repulsive force of interaction between atoms at close contact. This force is applicalble in hard surface contact of physical objects."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Pedestrian
+
+:Pedestrian rdf:type owl:Class ;
+            
+            rdfs:subClassOf kern:Human ;
+            
+            rdfs:comment "Physical Agent in a scenario which perfoms the action of going on foot, i.e. walking."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Planet
+
+:Planet rdf:type owl:Class ;
+        
+        rdfs:subClassOf :AstronomicalObject ;
+        
+        owl:disjointWith :Surface ,
+                         kern:Agent ,
+                         kern:Environment ,
+                         kern:Hardware ;
+        
+        rdfs:comment "a celestial body  that is massive enough to be rounded by its own gravity but not massive enough to initiate fusion process."@en ;
+        
+        kern:author """creation PROTEUS consortium - 
+modified Bruno Patin - 04/10/2013
+- alignment to opencyc and move to new introduced class"""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#SolidObject
+
+:SolidObject rdf:type owl:Class ;
+             
+             rdfs:subClassOf kern:PhysicalObject ;
+             
+             owl:disjointWith :Surface ;
+             
+             rdfs:isDefinedBy "http://sw.opencyc.org/concept/Mx4rvVjElJwpEbGdrcN5Y29ycA"^^xsd:anyURI ;
+             
+             rdfs:seeAlso "openCyc: SolidTangibleThing"^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Stairs
+
+:Stairs rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Surface ;
+        
+        owl:disjointWith :WaterSurface ;
+        
+        rdfs:comment "a construction designed to bridge a large vertical distance by dividing it into smaller vertical distances, called steps."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Star
+
+:Star rdf:type owl:Class ;
+      
+      rdfs:subClassOf :AstronomicalObject ;
+      
+      rdfs:comment "a celestial body  that is massive enough to be rounded by its own gravity and massive enough to initiate fusion process."@en ;
+      
+      kern:author """creation PROTEUS consortium - 
+modified Bruno Patin - 04/10/2013
+- alignment to opencyc and move to new introduced class"""@en ;
+      
+      kern:openCycURI "http://sw.opencyc.org/concept/Mx4rvVi80ZwpEbGdrcN5Y29ycA"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Surface
+
+:Surface rdf:type owl:Class ;
+         
+         rdfs:subClassOf kern:PhysicalObject ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasSurface ;
+                           owl:onClass :Surface ;
+                           owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger
+                         ] ;
+         
+         owl:disjointWith kern:Agent ,
+                          kern:Environment ,
+                          kern:Hardware ;
+         
+         rdfs:comment "A two-dimensional topological manifold that is a boundary of a physical object"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Torque
+
+:Torque rdf:type owl:Class ;
+        
+        rdfs:subClassOf kern:PhysicalInteraction ;
+        
+        rdfs:comment "Following wikipedia, torque, moment or moment of force, is the tendency of a force to rotate an object about an axis, fulcrum, or pivot." ;
+        
+        kern:author """creation Jean-Loup Farges - 10/09/2013
+modified Bruno Patin - 15/09/2013
+- authorship added"""@en ;
+        
+        kern:wikipediaURI "http://en.wikipedia.org/wiki/Torque" .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#WaterSurface
+
+:WaterSurface rdf:type owl:Class ;
+              
+              rdfs:subClassOf :Surface ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :isSurfaceOf ;
+                                owl:someValuesFrom :Waterbody
+                              ] ;
+              
+              rdfs:comment "Surface of an ocean, a sea, a lake or an artificial reservatory."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Waterbody
+
+:Waterbody rdf:type owl:Class ;
+           
+           rdfs:subClassOf :FluidObject ;
+           
+           rdfs:comment """Significant accumulation of water. It is of interest if there are influences exercising on included physical objects.
+This concept IS NOT the \"Waterbody concept\" as defined in openCyc and that groups everything that is related to our waterbody concept."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Agent
+
+kern:Agent rdfs:subClassOf :SolidObject ;
+           
+           rdfs:comment "TODO: relationship with openCyc was not possible. TBD perhaps."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Environment
+
+kern:Environment kern:wikipediaURI "http://en.wikipedia.org/wiki/Environment_%28systems%29"^^xsd:anyURI ;
+                 
+                 kern:openCycURI "http://sw.opencyc.org/concept/Mx4rwLW-jpwpEbGdrcN5Y29ycA"^^xsd:anyURI ;
+                 
+                 kern:author """creation PROTEUS consortium - 
+modified Bruno Patin - 15/09/2013
+- OpenCyc and Wikipedia reference added
+- comment explaining difference between the two concepts."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Hardware
+
+kern:Hardware rdfs:subClassOf :SolidObject .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#PhysicalInteraction
+
+kern:PhysicalInteraction rdf:type owl:Class .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Earth
+
+kern:Earth rdf:type :Planet ,
+                    owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Moon
+
+kern:Moon rdf:type :Planet ,
+                   owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Sun
+
+kern:Sun rdf:type :Star ,
+                  owl:NamedIndividual .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

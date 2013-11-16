@@ -1,0 +1,500 @@
+@prefix : <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xsp: <http://www.owl-ontologies.com/2005/08/07/xsp.owl#> .
+@prefix envi: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#> .
+@prefix info: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#> .
+@prefix kern: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#> .
+@prefix mili: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#> .
+@prefix miss: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix robo: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix syst: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#> .
+@prefix sqwrl: <http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
+@base <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl> .
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl> rdf:type owl:Ontology ;
+                                                                                                                                   
+                                                                                                                                   owl:versionInfo "version delivered 1.0"^^xsd:string ;
+                                                                                                                                   
+                                                                                                                                   rdfs:comment "FaCT++ does not work with this ontology. HermiT shall be used for reasoning."@en ,
+                                                                                                                                                "This scenario describes an airfield attack thanks to a package of unmanned aircraft."@en ,
+                                                                                                                                                "This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files)."@en ,
+                                                                                                                                                "Version for Protégé 4.2 beta."@en ;
+                                                                                                                                   
+                                                                                                                                   owl:imports <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/Core.owl> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates
+
+kern:aggregates rdf:type owl:AnnotationProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#definesAFrame
+
+kern:definesAFrame rdf:type owl:AnnotationProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#impacts
+
+kern:impacts rdf:type owl:AnnotationProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isAtomic
+
+kern:isAtomic rdf:type owl:AnnotationProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#triggers
+
+kern:triggers rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#executesOn
+
+kern:executesOn rdf:type owl:ObjectProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hosts
+
+kern:hosts rdf:type owl:ObjectProperty ;
+           
+           rdfs:domain kern:Hardware ;
+           
+           rdfs:range kern:Software ;
+           
+           owl:inverseOf kern:executesOn .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#AutomataEndState
+
+kern:AutomataEndState rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#AutomataInitialState
+
+kern:AutomataInitialState rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#AutomataState
+
+kern:AutomataState rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#CompositeSystem
+
+kern:CompositeSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Environment
+
+kern:Environment rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Frame
+
+kern:Frame rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Hardware
+
+kern:Hardware rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Interaction
+
+kern:Interaction rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Software
+
+kern:Software rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#Mission
+
+miss:Mission rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#MissionStateMachine
+
+miss:MissionStateMachine rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#AirVehicle
+
+robo:AirVehicle rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationHardware
+
+syst:CommunicationHardware rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlStationSystem
+
+syst:ControlStationSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LocomotionHardware
+
+syst:LocomotionHardware rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#MissionManagementSystem
+
+syst:MissionManagementSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ObjectDetectionOrTrackingSensorHardware
+
+syst:ObjectDetectionOrTrackingSensorHardware rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#WeaponHardware
+
+syst:WeaponHardware rdf:type owl:Class .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#AttackPhase
+
+:AttackPhase rdf:type kern:AutomataState ,
+                      owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#BLG1000-1
+
+:BLG1000-1 rdf:type syst:WeaponHardware ,
+                    owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#BLG1000-2
+
+:BLG1000-2 rdf:type syst:WeaponHardware ,
+                    owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#CommunicationHardware
+
+:CommunicationHardware rdf:type syst:CommunicationHardware ,
+                                owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#DomesticsPhase
+
+:DomesticsPhase rdf:type kern:AutomataState ,
+                         owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#Environment
+
+:Environment rdf:type kern:Environment ,
+                      owl:NamedIndividual ;
+             
+             kern:aggregates :GroundControlStation ;
+             
+             kern:definesAFrame :WGS84ref .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#FCAS
+
+:FCAS rdf:type kern:CompositeSystem ,
+               owl:NamedIndividual ;
+      
+      kern:aggregates :GroundControlStation ,
+                      :UcavPackage .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#FebaCrossingPhase
+
+:FebaCrossingPhase rdf:type kern:AutomataState ,
+                            owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#GCSPlatform
+
+:GCSPlatform rdf:type kern:CompositeSystem ,
+                      owl:NamedIndividual ;
+             
+             kern:aggregates :IHSConsole .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#GroundControlStation
+
+:GroundControlStation rdf:type kern:CompositeSystem ,
+                               syst:ControlStationSystem ,
+                               owl:NamedIndividual ;
+                      
+                      kern:aggregates :GCSPlatform ;
+                      
+                      kern:triggers :RobotControl .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#IHSConsole
+
+:IHSConsole rdf:type kern:Hardware ,
+                     owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#LandingPhase
+
+:LandingPhase rdf:type kern:AutomataEndState ,
+                       owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#MissionFSM
+
+:MissionFSM rdf:type miss:MissionStateMachine ,
+                     owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#MissionManagementSystem
+
+:MissionManagementSystem rdf:type syst:MissionManagementSystem ,
+                                  owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#MotorizationHardware
+
+:MotorizationHardware rdf:type syst:LocomotionHardware ,
+                               owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#NavigationManagementSystem
+
+:NavigationManagementSystem rdf:type syst:MissionManagementSystem ,
+                                     owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#OnBoardComputer
+
+:OnBoardComputer rdf:type kern:Hardware ,
+                          owl:NamedIndividual ;
+                 
+                 kern:hosts :MissionManagementSystem ,
+                            :NavigationManagementSystem ;
+                 
+                 kern:triggers :PlatformManagement ;
+                 
+                 kern:hosts :SensorManagementSystem ,
+                            :WeaponManagementSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#PlatformManagement
+
+:PlatformManagement rdf:type kern:Interaction ,
+                             owl:NamedIndividual ;
+                    
+                    kern:impacts :UcavPlatform7 .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#RadarHardware
+
+:RadarHardware rdf:type syst:ObjectDetectionOrTrackingSensorHardware ,
+                        owl:NamedIndividual ;
+               
+               kern:isAtomic "true"^^xsd:boolean .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#RobotControl
+
+:RobotControl rdf:type kern:Interaction ,
+                       owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#SensorManagementSystem
+
+:SensorManagementSystem rdf:type syst:MissionManagementSystem ,
+                                 owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#TacticalNavigationPhase
+
+:TacticalNavigationPhase rdf:type kern:AutomataState ,
+                                  owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#TakeOfPhase
+
+:TakeOfPhase rdf:type kern:AutomataInitialState ,
+                      owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UAV10
+
+:UAV10 rdf:type robo:AirVehicle ,
+                owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UAV9
+
+:UAV9 rdf:type robo:AirVehicle ,
+               owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UAVPackageMission
+
+:UAVPackageMission rdf:type miss:Mission ,
+                            owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UCAV7Equipments
+
+:UCAV7Equipments rdf:type kern:CompositeSystem ,
+                          kern:Hardware ,
+                          owl:NamedIndividual ;
+                 
+                 kern:aggregates :CommunicationHardware ,
+                                 :MotorizationHardware ,
+                                 :OnBoardComputer .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UCAV7Payload
+
+:UCAV7Payload rdf:type kern:CompositeSystem ,
+                       kern:Hardware ,
+                       owl:NamedIndividual ;
+              
+              kern:aggregates :BLG1000-1 ,
+                              :BLG1000-2 .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UcavPackage
+
+:UcavPackage rdf:type kern:CompositeSystem ,
+                      owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UcavPlatform7
+
+:UcavPlatform7 rdf:type kern:CompositeSystem ,
+                        owl:NamedIndividual ;
+               
+               kern:aggregates :UCAV7Equipments ,
+                               :UCAV7Payload .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UcavSoftwareSystem
+
+:UcavSoftwareSystem rdf:type kern:CompositeSystem ,
+                             owl:NamedIndividual ;
+                    
+                    kern:aggregates :MissionManagementSystem ,
+                                    :NavigationManagementSystem ,
+                                    :SensorManagementSystem ,
+                                    :WeaponManagementSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#WGS84ref
+
+:WGS84ref rdf:type kern:Frame ,
+                   owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#WeaponManagementSystem
+
+:WeaponManagementSystem rdf:type syst:MissionManagementSystem ,
+                                 owl:NamedIndividual .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

@@ -12,34 +12,34 @@
     <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
     <!ENTITY swrla "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#" >
     <!ENTITY sqwrl "http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#" >
-    <!ENTITY robo "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#" >
-    <!ENTITY kern "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#" >
-    <!ENTITY syst "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#" >
-    <!ENTITY miss "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#" >
-    <!ENTITY envi "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#" >
-    <!ENTITY info "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#" >
-    <!ENTITY mili "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#" >
+    <!ENTITY robo "http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#" >
+    <!ENTITY kern "http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#" >
+    <!ENTITY syst "http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#" >
+    <!ENTITY miss "http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#" >
+    <!ENTITY envi "http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#" >
+    <!ENTITY info "http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#" >
+    <!ENTITY mili "http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#" >
 ]>
 
 
-<rdf:RDF xmlns="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#"
-     xml:base="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl"
+<rdf:RDF xmlns="http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#"
+     xml:base="http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl"
      xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
      xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
-     xmlns:robo="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#"
-     xmlns:kern="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#"
-     xmlns:info="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#"
+     xmlns:robo="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#"
+     xmlns:kern="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
+     xmlns:info="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl#"
      xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:swrl="http://www.w3.org/2003/11/swrl#"
-     xmlns:mili="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#"
-     xmlns:envi="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#"
-     xmlns:syst="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#"
+     xmlns:mili="http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#"
+     xmlns:envi="http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#"
+     xmlns:syst="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:miss="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#"
+     xmlns:miss="http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#"
      xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
     <owl:Ontology rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl">
         <owl:versionInfo rdf:datatype="&xsd;string">version delivered 1.0</owl:versionInfo>
@@ -55,47 +55,6 @@
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
-    // Annotation properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates -->
-
-    <owl:AnnotationProperty rdf:about="&kern;aggregates"/>
-    
-
-
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#definesAFrame -->
-
-    <owl:AnnotationProperty rdf:about="&kern;definesAFrame"/>
-    
-
-
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#impacts -->
-
-    <owl:AnnotationProperty rdf:about="&kern;impacts"/>
-    
-
-
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isAtomic -->
-
-    <owl:AnnotationProperty rdf:about="&kern;isAtomic"/>
-    
-
-
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#triggers -->
-
-    <owl:AnnotationProperty rdf:about="&kern;triggers"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
     // Object Properties
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -104,13 +63,13 @@
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#executesOn -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#executesOn -->
 
-    <owl:ObjectProperty rdf:about="&kern;executesOn"/>
+    <rdf:Description rdf:about="&kern;executesOn"/>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hosts -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#hosts -->
 
     <owl:ObjectProperty rdf:about="&kern;hosts">
         <rdfs:domain rdf:resource="&kern;Hardware"/>
@@ -131,109 +90,43 @@
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#AutomataEndState -->
-
-    <owl:Class rdf:about="&kern;AutomataEndState"/>
-    
-
-
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#AutomataInitialState -->
-
-    <owl:Class rdf:about="&kern;AutomataInitialState"/>
-    
-
-
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#AutomataState -->
-
-    <owl:Class rdf:about="&kern;AutomataState"/>
-    
-
-
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#CompositeSystem -->
-
-    <owl:Class rdf:about="&kern;CompositeSystem"/>
-    
-
-
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Environment -->
-
-    <owl:Class rdf:about="&kern;Environment"/>
-    
-
-
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Frame -->
-
-    <owl:Class rdf:about="&kern;Frame"/>
-    
-
-
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Hardware -->
-
-    <owl:Class rdf:about="&kern;Hardware"/>
-    
-
-
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Interaction -->
-
-    <owl:Class rdf:about="&kern;Interaction"/>
-    
-
-
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Software -->
-
-    <owl:Class rdf:about="&kern;Software"/>
-    
-
-
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#Mission -->
-
-    <owl:Class rdf:about="&miss;Mission"/>
-    
-
-
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#MissionStateMachine -->
-
-    <owl:Class rdf:about="&miss;MissionStateMachine"/>
-    
-
-
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#AirVehicle -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl#AirVehicle -->
 
     <owl:Class rdf:about="&robo;AirVehicle"/>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationHardware -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#CommunicationHardware -->
 
     <owl:Class rdf:about="&syst;CommunicationHardware"/>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlStationSystem -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ControlStationSystem -->
 
     <owl:Class rdf:about="&syst;ControlStationSystem"/>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LocomotionHardware -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#LocomotionHardware -->
 
     <owl:Class rdf:about="&syst;LocomotionHardware"/>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#MissionManagementSystem -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#MissionManagementSystem -->
 
     <owl:Class rdf:about="&syst;MissionManagementSystem"/>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ObjectDetectionOrTrackingSensorHardware -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#ObjectDetectionOrTrackingSensorHardware -->
 
     <owl:Class rdf:about="&syst;ObjectDetectionOrTrackingSensorHardware"/>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#WeaponHardware -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl#WeaponHardware -->
 
     <owl:Class rdf:about="&syst;WeaponHardware"/>
     
@@ -250,293 +143,293 @@
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#AttackPhase -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#AttackPhase -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#AttackPhase">
+    <owl:NamedIndividual rdf:about="&mili;AttackPhase">
         <rdf:type rdf:resource="&kern;AutomataState"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#BLG1000-1 -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#BLG1000-1 -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#BLG1000-1">
+    <owl:NamedIndividual rdf:about="&mili;BLG1000-1">
         <rdf:type rdf:resource="&syst;WeaponHardware"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#BLG1000-2 -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#BLG1000-2 -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#BLG1000-2">
+    <owl:NamedIndividual rdf:about="&mili;BLG1000-2">
         <rdf:type rdf:resource="&syst;WeaponHardware"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#CommunicationHardware -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#CommunicationHardware -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#CommunicationHardware">
+    <owl:NamedIndividual rdf:about="&mili;CommunicationHardware">
         <rdf:type rdf:resource="&syst;CommunicationHardware"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#DomesticsPhase -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#DomesticsPhase -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#DomesticsPhase">
+    <owl:NamedIndividual rdf:about="&mili;DomesticsPhase">
         <rdf:type rdf:resource="&kern;AutomataState"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#Environment -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#Environment -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#Environment">
+    <owl:NamedIndividual rdf:about="&mili;Environment">
         <rdf:type rdf:resource="&kern;Environment"/>
-        <kern:aggregates rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#GroundControlStation"/>
-        <kern:definesAFrame rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#WGS84ref"/>
+        <kern:aggregates rdf:resource="&mili;GroundControlStation"/>
+        <kern:definesAFrame rdf:resource="&mili;WGS84ref"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#FCAS -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#FCAS -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#FCAS">
+    <owl:NamedIndividual rdf:about="&mili;FCAS">
         <rdf:type rdf:resource="&kern;CompositeSystem"/>
-        <kern:aggregates rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#GroundControlStation"/>
-        <kern:aggregates rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UcavPackage"/>
+        <kern:aggregates rdf:resource="&mili;GroundControlStation"/>
+        <kern:aggregates rdf:resource="&mili;UcavPackage"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#FebaCrossingPhase -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#FebaCrossingPhase -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#FebaCrossingPhase">
+    <owl:NamedIndividual rdf:about="&mili;FebaCrossingPhase">
         <rdf:type rdf:resource="&kern;AutomataState"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#GCSPlatform -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#GCSPlatform -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#GCSPlatform">
+    <owl:NamedIndividual rdf:about="&mili;GCSPlatform">
         <rdf:type rdf:resource="&kern;CompositeSystem"/>
-        <kern:aggregates rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#IHSConsole"/>
+        <kern:aggregates rdf:resource="&mili;IHSConsole"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#GroundControlStation -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#GroundControlStation -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#GroundControlStation">
+    <owl:NamedIndividual rdf:about="&mili;GroundControlStation">
         <rdf:type rdf:resource="&kern;CompositeSystem"/>
         <rdf:type rdf:resource="&syst;ControlStationSystem"/>
-        <kern:aggregates rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#GCSPlatform"/>
-        <kern:triggers rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#RobotControl"/>
+        <kern:aggregates rdf:resource="&mili;GCSPlatform"/>
+        <kern:triggers rdf:resource="&mili;RobotControl"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#IHSConsole -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#IHSConsole -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#IHSConsole">
+    <owl:NamedIndividual rdf:about="&mili;IHSConsole">
         <rdf:type rdf:resource="&kern;Hardware"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#LandingPhase -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#LandingPhase -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#LandingPhase">
+    <owl:NamedIndividual rdf:about="&mili;LandingPhase">
         <rdf:type rdf:resource="&kern;AutomataEndState"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#MissionFSM -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#MissionFSM -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#MissionFSM">
+    <owl:NamedIndividual rdf:about="&mili;MissionFSM">
         <rdf:type rdf:resource="&miss;MissionStateMachine"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#MissionManagementSystem -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#MissionManagementSystem -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#MissionManagementSystem">
+    <owl:NamedIndividual rdf:about="&mili;MissionManagementSystem">
         <rdf:type rdf:resource="&syst;MissionManagementSystem"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#MotorizationHardware -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#MotorizationHardware -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#MotorizationHardware">
+    <owl:NamedIndividual rdf:about="&mili;MotorizationHardware">
         <rdf:type rdf:resource="&syst;LocomotionHardware"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#NavigationManagementSystem -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#NavigationManagementSystem -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#NavigationManagementSystem">
+    <owl:NamedIndividual rdf:about="&mili;NavigationManagementSystem">
         <rdf:type rdf:resource="&syst;MissionManagementSystem"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#OnBoardComputer -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#OnBoardComputer -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#OnBoardComputer">
+    <owl:NamedIndividual rdf:about="&mili;OnBoardComputer">
         <rdf:type rdf:resource="&kern;Hardware"/>
-        <kern:hosts rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#MissionManagementSystem"/>
-        <kern:hosts rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#NavigationManagementSystem"/>
-        <kern:triggers rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#PlatformManagement"/>
-        <kern:hosts rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#SensorManagementSystem"/>
-        <kern:hosts rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#WeaponManagementSystem"/>
+        <kern:hosts rdf:resource="&mili;MissionManagementSystem"/>
+        <kern:hosts rdf:resource="&mili;NavigationManagementSystem"/>
+        <kern:triggers rdf:resource="&mili;PlatformManagement"/>
+        <kern:hosts rdf:resource="&mili;SensorManagementSystem"/>
+        <kern:hosts rdf:resource="&mili;WeaponManagementSystem"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#PlatformManagement -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#PlatformManagement -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#PlatformManagement">
+    <owl:NamedIndividual rdf:about="&mili;PlatformManagement">
         <rdf:type rdf:resource="&kern;Interaction"/>
-        <kern:impacts rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UcavPlatform7"/>
+        <kern:impacts rdf:resource="&mili;UcavPlatform7"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#RadarHardware -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#RadarHardware -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#RadarHardware">
+    <owl:NamedIndividual rdf:about="&mili;RadarHardware">
         <rdf:type rdf:resource="&syst;ObjectDetectionOrTrackingSensorHardware"/>
         <kern:isAtomic rdf:datatype="&xsd;boolean">true</kern:isAtomic>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#RobotControl -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#RobotControl -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#RobotControl">
+    <owl:NamedIndividual rdf:about="&mili;RobotControl">
         <rdf:type rdf:resource="&kern;Interaction"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#SensorManagementSystem -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#SensorManagementSystem -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#SensorManagementSystem">
+    <owl:NamedIndividual rdf:about="&mili;SensorManagementSystem">
         <rdf:type rdf:resource="&syst;MissionManagementSystem"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#TacticalNavigationPhase -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#TacticalNavigationPhase -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#TacticalNavigationPhase">
+    <owl:NamedIndividual rdf:about="&mili;TacticalNavigationPhase">
         <rdf:type rdf:resource="&kern;AutomataState"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#TakeOfPhase -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#TakeOfPhase -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#TakeOfPhase">
+    <owl:NamedIndividual rdf:about="&mili;TakeOfPhase">
         <rdf:type rdf:resource="&kern;AutomataInitialState"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UAV10 -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#UAV10 -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UAV10">
+    <owl:NamedIndividual rdf:about="&mili;UAV10">
         <rdf:type rdf:resource="&robo;AirVehicle"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UAV9 -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#UAV9 -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UAV9">
+    <owl:NamedIndividual rdf:about="&mili;UAV9">
         <rdf:type rdf:resource="&robo;AirVehicle"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UAVPackageMission -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#UAVPackageMission -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UAVPackageMission">
+    <owl:NamedIndividual rdf:about="&mili;UAVPackageMission">
         <rdf:type rdf:resource="&miss;Mission"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UCAV7Equipments -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#UCAV7Equipments -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UCAV7Equipments">
+    <owl:NamedIndividual rdf:about="&mili;UCAV7Equipments">
         <rdf:type rdf:resource="&kern;CompositeSystem"/>
         <rdf:type rdf:resource="&kern;Hardware"/>
-        <kern:aggregates rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#CommunicationHardware"/>
-        <kern:aggregates rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#MotorizationHardware"/>
-        <kern:aggregates rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#OnBoardComputer"/>
+        <kern:aggregates rdf:resource="&mili;CommunicationHardware"/>
+        <kern:aggregates rdf:resource="&mili;MotorizationHardware"/>
+        <kern:aggregates rdf:resource="&mili;OnBoardComputer"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UCAV7Payload -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#UCAV7Payload -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UCAV7Payload">
+    <owl:NamedIndividual rdf:about="&mili;UCAV7Payload">
         <rdf:type rdf:resource="&kern;CompositeSystem"/>
         <rdf:type rdf:resource="&kern;Hardware"/>
-        <kern:aggregates rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#BLG1000-1"/>
-        <kern:aggregates rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#BLG1000-2"/>
+        <kern:aggregates rdf:resource="&mili;BLG1000-1"/>
+        <kern:aggregates rdf:resource="&mili;BLG1000-2"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UcavPackage -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#UcavPackage -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UcavPackage">
+    <owl:NamedIndividual rdf:about="&mili;UcavPackage">
         <rdf:type rdf:resource="&kern;CompositeSystem"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UcavPlatform7 -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#UcavPlatform7 -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UcavPlatform7">
+    <owl:NamedIndividual rdf:about="&mili;UcavPlatform7">
         <rdf:type rdf:resource="&kern;CompositeSystem"/>
-        <kern:aggregates rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UCAV7Equipments"/>
-        <kern:aggregates rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UCAV7Payload"/>
+        <kern:aggregates rdf:resource="&mili;UCAV7Equipments"/>
+        <kern:aggregates rdf:resource="&mili;UCAV7Payload"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UcavSoftwareSystem -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#UcavSoftwareSystem -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UcavSoftwareSystem">
+    <owl:NamedIndividual rdf:about="&mili;UcavSoftwareSystem">
         <rdf:type rdf:resource="&kern;CompositeSystem"/>
-        <kern:aggregates rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#MissionManagementSystem"/>
-        <kern:aggregates rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#NavigationManagementSystem"/>
-        <kern:aggregates rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#SensorManagementSystem"/>
-        <kern:aggregates rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#WeaponManagementSystem"/>
+        <kern:aggregates rdf:resource="&mili;MissionManagementSystem"/>
+        <kern:aggregates rdf:resource="&mili;NavigationManagementSystem"/>
+        <kern:aggregates rdf:resource="&mili;SensorManagementSystem"/>
+        <kern:aggregates rdf:resource="&mili;WeaponManagementSystem"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#WGS84ref -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#WGS84ref -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#WGS84ref">
+    <owl:NamedIndividual rdf:about="&mili;WGS84ref">
         <rdf:type rdf:resource="&kern;Frame"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#WeaponManagementSystem -->
+    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/MilitaryUnmannedAerialVehiclesScenario.owl#WeaponManagementSystem -->
 
-    <owl:NamedIndividual rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#WeaponManagementSystem">
+    <owl:NamedIndividual rdf:about="&mili;WeaponManagementSystem">
         <rdf:type rdf:resource="&syst;MissionManagementSystem"/>
     </owl:NamedIndividual>
 </rdf:RDF>

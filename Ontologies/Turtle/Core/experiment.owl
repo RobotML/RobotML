@@ -1,0 +1,975 @@
+@prefix : <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xsp: <http://www.owl-ontologies.com/2005/08/07/xsp.owl#> .
+@prefix info: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix robo: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix sqwrl: <http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
+@prefix experiment: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#> .
+@base <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl> .
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl> rdf:type owl:Ontology ;
+                                                                                                  
+                                                                                                  owl:versionInfo "version delivered 1.0"^^xsd:string ;
+                                                                                                  
+                                                                                                  rdfs:comment "FaCT++ does not work on this ontology. HermiT shall be used for reasoning."@en ,
+                                                                                                               "This ontology describes the lifecycle process adopted in the PROTEUS project for the problem builders and solution providers"@en ,
+                                                                                                               "This work is based upon a previous one funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project (see http://www.anr-project.fr). It is the property of its authors and is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files)."@en ,
+                                                                                                               "Version for Protégé 4.x flavors."@en ;
+                                                                                                  
+                                                                                                  owl:imports <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl> ,
+                                                                                                              <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl> ,
+                                                                                                              <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl> ,
+                                                                                                              <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl> ,
+                                                                                                              <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl> ,
+                                                                                                              <http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl> ,
+                                                                                                              <http://swrl.stanford.edu/ontologies/3.3/swrla.owl> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#isHostedBy
+
+:isHostedBy rdf:type owl:AnnotationProperty ;
+            
+            rdfs:comment "The Software System of  a Robot can be completly or partly hosted by a Robotic Middleware."^^xsd:string .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#Creates
+
+:Creates rdf:type owl:ObjectProperty ;
+         
+         rdfs:comment "This property explains what is a provider. It is exactly the guy or the guys creating the problem or the solution."@en ;
+         
+         rdfs:domain [ rdf:type owl:Class ;
+                       owl:unionOf ( :ProblemProvider
+                                     :SolutionProvider
+                                   )
+                     ] ;
+         
+         rdfs:range [ rdf:type owl:Class ;
+                      owl:unionOf ( :Problem
+                                    :Solution
+                                  )
+                    ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#communicatesWith
+
+:communicatesWith rdf:type owl:ObjectProperty ,
+                           owl:SymmetricProperty ;
+                  
+                  rdfs:comment "The Proteus Simulator and the Robotic Middlewares communicate."^^xsd:string ;
+                  
+                  owl:inverseOf :communicatesWith ;
+                  
+                  rdfs:domain <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticMiddleware> ;
+                  
+                  rdfs:range <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticMiddleware> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#constrains
+
+:constrains rdf:type owl:ObjectProperty ;
+            
+            rdfs:comment "A Scenario constrains the configuration of a Problem."^^xsd:string ;
+            
+            rdfs:range :Configuration ;
+            
+            rdfs:domain :Scenario .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#evaluates
+
+:evaluates rdf:type owl:ObjectProperty ;
+           
+           rdfs:comment "A problem provider evaluates Solutions provided to answer his/her problem."@en ;
+           
+           rdfs:domain :ProblemProvider ;
+           
+           rdfs:range :Solution .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#evaluatesUsing
+
+:evaluatesUsing rdf:type owl:ObjectProperty ;
+                
+                owl:versionInfo "TODO: question arises from the fact that someone else than the problem provider could evaluates a solution using other metrics. This role has been introduced but will not be described at this step."^^xsd:string ;
+                
+                rdfs:comment "This property expresses the fact that to measure you need a metric. This metric is to be used by the one trying to understand the solution performances. It is the Problem provider."@en ;
+                
+                rdfs:range :Metric ;
+                
+                rdfs:domain :ProblemProvider .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#generates
+
+:generates rdf:type owl:ObjectProperty ;
+           
+           rdfs:comment "this indicates the capability for the platform to generate a software simulator"@en ;
+           
+           rdfs:domain :RobotMLPlatform ;
+           
+           rdfs:range :RobotMLSimulator .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#hasConfiguration
+
+:hasConfiguration rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:comment "A Problem has a Configuration. The Solution being a part of the architecture described by the Problem, it also has a Configuration."^^xsd:string ;
+                  
+                  owl:versionInfo "TODO: is it not a kern:has subproperty ? More than that, is it necessaryfor expe:Problem when introducing the restriction on the kern:uses property ?"^^xsd:string ;
+                  
+                  rdfs:range :Configuration ;
+                  
+                  rdfs:domain [ rdf:type owl:Class ;
+                                owl:unionOf ( :Problem
+                                              :Solution
+                                            )
+                              ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#isHostedBy
+
+:isHostedBy rdf:type owl:ObjectProperty ;
+            
+            rdfs:comment "The Software System of  a Robot can be completly or partly hosted by a Robotic Middleware."^^xsd:string ;
+            
+            rdfs:domain <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticFunctionalSystem> ;
+            
+            rdfs:range <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticMiddleware> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#isPartOf
+
+:isPartOf rdf:type owl:ObjectProperty ;
+          
+          rdfs:comment "A Solution is a part of the Software System of a Robot"^^xsd:string ;
+          
+          rdfs:domain :Solution ;
+          
+          rdfs:range <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticFunctionalSystem> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#manages
+
+:manages rdf:type owl:ObjectProperty ;
+         
+         rdfs:comment "The Proteus Simulator and Robotic Middleware manage Probes."^^xsd:string ;
+         
+         rdfs:domain :RobotMLSimulator ;
+         
+         rdfs:range <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SoftwareProbe> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#providesChallengeEnvironmentTo
+
+:providesChallengeEnvironmentTo rdf:type owl:InverseFunctionalProperty ,
+                                         owl:ObjectProperty ;
+                                
+                                rdfs:comment "Specificity of the Challenge provider to provide the competition environnment to the challenger"@en ;
+                                
+                                rdfs:domain :ChallengeProvider ;
+                                
+                                rdfs:range :Challenger .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#providesClockTo
+
+:providesClockTo rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:comment "The Proteus Simulator provides a clock to the middleware it communicates with."^^xsd:string ;
+                 
+                 rdfs:domain :RobotMLSimulator ;
+                 
+                 rdfs:range <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticMiddleware> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#providesSolution
+
+:providesSolution rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:comment "A Challenger provides a Solution to a Problem."^^xsd:string ;
+                  
+                  rdfs:range :Solution .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#usesChallengeEnvironment
+
+:usesChallengeEnvironment rdf:type owl:FunctionalProperty ,
+                                   owl:ObjectProperty ;
+                          
+                          rdfs:comment "A challenger is part of the challenge envronment as provided by the provider of the challenge."@en ;
+                          
+                          rdfs:range :ChallengeProvider ;
+                          
+                          rdfs:domain :Challenger ;
+                          
+                          owl:inverseOf :providesChallengeEnvironmentTo .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isAnimatedByEvolution
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isAnimatedByEvolution> rdf:type owl:ObjectProperty .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Force
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Force> rdf:type owl:Class ;
+                                                                                                         
+                                                                                                         owl:disjointWith <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Action> ,
+                                                                                                                          <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#DriverToHardwareInteraction> ,
+                                                                                                                          <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#HardwareToDriverInteraction> ,
+                                                                                                                          <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#InterAgentCommunication> ,
+                                                                                                                          <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#NoiseSignal> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Pedestrian
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Pedestrian> rdf:type owl:Class ;
+                                                                                                              
+                                                                                                              owl:disjointWith :ChallengeProvider ,
+                                                                                                                               :Challenger .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#ChallengeProvider
+
+:ChallengeProvider rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :ProblemProvider ;
+                   
+                   owl:disjointWith :Challenger ;
+                   
+                   rdfs:comment "A Challenge Provider is first a problem provider but he / she also provides the environment required for a competition to occur as for example real robots, arena, and so on and so forth."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#Challenger
+
+:Challenger rdf:type owl:Class ;
+            
+            rdfs:subClassOf :SolutionProvider ;
+            
+            rdfs:comment "The challenger is a solution provider that accepts to participate to a competion, a challenge as organised by a ChallengeProvider."^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#Configuration
+
+:Configuration rdf:type owl:Class ;
+               
+               rdfs:subClassOf <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#State> ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isUsedBy> ;
+                                 owl:someValuesFrom :Problem
+                               ] ;
+               
+               owl:disjointWith <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#AutomataState> ;
+               
+               rdfs:comment "A configuration is a particular Initial state of a System"^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#EditModel
+
+:EditModel rdf:type owl:Class ;
+           
+           rdfs:subClassOf <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Action> ;
+           
+           rdfs:comment "This action is linked to the capability of an actor to represent its environment. In this context, mainly it means using the robot ML platform to model robotic problems or solutions."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#EnvironmentModel
+
+:EnvironmentModel rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#CompositeModel> ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#models> ;
+                                    owl:cardinality "1"^^xsd:nonNegativeInteger
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#models> ;
+                                    owl:allValuesFrom <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Environment>
+                                  ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#EnvironmentSimulator
+
+:EnvironmentSimulator rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SoftwareSimulator> ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#models> ;
+                                        owl:allValuesFrom <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Environment>
+                                      ] ;
+                      
+                      owl:versionInfo "TODO: even if kern:models some kern:Environment, question remains to see if it is not more a expe:Environment Model"^^xsd:string ;
+                      
+                      rdfs:comment "This simulator goal is to implement a model of the environment into an application. Nevrtheless it models the environment."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#GenerateSimulator
+
+:GenerateSimulator rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Action> ;
+                   
+                   rdfs:comment "a user of the robot modelling platform is creating a simulator through this action using the RobotML platform."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#Metric
+
+:Metric rdf:type owl:Class ;
+        
+        rdfs:subClassOf info:Function ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isCodedIn> ;
+                          owl:allValuesFrom info:StructuredData
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty info:hasInput ;
+                          owl:allValuesFrom info:CrossProduct
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty info:hasSet ;
+                          owl:cardinality "2"^^xsd:nonNegativeInteger
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty info:hasOutput ;
+                          owl:allValuesFrom info:OrderedSet
+                        ] ;
+        
+        owl:disjointWith info:Relation ,
+                         info:TrajectoryFunction ;
+        
+        rdfs:comment "A metric allows to measure from the data recorded using probes the performance of a particular system."^^xsd:string .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#ModellingActivity
+
+:ModellingActivity rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Activity> ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasAction> ;
+                                     owl:someValuesFrom [ rdf:type owl:Class ;
+                                                          owl:unionOf ( :EditModel
+                                                                        :GenerateSimulator
+                                                                      )
+                                                        ]
+                                   ] ;
+                   
+                   rdfs:comment "Activity of an agent to model things"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#Problem
+
+:Problem rdf:type owl:Class ;
+         
+         rdfs:subClassOf <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#CompositeSystem> ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates> ;
+                           owl:someValuesFrom :RobotMLSimulator
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates> ;
+                           owl:someValuesFrom robo:Robot
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#uses> ;
+                           owl:someValuesFrom :Configuration
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#uses> ;
+                           owl:minCardinality "2"^^xsd:nonNegativeInteger
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates> ;
+                           owl:minCardinality "3"^^xsd:nonNegativeInteger
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#uses> ;
+                           owl:someValuesFrom :Scenario
+                         ] ;
+         
+         owl:disjointWith <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Environment> ,
+                          robo:GlobalPlatform ,
+                          robo:Robot ,
+                          <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#HybridSimulator> ,
+                          <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#DriverDeviceSystem> ;
+         
+         owl:versionInfo "TODO: problem aggregates a robotic application as there are no other word in order to describe the software piece above the robotic middleware above the OS. The word robotic system is already used with another meaning. Robotic application should probbaly host the different drivers."^^xsd:string ;
+         
+         rdfs:comment "A problem is the implementation of a subset of a scenario, it then defines a particular situation: environment and robot architecture. A problem goal is to study the behavior and performance of a particular system. The studied system must be completed with a Solution."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#ProblemProvider
+
+:ProblemProvider rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :RobotMLPlatformUser ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :Creates ;
+                                   owl:allValuesFrom :Problem
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :Creates ;
+                                   owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                 ] ;
+                 
+                 rdfs:comment "The Problem Provider defines the scenario, problem, configurations and metrics."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#RobotMLPlatform
+
+:RobotMLPlatform rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Application> ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#canBeDeployedIn> ;
+                                   owl:cardinality "0"^^xsd:nonNegativeInteger
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#withDeployementBecomes> ;
+                                   owl:cardinality "0"^^xsd:nonNegativeInteger
+                                 ] ;
+                 
+                 rdfs:comment "This is the platform allowing the Problem provider to create the model and derive a simulator to be used by the solution provider to verify its solution in the context of the problem providing performances of his solution thanks to the metrics."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#RobotMLPlatformUser
+
+:RobotMLPlatformUser rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Human> ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasActivity> ;
+                                       owl:someValuesFrom :ModellingActivity
+                                     ] ;
+                     
+                     rdfs:comment "This user has the capability to model and generate simulator using the Robot ML platform."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#RobotMLSimulator
+
+:RobotMLSimulator rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#CompositeSystem> ,
+                                  <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SoftwareSimulator> ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates> ;
+                                    owl:someValuesFrom :EnvironmentSimulator
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates> ;
+                                    owl:someValuesFrom <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationMiddleware>
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates> ;
+                                    owl:someValuesFrom <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticMiddleware>
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates> ;
+                                    owl:minCardinality "4"^^xsd:nonNegativeInteger
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates> ;
+                                    owl:someValuesFrom <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticApplication>
+                                  ] ;
+                  
+                  rdfs:comment """The Robot ML Simulator provides life to a Problem. Its structure is very specific being the combination of:
+- an environment simulator
+- a communication middleware
+- a robotic system (working upon a robotic middleware)
+This type of simulator can be generated through RobotMLPlatfom"""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#Scenario
+
+:Scenario rdf:type owl:Class ;
+          
+          rdfs:subClassOf <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Abstraction> ;
+          
+          owl:disjointWith info:Command ,
+                           info:Function ,
+                           info:NumberAbstraction ,
+                           info:OperationalInformation ,
+                           info:PhysicalQuantity ,
+                           info:Set ,
+                           info:Tensor ,
+                           info:Unit ,
+                           info:Vector ,
+                           <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#LogicalExpression> ,
+                           <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#State> ;
+          
+          owl:versionInfo "TODO:  answer the question of necessity to structure Scenario using the Vignette concept"^^xsd:string ;
+          
+          rdfs:comment """A scenario defines operational missions and their operational contexts. It is constituded mainly of documents and derived of the expertise of those working in the field or at least of the model those trying to define it create from their partiala knowledge. A scenario is a generic thing and in the scope of EUropean military vocabulary, in order to obtain a refined description, missions' vignettes are necessary.
+
+It is not necessary in the scope of this ontology to refine what is a scenario."""@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#SimulatedEnvironment
+
+:SimulatedEnvironment rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SimulatedPhysicalSystem> ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#models> ;
+                                        owl:cardinality "1"^^xsd:nonNegativeInteger
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#models> ;
+                                        owl:someValuesFrom :EnvironmentModel
+                                      ] ;
+                      
+                      owl:disjointWith <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SimulatedPedestrian> ,
+                                       <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SimulatedVehicle> ;
+                      
+                      rdfs:comment "A simulated environment implements a modelled environment"@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#Solution
+
+:Solution rdf:type owl:Class ;
+          
+          rdfs:subClassOf <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#CompositeSystem> ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates> ;
+                            owl:someValuesFrom <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticApplication>
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates> ;
+                            owl:someValuesFrom <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SoftwareModule>
+                          ] ;
+          
+          owl:disjointWith <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Application> ,
+                           <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#FileSystem> ,
+                           <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#OperatingSystem> ,
+                           <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SimulatedSystem> ,
+                           <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SystemInterface> ;
+          
+          owl:versionInfo "TODO: for the time being there is no existing relation to the Problem thus there should be a link created."^^xsd:string ;
+          
+          rdfs:comment "A Solution is an answer to a Problem. It is provided by a Challenger. It is the implementation of the System targeted by the problem. The solution is a part of the Software of the Robot system. thus a part of an RoboticApplication."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#SolutionProvider
+
+:SolutionProvider rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :RobotMLPlatformUser ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :Creates ;
+                                    owl:allValuesFrom :Solution
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :Creates ;
+                                    owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                  ] ;
+                  
+                  rdfs:comment "The Solution Provider provides a solution to a problem provided by a problem provider."@en .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Command
+
+info:Command owl:disjointWith info:Function ,
+                              info:NumberAbstraction ,
+                              info:PhysicalQuantity ,
+                              info:Relation ,
+                              info:Set ,
+                              info:Tensor ,
+                              info:Unit ,
+                              info:Vector ,
+                              <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#LogicalExpression> ,
+                              <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#State> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Function
+
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#NumberAbstraction
+
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#OperationalInformation
+
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#PhysicalQuantity
+
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Relation
+
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Set
+
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Tensor
+
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#TrajectoryFunction
+
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Unit
+
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Vector
+
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Action
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Action> owl:disjointWith <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#NoiseSignal> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Application
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Application> rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                                                                            owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#executesOn> ;
+                                                                                                                            owl:allValuesFrom <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ComputationalSystem>
+                                                                                                                          ] ;
+                                                                                                          
+                                                                                                          owl:disjointWith <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SimulatedSystem> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#AutomataState
+
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Driver
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Driver> owl:disjointWith <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#GraphicsEngine> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#DriverToHardwareInteraction
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#DriverToHardwareInteraction> owl:disjointWith <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#InterAgentCommunication> ,
+                                                                                                                                           <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#NoiseSignal> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Environment
+
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#FileSystem
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#FileSystem> owl:disjointWith <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SimulatedSystem> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#HardwareToDriverInteraction
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#HardwareToDriverInteraction> owl:disjointWith <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#InterAgentCommunication> ,
+                                                                                                                                           <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#NoiseSignal> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Human
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Human> rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                                                                      owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isModelledBy> ;
+                                                                                                                      owl:cardinality "0"^^xsd:nonNegativeInteger
+                                                                                                                    ] ,
+                                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                                      owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#canBeDeployedIn> ;
+                                                                                                                      owl:cardinality "0"^^xsd:nonNegativeInteger
+                                                                                                                    ] ,
+                                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                                      owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#models> ;
+                                                                                                                      owl:cardinality "0"^^xsd:nonNegativeInteger
+                                                                                                                    ] ,
+                                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                                      owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#withDeployementBecomes> ;
+                                                                                                                      owl:cardinality "0"^^xsd:nonNegativeInteger
+                                                                                                                    ] .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#InterAgentCommunication
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#InterAgentCommunication> owl:disjointWith <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#NoiseSignal> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#LogicalExpression
+
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#OperatingSystem
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#OperatingSystem> owl:disjointWith <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SimulatedSystem> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SoftwareModule
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SoftwareModule> rdf:type owl:Class ;
+                                                                                                             
+                                                                                                             owl:disjointWith <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#GraphicsEngine> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SoftwareProbe
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SoftwareProbe> owl:disjointWith <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#GraphicsEngine> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#State
+
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Wrapper
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Wrapper> owl:disjointWith <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#GraphicsEngine> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#GlobalPlatform
+
+robo:GlobalPlatform rdf:type owl:Class ;
+                    
+                    owl:disjointWith <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#HybridSimulator> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#Robot
+
+robo:Robot rdf:type owl:Class ;
+           
+           owl:disjointWith <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#HybridSimulator> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#GraphicsEngine
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#GraphicsEngine> owl:disjointWith <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SoftwareSimulator> ,
+                                                                                                                                  <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticApplication> ,
+                                                                                                                                  <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticMiddleware> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#HardwareSimulator
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#HardwareSimulator> owl:disjointWith <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ActuatorHardware> ,
+                                                                                                                                     <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationHardware> ,
+                                                                                                                                     <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#PowerHardware> ,
+                                                                                                                                     <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SensorHardware> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#HybridSimulator
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#HybridSimulator> owl:disjointWith <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#DriverDeviceSystem> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SimulatedPedestrian
+
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SimulatedSystem
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SimulatedSystem> owl:disjointWith <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SystemInterface> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SimulatedVehicle
+
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SoftwareSimulator
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SoftwareSimulator> rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                                                                                      owl:onProperty <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isAnimatedByEvolution> ;
+                                                                                                                                      owl:allValuesFrom <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#OperatingSystem>
+                                                                                                                                    ] ;
+                                                                                                                    
+                                                                                                                    owl:disjointWith <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticApplication> ,
+                                                                                                                                     <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticMiddleware> .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ActuatorHardware
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ActuatorHardware> rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationHardware
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationHardware> rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationMiddleware
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationMiddleware> rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ComputationalSystem
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ComputationalSystem> rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#DriverDeviceSystem
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#DriverDeviceSystem> rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#NoiseSignal
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#NoiseSignal> rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#PowerHardware
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#PowerHardware> rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticApplication
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticApplication> rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticFunctionalSystem
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticFunctionalSystem> rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticMiddleware
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticMiddleware> rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SensorHardware
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SensorHardware> rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SystemInterface
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SystemInterface> rdf:type owl:Class .
+
+
+
+
+
+#################################################################
+#
+#    Annotations
+#
+#################################################################
+
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Implements> owl:versionInfo "TODO: the implements wording could have been used in order to link software and model as a sub property of kern:models."^^xsd:string .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

@@ -1,0 +1,743 @@
+@prefix : <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xsp: <http://www.owl-ontologies.com/2005/08/07/xsp.owl#> .
+@prefix envi: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#> .
+@prefix info: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#> .
+@prefix kern: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#> .
+@prefix land: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#> .
+@prefix miss: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix robo: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix syst: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#> .
+@prefix sqwrl: <http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
+@base <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl> .
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl> rdf:type owl:Ontology ;
+                                                                                                                   
+                                                                                                                   owl:versionInfo "version delivered 1.0"^^xsd:string ;
+                                                                                                                   
+                                                                                                                   rdfs:comment "FaCT++ does not work with this ontology. Reasoning shall be performed with HermiT."@en ,
+                                                                                                                                "This scenario is closely associated with the young challenge as it provides a description of what they will have to do (namely to find landmarks in a simpllified area)."@en ,
+                                                                                                                                "This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files)."@en ,
+                                                                                                                                "Version for Protégé 4.2 beta."@en ;
+                                                                                                                   
+                                                                                                                   owl:imports <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/Core.owl> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates
+
+kern:aggregates rdf:type owl:AnnotationProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#impacts
+
+kern:impacts rdf:type owl:AnnotationProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isAtomic
+
+kern:isAtomic rdf:type owl:AnnotationProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#triggers
+
+kern:triggers rdf:type owl:AnnotationProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#isActive
+
+syst:isActive rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#ApplicationInteraction
+
+kern:ApplicationInteraction rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#CompositeSystem
+
+kern:CompositeSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Software
+
+kern:Software rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#DifferentialVehicle
+
+robo:DifferentialVehicle rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CameraSystem
+
+syst:CameraSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#Closed-LoopControlSystem
+
+syst:Closed-LoopControlSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationDriver
+
+syst:CommunicationDriver rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationHardware
+
+syst:CommunicationHardware rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationSystem
+
+syst:CommunicationSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlAndCommand
+
+syst:ControlAndCommand rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlSystem
+
+syst:ControlSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#EngineDriver
+
+syst:EngineDriver rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#EngineHardware
+
+syst:EngineHardware rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#EngineSystem
+
+syst:EngineSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#GPSSystem
+
+syst:GPSSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ImageSensorDriver
+
+syst:ImageSensorDriver rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ImageSensorHardware
+
+syst:ImageSensorHardware rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LocalizationSensorDriver
+
+syst:LocalizationSensorDriver rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LocalizationSensorHardware
+
+syst:LocalizationSensorHardware rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LocalizationSensorSystem
+
+syst:LocalizationSensorSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LocomotionHardware
+
+syst:LocomotionHardware rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#MissionManagementSystem
+
+syst:MissionManagementSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#MotionPlanningSystem
+
+syst:MotionPlanningSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ObjectDetectionOrTrackingSensorHardware
+
+syst:ObjectDetectionOrTrackingSensorHardware rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ObjectDetectionOrTrackingSensorSystem
+
+syst:ObjectDetectionOrTrackingSensorSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ObjectDetectionSensorDriver
+
+syst:ObjectDetectionSensorDriver rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#PlatformManagementSystem
+
+syst:PlatformManagementSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SecuritySystem
+
+syst:SecuritySystem rdf:type owl:Class .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#Camera
+
+:Camera rdf:type syst:ImageSensorHardware ,
+                 owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#CameraDriver
+
+:CameraDriver rdf:type syst:ImageSensorDriver ,
+                       owl:NamedIndividual ;
+              
+              kern:isAtomic "true"^^xsd:boolean .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#CameraSystem
+
+:CameraSystem rdf:type syst:CameraSystem ,
+                       owl:NamedIndividual ;
+              
+              syst:isActive "false"^^xsd:boolean ;
+              
+              kern:isAtomic "false"^^xsd:boolean ;
+              
+              kern:aggregates :Camera ,
+                              :CameraDriver .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#ExCommands
+
+:ExCommands rdf:type syst:ControlAndCommand ,
+                     owl:NamedIndividual ;
+            
+            kern:impacts :WheelControl .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#ExEstimatedPosition
+
+:ExEstimatedPosition rdf:type kern:ApplicationInteraction ,
+                              owl:NamedIndividual ;
+                     
+                     kern:impacts :GlobalPlanning ,
+                                  :LocalMapping ,
+                                  :Navigator ,
+                                  :PathPlanning ,
+                                  :Servoing .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#ExLocalMapInfo
+
+:ExLocalMapInfo rdf:type kern:ApplicationInteraction ,
+                         owl:NamedIndividual ;
+                
+                kern:impacts :GlobalPlanning ,
+                             :Localization ,
+                             :Navigator ,
+                             :Servoing .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#ExLongTermObjective
+
+:ExLongTermObjective rdf:type kern:ApplicationInteraction ,
+                              owl:NamedIndividual ;
+                     
+                     kern:impacts :PathPlanning .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#ExPath
+
+:ExPath rdf:type kern:ApplicationInteraction ,
+                 owl:NamedIndividual ;
+        
+        kern:impacts :Navigator .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#ExProximityMapInfo
+
+:ExProximityMapInfo rdf:type kern:ApplicationInteraction ,
+                             owl:NamedIndividual ;
+                    
+                    kern:impacts :LocalMapping ,
+                                 :Servoing .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#ExShortTermTarget
+
+:ExShortTermTarget rdf:type kern:ApplicationInteraction ,
+                            owl:NamedIndividual ;
+                   
+                   kern:impacts :Servoing .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#GPS
+
+:GPS rdf:type syst:LocalizationSensorHardware ,
+              owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#GPSDriver
+
+:GPSDriver rdf:type syst:LocalizationSensorDriver ,
+                    owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#GPSSystem
+
+:GPSSystem rdf:type syst:GPSSystem ,
+                    owl:NamedIndividual ;
+           
+           kern:aggregates :GPS ,
+                           :GPSDriver .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#GlobalPlanning
+
+:GlobalPlanning rdf:type kern:Software ,
+                         syst:MissionManagementSystem ,
+                         owl:NamedIndividual ;
+                
+                kern:triggers :ExLongTermObjective .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#IMU
+
+:IMU rdf:type syst:LocalizationSensorHardware ,
+              owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#IMUDriver
+
+:IMUDriver rdf:type syst:LocalizationSensorDriver ,
+                    owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#IMUSystem
+
+:IMUSystem rdf:type syst:LocalizationSensorSystem ,
+                    owl:NamedIndividual ;
+           
+           kern:aggregates :IMU ,
+                           :IMUDriver .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#LaserRanging
+
+:LaserRanging rdf:type syst:ObjectDetectionOrTrackingSensorHardware ,
+                       owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#LaserRangingDriver
+
+:LaserRangingDriver rdf:type syst:ObjectDetectionSensorDriver ,
+                             owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#LaserRangingSystem
+
+:LaserRangingSystem rdf:type syst:ObjectDetectionOrTrackingSensorSystem ,
+                             owl:NamedIndividual ;
+                    
+                    kern:aggregates :LaserRanging ,
+                                    :LaserRangingDriver .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#LeftEngineDriver
+
+:LeftEngineDriver rdf:type syst:EngineDriver ,
+                           owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#LeftEngineSystem
+
+:LeftEngineSystem rdf:type syst:EngineSystem ,
+                           owl:NamedIndividual ;
+                  
+                  kern:aggregates :LeftEngineDriver ,
+                                  :WheelMotor1 ,
+                                  :WheelMotor2 .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#LocalMapping
+
+:LocalMapping rdf:type kern:Software ,
+                       syst:MotionPlanningSystem ,
+                       owl:NamedIndividual ;
+              
+              kern:triggers :ExLocalMapInfo .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#Localization
+
+:Localization rdf:type kern:Software ,
+                       syst:PlatformManagementSystem ,
+                       owl:NamedIndividual ;
+              
+              kern:triggers :ExEstimatedPosition .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#MagneticCompas
+
+:MagneticCompas rdf:type syst:LocalizationSensorHardware ,
+                         owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#MagneticCompasDriver
+
+:MagneticCompasDriver rdf:type syst:LocalizationSensorDriver ,
+                               owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#MagneticCompasSystem
+
+:MagneticCompasSystem rdf:type syst:LocalizationSensorSystem ,
+                               owl:NamedIndividual ;
+                      
+                      kern:aggregates :MagneticCompas ,
+                                      :MagneticCompasDriver .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#Navigator
+
+:Navigator rdf:type kern:Software ,
+                    syst:PlatformManagementSystem ,
+                    owl:NamedIndividual ;
+           
+           kern:triggers :ExShortTermTarget .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#Odometer1
+
+:Odometer1 rdf:type syst:LocalizationSensorHardware ,
+                    owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#Odometer2
+
+:Odometer2 rdf:type syst:LocalizationSensorHardware ,
+                    owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#Odometer3
+
+:Odometer3 rdf:type syst:LocalizationSensorHardware ,
+                    owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#Odometer4
+
+:Odometer4 rdf:type syst:LocalizationSensorHardware ,
+                    owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#OdometerDriver
+
+:OdometerDriver rdf:type syst:LocalizationSensorDriver ,
+                         owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#OdometrySystem
+
+:OdometrySystem rdf:type syst:LocalizationSensorSystem ,
+                         owl:NamedIndividual ;
+                
+                kern:aggregates :Odometer1 ,
+                                :Odometer2 ,
+                                :Odometer3 ,
+                                :Odometer4 ,
+                                :OdometerDriver .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#PathPlanning
+
+:PathPlanning rdf:type kern:Software ,
+                       syst:MotionPlanningSystem ,
+                       owl:NamedIndividual ;
+              
+              kern:triggers :ExPath .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#ProximityMapping
+
+:ProximityMapping rdf:type kern:Software ,
+                           syst:SecuritySystem ,
+                           owl:NamedIndividual ;
+                  
+                  kern:triggers :ExProximityMapInfo .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#Proxymeter1
+
+:Proxymeter1 rdf:type syst:ObjectDetectionOrTrackingSensorHardware ,
+                      owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#Proxymeter2
+
+:Proxymeter2 rdf:type syst:ObjectDetectionOrTrackingSensorHardware ,
+                      owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#Proxymeter3
+
+:Proxymeter3 rdf:type syst:ObjectDetectionOrTrackingSensorHardware ,
+                      owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#Proxymeter4
+
+:Proxymeter4 rdf:type syst:ObjectDetectionOrTrackingSensorHardware ,
+                      owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#ProxymetryDriver
+
+:ProxymetryDriver rdf:type syst:ObjectDetectionSensorDriver ,
+                           owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#ProxymetrySystem
+
+:ProxymetrySystem rdf:type syst:ObjectDetectionOrTrackingSensorSystem ,
+                           owl:NamedIndividual ;
+                  
+                  kern:aggregates :Proxymeter1 ,
+                                  :Proxymeter2 ,
+                                  :Proxymeter3 ,
+                                  :Proxymeter4 ,
+                                  :ProxymetryDriver .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#RightEngineDriver
+
+:RightEngineDriver rdf:type syst:EngineDriver ,
+                            owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#RightEngineSystem
+
+:RightEngineSystem rdf:type syst:EngineSystem ,
+                            owl:NamedIndividual ;
+                   
+                   kern:aggregates :RightEngineDriver ,
+                                   :WheelMotor3 ,
+                                   :WheelMotor4 .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#Servoing
+
+:Servoing rdf:type syst:ControlSystem ,
+                   owl:NamedIndividual ;
+          
+          kern:triggers :ExCommands .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#WheelControl
+
+:WheelControl rdf:type syst:Closed-LoopControlSystem ,
+                       owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#WheelMotor1
+
+:WheelMotor1 rdf:type syst:EngineHardware ,
+                      syst:LocomotionHardware ,
+                      owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#WheelMotor2
+
+:WheelMotor2 rdf:type syst:EngineHardware ,
+                      syst:LocomotionHardware ,
+                      owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#WheelMotor3
+
+:WheelMotor3 rdf:type syst:EngineHardware ,
+                      syst:LocomotionHardware ,
+                      owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#WheelMotor4
+
+:WheelMotor4 rdf:type syst:EngineHardware ,
+                      syst:LocomotionHardware ,
+                      owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#WifiBot
+
+:WifiBot rdf:type kern:CompositeSystem ,
+                  robo:DifferentialVehicle ,
+                  owl:NamedIndividual ;
+         
+         kern:isAtomic "false"^^xsd:boolean ;
+         
+         kern:aggregates :CameraSystem ,
+                         :GPSSystem ,
+                         :IMUSystem ,
+                         :LaserRangingSystem ,
+                         :LeftEngineSystem ,
+                         :MagneticCompasSystem ,
+                         :OdometrySystem ,
+                         :ProxymetrySystem ,
+                         :RightEngineSystem ,
+                         :WifiCommunicationSystem .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#WifiCommunicationDriver
+
+:WifiCommunicationDriver rdf:type syst:CommunicationDriver ,
+                                  owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#WifiCommunicationSystem
+
+:WifiCommunicationSystem rdf:type syst:CommunicationSystem ,
+                                  owl:NamedIndividual ;
+                         
+                         kern:isAtomic "false"^^xsd:boolean ;
+                         
+                         kern:aggregates :WifiCommunicationDriver ,
+                                         :WifiLink .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#WifiLink
+
+:WifiLink rdf:type syst:CommunicationHardware ,
+                   owl:NamedIndividual .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

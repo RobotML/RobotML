@@ -1,0 +1,489 @@
+@prefix : <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xsp: <http://www.owl-ontologies.com/2005/08/07/xsp.owl#> .
+@prefix envi: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#> .
+@prefix expe: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#> .
+@prefix info: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#> .
+@prefix kern: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#> .
+@prefix miss: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix robo: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix syst: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#> .
+@prefix urba: <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#> .
+@prefix sqwrl: <http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
+@base <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl> .
+
+<http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl> rdf:type owl:Ontology ;
+                                                                                                          
+                                                                                                          owl:versionInfo "version delivered 1.0"^^xsd:string ;
+                                                                                                          
+                                                                                                          rdfs:comment "This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files)."@en ,
+                                                                                                                       "Version for Protégé 4.2 beta."@en ,
+                                                                                                                       "this scenario is closely linked to the urban challenge where a unmanned car is taxiing a person avoiding obstacles in the streets and obeying regulations."@en ;
+                                                                                                          
+                                                                                                          owl:imports <http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/Core.owl> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates
+
+kern:aggregates rdf:type owl:AnnotationProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#impacts
+
+kern:impacts rdf:type owl:AnnotationProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isAtomic
+
+kern:isAtomic rdf:type owl:AnnotationProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#triggers
+
+kern:triggers rdf:type owl:AnnotationProperty .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesOver
+
+robo:movesOver rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#LandSurface
+
+envi:LandSurface rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#ApplicationInteraction
+
+kern:ApplicationInteraction rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#AtomicSystem
+
+kern:AtomicSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#DriverToHardwareInteraction
+
+kern:DriverToHardwareInteraction rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Event
+
+kern:Event rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SignalEvent
+
+kern:SignalEvent rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SoftwareModule
+
+kern:SoftwareModule rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#Car-likeVehicle
+
+robo:Car-likeVehicle rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlAndCommand
+
+syst:ControlAndCommand rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlSystem
+
+syst:ControlSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#EnvironmentParametersSensorDriver
+
+syst:EnvironmentParametersSensorDriver rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#EnvironmentParametersSensorSystem
+
+syst:EnvironmentParametersSensorSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LocomotionDriver
+
+syst:LocomotionDriver rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#LocomotionHardware
+
+syst:LocomotionHardware rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#MissionManagementSystem
+
+syst:MissionManagementSystem rdf:type owl:Class .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#MotionPlanningSystem
+
+syst:MotionPlanningSystem rdf:type owl:Class .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#Brakes
+
+:Brakes rdf:type kern:AtomicSystem ,
+                 syst:LocomotionHardware ,
+                 owl:NamedIndividual ;
+        
+        kern:isAtomic "true"^^xsd:boolean .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#BrakesCommandOutput
+
+:BrakesCommandOutput rdf:type kern:DriverToHardwareInteraction ,
+                              owl:NamedIndividual ;
+                     
+                     kern:impacts :Brakes .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#BrakesDriver
+
+:BrakesDriver rdf:type kern:AtomicSystem ,
+                       syst:LocomotionDriver ,
+                       owl:NamedIndividual ;
+              
+              kern:isAtomic "true"^^xsd:boolean ;
+              
+              kern:triggers :BrakesCommandOutput .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#Control
+
+:Control rdf:type kern:AtomicSystem ,
+                  kern:SoftwareModule ,
+                  syst:ControlSystem ,
+                  owl:NamedIndividual ;
+         
+         kern:triggers :ExBrakesCommand ,
+                       :ExMotorCommand ,
+                       :ExSteeringWheelCommand .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExBeliefAboutEnvironement
+
+:ExBeliefAboutEnvironement rdf:type kern:ApplicationInteraction ,
+                                    owl:NamedIndividual ;
+                           
+                           kern:impacts :TrajectoryPlanning .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExBrakesCommand
+
+:ExBrakesCommand rdf:type syst:ControlAndCommand ,
+                          owl:NamedIndividual ;
+                 
+                 kern:impacts :BrakesDriver .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExCommands
+
+:ExCommands rdf:type kern:ApplicationInteraction ,
+                     owl:NamedIndividual ;
+            
+            kern:impacts :Control .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExDesiredDestination
+
+:ExDesiredDestination rdf:type kern:ApplicationInteraction ,
+                               owl:NamedIndividual ;
+                      
+                      kern:impacts :TrajectoryPlanning .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExDestinationReachedSignal
+
+:ExDestinationReachedSignal rdf:type kern:ApplicationInteraction ,
+                                     kern:Event ,
+                                     kern:SignalEvent ,
+                                     owl:NamedIndividual ;
+                            
+                            kern:impacts :TaxiMissionManager .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExDetectedObstacle
+
+:ExDetectedObstacle rdf:type kern:ApplicationInteraction ,
+                             owl:NamedIndividual ;
+                    
+                    kern:impacts :Maping ,
+                                 :MonitoringAndIntegrity .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExLIDARMeasurement
+
+:ExLIDARMeasurement rdf:type kern:ApplicationInteraction ,
+                             owl:NamedIndividual ;
+                    
+                    kern:impacts :ObstacleDetection .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExMotorCommand
+
+:ExMotorCommand rdf:type syst:ControlAndCommand ,
+                         owl:NamedIndividual ;
+                
+                kern:impacts :MotorDriver .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExSteeringWheelCommand
+
+:ExSteeringWheelCommand rdf:type syst:ControlAndCommand ,
+                                 owl:NamedIndividual ;
+                        
+                        kern:impacts :SteeringWheelDriver .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExTrajectory
+
+:ExTrajectory rdf:type kern:ApplicationInteraction ,
+                       owl:NamedIndividual ;
+              
+              kern:impacts :Servoing .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#LIDARDriver
+
+:LIDARDriver rdf:type syst:EnvironmentParametersSensorDriver ,
+                      owl:NamedIndividual ;
+             
+             kern:triggers :ExLIDARMeasurement .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#LIDARSystem
+
+:LIDARSystem rdf:type syst:EnvironmentParametersSensorSystem ,
+                      owl:NamedIndividual ;
+             
+             kern:aggregates :LIDARDriver .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#Maping
+
+:Maping rdf:type kern:AtomicSystem ,
+                 kern:SoftwareModule ,
+                 syst:MotionPlanningSystem ,
+                 owl:NamedIndividual ;
+        
+        kern:triggers :ExBeliefAboutEnvironement .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#MonitoringAndIntegrity
+
+:MonitoringAndIntegrity rdf:type kern:SoftwareModule ,
+                                 owl:NamedIndividual ;
+                        
+                        kern:triggers :ExCommands .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#Motor
+
+:Motor rdf:type syst:LocomotionHardware ,
+                owl:NamedIndividual .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#MotorCommandOutput
+
+:MotorCommandOutput rdf:type kern:DriverToHardwareInteraction ,
+                             owl:NamedIndividual ;
+                    
+                    kern:impacts :Motor .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#MotorDriver
+
+:MotorDriver rdf:type syst:LocomotionDriver ,
+                      owl:NamedIndividual ;
+             
+             kern:triggers :MotorCommandOutput .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ObstacleDetection
+
+:ObstacleDetection rdf:type kern:AtomicSystem ,
+                            owl:NamedIndividual ;
+                   
+                   kern:isAtomic "true"^^xsd:boolean ;
+                   
+                   kern:triggers :ExDetectedObstacle .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#PavinTerrain
+
+:PavinTerrain rdf:type envi:LandSurface ,
+                       owl:NamedIndividual ;
+              
+              kern:isAtomic "true"^^xsd:boolean .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#Servoing
+
+:Servoing rdf:type kern:AtomicSystem ,
+                   owl:NamedIndividual ;
+          
+          kern:isAtomic "true"^^xsd:boolean ;
+          
+          kern:triggers :ExCommands ,
+                        :ExDestinationReachedSignal .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#SteeringWheel
+
+:SteeringWheel rdf:type kern:AtomicSystem ,
+                        syst:LocomotionHardware ,
+                        owl:NamedIndividual ;
+               
+               kern:isAtomic "true"^^xsd:boolean .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#SteeringWheelCommandOutput
+
+:SteeringWheelCommandOutput rdf:type kern:DriverToHardwareInteraction ,
+                                     owl:NamedIndividual ;
+                            
+                            kern:impacts :SteeringWheel .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#SteeringWheelDriver
+
+:SteeringWheelDriver rdf:type kern:AtomicSystem ,
+                              syst:LocomotionDriver ,
+                              owl:NamedIndividual ;
+                     
+                     kern:isAtomic "true"^^xsd:boolean ;
+                     
+                     kern:triggers :SteeringWheelCommandOutput .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#Taxi
+
+:Taxi rdf:type robo:Car-likeVehicle ,
+               owl:NamedIndividual ;
+      
+      kern:isAtomic "false"^^xsd:boolean ;
+      
+      kern:aggregates :LIDARSystem ;
+      
+      robo:movesOver :PavinTerrain .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#TaxiMissionManager
+
+:TaxiMissionManager rdf:type kern:AtomicSystem ,
+                             kern:SoftwareModule ,
+                             syst:MissionManagementSystem ,
+                             owl:NamedIndividual ;
+                    
+                    kern:isAtomic "true"^^xsd:boolean ;
+                    
+                    kern:triggers :ExDesiredDestination .
+
+
+
+###  http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#TrajectoryPlanning
+
+:TrajectoryPlanning rdf:type kern:AtomicSystem ,
+                             kern:SoftwareModule ,
+                             syst:MotionPlanningSystem ,
+                             owl:NamedIndividual ;
+                    
+                    kern:isAtomic "true"^^xsd:boolean ;
+                    
+                    kern:triggers :ExTrajectory .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+
