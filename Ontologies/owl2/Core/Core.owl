@@ -45,7 +45,7 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:miss="http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#"
      xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
-    <owl:Ontology rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Core.owl">
+    <owl:Ontology rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/Core.owl">
         <rdfs:comment rdf:datatype="&xsd;string">This work is based upon a previous one funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project (see http://www.anr-project.fr). It is the property of its authors and is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
         <kern:TODO xml:lang="en">1. A rule is to be added in order to express the fact there are no ports on environment
 2. A rule is to be added in order to express the fact that a physical object if not included in any other object IS THE environment
@@ -63,15 +63,15 @@
 
 NO MODIFICATION ARE TO BE DONE ONTO THE CONCEPTS DEFINED IN THESE UNDERLYING ONTOLOGIES WHEN EDITING THIS CONTAINER. DO SELECT THE ONTOLOGY CONCERNED FIRST.</rdfs:comment>
         <rdfs:comment xml:lang="en">Version for Protégé 4.x flavors.</rdfs:comment>
+        <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/experiment.owl"/>
+        <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl"/>
+        <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl"/>
+        <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl"/>
+        <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl"/>
+        <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl"/>
+        <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl"/>
+        <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl"/>
         <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/3.3/swrla.owl"/>
-        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl"/>
-        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/experiment.owl"/>
-        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/information.owl"/>
-        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl"/>
-        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl"/>
-        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/robot.owl"/>
-        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/simulation.owl"/>
-        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/system.owl"/>
     </owl:Ontology>
     
 
