@@ -41,13 +41,13 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:miss="http://www.anr-proteus.fr/sites/default/files/download/Ontology/mission.owl#"
      xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
-    <owl:Ontology rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/LandmarkSearchScenario.owl">
+    <owl:Ontology rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl">
         <owl:versionInfo rdf:datatype="&xsd;string">version delivered 1.0</owl:versionInfo>
         <rdfs:comment xml:lang="en">FaCT++ does not work with this ontology. Reasoning shall be performed with HermiT.</rdfs:comment>
         <rdfs:comment xml:lang="en">This scenario is closely associated with the young challenge as it provides a description of what they will have to do (namely to find landmarks in a simpllified area).</rdfs:comment>
         <rdfs:comment xml:lang="en">This work has been funded by the French Research agency ANR (Agence Nationale de la Recherche) through thePROTEUS project. It remains the property of the partners of the PROTEUS consortium but is governed by the CECILL B V1 licence (see http://www.cecill.info for information and the associated Licence_CeCILL-B_V1-en.txt or Licence_CeCILL-B_V1-fr.txt files).</rdfs:comment>
         <rdfs:comment xml:lang="en">Version for Protégé 4.2 beta.</rdfs:comment>
-        <owl:imports rdf:resource="http://www.anr-proteus.fr/sites/default/files/download/Ontology/Core.owl"/>
+        <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/Core.owl"/>
     </owl:Ontology>
     
 
