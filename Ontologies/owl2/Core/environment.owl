@@ -402,12 +402,12 @@
     <owl:Class rdf:about="&envi;MachineTorque">
         <rdfs:subClassOf rdf:resource="&envi;Torque"/>
         <kern:openCycURI rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rvVkFSJwpEbGdrcN5Y29ycA</kern:openCycURI>
+        <kern:wikipediaURI>http://en.wikipedia.org/wiki/Torque#Machine_torque</kern:wikipediaURI>
         <kern:author xml:lang="en">creation Jean-Loup Farges - 10/09/2013
 modified Bruno Patin - 15/09/2013
 - authorship added
 - comment added
 - TODO added</kern:author>
-        <kern:wikipediaURI>http://en.wikipedia.org/wiki/Torque#Machine_torque</kern:wikipediaURI>
     </owl:Class>
     
 
@@ -513,6 +513,7 @@ modified Bruno Patin - 04/10/2013
 
     <owl:Class rdf:about="&envi;Torque">
         <rdfs:subClassOf rdf:resource="&kern;PhysicalInteraction"/>
+        <kern:TODO rdf:datatype="&xsd;string">is it not a Force?</kern:TODO>
         <rdfs:comment>Following wikipedia, torque, moment or moment of force, is the tendency of a force to rotate an object about an axis, fulcrum, or pivot.</rdfs:comment>
         <kern:author xml:lang="en">creation Jean-Loup Farges - 10/09/2013
 modified Bruno Patin - 15/09/2013

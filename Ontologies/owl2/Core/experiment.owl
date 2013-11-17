@@ -65,14 +65,6 @@
 
     <owl:ObjectProperty rdf:about="&expe;Creates">
         <rdfs:comment xml:lang="en">This property explains what is a provider. It is exactly the guy or the guys creating the problem or the solution.</rdfs:comment>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&expe;ProblemProvider"/>
-                    <rdf:Description rdf:about="&expe;SolutionProvider"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -81,6 +73,14 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&expe;ProblemProvider"/>
+                    <rdf:Description rdf:about="&expe;SolutionProvider"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -91,8 +91,8 @@
         <rdf:type rdf:resource="&owl;SymmetricProperty"/>
         <rdfs:comment rdf:datatype="&xsd;string">The Proteus Simulator and the Robotic Middlewares communicate.</rdfs:comment>
         <owl:inverseOf rdf:resource="&expe;communicatesWith"/>
-        <rdfs:range rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticMiddleware"/>
         <rdfs:domain rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticMiddleware"/>
+        <rdfs:range rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticMiddleware"/>
     </owl:ObjectProperty>
     
 
@@ -156,7 +156,7 @@
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/experiment.owl#isHostedBy -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#isHostedBy -->
 
     <owl:ObjectProperty rdf:about="&expe;isHostedBy">
         <rdfs:comment rdf:datatype="&xsd;string">The Software System of  a Robot can be completely or partly hosted by a Robotic Middleware.</rdfs:comment>
@@ -243,9 +243,6 @@
 
     <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Force">
         <owl:disjointWith rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Action"/>
-        <owl:disjointWith rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#DriverToHardwareInteraction"/>
-        <owl:disjointWith rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#HardwareToDriverInteraction"/>
-        <owl:disjointWith rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#InterAgentCommunication"/>
         <owl:disjointWith rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#NoiseSignal"/>
     </rdf:Description>
     
@@ -355,26 +352,26 @@
         <rdfs:subClassOf rdf:resource="&info;Function"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isCodedIn"/>
-                <owl:allValuesFrom rdf:resource="&info;StructuredData"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&info;hasInput"/>
                 <owl:allValuesFrom rdf:resource="&info;CrossProduct"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;hasOutput"/>
-                <owl:allValuesFrom rdf:resource="&info;OrderedSet"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isCodedIn"/>
+                <owl:allValuesFrom rdf:resource="&info;StructuredData"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&info;hasSet"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&info;hasOutput"/>
+                <owl:allValuesFrom rdf:resource="&info;OrderedSet"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;Relation"/>
@@ -413,12 +410,6 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#uses"/>
-                <owl:someValuesFrom rdf:resource="&expe;Scenario"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#uses"/>
                 <owl:someValuesFrom rdf:resource="&expe;Configuration"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -431,19 +422,25 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">3</owl:minCardinality>
+                <owl:someValuesFrom rdf:resource="&expe;RobotMLSimulator"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
-                <owl:someValuesFrom rdf:resource="&expe;RobotMLSimulator"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#uses"/>
+                <owl:someValuesFrom rdf:resource="&expe;Scenario"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
                 <owl:someValuesFrom rdf:resource="&robo;Robot"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">3</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Environment"/>
@@ -463,14 +460,14 @@
         <rdfs:subClassOf rdf:resource="&expe;RobotMLPlatformUser"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&robo;pilots"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
+                <owl:onProperty rdf:resource="&expe;Creates"/>
+                <owl:allValuesFrom rdf:resource="&expe;Problem"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&expe;Creates"/>
-                <owl:allValuesFrom rdf:resource="&expe;Problem"/>
+                <owl:onProperty rdf:resource="&robo;pilots"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -490,13 +487,13 @@
         <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Application"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#canBeDeployedIn"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#withDeployementBecomes"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#withDeployementBecomes"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#canBeDeployedIn"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -528,6 +525,12 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">4</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
                 <owl:someValuesFrom rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticMiddleware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -540,19 +543,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
-                <owl:someValuesFrom rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticApplication"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">4</owl:minCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
                 <owl:someValuesFrom rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationMiddleware"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
+                <owl:someValuesFrom rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticApplication"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">The Robot ML Simulator provides life to a Problem. Its structure is very specific being the combination of:
@@ -585,13 +582,13 @@ It is not necessary in the scope of this ontology to refine what is a scenario.<
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#models"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+                <owl:someValuesFrom rdf:resource="&expe;EnvironmentModel"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#models"/>
-                <owl:someValuesFrom rdf:resource="&expe;EnvironmentModel"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#SimulatedPedestrian"/>
@@ -608,13 +605,13 @@ It is not necessary in the scope of this ontology to refine what is a scenario.<
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
-                <owl:someValuesFrom rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticApplication"/>
+                <owl:someValuesFrom rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SoftwareModule"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
-                <owl:someValuesFrom rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SoftwareModule"/>
+                <owl:someValuesFrom rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticApplication"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Application"/>
@@ -634,12 +631,6 @@ It is not necessary in the scope of this ontology to refine what is a scenario.<
         <rdfs:subClassOf rdf:resource="&expe;RobotMLPlatformUser"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&expe;Creates"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&robo;pilots"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
@@ -648,6 +639,12 @@ It is not necessary in the scope of this ontology to refine what is a scenario.<
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&expe;Creates"/>
                 <owl:allValuesFrom rdf:resource="&expe;Solution"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&expe;Creates"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">The Solution Provider provides a solution to a problem provided by a problem provider.</rdfs:comment>
@@ -733,10 +730,7 @@ It is not necessary in the scope of this ontology to refine what is a scenario.<
 
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Action -->
 
-    <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Action">
-        <owl:disjointWith rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#InterAgentCommunication"/>
-        <owl:disjointWith rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#NoiseSignal"/>
-    </rdf:Description>
+    <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Action"/>
     
 
 
@@ -817,13 +811,13 @@ It is not necessary in the scope of this ontology to refine what is a scenario.<
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#canBeDeployedIn"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#withDeployementBecomes"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#withDeployementBecomes"/>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#canBeDeployedIn"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
