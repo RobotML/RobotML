@@ -17,8 +17,8 @@
     <!ENTITY kern "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#" >
     <!ENTITY miss "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#" >
     <!ENTITY simu "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#" >
-    <!ENTITY envi "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#" >
     <!ENTITY info "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#" >
+    <!ENTITY envi "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#" >
 ]>
 
 
@@ -27,8 +27,8 @@
      xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
      xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
      xmlns:robo="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#"
-     xmlns:simu="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#"
      xmlns:kern="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#"
+     xmlns:simu="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl#"
      xmlns:info="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#"
      xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
@@ -52,6 +52,23 @@
         <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl"/>
         <owl:imports rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl"/>
     </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Author -->
+
+    <owl:AnnotationProperty rdf:about="&kern;Author"/>
     
 
 
@@ -543,14 +560,14 @@
         <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticFunctionalSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasImplementingHardware"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasImplementingSoftware"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasImplementingSoftware"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasImplementingHardware"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&miss;PlanningSystem"/>
@@ -603,6 +620,15 @@
     
 
 
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#MissionModel -->
+
+    <owl:Class rdf:about="&miss;MissionModel">
+        <rdfs:subClassOf rdf:resource="&kern;Model"/>
+        <kern:Author>Jean-Loup Farges</kern:Author>
+    </owl:Class>
+    
+
+
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#MissionObjective -->
 
     <owl:Class rdf:about="&miss;MissionObjective">
@@ -630,7 +656,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;animates"/>
-                <owl:someValuesFrom rdf:resource="&miss;Mission"/>
+                <owl:someValuesFrom rdf:resource="&miss;MissionModel"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -703,14 +729,14 @@
         <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticFunctionalSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasImplementingSoftware"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasImplementingHardware"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasImplementingHardware"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasImplementingSoftware"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&miss;ReactiveSystem"/>
