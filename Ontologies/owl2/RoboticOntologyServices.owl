@@ -45,29 +45,6 @@ It is more than the proteus.owl ontology as it also provides the scenario and ex
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
-    // Annotation properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#TODO -->
-
-    <owl:AnnotationProperty rdf:about="&kernel;TODO"/>
-    
-
-
-    <!-- http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#wikipediaURI -->
-
-    <owl:AnnotationProperty rdf:about="&kernel;wikipediaURI"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
     // Data properties
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -81,26 +58,6 @@ It is more than the proteus.owl ontology as it also provides the scenario and ex
     <owl:DatatypeProperty rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/RoboticOntologyServices.owl#language">
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotations
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    <rdf:Description rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/environment.owl#Force">
-        <kernel:wikipediaURI>http://en.wikipedia.org/wiki/Force</kernel:wikipediaURI>
-    </rdf:Description>
-    <rdf:Description rdf:about="&kernel;Evolution">
-        <kernel:wikipediaURI rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/Time_evolution</kernel:wikipediaURI>
-    </rdf:Description>
-    <rdf:Description rdf:about="&kernel;Environment">
-        <kernel:TODO xml:lang="en">a rule exhibiting the fact that no system includes an environment and there is no associated port is needed. If no possibility exists with a rule then a property will be created to explict</kernel:TODO>
-    </rdf:Description>
 </rdf:RDF>
 
 

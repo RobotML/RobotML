@@ -5,4 +5,9 @@
 *.war
 *.ear
 
-catalog*.xml
+*catalog*.xml
+Ontologies/owl2/catalog-v001.xml
+Ontologies/owl2/catalog-v001.xml
+Ontologies/ORA/references/[ieeeraswg] First Proposed  IEEE Ontologies for Robotics and Automation (ORA)  Draft Standard.eml
+Ontologies/ORA/Standard/CORA/[ieeeraswg]FirstProposedIeeeOntologiesForRoboticsAndAutomationORADraftStandard.rtf
+Ontologies/ORA/Standard/CORA/P1872-D2-DraftStandardForStandardForOntologiesForRoboticsAndAutomation - January v2.pdf
