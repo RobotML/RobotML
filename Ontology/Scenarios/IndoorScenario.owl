@@ -13,11 +13,11 @@
     <!ENTITY swrla "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#" >
     <!ENTITY sqwrl "http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#" >
     <!ENTITY robo "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#" >
-    <!ENTITY kern "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#" >
     <!ENTITY syst "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#" >
+    <!ENTITY kern "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#" >
     <!ENTITY miss "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#" >
-    <!ENTITY envi "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#" >
     <!ENTITY info "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#" >
+    <!ENTITY envi "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#" >
     <!ENTITY indo "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#" >
 ]>
 
@@ -114,7 +114,8 @@
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/IndoorScenario.owl#ControlStationToEmbeddedController -->
 
     <owl:NamedIndividual rdf:about="&indo;ControlStationToEmbeddedController">
-        <rdf:type rdf:resource="&miss;CommunicationOfIntents"/>
+        <rdf:type rdf:resource="&kern;PhysicalInteraction"/>
+        <rdfs:comment xml:lang="en">At present time no specific classes for electromagnetical interaction -&gt; only physical interaction</rdfs:comment>
         <rdfs:comment xml:lang="en">From Figure 2 page 5</rdfs:comment>
         <kern:impacts rdf:resource="&indo;EmbeddedCommunicationHardware"/>
         <kern:impacts rdf:resource="&indo;EmbeddedController"/>
