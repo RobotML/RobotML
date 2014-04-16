@@ -92,15 +92,6 @@
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#ExCommands -->
-
-    <owl:NamedIndividual rdf:about="&land;ExCommands">
-        <rdf:type rdf:resource="&syst;ControlAndCommand"/>
-        <kern:impacts rdf:resource="&land;WheelControl"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#ExEstimatedPosition -->
 
     <owl:NamedIndividual rdf:about="&land;ExEstimatedPosition">
@@ -150,6 +141,15 @@
         <rdf:type rdf:resource="&kern;ApplicationInteraction"/>
         <kern:impacts rdf:resource="&land;LocalMapping"/>
         <kern:impacts rdf:resource="&land;Servoing"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#ExReference -->
+
+    <owl:NamedIndividual rdf:about="&land;ExReference">
+        <rdf:type rdf:resource="&syst;ReferenceInteraction"/>
+        <kern:impacts rdf:resource="&land;WheelController"/>
     </owl:NamedIndividual>
     
 
@@ -475,7 +475,7 @@
 
     <owl:NamedIndividual rdf:about="&land;Servoing">
         <rdf:type rdf:resource="&syst;ControlSystem"/>
-        <kern:triggers rdf:resource="&land;ExCommands"/>
+        <kern:triggers rdf:resource="&land;ExReference"/>
     </owl:NamedIndividual>
     
 
@@ -486,6 +486,15 @@
         <rdf:type rdf:resource="&syst;Closed-LoopControlSystem"/>
         <kern:aggregates rdf:resource="&land;LeftEngineSystem"/>
         <kern:aggregates rdf:resource="&land;RightEngineSystem"/>
+        <kern:aggregates rdf:resource="&land;WheelController"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#WheelController -->
+
+    <owl:NamedIndividual rdf:about="&land;WheelController">
+        <rdf:type rdf:resource="&syst;RoboticApplication"/>
     </owl:NamedIndividual>
     
 

@@ -13,12 +13,12 @@
     <!ENTITY swrla "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#" >
     <!ENTITY sqwrl "http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#" >
     <!ENTITY robo "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#" >
-    <!ENTITY kern "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#" >
     <!ENTITY syst "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#" >
+    <!ENTITY kern "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#" >
     <!ENTITY miss "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#" >
     <!ENTITY expe "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#" >
-    <!ENTITY envi "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#" >
     <!ENTITY info "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#" >
+    <!ENTITY envi "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#" >
     <!ENTITY urba "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#" >
 ]>
 
@@ -33,10 +33,10 @@
      xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:swrl="http://www.w3.org/2003/11/swrl#"
-     xmlns:envi="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#"
      xmlns:expe="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/experiment.owl#"
-     xmlns:syst="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#"
+     xmlns:envi="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#"
      xmlns:urba="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#"
+     xmlns:syst="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
@@ -93,9 +93,9 @@
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlAndCommand -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlInteraction -->
 
-    <owl:Class rdf:about="&syst;ControlAndCommand"/>
+    <owl:Class rdf:about="&syst;ControlInteraction"/>
     
 
 
@@ -207,7 +207,7 @@
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExBrakesCommand -->
 
     <owl:NamedIndividual rdf:about="&urba;ExBrakesCommand">
-        <rdf:type rdf:resource="&syst;ControlAndCommand"/>
+        <rdf:type rdf:resource="&syst;ControlInteraction"/>
         <kern:impacts rdf:resource="&urba;BrakesDriver"/>
     </owl:NamedIndividual>
     
@@ -264,7 +264,7 @@
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExMotorCommand -->
 
     <owl:NamedIndividual rdf:about="&urba;ExMotorCommand">
-        <rdf:type rdf:resource="&syst;ControlAndCommand"/>
+        <rdf:type rdf:resource="&syst;ControlInteraction"/>
         <kern:impacts rdf:resource="&urba;MotorDriver"/>
     </owl:NamedIndividual>
     
@@ -273,7 +273,7 @@
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#ExSteeringWheelCommand -->
 
     <owl:NamedIndividual rdf:about="&urba;ExSteeringWheelCommand">
-        <rdf:type rdf:resource="&syst;ControlAndCommand"/>
+        <rdf:type rdf:resource="&syst;ControlInteraction"/>
         <kern:impacts rdf:resource="&urba;SteeringWheelDriver"/>
     </owl:NamedIndividual>
     

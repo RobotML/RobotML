@@ -11,9 +11,9 @@
     <!ENTITY protege "http://protege.stanford.edu/plugins/owl/protege#" >
     <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
     <!ENTITY sqwrl "http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#" >
+    <!ENTITY syst "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#" >
     <!ENTITY kern "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#" >
     <!ENTITY info "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#" >
-    <!ENTITY syst "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#" >
 ]>
 
 
@@ -98,8 +98,8 @@ Each time we introduced relationships between concepts defined in the system ont
 
     <owl:ObjectProperty rdf:about="&syst;Timeframes">
         <rdfs:comment xml:lang="en">Clocks are providing timeframe to hardware</rdfs:comment>
-        <rdfs:domain rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Clock"/>
-        <rdfs:subPropertyOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isPropertyOf"/>
+        <rdfs:domain rdf:resource="&kern;Clock"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;isPropertyOf"/>
         <rdfs:range rdf:resource="&syst;ComputationalSystem"/>
     </owl:ObjectProperty>
     
@@ -126,8 +126,8 @@ Each time we introduced relationships between concepts defined in the system ont
 
     <owl:ObjectProperty rdf:about="&syst;canCommunicateThrough">
         <rdfs:comment xml:lang="en">An Application can use specific and dedicated applications called Communicatio middleware to communicate</rdfs:comment>
-        <rdfs:domain rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Application"/>
-        <rdfs:subPropertyOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isPropertyOf"/>
+        <rdfs:domain rdf:resource="&kern;Application"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;isPropertyOf"/>
         <rdfs:range rdf:resource="&syst;CommunicationMiddleware"/>
         <owl:inverseOf rdf:resource="&syst;hasApplicationPool"/>
     </owl:ObjectProperty>
@@ -147,8 +147,8 @@ Each time we introduced relationships between concepts defined in the system ont
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasApplicationPool -->
 
     <owl:ObjectProperty rdf:about="&syst;hasApplicationPool">
-        <rdfs:range rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Application"/>
-        <rdfs:subPropertyOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#has"/>
+        <rdfs:range rdf:resource="&kern;Application"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
         <rdfs:domain rdf:resource="&syst;CommunicationMiddleware"/>
     </owl:ObjectProperty>
     
@@ -158,8 +158,8 @@ Each time we introduced relationships between concepts defined in the system ont
 
     <owl:ObjectProperty rdf:about="&syst;hasClock">
         <rdfs:comment xml:lang="en">Some hardware are using a specific piece of hardware modeling a timeframe and called a clock</rdfs:comment>
-        <rdfs:range rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Clock"/>
-        <rdfs:subPropertyOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#has"/>
+        <rdfs:range rdf:resource="&kern;Clock"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
         <rdfs:domain rdf:resource="&syst;ComputationalSystem"/>
         <owl:inverseOf rdf:resource="&syst;Timeframes"/>
     </owl:ObjectProperty>
@@ -170,7 +170,7 @@ Each time we introduced relationships between concepts defined in the system ont
 
     <owl:ObjectProperty rdf:about="&syst;hasConfigurationData">
         <rdfs:comment xml:lang="en">Each one of the robotic components (actuators, sensors, etc) has some configuration parameter data.</rdfs:comment>
-        <rdfs:subPropertyOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#has"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
         <rdfs:domain rdf:resource="&syst;DriverDeviceSystem"/>
         <rdfs:range rdf:resource="&syst;RoboticSystemConfigurationData"/>
     </owl:ObjectProperty>
@@ -181,7 +181,7 @@ Each time we introduced relationships between concepts defined in the system ont
 
     <owl:ObjectProperty rdf:about="&syst;hasImplementingHardware">
         <rdfs:comment xml:lang="en">Robotic functional system has implementing hardware.</rdfs:comment>
-        <rdfs:subPropertyOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#has"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
         <rdfs:domain rdf:resource="&syst;RoboticFunctionalSystem"/>
         <owl:inverseOf rdf:resource="&syst;isHarwareImplementationOf"/>
         <rdfs:range>
@@ -202,8 +202,8 @@ Each time we introduced relationships between concepts defined in the system ont
 
     <owl:ObjectProperty rdf:about="&syst;hasImplementingSoftware">
         <rdfs:comment xml:lang="en">Robotic functional system has implementing software.</rdfs:comment>
-        <rdfs:range rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Software"/>
-        <rdfs:subPropertyOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#has"/>
+        <rdfs:range rdf:resource="&kern;Software"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
         <rdfs:domain rdf:resource="&syst;RoboticFunctionalSystem"/>
         <owl:inverseOf rdf:resource="&syst;isSoftwareImplementationOf"/>
     </owl:ObjectProperty>
@@ -213,7 +213,7 @@ Each time we introduced relationships between concepts defined in the system ont
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasInfoData -->
 
     <owl:ObjectProperty rdf:about="&syst;hasInfoData">
-        <rdfs:subPropertyOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#has"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
         <rdfs:domain rdf:resource="&syst;DriverDeviceSystem"/>
         <rdfs:range rdf:resource="&syst;RoboticSystemInfoData"/>
     </owl:ObjectProperty>
@@ -224,7 +224,7 @@ Each time we introduced relationships between concepts defined in the system ont
 
     <owl:ObjectProperty rdf:about="&syst;hasInput">
         <rdfs:comment xml:lang="en">A control system or a commandable system can have some command orders as input of a desired action.</rdfs:comment>
-        <rdfs:subPropertyOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#has"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
         <rdfs:domain rdf:resource="&syst;Closed-LoopControlSystem"/>
         <rdfs:range rdf:resource="&syst;ControlCommandOrder"/>
     </owl:ObjectProperty>
@@ -234,7 +234,7 @@ Each time we introduced relationships between concepts defined in the system ont
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasMethods -->
 
     <owl:ObjectProperty rdf:about="&syst;hasMethods">
-        <rdfs:subPropertyOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#has"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
     </owl:ObjectProperty>
     
 
@@ -243,7 +243,7 @@ Each time we introduced relationships between concepts defined in the system ont
 
     <owl:ObjectProperty rdf:about="&syst;hasNoise">
         <rdfs:comment xml:lang="en">A System has to deal with disruptions or perturbations known as Noise to process a signal. These perturbations are inherent in the data adquisition process or in the commandable processes, and they can be present, for instance, in a control system, actuator system, sensor system, etc...</rdfs:comment>
-        <rdfs:subPropertyOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#has"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
         <rdfs:domain rdf:resource="&syst;Closed-LoopControlSystem"/>
         <rdfs:range rdf:resource="&syst;NoiseSignal"/>
     </owl:ObjectProperty>
@@ -254,8 +254,8 @@ Each time we introduced relationships between concepts defined in the system ont
 
     <owl:ObjectProperty rdf:about="&syst;hasNoiseModel">
         <rdfs:comment xml:lang="en">A distorted interaction due to a noise signal can be modelled by an Evolution model of the corresponding noise.</rdfs:comment>
-        <rdfs:range rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#NoiseModel"/>
-        <rdfs:subPropertyOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#has"/>
+        <rdfs:range rdf:resource="&kern;NoiseModel"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
         <rdfs:domain rdf:resource="&syst;NoiseSignal"/>
     </owl:ObjectProperty>
     
@@ -264,7 +264,7 @@ Each time we introduced relationships between concepts defined in the system ont
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasOutput -->
 
     <owl:ObjectProperty rdf:about="&syst;hasOutput">
-        <rdfs:subPropertyOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#has"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
         <rdfs:domain rdf:resource="&syst;Closed-LoopControlSystem"/>
         <rdfs:range rdf:resource="&syst;ControlCommandOutput"/>
     </owl:ObjectProperty>
@@ -275,7 +275,7 @@ Each time we introduced relationships between concepts defined in the system ont
 
     <owl:ObjectProperty rdf:about="&syst;hasinterface">
         <rdfs:comment xml:lang="en">A robotic system has an interface to publish or subscribe to its corresponding robotic middleware.</rdfs:comment>
-        <rdfs:subPropertyOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#has"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;has"/>
         <rdfs:domain rdf:resource="&syst;DriverDeviceSystem"/>
         <rdfs:range rdf:resource="&syst;SystemInterface"/>
     </owl:ObjectProperty>
@@ -286,7 +286,7 @@ Each time we introduced relationships between concepts defined in the system ont
 
     <owl:ObjectProperty rdf:about="&syst;hostInteractions">
         <rdfs:comment xml:lang="en">A RoboticMiddleware is an interoperability software that not only executes applications, send and triggers interactions between systems/components, but it also hosts the interactions of the robotic platform.</rdfs:comment>
-        <rdfs:range rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#ApplicationInteraction"/>
+        <rdfs:range rdf:resource="&kern;ApplicationInteraction"/>
         <rdfs:domain rdf:resource="&syst;RoboticMiddleware"/>
     </owl:ObjectProperty>
     
@@ -307,7 +307,7 @@ Each time we introduced relationships between concepts defined in the system ont
 
     <owl:ObjectProperty rdf:about="&syst;isHarwareImplementationOf">
         <rdfs:comment xml:lang="en">Hardware is implementation of robotic functional system.</rdfs:comment>
-        <rdfs:subPropertyOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isPropertyOf"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;isPropertyOf"/>
         <rdfs:range rdf:resource="&syst;RoboticFunctionalSystem"/>
         <rdfs:domain>
             <owl:Class>
@@ -336,7 +336,7 @@ Each time we introduced relationships between concepts defined in the system ont
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#isRepresentedBy -->
 
     <owl:ObjectProperty rdf:about="&syst;isRepresentedBy">
-        <rdfs:domain rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#State"/>
+        <rdfs:domain rdf:resource="&kern;State"/>
         <owl:inverseOf rdf:resource="&syst;isRepresentingA"/>
     </owl:ObjectProperty>
     
@@ -345,7 +345,7 @@ Each time we introduced relationships between concepts defined in the system ont
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#isRepresentingA -->
 
     <owl:ObjectProperty rdf:about="&syst;isRepresentingA">
-        <rdfs:range rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#State"/>
+        <rdfs:range rdf:resource="&kern;State"/>
     </owl:ObjectProperty>
     
 
@@ -354,8 +354,8 @@ Each time we introduced relationships between concepts defined in the system ont
 
     <owl:ObjectProperty rdf:about="&syst;isSoftwareImplementationOf">
         <rdfs:comment xml:lang="en">Software is implementation of robotic functionnal system.</rdfs:comment>
-        <rdfs:domain rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Software"/>
-        <rdfs:subPropertyOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isPropertyOf"/>
+        <rdfs:domain rdf:resource="&kern;Software"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;isPropertyOf"/>
         <rdfs:range rdf:resource="&syst;RoboticFunctionalSystem"/>
     </owl:ObjectProperty>
     
@@ -480,7 +480,7 @@ Each time we introduced relationships between concepts defined in the system ont
 
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Action -->
 
-    <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Action">
+    <rdf:Description rdf:about="&kern;Action">
         <owl:disjointWith rdf:resource="&syst;NoiseSignal"/>
     </rdf:Description>
     
@@ -488,7 +488,7 @@ Each time we introduced relationships between concepts defined in the system ont
 
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Application -->
 
-    <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Application">
+    <rdf:Description rdf:about="&kern;Application">
         <owl:disjointWith rdf:resource="&syst;SystemInterface"/>
         <kern:TODO xml:lang="en">Application impacts only software through ApllicationInteraction and Driver that is an Application impacts Physical objects due to hardwaretosoftware and softwaretohardware interaction.
 
@@ -499,7 +499,7 @@ This is clearly a mistake to be repaired.</kern:TODO>
 
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Clock -->
 
-    <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Clock">
+    <rdf:Description rdf:about="&kern;Clock">
         <owl:disjointWith rdf:resource="&syst;ActuatorHardware"/>
         <owl:disjointWith rdf:resource="&syst;CommunicationHardware"/>
         <owl:disjointWith rdf:resource="&syst;ControlStationSystem"/>
@@ -512,7 +512,7 @@ This is clearly a mistake to be repaired.</kern:TODO>
 
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Driver -->
 
-    <owl:Class rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Driver">
+    <owl:Class rdf:about="&kern;Driver">
         <owl:disjointWith rdf:resource="&syst;RoboticApplication"/>
         <owl:disjointWith rdf:resource="&syst;RoboticMiddleware"/>
         <kern:TODO xml:lang="en">Driver should triggers interactions between software and physical world (see definition of RoboticSystem)</kern:TODO>
@@ -522,7 +522,7 @@ This is clearly a mistake to be repaired.</kern:TODO>
 
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Environment -->
 
-    <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Environment">
+    <rdf:Description rdf:about="&kern;Environment">
         <owl:disjointWith rdf:resource="&syst;CyberPhysicalSystem"/>
     </rdf:Description>
     
@@ -530,7 +530,7 @@ This is clearly a mistake to be repaired.</kern:TODO>
 
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#FileSystem -->
 
-    <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#FileSystem">
+    <rdf:Description rdf:about="&kern;FileSystem">
         <owl:disjointWith rdf:resource="&syst;CommunicationMiddleware"/>
     </rdf:Description>
     
@@ -538,7 +538,7 @@ This is clearly a mistake to be repaired.</kern:TODO>
 
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Hardware -->
 
-    <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Hardware">
+    <rdf:Description rdf:about="&kern;Hardware">
         <rdfs:comment xml:lang="en">The robotic System concept provides the tool to aggregate the driber onto its hardware counterpart.</rdfs:comment>
     </rdf:Description>
     
@@ -546,7 +546,7 @@ This is clearly a mistake to be repaired.</kern:TODO>
 
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#OperatingSystem -->
 
-    <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#OperatingSystem">
+    <rdf:Description rdf:about="&kern;OperatingSystem">
         <owl:disjointWith rdf:resource="&syst;SystemInterface"/>
     </rdf:Description>
     
@@ -554,7 +554,7 @@ This is clearly a mistake to be repaired.</kern:TODO>
 
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Software -->
 
-    <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Software">
+    <rdf:Description rdf:about="&kern;Software">
         <rdfs:comment xml:lang="en">In this scope, &quot;Models&quot; property means &quot;Implements&quot;.</rdfs:comment>
     </rdf:Description>
     
@@ -562,7 +562,7 @@ This is clearly a mistake to be repaired.</kern:TODO>
 
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SoftwareModule -->
 
-    <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SoftwareModule">
+    <rdf:Description rdf:about="&kern;SoftwareModule">
         <owl:disjointWith rdf:resource="&syst;RoboticApplication"/>
         <owl:disjointWith rdf:resource="&syst;RoboticMiddleware"/>
     </rdf:Description>
@@ -571,7 +571,7 @@ This is clearly a mistake to be repaired.</kern:TODO>
 
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SoftwareProbe -->
 
-    <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SoftwareProbe">
+    <rdf:Description rdf:about="&kern;SoftwareProbe">
         <owl:disjointWith rdf:resource="&syst;RoboticApplication"/>
         <owl:disjointWith rdf:resource="&syst;RoboticMiddleware"/>
     </rdf:Description>
@@ -580,7 +580,7 @@ This is clearly a mistake to be repaired.</kern:TODO>
 
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Wrapper -->
 
-    <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Wrapper">
+    <rdf:Description rdf:about="&kern;Wrapper">
         <owl:disjointWith rdf:resource="&syst;RoboticApplication"/>
         <owl:disjointWith rdf:resource="&syst;RoboticMiddleware"/>
     </rdf:Description>
@@ -608,7 +608,7 @@ This is clearly a mistake to be repaired.</kern:TODO>
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ActuatorDriver -->
 
     <owl:Class rdf:about="&syst;ActuatorDriver">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Driver"/>
+        <rdfs:subClassOf rdf:resource="&kern;Driver"/>
         <owl:disjointWith rdf:resource="&syst;CommunicationDriver"/>
         <owl:disjointWith rdf:resource="&syst;PowerDriver"/>
         <owl:disjointWith rdf:resource="&syst;SensorDriver"/>
@@ -620,7 +620,7 @@ This is clearly a mistake to be repaired.</kern:TODO>
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ActuatorHardware -->
 
     <owl:Class rdf:about="&syst;ActuatorHardware">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Hardware"/>
+        <rdfs:subClassOf rdf:resource="&kern;Hardware"/>
         <owl:disjointWith rdf:resource="&syst;CommunicationHardware"/>
         <owl:disjointWith rdf:resource="&syst;PowerHardware"/>
         <owl:disjointWith rdf:resource="&syst;SensorHardware"/>
@@ -644,13 +644,13 @@ This is clearly a mistake to be repaired.</kern:TODO>
         <rdfs:subClassOf rdf:resource="&syst;DriverDeviceSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom rdf:resource="&syst;ActuatorDriver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -663,7 +663,7 @@ This is clearly a mistake to be repaired.</kern:TODO>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom rdf:resource="&syst;ActuatorHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -808,13 +808,13 @@ modified Bruno Patin - 14/09/2013
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&syst;isActive"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+                <owl:hasValue rdf:datatype="&xsd;boolean">false</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&syst;isActive"/>
-                <owl:hasValue rdf:datatype="&xsd;boolean">false</owl:hasValue>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -841,31 +841,20 @@ modified Bruno Patin - 14/09/2013
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#Closed-LoopControlSystem -->
 
     <owl:Class rdf:about="&syst;Closed-LoopControlSystem">
-        <rdfs:subClassOf rdf:resource="&syst;DriverDeviceSystem"/>
+        <rdfs:subClassOf rdf:resource="&syst;MixedSystem"/>
         <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="&syst;ComputationalHardware"/>
-                            <rdf:Description rdf:about="&syst;ProprioceptiveSensorSystem"/>
-                        </owl:intersectionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasPort"/>
-                <owl:someValuesFrom rdf:resource="&syst;ControlCommandInputPort"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasPort"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
-            </owl:Restriction>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&kern;aggregates"/>
+                        <owl:someValuesFrom rdf:resource="&syst;Controller"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&kern;aggregates"/>
+                        <owl:someValuesFrom rdf:resource="&syst;DriverDeviceSystem"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">This system use a measurement feedback, a command input to compute control for controlled systems</rdfs:comment>
     </owl:Class>
@@ -895,7 +884,7 @@ modified Bruno Patin - 14/09/2013
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationDriver -->
 
     <owl:Class rdf:about="&syst;CommunicationDriver">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Driver"/>
+        <rdfs:subClassOf rdf:resource="&kern;Driver"/>
         <owl:disjointWith rdf:resource="&syst;PowerDriver"/>
         <owl:disjointWith rdf:resource="&syst;SensorDriver"/>
         <rdfs:comment xml:lang="en">Software part of the Communication System of a platform. Drivers for technologies like Blue-tooth, infra-red, radio-frequency, WAP, Ethernet, ...</rdfs:comment>
@@ -906,7 +895,7 @@ modified Bruno Patin - 14/09/2013
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationHardware -->
 
     <owl:Class rdf:about="&syst;CommunicationHardware">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Hardware"/>
+        <rdfs:subClassOf rdf:resource="&kern;Hardware"/>
         <owl:disjointWith rdf:resource="&syst;HardwareImplementationOfController"/>
         <owl:disjointWith rdf:resource="&syst;PowerHardware"/>
         <owl:disjointWith rdf:resource="&syst;SensorHardware"/>
@@ -918,7 +907,7 @@ modified Bruno Patin - 14/09/2013
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CommunicationMiddleware -->
 
     <owl:Class rdf:about="&syst;CommunicationMiddleware">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Application"/>
+        <rdfs:subClassOf rdf:resource="&kern;Application"/>
         <rdfs:comment xml:lang="en">A communication middleware is an application that takes in charge the communications between Applications</rdfs:comment>
     </owl:Class>
     
@@ -930,13 +919,19 @@ modified Bruno Patin - 14/09/2013
         <rdfs:subClassOf rdf:resource="&syst;DriverDeviceSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom rdf:resource="&syst;CommunicationHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;CommunicationDriver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -945,12 +940,6 @@ modified Bruno Patin - 14/09/2013
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;CommunicationDriver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;PowerManagedSystem"/>
@@ -978,15 +967,15 @@ modified Bruno Patin - 14/09/2013
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ComputationalHardware -->
 
     <owl:Class rdf:about="&syst;ComputationalHardware">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Hardware"/>
+        <rdfs:subClassOf rdf:resource="&kern;Hardware"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#triggers"/>
-                <owl:allValuesFrom rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#HardwareToDriverInteraction"/>
+                <owl:onProperty rdf:resource="&kern;triggers"/>
+                <owl:allValuesFrom rdf:resource="&kern;HardwareToDriverInteraction"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:isDefinedBy rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rvViQ2ZwpEbGdrcN5Y29ycA</rdfs:isDefinedBy>
         <kern:openCycURI rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rvViQ2ZwpEbGdrcN5Y29ycA</kern:openCycURI>
+        <rdfs:isDefinedBy rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rvViQ2ZwpEbGdrcN5Y29ycA</rdfs:isDefinedBy>
         <kern:author xml:lang="en">creation Bruno Patin - 19/10/2013</kern:author>
         <rdfs:comment xml:lang="en">in order to be able to create CyberPhysical systems, it is necessary to use some hardware able to &quot;support&quot; the computing / processing necessary for software to be associated to this specific hardware. It means that any CyberPhysical system HAVE TO include computational hardware to instantiate its software part onto something.</rdfs:comment>
     </owl:Class>
@@ -999,21 +988,21 @@ modified Bruno Patin - 14/09/2013
         <rdfs:subClassOf rdf:resource="&syst;CyberPhysicalSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;ComputationalHardware"/>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&kern;Application"/>
+                            <rdf:Description rdf:about="&kern;Hardware"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Application"/>
-                            <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Hardware"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;ComputationalHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;DriverDeviceSystem"/>
@@ -1032,10 +1021,10 @@ modified Bruno Patin - 30/09/2013
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControCommandOutputPort -->
 
     <owl:Class rdf:about="&syst;ControCommandOutputPort">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Port"/>
+        <rdfs:subClassOf rdf:resource="&kern;Port"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isIn_Out"/>
+                <owl:onProperty rdf:resource="&kern;isIn_Out"/>
                 <owl:hasValue rdf:datatype="&xsd;string">out</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1044,28 +1033,13 @@ modified Bruno Patin - 30/09/2013
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlAndCommand -->
-
-    <owl:Class rdf:about="&syst;ControlAndCommand">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#ApplicationInteraction"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#impacts"/>
-                <owl:allValuesFrom rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Driver"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">This is an interaction produced by a ControlStationSystem that will impact on a RoboticSubsystem with the objective of control and command the target device.</rdfs:comment>
-    </owl:Class>
-    
-
-
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlCommandInputPort -->
 
     <owl:Class rdf:about="&syst;ControlCommandInputPort">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Port"/>
+        <rdfs:subClassOf rdf:resource="&kern;Port"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isIn_Out"/>
+                <owl:onProperty rdf:resource="&kern;isIn_Out"/>
                 <owl:hasValue rdf:datatype="&xsd;string">in</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1077,11 +1051,11 @@ modified Bruno Patin - 30/09/2013
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlCommandOrder -->
 
     <owl:Class rdf:about="&syst;ControlCommandOrder">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Command"/>
+        <rdfs:subClassOf rdf:resource="&info;Command"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isCodedIn"/>
-                <owl:allValuesFrom rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#PhysicalData"/>
+                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
+                <owl:allValuesFrom rdf:resource="&info;PhysicalData"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;ControlCommandOutput"/>
@@ -1093,11 +1067,11 @@ modified Bruno Patin - 30/09/2013
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlCommandOutput -->
 
     <owl:Class rdf:about="&syst;ControlCommandOutput">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Command"/>
+        <rdfs:subClassOf rdf:resource="&info;Command"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#isCodedIn"/>
-                <owl:allValuesFrom rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#PhysicalData"/>
+                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
+                <owl:allValuesFrom rdf:resource="&info;PhysicalData"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">Final Control output order coming from a control process (PID control, etc...). This command is sent from the drivers (software part) to their corresponding hardware element.</rdfs:comment>
@@ -1105,14 +1079,23 @@ modified Bruno Patin - 30/09/2013
     
 
 
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlInteraction -->
+
+    <owl:Class rdf:about="&syst;ControlInteraction">
+        <rdfs:subClassOf rdf:resource="&kern;ApplicationInteraction"/>
+        <rdfs:comment xml:lang="en">This is an interaction produced by a ControlStationSystem that will impact on a RoboticSubsystem with the objective of control and command the target device.</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlStationSystem -->
 
     <owl:Class rdf:about="&syst;ControlStationSystem">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Hardware"/>
+        <rdfs:subClassOf rdf:resource="&kern;Hardware"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#triggers"/>
-                <owl:someValuesFrom rdf:resource="&syst;ControlAndCommand"/>
+                <owl:onProperty rdf:resource="&kern;triggers"/>
+                <owl:someValuesFrom rdf:resource="&syst;ControlInteraction"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;HardwareImplementationOfController"/>
@@ -1139,35 +1122,63 @@ modified Bruno Patin - 19/10/2013
     
 
 
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#Controller -->
+
+    <owl:Class rdf:about="&syst;Controller">
+        <rdfs:subClassOf rdf:resource="&kern;Application"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;triggers"/>
+                <owl:someValuesFrom rdf:resource="&syst;ControllerToControlledSystemInteraction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControllerToControlledSystemInteraction -->
+
+    <owl:Class rdf:about="&syst;ControllerToControlledSystemInteraction">
+        <rdfs:subClassOf rdf:resource="&syst;ControlInteraction"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;impacts"/>
+                <owl:allValuesFrom rdf:resource="&kern;Driver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#CyberPhysicalSystem -->
 
     <owl:Class rdf:about="&syst;CyberPhysicalSystem">
         <owl:equivalentClass rdf:resource="&syst;RoboticSystem"/>
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#CompositeSystem"/>
+        <rdfs:subClassOf rdf:resource="&kern;CompositeSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
-                <owl:someValuesFrom rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Hardware"/>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&kern;Application"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&kern;Hardware"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Application"/>
-                            <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Hardware"/>
+                            <rdf:Description rdf:about="&kern;Application"/>
+                            <rdf:Description rdf:about="&kern;Hardware"/>
                             <rdf:Description rdf:about="&syst;CyberPhysicalSystem"/>
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
-                <owl:someValuesFrom rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Application"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <kern:wikipediaURI rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/Cyber-physical_system</kern:wikipediaURI>
@@ -1197,33 +1208,33 @@ modified Bruno Patin - 19/10/2013
         <rdfs:subClassOf rdf:resource="&syst;CyberPhysicalSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom rdf:resource="&syst;ComputationalHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
-                <owl:someValuesFrom rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Driver"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
-                <owl:someValuesFrom rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Hardware"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Driver"/>
-                            <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Hardware"/>
+                            <rdf:Description rdf:about="&kern;Driver"/>
+                            <rdf:Description rdf:about="&kern;Hardware"/>
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&kern;Hardware"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&kern;Driver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">The RoboticSystem concept or entity is the combination of hardware providing some computing abilities (but not only) in order to host a software managing it (managing is control as well as measures).
@@ -1275,14 +1286,14 @@ modified Bruno Patin - 14/09/2013
         <rdfs:subClassOf rdf:resource="&syst;ActuatorSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;EngineDriver"/>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;EngineHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;EngineHardware"/>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;EngineDriver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;SteeredWheelSystem"/>
@@ -1335,6 +1346,26 @@ modified Bruno Patin - 14/09/2013
         <rdfs:subClassOf rdf:resource="&syst;SensorSystem"/>
         <owl:disjointWith rdf:resource="&syst;ProprioceptiveSensorSystem"/>
         <rdfs:comment xml:lang="en">Exteroceptive sensors give the robot information about the surrounding environment allowing the robot to interact with the world. The exteroceptive sensors are classified according to their functionality. Examples: Cameras (image sensors), laser ranging, sonars, infrared sensors, tactile sensors, etc.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#FeedbackInteraction -->
+
+    <owl:Class rdf:about="&syst;FeedbackInteraction">
+        <rdfs:subClassOf rdf:resource="&syst;ControlInteraction"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;isTriggeredBy"/>
+                <owl:allValuesFrom rdf:resource="&kern;Driver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;impacts"/>
+                <owl:allValuesFrom rdf:resource="&syst;Controller"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -1564,7 +1595,7 @@ modified Bruno Patin - 14/09/2013
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#Joint -->
 
     <owl:Class rdf:about="&syst;Joint">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Connector"/>
+        <rdfs:subClassOf rdf:resource="&kern;Connector"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&syst;DegreesOfFreedom"/>
@@ -1655,13 +1686,13 @@ Linkages may be constructed from open chains, closed chains, or a combination of
         <rdfs:subClassOf rdf:resource="&syst;LocomotionSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom rdf:resource="&syst;Leg"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -1801,11 +1832,11 @@ It is operated by a source of energy, usually in the form of an electric current
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#MechanicalLinkage -->
 
     <owl:Class rdf:about="&syst;MechanicalLinkage">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Hardware"/>
+        <rdfs:subClassOf rdf:resource="&kern;Hardware"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
-                <owl:onClass rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#PhysicalObject"/>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:onClass rdf:resource="&kern;PhysicalObject"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1819,7 +1850,7 @@ It is operated by a source of energy, usually in the form of an electric current
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#MiddlewareMessage -->
 
     <owl:Class rdf:about="&syst;MiddlewareMessage">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#OrderedSetForSystemDescription"/>
+        <rdfs:subClassOf rdf:resource="&info;OrderedSetForSystemDescription"/>
         <owl:disjointWith rdf:resource="&syst;RoboticSystemConfigurationData"/>
         <owl:disjointWith rdf:resource="&syst;RoboticSystemInfoData"/>
     </owl:Class>
@@ -1954,7 +1985,7 @@ It is operated by a source of energy, usually in the form of an electric current
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#NoiseSignal -->
 
     <owl:Class rdf:about="&syst;NoiseSignal">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Interaction"/>
+        <rdfs:subClassOf rdf:resource="&kern;Interaction"/>
         <rdfs:comment xml:lang="en">Interaction coming from the environment or from the own platform which could represent a disturbance of the information acquisition of a Hardware Device, or a disturbance of the data transmission between Software Components of the System. This disruption should be detected, interpreted and treated (or simply taken into consideration) by the platform.</rdfs:comment>
     </owl:Class>
     
@@ -2083,7 +2114,7 @@ The PID controller calculation (algorithm) involves three separate constant para
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#PowerDriver -->
 
     <owl:Class rdf:about="&syst;PowerDriver">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Driver"/>
+        <rdfs:subClassOf rdf:resource="&kern;Driver"/>
         <owl:disjointWith rdf:resource="&syst;SensorDriver"/>
         <rdfs:comment xml:lang="en">Software/Driver part of the electric source system of the platform.</rdfs:comment>
     </owl:Class>
@@ -2093,7 +2124,7 @@ The PID controller calculation (algorithm) involves three separate constant para
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#PowerHardware -->
 
     <owl:Class rdf:about="&syst;PowerHardware">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Hardware"/>
+        <rdfs:subClassOf rdf:resource="&kern;Hardware"/>
         <owl:disjointWith rdf:resource="&syst;SensorHardware"/>
         <rdfs:comment xml:lang="en">Hardware part of the electric source system of the platform.</rdfs:comment>
         <kern:TODO xml:lang="en">to be consolidated. ambiguity on the wording as it does not cover for instance hydraulic, explosion, etc.</kern:TODO>
@@ -2107,7 +2138,19 @@ The PID controller calculation (algorithm) involves three separate constant para
         <rdfs:subClassOf rdf:resource="&syst;DriverDeviceSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;PowerHardware"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;PowerDriver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -2116,18 +2159,6 @@ The PID controller calculation (algorithm) involves three separate constant para
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;PowerDriver"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;PowerHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;SensorSystem"/>
@@ -2165,10 +2196,24 @@ modification Bruno Patin - 30/09/2013
     
 
 
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ReferenceInteraction -->
+
+    <owl:Class rdf:about="&syst;ReferenceInteraction">
+        <rdfs:subClassOf rdf:resource="&syst;ControlInteraction"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;impacts"/>
+                <owl:allValuesFrom rdf:resource="&syst;Controller"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticApplication -->
 
     <owl:Class rdf:about="&syst;RoboticApplication">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Application"/>
+        <rdfs:subClassOf rdf:resource="&kern;Application"/>
         <owl:disjointWith rdf:resource="&syst;RoboticMiddleware"/>
         <rdfs:comment xml:lang="en">applcation that is only processing of information.</rdfs:comment>
     </owl:Class>
@@ -2178,10 +2223,10 @@ modification Bruno Patin - 30/09/2013
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticFunctionalSystem -->
 
     <owl:Class rdf:about="&syst;RoboticFunctionalSystem">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Model"/>
+        <rdfs:subClassOf rdf:resource="&kern;Model"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#models"/>
+                <owl:onProperty rdf:resource="&kern;models"/>
                 <owl:allValuesFrom rdf:resource="&syst;RoboticSystem"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -2199,7 +2244,7 @@ modified Bruno Patin - 19/10/2013
         <rdfs:subClassOf rdf:resource="&syst;ManMachineInterfaceSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom rdf:resource="&syst;CameraSystem"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -2216,7 +2261,7 @@ It must assume approximately respective positionning of (mouth and eyes) shape i
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticMiddleware -->
 
     <owl:Class rdf:about="&syst;RoboticMiddleware">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Application"/>
+        <rdfs:subClassOf rdf:resource="&kern;Application"/>
         <rdfs:comment xml:lang="en">A Middleware is an application that connects software with hardware. This application consists of a set of services that allows multiple processes running on one or more machines to interact. This technology evolved to provide for interoperability in support of the move to coherent distributed architectures.
 Middleware sits &quot;in the middle&quot; between software that may be working on different hardware.
 Considering a robotic middleware, its role is to allow the different robotic systems (their different application parts) composing the robot to:
@@ -2234,7 +2279,7 @@ In a robotic platform this is an interoperative software which should be transpa
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticSystem -->
 
     <owl:Class rdf:about="&syst;RoboticSystem">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#CompositeSystem"/>
+        <rdfs:subClassOf rdf:resource="&kern;CompositeSystem"/>
         <kern:author xml:lang="en">creation PROTEUS consortium - 
 modified Bruno Patin - 03/10/2013
 - Robotic system is very difficcult to qualify but is used as such in RobotML thus, an equivalence has been created to the new name, CyberPhysicalSystem</kern:author>
@@ -2245,7 +2290,7 @@ modified Bruno Patin - 03/10/2013
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticSystemConfigurationData -->
 
     <owl:Class rdf:about="&syst;RoboticSystemConfigurationData">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#OrderedSetForSystemDescription"/>
+        <rdfs:subClassOf rdf:resource="&info;OrderedSetForSystemDescription"/>
         <owl:disjointWith rdf:resource="&syst;RoboticSystemInfoData"/>
     </owl:Class>
     
@@ -2254,7 +2299,7 @@ modified Bruno Patin - 03/10/2013
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticSystemInfoData -->
 
     <owl:Class rdf:about="&syst;RoboticSystemInfoData">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#OrderedSetForSystemDescription"/>
+        <rdfs:subClassOf rdf:resource="&info;OrderedSetForSystemDescription"/>
     </owl:Class>
     
 
@@ -2279,7 +2324,7 @@ modified Bruno Patin - 03/10/2013
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SensorDriver -->
 
     <owl:Class rdf:about="&syst;SensorDriver">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Driver"/>
+        <rdfs:subClassOf rdf:resource="&kern;Driver"/>
         <rdfs:comment xml:lang="en">Software part of the Sensor System of a platform which will be composed of drivers for devices like motion tracker, camera, odometer, thermometer, telemeter laser, ...</rdfs:comment>
     </owl:Class>
     
@@ -2288,7 +2333,7 @@ modified Bruno Patin - 03/10/2013
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SensorHardware -->
 
     <owl:Class rdf:about="&syst;SensorHardware">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Hardware"/>
+        <rdfs:subClassOf rdf:resource="&kern;Hardware"/>
         <rdfs:comment xml:lang="en">Hardware part of the Sensor System of a platform which will be composed of devices like motion tracker, camera, odometer, thermometer, telemeter laser, ...</rdfs:comment>
     </owl:Class>
     
@@ -2305,11 +2350,17 @@ modified Bruno Patin - 03/10/2013
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SensorSystem -->
 
     <owl:Class rdf:about="&syst;SensorSystem">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Probe"/>
+        <rdfs:subClassOf rdf:resource="&kern;Probe"/>
         <rdfs:subClassOf rdf:resource="&syst;DriverDeviceSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;SensorDriver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -2322,20 +2373,14 @@ modified Bruno Patin - 03/10/2013
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;SensorDriver"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;SensorHardware"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&syst;isActive"/>
                 <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;SensorHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;SupportingStructure"/>
@@ -2351,7 +2396,7 @@ modified Bruno Patin - 03/10/2013
         <rdfs:subClassOf rdf:resource="&syst;LocomotionSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom rdf:resource="&syst;SteeringWheelHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -2395,11 +2440,11 @@ modified Bruno Patin - 03/10/2013
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SupportingStructure -->
 
     <owl:Class rdf:about="&syst;SupportingStructure">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Hardware"/>
+        <rdfs:subClassOf rdf:resource="&kern;Hardware"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#triggers"/>
-                <owl:someValuesFrom rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#PhysicalInteraction"/>
+                <owl:onProperty rdf:resource="&kern;triggers"/>
+                <owl:someValuesFrom rdf:resource="&kern;PhysicalInteraction"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">This is the concept opposite to any hardware that would modify with time inside its own frame.</rdfs:comment>
@@ -2413,7 +2458,7 @@ modified Bruno Patin - 03/10/2013
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SystemInterface -->
 
     <owl:Class rdf:about="&syst;SystemInterface">
-        <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Software"/>
+        <rdfs:subClassOf rdf:resource="&kern;Software"/>
         <rdfs:comment xml:lang="en">Software component which controls the input or/and output dataflow between a system and its corresponding middleware. A software component like that can be either an software module ot an application. It explains that it is not disjoint of these two kind of concepts.</rdfs:comment>
     </owl:Class>
     
@@ -2528,7 +2573,19 @@ modified Bruno Patin - 03/10/2013
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Clock"/>
+            <rdf:Description rdf:about="&kern;Clock"/>
+            <rdf:Description rdf:about="&syst;ActuatorHardware"/>
+            <rdf:Description rdf:about="&syst;CommunicationHardware"/>
+            <rdf:Description rdf:about="&syst;ControlStationSystem"/>
+            <rdf:Description rdf:about="&syst;PowerHardware"/>
+            <rdf:Description rdf:about="&syst;SensorHardware"/>
+            <rdf:Description rdf:about="&syst;SupportingStructure"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&kern;Clock"/>
             <rdf:Description rdf:about="&syst;ComputationalHardware"/>
             <rdf:Description rdf:about="&syst;SupportingStructure"/>
         </owl:members>
@@ -2536,13 +2593,9 @@ modified Bruno Patin - 03/10/2013
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Clock"/>
-            <rdf:Description rdf:about="&syst;ActuatorHardware"/>
-            <rdf:Description rdf:about="&syst;CommunicationHardware"/>
-            <rdf:Description rdf:about="&syst;ControlStationSystem"/>
-            <rdf:Description rdf:about="&syst;PowerHardware"/>
-            <rdf:Description rdf:about="&syst;SensorHardware"/>
-            <rdf:Description rdf:about="&syst;SupportingStructure"/>
+            <rdf:Description rdf:about="&syst;ControllerToControlledSystemInteraction"/>
+            <rdf:Description rdf:about="&syst;FeedbackInteraction"/>
+            <rdf:Description rdf:about="&syst;ReferenceInteraction"/>
         </owl:members>
     </rdf:Description>
     
@@ -2573,7 +2626,7 @@ modified Bruno Patin - 03/10/2013
                 <rdf:first>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Application"/>
+                        <swrl:classPredicate rdf:resource="&kern;Application"/>
                         <swrl:argument1 rdf:resource="urn:swrl#z"/>
                     </rdf:Description>
                 </rdf:first>
@@ -2593,7 +2646,7 @@ modified Bruno Patin - 03/10/2013
                                                 <rdf:first>
                                                     <rdf:Description>
                                                         <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                        <swrl:propertyPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
+                                                        <swrl:propertyPredicate rdf:resource="&kern;aggregates"/>
                                                         <swrl:argument1 rdf:resource="urn:swrl#x"/>
                                                         <swrl:argument2 rdf:resource="urn:swrl#z"/>
                                                     </rdf:Description>
@@ -2603,7 +2656,7 @@ modified Bruno Patin - 03/10/2013
                                         <rdf:first>
                                             <rdf:Description>
                                                 <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                <swrl:propertyPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
+                                                <swrl:propertyPredicate rdf:resource="&kern;aggregates"/>
                                                 <swrl:argument1 rdf:resource="urn:swrl#x"/>
                                                 <swrl:argument2 rdf:resource="urn:swrl#y"/>
                                             </rdf:Description>
@@ -2637,7 +2690,7 @@ modified Bruno Patin - 03/10/2013
                 <rdf:first>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                        <swrl:propertyPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#executesOn"/>
+                        <swrl:propertyPredicate rdf:resource="&kern;executesOn"/>
                         <swrl:argument2 rdf:resource="urn:swrl#y"/>
                         <swrl:argument1 rdf:resource="urn:swrl#z"/>
                     </rdf:Description>
