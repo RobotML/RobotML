@@ -13,11 +13,11 @@
     <!ENTITY swrla "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#" >
     <!ENTITY sqwrl "http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#" >
     <!ENTITY robo "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#" >
-    <!ENTITY kern "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#" >
     <!ENTITY syst "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#" >
+    <!ENTITY kern "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#" >
     <!ENTITY miss "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#" >
-    <!ENTITY envi "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#" >
     <!ENTITY info "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#" >
+    <!ENTITY envi "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#" >
     <!ENTITY land "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#" >
 ]>
 
@@ -27,8 +27,8 @@
      xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
      xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
      xmlns:robo="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#"
-     xmlns:land="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#"
      xmlns:kern="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#"
+     xmlns:land="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/LandmarkSearchScenario.owl#"
      xmlns:info="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#"
      xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
@@ -484,6 +484,8 @@
 
     <owl:NamedIndividual rdf:about="&land;WheelControl">
         <rdf:type rdf:resource="&syst;Closed-LoopControlSystem"/>
+        <kern:aggregates rdf:resource="&land;LeftEngineSystem"/>
+        <kern:aggregates rdf:resource="&land;RightEngineSystem"/>
     </owl:NamedIndividual>
     
 
@@ -539,6 +541,7 @@
         <kern:aggregates rdf:resource="&land;OdometrySystem"/>
         <kern:aggregates rdf:resource="&land;ProxymetrySystem"/>
         <kern:aggregates rdf:resource="&land;RightEngineSystem"/>
+        <kern:aggregates rdf:resource="&land;WheelControl"/>
         <kern:aggregates rdf:resource="&land;WifiCommunicationSystem"/>
     </owl:NamedIndividual>
     
