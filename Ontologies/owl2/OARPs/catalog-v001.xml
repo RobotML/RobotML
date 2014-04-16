@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
-    <uri id="Imports Wizard Entry" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/OARPs/AirOARP.owl" uri="file:/E:/Data/travail/france/anr/PROTEUS/Ontologie/old2/RobotML/Ontologies/owl2/OARPs/AirOARP.owl"/>
-    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1384610487031" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/OARPs.owl" uri="OARPs.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1384610487031" name="http://www.anr-proteus.fr/sites/default/files/download/Ontology/OARPs/AirOARP.owl" uri="AirOARP.owl"/>
-    </group>
-</catalog>

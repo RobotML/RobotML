@@ -1,2 +1,0 @@
-Le modèle complet du scenario est présent dans le svn du wp3 à cette adresse:
-https://dassault3.ddo.net/svn/proteus-wp3/trunk/Challenge_4/Challenge4_Model/Demo_RYC

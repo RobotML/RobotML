@@ -1,6 +1,0 @@
-../simulation?forceReadOnly=true
-../environment?forceReadOnly=true
-../robot?forceReadOnly=true
-../information?forceReadOnly=true
-../kernel?forceReadOnly=true
-../system?forceReadOnly=true
