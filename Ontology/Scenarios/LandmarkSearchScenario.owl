@@ -539,7 +539,7 @@
 
     <owl:NamedIndividual rdf:about="&land;WifiBot">
         <rdf:type rdf:resource="&kern;CompositeSystem"/>
-        <rdf:type rdf:resource="&robo;DifferentialVehicle"/>
+        <rdf:type rdf:resource="&robo;DifferentialRobot"/>
         <kern:isAtomic rdf:datatype="&xsd;boolean">false</kern:isAtomic>
         <kern:aggregates rdf:resource="&land;CameraSystem"/>
         <kern:aggregates rdf:resource="&land;GPSSystem"/>

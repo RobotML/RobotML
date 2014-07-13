@@ -87,9 +87,9 @@
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#Car-likeVehicle -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#Car-likeRobot -->
 
-    <owl:Class rdf:about="&robo;Car-likeVehicle"/>
+    <owl:Class rdf:about="&robo;Car-likeRobot"/>
     
 
 
@@ -415,7 +415,7 @@
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/UrbanScenario.owl#Taxi -->
 
     <owl:NamedIndividual rdf:about="&urba;Taxi">
-        <rdf:type rdf:resource="&robo;Car-likeVehicle"/>
+        <rdf:type rdf:resource="&robo;Car-likeRobot"/>
         <kern:isAtomic rdf:datatype="&xsd;boolean">false</kern:isAtomic>
         <kern:aggregates rdf:resource="&urba;LIDARSystem"/>
         <robo:movesOver rdf:resource="&urba;PavinTerrain"/>

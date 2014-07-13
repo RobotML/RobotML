@@ -435,7 +435,12 @@ modified Bruno Patin - 15/09/2013
 
     <owl:Class rdf:about="&envi;Pedestrian">
         <rdfs:subClassOf rdf:resource="&kern;Human"/>
-        <rdfs:comment xml:lang="en">Physical Agent in a scenario which perfoms the action of going on foot, i.e. walking.</rdfs:comment>
+        <rdfs:comment xml:lang="en">A Pedestrian is a human being that is, most of the time , walking and sometimes on mobile chair. Pedestrian is often a classification information with respect to street usage and opposite to vehicles.</rdfs:comment>
+        <kern:author xml:lang="en">PROTEUS consortium - 
+- creation
+Bruno Patin - 20/06/2014
+- introduction of author field
+- modification of description</kern:author>
     </owl:Class>
     
 

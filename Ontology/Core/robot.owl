@@ -83,8 +83,8 @@
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&robo;AirVehicle"/>
-                    <rdf:Description rdf:about="&robo;HybridVehicle"/>
+                    <rdf:Description rdf:about="&robo;AirRobot"/>
+                    <rdf:Description rdf:about="&robo;HybridRobot"/>
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
@@ -102,8 +102,8 @@
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="&kern;Human"/>
-                    <rdf:Description rdf:about="&robo;HybridVehicle"/>
-                    <rdf:Description rdf:about="&robo;UnderwaterVehicle"/>
+                    <rdf:Description rdf:about="&robo;HybridRobot"/>
+                    <rdf:Description rdf:about="&robo;UnderwaterRobot"/>
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
@@ -127,6 +127,15 @@
     <owl:ObjectProperty rdf:about="&robo;movesOverGround">
         <rdfs:comment xml:lang="en">UGV and humans move over stairs, floor and land surface.</rdfs:comment>
         <rdfs:subPropertyOf rdf:resource="&robo;movesOver"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&kern;Human"/>
+                    <rdf:Description rdf:about="&robo;GroundRobot"/>
+                    <rdf:Description rdf:about="&robo;HybridRobot"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
         <rdfs:range>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -136,15 +145,6 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:range>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&kern;Human"/>
-                    <rdf:Description rdf:about="&robo;GroundVehicle"/>
-                    <rdf:Description rdf:about="&robo;HybridVehicle"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -159,8 +159,8 @@
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="&kern;Human"/>
-                    <rdf:Description rdf:about="&robo;HybridVehicle"/>
-                    <rdf:Description rdf:about="&robo;SurfaceVehicle"/>
+                    <rdf:Description rdf:about="&robo;HybridRobot"/>
+                    <rdf:Description rdf:about="&robo;SurfaceRobot"/>
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
@@ -216,9 +216,9 @@
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#AirVehicle -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#AirRobot -->
 
-    <owl:Class rdf:about="&robo;AirVehicle">
+    <owl:Class rdf:about="&robo;AirRobot">
         <rdfs:subClassOf rdf:resource="&robo;MobileRobot"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -226,35 +226,35 @@
                 <owl:someValuesFrom rdf:resource="&envi;Atmosphere"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="&robo;GroundVehicle"/>
-        <owl:disjointWith rdf:resource="&robo;HybridVehicle"/>
-        <owl:disjointWith rdf:resource="&robo;SurfaceVehicle"/>
-        <owl:disjointWith rdf:resource="&robo;UnderwaterVehicle"/>
-        <rdfs:comment xml:lang="en">Air Vehicle. Only the vehicles with either fixed (like planes) either turning (like helicopters) sails will be considered in this definition.</rdfs:comment>
-        <rdfs:comment xml:lang="en">Considering wikipedia definition, vehicle refers to something transporting cargo or persons.</rdfs:comment>
+        <owl:disjointWith rdf:resource="&robo;GroundRobot"/>
+        <owl:disjointWith rdf:resource="&robo;HybridRobot"/>
+        <owl:disjointWith rdf:resource="&robo;SurfaceRobot"/>
+        <owl:disjointWith rdf:resource="&robo;UnderwaterRobot"/>
+        <kern:author xml:lang="en">20/06/2014 - Bruno Patin
+- renamed from AirVehicle to AirRobot</kern:author>
+        <rdfs:comment xml:lang="en">Air robots are those able to move in air.
+Only aircraft with either fixed (like planes) either rotary (like helicopters) wings are considered in this definition.</rdfs:comment>
         <kern:TODO xml:lang="en">there must be linked somewhat like a chassis but there is a specific aeronautical wording.</kern:TODO>
     </owl:Class>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#Car-likeVehicle -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#AutonomousRobot -->
 
-    <owl:Class rdf:about="&robo;Car-likeVehicle">
-        <rdfs:subClassOf rdf:resource="&robo;GroundVehicle"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:onClass rdf:resource="&syst;Chassis"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:onClass rdf:resource="&syst;EngineSystem"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+    <owl:Class rdf:about="&robo;AutonomousRobot">
+        <rdfs:subClassOf rdf:resource="&kern;Agent"/>
+        <rdfs:subClassOf rdf:resource="&robo;Robot"/>
+        <kern:openCycURI rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rwQr1pJwpEbGdrcN5Y29ycA</kern:openCycURI>
+        <rdfs:comment xml:lang="en">An autonomous robot computes its course of actions with a certain level of autonomy meaning there are decisions that the robot can implement for itself and not totally monitored by other agents.</rdfs:comment>
+        <kern:author xml:lang="en">creation Bruno Patin / Jean-Loup Farges - 13/07/2014</kern:author>
+    </owl:Class>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#Car-likeRobot -->
+
+    <owl:Class rdf:about="&robo;Car-likeRobot">
+        <rdfs:subClassOf rdf:resource="&robo;GroundRobot"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
@@ -262,16 +262,6 @@
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="&robo;DifferentialVehicle"/>
-        <rdfs:comment xml:lang="en">Wheeled robot with a driven mechanism based in axes of wheels (Front-wheel Driven, Rear-wheel Driven or Four-wheel Driven). Normally composed of 4 wheels. It requires an additional steering motion mechanism to turn the vehicle.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#DifferentialVehicle -->
-
-    <owl:Class rdf:about="&robo;DifferentialVehicle">
-        <rdfs:subClassOf rdf:resource="&robo;GroundVehicle"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;has"/>
@@ -283,7 +273,31 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:onClass rdf:resource="&syst;EngineSystem"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&robo;DifferentialRobot"/>
+        <rdfs:comment xml:lang="en">Wheeled robot with a driven mechanism based in axes of wheels (Front-wheel Driven, Rear-wheel Driven or Four-wheel Driven). Normally composed of 4 wheels. It requires an additional steering motion mechanism to turn the vehicle.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#DifferentialRobot -->
+
+    <owl:Class rdf:about="&robo;DifferentialRobot">
+        <rdfs:subClassOf rdf:resource="&robo;GroundRobot"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:onClass rdf:resource="&syst;EngineSystem"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;has"/>
+                <owl:onClass rdf:resource="&syst;Chassis"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A differential vehicle is a mobile robot whose movement is based on two separately driven velocities of the rotational mechanism of both sides of the robot body. It can thus change its direction by varying the relative rate of rotation and hence does not require an additional steering motion. We can find wheeled differential vehicles or caterpillar vehicles.</rdfs:comment>
@@ -327,9 +341,9 @@ A “robotic system of systems” is a specialised system of systems where there
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#GroundVehicle -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#GroundRobot -->
 
-    <owl:Class rdf:about="&robo;GroundVehicle">
+    <owl:Class rdf:about="&robo;GroundRobot">
         <rdfs:subClassOf rdf:resource="&robo;MobileRobot"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -337,40 +351,40 @@ A “robotic system of systems” is a specialised system of systems where there
                 <owl:someValuesFrom rdf:resource="&envi;Surface"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="&robo;HybridVehicle"/>
-        <owl:disjointWith rdf:resource="&robo;SurfaceVehicle"/>
-        <owl:disjointWith rdf:resource="&robo;UnderwaterVehicle"/>
+        <owl:disjointWith rdf:resource="&robo;HybridRobot"/>
+        <owl:disjointWith rdf:resource="&robo;SurfaceRobot"/>
+        <owl:disjointWith rdf:resource="&robo;UnderwaterRobot"/>
         <rdfs:comment xml:lang="en">Ground Vehicle. Only the wheeled and caterpillar robotic vehicles will be considered.</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#HybridVehicle -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#HybridRobot -->
 
-    <owl:Class rdf:about="&robo;HybridVehicle">
+    <owl:Class rdf:about="&robo;HybridRobot">
         <rdfs:subClassOf rdf:resource="&robo;MobileRobot"/>
-        <owl:disjointWith rdf:resource="&robo;SurfaceVehicle"/>
-        <owl:disjointWith rdf:resource="&robo;UnderwaterVehicle"/>
+        <owl:disjointWith rdf:resource="&robo;SurfaceRobot"/>
+        <owl:disjointWith rdf:resource="&robo;UnderwaterRobot"/>
         <rdfs:comment xml:lang="en">Type of vehicle which can move in different environments. Like the Amphibious vehicles.</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#LeggedVehicle -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#LeggedRobot -->
 
-    <owl:Class rdf:about="&robo;LeggedVehicle">
-        <rdfs:subClassOf rdf:resource="&robo;GroundVehicle"/>
+    <owl:Class rdf:about="&robo;LeggedRobot">
+        <rdfs:subClassOf rdf:resource="&robo;GroundRobot"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:onClass rdf:resource="&syst;Chassis"/>
+                <owl:onClass rdf:resource="&syst;LegSystem"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:onClass rdf:resource="&syst;LegSystem"/>
+                <owl:onClass rdf:resource="&syst;Chassis"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -409,8 +423,13 @@ A “robotic system of systems” is a specialised system of systems where there
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#Robot -->
 
     <owl:Class rdf:about="&robo;Robot">
-        <rdfs:subClassOf rdf:resource="&kern;Agent"/>
         <rdfs:subClassOf rdf:resource="&kern;CompositeSystem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;hasProbe"/>
+                <owl:allValuesFrom rdf:resource="&syst;SensorSystem"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
@@ -423,24 +442,23 @@ A “robotic system of systems” is a specialised system of systems where there
                 <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;hasProbe"/>
-                <owl:allValuesFrom rdf:resource="&syst;SensorSystem"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;DriverDeviceSystem"/>
-        <rdfs:comment xml:lang="en">A robot is not only an agent but also a composite system. It aggregates only embedded systems. Mainly this system is used as a classifier for the different types of robots.</rdfs:comment>
+        <rdfs:comment xml:lang="en">A robot is a physical object that is designed by a human agent in order to provide a service by acting on the physical world that are eventually monitored by another agent (be it human or another system).
+A robot is a composite system but it aggregates only Cyber Physical systems.
+This system is also used as a classifier for the different types of robots.</rdfs:comment>
         <kern:author xml:lang="en">creation PROTEUS consortium - 
 modified Bruno Patin - 30/09/2013
-- comment has changed due to revision of what is the concept</kern:author>
+- comment has changed due to revision of what is the concept
+- alignment done to opencyc
+modified Bruno Patin - 13/07/2014
+- alignment to opencyc deemed incorrect. In order to take into account pure reactive robots (e.g. exo skeleton) it was necessary to introduce a new concept, autonomous robot.</kern:author>
     </owl:Class>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#SurfaceVehicle -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#SurfaceRobot -->
 
-    <owl:Class rdf:about="&robo;SurfaceVehicle">
+    <owl:Class rdf:about="&robo;SurfaceRobot">
         <rdfs:subClassOf rdf:resource="&robo;MobileRobot"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -448,15 +466,15 @@ modified Bruno Patin - 30/09/2013
                 <owl:someValuesFrom rdf:resource="&envi;WaterSurface"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="&robo;UnderwaterVehicle"/>
+        <owl:disjointWith rdf:resource="&robo;UnderwaterRobot"/>
         <rdfs:comment xml:lang="en">Water Vehicle that remains in the surface of the water (boats or ships-like vehicles).</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#UnderwaterVehicle -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#UnderwaterRobot -->
 
-    <owl:Class rdf:about="&robo;UnderwaterVehicle">
+    <owl:Class rdf:about="&robo;UnderwaterRobot">
         <rdfs:subClassOf rdf:resource="&robo;MobileRobot"/>
         <rdfs:subClassOf>
             <owl:Restriction>

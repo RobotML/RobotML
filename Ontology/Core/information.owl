@@ -319,7 +319,7 @@ modified Bruno Patin - 13/10/2013
     <owl:ObjectProperty rdf:about="&kern;takesAsStochasticInput">
         <rdfs:comment xml:lang="en">An evolution model which introduces distortion in the inputs (either in the information itself, either in the acquisition process of this information), obtains these inputs from a noise model or a biais model.</rdfs:comment>
         <kern:TODO xml:lang="en">This comment is to be reviewed. The NoiseModel is here an algorithm. Are we sure that the stochastic nature of the stochastic evolution must be described by an algorithm?</kern:TODO>
-        <rdfs:domain rdf:resource="&kern;StochasticEvolutionModel"/>
+        <rdfs:domain rdf:resource="&kern;StochasticEvolution"/>
         <rdfs:range>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -875,14 +875,14 @@ modified Bruno Patin - 13/10/2013
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;homogeneous"/>
-                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
+                <owl:onProperty rdf:resource="&info;Dimension"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;Dimension"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
+                <owl:onProperty rdf:resource="&info;homogeneous"/>
+                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">Necessary to have binary operations and thus functions.</rdfs:comment>
@@ -914,14 +914,14 @@ modified Bruno Patin - 13/10/2013
         <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#SourceCode"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;describe"/>
-                <owl:allValuesFrom rdf:resource="&info;BinarySoftware"/>
+                <owl:onProperty rdf:resource="&kern;valued"/>
+                <owl:someValuesFrom rdf:resource="&xsd;byte"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;valued"/>
-                <owl:someValuesFrom rdf:resource="&xsd;byte"/>
+                <owl:onProperty rdf:resource="&kern;describe"/>
+                <owl:allValuesFrom rdf:resource="&info;BinarySoftware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <kern:author xml:lang="en">creation Bruno Patin - 13/10/2013</kern:author>
@@ -983,14 +983,14 @@ modified Bruno Patin - 13/10/2013
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;containsAbstraction"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
+                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
+                <owl:allValuesFrom rdf:resource="&info;Boolean"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
-                <owl:allValuesFrom rdf:resource="&info;Boolean"/>
+                <owl:onProperty rdf:resource="&info;containsAbstraction"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;CrossProduct"/>
@@ -1143,7 +1143,7 @@ A conditional expression is associated with an operation on two logical values, 
         <rdfs:subClassOf rdf:resource="&info;Set"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;Dimension"/>
+                <owl:onProperty rdf:resource="&info;containsAbstraction"/>
                 <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1155,7 +1155,7 @@ A conditional expression is associated with an operation on two logical values, 
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;containsAbstraction"/>
+                <owl:onProperty rdf:resource="&info;Dimension"/>
                 <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1555,14 +1555,14 @@ Can be completed with additional attributes such as : satellites information, ep
         <rdfs:subClassOf rdf:resource="&info;CrossProduct"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;homogeneous"/>
-                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
+                <owl:onProperty rdf:resource="&info;containsAbstraction"/>
+                <owl:allValuesFrom rdf:resource="&info;I"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;containsAbstraction"/>
-                <owl:allValuesFrom rdf:resource="&info;I"/>
+                <owl:onProperty rdf:resource="&info;homogeneous"/>
+                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;Rn"/>
@@ -1915,14 +1915,14 @@ Message code and/or text info.</rdfs:comment>
         <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;hasSet"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
+                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
+                <owl:allValuesFrom rdf:resource="&info;PrimitiveData"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
-                <owl:allValuesFrom rdf:resource="&info;PrimitiveData"/>
+                <owl:onProperty rdf:resource="&info;hasSet"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;OperationalInformation"/>
@@ -2494,14 +2494,14 @@ boolean, classical number representation (int, double, ...), character</rdfs:com
         <rdfs:subClassOf rdf:resource="&info;Function"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasInput"/>
-                <owl:allValuesFrom rdf:resource="&info;BiProduct"/>
+                <owl:onProperty rdf:resource="&info;hasSet"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;hasSet"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasInput"/>
+                <owl:allValuesFrom rdf:resource="&info;BiProduct"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -3231,20 +3231,20 @@ Thus, the inputs of the different states would be different from a non-distortio
         <rdf:type rdf:resource="&owl;AllDifferent"/>
         <owl:distinctMembers rdf:parseType="Collection">
             <rdf:Description rdf:about="&info;length"/>
-        </owl:distinctMembers>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDifferent"/>
-        <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="&info;true"/>
+            <rdf:Description rdf:about="&info;mass"/>
+            <rdf:Description rdf:about="&info;time"/>
         </owl:distinctMembers>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDifferent"/>
         <owl:distinctMembers rdf:parseType="Collection">
             <rdf:Description rdf:about="&info;length"/>
-            <rdf:Description rdf:about="&info;mass"/>
-            <rdf:Description rdf:about="&info;time"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&info;true"/>
         </owl:distinctMembers>
     </rdf:Description>
 </rdf:RDF>

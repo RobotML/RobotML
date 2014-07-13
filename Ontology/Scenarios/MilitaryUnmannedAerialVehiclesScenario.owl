@@ -13,11 +13,11 @@
     <!ENTITY swrla "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#" >
     <!ENTITY sqwrl "http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#" >
     <!ENTITY robo "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#" >
-    <!ENTITY kern "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#" >
     <!ENTITY syst "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#" >
+    <!ENTITY kern "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#" >
     <!ENTITY miss "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/mission.owl#" >
-    <!ENTITY envi "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#" >
     <!ENTITY info "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#" >
+    <!ENTITY envi "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#" >
     <!ENTITY mili "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#" >
 ]>
 
@@ -90,9 +90,9 @@
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#AirVehicle -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#AirRobot -->
 
-    <owl:Class rdf:about="&robo;AirVehicle"/>
+    <owl:Class rdf:about="&robo;AirRobot"/>
     
 
 
@@ -345,7 +345,7 @@
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UAV10 -->
 
     <owl:NamedIndividual rdf:about="&mili;UAV10">
-        <rdf:type rdf:resource="&robo;AirVehicle"/>
+        <rdf:type rdf:resource="&robo;AirRobot"/>
     </owl:NamedIndividual>
     
 
@@ -353,7 +353,7 @@
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Scenarios/MilitaryUnmannedAerialVehiclesScenario.owl#UAV9 -->
 
     <owl:NamedIndividual rdf:about="&mili;UAV9">
-        <rdf:type rdf:resource="&robo;AirVehicle"/>
+        <rdf:type rdf:resource="&robo;AirRobot"/>
     </owl:NamedIndividual>
     
 

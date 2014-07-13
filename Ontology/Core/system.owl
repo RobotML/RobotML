@@ -435,6 +435,10 @@ Each time we introduced relationships between concepts defined in the system ont
     <owl:DatatypeProperty rdf:about="&syst;DegreesOfFreedom">
         <kern:wikipediaURI rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/Degrees_of_freedom</kern:wikipediaURI>
         <rdfs:comment xml:lang="en">In many scientific fields, the degrees of freedom of a system is the number of parameters of the system that may vary independently. For example, the position of a figure in the plane has three degrees of freedom: its orientation and the two coordinates of any fixed point of the figure.</rdfs:comment>
+        <kern:author xml:lang="en">created Jean-Loup Farges - 
+modified Bruno Patin - 21/06/2014
+- annotation TODO added</kern:author>
+        <kern:TODO xml:lang="en">there is a clear link between degrees of freedom data property and constrainsFrame property that is to establish</kern:TODO>
         <rdfs:domain rdf:resource="&syst;Joint"/>
         <rdfs:range rdf:resource="&xsd;positiveInteger"/>
     </owl:DatatypeProperty>
@@ -645,12 +649,6 @@ This is clearly a mistake to be repaired.</kern:TODO>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;ActuatorDriver"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -665,6 +663,12 @@ This is clearly a mistake to be repaired.</kern:TODO>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom rdf:resource="&syst;ActuatorHardware"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;ActuatorDriver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;CommunicationSystem"/>
@@ -920,13 +924,13 @@ modified Bruno Patin - 14/09/2013
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;CommunicationHardware"/>
+                <owl:someValuesFrom rdf:resource="&syst;CommunicationDriver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;CommunicationDriver"/>
+                <owl:someValuesFrom rdf:resource="&syst;CommunicationHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1091,7 +1095,7 @@ modified Bruno Patin - 30/09/2013
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ControlStationSystem -->
 
     <owl:Class rdf:about="&syst;ControlStationSystem">
-        <rdfs:subClassOf rdf:resource="&kern;Hardware"/>
+        <rdfs:subClassOf rdf:resource="&syst;MixedSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;triggers"/>
@@ -1102,10 +1106,12 @@ modified Bruno Patin - 30/09/2013
         <owl:disjointWith rdf:resource="&syst;PowerHardware"/>
         <owl:disjointWith rdf:resource="&syst;SensorHardware"/>
         <rdfs:comment xml:lang="en">A control station system is a control centre that provides the facilities for human control ofrobots.</rdfs:comment>
-        <kern:TODO xml:lang="en">a ControlStation SYSTEM cannot be in hardware as it would be only the cabin, computers, screens, etc.</kern:TODO>
         <kern:author xml:lang="en">creation PROTEUS consortium
 modified Bruno Patin - 19/10/2013
-- TODO annotation added</kern:author>
+- TODO annotation added
+modified Bruno Patin - 01/07/2014
+- moved from Hardware to MixedSystem
+- removal of TODO annotation</kern:author>
     </owl:Class>
     
 
@@ -1158,18 +1164,6 @@ modified Bruno Patin - 19/10/2013
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&kern;Application"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&kern;Hardware"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -1179,6 +1173,18 @@ modified Bruno Patin - 19/10/2013
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&kern;Application"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&kern;Hardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <kern:wikipediaURI rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/Cyber-physical_system</kern:wikipediaURI>
@@ -1209,6 +1215,18 @@ modified Bruno Patin - 19/10/2013
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&kern;Driver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&kern;Hardware"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom rdf:resource="&syst;ComputationalHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1223,18 +1241,6 @@ modified Bruno Patin - 19/10/2013
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&kern;Hardware"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&kern;Driver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">The RoboticSystem concept or entity is the combination of hardware providing some computing abilities (but not only) in order to host a software managing it (managing is control as well as measures).
@@ -1603,12 +1609,23 @@ modified Bruno Patin - 14/09/2013
             </owl:Restriction>
         </rdfs:subClassOf>
         <kern:openCycURI rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4r4wAZortWEdmAAAACs6hRjg</kern:openCycURI>
-        <kern:TODO xml:lang="en">In opencyc a joint is a sub-type of a junction that is a subtype of a connector. Here a joint is a sub-type of physical interaction that is a sub-type of interaction. To think to the possibility of allignment.</kern:TODO>
         <rdfs:comment xml:lang="en">In order to define Joint it is necessary to understand Mechanical linkage thus the following description.
 
 A mechanical linkage is an assembly of bodies connected to manage forces and movement. The movement of a body, or link, is studied using geometry so the link is considered to be rigid. The connections between links are modeled as providing ideal movement, pure rotation or sliding for example, and are called joints. A linkage modeled as a network of rigid links and ideal joints is called a kinematic chain.
 
-Linkages may be constructed from open chains, closed chains, or a combination of open and closed chains. Each link in a chain is connected by a joint to one or more other links. Thus, a kinematic chain can be modeled as a graph in which the links are paths and the joints are vertices, which is called a linkage graph.</rdfs:comment>
+Linkages may be constructed from open chains, closed chains, or a combination of open and closed chains. Each link in a chain is connected by a joint to one or more other links. Thus, a kinematic chain can be modeled as a graph in which the links are paths and the joints are vertices, which is called a linkage graph.
+
+This description means that a Joint implies the constrainsFrame property between the two Objects linked.</rdfs:comment>
+        <kern:author xml:lang="en">Jean-Loup Farges - 
+- creation
+Bruno Patin - 21/06/2014
+- deletion of TODO that was out of synch
+- addition to the comment
+Bruno Patin - 02/07/2014
+- addition of a new TODO</kern:author>
+        <kern:TODO xml:lang="en">This concept should impact the constrainsFrame property as the number of degrees of freedom is depending of the type of Joint.
+A rule should exist to tell that if there is such a bonding then the predicate applies to the two linked objects.
+In order to implement this it is necessary to put this rule in the system ontology that is defining joint...</kern:TODO>
         <kern:wikipediaURI xml:lang="en">http://en.wikipedia.org/wiki/Linkage_%28mechanical%29#Joints</kern:wikipediaURI>
     </owl:Class>
     
@@ -1687,12 +1704,6 @@ Linkages may be constructed from open chains, closed chains, or a combination of
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;Leg"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -1701,6 +1712,12 @@ Linkages may be constructed from open chains, closed chains, or a combination of
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;Leg"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -2139,18 +2156,6 @@ The PID controller calculation (algorithm) involves three separate constant para
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;PowerHardware"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;PowerDriver"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -2159,6 +2164,18 @@ The PID controller calculation (algorithm) involves three separate constant para
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;PowerHardware"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;PowerDriver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;SensorSystem"/>
@@ -2355,7 +2372,19 @@ modified Bruno Patin - 03/10/2013
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;SensorHardware"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:someValuesFrom rdf:resource="&syst;SensorDriver"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&syst;isActive"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2369,18 +2398,6 @@ modified Bruno Patin - 03/10/2013
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&syst;isActive"/>
-                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;SensorHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;SupportingStructure"/>
@@ -2573,6 +2590,14 @@ modified Bruno Patin - 03/10/2013
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&syst;ControllerToControlledSystemInteraction"/>
+            <rdf:Description rdf:about="&syst;FeedbackInteraction"/>
+            <rdf:Description rdf:about="&syst;ReferenceInteraction"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
             <rdf:Description rdf:about="&kern;Clock"/>
             <rdf:Description rdf:about="&syst;ActuatorHardware"/>
             <rdf:Description rdf:about="&syst;CommunicationHardware"/>
@@ -2588,14 +2613,6 @@ modified Bruno Patin - 03/10/2013
             <rdf:Description rdf:about="&kern;Clock"/>
             <rdf:Description rdf:about="&syst;ComputationalHardware"/>
             <rdf:Description rdf:about="&syst;SupportingStructure"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&syst;ControllerToControlledSystemInteraction"/>
-            <rdf:Description rdf:about="&syst;FeedbackInteraction"/>
-            <rdf:Description rdf:about="&syst;ReferenceInteraction"/>
         </owl:members>
     </rdf:Description>
     
@@ -2623,13 +2640,6 @@ modified Bruno Patin - 03/10/2013
         <swrl:body>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="&kern;Application"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
-                    </rdf:Description>
-                </rdf:first>
                 <rdf:rest>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2639,6 +2649,14 @@ modified Bruno Patin - 03/10/2013
                                 <rdf:rest>
                                     <rdf:Description>
                                         <rdf:type rdf:resource="&swrl;AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="&kern;aggregates"/>
+                                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                                <swrl:argument2 rdf:resource="urn:swrl#y"/>
+                                            </rdf:Description>
+                                        </rdf:first>
                                         <rdf:rest>
                                             <rdf:Description>
                                                 <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2653,14 +2671,6 @@ modified Bruno Patin - 03/10/2013
                                                 </rdf:first>
                                             </rdf:Description>
                                         </rdf:rest>
-                                        <rdf:first>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                <swrl:propertyPredicate rdf:resource="&kern;aggregates"/>
-                                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                                                <swrl:argument2 rdf:resource="urn:swrl#y"/>
-                                            </rdf:Description>
-                                        </rdf:first>
                                     </rdf:Description>
                                 </rdf:rest>
                                 <rdf:first>
@@ -2681,6 +2691,13 @@ modified Bruno Patin - 03/10/2013
                         </rdf:first>
                     </rdf:Description>
                 </rdf:rest>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&kern;Application"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
+                    </rdf:Description>
+                </rdf:first>
             </rdf:Description>
         </swrl:body>
         <swrl:head>
