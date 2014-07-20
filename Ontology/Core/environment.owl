@@ -61,6 +61,23 @@
     
 
 
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#evolvesIn -->
+
+    <owl:ObjectProperty rdf:about="&envi;evolvesIn">
+        <rdfs:comment xml:lang="en">This property is linked to the spatial relationships that can exist between physical objects. This one expresses the fact that one physical object is included in at least one other Physical object. If there is more than one physical object in which the physical object #1 is included then there will appear at least one Surface object through which the physical object #1 evolves through (see this other property). </rdfs:comment>
+        <kern:author xml:lang="en">creation PROTEUS consortium - 
+modified Bruno Patin - 10/09/2013
+- comment modified
+- TODO completed
+modified Bruno Patin - 20/07/2014
+- comment completed et TODO deleted</kern:author>
+        <rdfs:domain rdf:resource="&envi;SolidObject"/>
+        <rdfs:range rdf:resource="&kern;PhysicalObject"/>
+        <rdfs:subPropertyOf rdf:resource="&kern;evolvesSpatiallyWithRespectTo"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#forbidsMovement -->
 
     <owl:ObjectProperty rdf:about="&envi;forbidsMovement">
@@ -159,15 +176,6 @@
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#isAssociatedToPO -->
-
-    <owl:ObjectProperty rdf:about="&envi;isAssociatedToPO">
-        <rdfs:domain rdf:resource="&kern;Frame"/>
-        <rdfs:range rdf:resource="&kern;PhysicalObject"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#isLocatedOver -->
 
     <owl:ObjectProperty rdf:about="&envi;isLocatedOver">
@@ -197,14 +205,6 @@
     </owl:ObjectProperty>
     
 
-
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#definesAFrame -->
-
-    <rdf:Description rdf:about="&kern;definesAFrame">
-        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
-        <owl:inverseOf rdf:resource="&envi;isAssociatedToPO"/>
-    </rdf:Description>
-    
 
 
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasFSMActivity -->
@@ -347,13 +347,13 @@
         <rdfs:subClassOf rdf:resource="&kern;PhysicalInteraction"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;impacts"/>
+                <owl:onProperty rdf:resource="&kern;systemSource"/>
                 <owl:allValuesFrom rdf:resource="&kern;PhysicalObject"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;systemSource"/>
+                <owl:onProperty rdf:resource="&kern;impacts"/>
                 <owl:allValuesFrom rdf:resource="&kern;PhysicalObject"/>
             </owl:Restriction>
         </rdfs:subClassOf>

@@ -67,9 +67,9 @@
 
     <owl:ObjectProperty rdf:about="&robo;movesIn">
         <rdfs:comment xml:lang="en">Some robots are merged in the air or in the water</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&envi;evolvesIn"/>
         <rdfs:domain rdf:resource="&kern;Agent"/>
         <rdfs:range rdf:resource="&kern;PhysicalObject"/>
-        <rdfs:subPropertyOf rdf:resource="&kern;evolvesIn"/>
     </owl:ObjectProperty>
     
 
@@ -116,8 +116,8 @@
     <owl:ObjectProperty rdf:about="&robo;movesOver">
         <rdfs:comment xml:lang="en">Some robots moves over a ground surface or a surface of a waterbody</rdfs:comment>
         <rdfs:range rdf:resource="&envi;Surface"/>
+        <rdfs:subPropertyOf rdf:resource="&envi;evolvesIn"/>
         <rdfs:domain rdf:resource="&kern;Agent"/>
-        <rdfs:subPropertyOf rdf:resource="&kern;evolvesIn"/>
     </owl:ObjectProperty>
     
 
@@ -257,15 +257,15 @@ Only aircraft with either fixed (like planes) either rotary (like helicopters) w
         <rdfs:subClassOf rdf:resource="&robo;GroundRobot"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:onClass rdf:resource="&syst;SteeredWheelSystem"/>
+                <owl:onProperty rdf:resource="&kern;has"/>
+                <owl:onClass rdf:resource="&syst;Chassis"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:onClass rdf:resource="&syst;Chassis"/>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:onClass rdf:resource="&syst;SteeredWheelSystem"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -288,16 +288,16 @@ Only aircraft with either fixed (like planes) either rotary (like helicopters) w
         <rdfs:subClassOf rdf:resource="&robo;GroundRobot"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:onClass rdf:resource="&syst;EngineSystem"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minQualifiedCardinality>
+                <owl:onProperty rdf:resource="&kern;has"/>
+                <owl:onClass rdf:resource="&syst;Chassis"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:onClass rdf:resource="&syst;Chassis"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:onClass rdf:resource="&syst;EngineSystem"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A differential vehicle is a mobile robot whose movement is based on two separately driven velocities of the rotational mechanism of both sides of the robot body. It can thus change its direction by varying the relative rate of rotation and hence does not require an additional steering motion. We can find wheeled differential vehicles or caterpillar vehicles.</rdfs:comment>
@@ -377,14 +377,14 @@ A “robotic system of systems” is a specialised system of systems where there
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:onClass rdf:resource="&syst;LegSystem"/>
+                <owl:onClass rdf:resource="&syst;Chassis"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:onClass rdf:resource="&syst;Chassis"/>
+                <owl:onClass rdf:resource="&syst;LegSystem"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -426,12 +426,6 @@ A “robotic system of systems” is a specialised system of systems where there
         <rdfs:subClassOf rdf:resource="&kern;CompositeSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;hasProbe"/>
-                <owl:allValuesFrom rdf:resource="&syst;SensorSystem"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom rdf:resource="&syst;CyberPhysicalSystem"/>
             </owl:Restriction>
@@ -440,6 +434,12 @@ A “robotic system of systems” is a specialised system of systems where there
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;hasProbe"/>
                 <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;hasProbe"/>
+                <owl:allValuesFrom rdf:resource="&syst;SensorSystem"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;DriverDeviceSystem"/>
