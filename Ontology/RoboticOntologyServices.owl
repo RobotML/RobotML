@@ -14,6 +14,7 @@
     <!ENTITY sqwrl "http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#" >
     <!ENTITY kernel "http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#" >
     <!ENTITY kern "http://www.anr-proteus.fr/sites/default/files/download/Ontology/Core/kernel.owl#" >
+    <!ENTITY kernel2 "http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#" >
 ]>
 
 
@@ -25,6 +26,7 @@
      xmlns:kernel="http://www.anr-proteus.fr/sites/default/files/download/Ontology/kernel.owl#"
      xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:kernel2="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#"
      xmlns:swrl="http://www.w3.org/2003/11/swrl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
@@ -58,6 +60,24 @@ It is more than the proteus.owl ontology as it also provides the scenario and ex
     <owl:DatatypeProperty rdf:about="http://www.anr-proteus.fr/sites/default/files/download/Ontology/RoboticOntologyServices.owl#language">
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Referential">
+        <kernel2:TODO xml:lang="en">- Probably there should be several children to this concept to specialise to specific description and specify in more details specific types of referential.
+- the word &quot;referential&quot; is perhaps to be changed as it seems close to a french direct translation</kernel2:TODO>
+        <kernel2:author xml:lang="en">created PROTEUS Consortium - 
+modified Bruno Patin - 25/07/2014
+- description updated</kernel2:author>
+    </rdf:Description>
 </rdf:RDF>
 
 
