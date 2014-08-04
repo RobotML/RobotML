@@ -63,6 +63,28 @@
     
 
 
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#NavigatesWaterbody -->
+
+    <owl:ObjectProperty rdf:about="&robo;NavigatesWaterbody">
+        <rdfs:comment xml:lang="en">USV, swiming humans, animals &quot;move over&quot; watersurface. It is not the same type of movement as the &quot;movesOver&quot; that is linked to the solidity nature of the Object it is moving over.</rdfs:comment>
+        <kern:author xml:lang="en">creation PROTEUS Consortium - 
+modified Bruno Patin - 04/08/2014
+- renamed from &quot;movesOverWaterbody&quot; to &quot;navigatesWaterbody&quot;</kern:author>
+        <rdfs:range rdf:resource="&envi;WaterSurface"/>
+        <rdfs:subPropertyOf rdf:resource="&envi;evolvesIn"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&kern;Human"/>
+                    <rdf:Description rdf:about="&robo;HybridRobot"/>
+                    <rdf:Description rdf:about="&robo;SurfaceRobot"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesIn -->
 
     <owl:ObjectProperty rdf:about="&robo;movesIn">
@@ -126,7 +148,7 @@ modified Bruno Patin - 04/08/2014
     <owl:ObjectProperty rdf:about="&robo;movesOver">
         <rdfs:comment xml:lang="en">Some robots moves over a ground surface or a surface of a waterbody</rdfs:comment>
         <rdfs:range rdf:resource="&envi;Surface"/>
-        <rdfs:subPropertyOf rdf:resource="&envi;evolvesIn"/>
+        <rdfs:subPropertyOf rdf:resource="&envi;evolvesOver"/>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -144,15 +166,6 @@ modified Bruno Patin - 04/08/2014
     <owl:ObjectProperty rdf:about="&robo;movesOverGround">
         <rdfs:comment xml:lang="en">UGV and humans move over stairs, floor and land surface.</rdfs:comment>
         <rdfs:subPropertyOf rdf:resource="&robo;movesOver"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&kern;Human"/>
-                    <rdf:Description rdf:about="&robo;GroundRobot"/>
-                    <rdf:Description rdf:about="&robo;HybridRobot"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -162,22 +175,12 @@ modified Bruno Patin - 04/08/2014
                 </owl:unionOf>
             </owl:Class>
         </rdfs:range>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#movesOverWatersurface -->
-
-    <owl:ObjectProperty rdf:about="&robo;movesOverWatersurface">
-        <rdfs:comment xml:lang="en">USV and swiming humans move over watersurface</rdfs:comment>
-        <rdfs:range rdf:resource="&envi;WaterSurface"/>
-        <rdfs:subPropertyOf rdf:resource="&robo;movesOver"/>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="&kern;Human"/>
+                    <rdf:Description rdf:about="&robo;GroundRobot"/>
                     <rdf:Description rdf:about="&robo;HybridRobot"/>
-                    <rdf:Description rdf:about="&robo;SurfaceRobot"/>
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
@@ -191,16 +194,6 @@ modified Bruno Patin - 04/08/2014
         <rdfs:comment xml:lang="en">A human agent can drive a robotic Vehicle (AV, GV, SV, UV), this action will be achieved on these piloted systems.</rdfs:comment>
         <rdfs:domain rdf:resource="&kern;Human"/>
         <rdfs:range rdf:resource="&robo;PilotedSystem"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#uses -->
-
-    <owl:ObjectProperty rdf:about="&robo;uses">
-        <rdfs:comment xml:lang="en">A robot needs on or multiple robotic middleware to makes all the application of its robotic systems works.</rdfs:comment>
-        <rdfs:domain rdf:resource="&robo;Robot"/>
-        <rdfs:range rdf:resource="&syst;RoboticMiddleware"/>
     </owl:ObjectProperty>
     
 
@@ -274,15 +267,15 @@ Only aircraft with either fixed (like planes) either rotary (like helicopters) w
         <rdfs:subClassOf rdf:resource="&robo;GroundRobot"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:onClass rdf:resource="&syst;Chassis"/>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:onClass rdf:resource="&syst;SteeredWheelSystem"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:onClass rdf:resource="&syst;SteeredWheelSystem"/>
+                <owl:onProperty rdf:resource="&kern;has"/>
+                <owl:onClass rdf:resource="&syst;Chassis"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -443,6 +436,12 @@ A “robotic system of systems” is a specialised system of systems where there
         <rdfs:subClassOf rdf:resource="&kern;CompositeSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;hasProbe"/>
+                <owl:allValuesFrom rdf:resource="&syst;SensorSystem"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom rdf:resource="&syst;CyberPhysicalSystem"/>
             </owl:Restriction>
@@ -451,12 +450,6 @@ A “robotic system of systems” is a specialised system of systems where there
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;hasProbe"/>
                 <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;hasProbe"/>
-                <owl:allValuesFrom rdf:resource="&syst;SensorSystem"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;DriverDeviceSystem"/>
