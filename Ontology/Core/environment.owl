@@ -64,7 +64,11 @@
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#evolvesIn -->
 
     <owl:ObjectProperty rdf:about="&envi;evolvesIn">
-        <rdfs:comment xml:lang="en">This property is linked to the spatial relationships that can exist between physical objects. This one expresses the fact that one physical object is included in at least one other Physical object. If there is more than one physical object in which the physical object #1 is included then there will appear at least one Surface object through which the physical object #1 evolves through (see this other property). </rdfs:comment>
+        <rdfs:comment xml:lang="en">This property is linked to the spatial relationships that exist between physical objects. This one expresses the fact that one solid object is included in at least one other Physical object. If there is more than one physical object in which the physical object #1 is included then there will appear at least one Surface object through which the physical object #1 evolves through (see this other property).
+This assertion has some consequences:
+* the range &quot;physical object&quot; is not any of them but fluidic: we do not express for the time being fluidic into fluidic
+* the number of &quot;physical objects&quot; must be odd as there is one surface object for two objects
+* one solid object cannot evolves in another solid object</rdfs:comment>
         <kern:author xml:lang="en">creation PROTEUS consortium - 
 modified Bruno Patin - 10/09/2013
 - comment modified
@@ -111,7 +115,7 @@ modified Bruno Patin - 20/07/2014
 
     <owl:ObjectProperty rdf:about="&envi;hasCurrentInFluid">
         <rdfs:comment xml:lang="en">Atmospheres and waterbodies may have distribution of current in them and it is one of their physical characteristics</rdfs:comment>
-        <rdfs:domain rdf:resource="&envi;FluidObject"/>
+        <rdfs:domain rdf:resource="&envi;FluidicObject"/>
         <rdfs:range rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl#Tensor"/>
     </owl:ObjectProperty>
     
@@ -158,7 +162,7 @@ modified Bruno Patin - 20/07/2014
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#hasSurface -->
 
     <owl:ObjectProperty rdf:about="&envi;hasSurface">
-        <rdfs:comment xml:lang="en">Physical objects have surfaces that determine their boudaries.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Physical objects have surfaces that determine their boundaries.</rdfs:comment>
         <rdfs:range rdf:resource="&envi;Surface"/>
         <owl:inverseOf rdf:resource="&envi;isSurfaceOf"/>
         <rdfs:domain rdf:resource="&kern;PhysicalObject"/>
@@ -204,7 +208,6 @@ modified Bruno Patin - 20/07/2014
         <rdfs:domain rdf:resource="&envi;Planet"/>
     </owl:ObjectProperty>
     
-
 
 
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasFSMActivity -->
@@ -274,7 +277,7 @@ modified Bruno Patin - 20/07/2014
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Atmosphere -->
 
     <owl:Class rdf:about="&envi;Atmosphere">
-        <rdfs:subClassOf rdf:resource="&envi;FluidObject"/>
+        <rdfs:subClassOf rdf:resource="&envi;FluidicObject"/>
         <owl:disjointWith rdf:resource="&envi;Waterbody"/>
         <rdfs:comment xml:lang="en">a layer of gases that may surround a planet ]and that is held in place by the gravity of the planet. It is of interest if there are influences exercising on included physical objects.</rdfs:comment>
     </owl:Class>
@@ -327,9 +330,9 @@ modified Bruno Patin - 20/07/2014
     
 
 
-    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#FluidObject -->
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#FluidicObject -->
 
-    <owl:Class rdf:about="&envi;FluidObject">
+    <owl:Class rdf:about="&envi;FluidicObject">
         <rdfs:subClassOf rdf:resource="&kern;PhysicalObject"/>
         <owl:disjointWith rdf:resource="&envi;SolidObject"/>
         <owl:disjointWith rdf:resource="&envi;Surface"/>
@@ -347,13 +350,13 @@ modified Bruno Patin - 20/07/2014
         <rdfs:subClassOf rdf:resource="&kern;PhysicalInteraction"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;systemSource"/>
+                <owl:onProperty rdf:resource="&kern;impacts"/>
                 <owl:allValuesFrom rdf:resource="&kern;PhysicalObject"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;impacts"/>
+                <owl:onProperty rdf:resource="&kern;systemSource"/>
                 <owl:allValuesFrom rdf:resource="&kern;PhysicalObject"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -546,7 +549,7 @@ modified Bruno Patin - 15/09/2013
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl#Waterbody -->
 
     <owl:Class rdf:about="&envi;Waterbody">
-        <rdfs:subClassOf rdf:resource="&envi;FluidObject"/>
+        <rdfs:subClassOf rdf:resource="&envi;FluidicObject"/>
         <rdfs:comment xml:lang="en">Significant accumulation of water. It is of interest if there are influences exercising on included physical objects.
 This concept IS NOT the &quot;Waterbody concept&quot; as defined in openCyc and that groups everything that is related to our waterbody concept.</rdfs:comment>
     </owl:Class>
