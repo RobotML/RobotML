@@ -237,7 +237,6 @@ modified Bruno Patin - 04/08/2014
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&robo;GroundRobot"/>
-        <owl:disjointWith rdf:resource="&robo;HybridRobot"/>
         <owl:disjointWith rdf:resource="&robo;SurfaceRobot"/>
         <owl:disjointWith rdf:resource="&robo;UnderwaterRobot"/>
         <kern:author xml:lang="en">20/06/2014 - Bruno Patin
@@ -255,8 +254,12 @@ Only aircraft with either fixed (like planes) either rotary (like helicopters) w
         <rdfs:subClassOf rdf:resource="&kern;Agent"/>
         <rdfs:subClassOf rdf:resource="&robo;Robot"/>
         <kern:openCycURI rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rwQr1pJwpEbGdrcN5Y29ycA</kern:openCycURI>
-        <rdfs:comment xml:lang="en">An autonomous robot computes its course of actions with a certain level of autonomy meaning there are decisions that the robot can implement for itself and not totally monitored by other agents.</rdfs:comment>
-        <kern:author xml:lang="en">creation Bruno Patin / Jean-Loup Farges - 13/07/2014</kern:author>
+        <rdfs:comment xml:lang="en">An autonomous robot computes its course of actions with a certain level of autonomy meaning there are decisions that the robot can implement for itself and not totally monitored by other agents.
+
+If the autonomy concerns mobility, then it means that the robot can navigate w/o human intervention through a completely unstructured and unpredictible environment provided there is a goal to this navigation either self determined or provided by an external system.</rdfs:comment>
+        <kern:author xml:lang="en">creation Bruno Patin / Jean-Loup Farges - 13/07/2014
+modified Bruno Patin - 26/08/2014
+- addition of comment part dedicated to autonomous mobility.</kern:author>
     </owl:Class>
     
 
@@ -265,13 +268,6 @@ Only aircraft with either fixed (like planes) either rotary (like helicopters) w
 
     <owl:Class rdf:about="&robo;Car-likeRobot">
         <rdfs:subClassOf rdf:resource="&robo;GroundRobot"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:onClass rdf:resource="&syst;SteeredWheelSystem"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;has"/>
@@ -283,6 +279,13 @@ Only aircraft with either fixed (like planes) either rotary (like helicopters) w
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:onClass rdf:resource="&syst;EngineSystem"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:onClass rdf:resource="&syst;SteeredWheelSystem"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -298,16 +301,16 @@ Only aircraft with either fixed (like planes) either rotary (like helicopters) w
         <rdfs:subClassOf rdf:resource="&robo;GroundRobot"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:onClass rdf:resource="&syst;EngineSystem"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minQualifiedCardinality>
+                <owl:onProperty rdf:resource="&kern;has"/>
+                <owl:onClass rdf:resource="&syst;Chassis"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:onClass rdf:resource="&syst;Chassis"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:onClass rdf:resource="&syst;EngineSystem"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A differential vehicle is a mobile robot whose movement is based on two separately driven velocities of the rotational mechanism of both sides of the robot body. It can thus change its direction by varying the relative rate of rotation and hence does not require an additional steering motion. We can find wheeled differential vehicles or caterpillar vehicles.</rdfs:comment>
@@ -361,7 +364,6 @@ A “robotic system of systems” is a specialised system of systems where there
                 <owl:someValuesFrom rdf:resource="&envi;Surface"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="&robo;HybridRobot"/>
         <owl:disjointWith rdf:resource="&robo;SurfaceRobot"/>
         <owl:disjointWith rdf:resource="&robo;UnderwaterRobot"/>
         <rdfs:comment xml:lang="en">Ground Vehicle. Only the wheeled and caterpillar robotic vehicles will be considered.</rdfs:comment>
@@ -373,8 +375,6 @@ A “robotic system of systems” is a specialised system of systems where there
 
     <owl:Class rdf:about="&robo;HybridRobot">
         <rdfs:subClassOf rdf:resource="&robo;MobileRobot"/>
-        <owl:disjointWith rdf:resource="&robo;SurfaceRobot"/>
-        <owl:disjointWith rdf:resource="&robo;UnderwaterRobot"/>
         <rdfs:comment xml:lang="en">Type of vehicle which can move in different environments. Like the Amphibious vehicles.</rdfs:comment>
     </owl:Class>
     
@@ -437,7 +437,7 @@ A “robotic system of systems” is a specialised system of systems where there
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;hasProbe"/>
-                <owl:allValuesFrom rdf:resource="&syst;SensorSystem"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -449,7 +449,7 @@ A “robotic system of systems” is a specialised system of systems where there
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;hasProbe"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+                <owl:allValuesFrom rdf:resource="&syst;SensorSystem"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;DriverDeviceSystem"/>
@@ -509,6 +509,29 @@ modified Bruno Patin - 13/07/2014
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#DriverDeviceSystem -->
 
     <rdf:Description rdf:about="&syst;DriverDeviceSystem"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl#NAO -->
+
+    <owl:NamedIndividual rdf:about="&robo;NAO">
+        <rdf:type rdf:resource="&robo;AutonomousRobot"/>
+        <kern:wikipediaURI rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/Nao_%28robot%29</kern:wikipediaURI>
+        <kern:wikipediaURI rdf:datatype="&xsd;anyURI">http://fr.wikipedia.org/wiki/NAO_%28robotique%29</kern:wikipediaURI>
+        <rdfs:comment xml:lang="en">NAO is a robot designed and built by ALDEBARAN company (see http://www.aldebaran.com). NAO is not ONE robot and should not be an individual but at this step no scenario are existing where more than one of them is needed. If needs arise then this individual will be converted to a class and different NAO individuls will become available.</rdfs:comment>
+        <kern:author xml:lang="en">created by Bruno Patin - 30/08/2014</kern:author>
+    </owl:NamedIndividual>
 </rdf:RDF>
 
 
