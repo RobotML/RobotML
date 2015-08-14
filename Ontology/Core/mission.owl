@@ -50,7 +50,6 @@
         <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/information.owl"/>
         <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl"/>
         <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl"/>
-        <owl:imports rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl"/>
     </owl:Ontology>
     
 
@@ -310,6 +309,14 @@
 
     <owl:ObjectProperty rdf:about="&miss;isDescribedBy">
         <rdfs:comment xml:lang="en">A mission is described by its state machine, its constraints and its tasks. The workflow of the mission is described by the same state machine.</rdfs:comment>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&miss;Mission"/>
+                    <rdf:Description rdf:about="&miss;WorkFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
         <rdfs:range>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -319,14 +326,6 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:range>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&miss;Mission"/>
-                    <rdf:Description rdf:about="&miss;WorkFlow"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
     </owl:ObjectProperty>
     
 
@@ -560,14 +559,14 @@
         <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticFunctionalSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasImplementingSoftware"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasImplementingHardware"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasImplementingHardware"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasImplementingSoftware"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&miss;PlanningSystem"/>
@@ -729,14 +728,14 @@
         <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#RoboticFunctionalSystem"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasImplementingSoftware"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasImplementingHardware"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasImplementingHardware"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#hasImplementingSoftware"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&miss;ReactiveSystem"/>

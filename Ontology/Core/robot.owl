@@ -46,8 +46,6 @@
         <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/environment.owl"/>
         <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl"/>
         <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl"/>
-        <owl:imports rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl"/>
-        <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/3.3/swrla.owl"/>
     </owl:Ontology>
     
 
@@ -166,15 +164,6 @@ modified Bruno Patin - 04/08/2014
     <owl:ObjectProperty rdf:about="&robo;movesOverGround">
         <rdfs:comment xml:lang="en">UGV and humans move over stairs, floor and land surface.</rdfs:comment>
         <rdfs:subPropertyOf rdf:resource="&robo;movesOver"/>
-        <rdfs:range>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&envi;Floor"/>
-                    <rdf:Description rdf:about="&envi;LandSurface"/>
-                    <rdf:Description rdf:about="&envi;Stairs"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:range>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -184,6 +173,15 @@ modified Bruno Patin - 04/08/2014
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&envi;Floor"/>
+                    <rdf:Description rdf:about="&envi;LandSurface"/>
+                    <rdf:Description rdf:about="&envi;Stairs"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
     </owl:ObjectProperty>
     
 
@@ -270,6 +268,13 @@ modified Bruno Patin - 26/08/2014
         <rdfs:subClassOf rdf:resource="&robo;GroundRobot"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:onClass rdf:resource="&syst;SteeredWheelSystem"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;has"/>
                 <owl:onClass rdf:resource="&syst;Chassis"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
@@ -279,13 +284,6 @@ modified Bruno Patin - 26/08/2014
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:onClass rdf:resource="&syst;EngineSystem"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:onClass rdf:resource="&syst;SteeredWheelSystem"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -301,16 +299,16 @@ modified Bruno Patin - 26/08/2014
         <rdfs:subClassOf rdf:resource="&robo;GroundRobot"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:onClass rdf:resource="&syst;Chassis"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:onClass rdf:resource="&syst;EngineSystem"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:onClass rdf:resource="&syst;EngineSystem"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minQualifiedCardinality>
+                <owl:onProperty rdf:resource="&kern;has"/>
+                <owl:onClass rdf:resource="&syst;Chassis"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A differential vehicle is a mobile robot whose movement is based on two separately driven velocities of the rotational mechanism of both sides of the robot body. It can thus change its direction by varying the relative rate of rotation and hence does not require an additional steering motion. We can find wheeled differential vehicles or caterpillar vehicles.</rdfs:comment>
@@ -387,14 +385,14 @@ A “robotic system of systems” is a specialised system of systems where there
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:onClass rdf:resource="&syst;Chassis"/>
+                <owl:onClass rdf:resource="&syst;LegSystem"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;has"/>
-                <owl:onClass rdf:resource="&syst;LegSystem"/>
+                <owl:onClass rdf:resource="&syst;Chassis"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -442,14 +440,14 @@ A “robotic system of systems” is a specialised system of systems where there
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:allValuesFrom rdf:resource="&syst;CyberPhysicalSystem"/>
+                <owl:onProperty rdf:resource="&kern;hasProbe"/>
+                <owl:allValuesFrom rdf:resource="&syst;SensorSystem"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;hasProbe"/>
-                <owl:allValuesFrom rdf:resource="&syst;SensorSystem"/>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:allValuesFrom rdf:resource="&syst;CyberPhysicalSystem"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;DriverDeviceSystem"/>

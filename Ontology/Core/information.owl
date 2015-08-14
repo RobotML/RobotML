@@ -38,8 +38,6 @@
 modified Bruno Patin - 13/10/2013
 - introduction of a new rule</kern:author>
         <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl"/>
-        <owl:imports rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl"/>
-        <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/3.3/swrla.owl"/>
     </owl:Ontology>
     
 
@@ -885,8 +883,8 @@ modified Bruno Patin - 25/07/2014
         <rdfs:subClassOf rdf:resource="&info;CrossProduct"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;Dimension"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
+                <owl:onProperty rdf:resource="&info;homogeneous"/>
+                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -897,8 +895,8 @@ modified Bruno Patin - 25/07/2014
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;homogeneous"/>
-                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
+                <owl:onProperty rdf:resource="&info;Dimension"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">Necessary to have binary operations and thus functions.</rdfs:comment>
@@ -986,8 +984,8 @@ modified Bruno Patin - 25/07/2014
         <rdfs:subClassOf rdf:resource="&info;Set"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;containsAbstraction"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
+                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
+                <owl:allValuesFrom rdf:resource="&info;Boolean"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1005,8 +1003,8 @@ modified Bruno Patin - 25/07/2014
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
-                <owl:allValuesFrom rdf:resource="&info;Boolean"/>
+                <owl:onProperty rdf:resource="&info;containsAbstraction"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;CrossProduct"/>
@@ -1159,6 +1157,12 @@ A conditional expression is associated with an operation on two logical values, 
         <rdfs:subClassOf rdf:resource="&info;Set"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&info;Dimension"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&info;containsAbstraction"/>
                 <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
             </owl:Restriction>
@@ -1167,12 +1171,6 @@ A conditional expression is associated with an operation on two logical values, 
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&info;containsAbstraction"/>
                 <owl:allValuesFrom rdf:resource="&info;Set"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;Dimension"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;OrderedSet"/>
@@ -1931,14 +1929,14 @@ Message code and/or text info.</rdfs:comment>
         <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
-                <owl:allValuesFrom rdf:resource="&info;PrimitiveData"/>
+                <owl:onProperty rdf:resource="&info;hasSet"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;hasSet"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
+                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
+                <owl:allValuesFrom rdf:resource="&info;PrimitiveData"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;OperationalInformation"/>
@@ -2539,14 +2537,14 @@ Relation is linking two elements of the same Set and assumes this link is either
         <rdfs:subClassOf rdf:resource="&info;CrossProduct"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;homogeneous"/>
-                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
+                <owl:onProperty rdf:resource="&info;containsAbstraction"/>
+                <owl:someValuesFrom rdf:resource="&info;R"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;containsAbstraction"/>
-                <owl:someValuesFrom rdf:resource="&info;R"/>
+                <owl:onProperty rdf:resource="&info;homogeneous"/>
+                <owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">the Rn cross product is a very important one to be used throughout the simulation ontology</rdfs:comment>
@@ -2583,14 +2581,14 @@ Relation is linking two elements of the same Set and assumes this link is either
         <rdfs:subClassOf rdf:resource="&kern;Abstraction"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
-                <owl:allValuesFrom rdf:resource="&info;Collection"/>
+                <owl:onProperty rdf:resource="&info;hasSet"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&info;hasSet"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
+                <owl:onProperty rdf:resource="&kern;isCodedIn"/>
+                <owl:allValuesFrom rdf:resource="&info;Collection"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&info;Tensor"/>
@@ -3245,21 +3243,21 @@ Thus, the inputs of the different states would be different from a non-distortio
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDifferent"/>
         <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="&info;true"/>
-        </owl:distinctMembers>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDifferent"/>
-        <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="&info;length"/>
-        </owl:distinctMembers>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDifferent"/>
-        <owl:distinctMembers rdf:parseType="Collection">
             <rdf:Description rdf:about="&info;length"/>
             <rdf:Description rdf:about="&info;mass"/>
             <rdf:Description rdf:about="&info;time"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&info;length"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&info;true"/>
         </owl:distinctMembers>
     </rdf:Description>
 </rdf:RDF>

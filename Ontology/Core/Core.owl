@@ -69,7 +69,6 @@ NO MODIFICATION ARE TO BE DONE ONTO THE CONCEPTS DEFINED IN THESE UNDERLYING ONT
         <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/robot.owl"/>
         <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/simulation.owl"/>
         <owl:imports rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl"/>
-        <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/3.3/swrla.owl"/>
     </owl:Ontology>
     
 
