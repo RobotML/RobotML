@@ -1438,17 +1438,6 @@ The difference between physical objects and THE environment is that the Physical
 There is a difference between the meaning of OpenCyc concept to the one of the ontology due to the fact there is nothing enclosing RobotML Environment concept when OpenCyc does not state anything on this point.</rdfs:comment>
     </owl:Class>
     <owl:Axiom>
-        <rdfs:comment xml:lang="en">this property constrains the environment not to have any port. Thus no interactions can occur between environment and another anything.</rdfs:comment>
-        <owl:annotatedSource rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Environment"/>
-        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasPort"/>
-                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:maxCardinality>
-            </owl:Restriction>
-        </owl:annotatedTarget>
-    </owl:Axiom>
-    <owl:Axiom>
         <rdfs:comment xml:lang="en">this property expresses the fact that the environment is not associated to any software running in it.</rdfs:comment>
         <owl:annotatedSource rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Environment"/>
         <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
@@ -1456,6 +1445,17 @@ There is a difference between the meaning of OpenCyc concept to the one of the o
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#triggers"/>
                 <owl:allValuesFrom rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#PhysicalInteraction"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+    </owl:Axiom>
+    <owl:Axiom>
+        <rdfs:comment xml:lang="en">this property constrains the environment not to have any port. Thus no interactions can occur between environment and another anything.</rdfs:comment>
+        <owl:annotatedSource rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Environment"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasPort"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:maxCardinality>
             </owl:Restriction>
         </owl:annotatedTarget>
     </owl:Axiom>
@@ -1835,15 +1835,9 @@ modified Bruno Patin - 19/10/2013
         <rdfs:subClassOf rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#System"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Application"/>
-                            <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SoftwareModule"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#executesOn"/>
+                <owl:onClass rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ComputationalHardware"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1861,9 +1855,15 @@ modified Bruno Patin - 19/10/2013
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#executesOn"/>
-                <owl:onClass rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#ComputationalHardware"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onProperty rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#aggregates"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Application"/>
+                            <rdf:Description rdf:about="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#SoftwareModule"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <openCycURI rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rvcUMxZwpEbGdrcN5Y29ycA</openCycURI>
@@ -2141,10 +2141,10 @@ modified Bruno Patin - 13/09/2014
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    <rdf:Description rdf:about="urn:swrl#x">
+    <rdf:Description rdf:about="urn:swrl#y">
         <rdf:type rdf:resource="&swrl;Variable"/>
     </rdf:Description>
-    <rdf:Description rdf:about="urn:swrl#y">
+    <rdf:Description rdf:about="urn:swrl#x">
         <rdf:type rdf:resource="&swrl;Variable"/>
     </rdf:Description>
     <rdf:Description rdf:about="urn:swrl#z">
@@ -2158,32 +2158,12 @@ modified Bruno Patin - 13/09/2014
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&swrl;Imp"/>
-        <swrl:head>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:rest rdf:resource="&rdf;nil"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Agent"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                    </rdf:Description>
-                </rdf:first>
-            </rdf:Description>
-        </swrl:head>
         <swrl:body>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
                 <rdf:rest>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;AtomList"/>
-                        <rdf:first>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                <swrl:classPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#PhysicalObject"/>
-                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                            </rdf:Description>
-                        </rdf:first>
                         <rdf:rest>
                             <rdf:Description>
                                 <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2198,6 +2178,13 @@ modified Bruno Patin - 13/09/2014
                                 </rdf:first>
                             </rdf:Description>
                         </rdf:rest>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#PhysicalObject"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                            </rdf:Description>
+                        </rdf:first>
                     </rdf:Description>
                 </rdf:rest>
                 <rdf:first>
@@ -2209,22 +2196,22 @@ modified Bruno Patin - 13/09/2014
                 </rdf:first>
             </rdf:Description>
         </swrl:body>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&swrl;Imp"/>
         <swrl:head>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
                 <rdf:rest rdf:resource="&rdf;nil"/>
                 <rdf:first>
                     <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;DifferentIndividualsAtom"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
-                        <swrl:argument2 rdf:resource="urn:swrl#z"/>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Agent"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
                     </rdf:Description>
                 </rdf:first>
             </rdf:Description>
         </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
         <swrl:body>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2252,6 +2239,99 @@ modified Bruno Patin - 13/09/2014
                 </rdf:first>
             </rdf:Description>
         </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;DifferentIndividualsAtom"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#z"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#triggers"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#y"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Interaction"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Port"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#z"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;AtomList"/>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="&swrl;AtomList"/>
+                                                <rdf:rest rdf:resource="&rdf;nil"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasPort"/>
+                                                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                                        <swrl:argument2 rdf:resource="urn:swrl#z"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#emits"/>
+                                                <swrl:argument2 rdf:resource="urn:swrl#y"/>
+                                                <swrl:argument1 rdf:resource="urn:swrl#z"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                    </rdf:Description>
+                                </rdf:rest>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#System"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&swrl;Imp"/>
@@ -2268,13 +2348,6 @@ modified Bruno Patin - 13/09/2014
                 <rdf:rest>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;AtomList"/>
-                        <rdf:first>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                <swrl:classPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#System"/>
-                                <swrl:argument1 rdf:resource="urn:swrl#y"/>
-                            </rdf:Description>
-                        </rdf:first>
                         <rdf:rest>
                             <rdf:Description>
                                 <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2289,6 +2362,13 @@ modified Bruno Patin - 13/09/2014
                                 </rdf:first>
                             </rdf:Description>
                         </rdf:rest>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#System"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                            </rdf:Description>
+                        </rdf:first>
                     </rdf:Description>
                 </rdf:rest>
             </rdf:Description>
@@ -2316,110 +2396,10 @@ modified Bruno Patin - 13/09/2014
                 <rdf:first>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Interaction"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
-                    </rdf:Description>
-                </rdf:first>
-                <rdf:rest>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;AtomList"/>
-                        <rdf:rest>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;AtomList"/>
-                                <rdf:first>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                        <swrl:classPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#System"/>
-                                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                                    </rdf:Description>
-                                </rdf:first>
-                                <rdf:rest>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="&swrl;AtomList"/>
-                                        <rdf:first>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                <swrl:propertyPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#emits"/>
-                                                <swrl:argument2 rdf:resource="urn:swrl#y"/>
-                                                <swrl:argument1 rdf:resource="urn:swrl#z"/>
-                                            </rdf:Description>
-                                        </rdf:first>
-                                        <rdf:rest>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="&swrl;AtomList"/>
-                                                <rdf:rest rdf:resource="&rdf;nil"/>
-                                                <rdf:first>
-                                                    <rdf:Description>
-                                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                        <swrl:propertyPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#hasPort"/>
-                                                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                                                        <swrl:argument2 rdf:resource="urn:swrl#z"/>
-                                                    </rdf:Description>
-                                                </rdf:first>
-                                            </rdf:Description>
-                                        </rdf:rest>
-                                    </rdf:Description>
-                                </rdf:rest>
-                            </rdf:Description>
-                        </rdf:rest>
-                        <rdf:first>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                <swrl:classPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Port"/>
-                                <swrl:argument1 rdf:resource="urn:swrl#z"/>
-                            </rdf:Description>
-                        </rdf:first>
-                    </rdf:Description>
-                </rdf:rest>
-            </rdf:Description>
-        </swrl:body>
-        <swrl:head>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:rest rdf:resource="&rdf;nil"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                        <swrl:propertyPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#triggers"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                        <swrl:argument2 rdf:resource="urn:swrl#y"/>
-                    </rdf:Description>
-                </rdf:first>
-            </rdf:Description>
-        </swrl:head>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&swrl;Imp"/>
-        <swrl:head>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:rest>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;AtomList"/>
-                        <rdf:rest rdf:resource="&rdf;nil"/>
-                        <rdf:first>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                <swrl:propertyPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#constrainsFrame"/>
-                                <swrl:argument2 rdf:resource="urn:swrl#a"/>
-                                <swrl:argument1 rdf:resource="urn:swrl#b"/>
-                            </rdf:Description>
-                        </rdf:first>
-                    </rdf:Description>
-                </rdf:rest>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                        <swrl:propertyPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#constrainsFrame"/>
+                        <swrl:classPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Frame"/>
                         <swrl:argument1 rdf:resource="urn:swrl#a"/>
-                        <swrl:argument2 rdf:resource="urn:swrl#b"/>
                     </rdf:Description>
                 </rdf:first>
-            </rdf:Description>
-        </swrl:head>
-        <swrl:body>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
                 <rdf:rest>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2439,19 +2419,20 @@ modified Bruno Patin - 13/09/2014
                                         <rdf:rest>
                                             <rdf:Description>
                                                 <rdf:type rdf:resource="&swrl;AtomList"/>
-                                                <rdf:first>
-                                                    <rdf:Description>
-                                                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                                        <swrl:classPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#PhysicalObject"/>
-                                                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
-                                                    </rdf:Description>
-                                                </rdf:first>
                                                 <rdf:rest>
                                                     <rdf:Description>
                                                         <rdf:type rdf:resource="&swrl;AtomList"/>
                                                         <rdf:rest>
                                                             <rdf:Description>
                                                                 <rdf:type rdf:resource="&swrl;AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                                        <swrl:propertyPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#definesAFrame"/>
+                                                                        <swrl:argument2 rdf:resource="urn:swrl#b"/>
+                                                                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
                                                                 <rdf:rest>
                                                                     <rdf:Description>
                                                                         <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2479,14 +2460,6 @@ modified Bruno Patin - 13/09/2014
                                                                         </rdf:first>
                                                                     </rdf:Description>
                                                                 </rdf:rest>
-                                                                <rdf:first>
-                                                                    <rdf:Description>
-                                                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                                        <swrl:propertyPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#definesAFrame"/>
-                                                                        <swrl:argument2 rdf:resource="urn:swrl#b"/>
-                                                                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
-                                                                    </rdf:Description>
-                                                                </rdf:first>
                                                             </rdf:Description>
                                                         </rdf:rest>
                                                         <rdf:first>
@@ -2499,6 +2472,13 @@ modified Bruno Patin - 13/09/2014
                                                         </rdf:first>
                                                     </rdf:Description>
                                                 </rdf:rest>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                                        <swrl:classPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#PhysicalObject"/>
+                                                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
                                             </rdf:Description>
                                         </rdf:rest>
                                         <rdf:first>
@@ -2521,31 +2501,64 @@ modified Bruno Patin - 13/09/2014
                         </rdf:first>
                     </rdf:Description>
                 </rdf:rest>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Frame"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#a"/>
-                    </rdf:Description>
-                </rdf:first>
             </rdf:Description>
         </swrl:body>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&swrl;Imp"/>
-        <swrl:body>
+        <swrl:head>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
                 <rdf:first>
                     <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Build"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#constrainsFrame"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#a"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#b"/>
                     </rdf:Description>
                 </rdf:first>
                 <rdf:rest>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:rest rdf:resource="&rdf;nil"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#constrainsFrame"/>
+                                <swrl:argument2 rdf:resource="urn:swrl#a"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#b"/>
+                            </rdf:Description>
+                        </rdf:first>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Human"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#PhysicalObject"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                            </rdf:Description>
+                        </rdf:first>
                         <rdf:rest>
                             <rdf:Description>
                                 <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2560,30 +2573,17 @@ modified Bruno Patin - 13/09/2014
                                 </rdf:first>
                             </rdf:Description>
                         </rdf:rest>
-                        <rdf:first>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                                <swrl:classPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#PhysicalObject"/>
-                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                            </rdf:Description>
-                        </rdf:first>
                     </rdf:Description>
                 </rdf:rest>
-            </rdf:Description>
-        </swrl:body>
-        <swrl:head>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:rest rdf:resource="&rdf;nil"/>
                 <rdf:first>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Human"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                        <swrl:classPredicate rdf:resource="http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/kernel.owl#Build"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#y"/>
                     </rdf:Description>
                 </rdf:first>
             </rdf:Description>
-        </swrl:head>
+        </swrl:body>
     </rdf:Description>
 </rdf:RDF>
 
