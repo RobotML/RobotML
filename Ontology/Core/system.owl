@@ -335,7 +335,7 @@ Each time we introduced relationships between concepts defined in the system ont
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#isRepresentedBy -->
 
     <owl:ObjectProperty rdf:about="&syst;isRepresentedBy">
-        <rdfs:domain rdf:resource="&kern;State"/>
+        <rdfs:domain rdf:resource="&kern;IState"/>
         <owl:inverseOf rdf:resource="&syst;isRepresentingA"/>
     </owl:ObjectProperty>
     
@@ -344,7 +344,7 @@ Each time we introduced relationships between concepts defined in the system ont
     <!-- http://europe.bourges.univ-orleans.fr/sites/default/files/download/Ontology/Core/system.owl#isRepresentingA -->
 
     <owl:ObjectProperty rdf:about="&syst;isRepresentingA">
-        <rdfs:range rdf:resource="&kern;State"/>
+        <rdfs:range rdf:resource="&kern;IState"/>
     </owl:ObjectProperty>
     
 
@@ -648,12 +648,6 @@ This is clearly a mistake to be repaired.</kern:TODO>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;ActuatorHardware"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -662,6 +656,12 @@ This is clearly a mistake to be repaired.</kern:TODO>
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;ActuatorHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -929,6 +929,12 @@ modified Bruno Patin - 14/09/2013
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;CommunicationHardware"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -937,12 +943,6 @@ modified Bruno Patin - 14/09/2013
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;CommunicationHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;PowerManagedSystem"/>
@@ -977,8 +977,8 @@ modified Bruno Patin - 14/09/2013
                 <owl:allValuesFrom rdf:resource="&kern;HardwareToDriverInteraction"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <kern:openCycURI rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rvViQ2ZwpEbGdrcN5Y29ycA</kern:openCycURI>
         <rdfs:isDefinedBy rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rvViQ2ZwpEbGdrcN5Y29ycA</rdfs:isDefinedBy>
+        <kern:openCycURI rdf:datatype="&xsd;anyURI">http://sw.opencyc.org/concept/Mx4rvViQ2ZwpEbGdrcN5Y29ycA</kern:openCycURI>
         <kern:author xml:lang="en">creation Bruno Patin - 19/10/2013</kern:author>
         <rdfs:comment xml:lang="en">in order to be able to create CyberPhysical systems, it is necessary to use some hardware able to &quot;support&quot; the computing / processing necessary for software to be associated to this specific hardware. It means that any CyberPhysical system HAVE TO include computational hardware to instantiate its software part onto something.</rdfs:comment>
     </owl:Class>
@@ -992,6 +992,12 @@ modified Bruno Patin - 14/09/2013
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;ComputationalHardware"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -1000,12 +1006,6 @@ modified Bruno Patin - 14/09/2013
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;ComputationalHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;DriverDeviceSystem"/>
@@ -1163,7 +1163,7 @@ modified Bruno Patin - 01/07/2014
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&kern;Application"/>
+                <owl:someValuesFrom rdf:resource="&kern;Hardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1183,7 +1183,7 @@ modified Bruno Patin - 01/07/2014
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&kern;Hardware"/>
+                <owl:someValuesFrom rdf:resource="&kern;Application"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <kern:wikipediaURI rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/Cyber-physical_system</kern:wikipediaURI>
@@ -1292,13 +1292,13 @@ modified Bruno Patin - 14/09/2013
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;EngineDriver"/>
+                <owl:someValuesFrom rdf:resource="&syst;EngineHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;EngineHardware"/>
+                <owl:someValuesFrom rdf:resource="&syst;EngineDriver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;SteeredWheelSystem"/>
@@ -1361,14 +1361,14 @@ modified Bruno Patin - 14/09/2013
         <rdfs:subClassOf rdf:resource="&syst;ControlInteraction"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;isTriggeredBy"/>
-                <owl:allValuesFrom rdf:resource="&kern;Driver"/>
+                <owl:onProperty rdf:resource="&kern;impacts"/>
+                <owl:allValuesFrom rdf:resource="&syst;Controller"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;impacts"/>
-                <owl:allValuesFrom rdf:resource="&syst;Controller"/>
+                <owl:onProperty rdf:resource="&kern;isTriggeredBy"/>
+                <owl:allValuesFrom rdf:resource="&kern;Driver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -1703,6 +1703,12 @@ In order to implement this it is necessary to put this rule in the system ontolo
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
+                <owl:someValuesFrom rdf:resource="&syst;Leg"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&kern;aggregates"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -1711,12 +1717,6 @@ In order to implement this it is necessary to put this rule in the system ontolo
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;Leg"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -2155,14 +2155,7 @@ The PID controller calculation (algorithm) involves three separate constant para
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="&syst;PowerDriver"/>
-                            <rdf:Description rdf:about="&syst;PowerHardware"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
+                <owl:someValuesFrom rdf:resource="&syst;PowerDriver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2174,7 +2167,14 @@ The PID controller calculation (algorithm) involves three separate constant para
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;PowerDriver"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&syst;PowerDriver"/>
+                            <rdf:Description rdf:about="&syst;PowerHardware"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;SensorSystem"/>
@@ -2384,7 +2384,7 @@ modified Bruno Patin - 03/10/2013
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;SensorDriver"/>
+                <owl:someValuesFrom rdf:resource="&syst;SensorHardware"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2396,7 +2396,7 @@ modified Bruno Patin - 03/10/2013
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&kern;aggregates"/>
-                <owl:someValuesFrom rdf:resource="&syst;SensorHardware"/>
+                <owl:someValuesFrom rdf:resource="&syst;SensorDriver"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&syst;SupportingStructure"/>
@@ -2589,6 +2589,14 @@ modified Bruno Patin - 03/10/2013
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&syst;ControllerToControlledSystemInteraction"/>
+            <rdf:Description rdf:about="&syst;FeedbackInteraction"/>
+            <rdf:Description rdf:about="&syst;ReferenceInteraction"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
             <rdf:Description rdf:about="&kern;Clock"/>
             <rdf:Description rdf:about="&syst;ActuatorHardware"/>
             <rdf:Description rdf:about="&syst;CommunicationHardware"/>
@@ -2604,14 +2612,6 @@ modified Bruno Patin - 03/10/2013
             <rdf:Description rdf:about="&kern;Clock"/>
             <rdf:Description rdf:about="&syst;ComputationalHardware"/>
             <rdf:Description rdf:about="&syst;SupportingStructure"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&syst;ControllerToControlledSystemInteraction"/>
-            <rdf:Description rdf:about="&syst;FeedbackInteraction"/>
-            <rdf:Description rdf:about="&syst;ReferenceInteraction"/>
         </owl:members>
     </rdf:Description>
     
@@ -2636,6 +2636,20 @@ modified Bruno Patin - 03/10/2013
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="&kern;executesOn"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#y"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
         <swrl:body>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2669,6 +2683,14 @@ modified Bruno Patin - 03/10/2013
                                 <rdf:rest>
                                     <rdf:Description>
                                         <rdf:type rdf:resource="&swrl;AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="&kern;aggregates"/>
+                                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                                <swrl:argument2 rdf:resource="urn:swrl#y"/>
+                                            </rdf:Description>
+                                        </rdf:first>
                                         <rdf:rest>
                                             <rdf:Description>
                                                 <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -2683,14 +2705,6 @@ modified Bruno Patin - 03/10/2013
                                                 </rdf:first>
                                             </rdf:Description>
                                         </rdf:rest>
-                                        <rdf:first>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                                <swrl:propertyPredicate rdf:resource="&kern;aggregates"/>
-                                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                                                <swrl:argument2 rdf:resource="urn:swrl#y"/>
-                                            </rdf:Description>
-                                        </rdf:first>
                                     </rdf:Description>
                                 </rdf:rest>
                             </rdf:Description>
@@ -2699,24 +2713,10 @@ modified Bruno Patin - 03/10/2013
                 </rdf:rest>
             </rdf:Description>
         </swrl:body>
-        <swrl:head>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:rest rdf:resource="&rdf;nil"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                        <swrl:propertyPredicate rdf:resource="&kern;executesOn"/>
-                        <swrl:argument2 rdf:resource="urn:swrl#y"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#z"/>
-                    </rdf:Description>
-                </rdf:first>
-            </rdf:Description>
-        </swrl:head>
     </rdf:Description>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
 
